@@ -95,4 +95,4 @@ jobs:
           npx --yes firebase-tools@15.31.0 emulators:exec \
             --only firestore \
             --project demo-apexleader-rules \
-            "npx tsx website/scripts/test-firestore-rules.ts && npx tsx website/scripts/test-list-people.ts"
+            "npx tsx website/scripts/test-firestore-rules.ts && cd website && npx tsx scripts/test-list-people.ts"
