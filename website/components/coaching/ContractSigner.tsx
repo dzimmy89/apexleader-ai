@@ -95,8 +95,8 @@ export function ContractSigner({ token }: { token: string }) {
           <a href="/account" className="btn btn-primary">
             Open your account for a new link
           </a>
-          <a href="mailto:hello@defiuniversity.xyz" className="btn btn-secondary">
-            Email hello@defiuniversity.xyz
+          <a href="mailto:hello@apexleader.ai" className="btn btn-secondary">
+            Email hello@apexleader.ai
           </a>
         </div>
       </div>

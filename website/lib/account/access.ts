@@ -1,6 +1,4 @@
 import { getDb } from "@/lib/firebase-admin";
-import { sendPendingInvites, trackCoachingSkool } from "@/lib/account/skool-access";
-import { PAPERBELL_ACCESS } from "@/lib/coaching/paperbell-packages";
 
 /**
  * Who may open the members-only courses.
@@ -14,7 +12,7 @@ import { PAPERBELL_ACCESS } from "@/lib/coaching/paperbell-packages";
  */
 export const ACCOUNTS = "learn_accounts";
 
-export type GrantSource = "skool" | "coaching" | "manual";
+export type GrantSource = "coaching" | "manual";
 
 export interface AccessGrant {
   source: GrantSource;
@@ -27,7 +25,6 @@ export interface AccountRecord {
   email: string;
   name?: string;
   grants: AccessGrant[];
-  skoolLastSeenAt?: string | null;
   createdAt?: string;
   lastSignInAt?: string | null;
 }
@@ -44,11 +41,9 @@ export interface AccessState {
   hasCourseAccess: boolean;
   /** Grants across all linked emails, live or not. */
   grants: AccessGrant[];
-  /** Latest time any linked email was seen in Skool (CSV import or Zap). */
-  skoolLastSeenAt: string | null;
 }
 
-/** "completed": a past client whose sessions and access period are over (Paperbell import). */
+/** "completed": a past client whose sessions and access period are over. */
 const ENDED_CLIENT_STATUSES = new Set(["cancelled", "subscription_cancelled", "refunded", "completed"]);
 
 export function normalizeEmail(email: string): string {
@@ -79,7 +74,6 @@ export function readAccount(email: string, data: Record<string, unknown> | undef
     email,
     name: typeof data?.name === "string" ? data.name : undefined,
     grants,
-    skoolLastSeenAt: typeof data?.skoolLastSeenAt === "string" ? data.skoolLastSeenAt : null,
     createdAt: typeof data?.createdAt === "string" ? data.createdAt : undefined,
     lastSignInAt: typeof data?.lastSignInAt === "string" ? data.lastSignInAt : null,
   };
@@ -107,7 +101,6 @@ export async function getAccess(rawEmail: string): Promise<AccessState> {
   // Clients from before coaching grants: the coaching period from paidAt.
   const legacyCoaching =
     isCoachingClient && !hasCoachingGrant && legacyCoachingLive(String(client.packageId || ""), String(client.paidAt || client.createdAt || ""));
-  const seen = accounts.map((a) => a.skoolLastSeenAt).filter((d): d is string => !!d).sort();
   return {
     email,
     emails,
@@ -116,7 +109,6 @@ export async function getAccess(rawEmail: string): Promise<AccessState> {
     isCoachingClient,
     hasCourseAccess: hasMembership || legacyCoaching,
     grants,
-    skoolLastSeenAt: seen.at(-1) || null,
   };
 }
 
@@ -165,7 +157,6 @@ export async function grantAccess(
         grants,
         ...(input.name && !account.name ? { name: input.name } : {}),
         ...(snap.exists ? {} : { createdAt: now }),
-        ...(input.source === "skool" ? { skoolLastSeenAt: now } : {}),
         updatedAt: now,
       },
       { merge: true }
@@ -209,9 +200,9 @@ export function addMonths(from: Date, months: number): string {
   return d.toISOString();
 }
 
-/** The access period for a package on sale today or one bought on Paperbell. */
+/** The access period for a package. */
 export function accessPeriod(packageId: string): { days?: number; months?: number } | null {
-  return COACHING_ACCESS[packageId] || PAPERBELL_ACCESS[packageId] || null;
+  return COACHING_ACCESS[packageId] || null;
 }
 
 /** When course access from this package ends, counted from the first payment. */
@@ -237,16 +228,4 @@ export async function grantCoachingMembership(
     note: `Coaching period (${packageId})`,
     name: opts.name,
   });
-  // Skool seat for the same window. Never let it break payment handling.
-  try {
-    const { needsAdd } = await trackCoachingSkool(email, {
-      packageId,
-      startsAt: from.toISOString(),
-      endsAt: expiresAt,
-      name: opts.name,
-    });
-    if (needsAdd) await sendPendingInvites([normalizeEmail(email)]);
-  } catch (e) {
-    console.error("[access] skool tracking failed", e);
-  }
 }

@@ -5,27 +5,20 @@ import { logActivity } from "@/lib/crm/activity-log";
  * Coaching payment ledger.
  *
  * client_payments/{paymentId}: one row per money movement (a Stripe checkout,
- * a paid Stripe invoice, or a crypto transfer). Doc ids are derived from the
- * Stripe invoice/session id or the crypto tx hash, so a replay never writes a
- * second row.
+ * a paid Stripe invoice, or a payment the coach logs by hand, such as a bank
+ * transfer). Doc ids are derived from the Stripe invoice/session id or the
+ * admin's idempotency key, so a replay never writes a second row.
  *
- * payment_schedules/{email}__{packageId}: crypto installment plans only.
+ * payment_schedules/{email}__{packageId}: manual installment plans only.
  * Stripe bills its own installments, so Stripe plans have no schedule here.
  */
 export const CLIENT_PAYMENTS = "client_payments";
 export const PAYMENT_SCHEDULES = "payment_schedules";
 export const PAYMENT_TIMEZONE = "America/New_York";
 
-/** "paypal" only appears on payments imported from Paperbell. */
-export type PaymentMethod = "stripe" | "crypto" | "paypal";
+/** "manual": logged by the coach (bank transfer, wire, cash, an outside invoice). */
+export type PaymentMethod = "stripe" | "manual";
 export type PaymentPlanId = "full" | "3pay" | "6pay";
-
-export const CRYPTO_ASSETS = ["USDC", "USDT", "BTC", "other"] as const;
-export type CryptoAsset = (typeof CRYPTO_ASSETS)[number];
-
-export function isCryptoAsset(value: string): value is CryptoAsset {
-  return (CRYPTO_ASSETS as readonly string[]).includes(value);
-}
 
 export function asPaymentPlanId(value: unknown): PaymentPlanId {
   return value === "3pay" || value === "6pay" ? value : "full";
@@ -59,11 +52,10 @@ export interface ClientPaymentRow {
   stripeInvoiceId: string | null;
   stripeSessionId: string | null;
   stripeSubscriptionId: string | null;
-  txHash: string | null;
-  network: string | null;
-  asset: string | null;
+  /** Bank reference, invoice number or similar, for manual payments. */
+  reference: string | null;
   note: string;
-  source: "stripe_webhook" | "admin_log" | "crypto_notice" | "paperbell_import";
+  source: "stripe_webhook" | "admin_log";
   actor: string | null;
   createdAt: string;
 }
@@ -84,7 +76,7 @@ export interface PaymentSchedule {
   packageId: string;
   packageName: string;
   planId: PaymentPlanId;
-  method: "crypto";
+  method: "manual";
   startDate: string;
   installments: ScheduleInstallment[];
   createdAt: string;
@@ -124,10 +116,6 @@ export function stripePaymentDocId(args: {
   if (args.invoiceId) return `stripe_inv_${args.invoiceId}`;
   if (args.sessionId) return `stripe_cs_${args.sessionId}`;
   return null;
-}
-
-export function cryptoPaymentDocId(network: string, txHashKey: string): string {
-  return `crypto_${network}_${txHashKey}`;
 }
 
 /** YYYY-MM-DD for an instant, in America/New_York. */
@@ -218,7 +206,7 @@ export function buildInstallmentSchedule(args: {
     packageId: args.packageId,
     packageName: args.packageName || "",
     planId: args.planId,
-    method: "crypto",
+    method: "manual",
     startDate: args.startDate,
     installments,
     createdAt: now,
@@ -469,7 +457,7 @@ export function readSchedule(data: Record<string, unknown> | undefined): Payment
     packageId: String(data.packageId || ""),
     packageName: String(data.packageName || ""),
     planId: asPaymentPlanId(data.planId),
-    method: "crypto",
+    method: "manual",
     startDate: String(data.startDate || installments[0]?.dueDate || ""),
     installments,
     createdAt: String(data.createdAt || ""),
@@ -488,10 +476,10 @@ export async function getSchedule(
 }
 
 /**
- * Create the crypto schedule on the first logged installment and mark the
+ * Create the manual schedule on the first logged installment and mark the
  * matching installment paid. Full-pay plans have no schedule.
  */
-export async function applyCryptoPaymentToSchedule(
+export async function applyManualPaymentToSchedule(
   db: Db,
   args: {
     email: string;
@@ -577,12 +565,12 @@ export async function listPaymentsUpcoming(
 }
 
 /**
- * Rebuild one package's crypto schedule from the crypto payments already
+ * Rebuild one package's manual schedule from the manual payments already
  * logged, for a plan that was logged wrong (usually "Paid in full" when it
  * was an installment plan). Payments are applied oldest first; installment 1
  * is the date of the first payment. A full plan removes the schedule.
  */
-export async function rebuildCryptoSchedule(
+export async function rebuildManualSchedule(
   db: Db,
   args: {
     email: string;
@@ -598,7 +586,7 @@ export async function rebuildCryptoSchedule(
   const email = normalizePaymentEmail(args.email);
   const ref = db.collection(PAYMENT_SCHEDULES).doc(scheduleDocId(email, args.packageId));
   const rows = (await listClientPayments(db, email))
-    .filter((r) => r.packageId === args.packageId && r.method === "crypto" && r.paidAt)
+    .filter((r) => r.packageId === args.packageId && r.method === "manual" && r.paidAt)
     .sort((a, b) => (a.paidAt < b.paidAt ? -1 : a.paidAt > b.paidAt ? 1 : 0));
   const nowIso = new Date().toISOString();
 
@@ -613,7 +601,7 @@ export async function rebuildCryptoSchedule(
     await db
       .collection("client_records")
       .doc(email)
-      .set({ planId: args.planId, cryptoPlanId: args.planId, updatedAt: nowIso }, { merge: true });
+      .set({ planId: args.planId, manualPlanId: args.planId, updatedAt: nowIso }, { merge: true });
     return { schedule: null, marked: 0 };
   }
 
@@ -642,8 +630,8 @@ export async function rebuildCryptoSchedule(
   await db.collection("client_records").doc(email).set(
     {
       planId: args.planId,
-      cryptoPlanId: args.planId,
-      cryptoInstallments: args.installments,
+      manualPlanId: args.planId,
+      manualInstallments: args.installments,
       updatedAt: nowIso,
     },
     { merge: true }
@@ -663,7 +651,7 @@ export async function markPipelineWon(
     packageId: string;
     /** Whole dollars, as the pipeline stores it. */
     closeValue?: number | null;
-    source: "stripe" | "crypto";
+    source: "stripe" | "manual";
     note: string;
   }
 ): Promise<{ moved: string[]; created: string | null }> {
@@ -695,7 +683,7 @@ export async function markPipelineWon(
         {
           email,
           name: args.name || "",
-          source: args.source === "stripe" ? "stripe_checkout" : "crypto_payment",
+          source: args.source === "stripe" ? "stripe_checkout" : "manual_payment",
           notes: args.note,
           createdAt: now,
           ...wonFields,

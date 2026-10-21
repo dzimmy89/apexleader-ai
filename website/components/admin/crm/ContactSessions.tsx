@@ -76,7 +76,7 @@ export function ContactSessions({
           <span
             className={cn(
               "text-xs",
-              s.status === "completed" && "text-[var(--color-skool)]",
+              s.status === "completed" && "text-[var(--color-positive)]",
               s.status === "scheduled" && "text-[var(--color-coaching)]",
               (s.status === "cancelled" || s.status === "no-show") && "text-red-400"
             )}

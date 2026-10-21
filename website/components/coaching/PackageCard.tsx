@@ -21,7 +21,7 @@ export interface PackageCardData {
   cadence: string;
   features: string[];
   deliverables: string[];
-  targetCapital: string;
+  bestFor: string;
   badge?: string;
   paymentPlans: Array<{
     id: "full" | "3pay" | "6pay";
@@ -89,7 +89,7 @@ export function PackageCard({
     ["Duration", `${pkg.durationWeeks} weeks`],
     ["Sessions", `${pkg.sessionCount} × ${pkg.sessionLengthMins} min`],
     ["Cadence", pkg.cadence],
-    ["Typical capital range", pkg.targetCapital],
+    ["Best for", pkg.bestFor],
   ];
 
   return (

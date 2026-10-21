@@ -1,4 +1,5 @@
-export const GTM_ID = "GTM-MQH7BFVF";
+/** Google Tag Manager container. Empty until the business has its own; no tag loads without it. */
+export const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID || "";
 
 declare global {
   interface Window {
@@ -13,52 +14,11 @@ export function pushEvent(data: Record<string, unknown>) {
   }
 }
 
-export type SkoolSignupTracking = {
-  /** Omit unless the click is on a known paid Skool tier. Never default to 97. */
-  value?: number;
-  planId?: string;
-};
-
-export function trackSkoolSignup(
-  location: string,
-  tracking: SkoolSignupTracking = {}
-) {
-  const payload: Record<string, unknown> = {
-    event: "conversion",
-    conversion_type: "skool_signup_click",
-    conversion_location: location,
-    currency: "USD",
-    transaction_id: `skool_${Date.now()}`,
-  };
-  if (typeof tracking.value === "number") {
-    payload.value = tracking.value;
-  }
-  if (tracking.planId) {
-    payload.plan_id = tracking.planId;
-  }
-  pushEvent(payload);
-}
-
-export function trackTestimonialPlay(ctx: {
-  clipId: string;
-  person: string;
-  segment: string;
-  page: string;
-}) {
-  pushEvent({
-    event: "testimonial_play",
-    clip_id: ctx.clipId,
-    clip_person: ctx.person,
-    clip_segment: ctx.segment,
-    clip_page: ctx.page,
-  });
-}
-
 export function trackStickyCta(page: string, href: string) {
   pushEvent({ event: "sticky_cta_click", cta_page: page, cta_href: href });
 }
 
-/** On-site navigation CTAs. Never counted as a Skool signup. */
+/** On-site navigation CTAs. */
 export function trackInternalCta(location: string, href: string) {
   pushEvent({
     event: "internal_cta_click",
@@ -117,30 +77,6 @@ export function trackCoachingCheckoutStart(
   };
   if (ctx.location) payload.conversion_location = ctx.location;
   pushEvent(payload);
-}
-
-export function trackCoachingCryptoAddressCopy(input: {
-  network: string;
-  packageId: string;
-}) {
-  pushEvent({
-    event: "conversion",
-    conversion_type: "coaching_crypto_address_copy",
-    network: input.network,
-    package_id: input.packageId,
-  });
-}
-
-export function trackCoachingCryptoNoticeSubmit(input: {
-  packageId: string;
-  network: string;
-}) {
-  pushEvent({
-    event: "conversion",
-    conversion_type: "coaching_crypto_notice_submit",
-    package_id: input.packageId,
-    network: input.network,
-  });
 }
 
 export function trackCoachingApplicationStart(packageId: string) {

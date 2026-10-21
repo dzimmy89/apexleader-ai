@@ -115,7 +115,7 @@ export default function PaymentsDuePage() {
     <div>
       <CrmPageHeader
         title="Payments due"
-        description="Crypto installments that are overdue or due in the next 7 days, then the next payment on every other crypto plan. Stripe bills its own installments, so they are not listed here."
+        description="Installments logged by hand that are overdue or due in the next 7 days, then the next payment on every other manual plan. Stripe bills its own installments, so they are not listed here."
         actions={
           <Button variant="outline" size="sm" render={<Link href="/admin/coaching" />}>
             Pipeline
@@ -146,7 +146,7 @@ export default function PaymentsDuePage() {
         Upcoming
       </h2>
       <p className="mt-1 text-xs text-[var(--color-text-muted)]">
-        The next unpaid installment on each crypto plan that is not due this week.
+        The next unpaid installment on each manual plan that is not due this week.
       </p>
       <div className="mt-3">
         <DataTable
@@ -154,7 +154,7 @@ export default function PaymentsDuePage() {
           data={upcoming}
           keyExtractor={(i) => `up-${i.scheduleId}-${i.installmentNumber}`}
           loading={loading}
-          emptyMessage="No other crypto plans have a payment left."
+          emptyMessage="No other manual plans have a payment left."
         />
       </div>
       <p className="mt-4 text-xs text-[var(--color-text-muted)]">

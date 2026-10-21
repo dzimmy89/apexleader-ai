@@ -1,7 +1,7 @@
 import type { FlowDoc, FlowStatus, FlowStep, FlowType } from "./types";
 
 /** Flows that must never enroll the same user twice, including after complete/exit. */
-export const ONE_SHOT_FLOWS: readonly FlowType[] = ["reengagement"];
+export const ONE_SHOT_FLOWS: readonly FlowType[] = [];
 
 /** How long a send claim may block retries after a crash before send. */
 export const SEND_CLAIM_TTL_MS = 60 * 60 * 1000;

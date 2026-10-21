@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { requireAdminCookie } from "@/lib/admin-auth";
 import { originMatchesSite } from "@/lib/auth/admin-login-request-guards";
-import { logCryptoPayment } from "@/lib/coaching/crypto-notices";
+import { logManualPayment } from "@/lib/coaching/manual-payments";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -12,7 +12,7 @@ function json(body: unknown, status = 200) {
   return NextResponse.json(body, { status, headers: NO_STORE });
 }
 
-// POST /api/admin/contacts/:email/payments  (log a crypto payment by hand)
+// POST /api/admin/contacts/:email/payments  (log a manual payment by hand)
 export async function POST(
   request: NextRequest,
   { params }: { params: Promise<{ email: string }> }
@@ -31,8 +31,8 @@ export async function POST(
   } catch {
     return json({ error: "Invalid JSON" }, 400);
   }
-  const result = await logCryptoPayment(
-    { ...body, email: decodeURIComponent(email) } as Parameters<typeof logCryptoPayment>[0],
+  const result = await logManualPayment(
+    { ...body, email: decodeURIComponent(email) } as Parameters<typeof logManualPayment>[0],
     auth.username
   );
   if (!result.ok) {

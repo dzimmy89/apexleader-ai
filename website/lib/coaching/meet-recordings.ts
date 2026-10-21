@@ -99,8 +99,8 @@ export const publishMeetRecording: RecordingPublisher = async ({ session, fileId
       to: session.clientId,
       purpose: "transactional",
       subject: `Your replay is ready: ${title}`,
-      text: `Hi ${first},\n\nThe recording of your coaching session on ${dayLabel(session.scheduledAt)} is ready. Watch it in your account: ${link}\n\nDavid\nDeFi University\n\nEducation only. This is not financial advice.`,
-      html: `<p>Hi ${first.replace(/[<>&"]/g, "")},</p><p>The recording of your coaching session on ${dayLabel(session.scheduledAt)} is ready.</p><p><a href="${link}">Watch it in your account</a></p><p>David<br>DeFi University</p><p>Education only. This is not financial advice.</p>`,
+      text: `Hi ${first},\n\nThe recording of your coaching session on ${dayLabel(session.scheduledAt)} is ready. Watch it in your account: ${link}\n\nDavid\nApexLeader.ai`,
+      html: `<p>Hi ${first.replace(/[<>&"]/g, "")},</p><p>The recording of your coaching session on ${dayLabel(session.scheduledAt)} is ready.</p><p><a href="${link}">Watch it in your account</a></p><p>David<br>ApexLeader.ai</p>`,
       log: { source: "coaching_replay_ready" },
     }).catch((e) => console.error("[meet-recordings] replay email failed", e));
   }

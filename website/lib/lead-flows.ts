@@ -9,14 +9,6 @@ export function leadFlowUserId(email: string): string {
   return `lead:${encodeURIComponent(email.trim().toLowerCase())}`;
 }
 
-export async function enrollLeadNurture(email: string): Promise<string | null> {
-  return triggerFlow("lead_nurture", leadFlowUserId(email), email);
-}
-
-export async function enrollSampleNurture(email: string): Promise<string | null> {
-  return triggerFlow("sample_nurture", leadFlowUserId(email), email);
-}
-
 export async function enrollCoachingNurture(
   email: string
 ): Promise<string | null> {
@@ -29,22 +21,12 @@ export async function enrollCoachingPostCall(
   return triggerFlow("coaching_post_call", leadFlowUserId(email), email);
 }
 
-export async function enrollDuWelcome(email: string): Promise<string | null> {
-  return triggerFlow("du_welcome", leadFlowUserId(email), email);
-}
-
 export async function enrollForLeadMagnet(
   email: string,
   leadMagnet: string
 ): Promise<{ flowType?: FlowType; flowDocId?: string | null }> {
   const flowType = flowTypeForLeadMagnet(leadMagnet);
   switch (flowType) {
-    case "du_welcome":
-      return { flowType, flowDocId: await enrollDuWelcome(email) };
-    case "lead_nurture":
-      return { flowType, flowDocId: await enrollLeadNurture(email) };
-    case "sample_nurture":
-      return { flowType, flowDocId: await enrollSampleNurture(email) };
     case "coaching_post_call":
       return { flowType, flowDocId: await enrollCoachingPostCall(email) };
     case "coaching_nurture":

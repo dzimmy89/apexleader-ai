@@ -9,13 +9,11 @@ export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Pay for private coaching",
-  description:
-    "Pay for private DeFi coaching: Kickstart $750, Operator $2,500, or Inner Circle $7,500. Card or crypto. Education only, not financial advice.",
+  description: "Pay for private AI coaching by card, in full or in monthly installments.",
   alternates: { canonical: "/coaching/pay" },
   openGraph: {
     title: "Pay for private coaching",
-    description:
-      "Kickstart $750, Operator $2,500, Inner Circle $7,500. Education-only payment. Not financial advice.",
+    description: "Pay for private AI coaching by card, in full or in monthly installments.",
     url: absoluteUrl("/coaching/pay"),
     type: "website",
   },
@@ -41,7 +39,7 @@ async function loadPackages(): Promise<PackageCardData[]> {
     cadence: pkg.cadence,
     features: pkg.features,
     deliverables: pkg.deliverables,
-    targetCapital: pkg.targetCapital,
+    bestFor: pkg.bestFor,
     badge: pkg.badge,
     paymentPlans: pkg.paymentPlans.map((plan) => ({
       id: plan.id,
@@ -68,20 +66,11 @@ export default async function CoachingPayPage({
         <PageHeader
           eyebrow="Private coaching"
           title="Pay for private coaching"
-          intro="Pay by card, or send crypto to the addresses below. Pay in full, or in 3 or 6 payments; the schedule you pick applies to both."
+          intro="Pay by card on Stripe, in full or in 3 or 6 monthly payments."
         />
         <PayChooser packages={packages} initialPackageId={initialPackageId} />
         <div className="mt-12 max-w-2xl space-y-4 font-[family-name:var(--font-ui)] text-[length:var(--text-small)] leading-relaxed text-[var(--color-text-muted)]">
-          <p>
-            Education only. Not financial advice. Not portfolio management. You keep self-custody of
-            your assets: this payment is the coaching fee, not a deposit for us to manage.
-          </p>
-          <p>
-            Kickstart and Operator: full refund within 14 days if no session has been held.
-            Installment refunds cover payments collected in that window. Inner Circle is
-            non-refundable. A crypto refund, when the policy allows one, is manual and returns the
-            same asset.
-          </p>
+          <p>Refund terms for each package are in the coaching agreement you sign before sessions begin.</p>
         </div>
       </div>
     </section>

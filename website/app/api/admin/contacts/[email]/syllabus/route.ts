@@ -127,9 +127,9 @@ async function notifyClient(email: string, name: string, changeNote: string, fir
   const sent = await sendEmail({
     to: email,
     purpose: "transactional",
-    subject: first ? "Your DeFi University syllabus is ready" : "Your syllabus was updated",
-    text: `${hello}\n\n${lead}${changeNote ? `\n\n${changeNote}` : ""}\n\nSee it here: ${url}\n\nDavid\n\nEducation only. This is not financial advice.`,
-    html: `<p>${escapeHtml(hello)}</p><p>${escapeHtml(lead)}</p>${changeNote ? `<p>${escapeHtml(changeNote)}</p>` : ""}<p><a href="${escapeHtml(url)}">Open your syllabus</a></p><p>David</p><p>Education only. This is not financial advice.</p>`,
+    subject: first ? "Your ApexLeader.ai syllabus is ready" : "Your syllabus was updated",
+    text: `${hello}\n\n${lead}${changeNote ? `\n\n${changeNote}` : ""}\n\nSee it here: ${url}\n\nDavid`,
+    html: `<p>${escapeHtml(hello)}</p><p>${escapeHtml(lead)}</p>${changeNote ? `<p>${escapeHtml(changeNote)}</p>` : ""}<p><a href="${escapeHtml(url)}">Open your syllabus</a></p><p>David</p>`,
     log: { source: "coaching_syllabus", flowType: "coaching_syllabus" },
   });
   return sent.ok ? null : sent.error || "The email did not send";

@@ -17,7 +17,7 @@ async function main() {
   await batch.commit();
   console.log(
     `Seeded ${fallbackPackages.length} coaching packages to Firestore (project: ${
-      process.env.GCP_PROJECT_ID || "defi-university-prod"
+      process.env.GCP_PROJECT_ID || "apexleader-prod"
     })`
   );
 }

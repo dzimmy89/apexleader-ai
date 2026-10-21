@@ -5,11 +5,9 @@ import { FOUNDER_PORTRAIT, PortraitFrame } from "./PortraitFrame";
 export type HeroCta = {
   label: string;
   href: string;
-  variant: "skool" | "coaching" | "ghost";
+  variant: "positive" | "coaching" | "ghost";
   location: string;
   external?: boolean;
-  skoolPlanId?: string;
-  skoolValue?: number;
 };
 
 function HeroButton({ cta }: { cta: HeroCta }) {
@@ -19,8 +17,6 @@ function HeroButton({ cta }: { cta: HeroCta }) {
       href={cta.href}
       location={cta.location}
       external={cta.external}
-      skoolPlanId={cta.skoolPlanId}
-      skoolValue={cta.skoolValue}
     >
       {cta.label}
     </CTAButton>

@@ -1,5 +1,0 @@
-date_sent,full_name,email,top_rank,channel,from,subject,status,notes
-2026-09-01T10:00:00.000Z,Alice Example,alice@example.com,12,email,david@defiuniversity.xyz,Intro,sent,first touch
-2026-09-15T12:00:00.000Z,Alice Example,alice@example.com,12,email,david@defiuniversity.xyz,Follow up,sent,second touch
-2026-08-01T09:00:00.000Z,Bob Existing,bob@example.com,200,sms,david@defiuniversity.xyz,Older ping,sent,should not move lastContacted
-2026-09-20T09:00:00.000Z,Ghost,ghost@example.com,50,email,david@defiuniversity.xyz,Ghost,sent,unmatched

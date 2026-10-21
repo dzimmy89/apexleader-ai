@@ -634,13 +634,13 @@ describe("stripe webhook replay safety", () => {
     await mem.collection("client_records").doc(email).set({
       email,
       status: "onboarded",
-      stripeSubscriptionId: "sub_du_coaching",
+      stripeSubscriptionId: "sub_apex_coaching",
       stripeCustomerId: "cus_shared",
     });
     await mem.collection("members").doc(email).set({
       email,
       status: "active",
-      stripeSubscriptionId: "sub_du_coaching",
+      stripeSubscriptionId: "sub_apex_coaching",
       stripeCustomerId: "cus_shared",
     });
 
@@ -662,7 +662,7 @@ describe("stripe webhook replay safety", () => {
   it("cancels when the deleted sub is a DU coaching price even if stripeSubscriptionId was not stored", async () => {
     const mem = createMemoryFirestore();
     setDbForTests(mem as unknown as Firestore);
-    process.env.STRIPE_PRICE_MASTERY_3PAY = "price_du_mastery_3pay";
+    process.env.STRIPE_PRICE_MASTERY_3PAY = "price_apex_mastery_3pay";
     const email = "allowlist@example.com";
     await mem.collection("client_records").doc(email).set({
       email,
@@ -678,10 +678,10 @@ describe("stripe webhook replay safety", () => {
     });
 
     await processStripeEvent(
-      subscriptionDeletedEvent("evt_du_price", {
+      subscriptionDeletedEvent("evt_apex_price", {
         subscriptionId: "sub_unrecorded",
         customerId: "cus_allow",
-        priceId: "price_du_mastery_3pay",
+        priceId: "price_apex_mastery_3pay",
         packageId: "mastery",
       })
     );
@@ -695,7 +695,7 @@ describe("stripe webhook replay safety", () => {
   it("does not cancel a DU-priced sub when metadata.packageId disagrees with the client packageId", async () => {
     const mem = createMemoryFirestore();
     setDbForTests(mem as unknown as Firestore);
-    process.env.STRIPE_PRICE_MASTERY_3PAY = "price_du_mastery_3pay";
+    process.env.STRIPE_PRICE_MASTERY_3PAY = "price_apex_mastery_3pay";
     const email = "pkg-mismatch@example.com";
     await mem.collection("client_records").doc(email).set({
       email,
@@ -714,7 +714,7 @@ describe("stripe webhook replay safety", () => {
       subscriptionDeletedEvent("evt_pkg_mismatch", {
         subscriptionId: "sub_unrecorded_mastery",
         customerId: "cus_mismatch",
-        priceId: "price_du_mastery_3pay",
+        priceId: "price_apex_mastery_3pay",
         packageId: "mastery",
       })
     );
@@ -1199,7 +1199,7 @@ describe("stripe payments update the contact", () => {
     assert.equal(
       mem.store.get(`payment_schedules/${email}__mastery`),
       undefined,
-      "Stripe bills its own installments, so no crypto schedule"
+      "Stripe bills its own installments, so no manual schedule"
     );
   });
 

@@ -164,7 +164,7 @@ export default function ClientDetailPage({
         { label: "Stage", value: app ? <StageBadge status={app.status} /> : "—" },
         { label: "Source", value: app?.source || "—" },
         {
-          label: "Capital",
+          label: "Team size",
           value: app?.applicationData?.capital || "—",
         },
         {
@@ -212,7 +212,7 @@ export default function ClientDetailPage({
                   className={cn(
                     "flex items-center gap-2 text-sm",
                     step.done
-                      ? "text-[var(--color-skool)]"
+                      ? "text-[var(--color-positive)]"
                       : "text-[var(--color-text-muted)]"
                   )}
                 >

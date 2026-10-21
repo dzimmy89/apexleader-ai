@@ -1,17 +1,17 @@
 /**
- * Idempotent Google Calendar setup for DeFi University coaching discovery calls.
+ * Idempotent Google Calendar setup for ApexLeader.ai coaching discovery calls.
  *
- * Creates (or reuses) the "DeFi University — Discovery Calls" calendar and
+ * Creates (or reuses) the "ApexLeader.ai — Discovery Calls" calendar and
  * writes COACH_* secrets to Secret Manager.
  *
  * Prerequisites:
  *   - GOOGLE_SERVICE_ACCOUNT_KEY in env (from Secret Manager)
  *   - Domain-wide delegation for https://www.googleapis.com/auth/calendar
- *     impersonating hello@defiuniversity.xyz
+ *     impersonating hello@apexleader.ai
  *
  * Usage:
  *   export GOOGLE_SERVICE_ACCOUNT_KEY="$(gcloud secrets versions access latest \
- *     --secret=GOOGLE_SERVICE_ACCOUNT_KEY --project=defi-university-prod)"
+ *     --secret=GOOGLE_SERVICE_ACCOUNT_KEY --project=apexleader-prod)"
  *   npx tsx scripts/setup-coaching-calendar.ts
  *   npx tsx scripts/setup-coaching-calendar.ts --dry-run
  *   npx tsx scripts/setup-coaching-calendar.ts --apply-secrets
@@ -20,11 +20,11 @@
 import { execSync } from "child_process";
 import { google } from "googleapis";
 
-const GCP_PROJECT = process.env.GCP_PROJECT_ID || "defi-university-prod";
-const IMPERSONATE_SUBJECT = "hello@defiuniversity.xyz";
-const CALENDAR_SUMMARY = "DeFi University — Discovery Calls";
+const GCP_PROJECT = process.env.GCP_PROJECT_ID || "apexleader-prod";
+const IMPERSONATE_SUBJECT = "hello@apexleader.ai";
+const CALENDAR_SUMMARY = "ApexLeader.ai — Discovery Calls";
 const CALENDAR_DESCRIPTION =
-  "Discovery call bookings from defiuniversity.xyz/coaching/book";
+  "Discovery call bookings from apexleader.ai/coaching/book";
 const COACH_TIMEZONE = "America/New_York";
 const COACH_NAME = "David Zimmerman";
 
@@ -112,7 +112,7 @@ async function main() {
   const dryRun = process.argv.includes("--dry-run");
   const applySecrets = process.argv.includes("--apply-secrets");
 
-  console.log("DeFi University — coaching Google Calendar setup\n");
+  console.log("ApexLeader.ai — coaching Google Calendar setup\n");
   if (dryRun) console.log("DRY RUN — no creates or GCP writes\n");
 
   const calendar = getCalendarClient();

@@ -307,7 +307,7 @@ export function ClientIntake({ email, onConfirmed }: { email: string; onConfirme
               />
             </Field>
           </div>
-          <Field {...meta("level")} label="Crypto and DeFi experience">
+          <Field {...meta("level")} label="AI experience">
             <select className={fieldClass} value={form.level} onChange={(e) => set("level", e.target.value as IntakeForm["level"])}>
               {view.levels.map((l) => (
                 <option key={l.id} value={l.id}>
@@ -316,15 +316,18 @@ export function ClientIntake({ email, onConfirmed }: { email: string; onConfirme
               ))}
             </select>
           </Field>
-          <Field {...meta("risk")} label="Comfort with risk">
-            <select className={fieldClass} value={form.risk} onChange={(e) => set("risk", e.target.value as IntakeForm["risk"])}>
+          <Field {...meta("technical")} label="Technical comfort">
+            <select className={fieldClass} value={form.technical} onChange={(e) => set("technical", e.target.value as IntakeForm["technical"])}>
               <option value="">Not discussed</option>
-              <option value="low">Low</option>
-              <option value="medium">Medium</option>
-              <option value="high">High</option>
+              <option value="low">No-code only</option>
+              <option value="medium">Some formulas or scripting</option>
+              <option value="high">Writes code</option>
             </select>
           </Field>
-          <Field {...meta("tools")} label="Wallets, exchanges and apps they use" wide>
+          <Field {...meta("business")} label="Their business and what they want AI to help with" wide>
+            <textarea className={`${fieldClass} min-h-[72px]`} value={form.business} onChange={(e) => set("business", e.target.value)} />
+          </Field>
+          <Field {...meta("tools")} label="Software and AI tools they use" wide>
             <Input className="mt-1" value={form.tools} onChange={(e) => set("tools", e.target.value)} />
           </Field>
           <Field {...meta("focusStageIds")} label="Where they want to get to" wide>

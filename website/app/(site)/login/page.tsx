@@ -7,7 +7,7 @@ import { safeNextPath } from "@/lib/account/login";
 
 export const metadata: Metadata = {
   title: "Sign in or create an account",
-  description: "Sign in to DeFi University, or create a free account, with Google or an email link. No password.",
+  description: "Sign in to ApexLeader.ai, or create a free account, with Google or an email link. No password.",
   robots: { index: false },
 };
 
@@ -27,7 +27,7 @@ export default async function LoginPage({ searchParams }: PageProps) {
         <PageHeader
           eyebrow="Members, clients and free learners"
           title="Sign in or create an account"
-          intro="Continue with Google, or get a sign-in link by email. No password. Stage 1 is free; members and coaching clients get every course."
+          intro="Continue with Google, or get a sign-in link by email. No password. Coaching clients get every course."
         />
         {expired ? (
           <Notice tone="warning" className="mt-6">

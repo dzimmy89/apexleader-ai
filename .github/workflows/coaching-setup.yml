@@ -38,7 +38,7 @@ jobs:
       run:
         working-directory: website
     env:
-      GCP_PROJECT_ID: defi-university-prod
+      GCP_PROJECT_ID: apexleader-prod
     steps:
       - uses: actions/checkout@v4
 

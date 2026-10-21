@@ -21,7 +21,7 @@ async function portalConfigurationId(stripe: Stripe): Promise<string | null> {
   try {
     const config = await stripe.billingPortal.configurations.create({
       business_profile: {
-        headline: "DeFi University: update your card and download invoices.",
+        headline: "ApexLeader.ai: update your card and download invoices.",
         privacy_policy_url: `${origin}/privacy`,
         terms_of_service_url: `${origin}/terms`,
       },
@@ -70,6 +70,6 @@ export async function createPortalSession(args: {
     return { ok: true, url: session.url };
   } catch (e) {
     console.error("[stripe-portal] session failed", e instanceof Error ? e.message : e);
-    return { ok: false, error: "Stripe could not open the billing page. Email hello@defiuniversity.xyz and we will sort it out.", status: 502 };
+    return { ok: false, error: "Stripe could not open the billing page. Email hello@apexleader.ai and we will sort it out.", status: 502 };
   }
 }

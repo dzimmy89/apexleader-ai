@@ -1,63 +1,72 @@
+import { BRAND } from "@/lib/brand";
+
+// DRAFT: placeholder policy text for the new business. Have a lawyer review
+// both policies before launch.
+
 export const privacySections = [
   {
     title: "Information We Collect",
-    body: `We collect information you voluntarily provide when you register, enroll, subscribe, or contact us — including name, email, and payment details processed securely through Stripe.
+    body: `We collect information you give us when you book a call, buy coaching, sign in or contact us, including your name, email and payment details, which Stripe processes for us.
 
-We automatically collect log data (IP address, browser type, pages viewed) and use cookies and analytics via Google Tag Manager, Google Analytics, and Google Ads.`,
+We automatically collect log data (IP address, browser type, pages viewed) and may use cookies and analytics through Google Tag Manager and Google Analytics.`,
+  },
+  {
+    title: "Coaching Calls and AI Processing",
+    body: `With your consent, coaching and discovery calls may be recorded and transcribed through Google Meet. ${BRAND.coachFirstName} may use Google's Gemini models, through our own Google Cloud account, to summarize a call and draft your coaching plan. These notes are used only to deliver your coaching and are not used to train public AI models.`,
   },
   {
     title: "Third-Party Services",
-    body: `We use third-party services that may collect information about you: Google Analytics and Google Ads (usage and advertising), Skool (community platform), Stripe (payments), and Google Calendar (coaching scheduling). Coaching contracts are signed via our native electronic signature engine. We no longer use Ghost CMS or HubSpot.`,
+    body: `We use Stripe (payments), Google Workspace and Google Calendar (email, scheduling and call recordings), Google Cloud (hosting and AI processing) and Telegram (optional messages with your coach). Coaching agreements are signed with our own electronic signature tool.`,
   },
   {
     title: "How We Use Your Information",
-    body: `We use your information to deliver educational services, process transactions, communicate course updates, improve our services, and comply with legal obligations. You may opt out of marketing emails at any time.`,
+    body: `We use your information to deliver coaching and courses, process payments, send messages about your coaching, improve our services and meet legal obligations. You can opt out of marketing emails at any time.`,
   },
   {
     title: "Your Privacy Rights",
-    body: `You may request access, correction, deletion, or portability of your personal information by contacting hello@defiuniversity.xyz. California (CCPA) and European (GDPR) residents have additional rights as described in our full policy.`,
+    body: `You may ask to access, correct, delete or export your personal information by emailing ${BRAND.email}. California (CCPA) and European (GDPR) residents have additional rights.`,
   },
   {
     title: "Data Security & Retention",
-    body: `We use HTTPS encryption, secure cloud storage, and access controls. We retain data as long as necessary to provide services and comply with legal obligations, typically deleting or anonymizing data within 90 days of account closure.`,
+    body: `We use HTTPS encryption, secure cloud storage and access controls. We keep data as long as we need it to provide services and meet legal obligations, and typically delete or anonymize it within 90 days of account closure.`,
   },
   {
     title: "Contact",
-    body: `DeFi University LLC — hello@defiuniversity.xyz
+    body: `${BRAND.legalName} — ${BRAND.email}
 
-Last Updated: November 8, 2025`,
+Last Updated: DRAFT`,
   },
 ] as const;
 
 export const termsSections = [
   {
     title: "Acceptance of Terms",
-    body: `By accessing or using DeFi University services at www.defiuniversity.xyz, you agree to these Terms and our Privacy Policy. If you do not agree, do not use our services.`,
+    body: `By using ${BRAND.name} services at ${BRAND.domain}, you agree to these Terms and our Privacy Policy. If you do not agree, do not use our services.`,
   },
   {
-    title: "Educational Services Only",
-    body: `DeFi University LLC provides educational content and training related to blockchain technology and digital assets. We are NOT financial advisors, brokers, or portfolio managers. All content is for informational and educational purposes only — not financial, legal, or tax advice.`,
+    title: "Coaching and Education",
+    body: `${BRAND.name} provides private coaching and educational content on ${BRAND.subject}. We are not your employee, IT provider or legal advisor. You decide which tools to adopt and remain responsible for how your business uses them, including the data you put into third-party AI tools.`,
   },
   {
     title: "Eligibility",
-    body: `You must be at least 18 years of age. You are responsible for ensuring your use complies with local laws in your jurisdiction.`,
+    body: `You must be at least 18 years old. You are responsible for making sure your use of our services complies with the laws where you live and do business.`,
   },
   {
-    title: "Subscriptions & Payments",
-    body: `The DeFi University membership is billed monthly on Skool at $97/month with no long-term contract, after a 7-day free trial. You may cancel at any time. Coaching packages are one-time fees or installment plans as listed on our coaching page ($750 Kickstart, $2,500 Operator, $7,500 Inner Circle). Payments for coaching are processed through Stripe. Coaching agreements are executed via our native electronic signature engine under the ESIGN Act and UETA.`,
+    title: "Payments",
+    body: `Coaching packages are paid in full or in installments as listed on our coaching page and in your coaching agreement. Card payments are processed by Stripe; invoices may be paid by bank transfer. Coaching agreements are signed electronically under the ESIGN Act and UETA.`,
   },
   {
     title: "No Guarantees",
-    body: `We make no guarantees about financial outcomes, profits, or investment results. Learning outcomes depend on individual effort, prior knowledge, and market conditions beyond our control.`,
+    body: `We make no guarantees about time saved, revenue or other business results. Outcomes depend on your business, your team and how the work is adopted.`,
   },
   {
     title: "Limitation of Liability",
-    body: `To the maximum extent permitted by law, DeFi University LLC shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of our services.`,
+    body: `To the maximum extent permitted by law, ${BRAND.legalName} is not liable for any indirect, incidental, special or consequential damages arising from your use of our services.`,
   },
   {
     title: "Contact",
-    body: `Questions about these Terms: hello@defiuniversity.xyz
+    body: `Questions about these Terms: ${BRAND.email}
 
-Last Updated: October 16, 2026`,
+Last Updated: DRAFT`,
   },
 ] as const;

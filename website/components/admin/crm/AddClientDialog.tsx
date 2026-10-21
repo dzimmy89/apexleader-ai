@@ -37,8 +37,8 @@ const fieldClass =
   "mt-1 block w-full rounded border border-[var(--color-border-muted)] bg-[var(--color-bg-obsidian)] px-2 py-1.5 text-sm text-[var(--color-text-on-obsidian)]";
 
 /**
- * Add a person to the coaching pipeline by hand. When they already paid in
- * crypto, the contact page opens on the payment form so the payment creates
+ * Add a person to the coaching pipeline by hand. When they already paid
+ * outside Stripe, the contact page opens on the payment form so the payment creates
  * the client record, course access, contract email and schedule in one step.
  */
 export function AddClientDialog({ onAdded }: { onAdded?: () => void }) {
@@ -133,7 +133,7 @@ export function AddClientDialog({ onAdded }: { onAdded?: () => void }) {
             <DialogHeader>
               <DialogTitle>Add a client</DialogTitle>
               <DialogDescription>
-                Puts them on the coaching pipeline. If they already paid in crypto, you log the payment next.
+                Puts them on the coaching pipeline. If they already paid outside Stripe, you log the payment next.
               </DialogDescription>
             </DialogHeader>
             <DialogPanel className="grid gap-3 sm:grid-cols-2">
@@ -189,7 +189,7 @@ export function AddClientDialog({ onAdded }: { onAdded?: () => void }) {
               </label>
               <label className="flex items-center gap-2 text-sm sm:col-span-2">
                 <input id="add-client-paid" type="checkbox" checked={paid} onChange={(e) => setPaid(e.target.checked)} />
-                Already paid by crypto
+                Already paid outside Stripe
               </label>
               {paid ? (
                 <label className="text-xs text-[var(--color-text-muted)] sm:col-span-2">

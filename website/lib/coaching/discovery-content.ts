@@ -1,3 +1,4 @@
+import { BRAND } from "@/lib/brand";
 import { getPackage, type CoachingPackage, type PackageId } from "@/lib/coaching/packages";
 import {
   COACH_TIMEZONE,
@@ -13,7 +14,7 @@ export interface DiscoveryPackageContext {
   priceDisplay: string;
   durationWeeks: number;
   sessionCount: number;
-  targetCapital: string;
+  bestFor: string;
   summaryLine: string;
 }
 
@@ -27,12 +28,12 @@ export interface DiscoveryPrepContent {
 const GENERAL_CONTEXT: DiscoveryPackageContext = {
   id: null,
   name: "Private Coaching",
-  tagline: "Explore which DeFi University coaching tier fits your goals.",
+  tagline: `Explore which ${BRAND.name} coaching tier fits your goals.`,
   priceDisplay: "",
   durationWeeks: 0,
   sessionCount: 0,
-  targetCapital: "",
-  summaryLine: "Exploring DeFi University private coaching options",
+  bestFor: "",
+  summaryLine: `Exploring ${BRAND.name} private coaching options`,
 };
 
 function toContext(pkg: CoachingPackage): DiscoveryPackageContext {
@@ -43,7 +44,7 @@ function toContext(pkg: CoachingPackage): DiscoveryPackageContext {
     priceDisplay: pkg.priceDisplay,
     durationWeeks: pkg.durationWeeks,
     sessionCount: pkg.sessionCount,
-    targetCapital: pkg.targetCapital,
+    bestFor: pkg.bestFor,
     summaryLine: `${pkg.name} (${pkg.priceDisplay} · ${pkg.durationWeeks} weeks · ${pkg.sessionCount} sessions)`,
   };
 }
@@ -64,7 +65,7 @@ export function getDiscoveryEventTitle(args: {
   if (args.packageContext.id) {
     return `${args.packageContext.name} Coaching Discovery Call — ${who}`;
   }
-  return `DeFi University Discovery Call — ${who}`;
+  return `${BRAND.name} Discovery Call — ${who}`;
 }
 
 export function getDiscoveryEventDescription(args: {
@@ -76,16 +77,16 @@ export function getDiscoveryEventDescription(args: {
   const greeting = args.name.trim() ? `Hi ${args.name.trim()},` : "Hi there,";
   const packageLine = args.packageContext.id
     ? `Package you're exploring: ${args.packageContext.summaryLine}`
-    : "You're exploring DeFi University private coaching options.";
+    : `You're exploring ${BRAND.name} private coaching options.`;
 
   const fitLine = args.packageContext.id
-    ? `We'll discuss your DeFi goals, where you are today, and whether ${args.packageContext.name} is the right fit.`
-    : "We'll discuss your DeFi goals, where you are today, and which coaching tier might fit.";
+    ? `We'll discuss your business, what you want AI to do in it, and whether ${args.packageContext.name} is the right fit.`
+    : "We'll discuss your business, what you want AI to do in it, and which coaching tier might fit.";
 
   const lines = [
     greeting,
     "",
-    "You're confirmed for a 30-minute discovery call with DeFi University.",
+    `You're confirmed for a 30-minute discovery call with ${BRAND.name}.`,
     "",
     packageLine,
     fitLine,
@@ -99,7 +100,6 @@ export function getDiscoveryEventDescription(args: {
     lines.push("", `Join via Google Meet: ${args.meetUrl}`);
   }
 
-  lines.push("", "Educational only — not financial advice.");
   return lines.join("\n");
 }
 
@@ -119,11 +119,11 @@ export function getDiscoveryEmailContent(args: {
 
   const subject = args.packageContext.id
     ? `Your ${args.packageContext.name} discovery call is confirmed`
-    : "Your DeFi University discovery call is confirmed";
+    : `Your ${BRAND.name} discovery call is confirmed`;
 
   const packageParagraph = args.packageContext.id
     ? `<p>You're exploring the <strong>${args.packageContext.name}</strong> tier (${args.packageContext.priceDisplay} · ${args.packageContext.durationWeeks} weeks · ${args.packageContext.sessionCount} sessions).</p>`
-    : `<p>You're exploring DeFi University private coaching options.</p>`;
+    : `<p>You're exploring ${BRAND.name} private coaching options.</p>`;
 
   const timeNote =
     tz !== COACH_TIMEZONE
@@ -144,7 +144,6 @@ export function getDiscoveryEmailContent(args: {
     `<p><a href="${args.prepUrl}">${args.prepUrl}</a></p>`,
     timeNote,
     "<p>A separate calendar invite should also arrive from Google Calendar.</p>",
-    "<p>Educational only — not financial advice.</p>",
   ]
     .filter(Boolean)
     .join("");
@@ -156,7 +155,7 @@ export function getDiscoveryEmailContent(args: {
     "",
     args.packageContext.id
       ? `You're exploring the ${args.packageContext.name} tier (${args.packageContext.summaryLine}).`
-      : "You're exploring DeFi University private coaching options.",
+      : `You're exploring ${BRAND.name} private coaching options.`,
     "",
     args.meetUrl ? `Google Meet: ${args.meetUrl}` : "",
     args.htmlLink ? `Calendar: ${args.htmlLink}` : "",
@@ -169,8 +168,6 @@ export function getDiscoveryEmailContent(args: {
       : "",
     "",
     "A separate calendar invite should also arrive from Google Calendar.",
-    "",
-    "Educational only — not financial advice.",
   ]
     .filter(Boolean)
     .join("\n");
@@ -185,35 +182,29 @@ export function getInstitutionalApplicationEmailContent(args: {
 }): { subject: string; html: string; text: string } {
   const hi = args.name.trim() || "there";
   const tier = args.packageContext.name;
-  const capitalNote = args.packageContext.targetCapital
-    ? ` (${args.packageContext.targetCapital} target capital band)`
-    : "";
 
   const subject = `We received your ${tier} application`;
 
   const html = [
     `<p>Hi ${hi},</p>`,
-    `<p>Thanks for applying to the <strong>${tier}</strong> tier${capitalNote ? ` — ${args.packageContext.targetCapital} target capital band` : ""}.</p>`,
+    `<p>Thanks for applying to the <strong>${tier}</strong> tier.</p>`,
     `<p>We've saved your application. The next step is to book a 30-minute discovery call so we can review fit together.</p>`,
     `<p><strong>Book your call</strong> on the apply page if you haven't already, or use the prep guide below before we meet:</p>`,
     `<p><a href="${args.prepUrl}">${args.prepUrl}</a></p>`,
-    `<p>${tier} is application-only — we'll discuss your goals, capital range, and whether this tier is the right fit on the call.</p>`,
-    "<p>Educational only — not financial advice.</p>",
+    `<p>${tier} is application-only — we'll discuss your business, your goals, and whether this tier is the right fit on the call.</p>`,
   ].join("");
 
   const text = [
     `Hi ${hi},`,
     "",
-    `Thanks for applying to the ${tier} tier${capitalNote}.`,
+    `Thanks for applying to the ${tier} tier.`,
     "",
     "We've saved your application. The next step is to book a 30-minute discovery call so we can review fit together.",
     "",
     "Book your call on the apply page if you haven't already, or review this prep guide before we meet:",
     args.prepUrl,
     "",
-    `${tier} is application-only — we'll discuss your goals, capital range, and whether this tier is the right fit on the call.`,
-    "",
-    "Educational only — not financial advice.",
+    `${tier} is application-only — we'll discuss your business, your goals, and whether this tier is the right fit on the call.`,
   ].join("\n");
 
   return { subject, html, text };
@@ -223,72 +214,66 @@ const PREP_BY_PACKAGE: Record<PackageId | "general", DiscoveryPrepContent> = {
   general: {
     headline: "Prepare for your discovery call",
     intro:
-      "A short conversation to understand your DeFi goals and whether private coaching is the right next step. Come ready to talk about where you are and what you want to build.",
+      "A short conversation about your business, what you want AI to do in it, and whether private coaching is the right next step.",
     checklist: [
-      "Your DeFi experience level (beginner, intermediate, or advanced)",
-      "What you want to achieve in the next 3–6 months",
-      "Approximate capital range you're working with",
-      "Whether you self-custody today (wallet setup, security habits)",
-      "Your biggest blocker right now (strategy, risk, time, knowledge)",
+      "What your business does and who does the work today",
+      "Two or three tasks that eat the most time each week",
+      "AI tools you have tried, and what worked or did not",
+      "What you would like to be able to build yourself in the next 3 months",
+      "How much time a week you can give to coaching and practice",
     ],
     callAgenda: [
-      "Your goals and current DeFi activity",
-      "Which coaching package might fit (Kickstart, Operator, or Inner Circle)",
-      "How sessions, deliverables, and async support work",
+      "Your business and where AI could help first",
+      "Which coaching package might fit",
+      "How sessions, your syllabus and support between sessions work",
       "Next steps if you decide to move forward",
     ],
   },
   foundations: {
     headline: "Prepare for your Kickstart discovery call",
     intro:
-      "Kickstart is the smallest way to start private 1-on-1 coaching — two focused 60-minute sessions within 30 days for traders building their first structured DeFi approach. The full fee counts toward Operator if you upgrade within 30 days.",
+      "Kickstart is the smallest way to start private coaching: a short engagement to get AI working on one real part of your business.",
     checklist: [
-      "Your DeFi goals for the next 3–6 months",
-      "Capital range you're working with ($1K–$25K target band)",
-      "Current wallet setup and self-custody comfort level",
-      "Protocols or strategies you've tried (and what went wrong or right)",
-      "Your biggest risk concern (IL, leverage, smart-contract risk, etc.)",
+      "The one process you most want AI to help with",
+      "The tools and accounts your business already uses",
+      "AI tools you have tried so far",
+      "What a good result looks like at the end of a month",
     ],
     callAgenda: [
-      "Whether Kickstart matches your capital range and goals",
-      "What the two sessions cover",
-      "Deliverables: risk-parameter profile practiced as education — not a managed portfolio",
-      "How async Slack support works during the 30-day engagement",
+      "Whether Kickstart fits your goals",
+      "What the sessions cover and what you build between them",
+      "How support between sessions works",
     ],
   },
   mastery: {
     headline: "Prepare for your Operator discovery call",
     intro:
-      "Operator is a 12-week education program with eight 1-on-1 sessions, three months of the DeFi University membership, a guided risk-framework blueprint, and curated research. You keep self-custody. Not portfolio management.",
+      "Operator is a longer engagement: a syllabus built around your business, regular sessions, and build projects on your own processes.",
     checklist: [
-      "Current allocation notes you are willing to discuss as a case study",
-      "Protocols and strategies you are studying today",
-      "Gaps in your research process or due diligence",
-      "What a risk-framework blueprint would need to cover for your process",
-      "Your timeline and commitment for a 12-week engagement",
+      "The processes you want AI to take on, in order of priority",
+      "Who else on your team would use what you build",
+      "Data and tools the work would touch",
+      "Your timeline and how much time a week you can commit",
     ],
     callAgenda: [
-      "Whether Operator fits your capital range and goals",
-      "Session cadence, deliverables, and the membership live calls",
-      "Smart-contract audit checklist and research bulletins",
+      "Whether Operator fits your goals",
+      "Session cadence, your syllabus and the course library",
       "Payment options and next steps after the call",
     ],
   },
   institutional: {
     headline: "Prepare for your Inner Circle discovery call",
-    intro:
-      "Inner Circle is six months of weekly 1-on-1 sessions with direct access to David, six months of the membership, and due-diligence walkthroughs on the protocols you bring.",
+    intro: `Inner Circle is the deepest engagement: regular sessions with ${BRAND.coachFirstName} and build work across your business.`,
     checklist: [
       "Why you want Inner Circle rather than Operator",
-      "Capital deployment timeline and approximate portfolio size ($100K+)",
-      "Specific tokens or protocols you want due diligence on",
-      "What you want from six months of weekly sessions",
-      "Your experience with high-touch coaching or advisory relationships",
+      "The biggest change you want AI to make in your business this year",
+      "The systems, data and people involved",
+      "What you want from working together over several months",
     ],
     callAgenda: [
-      "Fit and capital range",
-      "Due-diligence walkthroughs on the protocols you bring",
-      "24-session cadence and founder involvement",
+      "Fit and goals",
+      "How build projects across your business would run",
+      "Session cadence and how to reach the coach between sessions",
       "Next steps if there's mutual fit",
     ],
   },

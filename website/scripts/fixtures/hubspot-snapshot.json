@@ -1,4 +1,0 @@
-[
-  { "email": "lead-exists@example.com", "type": "lead", "status": "confirmed" },
-  { "email": "member-exists@example.com", "type": "member", "status": "active" }
-]

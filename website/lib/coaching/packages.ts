@@ -17,7 +17,7 @@ export interface CoachingPackage {
   cadence: string;
   features: string[];
   deliverables: string[];
-  targetCapital: string;
+  bestFor: string;
   badge?: string;
   sortIndex: number;
   active: boolean;
@@ -85,7 +85,7 @@ function buildPlan(
 ): PaymentPlan {
   // Installments round up to whole dollars, so the total can sit a few dollars
   // above the price (Operator: 3 x $834 = $2,502). Cards and checkout show this
-  // total, which is exactly what Stripe or the crypto schedule collects.
+  // total, which is exactly what Stripe or the manual schedule collects.
   const perPayment =
     installments === 1 ? price : Math.ceil(price / installments);
   return {
@@ -146,7 +146,7 @@ function normalizePackage(raw: Record<string, unknown>): CoachingPackage {
     cadence: String(raw.cadence ?? ""),
     features: packageLines(raw.features),
     deliverables: packageLines(raw.deliverables),
-    targetCapital: String(raw.targetCapital ?? ""),
+    bestFor: String(raw.bestFor ?? ""),
     badge: raw.badge ? String(raw.badge) : undefined,
     sortIndex: Number(raw.sortIndex) || 0,
     active: raw.active === undefined ? true : Boolean(raw.active),

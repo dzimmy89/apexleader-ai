@@ -9,7 +9,7 @@ on:
       email:
         description: "Email to grant (they sign in with a magic link to this address)"
         required: true
-        default: hello@defiuniversity.xyz
+        default: hello@apexleader.ai
       mode:
         description: "dry-run changes nothing; apply writes Firestore"
         type: choice
@@ -30,7 +30,7 @@ jobs:
       run:
         working-directory: website
     env:
-      GCP_PROJECT_ID: defi-university-prod
+      GCP_PROJECT_ID: apexleader-prod
       GRANT_EMAIL: ${{ inputs.email }}
     steps:
       - uses: actions/checkout@v4

@@ -6,7 +6,7 @@ import { ACCOUNTS, normalizeEmail, readLinkedEmails } from "@/lib/account/access
  *
  * account_links/{alias}: { primary } for every confirmed extra email.
  * learn_accounts/{primary}.linkedEmails lists the aliases. Signing in with
- * an alias opens the primary account; access, coaching and Skool records
+ * an alias opens the primary account; access and coaching records
  * are read across all of them (getAccess).
  */
 export const ACCOUNT_LINKS = "account_links";

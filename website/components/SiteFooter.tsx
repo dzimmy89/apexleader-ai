@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { disclaimer, URLS } from "@/content/site";
-import { hasPublishedSiteTestimonials } from "@/content/testimonials";
+import { BRAND } from "@/lib/brand";
 
 const linkClass =
   "font-[family-name:var(--font-ui)] text-[15px] text-[var(--color-text)] hover:text-[var(--color-accent)]";
@@ -12,10 +12,10 @@ export function SiteFooter() {
         <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
           <div>
             <span className="font-[family-name:var(--font-display)] text-2xl text-[var(--color-text)]">
-              DeFi University
+              {BRAND.name}
             </span>
             <p className="mt-3 max-w-xs text-[var(--color-text-muted)]">
-              Structured blockchain education for serious learners.
+              {BRAND.tagline}.
             </p>
           </div>
 
@@ -23,18 +23,13 @@ export function SiteFooter() {
             <h3 className="section-eyebrow mb-4">Explore</h3>
             <ul className="space-y-3">
               <li>
-                <Link href="/skool" className={linkClass}>
-                  Membership on Skool
-                </Link>
-              </li>
-              <li>
                 <Link href="/coaching" className={linkClass}>
                   Private coaching
                 </Link>
               </li>
               <li>
                 <Link href="/university" className={linkClass}>
-                  University (31 courses)
+                  Courses
                 </Link>
               </li>
               <li>
@@ -42,29 +37,12 @@ export function SiteFooter() {
                   About
                 </Link>
               </li>
-              {hasPublishedSiteTestimonials() ? (
-                <li>
-                  <Link href="/testimonials" className={linkClass}>
-                    Stories
-                  </Link>
-                </li>
-              ) : null}
             </ul>
           </div>
 
           <div>
-            <h3 className="section-eyebrow mb-4">Members and clients</h3>
+            <h3 className="section-eyebrow mb-4">Clients</h3>
             <ul className="space-y-3">
-              <li>
-                <a
-                  href={URLS.skoolCommunity}
-                  className={linkClass}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Skool community ↗
-                </a>
-              </li>
               <li>
                 <Link href="/account" className={linkClass}>
                   Your account and coaching
@@ -85,7 +63,7 @@ export function SiteFooter() {
         </p>
 
         <div className="mt-8 flex flex-col gap-4 border-t border-[var(--color-border)] pt-6 font-[family-name:var(--font-ui)] text-sm text-[var(--color-text-muted)] md:flex-row md:justify-between">
-          <p>© {new Date().getFullYear()} DeFi University LLC. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} {BRAND.legalName}. All rights reserved.</p>
           <div className="flex gap-6">
             <Link href="/privacy" className="hover:text-[var(--color-text)]">
               Privacy

@@ -1,3 +1,4 @@
+import { BRAND } from "@/lib/brand";
 import { getCourse, getStages } from "@/lib/learn/catalog";
 import { aiJson } from "@/lib/coaching/ai";
 import {
@@ -28,8 +29,8 @@ import { courseMinutes } from "@/lib/coaching/syllabus";
  */
 
 const VOICE =
-  "You work for David Zimmerman, who runs DeFi University and coaches private clients one on one through crypto and DeFi. " +
-  "Everything is education only, never financial advice: do not recommend specific tokens, positions or amounts. " +
+  `You work for ${BRAND.coachName}, who runs ${BRAND.name} and coaches private clients one on one on ${BRAND.subject}. ` +
+  "Keep advice practical and safe: never suggest putting customer or confidential data into a tool without the client checking its terms, and never promise results. " +
   "Write plainly, in short sentences, in the client's own language where you quote them.";
 
 export interface PackageContext {
@@ -80,8 +81,9 @@ function intakeSchema() {
       "timelineWeeks",
       "hoursPerWeek",
       "level",
+      "business",
       "tools",
-      "risk",
+      "technical",
       "focusStageIds",
       "knownCourseIds",
       "concerns",
@@ -98,8 +100,9 @@ function intakeSchema() {
       timelineWeeks: { type: "integer" },
       hoursPerWeek: { type: "number" },
       level: { type: "string", enum: LEVELS.map((l) => l.id) },
+      business: STRING,
       tools: STRING,
-      risk: { type: "string", enum: ["unclear", "low", "medium", "high"] },
+      technical: { type: "string", enum: ["unclear", "low", "medium", "high"] },
       focusStageIds: { type: "array", items: { type: "string", enum: stageIds } },
       knownCourseIds: { type: "array", items: STRING },
       concerns: STRING,
@@ -136,21 +139,22 @@ export async function fillIntakeFromTranscript(
     : "Not bought yet; assume 12 weeks.";
   const system = `${VOICE}
 
-You read the transcript of a discovery call between David and a prospective coaching client and fill in David's intake form. Only use what the client actually said. When the call does not answer a field, leave it empty (or the default given) and list it in "missing". For each field you fill, add an "evidence" entry with a short exact quote from the transcript and the timestamp shown near it ("" if there is none).
+You read the transcript of a discovery call between ${BRAND.coachFirstName} and a prospective coaching client and fill in ${BRAND.coachFirstName}'s intake form. Only use what the client actually said. When the call does not answer a field, leave it empty (or the default given) and list it in "missing". For each field you fill, add an "evidence" entry with a short exact quote from the transcript and the timestamp shown near it ("" if there is none).
 
 Fields:
 - goals: up to 3 goals, in the client's words.
 - targetOutcome: the concrete result they want, and targetDate as YYYY-MM-DD if they named a date or month (else "").
 - timelineWeeks: weeks the plan should run. Default to the package length unless the client wants a different pace.
 - hoursPerWeek: hours a week they said they can study. Default 3.
-- level: new (has not bought crypto), beginner (has a wallet, no DeFi), intermediate (uses DeFi apps), advanced (runs positions, wants strategies).
-- tools: wallets, exchanges, chains and apps they use.
-- risk: their comfort with risk, or "unclear".
+- level: ${LEVELS.map((l) => `${l.id} (${l.hint.toLowerCase()})`).join(", ")}.
+- business: what their business does, how big the team is, and the processes they want AI to help with.
+- tools: the software and AI tools they use now.
+- technical: how comfortable they are setting tools up themselves: low (no-code only), medium (some formulas or scripting), high (writes code), or "unclear".
 - focusStageIds: the stages of the course library their goals point to.
 - knownCourseIds: course ids from the list below that the client clearly already knows.
-- concerns: worries and limits (taxes, safety, time, family).
+- concerns: worries and limits (data privacy, cost, time, team buy-in).
 - learningStyle: how they like to learn.
-- coachNotes: a few lines for David only: what will matter in coaching this person.
+- coachNotes: a few lines for ${BRAND.coachFirstName} only: what will matter in coaching this person.
 - goalsSummary: 2 to 3 sentences addressed to the client ("You want to..."), for their account page.
 
 Stages:
@@ -225,10 +229,10 @@ const PLAN_RULES = `Plan rules:
 - Keep each course's lessons in catalog order; put a lesson's exercise right after it and a module's quiz after its last lesson. Leave out lessons the client already knows rather than padding.
 - Respect "Builds on": a stage's courses come after the stages it builds on, unless the client already knows those.
 - Keep each week near the client's hours a week (lesson minutes + exercise minutes + 10 per quiz + task minutes).
-- Add tasks (kind "task", courseId and slug "") for real-world steps the library does not cover but the client's goals need, with a short title, a detail line and minutes. Practical, safe steps only (for example a test transaction with a small amount), never what to buy.
+- Add tasks (kind "task", courseId and slug "") for real-world steps the library does not cover but the client's goals need, with a short title, a detail line and minutes. Practical steps in their own business (for example "Run this week's customer emails through the prompt you wrote and time it"), with test data before real customer data.
 - End each phase or month with a milestone (kind "milestone", minutes 0): a title the client will recognise as progress toward their goal.
 - goal: one line for the week, to the client. note: optional encouragement or context for the client ("" if none).
-- sessionPlan: for David only, what to cover in that week's coaching session; "" for weeks without one.`;
+- sessionPlan: for ${BRAND.coachFirstName} only, what to cover in that week's coaching session; "" for weeks without one.`;
 
 /** Draft a syllabus from a confirmed intake form. */
 export async function draftSyllabus(
@@ -240,11 +244,11 @@ export async function draftSyllabus(
     : "Private coaching, length not set.";
   const system = `${VOICE}
 
-You design a week by week syllabus through DeFi University's course library for one coaching client, from David's intake notes.
+You design a week by week syllabus through ${BRAND.name}'s course library for one coaching client, from ${BRAND.coachFirstName}'s intake notes.
 
 ${PLAN_RULES}
 - Plan exactly the client's timeline in weeks, and spread the coaching sessions evenly over those weeks.
-- summary: 2 to 4 sentences for David on the shape of the plan and any trade-off (for example what did not fit the timeline).
+- summary: 2 to 4 sentences for ${BRAND.coachFirstName} on the shape of the plan and any trade-off (for example what did not fit the timeline).
 - reasons: one short line per course used, saying why it is in this client's plan.
 
 Catalog:
@@ -302,7 +306,7 @@ const OPS_SCHEMA = {
 
 export interface Suggestion {
   op: PlanOp;
-  /** One line for David, e.g. "Move Money Markets to week 6". */
+  /** One line for David, e.g. "Move Map It Before You Build to week 6". */
   label: string;
   reason: string;
 }
@@ -385,7 +389,7 @@ export async function suggestChanges(opts: {
 }): Promise<{ summary: string; suggestions: Suggestion[] }> {
   const system = `${VOICE}
 
-David is coaching a client through a week by week syllabus. He tells you what has changed (and may attach the notes or transcript of a coaching session). Suggest the smallest set of changes to the syllabus that responds to it. Never remove or move items marked done. Refer to existing items by their id.
+${BRAND.coachFirstName} is coaching a client through a week by week syllabus. He tells you what has changed (and may attach the notes or transcript of a coaching session). Suggest the smallest set of changes to the syllabus that responds to it. Never remove or move items marked done. Refer to existing items by their id.
 
 Change types (fill unused fields with "" or 0, and item with empty values):
 - add: put "item" in "week".
@@ -404,7 +408,7 @@ ${catalogText()}`;
 ${planForPrompt(opts.plan, opts.isDone, opts.currentWeek)}
 
 ${opts.form ? `Intake:\n${JSON.stringify({ goals: opts.form.goals, targetOutcome: opts.form.targetOutcome, targetDate: opts.form.targetDate, concerns: opts.form.concerns }, null, 2)}\n` : ""}
-David says: ${opts.instruction || "(nothing; use the session notes)"}
+${BRAND.coachFirstName} says: ${opts.instruction || "(nothing; use the session notes)"}
 ${opts.sessionNotes ? `\n<session_notes>\n${opts.sessionNotes.slice(0, 150_000)}\n</session_notes>` : ""}`;
   const out = await aiJson<{ summary?: string; changes?: Record<string, unknown>[] }>({
     system,

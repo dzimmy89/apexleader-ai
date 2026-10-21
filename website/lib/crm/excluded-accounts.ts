@@ -5,7 +5,7 @@
  */
 
 /** Exact email domain suffixes (matched with endsWith, already lowercased). */
-export const EXCLUDED_EMAIL_DOMAIN_SUFFIXES = ["@defiuniversity.com"] as const;
+export const EXCLUDED_EMAIL_DOMAIN_SUFFIXES = ["@apexleader.com"] as const;
 
 /** Substrings that mark loop, smoke, and similar harness mailboxes. */
 export const EXCLUDED_EMAIL_SUBSTRINGS = ["loop-test", "forge-smoke"] as const;

@@ -12,6 +12,7 @@ import { PortraitHero } from "@/components/editorial/PortraitHero";
 import { SectionHeading } from "@/components/editorial/SectionHeading";
 import { StickyCta } from "@/components/editorial/StickyCta";
 import { URLS } from "@/content/site";
+import { BRAND } from "@/lib/brand";
 import { getPackages } from "@/lib/coaching/packages";
 import { JsonLd, faqNode } from "@/lib/seo/json-ld";
 
@@ -20,14 +21,12 @@ import { JsonLd, faqNode } from "@/lib/seo/json-ld";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Private 1-on-1 DeFi Coaching",
-  description:
-    "Private DeFi coaching with David Zimmerman. Kickstart $750, Operator $2,500, and Inner Circle $7,500. Education-only 1-on-1 process work — not portfolio management.",
+  title: "Private 1-on-1 AI Coaching",
+  description: `Private AI coaching with ${BRAND.coachName}: learn to use AI and build with AI in your own business, one on one, with a syllabus built around your goals.`,
   alternates: { canonical: "/coaching" },
   openGraph: {
-    title: "Private 1-on-1 DeFi Coaching | DeFi University",
-    description:
-      "Education-only 1-on-1 DeFi process work. Kickstart, Operator, and Inner Circle, from $750. Not portfolio management.",
+    title: `Private 1-on-1 AI Coaching | ${BRAND.name}`,
+    description: "One-to-one coaching on using AI and building with AI in your own business.",
     url: "/coaching",
     type: "website",
   },
@@ -49,7 +48,7 @@ async function fetchPackagesForGrid(): Promise<PackageCardData[]> {
     cadence: p.cadence,
     features: p.features,
     deliverables: p.deliverables,
-    targetCapital: p.targetCapital,
+    bestFor: p.bestFor,
     badge: p.badge,
     paymentPlans: p.paymentPlans.map((plan) => ({
       id: plan.id,
@@ -63,115 +62,108 @@ async function fetchPackagesForGrid(): Promise<PackageCardData[]> {
 
 const FIT = {
   for: [
-    "You hold your own keys, or want to learn how.",
-    "You want a written process for sizing, limits, and exits.",
-    "You would rather understand a protocol than follow a call.",
-    "You want someone to pressure-test your thinking before you act.",
+    "You run a business, or a team inside one, and want AI doing real work in it.",
+    "You want to build things yourself: automations, assistants, internal tools.",
+    "You learn best by working on your own processes, not toy examples.",
+    "You want someone to pressure-test your ideas before you spend on them.",
   ],
   notFor: [
-    "You want signals, picks, or trade calls.",
-    "You want someone to manage your money.",
-    "You want a promised return.",
-    "You want a shortcut instead of a process.",
+    "You want us to build and run it for you (that is an agency).",
+    "You want a list of tools without doing the work.",
+    "You want a promised revenue or headcount number.",
+    "You want a shortcut instead of a skill.",
   ],
 } as const;
 
 const METHOD = [
   {
-    title: "Diagnose",
-    body: "We map your experience, habits, and knowledge gaps into a baseline. Your positions stay yours.",
+    title: "Map",
+    body: "We map how your business runs today and find the work AI can take off your plate first.",
   },
   {
-    title: "Build your framework",
-    body: "You draft a written risk-parameter profile — sizing, limits, exit rules — and we pressure-test it. You set the numbers.",
+    title: "Plan",
+    body: "Your discovery call becomes a written syllabus: lessons, exercises and build projects on your own business.",
   },
   {
-    title: "Practice",
-    body: "Self-custody setup, a sizing method, and a due-diligence checklist, practiced before you act.",
+    title: "Build",
+    body: "You build real things between sessions: prompts, workflows, automations and small internal tools.",
   },
   {
     title: "Review",
-    body: "Weekly or bi-weekly sessions review what you did and why. You leave with judgment, not tips.",
+    body: "Each session reviews what you built and what to build next. You leave with the skill, not just the tools.",
   },
 ] as const;
 
 const LEAVE_WITH = [
   {
-    title: "Your risk-parameter profile",
-    body: "A written framework you build for sizing, allocation limits, and exit rules. You set the numbers; we teach the method.",
+    title: "A syllabus built for your business",
+    body: "Drafted from your discovery call and kept up to date as you go, week by week.",
   },
   {
-    title: "Risk-framework blueprint",
-    body: "Practice reading funding, liquidation distance, and sizing frameworks before you act. Education only — you keep self-custody. Not portfolio management.",
+    title: "Working AI in your business",
+    body: "Build projects on your own processes, so the work keeps paying off after coaching ends.",
   },
   {
-    title: "Smart-contract audit checklist",
-    body: "A repeatable process for vetting a protocol before you deploy.",
+    title: "The course library",
+    body: "Every lesson, exercise and quiz in the library for the length of your coaching.",
   },
   {
-    title: "Dedicated async channel",
-    body: "Slack access between sessions for time-sensitive questions. No more guessing in isolation.",
+    title: "A direct line between sessions",
+    body: `Message ${BRAND.coachFirstName} between sessions when you get stuck.`,
   },
   {
-    title: "Client portal",
-    body: "Book sessions, view shared notes, download your signed contract, and track session usage.",
+    title: "Your client home",
+    body: "Book sessions, follow your syllabus, watch recordings and download your documents in one place.",
   },
 ] as const;
 
 const STEPS = [
   {
     title: "Book a free 30-minute call",
-    body: "We look at where you are, what you want to learn, and which package fits. Already decided? Enroll in Kickstart or Operator directly.",
+    body: "We look at your business, what you want AI to do in it, and which package fits.",
   },
   {
     title: "Choose your package",
-    body: "Kickstart and Operator check out on Stripe, in full or in installments for Operator. Inner Circle starts with a free call. Sign the coaching agreement before sessions begin.",
+    body: "Check out on Stripe, in full or in installments. Sign the coaching agreement before sessions begin.",
   },
   {
-    title: "Get your portal access",
-    body: "A magic link arrives in your inbox. From the portal, book your kickoff session.",
+    title: "Get your syllabus",
+    body: "Your syllabus is drafted from the call and waiting in your account, with your first session to book.",
   },
   {
     title: "Begin coaching",
-    body: "Weekly or every-other-week sessions depending on your package, plus async support throughout.",
+    body: "Weekly or every-other-week sessions depending on your package, plus support between them.",
   },
 ] as const;
 
 const FAQS = [
   {
-    question: "Is this financial advice?",
+    question: "Do I need to know how to code?",
     answer:
-      "No. All DeFi University coaching is educational. We do not provide financial advice, investment recommendations, or portfolio management. You remain in full custody and control of your assets at all times.",
+      "No. Most clients start with no code at all. Where code helps, we use AI to write it with you, and you learn enough to read and change it.",
   },
   {
-    question: "Do you custody my funds?",
+    question: "Which AI tools do we use?",
     answer:
-      "Never. You retain full self-custody throughout the engagement. We guide setup of your own wallets and teach you to manage your own risk.",
+      "Whatever fits your business and budget. We compare options together, and you keep accounts in your own name, so nothing depends on us after coaching ends.",
   },
   {
     question: "What happens after I purchase?",
     answer:
-      "You'll receive a contract signing link, then a client portal magic link. From the portal you book sessions, access documents, and view notes from your coach.",
+      "You'll receive a contract signing link, then a sign-in link to your account. From there you book sessions, follow your syllabus and download documents.",
   },
   {
     question: "Can I get a refund?",
-    answer:
-      "Kickstart and Operator offer a 14-day refund window if no sessions have been conducted. Inner Circle is non-refundable because it reserves weekly time directly with David.",
+    answer: "The refund terms for each package are set out in your coaching agreement before you pay.",
   },
   {
     question: "What if I need to reschedule?",
     answer:
-      "Sessions can be rescheduled through the client portal with at least 24 hours notice. Sessions cancelled with less notice may be forfeited.",
+      "Sessions can be rescheduled from your account with at least 24 hours notice. Sessions cancelled with less notice may be forfeited.",
   },
   {
     question: "Do you offer payment plans?",
-    answer:
-      "Yes. Every package can be paid in full, in 3 monthly payments, or in 6, by card or by crypto. Kickstart is 3 × $250 or 6 × $125, Operator is 3 × $834 or 6 × $417, and Inner Circle is 3 × $2,500 or 6 × $1,250. Crypto installments are tracked by us. Submit a transfer notice for each payment.",
-  },
-  {
-    question: "Can I start small and upgrade later?",
-    answer:
-      "Yes. Start with Kickstart, and if you move up to Operator within 30 days, the full $750 counts toward it.",
+    answer: "Yes. Packages can be paid in full or in monthly installments by card.",
   },
 ] as const;
 
@@ -192,9 +184,9 @@ export default async function CoachingPage() {
       <JsonLd data={faqNode(FAQS)} />
 
       <PortraitHero
-        eyebrow="Private coaching · from $750"
-        title="Private DeFi coaching with David Zimmerman."
-        subtitle="Private sessions on risk, protocols, and self-custody. You keep custody of everything. Start with a free 30-minute call."
+        eyebrow="Private AI coaching"
+        title={`Private AI coaching with ${BRAND.coachName}.`}
+        subtitle="One-to-one sessions on using AI and building with AI in your own business. Start with a free 30-minute call."
         primary={{
           label: "Book a free 30-minute call",
           href: URLS.coachingDiscovery,
@@ -207,12 +199,12 @@ export default async function CoachingPage() {
           variant: "ghost",
           location: "coaching_hero_tiers",
         }}
-        portraitCaption="David Zimmerman · your coach"
+        portraitCaption={`${BRAND.coachName} · your coach`}
       />
 
       <section className="px-6 pb-4">
         <ul className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-6 gap-y-2 font-[family-name:var(--font-ui)] text-[length:var(--text-small)] font-medium text-[var(--color-text)]">
-          {["Education only", "You keep custody", "Not financial advice", "Free 30-minute call"].map(
+          {["One to one", "Built around your business", "Free 30-minute call"].map(
             (item) => (
               <li key={item} className="flex items-center gap-2">
                 <Check size={15} strokeWidth={2.5} className="text-[var(--color-accent)]" aria-hidden="true" />
@@ -220,9 +212,6 @@ export default async function CoachingPage() {
               </li>
             )
           )}
-          <li className="font-normal text-[var(--color-text-muted)] md:ml-auto">
-            Full refund within 14 days if no session has been held (Kickstart and Operator).
-          </li>
         </ul>
       </section>
 
@@ -232,7 +221,7 @@ export default async function CoachingPage() {
             folio="01"
             eyebrow="Fit"
             title="Who it is for, and who it is not for."
-            intro="Private coaching is education. It works best for people who want to own their process."
+            intro="Private coaching works best for people who want to build the skill themselves."
           />
           <div className="mt-10 grid gap-5 md:grid-cols-2">
             <div className="panel">
@@ -292,7 +281,7 @@ export default async function CoachingPage() {
             folio="04"
             eyebrow="Packages"
             title="Three packages. Every one is private 1-on-1."
-            intro="The difference is depth, how long you work together, and how much time you spend with David. Pay in full or in installments."
+            intro={`The difference is depth, how long you work together, and how much time you spend with ${BRAND.coachFirstName}. Pay in full or in installments.`}
           />
           <p className="mb-10 mt-4">
             <PayNowLink href="/coaching/pay">
@@ -347,7 +336,7 @@ export default async function CoachingPage() {
                 folio="07"
                 eyebrow="Inner Circle, itemized"
                 title={`What ${institutional.priceDisplay} covers.`}
-                intro={`${institutional.sessionCount} weekly sessions with David over six months. It starts with a free call.`}
+                intro={`${institutional.sessionCount} sessions with ${BRAND.coachFirstName}. It starts with a free call.`}
               />
               <div data-sticky-guard className="mt-8">
                 <CTAButton
@@ -396,40 +385,11 @@ export default async function CoachingPage() {
       <FounderBlock
         folio="08"
         eyebrow="Your coach"
-        aboutLocation="coaching_david_about"
-        extra={<p>Every Inner Circle client works directly with David. There is no hand-off to a junior coach.</p>}
+        aboutLocation="coaching_coach_about"
+        extra={<p>Every client works directly with {BRAND.coachFirstName}. There is no hand-off to a junior coach.</p>}
       />
 
-      <section className="px-6 py-[var(--space-section)]">
-        <div className="mx-auto flex max-w-6xl flex-col gap-8 md:flex-row md:items-end md:justify-between">
-          <SectionHeading
-            folio="09"
-            eyebrow="Membership"
-            title="Not ready for 1-on-1?"
-            intro="The membership on Skool is $97 a month: live Q&A with David every Monday, Wednesday, and Friday, plus the courses and community. Seven days free."
-          />
-          <div data-sticky-guard className="shrink-0">
-            <CTAButton variant="skool" href="/skool" location="coaching_exit_group">
-              See the membership
-            </CTAButton>
-          </div>
-        </div>
-      </section>
-
-      <FaqSection folio="10" title="Common questions." items={FAQS} />
-
-      <section className="px-6 py-10">
-        <div className="mx-auto max-w-3xl">
-          <p className="ui-label">Risk disclosure</p>
-          <p className="mt-2 text-[length:var(--text-small)] leading-relaxed text-[var(--color-text-muted)]">
-            DeFi University LLC provides educational services only. We do not provide financial,
-            investment, legal, or tax advice. Digital assets are volatile and you may lose your
-            entire investment. Past performance is not indicative of future results. You are solely
-            responsible for your own investment decisions. All coaching is delivered on a
-            self-custody basis — we never hold or control your funds.
-          </p>
-        </div>
-      </section>
+      <FaqSection folio="09" title="Common questions." items={FAQS} />
 
       <FinalCta
         title="Start with a 30-minute conversation."

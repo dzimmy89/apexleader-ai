@@ -10,7 +10,7 @@ import { ACCOUNTS, grantAccess, normalizeEmail, readAccount } from "@/lib/accoun
 // sessions, so it adds nothing to payments due or revenue.
 //
 // Run via the "Grant full access" workflow, or locally:
-//   npx tsx scripts/grant-full-access.ts --email hello@defiuniversity.xyz [--apply]
+//   npx tsx scripts/grant-full-access.ts --email hello@apexleader.ai [--apply]
 // Without --apply it only prints what it would change.
 
 const ENDED_CLIENT_STATUSES = new Set(["cancelled", "subscription_cancelled", "refunded", "completed"]);

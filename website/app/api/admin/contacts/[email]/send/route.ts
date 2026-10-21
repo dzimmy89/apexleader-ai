@@ -13,7 +13,7 @@ function json(body: unknown, status = 200) {
 }
 
 // POST /api/admin/contacts/:email/send
-// Same guards as the HubSpot 1:1 send, for any contact the site knows.
+// Same guards as every admin 1:1 send, for any contact the site knows.
 export async function POST(
   request: NextRequest,
   { params }: { params: Promise<{ email: string }> }

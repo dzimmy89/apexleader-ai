@@ -3,7 +3,7 @@ import { getAdminApp } from "@/lib/firebase-admin";
 
 function getAllowlist(): Set<string> {
   const raw =
-    process.env.ADMIN_GOOGLE_ALLOWLIST || "hello@defiuniversity.xyz";
+    process.env.ADMIN_GOOGLE_ALLOWLIST || "hello@apexleader.ai";
   return new Set(
     raw
       .split(",")

@@ -33,7 +33,7 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
     status: 200,
     headers: {
       "Content-Type": "application/pdf",
-      "Content-Disposition": `${request.nextUrl.searchParams.get("inline") === "1" ? "inline" : "attachment"}; filename="defi-university-contract-${id}.pdf"`,
+      "Content-Disposition": `${request.nextUrl.searchParams.get("inline") === "1" ? "inline" : "attachment"}; filename="apexleader-contract-${id}.pdf"`,
       "Cache-Control": "private, no-store",
     },
   });

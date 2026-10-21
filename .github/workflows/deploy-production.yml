@@ -1,17 +1,15 @@
-# Production deploy from GitHub (replaces the Cursor Origin / Depot pipeline).
-# Ported from .depot/workflows/deploy-production.yml: same SHA pin, Cloud Build
-# to Cloud Run, fail-closed Firestore rules publish and live rules check, plus
-# a lint/build gate before deploy and a post-deploy /api/version check.
+# Production deploy: Cloud Build to Cloud Run, then a fail-closed Firestore
+# rules publish, a live rules check and a /api/version check.
 #
 # Safety switch: nothing deploys until the repository variable
 # DEPLOY_FROM_GITHUB is set to "true" (Settings > Secrets and variables >
-# Actions > Variables). Set it only after the Origin code is merged into main
-# and the Origin deploy is turned off, or the two pipelines will overwrite
-# each other's Cloud Run revisions.
+# Actions > Variables), so merging to main does nothing until the Google
+# Cloud project exists.
 #
 # Needs repository secrets GCP_SA_KEY (service account JSON key for
-# defi-university-prod) and GCP_PROJECT_ID (defi-university-prod). See
-# website/DEPLOY.md.
+# apexleader-prod) and GCP_PROJECT_ID (apexleader-prod), and repository
+# variables FIREBASE_API_KEY, FIREBASE_MESSAGING_SENDER_ID and
+# FIREBASE_APP_ID from the Firebase web app. See website/DEPLOY.md.
 
 name: Deploy Website to Production
 
@@ -52,13 +50,13 @@ jobs:
         env:
           ADMIN_PASSWORD: ci-build-only
           JWT_SECRET: ci-build-only
-          NEXT_PUBLIC_SITE_URL: https://defiuniversity.xyz
-          NEXT_PUBLIC_FIREBASE_API_KEY: AIzaSyDuGdDF6jYPcZbQTpbGZPwnl3Qynr-LMWc
-          NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN: defi-university-prod.firebaseapp.com
-          NEXT_PUBLIC_FIREBASE_PROJECT_ID: defi-university-prod
-          NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET: defi-university-prod.firebasestorage.app
-          NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID: "309871336262"
-          NEXT_PUBLIC_FIREBASE_APP_ID: 1:309871336262:web:d2dc4be5729ac1d5a6a347
+          NEXT_PUBLIC_SITE_URL: https://apexleader.ai
+          NEXT_PUBLIC_FIREBASE_API_KEY: ${{ vars.FIREBASE_API_KEY }}
+          NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN: apexleader-prod.firebaseapp.com
+          NEXT_PUBLIC_FIREBASE_PROJECT_ID: apexleader-prod
+          NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET: apexleader-prod.firebasestorage.app
+          NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID: ${{ vars.FIREBASE_MESSAGING_SENDER_ID }}
+          NEXT_PUBLIC_FIREBASE_APP_ID: ${{ vars.FIREBASE_APP_ID }}
         run: npm run build
 
   deploy:
@@ -126,9 +124,10 @@ jobs:
         run: |
           gcloud builds submit website \
             --config=website/cloudbuild.yaml \
-            --project=${{ secrets.GCP_PROJECT_ID }}
+            --project=${{ secrets.GCP_PROJECT_ID }} \
+            --substitutions=_FIREBASE_API_KEY=${{ vars.FIREBASE_API_KEY }},_FIREBASE_MESSAGING_SENDER_ID=${{ vars.FIREBASE_MESSAGING_SENDER_ID }},_FIREBASE_APP_ID=${{ vars.FIREBASE_APP_ID }}
 
-      # Pin matches scripts/ci.sh and .github/workflows/ci.yml (firebase-tools@15.31.0).
+      # Pin matches .github/workflows/ci.yml (firebase-tools@15.31.0).
       # --only firestore:rules deploys rules without indexes. Fail closed (no continue-on-error).
       # --project is the hardcoded production project after derived-ID checks; do not
       # pass secrets.GCP_PROJECT_ID here (it is masked as *** and may not match the SA).
@@ -136,7 +135,7 @@ jobs:
         run: |
           set -euo pipefail
           cd "${GITHUB_WORKSPACE:-.}"
-          EXPECTED_PROJECT="defi-university-prod"
+          EXPECTED_PROJECT="apexleader-prod"
 
           echo "head_rules_step=$(git rev-parse HEAD)"
           echo "GITHUB_SHA=${GITHUB_SHA:-}"
@@ -172,7 +171,7 @@ jobs:
         run: |
           set -euo pipefail
           cd "${GITHUB_WORKSPACE:-.}"
-          EXPECTED_PROJECT="defi-university-prod"
+          EXPECTED_PROJECT="apexleader-prod"
 
           GCLOUD_PROJECT="$(gcloud config get-value project 2>/dev/null || true)"
           KEY_PROJECT=""
@@ -297,13 +296,13 @@ jobs:
           set -euo pipefail
           EXPECTED_SHA="$(git rev-parse HEAD)"
           for attempt in $(seq 1 12); do
-            LIVE_SHA="$(curl -sf https://defiuniversity.xyz/api/version | python3 -c 'import json,sys; print(json.load(sys.stdin).get("sha",""))' || true)"
+            LIVE_SHA="$(curl -sf https://apexleader.ai/api/version | python3 -c 'import json,sys; print(json.load(sys.stdin).get("sha",""))' || true)"
             echo "attempt ${attempt}: live=${LIVE_SHA} expected=${EXPECTED_SHA}"
             if [ "$LIVE_SHA" = "$EXPECTED_SHA" ]; then
-              echo "ok: defiuniversity.xyz is serving ${EXPECTED_SHA}"
+              echo "ok: apexleader.ai is serving ${EXPECTED_SHA}"
               exit 0
             fi
             sleep 10
           done
-          echo "error: defiuniversity.xyz/api/version did not report ${EXPECTED_SHA}" >&2
+          echo "error: apexleader.ai/api/version did not report ${EXPECTED_SHA}" >&2
           exit 1

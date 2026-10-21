@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { SkoolJoinLink } from "@/components/SkoolJoinLink";
+import { BRAND } from "@/lib/brand";
 import type { CourseLock } from "@/lib/learn/gate";
 
 /**
@@ -18,7 +18,7 @@ export function LockedNotice({ lock, next }: { lock: CourseLock; next: string })
             Sign in to keep reading. It is free.
           </p>
           <p className="mt-3 max-w-xl text-muted-on-parchment">
-            Stage 1, Foundations, is free with your email. We send you a sign-in link; there is no password.
+            The free courses open with your email. We send you a sign-in link; there is no password.
           </p>
           <div className="mt-6">
             <Link href={loginHref} className="btn btn-primary">
@@ -28,18 +28,20 @@ export function LockedNotice({ lock, next }: { lock: CourseLock; next: string })
         </>
       ) : (
         <>
-          <p className="section-eyebrow">Members only</p>
+          <p className="section-eyebrow">Coaching clients</p>
           <p className="mt-3 font-[family-name:var(--font-display)] text-[length:var(--text-h3)] leading-[1.15] text-on-parchment md:text-[1.875rem]">
-            This course is for members.
+            This course comes with private coaching.
           </p>
           <p className="mt-3 max-w-xl text-muted-on-parchment">
-            The DeFi University membership on Skool opens all 31 courses here, plus the live calls and community. Private
-            coaching clients have access too. Already a member? Sign in with your Skool email.
+            Private coaching with {BRAND.coachFirstName} opens every course here, with a syllabus built around your
+            business. Already a client? Sign in with the email you paid with.
           </p>
           <div className="mt-6 flex flex-wrap items-center gap-3">
-            <SkoolJoinLink location="lesson_locked" className="btn btn-skool" />
+            <Link href="/coaching" className="btn btn-primary">
+              Private coaching
+            </Link>
             <Link href={loginHref} className="btn btn-secondary">
-              Already a member? Sign in
+              Already a client? Sign in
             </Link>
           </div>
         </>

@@ -39,7 +39,7 @@ export function StageBadge({ status, className }: StageBadgeProps) {
     <Badge
       variant={variant}
       className={cn(
-        status === "won" && "bg-[var(--color-skool)]/20 text-[var(--color-skool)]",
+        status === "won" && "bg-[var(--color-positive)]/20 text-[var(--color-positive)]",
         status === "scheduled" && "bg-[var(--color-coaching-subtle)] text-[var(--color-coaching)]",
         className
       )}

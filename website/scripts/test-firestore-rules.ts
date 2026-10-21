@@ -1,6 +1,6 @@
 // Firestore security-rules tests against the emulator
 // (@firebase/rules-unit-testing). Run via:
-//   firebase emulators:exec --only firestore --project demo-defi-university-rules \
+//   firebase emulators:exec --only firestore --project demo-apexleader-rules \
 //     "npx tsx website/scripts/test-firestore-rules.ts"
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
@@ -11,7 +11,7 @@ import { fileURLToPath } from "node:url";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = join(__dirname, "../..");
 const RULES_PATH = join(REPO_ROOT, "database/security-rules.rules");
-const PROJECT_ID = "demo-defi-university-rules";
+const PROJECT_ID = "demo-apexleader-rules";
 
 function loadRules(): string {
   return readFileSync(RULES_PATH, "utf8");
@@ -90,7 +90,7 @@ describe("firestore rules (emulator)", async () => {
     });
     await seed("members/owner@example.com", {
       email: "owner@example.com",
-      tier: "skool",
+      tier: "paid",
     });
 
     await assertFails(
@@ -185,7 +185,7 @@ describe("firestore rules (emulator)", async () => {
     });
     await seed("members/paid@example.com", {
       email: "paid@example.com",
-      tier: "skool",
+      tier: "paid",
     });
 
     const freeDb = authed("uid-free", "free@example.com", true);
@@ -230,7 +230,7 @@ describe("firestore rules (emulator)", async () => {
   it("missing members doc is denied cleanly (exists guard)", async () => {
     await seed("members/someone@example.com", {
       email: "someone@example.com",
-      tier: "skool",
+      tier: "paid",
     });
     await seed("content/paid-for-exists", {
       access: "paid",
@@ -246,7 +246,7 @@ describe("firestore rules (emulator)", async () => {
   it("UID-keyed member doc does not grant paid or admin", async () => {
     await seed("members/uid-keyed-paid", {
       email: "uid-keyed-paid@example.com",
-      tier: "skool",
+      tier: "paid",
     });
     await seed("members/uid-keyed-admin", {
       email: "uid-keyed-admin@example.com",
@@ -280,7 +280,7 @@ describe("firestore rules (emulator)", async () => {
     });
     await seed("members/paid-course@example.com", {
       email: "paid-course@example.com",
-      tier: "skool",
+      tier: "paid",
     });
 
     await assertFails(
@@ -313,7 +313,7 @@ describe("firestore rules (emulator)", async () => {
     });
     await seed("members/paid-member-course@example.com", {
       email: "paid-member-course@example.com",
-      tier: "skool",
+      tier: "paid",
     });
 
     await assertFails(
@@ -365,7 +365,7 @@ describe("firestore rules (emulator)", async () => {
     await seed("crm_contacts/sales@example.com", {
       email: "sales@example.com",
       manualOnly: true,
-      salesList: "hubspot",
+      salesList: "manual",
     });
     const anon = testEnv.unauthenticatedContext().firestore();
     await assertFails(getDoc(doc(anon, "crm_contacts/sales@example.com")));

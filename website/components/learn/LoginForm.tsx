@@ -143,8 +143,8 @@ export function LoginForm({ next }: { next: string }) {
         </form>
 
         <p className="field-hint">
-          Either option creates your account. Members and coaching clients: use the email you joined with, or add it on
-          your account page. Free learners also get our DeFi lesson emails; unsubscribe anytime.
+          Either option creates your account. Coaching clients: use the email you paid with, or add it on your account
+          page.
         </p>
       </div>
     </div>

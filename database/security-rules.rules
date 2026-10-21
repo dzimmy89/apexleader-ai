@@ -40,7 +40,7 @@ service cloud.firestore {
     
     function isPaidMember() {
       return emailMemberExists() &&
-             get(emailMemberPath()).data.tier in ['skool', 'coaching', 'paid'];
+             get(emailMemberPath()).data.tier in ['coaching', 'paid'];
     }
     
     function isMember() {
@@ -273,9 +273,6 @@ service cloud.firestore {
       allow write: if false;
     }
     match /client_records/{clientId} {
-      allow read, write: if false;
-    }
-    match /crypto_payment_notices/{noticeId} {
       allow read, write: if false;
     }
     match /coaching_sessions/{sessionId} {

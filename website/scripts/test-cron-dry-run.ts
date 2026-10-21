@@ -2,12 +2,9 @@ import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { NextRequest } from "next/server";
 import { isCronDryRun } from "../lib/cron-auth";
-import {
-  previewProcessFlowsDryRun,
-  previewReengagementDryRun,
-} from "../lib/crm/cron-dry-run";
+import { previewProcessFlowsDryRun } from "../lib/crm/cron-dry-run";
 import { executeProcessFlows } from "../lib/crm/process-flows-runner";
-import { INACTIVE_MS } from "../lib/crm/reengagement-eligibility";
+import type { LeadRecord } from "../lib/crm/lead-lifecycle";
 import { collectPendingEmails, type PendingEmail } from "../lib/flows";
 import type { FlowDoc } from "../lib/crm/types";
 import type { ProcessFlowsEffects } from "../lib/crm/process-flows-runner";
@@ -25,17 +22,21 @@ import { isOptOutSendSkip } from "../lib/flow-send-policy";
 import { evaluateSendGates } from "../lib/send-gates";
 
 const NOW = Date.parse("2026-09-27T12:00:00.000Z");
-const STALE = NOW - INACTIVE_MS - 86400000;
+
+/** A lead who confirmed their email, so lead marketing flows may send. */
+function confirmedLead(email = "stale@example.com"): LeadRecord {
+  return { email, status: "confirmed", emailOptIn: true, consent: { given: true, confirmedAt: "2026-09-01T00:00:00.000Z" } } as LeadRecord;
+}
 
 function dueItem(overrides: Partial<PendingEmail> = {}): PendingEmail {
   return {
     flowDocId: "flow-1",
-    flowType: "reengagement",
+    flowType: "coaching_nurture",
     userId: "user-1",
     email: "stale@example.com",
     stepIndex: 0,
     step: {
-      stepId: "watchlist_waiting",
+      stepId: "coaching_reminder",
       sendAt: new Date(NOW - 3600000).toISOString(),
       sentAt: null,
       skipped: false,
@@ -67,10 +68,10 @@ function throwingEffects(): ProcessFlowsEffects {
 describe("cron dry-run query flag", () => {
   it("treats dryRun=1 as read-only mode", () => {
     const on = new NextRequest(
-      "https://defiuniversity.xyz/api/cron/process-flows?dryRun=1"
+      "https://apexleader.ai/api/cron/process-flows?dryRun=1"
     );
     const off = new NextRequest(
-      "https://defiuniversity.xyz/api/cron/process-flows"
+      "https://apexleader.ai/api/cron/process-flows"
     );
     assert.equal(isCronDryRun(on), true);
     assert.equal(isCronDryRun(off), false);
@@ -83,11 +84,11 @@ describe("process-flows dry-run", () => {
       dueItem(),
       dueItem({
         flowDocId: "flow-2",
-        flowType: "du_welcome",
+        flowType: "coaching_post_call",
         userId: "lead-1",
-        email: "loop-test@defiuniversity.com",
+        email: "loop-test@apexleader.com",
         step: {
-          stepId: "du_welcome_d0",
+          stepId: "coaching_post_call_thanks",
           sendAt: new Date(NOW - 1000).toISOString(),
           sentAt: null,
           skipped: false,
@@ -98,7 +99,7 @@ describe("process-flows dry-run", () => {
       dryRun: true,
       blocked: "marketing_sends_disabled",
       pending,
-      loadLead: async () => undefined,
+      loadLead: async (email: string) => confirmedLead(email),
       loadManualOnly: async () => false,
       loadFirstName: async () => {
         throw new Error("dry-run must not send");
@@ -113,7 +114,7 @@ describe("process-flows dry-run", () => {
     assert.equal(report.counts.wouldSend, 0);
     assert.equal(report.recipients.length, 2);
     const flagged = report.recipients.find(
-      (r) => r.email === "loop-test@defiuniversity.com"
+      (r) => r.email === "loop-test@apexleader.com"
     );
     assert.ok(flagged?.flaggedTestAccount);
     assert.ok(flagged?.flagReasons.some((r) => r.includes("loop-test")));
@@ -124,21 +125,21 @@ describe("process-flows dry-run", () => {
     const report = previewProcessFlowsDryRun({
       pending: [dueItem({ email: "real@example.com" })],
       marketingBlock: null,
-      leadByEmail: new Map(),
+      leadByEmail: new Map([["real@example.com", confirmedLead("real@example.com")]]),
     });
     assert.equal(report.counts.wouldSend, 1);
     assert.equal(report.counts.deferred, 0);
     assert.equal(report.recipients[0]?.action, "send");
-    assert.equal(report.recipients[0]?.flow, "reengagement");
-    assert.equal(report.recipients[0]?.step, "watchlist_waiting");
+    assert.equal(report.recipients[0]?.flow, "coaching_nurture");
+    assert.equal(report.recipients[0]?.step, "coaching_reminder");
   });
 
-  it("exits a denylisted reengagement recipient instead of sending", () => {
+  it("exits a denylisted recipient instead of sending", () => {
     const report = previewProcessFlowsDryRun({
       pending: [
         dueItem({
-          email: "loop-test@defiuniversity.com",
-          userId: "loop-test@defiuniversity.com",
+          email: "loop-test@apexleader.com",
+          userId: "loop-test@apexleader.com",
         }),
       ],
       marketingBlock: null,
@@ -150,7 +151,7 @@ describe("process-flows dry-run", () => {
     assert.equal(report.recipients[0]?.flaggedTestAccount, true);
   });
 
-  it("exits a suppressed member from reengagement instead of sending", () => {
+  it("exits a suppressed recipient instead of sending", () => {
     const report = previewProcessFlowsDryRun({
       pending: [dueItem({ email: "opted-out@example.com" })],
       marketingBlock: null,
@@ -163,47 +164,6 @@ describe("process-flows dry-run", () => {
   });
 });
 
-describe("reengagement dry-run", () => {
-  it("dry-run neither writes nor sends and flags loop/test accounts", () => {
-    const nowMs = NOW;
-    const report = previewReengagementDryRun({
-      nowMs,
-      existingReengagementStatuses: new Map(),
-      members: [
-        {
-          id: "stale@example.com",
-          data: {
-            email: "stale@example.com",
-            tier: "skool",
-            status: "active",
-            lastActiveAt: new Date(STALE).toISOString(),
-          },
-        },
-        {
-          id: "loop-test@defiuniversity.com",
-          data: {
-            email: "loop-test@defiuniversity.com",
-            tier: "skool",
-            status: "active",
-            lastActiveAt: new Date(STALE).toISOString(),
-          },
-        },
-      ],
-    });
-    assert.equal(report.dryRun, true);
-    assert.equal(report.writes, false);
-    assert.equal(report.sends, false);
-    assert.equal(report.counts.wouldEnroll, 1);
-    assert.equal(report.recipients[0]?.email, "stale@example.com");
-    assert.equal(report.counts.skippedTestOrLoop, 1);
-    assert.equal(
-      report.skippedTestRecipients[0]?.email,
-      "loop-test@defiuniversity.com"
-    );
-    assert.equal(report.skippedTestRecipients[0]?.flaggedTestAccount, true);
-  });
-});
-
 describe("pending selection is one due step per flow", () => {
   it("returns only the first overdue step and respects smart sending", () => {
     const older = new Date(NOW - 48 * 3600000).toISOString();
@@ -211,19 +171,19 @@ describe("pending selection is one due step per flow", () => {
     const doc: FlowDoc = {
       userId: "u",
       email: "a@example.com",
-      flowType: "du_welcome",
+      flowType: "coaching_post_call",
       status: "active",
       triggeredAt: older,
       lastFlowEmailSentAt: null,
       steps: [
         {
-          stepId: "du_welcome_d0",
+          stepId: "coaching_post_call_thanks",
           sendAt: older,
           sentAt: null,
           skipped: false,
         },
         {
-          stepId: "du_welcome_d2",
+          stepId: "coaching_post_call_recap",
           sendAt: newer,
           sentAt: null,
           skipped: false,
@@ -232,7 +192,7 @@ describe("pending selection is one due step per flow", () => {
     };
     const pending = collectPendingEmails([{ id: "f1", data: doc }], NOW);
     assert.equal(pending.length, 1);
-    assert.equal(pending[0]?.step.stepId, "du_welcome_d0");
+    assert.equal(pending[0]?.step.stepId, "coaching_post_call_thanks");
 
     const cooling: FlowDoc = {
       ...doc,
@@ -246,11 +206,8 @@ describe("pending selection is one due step per flow", () => {
 });
 
 describe("process-flows live exclusion, suppression, and claim durability", () => {
-  it("does not treat reengagement as a lead marketing flow", () => {
-    assert.equal(
-      (LEAD_MARKETING_FLOWS as readonly string[]).includes("reengagement"),
-      false
-    );
+  it("treats both coaching flows as lead marketing flows", () => {
+    assert.deepEqual([...LEAD_MARKETING_FLOWS].sort(), ["coaching_nurture", "coaching_post_call"]);
   });
 
   it("sendEmail marketing gates skip suppressed members", () => {
@@ -259,14 +216,16 @@ describe("process-flows live exclusion, suppression, and claim durability", () =
     process.env.MARKETING_SENDS_ENABLED = "true";
     process.env.JWT_SECRET = prevJwt || "ci-build-only";
     try {
+      // Until content/site.ts has a real postal address, marketing mail is held.
       assert.deepEqual(
         evaluateSendGates({
           purpose: "marketing",
           suppressed: true,
-          unsubscribeUrl: "https://defiuniversity.xyz/api/unsubscribe?token=t",
+          unsubscribeUrl: "https://apexleader.ai/api/unsubscribe?token=t",
         }),
-        { skip: true, error: "suppressed" }
+        { skip: true, error: "postal_address_placeholder" }
       );
+      assert.deepEqual(evaluateSendGates({ purpose: "transactional", suppressed: true }), { skip: true, error: "suppressed" });
       assert.equal(isOptOutSendSkip("suppressed"), true);
     } finally {
       if (prevFlag === undefined) delete process.env.MARKETING_SENDS_ENABLED;
@@ -276,18 +235,18 @@ describe("process-flows live exclusion, suppression, and claim durability", () =
     }
   });
 
-  it("exits a denylisted active reengagement flow instead of sending", async () => {
+  it("exits a denylisted active flow instead of sending", async () => {
     const store: { doc: FlowDoc } = {
       doc: {
-        userId: "loop-test@defiuniversity.com",
-        email: "loop-test@defiuniversity.com",
-        flowType: "reengagement",
+        userId: "loop-test@apexleader.com",
+        email: "loop-test@apexleader.com",
+        flowType: "coaching_nurture",
         status: "active",
         triggeredAt: new Date(NOW).toISOString(),
         lastFlowEmailSentAt: null,
         steps: [
           {
-            stepId: "watchlist_waiting",
+            stepId: "coaching_reminder",
             sendAt: new Date(NOW - 1000).toISOString(),
             sentAt: null,
             skipped: false,
@@ -302,11 +261,11 @@ describe("process-flows live exclusion, suppression, and claim durability", () =
       pending: [
         dueItem({
           flowDocId: "flow-loop",
-          email: "loop-test@defiuniversity.com",
-          userId: "loop-test@defiuniversity.com",
+          email: "loop-test@apexleader.com",
+          userId: "loop-test@apexleader.com",
         }),
       ],
-      loadLead: async () => undefined,
+      loadLead: async (email: string) => confirmedLead(email),
       loadManualOnly: async () => false,
       loadFirstName: async () => "",
       effects: {
@@ -316,7 +275,7 @@ describe("process-flows live exclusion, suppression, and claim durability", () =
           return { ok: true };
         },
         unsubscribeUrlFor: async () =>
-          "https://defiuniversity.xyz/api/unsubscribe?token=t",
+          "https://apexleader.ai/api/unsubscribe?token=t",
         getTemplate: () => ({
           subject: "x",
           html: "<p>x</p>",
@@ -341,13 +300,13 @@ describe("process-flows live exclusion, suppression, and claim durability", () =
       doc: {
         userId: "u",
         email: "stale@example.com",
-        flowType: "reengagement",
+        flowType: "coaching_nurture",
         status: "active",
         triggeredAt: new Date(NOW).toISOString(),
         lastFlowEmailSentAt: null,
         steps: [
           {
-            stepId: "watchlist_waiting",
+            stepId: "coaching_reminder",
             sendAt: new Date(NOW - 1000).toISOString(),
             sentAt: null,
             skipped: false,
@@ -359,7 +318,7 @@ describe("process-flows live exclusion, suppression, and claim durability", () =
       dryRun: false,
       blocked: null,
       pending: [dueItem()],
-      loadLead: async () => undefined,
+      loadLead: async (email: string) => confirmedLead(email),
       loadManualOnly: async () => false,
       loadSuppressed: async () => true,
       loadFirstName: async () => "Alex",
@@ -389,13 +348,13 @@ describe("process-flows live exclusion, suppression, and claim durability", () =
       doc: {
         userId: "u",
         email: "stale@example.com",
-        flowType: "reengagement",
+        flowType: "coaching_nurture",
         status: "active",
         triggeredAt: new Date(NOW).toISOString(),
         lastFlowEmailSentAt: null,
         steps: [
           {
-            stepId: "watchlist_waiting",
+            stepId: "coaching_reminder",
             sendAt: new Date(NOW - 1000).toISOString(),
             sentAt: null,
             skipped: false,
@@ -414,7 +373,7 @@ describe("process-flows live exclusion, suppression, and claim durability", () =
         return { ok: true, messageId: "gmail-1" };
       },
       unsubscribeUrlFor: async () =>
-        "https://defiuniversity.xyz/api/unsubscribe?token=t",
+        "https://apexleader.ai/api/unsubscribe?token=t",
       getTemplate: () => ({
         subject: "x",
         html: "<p>x</p>",
@@ -476,7 +435,7 @@ describe("process-flows live exclusion, suppression, and claim durability", () =
       dryRun: false,
       blocked: null,
       pending: [dueItem()],
-      loadLead: async () => undefined,
+      loadLead: async (email: string) => confirmedLead(email),
       loadManualOnly: async () => false,
       loadFirstName: async () => "Alex",
       effects,
@@ -502,7 +461,7 @@ describe("process-flows live exclusion, suppression, and claim durability", () =
       dryRun: false,
       blocked: null,
       pending: [dueItem({ step: store.doc.steps[0]! })],
-      loadLead: async () => undefined,
+      loadLead: async (email: string) => confirmedLead(email),
       loadManualOnly: async () => false,
       loadFirstName: async () => "Alex",
       effects,
@@ -529,13 +488,13 @@ describe("process-flows live exclusion, suppression, and claim durability", () =
       doc: {
         userId: "u",
         email: "stale@example.com",
-        flowType: "reengagement",
+        flowType: "coaching_nurture",
         status: "active",
         triggeredAt: new Date(NOW).toISOString(),
         lastFlowEmailSentAt: null,
         steps: [
           {
-            stepId: "watchlist_waiting",
+            stepId: "coaching_reminder",
             sendAt: new Date(NOW - 1000).toISOString(),
             sentAt: null,
             skipped: false,
@@ -552,7 +511,7 @@ describe("process-flows live exclusion, suppression, and claim durability", () =
         return { ok: true, messageId: "gmail-ttl" };
       },
       unsubscribeUrlFor: async () =>
-        "https://defiuniversity.xyz/api/unsubscribe?token=t",
+        "https://apexleader.ai/api/unsubscribe?token=t",
       getTemplate: () => ({
         subject: "x",
         html: "<p>x</p>",
@@ -619,7 +578,7 @@ describe("process-flows live exclusion, suppression, and claim durability", () =
       dryRun: false,
       blocked: null,
       pending: [dueItem()],
-      loadLead: async () => undefined,
+      loadLead: async (email: string) => confirmedLead(email),
       loadManualOnly: async () => false,
       loadFirstName: async () => "Alex",
       effects,
@@ -644,7 +603,7 @@ describe("process-flows live exclusion, suppression, and claim durability", () =
           step: store.doc.steps[0]!,
         }),
       ],
-      loadLead: async () => undefined,
+      loadLead: async (email: string) => confirmedLead(email),
       loadManualOnly: async () => false,
       loadFirstName: async () => "Alex",
       effects,

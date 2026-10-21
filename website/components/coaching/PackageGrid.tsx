@@ -59,7 +59,7 @@ export function PackageGrid({
         </div>
       </dl>
       <p className="mx-auto mt-6 max-w-4xl text-center font-[family-name:var(--font-ui)] text-[length:var(--text-caption)] text-[var(--color-text-muted)]">
-        All packages include a personalized kickoff and async support for the package duration. Educational only — not financial advice.
+        All packages include a personalized kickoff and async support for the package duration.
       </p>
     </div>
   );

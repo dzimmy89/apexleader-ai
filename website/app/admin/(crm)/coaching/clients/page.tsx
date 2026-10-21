@@ -91,9 +91,6 @@ export default function CoachingClientsPage() {
         description="Active and past coaching clients. Click a row to open detail."
         actions={
           <div className="flex items-center gap-3">
-            <Link href="/admin/coaching/paperbell-import" className="text-sm text-[var(--color-accent)] hover:underline">
-              Import from Paperbell
-            </Link>
             <AddClientDialog />
           </div>
         }

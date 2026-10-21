@@ -2,12 +2,13 @@ import {
   POSTAL_ADDRESS,
   isPostalAddressPlaceholder,
 } from "@/content/site";
+import { BRAND } from "@/lib/brand";
 import { getSiteOrigin } from "@/lib/env";
 import { escapeHtml } from "@/lib/html";
 
 export function emailLogoImg(): string {
   const origin = getSiteOrigin();
-  return `<img src="${origin}/favicon.ico" alt="DeFi University" width="48" height="48" style="display:block;max-width:48px;height:auto;" />`;
+  return `<img src="${origin}/favicon.ico" alt="${BRAND.name}" width="48" height="48" style="display:block;max-width:48px;height:auto;" />`;
 }
 
 type MarketingShell = {
@@ -28,11 +29,9 @@ type TransactionalShell = {
 
 export type EmailShellOpts = MarketingShell | TransactionalShell;
 
-export const MARKETING_RECEIVING_REASON_LEAD =
-  "You're receiving this because you signed up at defiuniversity.xyz and confirmed your email.";
+export const MARKETING_RECEIVING_REASON_LEAD = `You're receiving this because you asked about private coaching at ${BRAND.domain}.`;
 
-export const MARKETING_RECEIVING_REASON_MEMBER =
-  "You're receiving this because you're a DeFi University member.";
+export const MARKETING_RECEIVING_REASON_MEMBER = `You're receiving this because you're a ${BRAND.name} client.`;
 
 function postalFooterLine(): string {
   if (isPostalAddressPlaceholder()) return "";
@@ -69,8 +68,7 @@ export function emailShell(opts: EmailShellOpts): string {
     why = `<p>${opts.receivingReason || MARKETING_RECEIVING_REASON_LEAD}</p>
 <p>Unsubscribe in one click: <a href="${opts.unsubscribeUrl}" style="color:#888;">${opts.unsubscribeUrl}</a> (or reply "unsubscribe").</p>`;
   }
-  const legalEntityLine =
-    "<p>DeFi University LLC. Educational only — not financial advice. You keep self-custody of your assets. No guaranteed outcomes.</p>";
+  const legalEntityLine = `<p>${escapeHtml(BRAND.legalName)}. Coaching and education. No guaranteed outcomes.</p>`;
 
   return `<!DOCTYPE html>
 <html>
@@ -90,7 +88,7 @@ ${opts.bodyHtml}
 ${why}
 ${legalEntityLine}
 ${postalFooterLine()}
-<p><a href="${origin}" style="color:#c9a227;">defiuniversity.xyz</a></p>
+<p><a href="${origin}" style="color:#c9a227;">${BRAND.domain}</a></p>
 ${unsub}
 </td></tr>
 </table>
@@ -130,6 +128,8 @@ export function marketingPlaintext(args: {
   unsubscribeUrl: string;
 }): string {
   const body = htmlFragmentToText(args.bodyHtml);
-  const footer = `${POSTAL_ADDRESS.trim()}\n${args.unsubscribeUrl}`;
+  const footer = isPostalAddressPlaceholder()
+    ? args.unsubscribeUrl
+    : `${POSTAL_ADDRESS.trim()}\n${args.unsubscribeUrl}`;
   return `${body}\n\n${footer}\n`;
 }

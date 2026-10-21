@@ -33,7 +33,7 @@ export interface SignatureRequestInput {
   signerName: string;
   signerEmail: string;
   requestIpAddress?: string;
-  /** Checkout session id or crypto notice id. Used to send the agreement once. */
+  /** Checkout session id or manual payment key. Used to send the agreement once. */
   grantKey?: string;
 }
 

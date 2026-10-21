@@ -213,7 +213,7 @@ export async function listClientSessions(db: Db, email: string): Promise<SyncedS
 }
 
 /**
- * Sessions held before a client moved onto the site (Paperbell). Calendar
+ * Sessions held before a client moved onto the site. Calendar
  * sessions before the cutoff are already inside legacySessionsUsed, so only
  * later ones are counted on top.
  */

@@ -24,7 +24,7 @@ import {
 import { DELETE as cancelRoute, PATCH as moveRoute } from "../app/api/coaching/calendar/[eventId]/route";
 import { createMemoryFirestore, type MemoryFirestore } from "./fixtures/memory-firestore";
 
-const COACH = "hello@defiuniversity.xyz";
+const COACH = "hello@apexleader.ai";
 const GROUP = "group123@group.calendar.google.com";
 const TZ = "America/New_York";
 
@@ -41,7 +41,7 @@ beforeEach(() => {
     return { ok: true, messageId: "m1", threadId: "t1" };
   });
   process.env.JWT_SECRET = "test-coaching-availability";
-  process.env.NEXT_PUBLIC_SITE_URL = "https://defiuniversity.xyz";
+  process.env.NEXT_PUBLIC_SITE_URL = "https://apexleader.ai";
   process.env.SENDER_EMAIL = COACH;
   process.env.COACH_CALENDAR_ID = GROUP;
   delete process.env.COACH_READ_CALENDAR_IDS;
@@ -207,10 +207,10 @@ describe("cancel and move routes", () => {
   const params = { params: Promise.resolve({ eventId: "evt1" }) };
 
   it("refuse visitors without an admin session", async () => {
-    const del = await cancelRoute(new NextRequest("https://defiuniversity.xyz/api/coaching/calendar/evt1", { method: "DELETE" }), params);
+    const del = await cancelRoute(new NextRequest("https://apexleader.ai/api/coaching/calendar/evt1", { method: "DELETE" }), params);
     assert.equal(del.status, 401);
     const move = await moveRoute(
-      new NextRequest("https://defiuniversity.xyz/api/coaching/calendar/evt1", {
+      new NextRequest("https://apexleader.ai/api/coaching/calendar/evt1", {
         method: "PATCH",
         body: JSON.stringify({ newStart: at("14:00").toISOString() }),
       }),
@@ -222,7 +222,7 @@ describe("cancel and move routes", () => {
   it("let an admin through", async () => {
     const token = await createAdminSession("david");
     const res = await cancelRoute(
-      new NextRequest("https://defiuniversity.xyz/api/coaching/calendar/evt1", {
+      new NextRequest("https://apexleader.ai/api/coaching/calendar/evt1", {
         method: "DELETE",
         headers: { cookie: `${COOKIE_NAME}=${token}` },
       }),

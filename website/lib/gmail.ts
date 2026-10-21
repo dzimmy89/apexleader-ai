@@ -85,7 +85,7 @@ function getGmailClient() {
 export { buildMimeHeaders } from "@/lib/email-mime";
 
 export function buildMime(opts: SendEmailOptions): string {
-  const boundary = "defi_boundary_" + Date.now();
+  const boundary = "apex_boundary_" + Date.now();
   const headers = buildMimeHeaders({
     fromEmail: opts.fromEmail || SENDER_EMAIL,
     fromName: opts.fromName || SENDER_NAME,

@@ -11,7 +11,7 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "Book a Discovery Call",
   description:
-    "Schedule a free discovery call with DeFi University to discuss your DeFi coaching goals. Educational only — not financial advice.",
+    "Schedule a free discovery call to talk through where AI fits in your business and whether private coaching is right for you.",
   robots: { index: false },
 };
 
@@ -30,7 +30,7 @@ interface PackageContext {
   priceDisplay: string;
   durationWeeks: number;
   sessionCount: number;
-  targetCapital: string;
+  bestFor: string;
 }
 
 const CALL_POINTS = [
@@ -47,9 +47,9 @@ function PackageFacts({ pkg }: { pkg: PackageContext }) {
         {pkg.name} · {pkg.priceDisplay} · {pkg.durationWeeks} weeks · {pkg.sessionCount} sessions
       </p>
       <p className="mt-1 text-[length:var(--text-small)] text-[var(--color-text-muted)]">{pkg.tagline}</p>
-      {pkg.targetCapital ? (
+      {pkg.bestFor ? (
         <p className="mt-1 text-[length:var(--text-small)] text-[var(--color-text-muted)]">
-          Typical capital range: {pkg.targetCapital}
+          Best for: {pkg.bestFor}
         </p>
       ) : null}
     </div>
@@ -76,7 +76,7 @@ export default async function BookDiscoveryCallPage({
         priceDisplay: pkg.priceDisplay,
         durationWeeks: pkg.durationWeeks,
         sessionCount: pkg.sessionCount,
-        targetCapital: pkg.targetCapital,
+        bestFor: pkg.bestFor,
       };
     }
   }
@@ -166,8 +166,7 @@ export default async function BookDiscoveryCallPage({
         />
 
         <p className="mt-6 font-[family-name:var(--font-ui)] text-[length:var(--text-small)] text-[var(--color-text-muted)]">
-          Bookings require 24 hours notice. Times show in your timezone once you pick a day. Educational
-          only — not financial advice.
+          Bookings require 24 hours notice. Times show in your timezone once you pick a day.
         </p>
       </div>
     </section>

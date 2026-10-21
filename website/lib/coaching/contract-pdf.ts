@@ -125,8 +125,8 @@ export async function generateSignedPdf(
     size: [PAGE_WIDTH, PAGE_HEIGHT],
     margins: { top: MARGIN, bottom: MARGIN, left: MARGIN, right: MARGIN },
     info: {
-      Title: `DeFi University ${input.packageName} Coaching Agreement`,
-      Author: "DeFi University LLC",
+      Title: `ApexLeader.ai ${input.packageName} Coaching Agreement`,
+      Author: "ApexLeader.ai",
       Subject: "Coaching Agreement (signed)",
     },
   });
@@ -142,7 +142,7 @@ export async function generateSignedPdf(
   doc
     .fontSize(16)
     .font("Helvetica-Bold")
-    .text(`DeFi University — ${input.packageName} Coaching Agreement`, {
+    .text(`ApexLeader.ai — ${input.packageName} Coaching Agreement`, {
       align: "center",
     });
   doc.moveDown(0.5);
@@ -165,7 +165,7 @@ export async function generateSignedPdf(
     if (block.startsWith("•")) {
       doc.text(block, { indent: 14 });
     } else if (
-      /^(DeFi University|Parties|Effective date|Scope|Educational Only|Fees|Refund|Scheduling|Confidentiality|Dispute|Acknowledgment)/.test(
+      /^(ApexLeader.ai|Parties|Effective date|Scope|Educational Only|Fees|Refund|Scheduling|Confidentiality|Dispute|Acknowledgment)/.test(
         block
       )
     ) {
@@ -232,7 +232,7 @@ export async function storeSignedPdf(
   //  1. GCS bucket (production)
   //  2. Firestore base64 doc (dev fallback when GCS not configured)
   const bucketName =
-    process.env.CONTRACTS_GCS_BUCKET || "defi-university-prod-contracts";
+    process.env.CONTRACTS_GCS_BUCKET || "apexleader-prod-contracts";
 
   if (process.env.GOOGLE_SERVICE_ACCOUNT_KEY) {
     try {

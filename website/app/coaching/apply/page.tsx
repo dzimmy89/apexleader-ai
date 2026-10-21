@@ -10,7 +10,7 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "Apply for Inner Circle Coaching",
   description:
-    "Apply for DeFi University's Inner Circle: 24 weekly 1-on-1 sessions over six months with direct access to David. Education only.",
+    "Apply for ApexLeader.ai's Inner Circle: 24 weekly 1-on-1 sessions over six months with direct access to David.",
   robots: { index: true },
 };
 
@@ -57,7 +57,7 @@ export default async function ApplyPage({ searchParams }: ApplyPageProps) {
                   priceDisplay: pkg.priceDisplay,
                   durationWeeks: pkg.durationWeeks,
                   sessionCount: pkg.sessionCount,
-                  targetCapital: pkg.targetCapital,
+                  bestFor: pkg.bestFor,
                 }
               : null
           }

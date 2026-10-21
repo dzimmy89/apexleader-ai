@@ -31,7 +31,7 @@ let failed = 0;
 const missing: string[] = [];
 const malformed: string[] = [];
 
-console.log("DeFi University — coaching platform config check\n");
+console.log("ApexLeader.ai — coaching platform config check\n");
 
 for (const req of REQUIRED) {
   const value = process.env[req.name];

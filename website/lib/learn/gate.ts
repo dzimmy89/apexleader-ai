@@ -19,7 +19,7 @@ export async function getViewer(): Promise<Viewer> {
 
 export type CourseLock = "open" | "sign-in" | "members";
 
-/** Stage 1 needs a sign-in; every other stage needs the membership or coaching. */
+/** Free stages need a sign-in; every other stage needs coaching (or a manual grant). */
 export function courseLock(course: LearnCourse, viewer: Viewer): CourseLock {
   if (!viewer.email) return isFreeCourse(course) ? "sign-in" : "members";
   if (isFreeCourse(course)) return "open";

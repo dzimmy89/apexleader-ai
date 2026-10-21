@@ -5,7 +5,8 @@ import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { AccountNavLink } from "./AccountNavLink";
 import { NavLinks } from "./NavLinks";
-import { SkoolJoinLink } from "./SkoolJoinLink";
+import Link from "next/link";
+import { URLS } from "@/content/site";
 
 /** Phone navigation: a full-height sheet with Escape, backdrop and focus trapping. */
 export function MobileMenu({
@@ -40,9 +41,9 @@ export function MobileMenu({
             />
           </nav>
           <div className="mt-6 flex flex-col gap-3">
-            <SkoolJoinLink location="mobile_menu_join" className="btn btn-skool btn-block" onClick={close}>
-              Join on Skool
-            </SkoolJoinLink>
+            <Link href={URLS.coachingDiscovery} className="btn btn-primary btn-block" onClick={close}>
+              Book a free call
+            </Link>
             <AccountNavLink className="btn-block" onClick={close} />
           </div>
         </Dialog.Popup>

@@ -249,7 +249,7 @@ describe("GET /api/admin/subscribers cursor", () => {
     const savedJwt = process.env.JWT_SECRET;
     process.env.JWT_SECRET = "test-list-people-cursor";
     try {
-      const token = await createAdminSession("defi_u_team");
+      const token = await createAdminSession("apex_team");
       const req = new NextRequest(
         "http://localhost/api/admin/subscribers?cursor=not-a-cursor",
         { headers: { cookie: `${COOKIE_NAME}=${token}` } }
@@ -266,7 +266,7 @@ describe("GET /api/admin/subscribers cursor", () => {
 });
 
 const emulatorHost = process.env.FIRESTORE_EMULATOR_HOST;
-const PROJECT_ID = "demo-defi-university-people";
+const PROJECT_ID = "demo-apexleader-people";
 const LEAD_COUNT = 760;
 const HIDDEN_EMAIL = "zzz-needle@example.com";
 

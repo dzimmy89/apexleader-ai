@@ -387,7 +387,7 @@ export async function isManualOnlyContact(email: string): Promise<boolean> {
 }
 
 /**
- * HubSpot bounce / DNC / opt-out on a matched crm_contacts row. Evaluated at
+ * Imported bounce / DNC / opt-out on a matched crm_contacts row. Evaluated at
  * send time; does not copy into email_suppressions.
  */
 export async function crmContactSuppressesAddress(email: string): Promise<boolean> {

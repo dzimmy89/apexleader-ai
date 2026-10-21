@@ -63,7 +63,7 @@ export interface ContactEmailComposerProps {
 /**
  * One-click 1:1 email for the contact page. Uses
  * /api/admin/contacts/:email/send, which runs the same guards, locked footer,
- * logging, and opt-out handling as the HubSpot contact composer.
+ * logging, and opt-out handling as every admin 1:1 send.
  */
 export function ContactEmailComposer({
   email,

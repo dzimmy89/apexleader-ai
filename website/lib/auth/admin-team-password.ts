@@ -3,7 +3,7 @@ import { timingSafeEqualString } from "@/lib/auth/timing-safe-equal";
 import { isValidEmail } from "@/lib/html";
 
 /** Canonical password-login subject stored on the session cookie (`sub`). */
-export const ADMIN_TEAM_USERNAME = "defi_u_team";
+export const ADMIN_TEAM_USERNAME = "apex_team";
 
 const HASH_ENV = "ADMIN_TEAM_PASSWORD_HASH";
 

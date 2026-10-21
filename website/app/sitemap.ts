@@ -1,12 +1,10 @@
 import type { MetadataRoute } from "next";
-import { hasPublishedSiteTestimonials } from "@/content/testimonials";
 import { allLessons, getCoursesInOrder } from "@/lib/learn/catalog";
 import { absoluteUrl } from "@/lib/seo/site-url";
 
 const CORE_PATHS = [
   "/",
   "/about",
-  "/skool",
   "/university",
   "/coaching",
   "/coaching/pay",
@@ -22,11 +20,7 @@ function universityPaths(): string[] {
 }
 
 export function sitemapPaths(): string[] {
-  const paths: string[] = [...CORE_PATHS];
-  if (hasPublishedSiteTestimonials()) {
-    paths.push("/testimonials");
-  }
-  return [...paths, ...universityPaths()];
+  return [...CORE_PATHS, ...universityPaths()];
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
