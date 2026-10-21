@@ -1,0 +1,89 @@
+# One-off coaching setup for production, run by hand from the Actions tab.
+#
+# 1. Creates (or reuses) the Stripe Prices for the current coaching packages
+#    and, in "apply" mode, points the STRIPE_PRICE_* secrets in Secret Manager
+#    at them (scripts/setup-coaching-stripe.ts --apply-secrets).
+# 2. In "apply" mode, writes the packages in content/site-fallback.ts to the
+#    Firestore coaching_packages collection (scripts/seed-coaching-packages.ts),
+#    which is what Admin > Coaching > Packages edits. This overwrites the
+#    fields it sets on those three packages.
+#
+# The Stripe key comes from the repository secret STRIPE_SECRET_KEY when it is
+# set, otherwise from the STRIPE_SECRET_KEY secret in Secret Manager.
+# Cloud Run reads the price secrets when an instance starts, so run this right
+# before or after a production deploy.
+
+name: Coaching setup (Stripe prices and packages)
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "dry-run changes nothing; apply writes Stripe, Secret Manager and Firestore"
+        type: choice
+        options:
+          - dry-run
+          - apply
+        default: dry-run
+
+concurrency:
+  group: coaching-setup
+  cancel-in-progress: false
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    environment: production
+    defaults:
+      run:
+        working-directory: website
+    env:
+      GCP_PROJECT_ID: defi-university-prod
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: website/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - uses: google-github-actions/setup-gcloud@v2
+
+      - name: Load the Stripe key
+        env:
+          REPO_STRIPE_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
+        run: |
+          set -euo pipefail
+          if [ -n "${REPO_STRIPE_KEY}" ]; then
+            key="${REPO_STRIPE_KEY}"
+            echo "Using the STRIPE_SECRET_KEY repository secret."
+          else
+            key="$(gcloud secrets versions access latest --secret=STRIPE_SECRET_KEY --project="${GCP_PROJECT_ID}")"
+            echo "Using STRIPE_SECRET_KEY from Secret Manager."
+          fi
+          echo "::add-mask::${key}"
+          {
+            echo "STRIPE_SECRET_KEY<<__STRIPE_KEY__"
+            echo "${key}"
+            echo "__STRIPE_KEY__"
+          } >> "$GITHUB_ENV"
+
+      - name: Stripe prices (dry run)
+        if: inputs.mode == 'dry-run'
+        run: npx tsx scripts/setup-coaching-stripe.ts --dry-run
+
+      - name: Stripe prices and Secret Manager
+        if: inputs.mode == 'apply'
+        run: npx tsx scripts/setup-coaching-stripe.ts --apply-secrets
+
+      - name: Firestore coaching packages
+        if: inputs.mode == 'apply'
+        run: npx tsx scripts/seed-coaching-packages.ts

@@ -1,0 +1,531 @@
+{
+  "courseId": "investor-mindset",
+  "courseName": "Investor Mindset Mastery",
+  "modules": [
+    {
+      "moduleId": "module-01",
+      "moduleNumber": 1,
+      "title": "Foundation Building",
+      "description": "Trading psychology DNA, discipline pillars, fear/greed management, and foundation habits",
+      "passingScore": 70,
+      "pointsBase": 100,
+      "pointsPerfect": 50,
+      "questions": [
+        {
+          "id": "m1-q1",
+          "question": "What is the key difference between a fixed mindset trader and a growth mindset trader?",
+          "options": [
+            {"id": "a", "text": "Fixed mindset traders are smarter"},
+            {"id": "b", "text": "Fixed mindset traders protect their ego; growth mindset traders protect their capital while expanding capabilities"},
+            {"id": "c", "text": "Growth mindset traders never lose money"},
+            {"id": "d", "text": "There is no meaningful difference"}
+          ],
+          "correctAnswer": "b",
+          "explanation": "Fixed mindset traders view losses as personal failures and avoid challenges to protect their ego. Growth mindset traders see losses as expensive education and embrace challenges to expand their capabilities."
+        },
+        {
+          "id": "m1-q2",
+          "question": "According to Livermore's self-analysis framework, what is one of the four critical questions traders should ask themselves?",
+          "options": [
+            {"id": "a", "text": "What is the best token to buy today?"},
+            {"id": "b", "text": "What emotions drive my worst DeFi decisions?"},
+            {"id": "c", "text": "What is the current market price?"},
+            {"id": "d", "text": "How much money can I make this week?"}
+          ],
+          "correctAnswer": "b",
+          "explanation": "Understanding what emotions drive your worst decisions is crucial for self-awareness. The other questions focus on external factors rather than internal psychology."
+        },
+        {
+          "id": "m1-q3",
+          "question": "What are the Four Pillars of Trading Discipline?",
+          "options": [
+            {"id": "a", "text": "Buy low, sell high, hold long, diversify"},
+            {"id": "b", "text": "Mechanical Market Analysis, Probability-Based Thinking, Objective Decision Criteria, Consistent Execution"},
+            {"id": "c", "text": "Research, analyze, invest, profit"},
+            {"id": "d", "text": "Fear, greed, hope, pride"}
+          ],
+          "correctAnswer": "b",
+          "explanation": "The Four Pillars framework removes emotions from decision-making through systematic evaluation, probability thinking, pre-decided rules, and consistent execution."
+        },
+        {
+          "id": "m1-q4",
+          "question": "What is the 60/40 Position Sizing Rule?",
+          "options": [
+            {"id": "a", "text": "Invest 60% in crypto, 40% in stocks"},
+            {"id": "b", "text": "When conviction reaches 60% or higher, position up to 5% of portfolio; 40-60% conviction means 1-3% positions"},
+            {"id": "c", "text": "Hold 60% cash, 40% invested"},
+            {"id": "d", "text": "Take 60% profits, keep 40% invested"}
+          ],
+          "correctAnswer": "b",
+          "explanation": "The 60/40 rule links position sizing to conviction levels, ensuring larger positions only when you have higher confidence in the opportunity."
+        },
+        {
+          "id": "m1-q5",
+          "question": "What are the three emotions that Livermore identified as destroying traders?",
+          "options": [
+            {"id": "a", "text": "Joy, excitement, anticipation"},
+            {"id": "b", "text": "Hope, fear, greed"},
+            {"id": "c", "text": "Confidence, determination, focus"},
+            {"id": "d", "text": "Patience, discipline, wisdom"}
+          ],
+          "correctAnswer": "b",
+          "explanation": "Hope makes you hold when you should sell, fear makes you sell when you should hold, and greed makes you buy when you should wait."
+        },
+        {
+          "id": "m1-q6",
+          "question": "What is the recommended trading rule when Fear + Greed + Stress levels exceed 15?",
+          "options": [
+            {"id": "a", "text": "Double down on positions"},
+            {"id": "b", "text": "No trading decisions should be made"},
+            {"id": "c", "text": "Take maximum leverage"},
+            {"id": "d", "text": "Follow social media advice"}
+          ],
+          "correctAnswer": "b",
+          "explanation": "When emotional levels are too high (Fear + Greed + Stress > 15), rational decision-making is compromised. No trading decisions should be made until emotional state improves."
+        },
+        {
+          "id": "m1-q7",
+          "question": "What is the FOMO Antidote protocol?",
+          "options": [
+            {"id": "a", "text": "Buy immediately before prices go higher"},
+            {"id": "b", "text": "Stop, take three deep breaths, question what you'd think in 48 hours, apply research checklist, respect position size limits"},
+            {"id": "c", "text": "Follow the crowd"},
+            {"id": "d", "text": "Ignore all research"}
+          ],
+          "correctAnswer": "b",
+          "explanation": "The FOMO Antidote involves pausing, gaining perspective, applying systematic research, and maintaining discipline rather than acting on urgency."
+        },
+        {
+          "id": "m1-q8",
+          "question": "According to the compound effect, what does 1% better daily performance equal over a year?",
+          "options": [
+            {"id": "a", "text": "1.01x better"},
+            {"id": "b", "text": "3.65x better"},
+            {"id": "c", "text": "37x better"},
+            {"id": "d", "text": "100x better"}
+          ],
+          "correctAnswer": "c",
+          "explanation": "The math is (1.01)^365 = 37.78. Small daily improvements compound exponentially over time, creating massive long-term advantages."
+        },
+        {
+          "id": "m1-q9",
+          "question": "What is the recommended duration for habit installation according to research?",
+          "options": [
+            {"id": "a", "text": "7 days"},
+            {"id": "b", "text": "21 days"},
+            {"id": "c", "text": "66 days"},
+            {"id": "d", "text": "1 year"}
+          ],
+          "correctAnswer": "c",
+          "explanation": "Research shows habits take an average of 66 days to become automatic. This requires consistent daily practice, not just initial motivation."
+        },
+        {
+          "id": "m1-q10",
+          "question": "What is Livermore's 'Sitting Discipline' for DeFi traders?",
+          "options": [
+            {"id": "a", "text": "Sit in a comfortable chair while trading"},
+            {"id": "b", "text": "Don't check prices more than 3x per day, no trading decisions during high emotional states, weekly portfolio review only"},
+            {"id": "c", "text": "Always sit while making decisions"},
+            {"id": "d", "text": "Sit and wait for perfect opportunities"}
+          ],
+          "correctAnswer": "b",
+          "explanation": "Livermore's 'sitting' discipline means patience and restraint - limiting price checks, avoiding emotional decisions, and maintaining systematic review schedules rather than reactive trading."
+        },
+        {
+          "id": "m1-q11",
+          "question": "What should be included in a Personal DeFi Trading Constitution?",
+          "options": [
+            {"id": "a", "text": "Only profit targets"},
+            {"id": "b", "text": "Position sizing rules, research requirements, emotional circuit breakers, and exit disciplines"},
+            {"id": "c", "text": "Only entry criteria"},
+            {"id": "d", "text": "Only favorite protocols"}
+          ],
+          "correctAnswer": "b",
+          "explanation": "A trading constitution should include comprehensive rules covering position sizing, research requirements, emotional safeguards, and exit strategies to create an unbreakable framework."
+        },
+        {
+          "id": "m1-q12",
+          "question": "What is the recommended morning routine duration for DeFi traders?",
+          "options": [
+            {"id": "a", "text": "5 minutes"},
+            {"id": "b", "text": "20 minutes"},
+            {"id": "c", "text": "2 hours"},
+            {"id": "d", "text": "All day"}
+          ],
+          "correctAnswer": "b",
+          "explanation": "The 20-Minute DeFi Morning Briefing includes market overview, portfolio review, opportunity scanning, and learning input - a focused routine that doesn't overwhelm."
+        }
+      ]
+    },
+    {
+      "moduleId": "module-02",
+      "moduleNumber": 2,
+      "title": "Advanced Psychology",
+      "description": "Cognitive biases, risk psychology, probability thinking, and performance optimization",
+      "passingScore": 70,
+      "pointsBase": 100,
+      "pointsPerfect": 50,
+      "questions": [
+        {
+          "id": "m2-q1",
+          "question": "What is confirmation bias and how does it destroy DeFi wealth?",
+          "options": [
+            {"id": "a", "text": "It's a harmless preference for positive news"},
+            {"id": "b", "text": "Your brain seeks information confirming your beliefs while filtering out contradictory evidence, creating false confidence"},
+            {"id": "c", "text": "It helps you make better decisions"},
+            {"id": "d", "text": "It only affects beginners"}
+          ],
+          "correctAnswer": "b",
+          "explanation": "Confirmation bias makes you follow only bulls during bear markets, research only positive news about holdings, and dismiss concerns as FUD - creating echo chambers of false confidence."
+        },
+        {
+          "id": "m2-q2",
+          "question": "What is the 48-Hour Rule for combating FOMO?",
+          "options": [
+            {"id": "a", "text": "Hold positions for 48 hours minimum"},
+            {"id": "b", "text": "Never invest in anything trending for less than 48 hours"},
+            {"id": "c", "text": "Check prices every 48 hours"},
+            {"id": "d", "text": "Take profits after 48 hours"}
+          ],
+          "correctAnswer": "b",
+          "explanation": "The 48-Hour Rule filters out 90% of bad FOMO-driven decisions by requiring a cooling-off period before investing in trending opportunities."
+        },
+        {
+          "id": "m2-q3",
+          "question": "What is loss aversion and how does it affect trading?",
+          "options": [
+            {"id": "a", "text": "Fear of losing money, which is always helpful"},
+            {"id": "b", "text": "Losses feel twice as painful as equivalent gains feel good, leading to holding losers too long and selling winners too early"},
+            {"id": "c", "text": "It prevents all losses"},
+            {"id": "d", "text": "It only affects professional traders"}
+          ],
+          "correctAnswer": "b",
+          "explanation": "Loss aversion is a cognitive bias where the pain of losses outweighs the pleasure of gains, causing systematic errors in decision-making."
+        },
+        {
+          "id": "m2-q4",
+          "question": "What is the Ruin Risk Formula for position sizing?",
+          "options": [
+            {"id": "a", "text": "Risk 50% per position"},
+            {"id": "b", "text": "Never risk more than 2% of total capital on any single position"},
+            {"id": "c", "text": "Risk 10% per position"},
+            {"id": "d", "text": "Risk everything on high conviction plays"}
+          ],
+          "correctAnswer": "b",
+          "explanation": "The 2% rule ensures that even if you're wrong 10 times in a row, you still have 80% of capital left. This prevents catastrophic account destruction."
+        },
+        {
+          "id": "m2-q5",
+          "question": "What is the Emotional Risk Test?",
+          "options": [
+            {"id": "a", "text": "If you check a position more than 3 times daily, it's too big"},
+            {"id": "b", "text": "If you feel any emotion, don't trade"},
+            {"id": "c", "text": "Emotions don't matter in trading"},
+            {"id": "d", "text": "Always trade with maximum emotion"}
+          ],
+          "correctAnswer": "a",
+          "explanation": "If you're checking a position more than 3 times daily, the position size exceeds your psychological comfort zone and will lead to poor decision-making."
+        },
+        {
+          "id": "m2-q6",
+          "question": "What is Expected Value (EV) and why does it matter?",
+          "options": [
+            {"id": "a", "text": "The guaranteed return from an investment"},
+            {"id": "b", "text": "The formula: (Probability of Win × Average Win) - (Probability of Loss × Average Loss)"},
+            {"id": "c", "text": "The maximum possible profit"},
+            {"id": "d", "text": "The current market price"}
+          ],
+          "correctAnswer": "b",
+          "explanation": "Expected Value determines whether a bet is worth taking over multiple iterations, regardless of individual outcomes. Positive EV bets compound over time."
+        },
+        {
+          "id": "m2-q7",
+          "question": "What is the difference between risk and uncertainty in DeFi?",
+          "options": [
+            {"id": "a", "text": "They are the same thing"},
+            {"id": "b", "text": "Risk involves calculable probabilities; uncertainty involves unknown probabilities"},
+            {"id": "c", "text": "Risk is for stocks, uncertainty is for crypto"},
+            {"id": "d", "text": "Uncertainty doesn't exist in DeFi"}
+          ],
+          "correctAnswer": "b",
+          "explanation": "Risk involves situations where probabilities can be calculated (like historical lending rates). Uncertainty involves situations where probabilities are unknown (like regulatory responses)."
+        },
+        {
+          "id": "m2-q8",
+          "question": "What is Base Rate Neglect and why is it dangerous?",
+          "options": [
+            {"id": "a", "text": "Ignoring historical frequencies and believing 'this time is different'"},
+            {"id": "b", "text": "Focusing too much on historical data"},
+            {"id": "c", "text": "A helpful trading strategy"},
+            {"id": "d", "text": "Only affects new traders"}
+          ],
+          "correctAnswer": "a",
+          "explanation": "Base Rate Neglect makes you ignore sobering statistics (like only 5-10% of new tokens succeed) because you believe your situation is special, leading to overconfidence."
+        },
+        {
+          "id": "m2-q9",
+          "question": "What are the three brain states for trading performance?",
+          "options": [
+            {"id": "a", "text": "Happy, sad, angry"},
+            {"id": "b", "text": "Stress/Survival Mode, Default/Comfortable Mode, Flow/Peak Performance Mode"},
+            {"id": "c", "text": "Bull, bear, sideways"},
+            {"id": "d", "text": "Buy, sell, hold"}
+          ],
+          "correctAnswer": "b",
+          "explanation": "Stress mode eliminates rational thinking, default mode produces mediocre analysis, and flow mode creates optimal performance. Your goal is to maximize flow state."
+        },
+        {
+          "id": "m2-q10",
+          "question": "What are the Four Flow Triggers for trading?",
+          "options": [
+            {"id": "a", "text": "Coffee, charts, news, social media"},
+            {"id": "b", "text": "Clear Goals, Immediate Feedback, Challenge-Skill Balance, Deep Concentration"},
+            {"id": "c", "text": "Money, time, knowledge, luck"},
+            {"id": "d", "text": "Buy, sell, hold, wait"}
+          ],
+          "correctAnswer": "b",
+          "explanation": "These four triggers create optimal flow states where you achieve peak performance through focused, challenging work with clear objectives and feedback."
+        },
+        {
+          "id": "m2-q11",
+          "question": "What is Decision Fatigue and how should traders prevent it?",
+          "options": [
+            {"id": "a", "text": "Tiredness from making too many decisions, prevented by automating routine decisions"},
+            {"id": "b", "text": "A myth that doesn't affect traders"},
+            {"id": "c", "text": "Only affects professional traders"},
+            {"id": "d", "text": "Prevented by making more decisions"}
+          ],
+          "correctAnswer": "a",
+          "explanation": "Every decision depletes mental energy. Successful traders automate routine decisions (position sizing formulas, profit-taking rules) to preserve cognitive resources for important choices."
+        },
+        {
+          "id": "m2-q12",
+          "question": "What is the recommended duration for a peak performance research session?",
+          "options": [
+            {"id": "a", "text": "15 minutes"},
+            {"id": "b", "text": "90-120 minutes"},
+            {"id": "c", "text": "8 hours"},
+            {"id": "d", "text": "As long as possible"}
+          ],
+          "correctAnswer": "b",
+          "explanation": "90-120 minutes is the optimal duration for deep work before cognitive fatigue sets in. Longer sessions reduce quality and decision-making ability."
+        },
+        {
+          "id": "m2-q13",
+          "question": "What is the Gambler's Fallacy?",
+          "options": [
+            {"id": "a", "text": "Believing past independent events affect future probabilities"},
+            {"id": "b", "text": "A helpful trading strategy"},
+            {"id": "c", "text": "Only affects casino gamblers"},
+            {"id": "d", "text": "A type of confirmation bias"}
+          ],
+          "correctAnswer": "a",
+          "explanation": "The Gambler's Fallacy is believing that after losing 5 trades in a row, the next must win. Past independent events don't affect future probabilities."
+        },
+        {
+          "id": "m2-q14",
+          "question": "What is Bayesian thinking in DeFi investment decisions?",
+          "options": [
+            {"id": "a", "text": "Starting with base rates and systematically updating based on new information"},
+            {"id": "b", "text": "Ignoring all new information"},
+            {"id": "c", "text": "Only using gut feelings"},
+            {"id": "d", "text": "Following social media advice"}
+          ],
+          "correctAnswer": "a",
+          "explanation": "Bayesian thinking starts with historical base rates (e.g., 20% of protocols succeed) and updates probabilities as new information arrives (strong team +15%, audits +10%, etc.)."
+        }
+      ]
+    },
+    {
+      "moduleId": "module-03",
+      "moduleNumber": 3,
+      "title": "Elite Performance",
+      "description": "Winning mindset, systems thinking, market psychology, and elite mental game",
+      "passingScore": 70,
+      "pointsBase": 100,
+      "pointsPerfect": 50,
+      "questions": [
+        {
+          "id": "m3-q1",
+          "question": "What is the difference between goals and systems in trading?",
+          "options": [
+            {"id": "a", "text": "Goals are better than systems"},
+            {"id": "b", "text": "Goals expire; systems endure and compound over time regardless of motivation"},
+            {"id": "c", "text": "They are the same thing"},
+            {"id": "d", "text": "Systems are only for beginners"}
+          ],
+          "correctAnswer": "b",
+          "explanation": "Goals create pressure without process. Systems create sustainable progress that compounds over time and work regardless of motivation levels."
+        },
+        {
+          "id": "m3-q2",
+          "question": "What are the Six Steps to DeFi Riches according to Napoleon Hill's framework?",
+          "options": [
+            {"id": "a", "text": "Buy low, sell high, repeat"},
+            {"id": "b", "text": "Definite Purpose, Faith, Autosuggestion, Specialized Knowledge, Imagination, Organized Planning"},
+            {"id": "c", "text": "Research, analyze, invest, profit, repeat, retire"},
+            {"id": "d", "text": "Save, invest, hold, profit, diversify, repeat"}
+          ],
+          "correctAnswer": "b",
+          "explanation": "Hill's framework provides a systematic approach to wealth building through clear purpose, self-confidence, mental programming, expertise, creative vision, and strategic planning."
+        },
+        {
+          "id": "m3-q3",
+          "question": "What is the key trait that all Market Wizards share?",
+          "options": [
+            {"id": "a", "text": "They all have trading systems"},
+            {"id": "b", "text": "They never lose money"},
+            {"id": "c", "text": "They follow social media advice"},
+            {"id": "d", "text": "They trade on emotions"}
+          ],
+          "correctAnswer": "a",
+          "explanation": "Consistently profitable traders all have repeatable trading systems with specific entry and exit criteria that work regardless of emotional states."
+        },
+        {
+          "id": "m3-q4",
+          "question": "What is Livermore's 'Line of Least Resistance' principle?",
+          "options": [
+            {"id": "a", "text": "Always take the easiest path"},
+            {"id": "b", "text": "Build systems that work WITH market forces rather than against them"},
+            {"id": "c", "text": "Avoid all resistance"},
+            {"id": "d", "text": "Only trade when there's no resistance"}
+          ],
+          "correctAnswer": "b",
+          "explanation": "Your trading methodology should align with DeFi market realities, not fight them. Systems should flow with market forces rather than resist them."
+        },
+        {
+          "id": "m3-q5",
+          "question": "What are the four phases of crowd psychology cycles in DeFi?",
+          "options": [
+            {"id": "a", "text": "Buy, hold, sell, repeat"},
+            {"id": "b", "text": "Stealth Accumulation, Awareness, Enthusiasm, Greed, Denial, Fear"},
+            {"id": "c", "text": "Bull, bear, sideways, volatile"},
+            {"id": "d", "text": "Research, invest, profit, repeat"}
+          ],
+          "correctAnswer": "b",
+          "explanation": "Understanding these six phases helps you position contrarian to the crowd - buying when others are fearful (Stealth/Fear phases) and selling when others are greedy (Greed phase)."
+        },
+        {
+          "id": "m3-q6",
+          "question": "What is the contrarian rule: 'Position Size Inversely to Comfort'?",
+          "options": [
+            {"id": "a", "text": "Always take maximum positions"},
+            {"id": "b", "text": "When investments feel scary (bear markets), increase positions; when they feel easy (bull markets), reduce positions"},
+            {"id": "c", "text": "Never take positions"},
+            {"id": "d", "text": "Only trade when comfortable"}
+          ],
+          "correctAnswer": "b",
+          "explanation": "The best buying opportunities feel uncomfortable (bear markets with bad news). The worst times to increase exposure feel easy (bull markets with good news)."
+        },
+        {
+          "id": "m3-q7",
+          "question": "What are the Four Seasons of DeFi markets?",
+          "options": [
+            {"id": "a", "text": "Spring, Summer, Fall, Winter"},
+            {"id": "b", "text": "DeFi Winter (Bear), DeFi Spring (Early Bull), DeFi Summer (Bull), DeFi Autumn (Late Bull/Early Bear)"},
+            {"id": "c", "text": "Bull, bear, sideways, volatile"},
+            {"id": "d", "text": "Accumulation, distribution, rally, crash"}
+          ],
+          "correctAnswer": "b",
+          "explanation": "Understanding these seasonal patterns helps you position appropriately - accumulating in Winter, adding in Spring, holding in Summer, and taking profits in Autumn."
+        },
+        {
+          "id": "m3-q8",
+          "question": "What is the recommended maximum position size per protocol in a trading system?",
+          "options": [
+            {"id": "a", "text": "50%"},
+            {"id": "b", "text": "5% maximum"},
+            {"id": "c", "text": "25%"},
+            {"id": "d", "text": "100% if high conviction"}
+          ],
+          "correctAnswer": "b",
+          "explanation": "Maximum 5% per protocol prevents catastrophic losses. Even with 10/10 conviction, 5% is the limit to maintain proper risk management."
+        },
+        {
+          "id": "m3-q9",
+          "question": "What are the five levels of trading mastery hierarchy?",
+          "options": [
+            {"id": "a", "text": "Beginner, intermediate, advanced, expert, master"},
+            {"id": "b", "text": "Survival, Competence, Proficiency, Expertise, Mastery"},
+            {"id": "c", "text": "Novice, amateur, professional, elite, legendary"},
+            {"id": "d", "text": "Student, trader, investor, expert, guru"}
+          ],
+          "correctAnswer": "b",
+          "explanation": "The hierarchy progresses from Survival (months 1-6) through Competence, Proficiency, Expertise, to Mastery (years 7+), each with distinct characteristics and development requirements."
+        },
+        {
+          "id": "m3-q10",
+          "question": "What is Livermore's ultimate lesson about time and money?",
+          "options": [
+            {"id": "a", "text": "Time is money"},
+            {"id": "b", "text": "Wealth is renewable, time is not - prioritize accordingly"},
+            {"id": "c", "text": "Time doesn't matter in trading"},
+            {"id": "d", "text": "Money is more important than time"}
+          ],
+          "correctAnswer": "b",
+          "explanation": "Livermore understood that while you can always make more money, you can never recover lost time. This perspective shifts focus to sustainable, long-term approaches."
+        },
+        {
+          "id": "m3-q11",
+          "question": "What should be included in a Personal DeFi Trading System?",
+          "options": [
+            {"id": "a", "text": "Only entry criteria"},
+            {"id": "b", "text": "Opportunity Identification, Position Sizing, Entry/Exit Rules, Portfolio Management"},
+            {"id": "c", "text": "Only profit targets"},
+            {"id": "d", "text": "Only favorite protocols"}
+          ],
+          "correctAnswer": "b",
+          "explanation": "A complete trading system includes all four components: how you identify opportunities, size positions, enter/exit, and manage your overall portfolio."
+        },
+        {
+          "id": "m3-q12",
+          "question": "What is the 'Paradox of Control' in elite trading?",
+          "options": [
+            {"id": "a", "text": "You can control everything"},
+            {"id": "b", "text": "The more you try to control market outcomes, the less control you actually have"},
+            {"id": "c", "text": "Control doesn't matter"},
+            {"id": "d", "text": "Only control prices"}
+          ],
+          "correctAnswer": "b",
+          "explanation": "Elite traders focus intensely on their process and preparation while remaining completely detached from specific outcomes. Control what you can, accept what you can't."
+        },
+        {
+          "id": "m3-q13",
+          "question": "What are the recommended profit-taking rules for systematic trading?",
+          "options": [
+            {"id": "a", "text": "Never take profits"},
+            {"id": "b", "text": "25% at 2x, 50% at 5x, let remainder run"},
+            {"id": "c", "text": "Take all profits immediately"},
+            {"id": "d", "text": "Only take profits at 10x"}
+          ],
+          "correctAnswer": "b",
+          "explanation": "Systematic profit-taking at predetermined levels (25% at 2x, 50% at 5x) ensures you pay yourself while letting winners run with house money."
+        },
+        {
+          "id": "m3-q14",
+          "question": "What is the recommended portfolio allocation framework?",
+          "options": [
+            {"id": "a", "text": "100% in one protocol"},
+            {"id": "b", "text": "40% Blue Chip, 35% High Conviction, 20% Emerging, 5% Speculation"},
+            {"id": "c", "text": "50% cash, 50% crypto"},
+            {"id": "d", "text": "Equal weight all positions"}
+          ],
+          "correctAnswer": "b",
+          "explanation": "This balanced allocation framework provides stability through blue chips, growth through high conviction plays, opportunity through emerging protocols, and lottery tickets through speculation."
+        },
+        {
+          "id": "m3-q15",
+          "question": "What is the key principle of the 'Anti-Fragile Contrarian Strategy'?",
+          "options": [
+            {"id": "a", "text": "Always follow the crowd"},
+            {"id": "b", "text": "Build systems that get stronger from volatility and stress rather than being damaged by them"},
+            {"id": "c", "text": "Avoid all volatility"},
+            {"id": "d", "text": "Only trade in calm markets"}
+          ],
+          "correctAnswer": "b",
+          "explanation": "Anti-fragile systems benefit from chaos, uncertainty, and extreme conditions. What breaks others makes you stronger through proper psychological and systematic preparation."
+        }
+      ]
+    }
+  ]
+}

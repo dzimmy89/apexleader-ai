@@ -1,0 +1,309 @@
+# Production deploy from GitHub (replaces the Cursor Origin / Depot pipeline).
+# Ported from .depot/workflows/deploy-production.yml: same SHA pin, Cloud Build
+# to Cloud Run, fail-closed Firestore rules publish and live rules check, plus
+# a lint/build gate before deploy and a post-deploy /api/version check.
+#
+# Safety switch: nothing deploys until the repository variable
+# DEPLOY_FROM_GITHUB is set to "true" (Settings > Secrets and variables >
+# Actions > Variables). Set it only after the Origin code is merged into main
+# and the Origin deploy is turned off, or the two pipelines will overwrite
+# each other's Cloud Run revisions.
+#
+# Needs repository secrets GCP_SA_KEY (service account JSON key for
+# defi-university-prod) and GCP_PROJECT_ID (defi-university-prod). See
+# website/DEPLOY.md.
+
+name: Deploy Website to Production
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: production-deploy
+  cancel-in-progress: false
+
+jobs:
+  checks:
+    if: vars.DEPLOY_FROM_GITHUB == 'true'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: website
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: website/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build
+        env:
+          ADMIN_PASSWORD: ci-build-only
+          JWT_SECRET: ci-build-only
+          NEXT_PUBLIC_SITE_URL: https://defiuniversity.xyz
+          NEXT_PUBLIC_FIREBASE_API_KEY: AIzaSyDuGdDF6jYPcZbQTpbGZPwnl3Qynr-LMWc
+          NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN: defi-university-prod.firebaseapp.com
+          NEXT_PUBLIC_FIREBASE_PROJECT_ID: defi-university-prod
+          NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET: defi-university-prod.firebasestorage.app
+          NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID: "309871336262"
+          NEXT_PUBLIC_FIREBASE_APP_ID: 1:309871336262:web:d2dc4be5729ac1d5a6a347
+        run: npm run build
+
+  deploy:
+    needs: checks
+    if: vars.DEPLOY_FROM_GITHUB == 'true'
+    runs-on: ubuntu-latest
+    environment: production
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      # Pin the triggering SHA and clean the tree so the job can never deploy
+      # database/security-rules.rules (or the app) from an older commit.
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+          clean: true
+
+      - name: Verify deploy checkout SHA and rules digest
+        run: |
+          set -euo pipefail
+          cd "${GITHUB_WORKSPACE:-.}"
+
+          EXPECTED_SHA="${GITHUB_SHA:-}"
+          echo "github.sha=${{ github.sha }}"
+          echo "github.event.after=${{ github.event.after }}"
+          echo "github.ref=${{ github.ref }}"
+          echo "GITHUB_SHA=${EXPECTED_SHA}"
+          echo "head_before=$(git rev-parse HEAD)"
+          echo "pwd=$(pwd)"
+
+          if [ -z "$EXPECTED_SHA" ]; then
+            echo "error: GITHUB_SHA is empty; refusing to continue from an unknown ref" >&2
+            exit 1
+          fi
+
+          git fetch --force --depth=1 origin "$EXPECTED_SHA"
+          git checkout --force "$EXPECTED_SHA"
+          HEAD_AFTER="$(git rev-parse HEAD)"
+          echo "head_after=${HEAD_AFTER}"
+          if [ "$HEAD_AFTER" != "$EXPECTED_SHA" ]; then
+            echo "error: HEAD ${HEAD_AFTER} != triggering SHA ${EXPECTED_SHA} (stale checkout)" >&2
+            exit 1
+          fi
+
+          RULES_FILE="$(python3 -c 'import json; print(json.load(open("firebase.json"))["firestore"]["rules"])')"
+          echo "rules_file=${RULES_FILE}"
+          sha256sum "$RULES_FILE"
+
+      - uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - uses: google-github-actions/setup-gcloud@v2
+
+      - name: Write BUILD_SHA into the Cloud Build context
+        run: |
+          set -euo pipefail
+          git rev-parse HEAD > website/BUILD_SHA
+          cat website/BUILD_SHA
+
+      - name: Deploy via Cloud Build
+        run: |
+          gcloud builds submit website \
+            --config=website/cloudbuild.yaml \
+            --project=${{ secrets.GCP_PROJECT_ID }}
+
+      # Pin matches scripts/ci.sh and .github/workflows/ci.yml (firebase-tools@15.31.0).
+      # --only firestore:rules deploys rules without indexes. Fail closed (no continue-on-error).
+      # --project is the hardcoded production project after derived-ID checks; do not
+      # pass secrets.GCP_PROJECT_ID here (it is masked as *** and may not match the SA).
+      - name: Deploy Firestore security rules
+        run: |
+          set -euo pipefail
+          cd "${GITHUB_WORKSPACE:-.}"
+          EXPECTED_PROJECT="defi-university-prod"
+
+          echo "head_rules_step=$(git rev-parse HEAD)"
+          echo "GITHUB_SHA=${GITHUB_SHA:-}"
+          if [ "$(git rev-parse HEAD)" != "${GITHUB_SHA:-}" ]; then
+            echo "error: HEAD no longer matches GITHUB_SHA" >&2
+            exit 1
+          fi
+          RULES_FILE="$(python3 -c 'import json; print(json.load(open("firebase.json"))["firestore"]["rules"])')"
+          sha256sum "$RULES_FILE"
+
+          GCLOUD_PROJECT="$(gcloud config get-value project 2>/dev/null || true)"
+          KEY_PROJECT=""
+          if [ -n "${GOOGLE_APPLICATION_CREDENTIALS:-}" ] && [ -f "${GOOGLE_APPLICATION_CREDENTIALS}" ]; then
+            KEY_PROJECT="$(python3 -c 'import json, os; print(json.load(open(os.environ["GOOGLE_APPLICATION_CREDENTIALS"])).get("project_id") or "")')"
+          fi
+          echo "gcloud_project=${GCLOUD_PROJECT}"
+          echo "sa_key_project_id=${KEY_PROJECT}"
+          echo "firebase_deploy_project=${EXPECTED_PROJECT}"
+          if [ "${GCLOUD_PROJECT}" != "${EXPECTED_PROJECT}" ]; then
+            echo "error: gcloud project is '${GCLOUD_PROJECT}', expected ${EXPECTED_PROJECT}" >&2
+            exit 1
+          fi
+          if [ "${KEY_PROJECT}" != "${EXPECTED_PROJECT}" ]; then
+            echo "error: service account key project_id is '${KEY_PROJECT}', expected ${EXPECTED_PROJECT}" >&2
+            exit 1
+          fi
+
+          npm install -g firebase-tools@15.31.0
+          firebase deploy --only firestore:rules --project "${EXPECTED_PROJECT}" --non-interactive
+        # Requires GCP_SA_KEY service account: roles/firebase.admin + serviceusage.services.use
+
+      - name: Verify live Firestore rules match repo
+        run: |
+          set -euo pipefail
+          cd "${GITHUB_WORKSPACE:-.}"
+          EXPECTED_PROJECT="defi-university-prod"
+
+          GCLOUD_PROJECT="$(gcloud config get-value project 2>/dev/null || true)"
+          KEY_PROJECT=""
+          if [ -n "${GOOGLE_APPLICATION_CREDENTIALS:-}" ] && [ -f "${GOOGLE_APPLICATION_CREDENTIALS}" ]; then
+            KEY_PROJECT="$(python3 -c 'import json, os; print(json.load(open(os.environ["GOOGLE_APPLICATION_CREDENTIALS"])).get("project_id") or "")')"
+          fi
+          echo "gcloud_project=${GCLOUD_PROJECT}"
+          echo "sa_key_project_id=${KEY_PROJECT}"
+          if [ "${GCLOUD_PROJECT}" != "${EXPECTED_PROJECT}" ]; then
+            echo "error: gcloud project is '${GCLOUD_PROJECT}', expected ${EXPECTED_PROJECT}" >&2
+            exit 1
+          fi
+          if [ "${KEY_PROJECT}" != "${EXPECTED_PROJECT}" ]; then
+            echo "error: service account key project_id is '${KEY_PROJECT}', expected ${EXPECTED_PROJECT}" >&2
+            exit 1
+          fi
+
+          GOOGLE_ACCESS_TOKEN="$(gcloud auth print-access-token)"
+          export GOOGLE_ACCESS_TOKEN
+          export EXPECTED_PROJECT
+          RULES_REL="$(python3 -c 'import json; print(json.load(open("firebase.json"))["firestore"]["rules"])')"
+          export LOCAL_RULES_PATH="$(pwd)/${RULES_REL}"
+          echo "verify_rules_path=${LOCAL_RULES_PATH}"
+          echo "verify_HEAD=$(git rev-parse HEAD)"
+          sha256sum "$LOCAL_RULES_PATH"
+          python3 - <<'PY'
+          import json
+          import os
+          import sys
+          import urllib.error
+          import urllib.request
+
+          expected_project = os.environ["EXPECTED_PROJECT"]
+          token = os.environ["GOOGLE_ACCESS_TOKEN"]
+          local_path = os.environ["LOCAL_RULES_PATH"]
+          release_url = (
+              f"https://firebaserules.googleapis.com/v1/projects/{expected_project}/releases/cloud.firestore"
+          )
+
+
+          def fetch(url: str) -> dict:
+              request = urllib.request.Request(
+                  url,
+                  headers={"Authorization": f"Bearer {token}"},
+              )
+              try:
+                  with urllib.request.urlopen(request) as response:
+                      return json.load(response)
+              except urllib.error.HTTPError as exc:
+                  print(f"error: Rules API GET {url} failed: HTTP {exc.code}", file=sys.stderr)
+                  raise SystemExit(1) from exc
+
+
+          def normalize(text: str) -> str:
+              return text.replace("\r\n", "\n").rstrip() + "\n"
+
+
+          release = fetch(release_url)
+          release_name = release.get("name") or ""
+          ruleset_name = release.get("rulesetName") or ""
+          print(f"releaseName={release_name}")
+          print(f"rulesetName={ruleset_name}")
+          print(f"updateTime={release.get('updateTime', '')}")
+          expected_prefix = f"projects/{expected_project}/"
+          if not release_name.startswith(expected_prefix):
+              print(
+                  f"error: Rules API release name is '{release_name}', "
+                  f"expected prefix {expected_prefix}",
+                  file=sys.stderr,
+              )
+              raise SystemExit(1)
+          if not ruleset_name:
+              print("error: release has no rulesetName", file=sys.stderr)
+              raise SystemExit(1)
+          if not ruleset_name.startswith(expected_prefix):
+              print(
+                  f"error: Rules API rulesetName is '{ruleset_name}', "
+                  f"expected prefix {expected_prefix}",
+                  file=sys.stderr,
+              )
+              raise SystemExit(1)
+
+          ruleset = fetch(f"https://firebaserules.googleapis.com/v1/{ruleset_name}")
+          files = (ruleset.get("source") or {}).get("files") or []
+          if not files:
+              print("error: live ruleset has no source files", file=sys.stderr)
+              raise SystemExit(1)
+
+          live = None
+          for source_file in files:
+              name = source_file.get("name") or ""
+              if name == "database/security-rules.rules" or name.endswith(
+                  "security-rules.rules"
+              ):
+                  live = source_file.get("content") or ""
+                  break
+          if live is None:
+              live = files[0].get("content") or ""
+
+          with open(local_path, encoding="utf-8") as handle:
+              expected = handle.read()
+
+          if "uidMemberExists" in live:
+              print("error: live rules still contain uidMemberExists", file=sys.stderr)
+              raise SystemExit(1)
+          if "emailVerified()" not in live:
+              print("error: live rules lack emailVerified()", file=sys.stderr)
+              raise SystemExit(1)
+          if normalize(live) != normalize(expected):
+              print(
+                  "error: live Firestore (default) rules do not match repo "
+                  f"(live_len={len(live)} repo_len={len(expected)})",
+                  file=sys.stderr,
+              )
+              raise SystemExit(1)
+          print("ok: live Firestore (default) rules match repo")
+          PY
+          unset GOOGLE_ACCESS_TOKEN
+
+      - name: Verify the live site serves this commit
+        run: |
+          set -euo pipefail
+          EXPECTED_SHA="$(git rev-parse HEAD)"
+          for attempt in $(seq 1 12); do
+            LIVE_SHA="$(curl -sf https://defiuniversity.xyz/api/version | python3 -c 'import json,sys; print(json.load(sys.stdin).get("sha",""))' || true)"
+            echo "attempt ${attempt}: live=${LIVE_SHA} expected=${EXPECTED_SHA}"
+            if [ "$LIVE_SHA" = "$EXPECTED_SHA" ]; then
+              echo "ok: defiuniversity.xyz is serving ${EXPECTED_SHA}"
+              exit 0
+            fi
+            sleep 10
+          done
+          echo "error: defiuniversity.xyz/api/version did not report ${EXPECTED_SHA}" >&2
+          exit 1

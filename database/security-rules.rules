@@ -1,0 +1,310 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // ============================================
+    // HELPER FUNCTIONS
+    // ============================================
+    
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    // Email-keyed lookups must not trust an unverified email claim
+    // (email/password signup can otherwise impersonate members/{email}).
+    function emailVerified() {
+      return isAuthenticated() && request.auth.token.email_verified == true;
+    }
+
+    function emailMemberPath() {
+      return /databases/$(database)/documents/members/$(request.auth.token.email);
+    }
+
+    function emailMemberExists() {
+      return emailVerified() && exists(emailMemberPath());
+    }
+
+    // Check if the authenticated user owns this resource
+    // memberId can be either the Firebase UID or the email
+    function isOwner(memberId) {
+      return isAuthenticated() && 
+             (request.auth.uid == memberId || 
+              (emailVerified() && request.auth.token.email == memberId));
+    }
+    
+    // Membership lookups are email-keyed only (production has no members/{uid}
+    // docs, and nothing in this repo writes that path).
+    function isAdmin() {
+      return emailMemberExists() && get(emailMemberPath()).data.tier == 'admin';
+    }
+    
+    function isPaidMember() {
+      return emailMemberExists() &&
+             get(emailMemberPath()).data.tier in ['skool', 'coaching', 'paid'];
+    }
+    
+    function isMember() {
+      return emailMemberExists();
+    }
+    
+    // ============================================
+    // MEMBERS COLLECTION
+    // Document ID: email (lowercase)
+    // ============================================
+    match /members/{memberId} {
+      // Members can read their own data
+      allow read: if isOwner(memberId);
+      
+      // Members can update their own profile (limited fields only)
+      // Cannot change: tier, status, stripeCustomerId, loopCustomerId, firebaseUid
+      allow update: if isOwner(memberId) && 
+                       !('tier' in request.resource.data.diff(resource.data).affectedKeys()) &&
+                       !('status' in request.resource.data.diff(resource.data).affectedKeys()) &&
+                       !('stripeCustomerId' in request.resource.data.diff(resource.data).affectedKeys()) &&
+                       !('loopCustomerId' in request.resource.data.diff(resource.data).affectedKeys()) &&
+                       !('firebaseUid' in request.resource.data.diff(resource.data).affectedKeys()) &&
+                       !('paymentSource' in request.resource.data.diff(resource.data).affectedKeys());
+      
+      // Admins can read/update any member
+      allow read, update: if isAdmin();
+      
+      // Only system (Cloud Functions with admin SDK) can create/delete members
+      // These are blocked for client-side access
+      allow create: if false;
+      allow delete: if isAdmin();
+    }
+    
+    // ============================================
+    // SUBSCRIPTIONS COLLECTION
+    // Document ID: subscriptionId (from Stripe or Loop)
+    // ============================================
+    match /subscriptions/{subscriptionId} {
+      // Members can read their own subscriptions (matched by email)
+      allow read: if isAuthenticated() &&
+                     ((emailVerified() && resource.data.memberEmail == request.auth.token.email) ||
+                      resource.data.memberId == request.auth.uid);
+      
+      // Admins can read all subscriptions
+      allow read: if isAdmin();
+      
+      // Only system (Cloud Functions with admin SDK) can create/update/delete subscriptions
+      allow create, update, delete: if false;
+    }
+    
+    // ============================================
+    // ARCHIVED SUBSCRIPTIONS (for expired/cancelled)
+    // ============================================
+    match /archived_subscriptions/{subscriptionId} {
+      // Admins only
+      allow read: if isAdmin();
+      allow create, update, delete: if false;
+    }
+    
+    // ============================================
+    // CONTENT COLLECTION
+    // For course materials, articles, etc.
+    // ============================================
+    match /content/{contentId} {
+      // Public / member branches only apply when `access` exists and matches.
+      // Missing or unknown access is paid-only (isPaidMember).
+      allow read: if 'access' in resource.data && resource.data.access == 'public';
+      
+      allow read: if 'access' in resource.data &&
+                     resource.data.access == 'member' &&
+                     isMember();
+      
+      allow read: if (!('access' in resource.data) ||
+                      !(resource.data.access in ['public', 'member'])) &&
+                     isPaidMember();
+      
+      // Published fallback uses the same access mapping.
+      allow read: if resource.data.status == 'published' &&
+                     (('access' in resource.data && resource.data.access == 'public') ||
+                      ('access' in resource.data &&
+                       resource.data.access == 'member' &&
+                       isMember()) ||
+                      ((!('access' in resource.data) ||
+                        !(resource.data.access in ['public', 'member'])) &&
+                       isPaidMember()));
+      
+      // Admins can read/write all content
+      allow read, write: if isAdmin();
+    }
+    
+    // ============================================
+    // COURSES COLLECTION
+    // Course metadata and progress tracking
+    // ============================================
+    match /courses/{courseId} {
+      // Same access mapping as content: missing `access` is paid-only.
+      allow read: if resource.data.status == 'published' &&
+                     'access' in resource.data &&
+                     resource.data.access == 'public';
+
+      allow read: if resource.data.status == 'published' &&
+                     'access' in resource.data &&
+                     resource.data.access == 'member' &&
+                     isPaidMember();
+
+      allow read: if resource.data.status == 'published' &&
+                     (!('access' in resource.data) ||
+                      !(resource.data.access in ['public', 'member'])) &&
+                     isPaidMember();
+      
+      // Admins can manage courses
+      allow read, write: if isAdmin();
+      
+      // User progress subcollection
+      match /progress/{progressId} {
+        allow read, write: if isOwner(progressId);
+        allow read: if isAdmin();
+      }
+    }
+    
+    // ============================================
+    // USER PROGRESS COLLECTION (top-level)
+    // Alternative structure for tracking user progress
+    // ============================================
+    match /progress/{progressId} {
+      allow read: if isAuthenticated() &&
+                     resource.data.userId == request.auth.uid;
+      allow create: if isAuthenticated() &&
+                       request.resource.data.userId == request.auth.uid;
+      allow update: if isAuthenticated() &&
+                       resource.data.userId == request.auth.uid &&
+                       request.resource.data.userId == request.auth.uid;
+      allow delete: if isAuthenticated() &&
+                       resource.data.userId == request.auth.uid;
+      allow read: if isAdmin();
+    }
+    
+    // ============================================
+    // ANALYTICS COLLECTION
+    // Event tracking and usage analytics
+    // ============================================
+    match /analytics/{analyticsId} {
+      // Admins can read analytics
+      allow read: if isAdmin();
+      
+      // System only for writes
+      allow create, update, delete: if false;
+    }
+    
+    // ============================================
+    // WEBHOOKS LOGS (for debugging)
+    // ============================================
+    match /webhook_logs/{logId} {
+      // Admins only
+      allow read: if isAdmin();
+      allow create, update, delete: if false;
+    }
+
+    // Stripe event-id idempotency (Admin SDK on Cloud Run only).
+    match /stripe_processed_events/{eventId} {
+      allow read, write: if false;
+    }
+    
+    // ============================================
+    // SETTINGS (app configuration)
+    // ============================================
+    match /settings/{settingId} {
+      // No client SDK reads this collection (Admin SDK only). Verified
+      // tokens may read; unverified tokens cannot.
+      allow read: if emailVerified();
+      
+      // Only admins can update settings
+      allow write: if isAdmin();
+    }
+
+    // ============================================
+    // CRM (server-only via Admin SDK on Cloud Run)
+    // ============================================
+    match /leads/{leadId} {
+      allow read, write: if false;
+    }
+    match /users/{userId} {
+      allow read, write: if false;
+    }
+    match /flows/{flowId} {
+      allow read, write: if false;
+    }
+    match /emailLog/{logId} {
+      allow read, write: if false;
+    }
+    // Full HTML of each sent email, for the admin email viewer (Admin SDK only).
+    match /email_bodies/{logId} {
+      allow read, write: if false;
+    }
+    match /onboarding_queue/{queueId} {
+      allow read, write: if false;
+    }
+    match /coaching_applications/{appId} {
+      allow read, write: if false;
+    }
+    match /attribution_touchpoints/{touchId} {
+      allow read, write: if false;
+    }
+    match /email_suppressions/{email} {
+      allow read, write: if false;
+    }
+    match /crm_contacts/{contactId} {
+      // Sales list. Admin SDK only. Client SDKs cannot read or write.
+      allow read, write: if false;
+    }
+    match /crm_import_batches/{batchId} {
+      allow read, write: if false;
+    }
+    match /crm_enrichment_snapshots/{snapshotId} {
+      allow read, write: if false;
+    }
+    match /touchpoints/{touchId} {
+      allow read, write: if false;
+    }
+    match /crm_touchpoint_snapshots/{snapshotId} {
+      allow read, write: if false;
+    }
+    match /crm_admin_1to1_idempotency/{id} {
+      allow read, write: if false;
+    }
+    match /coaching_packages/{packageId} {
+      // Server-only (Admin SDK on Cloud Run). Marketing hydrates via
+      // GET /api/coaching/packages → getPackages() — not the client SDK.
+      allow read: if false;
+      allow write: if false;
+    }
+    match /client_records/{clientId} {
+      allow read, write: if false;
+    }
+    match /crypto_payment_notices/{noticeId} {
+      allow read, write: if false;
+    }
+    match /coaching_sessions/{sessionId} {
+      allow read, write: if false;
+    }
+    match /contract_signatures/{signatureId} {
+      allow read, write: if false;
+    }
+    // Coaching syllabi, their published versions and discovery call intake
+    // (transcripts): Admin SDK only, read by the server for /account.
+    match /client_syllabi/{email} {
+      allow read, write: if false;
+    }
+    match /client_syllabus_versions/{versionId} {
+      allow read, write: if false;
+    }
+    match /client_intake/{email} {
+      allow read, write: if false;
+    }
+
+    // Extra emails on one member account (Admin SDK on Cloud Run only).
+    match /account_links/{email} {
+      allow read, write: if false;
+    }
+
+    // Admin password-login lockout counters (Admin SDK on Cloud Run only).
+    // Explicit deny-all; unmatched paths are already closed by default-deny.
+    match /admin_login_attempts/{doc} {
+      allow read, write: if false;
+    }
+  }
+}

@@ -1,0 +1,219 @@
+{
+  "courseId": "defi-concepts",
+  "courseName": "DeFi Concepts",
+  "modules": [
+    {
+      "moduleId": "module-01",
+      "moduleNumber": 1,
+      "title": "Foundations",
+      "description": "Evolution of money, TradFi/CeFi/DeFi, blockchain infrastructure, and smart contracts",
+      "passingScore": 70,
+      "pointsBase": 100,
+      "pointsPerfect": 50,
+      "questions": [
+        {
+          "id": "m1-q1",
+          "question": "What core insight does the Yap Rai stone system illustrate about money?",
+          "options": [
+            {"id": "a", "text": "Money must be portable to function"},
+            {"id": "b", "text": "Money is a ledger technology — ownership can be agreed upon without moving the physical token"},
+            {"id": "c", "text": "Only gold can serve as reliable money"},
+            {"id": "d", "text": "Oral tradition cannot record value"}
+          ],
+          "correctAnswer": "b",
+          "explanation": "The Rai system separated possession from ownership through community consensus — conceptually similar to distributed ledger entries on a blockchain."
+        },
+        {
+          "id": "m1-q2",
+          "question": "What is the key difference between CeFi and DeFi?",
+          "options": [
+            {"id": "a", "text": "CeFi uses crypto; DeFi does not"},
+            {"id": "b", "text": "DeFi relies on smart contracts and protocols instead of centralized intermediaries holding custody"},
+            {"id": "c", "text": "CeFi is always safer than DeFi"},
+            {"id": "d", "text": "There is no practical difference"}
+          ],
+          "correctAnswer": "b",
+          "explanation": "DeFi replaces many intermediary functions with transparent, on-chain smart contract logic. CeFi still relies on trusted centralized entities."
+        },
+        {
+          "id": "m1-q3",
+          "question": "What problem does the blockchain trilemma describe?",
+          "options": [
+            {"id": "a", "text": "The tradeoff between decentralization, security, and scalability"},
+            {"id": "b", "text": "The difficulty of mining Bitcoin"},
+            {"id": "c", "text": "Why stablecoins always depeg"},
+            {"id": "d", "text": "How to avoid paying gas fees"}
+          ],
+          "correctAnswer": "a",
+          "explanation": "Blockchains typically optimize for two of decentralization, security, and scalability — improving one often constrains another."
+        },
+        {
+          "id": "m1-q4",
+          "question": "What is a smart contract?",
+          "options": [
+            {"id": "a", "text": "A legal agreement between two lawyers"},
+            {"id": "b", "text": "Self-executing code on a blockchain that runs when predefined conditions are met"},
+            {"id": "c", "text": "A hardware wallet"},
+            {"id": "d", "text": "A type of stablecoin"}
+          ],
+          "correctAnswer": "b",
+          "explanation": "Smart contracts automate agreements through code deployed on-chain, enabling DeFi primitives like swaps and lending without manual intermediaries."
+        },
+        {
+          "id": "m1-q5",
+          "question": "What does ERC-20 standardize on Ethereum?",
+          "options": [
+            {"id": "a", "text": "NFT metadata only"},
+            {"id": "b", "text": "Fungible token interfaces so wallets and exchanges can interact consistently"},
+            {"id": "c", "text": "Proof-of-stake consensus"},
+            {"id": "d", "text": "Layer 2 bridging"}
+          ],
+          "correctAnswer": "b",
+          "explanation": "ERC-20 defines a common interface for fungible tokens, enabling interoperability across DeFi applications."
+        }
+      ]
+    },
+    {
+      "moduleId": "module-02",
+      "moduleNumber": 2,
+      "title": "Access and Security",
+      "description": "Wallets, self-custody, security fundamentals, DEXs, and lending protocols",
+      "passingScore": 70,
+      "pointsBase": 100,
+      "pointsPerfect": 50,
+      "questions": [
+        {
+          "id": "m2-q1",
+          "question": "What does 'not your keys, not your coins' mean?",
+          "options": [
+            {"id": "a", "text": "Coins on an exchange in your account are fully under your self-custody"},
+            {"id": "b", "text": "If you do not control the private keys, you rely on a third party to honor withdrawals"},
+            {"id": "c", "text": "Hardware wallets are unnecessary"},
+            {"id": "d", "text": "Private keys should be shared with support staff"}
+          ],
+          "correctAnswer": "b",
+          "explanation": "Custodial platforms control the keys backing your balance. Self-custody means you alone control access via your private keys."
+        },
+        {
+          "id": "m2-q2",
+          "question": "What is a common seed phrase security practice?",
+          "options": [
+            {"id": "a", "text": "Store it in a cloud note for convenience"},
+            {"id": "b", "text": "Never share it and store offline backups in secure locations"},
+            {"id": "c", "text": "Email it to yourself encrypted with a weak password"},
+            {"id": "d", "text": "Post it on social media for recovery help"}
+          ],
+          "correctAnswer": "b",
+          "explanation": "Seed phrases grant full wallet access. Offline, private storage is essential — anyone with the phrase controls the funds."
+        },
+        {
+          "id": "m2-q3",
+          "question": "How does an AMM DEX typically price trades?",
+          "options": [
+            {"id": "a", "text": "Through an order book of bids and asks only"},
+            {"id": "b", "text": "Using a mathematical formula based on token ratios in a liquidity pool"},
+            {"id": "c", "text": "By random assignment"},
+            {"id": "d", "text": "By government regulation"}
+          ],
+          "correctAnswer": "b",
+          "explanation": "Automated Market Makers use pool reserves and formulas (e.g. x*y=k) to determine prices without traditional order books."
+        },
+        {
+          "id": "m2-q4",
+          "question": "In DeFi lending, what happens when collateral value falls too far?",
+          "options": [
+            {"id": "a", "text": "Nothing — loans are never closed automatically"},
+            {"id": "b", "text": "The protocol may liquidate collateral to repay lenders"},
+            {"id": "c", "text": "The borrower receives a bonus"},
+            {"id": "d", "text": "Interest rates go to zero"}
+          ],
+          "correctAnswer": "b",
+          "explanation": "Liquidation mechanisms protect lenders by selling collateral when health factors breach protocol thresholds."
+        },
+        {
+          "id": "m2-q5",
+          "question": "What is a phishing attack in crypto?",
+          "options": [
+            {"id": "a", "text": "Mining with renewable energy"},
+            {"id": "b", "text": "Tricking users into signing malicious transactions or revealing secrets via fake sites or messages"},
+            {"id": "c", "text": "A type of stablecoin arbitrage"},
+            {"id": "d", "text": "Providing liquidity to a pool"}
+          ],
+          "correctAnswer": "b",
+          "explanation": "Phishing exploits human trust — fake interfaces and approvals can drain wallets without breaking cryptography."
+        }
+      ]
+    },
+    {
+      "moduleId": "module-03",
+      "moduleNumber": 3,
+      "title": "Advanced Concepts",
+      "description": "Stablecoins, flash loans, risk management, and Layer 2 scaling",
+      "passingScore": 70,
+      "pointsBase": 100,
+      "pointsPerfect": 50,
+      "questions": [
+        {
+          "id": "m3-q1",
+          "question": "What is a primary risk of algorithmic stablecoins?",
+          "options": [
+            {"id": "a", "text": "They always maintain peg through government guarantee"},
+            {"id": "b", "text": "Death spirals when market confidence collapses and arbitrage mechanisms fail"},
+            {"id": "c", "text": "They cannot be traded on DEXs"},
+            {"id": "d", "text": "They have no smart contract code"}
+          ],
+          "correctAnswer": "b",
+          "explanation": "Algorithmic designs depend on incentives and confidence. Loss of peg can trigger reflexive selling and collapse."
+        },
+        {
+          "id": "m3-q2",
+          "question": "What makes flash loans unique?",
+          "options": [
+            {"id": "a", "text": "They require no collateral and must be repaid within the same transaction block"},
+            {"id": "b", "text": "They are only available to banks"},
+            {"id": "c", "text": "They never charge fees"},
+            {"id": "d", "text": "They lock funds for one year"}
+          ],
+          "correctAnswer": "a",
+          "explanation": "Flash loans are uncollateralized but atomic — if repayment fails, the entire transaction reverts."
+        },
+        {
+          "id": "m3-q3",
+          "question": "What is impermanent loss primarily associated with?",
+          "options": [
+            {"id": "a", "text": "Hardware wallet failures"},
+            {"id": "b", "text": "Providing liquidity to AMM pools when asset prices diverge"},
+            {"id": "c", "text": "Staking ETH on Layer 1 only"},
+            {"id": "d", "text": "Paying gas in stablecoins"}
+          ],
+          "correctAnswer": "b",
+          "explanation": "LPs may end up with a different asset mix vs. holding, especially when prices move sharply — fees may or may not compensate."
+        },
+        {
+          "id": "m3-q4",
+          "question": "Why do Layer 2 networks exist?",
+          "options": [
+            {"id": "a", "text": "To eliminate the need for Ethereum entirely"},
+            {"id": "b", "text": "To increase throughput and reduce fees while inheriting L1 security assumptions"},
+            {"id": "c", "text": "To replace private keys with passwords"},
+            {"id": "d", "text": "To ban DeFi applications"}
+          ],
+          "correctAnswer": "b",
+          "explanation": "Layer 2s batch transactions off mainnet, improving cost and speed while anchoring to Ethereum for security."
+        },
+        {
+          "id": "m3-q5",
+          "question": "What is a sensible risk management principle in DeFi?",
+          "options": [
+            {"id": "a", "text": "Use maximum leverage on every trade"},
+            {"id": "b", "text": "Size positions so a single loss cannot impair your entire portfolio"},
+            {"id": "c", "text": "Ignore smart contract audits"},
+            {"id": "d", "text": "Approve unlimited token allowances to every site"}
+          ],
+          "correctAnswer": "b",
+          "explanation": "Position sizing and diversification limit tail risk — a core framework taught throughout the course."
+        }
+      ]
+    }
+  ]
+}

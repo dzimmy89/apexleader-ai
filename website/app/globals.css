@@ -1,0 +1,1255 @@
+@import "tailwindcss";
+@import "../styles/tokens.css";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "katex/dist/katex.min.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-bg: var(--color-bg);
+  --color-panel: var(--color-panel);
+  --color-panel-raised: var(--color-panel-raised);
+  --color-surface: var(--color-surface);
+  --color-surface-raised: var(--color-surface-raised);
+  --color-surface-dark: var(--color-surface-dark);
+  --color-border: var(--color-border);
+  --color-border-muted: var(--color-border-muted);
+  --color-border-strong: var(--color-border-strong);
+  --color-border-on-parchment: var(--color-border-on-parchment);
+  --color-border-strong-on-parchment: var(--color-border-strong-on-parchment);
+  --color-text: var(--color-text);
+  --color-text-muted: var(--color-text-muted);
+  --color-text-faint: var(--color-text-faint);
+  --color-text-on-parchment: var(--color-text-on-parchment);
+  --color-text-muted-on-parchment: var(--color-text-muted-on-parchment);
+  --color-accent: var(--color-accent);
+  --color-accent-hover: var(--color-accent-hover);
+  --color-accent-subtle: var(--color-accent-subtle);
+  --color-accent-ink: var(--color-accent-ink);
+  --color-skool: var(--color-skool);
+  --color-skool-ink: var(--color-skool-ink);
+  --color-coaching: var(--color-coaching);
+  --color-coaching-ink: var(--color-coaching-ink);
+  --color-success: var(--color-success);
+  --color-success-ink: var(--color-success-ink);
+  --color-success-subtle: var(--color-success-subtle);
+  --color-warning: var(--color-warning);
+  --color-warning-ink: var(--color-warning-ink);
+  --color-danger: var(--color-danger);
+  --color-danger-ink: var(--color-danger-ink);
+  --color-danger-subtle: var(--color-danger-subtle);
+  --color-info: var(--color-info);
+  --color-info-ink: var(--color-info-ink);
+  --color-info-subtle: var(--color-info-subtle);
+  --font-display: var(--font-display);
+  --font-heading: var(--font-display);
+  --font-body: var(--font-body);
+  --font-ui: var(--font-ui);
+  --font-mono: var(--font-mono);
+  --text-display: var(--text-display);
+  --text-h1: var(--text-h1);
+  --text-h2: var(--text-h2);
+  --text-h3: var(--text-h3);
+  --text-h4: var(--text-h4);
+  --text-lead: var(--text-lead);
+  --text-body: var(--text-body);
+  --text-ui: var(--text-ui);
+  --text-small: var(--text-small);
+  --text-caption: var(--text-caption);
+  --text-label: var(--text-label);
+  --spacing-section: var(--space-section);
+  --spacing-block: var(--space-block);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+  --color-destructive-foreground: var(--destructive-foreground);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Element defaults live in the base layer so hierarchy classes (.panel-title,
+   .btn, .ui-label) and utilities can override them; unlayered rules would win
+   over every Tailwind layer regardless of specificity. */
+@layer base {
+  body {
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+    line-height: 1.1;
+    font-weight: 400;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Everything you act on or scan is set in the UI sans, so a button never
+     looks like a caption and a label never looks like body copy. */
+  button,
+  input,
+  select,
+  textarea,
+  label,
+  table,
+  nav,
+  summary {
+    font-family: var(--font-ui);
+  }
+
+  /* Signed-in and tool surfaces (account, portal, lesson chrome, forms) are
+     sans throughout; `.lesson-prose` and `.prose-serif` switch reading text
+     back to the serif. */
+  .ui-surface {
+    font-family: var(--font-ui);
+    font-size: var(--text-ui);
+  }
+
+  .prose-serif,
+  .lesson-prose {
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+  }
+
+  strong,
+  b {
+    font-weight: 700;
+  }
+
+  .ui-surface strong,
+  .ui-surface b,
+  .font-ui strong,
+  .font-ui b {
+    font-weight: 600;
+  }
+
+  :where(section, article, div, h2, h3)[id] {
+    scroll-margin-top: calc(var(--site-header-h) + 1.5rem);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  :where(a, button, summary, [role="button"]):focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  :where(input, select, textarea):focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 0;
+  }
+}
+
+/* First-paint motion is transform-only so the H1 (the LCP element) paints without JavaScript. */
+@keyframes load-rise {
+  from {
+    transform: translateY(12px);
+  }
+  to {
+    transform: none;
+  }
+}
+
+.load-rise {
+  animation: load-rise 0.48s var(--ease-out) both;
+  animation-delay: var(--load-delay, 0ms);
+}
+
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
+.menu-in {
+  animation: menu-in 0.24s var(--ease-out);
+}
+
+[data-reveal="pending"] {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+[data-reveal="shown"] {
+  transition:
+    opacity 0.48s var(--ease-out),
+    transform 0.48s var(--ease-out);
+  transition-delay: var(--reveal-delay, 0s);
+}
+
+/* One grade for every member still so different Zoom rooms read as one set. */
+.clip-still {
+  filter: grayscale(0.3) sepia(0.16) saturate(0.88) contrast(1.03);
+  transition: filter var(--duration-normal) var(--ease-out);
+}
+
+.group:hover .clip-still,
+.group:focus-visible .clip-still {
+  filter: none;
+}
+
+.hang-quote {
+  text-indent: -0.42em;
+}
+
+.faces-strip .face {
+  transition: transform 0.24s var(--ease-out);
+}
+
+.faces-strip:hover .face,
+.faces-strip:focus-visible .face {
+  transform: translateX(calc(var(--i) * 5px));
+}
+
+/* The curtain is an overlay so the portrait itself paints immediately. */
+.portrait-curtain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--color-surface);
+  transform-origin: bottom;
+  animation: portrait-curtain 0.6s var(--ease-out) 0.12s both;
+}
+
+@keyframes portrait-curtain {
+  from {
+    transform: scaleY(1);
+  }
+  to {
+    transform: scaleY(0);
+  }
+}
+
+.clip-backdrop {
+  transition: opacity 200ms var(--ease-out);
+}
+
+.clip-backdrop[data-starting-style],
+.clip-backdrop[data-ending-style] {
+  opacity: 0;
+}
+
+[data-filter="group"] [data-segment="private_coaching"],
+[data-filter="private"] [data-segment]:not([data-segment="private_coaching"]),
+[data-filter="group"] [data-has-group="false"],
+[data-filter="private"] [data-has-private="false"],
+[data-filter="all"] [data-count]:not([data-count="all"]),
+[data-filter="group"] [data-count]:not([data-count="group"]),
+[data-filter="private"] [data-count]:not([data-count="private"]) {
+  display: none;
+}
+
+.sticky-cta {
+  transition: transform 0.32s var(--ease-out);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .load-rise,
+  .menu-in {
+    animation: none;
+  }
+
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .portrait-curtain::after {
+    animation: none;
+    transform: scaleY(0);
+  }
+
+  .faces-strip .face,
+  .clip-still,
+  .sticky-cta {
+    transition: none;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Hierarchy system. One class per job; pages compose these instead of
+   re-inventing labels, cards, rows, chips and buttons.
+   --------------------------------------------------------------------------- */
+@layer components {
+  /* Section label above a headline. Small, semibold, gold; the headline
+     under it is always bigger and brighter. */
+  .section-eyebrow {
+    font-family: var(--font-ui);
+    font-size: var(--text-label);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+
+  .on-parchment .section-eyebrow,
+  .parchment-card .section-eyebrow,
+  .section-eyebrow.on-parchment {
+    color: var(--color-coaching-ink);
+  }
+
+  /* Secondary label (form labels, row labels, table heads). */
+  .ui-label {
+    font-family: var(--font-ui);
+    font-size: var(--text-caption);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--color-text-muted);
+  }
+
+  .parchment-card .ui-label,
+  .on-parchment .ui-label {
+    color: var(--color-text-muted-on-parchment);
+  }
+
+  .foil-rule {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--color-accent) 20%,
+      var(--color-accent) 80%,
+      transparent
+    );
+  }
+
+  .drop-cap::first-letter {
+    float: left;
+    font-family: var(--font-display);
+    font-size: 4rem;
+    line-height: 0.8;
+    padding-right: 0.5rem;
+    padding-top: 0.1rem;
+    color: var(--color-accent);
+    font-weight: 400;
+  }
+
+  /* The one highlighted block per screen. */
+  .parchment-card,
+  .on-parchment {
+    background: var(--color-surface);
+    color: var(--color-text-on-parchment);
+    border: 1px solid var(--color-border-on-parchment);
+    --color-border: var(--color-border-on-parchment);
+    --color-border-strong: var(--color-border-strong-on-parchment);
+    --color-accent-subtle: oklch(48% 0.1 80 / 0.12);
+  }
+
+  .parchment-card {
+    transition: border-color var(--duration-normal) var(--ease-out);
+  }
+
+  .parchment-card:hover {
+    border-color: var(--color-border-strong-on-parchment);
+  }
+
+  .text-on-parchment {
+    color: var(--color-text-on-parchment);
+  }
+
+  .text-muted-on-parchment {
+    color: var(--color-text-muted-on-parchment);
+  }
+
+  .column-rule {
+    border-left: 2px solid var(--color-accent);
+    padding-left: 1.5rem;
+  }
+
+  /* A card on the charcoal page: lighter fill and a visible edge. */
+  .panel {
+    background: var(--color-panel);
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+  }
+
+  .panel-raised {
+    background: var(--color-panel-raised);
+    border: 1px solid var(--color-border-strong);
+  }
+
+  .panel-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.5rem 1rem;
+    padding: 1.125rem 1.25rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .panel-title {
+    font-family: var(--font-ui);
+    font-size: var(--text-h4);
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--color-text);
+  }
+
+  .panel-body {
+    padding: 1.25rem;
+  }
+
+  .panel-foot {
+    padding: 1rem 1.25rem;
+    border-top: 1px solid var(--color-border);
+    background: oklch(0% 0 0 / 0.12);
+  }
+
+  /* A row inside a panel: label left, value right, chip and action optional. */
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem 1rem;
+    padding: 0.875rem 1.25rem;
+    font-family: var(--font-ui);
+    font-size: var(--text-ui);
+  }
+
+  .row + .row {
+    border-top: 1px solid var(--color-border);
+  }
+
+  .row-label {
+    min-width: 0;
+    overflow-wrap: anywhere;
+    color: var(--color-text);
+    font-weight: 500;
+  }
+
+  .row-meta {
+    margin-top: 0.125rem;
+    font-size: var(--text-small);
+    color: var(--color-text-muted);
+  }
+
+  .row-value {
+    color: var(--color-text);
+    font-weight: 500;
+    text-align: right;
+  }
+
+  /* Status chip. */
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    min-height: 1.5rem;
+    padding: 0.125rem 0.5rem;
+    font-family: var(--font-ui);
+    font-size: var(--text-caption);
+    font-weight: 600;
+    line-height: 1.2;
+    white-space: nowrap;
+    color: var(--color-text);
+    background: var(--color-panel-raised);
+    border: 1px solid var(--color-border-strong);
+  }
+
+  .chip-success {
+    color: oklch(82% 0.14 150);
+    background: oklch(82% 0.14 150 / 0.1);
+    border-color: transparent;
+  }
+
+  .chip-warning {
+    color: oklch(82% 0.12 90);
+    background: oklch(82% 0.12 90 / 0.1);
+    border-color: transparent;
+  }
+
+  .chip-danger {
+    color: oklch(80% 0.14 25);
+    background: oklch(80% 0.14 25 / 0.1);
+    border-color: transparent;
+  }
+
+  .chip-info {
+    color: oklch(82% 0.08 230);
+    background: oklch(82% 0.08 230 / 0.1);
+    border-color: transparent;
+  }
+
+  .chip-skool {
+    color: oklch(80% 0.1 165);
+    background: oklch(80% 0.1 165 / 0.1);
+    border-color: transparent;
+  }
+
+  .parchment-card .chip,
+  .on-parchment .chip {
+    color: var(--color-text-on-parchment);
+    background: var(--color-surface-raised);
+    border-color: var(--color-border-strong-on-parchment);
+  }
+
+  .parchment-card .chip-success,
+  .on-parchment .chip-success {
+    color: var(--color-success-ink);
+    background: oklch(44% 0.12 150 / 0.12);
+    border-color: transparent;
+  }
+
+  .parchment-card .chip-warning,
+  .on-parchment .chip-warning {
+    color: var(--color-warning-ink);
+    background: oklch(48% 0.1 80 / 0.14);
+    border-color: transparent;
+  }
+
+  .parchment-card .chip-danger,
+  .on-parchment .chip-danger {
+    color: var(--color-danger-ink);
+    background: oklch(48% 0.17 25 / 0.12);
+    border-color: transparent;
+  }
+
+  .parchment-card .chip-info,
+  .on-parchment .chip-info {
+    color: var(--color-info-ink);
+    background: oklch(46% 0.1 230 / 0.12);
+    border-color: transparent;
+  }
+
+  .parchment-card .chip-skool,
+  .on-parchment .chip-skool {
+    color: var(--color-skool-ink);
+    background: oklch(46% 0.08 165 / 0.12);
+    border-color: transparent;
+  }
+
+  /* Notices: a coloured bar on the left says what kind it is. */
+  .notice {
+    display: flex;
+    gap: 0.75rem;
+    padding: 0.875rem 1rem;
+    font-family: var(--font-ui);
+    font-size: var(--text-ui);
+    line-height: 1.5;
+    color: var(--color-text);
+    background: var(--color-panel);
+    border: 1px solid var(--color-border);
+    border-left: 4px solid var(--color-info);
+  }
+
+  .notice-success {
+    border-left-color: var(--color-success);
+    background: var(--color-success-subtle);
+  }
+
+  .notice-warning {
+    border-left-color: var(--color-warning);
+    background: var(--color-warning-subtle);
+  }
+
+  .notice-danger {
+    border-left-color: var(--color-danger);
+    background: var(--color-danger-subtle);
+  }
+
+  .parchment-card .notice,
+  .on-parchment .notice {
+    color: var(--color-text-on-parchment);
+    background: var(--color-surface-raised);
+    border-color: var(--color-border-on-parchment);
+  }
+
+  /* Stat tile: the number is the biggest thing, the label explains it. */
+  .stat {
+    font-family: var(--font-ui);
+  }
+
+  .stat-value {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 2rem;
+    line-height: 1.05;
+    color: var(--color-text);
+  }
+
+  .stat-label {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: var(--text-caption);
+    font-weight: 500;
+    color: var(--color-text-muted);
+  }
+
+  .parchment-card .stat-value,
+  .on-parchment .stat-value {
+    color: var(--color-text-on-parchment);
+  }
+
+  .parchment-card .stat-label,
+  .on-parchment .stat-label {
+    color: var(--color-text-muted-on-parchment);
+  }
+
+  /* Segmented control: equal-width options, the chosen one carries the gold
+     border and soft gold fill. Options are buttons (role=radio) or links. */
+  .segmented {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0, 1fr);
+    gap: 0.25rem;
+    width: 100%;
+    padding: 0.25rem;
+    font-family: var(--font-ui);
+    background: var(--color-panel);
+    border: 1px solid var(--color-border-strong);
+  }
+
+  .segmented > * {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 3rem;
+    padding: 0.375rem 0.5rem;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.2;
+    text-align: center;
+    color: var(--color-text-muted);
+    border: 1px solid transparent;
+    transition:
+      color var(--duration-fast) var(--ease-out),
+      border-color var(--duration-fast) var(--ease-out),
+      background-color var(--duration-fast) var(--ease-out);
+  }
+
+  .segmented > *:hover,
+  .segmented > [aria-current],
+  .segmented > [aria-checked="true"] {
+    color: var(--color-text);
+    border-color: var(--color-accent);
+    background: var(--color-accent-subtle);
+  }
+
+  /* Buttons. One primary per view; secondary is outlined; ghost is a link. */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 3rem;
+    padding: 0.625rem 1.5rem;
+    font-family: var(--font-ui);
+    font-size: var(--text-ui);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition:
+      color var(--duration-fast) var(--ease-out),
+      background-color var(--duration-fast) var(--ease-out),
+      border-color var(--duration-fast) var(--ease-out),
+      transform var(--duration-fast) var(--ease-out);
+  }
+
+  .btn:disabled,
+  .btn[aria-disabled="true"] {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+
+  .btn-primary {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-bg);
+  }
+
+  .btn-primary:hover:not(:disabled) {
+    background: var(--color-accent-hover);
+    border-color: var(--color-accent-hover);
+  }
+
+  .btn-skool {
+    background: var(--color-skool);
+    border-color: var(--color-skool);
+    color: var(--color-bg);
+  }
+
+  .btn-skool:hover:not(:disabled) {
+    filter: brightness(1.08);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    border-color: var(--color-border-strong);
+    color: var(--color-text);
+  }
+
+  .btn-secondary:hover:not(:disabled) {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  .btn-danger {
+    background: transparent;
+    border-color: var(--color-danger);
+    color: var(--color-danger);
+  }
+
+  .btn-danger:hover:not(:disabled) {
+    background: var(--color-danger-subtle);
+  }
+
+  .btn-ghost {
+    min-height: 2.5rem;
+    padding: 0.25rem 0.5rem;
+    background: transparent;
+    color: var(--color-accent);
+  }
+
+  .btn-ghost:hover:not(:disabled) {
+    color: var(--color-accent-hover);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  .btn > svg {
+    flex-shrink: 0;
+  }
+
+  .btn-sm {
+    min-height: 2.75rem;
+    padding: 0.375rem 1rem;
+    font-size: var(--text-small);
+  }
+
+  .btn-lg {
+    min-height: 3.5rem;
+    padding: 0.875rem 2rem;
+    font-size: 1.0625rem;
+  }
+
+  /* A button whose label can run long (a lesson title): wrap instead of overflowing. */
+  .btn-wrap {
+    white-space: normal;
+    text-align: center;
+    height: auto;
+  }
+
+  .btn-block {
+    display: flex;
+    width: 100%;
+  }
+
+  .parchment-card .btn-secondary,
+  .on-parchment .btn-secondary {
+    border-color: var(--color-border-strong-on-parchment);
+    color: var(--color-text-on-parchment);
+  }
+
+  .parchment-card .btn-secondary:hover:not(:disabled),
+  .on-parchment .btn-secondary:hover:not(:disabled) {
+    border-color: var(--color-coaching-ink);
+    color: var(--color-coaching-ink);
+  }
+
+  .parchment-card .btn-ghost,
+  .on-parchment .btn-ghost {
+    color: var(--color-coaching-ink);
+  }
+
+  .parchment-card .btn-ghost:hover:not(:disabled),
+  .on-parchment .btn-ghost:hover:not(:disabled) {
+    color: var(--color-text-on-parchment);
+  }
+
+  /* Form fields. */
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+  }
+
+  .field > label,
+  .field-label {
+    font-family: var(--font-ui);
+    font-size: var(--text-caption);
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .field-hint {
+    font-family: var(--font-ui);
+    font-size: var(--text-caption);
+    color: var(--color-text-muted);
+  }
+
+  .input {
+    width: 100%;
+    min-height: 3rem;
+    padding: 0.625rem 0.875rem;
+    font-family: var(--font-ui);
+    font-size: 1rem;
+    color: var(--color-text);
+    background: oklch(0% 0 0 / 0.18);
+    border: 1px solid var(--color-border-strong);
+    transition: border-color var(--duration-fast) var(--ease-out);
+  }
+
+  .input::placeholder {
+    color: var(--color-text-faint);
+  }
+
+  .input:focus {
+    border-color: var(--color-accent);
+  }
+
+  textarea.input {
+    min-height: 7rem;
+    line-height: 1.5;
+  }
+
+  select.input {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23b3ad9f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    padding-right: 2.5rem;
+  }
+
+  .parchment-card .input,
+  .on-parchment .input {
+    color: var(--color-text-on-parchment);
+    background: oklch(100% 0 0 / 0.6);
+    border-color: var(--color-border-strong-on-parchment);
+  }
+
+  .parchment-card .input::placeholder,
+  .on-parchment .input::placeholder {
+    color: var(--color-text-muted-on-parchment);
+  }
+
+  .parchment-card .input:focus,
+  .on-parchment .input:focus {
+    border-color: var(--color-coaching-ink);
+  }
+
+  .parchment-card .field > label,
+  .on-parchment .field > label,
+  .parchment-card .field-label,
+  .on-parchment .field-label {
+    color: var(--color-text-on-parchment);
+  }
+
+  .parchment-card .field-hint,
+  .on-parchment .field-hint {
+    color: var(--color-text-muted-on-parchment);
+  }
+
+  .checkbox {
+    width: 1.25rem;
+    height: 1.25rem;
+    flex-shrink: 0;
+    accent-color: var(--color-accent);
+  }
+
+  /* Page header: eyebrow, headline, one line of intro, the primary action. */
+  .page-header {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .page-header {
+      flex-direction: row;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+  }
+
+  .page-title {
+    margin-top: 0.75rem;
+    font-size: var(--text-h1);
+    line-height: 1.05;
+    color: var(--color-text);
+  }
+
+  .page-intro {
+    max-width: 40rem;
+    margin-top: 1rem;
+    font-size: var(--text-lead);
+    line-height: 1.55;
+    color: var(--color-text-muted);
+  }
+
+  /* Sticky in-page tabs for long signed-in pages. */
+  .subnav {
+    display: flex;
+    gap: 0.25rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+    font-family: var(--font-ui);
+    font-size: var(--text-small);
+    font-weight: 500;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .subnav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .subnav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    padding: 0 0.75rem;
+    color: var(--color-text-muted);
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    white-space: nowrap;
+  }
+
+  .subnav a:hover {
+    color: var(--color-text);
+  }
+
+  .subnav a[aria-current="true"],
+  .subnav a[aria-current="page"],
+  .subnav a[data-active="true"] {
+    color: var(--color-accent);
+    border-bottom-color: var(--color-accent);
+  }
+
+  /* Empty state inside a panel. */
+  .empty {
+    padding: 2rem 1.25rem;
+    text-align: center;
+    font-family: var(--font-ui);
+    font-size: var(--text-ui);
+    color: var(--color-text-muted);
+  }
+
+  .empty-title {
+    display: block;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  /* Progress bar. */
+  .meter {
+    height: 0.5rem;
+    width: 100%;
+    background: var(--color-border);
+    overflow: hidden;
+  }
+
+  .meter > span {
+    display: block;
+    height: 100%;
+    background: var(--color-accent);
+  }
+
+  .parchment-card .meter,
+  .on-parchment .meter {
+    background: var(--color-border-on-parchment);
+  }
+
+  .parchment-card .meter > span,
+  .on-parchment .meter > span {
+    background: var(--color-coaching-ink);
+  }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px var(--color-panel) inset;
+  -webkit-text-fill-color: var(--color-text);
+  caret-color: var(--color-text);
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.parchment-card input:-webkit-autofill,
+.on-parchment input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px var(--color-surface) inset;
+  -webkit-text-fill-color: var(--color-text-on-parchment);
+  caret-color: var(--color-text-on-parchment);
+}
+
+/* shadcn/base-ui component layer: everything on the dark surface so
+   Button, Dialog, Select and Card are readable on site pages. */
+:root {
+  --background: var(--color-bg);
+  --foreground: var(--color-text);
+  --card: var(--color-panel);
+  --card-foreground: var(--color-text);
+  --popover: var(--color-panel-raised);
+  --popover-foreground: var(--color-text);
+  --primary: var(--color-accent);
+  --primary-foreground: var(--color-bg);
+  --secondary: var(--color-panel-raised);
+  --secondary-foreground: var(--color-text);
+  --muted: var(--color-panel-raised);
+  --muted-foreground: var(--color-text-muted);
+  --accent: var(--color-accent-subtle);
+  --accent-foreground: var(--color-text);
+  --destructive: var(--color-danger);
+  --border: var(--color-border);
+  --input: var(--color-border-strong);
+  --ring: var(--color-accent);
+  --radius: 0px;
+  --sidebar: var(--color-panel);
+  --sidebar-foreground: var(--color-text);
+  --sidebar-primary: var(--color-accent);
+  --sidebar-primary-foreground: var(--color-bg);
+  --sidebar-accent: var(--color-panel-raised);
+  --sidebar-accent-foreground: var(--color-text);
+  --sidebar-border: var(--color-border);
+  --sidebar-ring: var(--color-accent);
+  --destructive-foreground: var(--color-danger);
+}
+
+.dark {
+  --destructive-foreground: var(--color-danger);
+}
+
+/* Lesson prose (components/learn/LessonMarkdown.tsx). */
+.lesson-prose .katex-display {
+  margin: 1.5rem 0;
+  overflow-x: auto;
+}
+
+.lesson-prose code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  background: var(--color-panel-raised);
+  padding: 0.15em 0.4em;
+}
+
+.lesson-prose hr {
+  margin: 2rem 0;
+  border: none;
+  height: 1px;
+  background: var(--color-border);
+}
+
+/* The coaching agreement on /coaching/sign (components/coaching/ContractSigner.tsx). */
+.contract-prose {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--color-text-on-parchment);
+}
+
+.contract-prose h1,
+.contract-prose h2,
+.contract-prose h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--color-text-on-parchment);
+}
+
+.contract-prose h1 {
+  font-size: var(--text-h2);
+  margin-bottom: 1rem;
+}
+
+.contract-prose h2 {
+  font-size: var(--text-h3);
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.contract-prose h3 {
+  font-size: var(--text-h4);
+  margin-top: 1.5rem;
+  margin-bottom: 0.375rem;
+}
+
+.contract-prose p,
+.contract-prose ul,
+.contract-prose ol {
+  margin-bottom: 0.875rem;
+}
+
+.contract-prose ul,
+.contract-prose ol {
+  padding-left: 1.5rem;
+}
+
+.contract-prose ul {
+  list-style: disc;
+}
+
+.contract-prose ol {
+  list-style: decimal;
+}
+
+.contract-prose li + li {
+  margin-top: 0.25rem;
+}
+
+.contract-prose strong {
+  font-weight: 700;
+}
+
+.contract-prose a {
+  color: var(--color-coaching-ink);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.contract-prose table {
+  width: 100%;
+  margin: 1rem 0;
+  border-collapse: collapse;
+  font-family: var(--font-ui);
+  font-size: var(--text-small);
+}
+
+.contract-prose th,
+.contract-prose td {
+  padding: 0.5rem 0.625rem;
+  border: 1px solid var(--color-border-on-parchment);
+  text-align: left;
+  vertical-align: top;
+}
+
+.contract-prose hr {
+  margin: 1.5rem 0;
+  border: none;
+  height: 1px;
+  background: var(--color-border-strong-on-parchment);
+}
+
+/* University lesson viewer (components/learn/PieceLayout.tsx). */
+.lesson-panel {
+  top: calc(var(--site-header-h) + 1.5rem);
+  max-height: calc(100dvh - var(--site-header-h) - 3rem);
+  mask-image: linear-gradient(to bottom, transparent, #000 1rem, #000 calc(100% - 1rem), transparent);
+}
+
+.lesson-bar {
+  top: var(--site-header-h);
+}
+
+/* Lesson viewer scroll areas scroll by wheel, trackpad, touch and keyboard,
+   with no visible scrollbar. */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.lesson-anchor {
+  scroll-margin-top: calc(var(--site-header-h) + 4rem);
+}
+
+@media (min-width: 1024px) {
+  .lesson-anchor {
+    scroll-margin-top: calc(var(--site-header-h) + 1.5rem);
+  }
+}
+
+.lesson-drawer[open] {
+  animation: drawer-in 0.24s var(--ease-out);
+}
+
+.lesson-drawer::backdrop {
+  background: rgb(0 0 0 / 0.45);
+}
+
+@keyframes drawer-in {
+  from {
+    opacity: 0;
+    transform: translateX(-16px);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lesson-drawer[open] {
+    animation: fade-in 0.12s linear;
+  }
+}

@@ -1,0 +1,8 @@
+node_modules
+.next
+.git
+*.md
+!content/learn/**/*.md
+DESIGN-QA.md
+.env*
+npm-debug.log*

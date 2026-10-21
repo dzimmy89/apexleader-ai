@@ -1,0 +1,8 @@
+Email,Rank,Fit Score,Package
+alice@example.com,1,92,Mastery
+bob@example.com,2,80,Foundations
+carol@example.com,3,99,Institutional
+dave@example.com,4,88,Mastery
+erin@example.com,5,70,Foundations
+lead-exists@example.com,10,40,Foundations
+member-exists@example.com,11,55,Mastery

@@ -1,0 +1,24 @@
+.DS_Store
+**/.DS_Store
+
+# Local testimonial export copies — not source of truth
+testimonials/**/*copy*
+testimonials/**/* copy*
+
+# Build-time commit SHA (written by the deploy workflow; never committed)
+BUILD_SHA
+
+# Secrets and keys
+.env
+.env.*
+*.pem
+*-service-account*.json
+**/service-account*.json
+GCP_SA_KEY*
+
+# Firebase emulator local logs
+firestore-debug.log
+firebase-debug.log
+ui-debug.log
+database-debug.log
+pubsub-debug.log
