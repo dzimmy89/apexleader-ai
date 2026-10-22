@@ -16,7 +16,8 @@ export const ADMIN_1TO1_PROMOTIONAL_IDENTIFICATION =
 export const ADMIN_1TO1_IDEMPOTENCY_COLLECTION = "crm_admin_1to1_idempotency";
 export const ADMIN_1TO1_SEND_SOURCE = "admin_1to1";
 export const ADMIN_1TO1_MIN_INTERVAL_MS = 24 * 60 * 60 * 1000;
-export const SENDER_DOMAIN = BRAND.domain;
+/** Sends must come from the coach's mailbox domain, which can differ from the site domain. */
+export const SENDER_DOMAIN = BRAND.email.slice(BRAND.email.lastIndexOf("@") + 1);
 
 export const ADMIN_1TO1_AD_KINDS = ["promotional", "personal"] as const;
 export type Admin1to1AdKind = (typeof ADMIN_1TO1_AD_KINDS)[number];

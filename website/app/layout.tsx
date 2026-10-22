@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     template: `%s | ${BRAND.name}`,
   },
   description:
-    `Private 1-on-1 coaching with ${BRAND.coachName} for business owners ${BRAND.subject}: a plan built around your business, weekly sessions, and a course library to work through between them.`,
+    "Learn to build and run a one-person business with an AI team: Claude, Claude Duet, OpenAI Dots, Grok Bot, Gemini, Cursor, Codex and GitHub, with full tracks on AI marketing, sales and accounting.",
   metadataBase: new URL(SITE_URL),
   icons: {
     icon: "/favicon.svg",

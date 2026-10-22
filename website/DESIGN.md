@@ -1,17 +1,16 @@
 ---
 colors:
-  bg: oklch(22% 0.015 85)
-  surface: oklch(95% 0.02 90)
-  accent: oklch(78% 0.12 90)
-  positive: oklch(62% 0.08 165)
-  coaching: oklch(62% 0.11 85)
-  positive_ink: oklch(46% 0.08 165)
-  coaching_ink: oklch(48% 0.1 80)
+  bg: oklch(17% 0.02 262)          # ink
+  surface: oklch(97% 0.012 85)     # paper
+  accent: oklch(71% 0.19 45)       # signal orange
+  track_marketing: oklch(76% 0.12 190)
+  track_sales: oklch(72% 0.14 295)
+  track_accounting: oklch(84% 0.16 125)
 fonts:
-  display: Instrument Serif
-  body: Libre Baskerville
-  ui: IBM Plex Sans
-  mono: Fira Code
+  display: Bricolage Grotesque
+  body: Instrument Sans
+  ui: Instrument Sans
+  mono: JetBrains Mono
 motion:
   ease: cubic-bezier(0.22, 1, 0.36, 1)
   tokens: lib/motion.ts
@@ -21,9 +20,20 @@ libraries:
   motion: motion/react
 ---
 
-# ApexLeader.ai — Design System
+# FromAItoBusiness — Design System
 
-**Direction:** Editorial Vault (Direction C — selected)
+**Direction:** Founder's Desk (October 2026 rebrand from ApexLeader.ai)
+
+One founder directing a crew of AI agents from a calm desk. The brand sells control, not magic: deep ink pages, warm paper for the one highlighted block per screen, and a single signal orange that always means "move forward". The live brand kit is at `/brand` (`app/(site)/brand/page.tsx`); the logo is `components/brand/Logo.tsx`.
+
+- **Signature component:** the agent card (`.agent-card`, `components/brand/AgentCard.tsx`): role, tool, live status, approval rule, with a track colour on its left edge.
+- **Tracks:** `.track-build` (signal), `.track-marketing` (teal), `.track-sales` (violet), `.track-accounting` (lime) set `--track` for cards and `.track-tag`.
+- **Motifs:** `.blueprint-grid` behind heroes, the → arrow in the wordmark and the journey path, `.mono-label` for system and agent labels.
+- **Shape:** pill buttons and chips, 10px panels, 16px agent cards.
+- **Vendor neutrality:** no vendor colours or logos; tool names as text only.
+- **Course data:** `content/course.ts` feeds the home page and `/course`.
+
+The sections below are from the earlier Editorial Vault system. Class names and the hierarchy rules still apply; the colours and fonts above replace theirs.
 
 ## Purpose
 Convert visitors to a free 30-minute **discovery call** on `/coaching/book`, and from there to a private coaching package.

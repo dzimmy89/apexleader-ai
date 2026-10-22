@@ -127,7 +127,7 @@ async function notifyClient(email: string, name: string, changeNote: string, fir
   const sent = await sendEmail({
     to: email,
     purpose: "transactional",
-    subject: first ? "Your ApexLeader.ai syllabus is ready" : "Your syllabus was updated",
+    subject: first ? "Your FromAItoBusiness syllabus is ready" : "Your syllabus was updated",
     text: `${hello}\n\n${lead}${changeNote ? `\n\n${changeNote}` : ""}\n\nSee it here: ${url}\n\nDavid`,
     html: `<p>${escapeHtml(hello)}</p><p>${escapeHtml(lead)}</p>${changeNote ? `<p>${escapeHtml(changeNote)}</p>` : ""}<p><a href="${escapeHtml(url)}">Open your syllabus</a></p><p>David</p>`,
     log: { source: "coaching_syllabus", flowType: "coaching_syllabus" },

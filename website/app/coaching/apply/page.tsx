@@ -10,7 +10,7 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "Apply for Inner Circle Coaching",
   description:
-    "Apply for ApexLeader.ai's Inner Circle: 24 weekly 1-on-1 sessions over six months with direct access to David.",
+    "Apply for FromAItoBusiness's Inner Circle: 24 weekly 1-on-1 sessions over six months with direct access to David.",
   robots: { index: true },
 };
 

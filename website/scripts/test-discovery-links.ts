@@ -11,7 +11,7 @@ const repoRoot = join(websiteRoot, "..");
 
 const ctx = {
   email: "a@b.com",
-  unsubscribeUrl: "https://apexleader.ai/api/unsubscribe?token=t",
+  unsubscribeUrl: "https://fromaitobusiness.com/api/unsubscribe?token=t",
 };
 
 function hrefsFromHtml(html: string): string[] {
@@ -66,11 +66,11 @@ describe("clean Discovery booking links", () => {
 
   it("uses the apex Discovery URL in coaching_final_discovery_nudge with no query tail", () => {
     const d16 = getTemplate("coaching_final_discovery_nudge", ctx);
-    assert.match(d16.html, /href="https:\/\/apexleader\.ai\/coaching\/book"/);
-    assert.doesNotMatch(d16.html, /www\.apexleader\.ai\/coaching\/book/);
+    assert.match(d16.html, /href="https:\/\/fromaitobusiness\.com\/coaching\/book"/);
+    assert.doesNotMatch(d16.html, /www\.fromaitobusiness\.com\/coaching\/book/);
     assert.doesNotMatch(d16.html, /discovery=/);
     assert.ok(d16.text);
-    assert.match(d16.text, /https:\/\/apexleader\.ai\/coaching\/book(?:\s|$)/);
+    assert.match(d16.text, /https:\/\/fromaitobusiness\.com\/coaching\/book(?:\s|$)/);
     assert.doesNotMatch(d16.text, /coaching\/book\?/);
   });
 

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { disclaimer, URLS } from "@/content/site";
 import { BRAND } from "@/lib/brand";
+import { Logo } from "@/components/brand/Logo";
 
 const linkClass =
   "font-[family-name:var(--font-ui)] text-[15px] text-[var(--color-text)] hover:text-[var(--color-accent)]";
@@ -11,8 +12,8 @@ export function SiteFooter() {
       <div className="mx-auto max-w-6xl px-6 py-14">
         <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
           <div>
-            <span className="font-[family-name:var(--font-display)] text-2xl text-[var(--color-text)]">
-              {BRAND.name}
+            <span className="text-2xl text-[var(--color-text)]">
+              <Logo markSize={34} />
             </span>
             <p className="mt-3 max-w-xs text-[var(--color-text-muted)]">
               {BRAND.tagline}.
@@ -23,13 +24,23 @@ export function SiteFooter() {
             <h3 className="section-eyebrow mb-4">Explore</h3>
             <ul className="space-y-3">
               <li>
-                <Link href="/coaching" className={linkClass}>
-                  Private coaching
+                <Link href="/course" className={linkClass}>
+                  The course
                 </Link>
               </li>
               <li>
                 <Link href="/university" className={linkClass}>
-                  Courses
+                  Lessons
+                </Link>
+              </li>
+              <li>
+                <Link href="/coaching" className={linkClass}>
+                  1-on-1 coaching
+                </Link>
+              </li>
+              <li>
+                <Link href="/brand" className={linkClass}>
+                  Brand kit
                 </Link>
               </li>
               <li>

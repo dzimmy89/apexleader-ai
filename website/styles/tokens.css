@@ -1,55 +1,60 @@
 :root {
-  /* Editorial Vault — warm charcoal + parchment (OKLCH).
-     Each colour has one job: charcoal is the page, panels are cards on it,
-     parchment is the one highlighted block per screen, gold is action and
-     emphasis, and lines are neutral so they never compete with gold. */
-  --color-bg: oklch(22% 0.015 85);
-  --color-panel: oklch(27% 0.018 85);
-  --color-panel-raised: oklch(31% 0.02 85);
-  --color-surface: oklch(95% 0.02 90);
-  --color-surface-raised: oklch(91% 0.025 88);
+  /* FromAItoBusiness "Founder's Desk" — deep ink + paper + signal orange (OKLCH).
+     Each colour has one job: ink is the page, panels are cards on it, paper
+     is the one highlighted block per screen, signal orange is action and
+     progress, and lines are neutral so they never compete with the signal. */
+  --color-bg: oklch(17% 0.02 262);
+  --color-panel: oklch(21.5% 0.024 262);
+  --color-panel-raised: oklch(25.5% 0.028 262);
+  --color-surface: oklch(97% 0.012 85);
+  --color-surface-raised: oklch(93.5% 0.016 85);
   --color-surface-dark: var(--color-panel);
 
-  /* Lines are warm white, not gold: structure without decoration. */
-  --color-border-muted: oklch(92% 0.015 90 / 0.08);
-  --color-border: oklch(92% 0.015 90 / 0.14);
-  --color-border-strong: oklch(92% 0.015 90 / 0.3);
-  --color-border-on-parchment: oklch(22% 0.02 85 / 0.16);
-  --color-border-strong-on-parchment: oklch(22% 0.02 85 / 0.38);
+  /* Lines are cool white, not orange: structure without decoration. */
+  --color-border-muted: oklch(92% 0.01 262 / 0.08);
+  --color-border: oklch(92% 0.01 262 / 0.14);
+  --color-border-strong: oklch(92% 0.01 262 / 0.3);
+  --color-border-on-parchment: oklch(20% 0.02 262 / 0.14);
+  --color-border-strong-on-parchment: oklch(20% 0.02 262 / 0.36);
 
-  --color-text: oklch(94% 0.012 90);
-  --color-text-muted: oklch(72% 0.02 88);
-  --color-text-faint: oklch(58% 0.02 88);
-  --color-text-on-parchment: oklch(22% 0.02 85);
-  --color-text-muted-on-parchment: oklch(44% 0.025 85);
+  --color-text: oklch(96.5% 0.008 85);
+  --color-text-muted: oklch(76% 0.02 262);
+  --color-text-faint: oklch(62% 0.02 262);
+  --color-text-on-parchment: oklch(20% 0.02 262);
+  --color-text-muted-on-parchment: oklch(44% 0.022 262);
 
-  --color-accent: oklch(78% 0.12 90);
-  --color-accent-hover: oklch(82% 0.13 92);
-  --color-accent-subtle: oklch(78% 0.12 90 / 0.14);
-  --color-accent-ink: oklch(48% 0.1 80);
-  --color-positive: oklch(62% 0.08 165);
-  --color-positive-subtle: oklch(62% 0.08 165 / 0.15);
-  --color-coaching: oklch(62% 0.11 85);
-  --color-coaching-subtle: oklch(62% 0.11 85 / 0.15);
-  /* Small text on parchment: the brand hues above fall under 4.5:1 there. */
-  --color-positive-ink: oklch(46% 0.08 165);
-  --color-coaching-ink: oklch(48% 0.1 80);
+  /* Signal orange: the one action colour. */
+  --color-accent: oklch(71% 0.19 45);
+  --color-accent-hover: oklch(76% 0.17 52);
+  --color-accent-subtle: oklch(71% 0.19 45 / 0.16);
+  --color-accent-ink: oklch(53% 0.18 40);
+  /* Track colours: marketing (teal), sales (violet), accounting (lime). */
+  --color-track-marketing: oklch(76% 0.12 190);
+  --color-track-sales: oklch(72% 0.14 295);
+  --color-track-accounting: oklch(84% 0.16 125);
+  --color-positive: oklch(76% 0.12 190);
+  --color-positive-subtle: oklch(76% 0.12 190 / 0.15);
+  --color-coaching: oklch(71% 0.19 45);
+  --color-coaching-subtle: oklch(71% 0.19 45 / 0.15);
+  /* Small text on paper: the brand hues above fall under 4.5:1 there. */
+  --color-positive-ink: oklch(46% 0.09 195);
+  --color-coaching-ink: oklch(53% 0.18 40);
 
-  /* Status colours: done, due, problem, info. The -ink pair is for parchment. */
-  --color-success: oklch(76% 0.14 150);
+  /* Status colours: done, due, problem, info. The -ink pair is for paper. */
+  --color-success: oklch(78% 0.15 150);
   --color-success-ink: oklch(44% 0.12 150);
-  --color-success-subtle: oklch(76% 0.14 150 / 0.14);
-  --color-warning: var(--color-accent);
-  --color-warning-ink: var(--color-coaching-ink);
-  --color-warning-subtle: var(--color-accent-subtle);
-  --color-danger: oklch(68% 0.17 25);
-  --color-danger-ink: oklch(48% 0.17 25);
-  --color-danger-subtle: oklch(68% 0.17 25 / 0.14);
-  --color-info: oklch(76% 0.08 230);
-  --color-info-ink: oklch(46% 0.1 230);
-  --color-info-subtle: oklch(76% 0.08 230 / 0.14);
+  --color-success-subtle: oklch(78% 0.15 150 / 0.14);
+  --color-warning: oklch(82% 0.15 80);
+  --color-warning-ink: oklch(50% 0.12 70);
+  --color-warning-subtle: oklch(82% 0.15 80 / 0.14);
+  --color-danger: oklch(68% 0.19 22);
+  --color-danger-ink: oklch(50% 0.19 22);
+  --color-danger-subtle: oklch(68% 0.19 22 / 0.14);
+  --color-info: oklch(76% 0.1 240);
+  --color-info-ink: oklch(46% 0.12 240);
+  --color-info-subtle: oklch(76% 0.1 240 / 0.14);
 
-  /* Type scale. Headlines stay Instrument Serif; UI text is IBM Plex Sans. */
+/* Type scale. Headlines are Bricolage Grotesque; everything else is Instrument Sans. */
   --text-display: clamp(2.75rem, 1.9rem + 3.6vw, 4.75rem);
   --text-h1: clamp(2.375rem, 1.8rem + 2.6vw, 3.75rem);
   --text-h2: clamp(1.875rem, 1.5rem + 1.6vw, 2.75rem);
@@ -70,11 +75,11 @@
   --space-section: clamp(3rem, 8vw, 6rem);
   --space-block: clamp(1.5rem, 4vw, 3rem);
 
-  /* Shape — sharp editorial */
+  /* Shape — soft, app-like corners */
   --radius-none: 0px;
-  --radius-sm: 0px;
-  --radius-md: 0px;
-  --radius-lg: 0px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
 
   /* Motion */
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);

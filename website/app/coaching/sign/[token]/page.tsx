@@ -3,7 +3,7 @@ import { ContractSigner } from "@/components/coaching/ContractSigner";
 
 export const metadata: Metadata = {
   title: "Sign your coaching agreement",
-  description: "Review and sign your ApexLeader.ai coaching agreement.",
+  description: "Review and sign your FromAItoBusiness coaching agreement.",
   robots: { index: false },
 };
 

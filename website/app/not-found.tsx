@@ -9,7 +9,7 @@ import { TrackedLink } from "@/components/TrackedLink";
 const PLACES = [
   { href: "/university", label: "Browse the courses" },
   { href: "/coaching", label: "Private coaching" },
-  { href: "/about", label: "About ApexLeader.ai" },
+  { href: "/about", label: "About FromAItoBusiness" },
 ];
 
 export default function NotFound() {

@@ -14,7 +14,7 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "Discovery Call Prep",
   description:
-    "What to prepare before your ApexLeader.ai discovery call.",
+    "What to prepare before your FromAItoBusiness discovery call.",
   robots: { index: false },
 };
 

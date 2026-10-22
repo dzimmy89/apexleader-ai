@@ -70,7 +70,7 @@ function SidebarBrand() {
       </span>
       <span>
         <span className="mc-brand-title">Mission Control</span>
-        <span className="mc-brand-sub">ApexLeader.ai CRM</span>
+        <span className="mc-brand-sub">FromAItoBusiness CRM</span>
       </span>
     </Link>
   );
@@ -154,7 +154,7 @@ export function AdminCrmShell({
               <Menu size={16} />
             </button>
           </div>
-          <p className="mc-header-title">ApexLeader.ai Mission Control</p>
+          <p className="mc-header-title">FromAItoBusiness Mission Control</p>
           <button
             type="button"
             className="mc-cmdk-trigger"

@@ -1,7 +1,7 @@
 import { adminFontVariables } from "@/lib/admin/mission-control-fonts";
 
 export const metadata = {
-  title: "ApexLeader.ai Mission Control",
+  title: "FromAItoBusiness Mission Control",
   robots: { index: false, follow: false },
 };
 

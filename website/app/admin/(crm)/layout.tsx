@@ -4,7 +4,7 @@ import { adminFontVariables } from "@/lib/admin/mission-control-fonts";
 import { getAdminSession } from "@/lib/auth/admin-session-cookie";
 
 export const metadata = {
-  title: "Admin — ApexLeader.ai",
+  title: "Admin — FromAItoBusiness",
   robots: { index: false, follow: false },
 };
 
