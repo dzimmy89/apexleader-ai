@@ -9,7 +9,7 @@ const fieldClass =
   "rounded border border-[var(--color-border-muted)] bg-[var(--color-bg-obsidian)] px-2 py-1 text-xs text-[var(--color-text-on-obsidian)]";
 
 /**
- * Fix the plan on a client's crypto payments. The server rebuilds the
+ * Fix the plan on a client's manual payments. The server rebuilds the
  * installment schedule from the payments already logged.
  */
 export function ChangePaymentPlanForm({
@@ -48,7 +48,7 @@ export function ChangePaymentPlanForm({
 
   return (
     <div className="flex flex-wrap items-center gap-2 text-xs text-[var(--color-text-muted)]">
-      <label htmlFor="change-plan">Crypto plan for {pkg.name}</label>
+      <label htmlFor="change-plan">Installment plan for {pkg.name}</label>
       <select id="change-plan" className={fieldClass} value={planId} onChange={(e) => setPlanId(e.target.value)}>
         {pkg.plans.map((p) => (
           <option key={p.id} value={p.id}>

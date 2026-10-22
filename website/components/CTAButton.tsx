@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { trackCoachingClick, trackInternalCta, trackSkoolSignup } from "@/lib/gtm";
+import { trackCoachingClick, trackInternalCta } from "@/lib/gtm";
 import { cn } from "@/lib/utils";
 
-type Variant = "skool" | "coaching" | "ghost";
+type Variant = "positive" | "coaching" | "ghost";
 type Surface = "dark" | "parchment";
 type Size = "sm" | "md" | "lg";
 
@@ -13,20 +13,17 @@ interface CTAButtonProps {
   surface?: Surface;
   size?: Size;
   /** Which event the click reports; defaults to the variant's event. */
-  track?: "skool" | "coaching" | "internal";
+  track?: "coaching" | "internal";
   href: string;
   children: React.ReactNode;
   className?: string;
   location?: string;
   external?: boolean;
   onClick?: () => void;
-  /** Paid Skool tier amount in USD. Omit on generic community CTAs. */
-  skoolValue?: number;
-  skoolPlanId?: string;
 }
 
 const variantClass: Record<Variant, string> = {
-  skool: "btn-skool",
+  positive: "btn-positive",
   coaching: "btn-primary",
   ghost: "btn-secondary",
 };
@@ -38,7 +35,7 @@ const sizeClass: Record<Size, string> = {
 };
 
 /**
- * The site's link button. `variant` is the look (gold primary, Skool green,
+ * The site's link button. `variant` is the look (gold primary, green,
  * or outlined). The analytics event follows the variant as it always has,
  * unless `track` names the event explicitly, so a button that changed look
  * keeps reporting under the same event.
@@ -54,14 +51,10 @@ export function CTAButton({
   location = "cta",
   external = false,
   onClick,
-  skoolValue,
-  skoolPlanId,
 }: CTAButtonProps) {
   const handleClick = () => {
-    const event = track ?? (variant === "skool" && external ? "skool" : variant === "coaching" ? "coaching" : "internal");
-    if (event === "skool") {
-      trackSkoolSignup(location, { value: skoolValue, planId: skoolPlanId });
-    } else if (event === "coaching") {
+    const event = track ?? (variant === "coaching" ? "coaching" : "internal");
+    if (event === "coaching") {
       trackCoachingClick(location);
     } else {
       trackInternalCta(location, href);

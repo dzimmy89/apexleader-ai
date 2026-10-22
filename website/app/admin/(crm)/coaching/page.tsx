@@ -324,13 +324,6 @@ export default function CoachingKanbanPage() {
             <Button
               variant="outline"
               size="sm"
-              render={<Link href="/admin/coaching/crypto-notices" />}
-            >
-              Crypto
-            </Button>
-            <Button
-              variant="outline"
-              size="sm"
               render={<Link href="/admin/coaching/clients" />}
             >
               <ExternalLink size={12} /> Clients
@@ -450,7 +443,7 @@ export default function CoachingKanbanPage() {
                               </p>
                             )}
                             {value > 0 && (
-                              <p className="mt-1 text-[10px] text-[var(--color-skool)]">
+                              <p className="mt-1 text-[10px] text-[var(--color-positive)]">
                                 ${value.toLocaleString()}
                               </p>
                             )}

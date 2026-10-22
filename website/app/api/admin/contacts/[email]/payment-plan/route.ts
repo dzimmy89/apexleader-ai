@@ -3,7 +3,7 @@ import { requireAdminCookie } from "@/lib/admin-auth";
 import { originMatchesSite } from "@/lib/auth/admin-login-request-guards";
 import { getDb } from "@/lib/firebase-admin";
 import { getPackage, paymentPlanAddsUp } from "@/lib/coaching/packages";
-import { rebuildCryptoSchedule } from "@/lib/coaching/payments";
+import { rebuildManualSchedule } from "@/lib/coaching/payments";
 import { logActivity } from "@/lib/crm/activity-log";
 import { isValidEmail } from "@/lib/html";
 
@@ -17,7 +17,7 @@ function json(body: unknown, status = 200) {
 }
 
 // POST /api/admin/contacts/:email/payment-plan  { packageId, planId }
-// Changes the plan on a client's crypto payments and rebuilds the schedule.
+// Changes the plan on a client's manual payments and rebuilds the schedule.
 export async function POST(
   request: NextRequest,
   { params }: { params: Promise<{ email: string }> }
@@ -53,7 +53,7 @@ export async function POST(
   const db = getDb();
   const client = await db.collection("client_records").doc(email).get();
   const name = String((client.data() || {}).name || "");
-  const result = await rebuildCryptoSchedule(db, {
+  const result = await rebuildManualSchedule(db, {
     email,
     name,
     packageId: pkg.id,

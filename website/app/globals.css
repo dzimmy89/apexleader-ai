@@ -27,8 +27,8 @@
   --color-accent-hover: var(--color-accent-hover);
   --color-accent-subtle: var(--color-accent-subtle);
   --color-accent-ink: var(--color-accent-ink);
-  --color-skool: var(--color-skool);
-  --color-skool-ink: var(--color-skool-ink);
+  --color-positive: var(--color-positive);
+  --color-positive-ink: var(--color-positive-ink);
   --color-coaching: var(--color-coaching);
   --color-coaching-ink: var(--color-coaching-ink);
   --color-success: var(--color-success);
@@ -538,7 +538,7 @@ html {
     border-color: transparent;
   }
 
-  .chip-skool {
+  .chip-positive {
     color: oklch(80% 0.1 165);
     background: oklch(80% 0.1 165 / 0.1);
     border-color: transparent;
@@ -579,9 +579,9 @@ html {
     border-color: transparent;
   }
 
-  .parchment-card .chip-skool,
-  .on-parchment .chip-skool {
-    color: var(--color-skool-ink);
+  .parchment-card .chip-positive,
+  .on-parchment .chip-positive {
+    color: var(--color-positive-ink);
     background: oklch(46% 0.08 165 / 0.12);
     border-color: transparent;
   }
@@ -735,13 +735,13 @@ html {
     border-color: var(--color-accent-hover);
   }
 
-  .btn-skool {
-    background: var(--color-skool);
-    border-color: var(--color-skool);
+  .btn-positive {
+    background: var(--color-positive);
+    border-color: var(--color-positive);
     color: var(--color-bg);
   }
 
-  .btn-skool:hover:not(:disabled) {
+  .btn-positive:hover:not(:disabled) {
     filter: brightness(1.08);
   }
 

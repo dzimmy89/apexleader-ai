@@ -1,27 +1,24 @@
-# DeFi University — Inner Circle Coaching Agreement
+# ApexLeader.ai — Inner Circle Coaching Agreement
 
-**Parties.** This Coaching Agreement ("Agreement") is entered into between DeFi University LLC ("Coach") and {{clientName}} ("Client"), with email {{clientEmail}}.
+**Parties.** This Coaching Agreement ("Agreement") is entered into between ApexLeader.ai ("Coach") and {{clientName}} ("Client"), with email {{clientEmail}}.
 
 **Effective date.** {{effectiveDate}}
 
-## 1. Scope of Educational Services
+## 1. Scope of Coaching Services
 
 Coach will provide the **Inner Circle** coaching package, which includes:
 
 - {{sessionCount}} weekly private 1-on-1 sessions of {{sessionLengthMins}} minutes each
 - Coaching duration: {{durationWeeks}} weeks (6 months)
 - Everything in Operator, plus:
-- Six months of DeFi University membership on Skool
-- Direct founder and lead-quant access
-- Custom protocol due-diligence on Client-submitted tokens
-- Token-gated HNWI mastermind access
-- Quarterly risk-framework review
-- Priority Runway access — extended Pro/Autopilot perks for study
-- Optional in-person annual mastermind
+- An AI roadmap for the business, reviewed each month
+- Help rolling AI out to Client's team, including team training sessions where agreed
+- Priority messages with Coach between sessions
+- Access to the course library for the coaching period
 
-## 2. Educational Only — Not Financial Advice
+## 2. Coaching Only — No Guaranteed Results
 
-DeFi University LLC provides educational content and training only. Coach does not provide financial advice, investment recommendations, or portfolio management services. All content is for informational and educational purposes. Digital asset education involves high risk. Past performance is not indicative of future results. Coach does not custody Client funds at any time.
+Coach provides coaching and educational content on using AI and building with AI in Client's business. Coach does not guarantee time saved, revenue or any other result. Client decides which tools and workflows to adopt and remains responsible for how the business uses them, including what data is put into third-party AI tools and compliance with those tools' terms. Coach is not Client's employee, IT provider or legal advisor.
 
 ## 3. Fees and Payment
 
@@ -31,15 +28,15 @@ Payment method: {{paymentPlanLabel}}.
 
 ## 4. Refund Policy
 
-All fees for the Inner Circle package are non-refundable upon signing. This reflects the weekly time reserved with the founder and the dedicated founder access it includes. Coach will make reasonable efforts to reschedule missed sessions subject to the scheduling terms below.
+Client may request a full refund within 14 days of the effective date, provided no sessions have been conducted. After the 14-day window or after the first session, all fees are non-refundable. For installment plans, refunds apply only to payments collected within the 14-day window.
 
 ## 5. Scheduling and Cancellation
 
-Sessions are scheduled through the client portal. Weekly cadence. Sessions require at least 24 hours notice to reschedule. Sessions cancelled with less than 24 hours notice may be forfeited at Coach's discretion.
+Sessions are scheduled through the client portal. Sessions require at least 24 hours notice to reschedule. Sessions cancelled with less than 24 hours notice may be forfeited at Coach's discretion.
 
 ## 6. Confidentiality and Intellectual Property
 
-Coach will keep Client's personal and financial information confidential. Client acknowledges that all course materials, frameworks, methodologies, and research bulletins are the intellectual property of DeFi University LLC and may not be redistributed.
+Coach will keep Client's business information confidential and will not put Client's confidential data into any AI tool without Client's permission. Workflows, prompts and documents built for Client's business belong to Client. The course materials, frameworks and methods Coach brings remain the intellectual property of ApexLeader.ai and may not be redistributed.
 
 ## 7. Dispute Resolution
 
@@ -47,4 +44,4 @@ Any disputes arising under this Agreement will be resolved through good-faith ne
 
 ## 8. Acknowledgment
 
-By signing below, Client acknowledges that they have read, understood, and agree to the terms of this Agreement, including the no-refund terms specific to the Inner Circle package.
+By signing below, Client acknowledges that they have read, understood, and agree to the terms of this Agreement.

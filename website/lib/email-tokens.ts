@@ -5,8 +5,8 @@ import { getSiteOrigin } from "@/lib/env";
 
 export const LEAD_CONFIRM_PURPOSE = "lead_confirm" as const;
 export const UNSUBSCRIBE_PURPOSE = "unsubscribe" as const;
-export const EMAIL_TOKEN_AUD = "du-email-tokens";
-export const EMAIL_TOKEN_ISS = "defiuniversity.xyz";
+export const EMAIL_TOKEN_AUD = "apex-email-tokens";
+export const EMAIL_TOKEN_ISS = "apexleader.ai";
 
 export type EmailTokenPurpose =
   | typeof LEAD_CONFIRM_PURPOSE
@@ -31,8 +31,8 @@ function getEmailTokenSecret(): Uint8Array {
     hkdfSync(
       "sha256",
       ikm,
-      "du-email-tokens-salt",
-      "du-email-token-key",
+      "apex-email-tokens-salt",
+      "apex-email-token-key",
       32
     )
   );

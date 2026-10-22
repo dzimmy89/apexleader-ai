@@ -17,7 +17,7 @@ interface PackageRow {
   cadence: string;
   features: string[];
   deliverables: string[];
-  targetCapital: string;
+  bestFor: string;
   badge?: string;
   sortIndex: number;
   active: boolean;
@@ -37,7 +37,7 @@ const EMPTY: PackageRow = {
   cadence: "",
   features: [],
   deliverables: [],
-  targetCapital: "",
+  bestFor: "",
   sortIndex: 0,
   active: true,
 };
@@ -200,12 +200,12 @@ export default function PackagesEditorPage() {
                     className="w-full border border-[var(--color-border-muted)] bg-[var(--color-bg-panel)] px-2 py-1 text-sm text-[var(--color-text)]"
                   />
                 </Field>
-                <Field label="Target capital">
+                <Field label="Best for">
                   <input
                     type="text"
-                    value={pkg.targetCapital}
+                    value={pkg.bestFor}
                     onChange={(e) =>
-                      update(pkg.id, { targetCapital: e.target.value })
+                      update(pkg.id, { bestFor: e.target.value })
                     }
                     className="w-full border border-[var(--color-border-muted)] bg-[var(--color-bg-panel)] px-2 py-1 text-sm text-[var(--color-text)]"
                   />

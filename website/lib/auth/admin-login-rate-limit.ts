@@ -17,7 +17,7 @@ import { ADMIN_TEAM_USERNAME } from "@/lib/auth/admin-team-password";
  *   bucket (one source contributes at most 5 username failures).
  * - Per-username hard lock: much higher ADMIN_LOGIN_USERNAME_MAX_FAILURES
  *   (40). That is 8 distinct IPs at the per-IP cap, so one client cannot
- *   lock `defi_u_team` for everyone. It remains a safety valve against a
+ *   lock `apex_team` for everyone. It remains a safety valve against a
  *   distributed bcrypt-CPU flood.
  *
  * Trade-offs: a botnet of ≥8 IPs can still lock the shared username for

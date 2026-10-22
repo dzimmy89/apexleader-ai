@@ -38,7 +38,7 @@ import { GET as getSyllabusRoute, POST as postSyllabus } from "../app/api/admin/
 import { GET as getQueue } from "../app/api/admin/coaching/syllabi/route";
 import { createMemoryFirestore, type MemoryFirestore } from "./fixtures/memory-firestore";
 
-const ORIGIN = "https://defiuniversity.xyz";
+const ORIGIN = "https://apexleader.ai";
 const CLIENT = "ada@example.com";
 
 let mem: MemoryFirestore;
@@ -54,7 +54,7 @@ beforeEach(() => {
   });
   process.env.JWT_SECRET = "test-syllabus-pipeline";
   process.env.NEXT_PUBLIC_SITE_URL = ORIGIN;
-  process.env.SENDER_EMAIL = "hello@defiuniversity.xyz";
+  process.env.SENDER_EMAIL = "hello@apexleader.ai";
 });
 
 afterEach(() => {
@@ -131,7 +131,7 @@ describe("coaching access period", () => {
 });
 
 describe("plan", () => {
-  const items = courseItems("money-basics");
+  const items = courseItems("ai-work-basics");
 
   it("lists each lesson with its exercise and the module quiz", () => {
     assert.ok(items.length > 3);
@@ -155,17 +155,17 @@ describe("plan", () => {
 
   it("drops items that are not in the library and keeps tasks", () => {
     const { plan, dropped } = sanitizePlan([
-      { goal: "Start", items: [{ kind: "lesson", courseId: "money-basics", slug: "nope" }, { kind: "task", title: "Open a wallet", minutes: 15 }, items[0]] },
+      { goal: "Start", items: [{ kind: "lesson", courseId: "ai-work-basics", slug: "nope" }, { kind: "task", title: "Start a shared prompt doc", minutes: 15 }, items[0]] },
     ]);
-    assert.deepEqual(dropped, ["lesson money-basics/nope"]);
+    assert.deepEqual(dropped, ["lesson ai-work-basics/nope"]);
     assert.equal(plan[0]!.items.length, 2);
     assert.match(plan[0]!.items[0]!.id, /^task:[0-9a-f]{12}$/);
   });
 
   it("tracks tasks, milestones and pace", () => {
     const plan: PlanWeek[] = [
-      { goal: "Week one", note: "", sessionPlan: "", paused: false, items: [items[0]!, task("task:a", "Open a wallet")] },
-      { goal: "", note: "", sessionPlan: "", paused: false, items: [items[1]!, milestone("milestone:m", "Wallet ready")] },
+      { goal: "Week one", note: "", sessionPlan: "", paused: false, items: [items[0]!, task("task:a", "Start a shared prompt doc")] },
+      { goal: "", note: "", sessionPlan: "", paused: false, items: [items[1]!, milestone("milestone:m", "Prompt library started")] },
       { goal: "", note: "", sessionPlan: "", paused: false, items: [items[2]!] },
     ];
     const inWeek3 = new Date("2026-11-17T12:00:00Z");
@@ -186,7 +186,7 @@ describe("plan", () => {
   });
 
   it("never loses finished work", () => {
-    const old = planFromCourses(["money-basics"], 2);
+    const old = planFromCourses(["ai-work-basics"], 2);
     const isDone = (i: PlanItem) => i.id === items[0]!.id;
     const kept = keepFinished(old, [{ goal: "", note: "", sessionPlan: "", paused: false, items: [] }], isDone);
     assert.ok(kept.flatMap((w) => w.items).some((i) => i.id === items[0]!.id));
@@ -198,13 +198,13 @@ describe("plan", () => {
   });
 
   it("applies suggested changes without touching the original", () => {
-    const old = planFromCourses(["money-basics"], 2);
+    const old = planFromCourses(["ai-work-basics"], 2);
     const next = applyOps(
       old,
       [
         { op: "skip", itemId: items[0]!.id },
         { op: "move", itemId: items[1]!.id, toWeek: old.length + 1 },
-        { op: "add", week: 1, item: { kind: "task", title: "Buy $20 of ETH on Coinbase", minutes: 20 } },
+        { op: "add", week: 1, item: { kind: "task", title: "Time this week's client emails", minutes: 20 } },
         { op: "setGoal", week: 1, goal: "Get set up" },
       ],
       () => false
@@ -214,11 +214,11 @@ describe("plan", () => {
     assert.equal(next.length, old.length + 1);
     assert.equal(next[0]!.goal, "Get set up");
     assert.ok(next[0]!.items.some((i) => i.kind === "task"));
-    assert.equal(toOp({ op: "add", week: 1, item: { kind: "lesson", courseId: "money-basics", slug: "nope" } }), null);
+    assert.equal(toOp({ op: "add", week: 1, item: { kind: "lesson", courseId: "ai-work-basics", slug: "nope" } }), null);
   });
 
   it("pauses and re-paces from a week on", () => {
-    const old = planFromCourses(["money-basics"], 2);
+    const old = planFromCourses(["ai-work-basics"], 2);
     const paused = pausePlan(old, 2, 2);
     assert.equal(paused.length, old.length + 2);
     assert.equal(paused[1]!.paused, true);
@@ -231,12 +231,12 @@ describe("plan", () => {
 
 describe("transcripts", () => {
   it("cleans WebVTT and keeps the timestamps", () => {
-    const vtt = "WEBVTT\n\n1\n00:00:01.000 --> 00:00:04.000\n<v David>Hi Ada\n\n2\n00:00:05.000 --> 00:00:09.000\n<v Ada>I want to earn yield on my USDC\n";
-    assert.equal(cleanTranscript(vtt), "00:00:01 Hi Ada\n00:00:05 I want to earn yield on my USDC");
+    const vtt = "WEBVTT\n\n1\n00:00:01.000 --> 00:00:04.000\n<v David>Hi Ada\n\n2\n00:00:05.000 --> 00:00:09.000\n<v Ada>I want to automate my client emails\n";
+    assert.equal(cleanTranscript(vtt), "00:00:01 Hi Ada\n00:00:05 I want to automate my client emails");
   });
 
   it("reads the text of a .docx", () => {
-    const xml = '<w:document><w:body><w:p><w:r><w:t>David: hi</w:t></w:r></w:p><w:p><w:r><w:t>Ada: yield &amp; safety</w:t></w:r></w:p></w:body></w:document>';
+    const xml = '<w:document><w:body><w:p><w:r><w:t>David: hi</w:t></w:r></w:p><w:p><w:r><w:t>Ada: time &amp; privacy</w:t></w:r></w:p></w:body></w:document>';
     const data = deflateRawSync(Buffer.from(xml));
     const name = Buffer.from("word/document.xml");
     const header = Buffer.alloc(30);
@@ -246,7 +246,7 @@ describe("transcripts", () => {
     header.writeUInt32LE(xml.length, 22);
     header.writeUInt16LE(name.length, 26);
     const docx = Buffer.concat([header, name, data]);
-    assert.equal(docxText(docx).trim(), "David: hi\nAda: yield & safety");
+    assert.equal(docxText(docx).trim(), "David: hi\nAda: time & privacy");
   });
 
   it("prefers the Transcript tab of a Gemini notes doc", () => {
@@ -279,10 +279,10 @@ describe("transcripts", () => {
   });
 
   it("keeps only real stages and courses in the form", () => {
-    const form = cleanForm({ goals: ["a", "b", "c", "d"], focusStageIds: ["yield", "nope"], knownCourseIds: ["money-basics", "nope"], targetDate: "soon" }, emptyForm("mastery"));
+    const form = cleanForm({ goals: ["a", "b", "c", "d"], focusStageIds: ["ai-builder", "nope"], knownCourseIds: ["ai-work-basics", "nope"], targetDate: "soon" }, emptyForm("mastery"));
     assert.equal(form.goals.length, 3);
-    assert.deepEqual(form.focusStageIds, ["yield"]);
-    assert.deepEqual(form.knownCourseIds, ["money-basics"]);
+    assert.deepEqual(form.focusStageIds, ["ai-builder"]);
+    assert.deepEqual(form.knownCourseIds, ["ai-work-basics"]);
     assert.equal(form.targetDate, "");
     assert.equal(form.timelineWeeks, 12);
   });
@@ -302,7 +302,7 @@ describe("intake and syllabus routes", () => {
     const first = await getIntakeRoute(await adminRequest(intakeUrl, undefined, "GET"), params(CLIENT));
     assert.equal((await first.json()).intake.form.timelineWeeks, 12, "Operator defaults to 12 weeks");
 
-    let r = await intake({ action: "paste", text: "00:01 Ada: I want to lend my USDC safely within three months." });
+    let r = await intake({ action: "paste", text: "00:01 Ada: I want to stop spending Mondays writing client update emails within three months." });
     assert.equal(r.status, 200);
     assert.equal(r.json.intake.status, "draft");
 
@@ -310,30 +310,33 @@ describe("intake and syllabus routes", () => {
     setAiForTests(async <T>(opts: { prompt: string }) => {
       aiPrompt = opts.prompt;
       return {
-        goals: ["Lend USDC safely"],
-        targetOutcome: "Earn yield on stablecoins",
+        goals: ["Automate client update emails"],
+        targetOutcome: "Client updates drafted by AI and reviewed in 15 minutes",
         targetDate: "2027-01-31",
         timelineWeeks: 12,
         hoursPerWeek: 2,
         level: "beginner",
-        tools: "Coinbase",
-        risk: "low",
-        focusStageIds: ["yield"],
-        knownCourseIds: ["money-basics"],
-        concerns: "Hacks",
+        business: "Five-person bookkeeping firm; weekly client updates take most of Monday",
+        tools: "Google Workspace, QuickBooks",
+        technical: "low",
+        focusStageIds: ["ai-builder"],
+        knownCourseIds: ["ai-work-basics"],
+        concerns: "Client data privacy",
         learningStyle: "",
         coachNotes: "",
-        goalsSummary: "You want to earn yield on your USDC without taking big risks.",
-        evidence: [{ field: "goals", quote: "I want to lend my USDC safely", at: "00:01" }],
+        goalsSummary: "You want your weekly client updates drafted by AI so Mondays are free again.",
+        evidence: [{ field: "goals", quote: "I want to stop spending Mondays writing client update emails", at: "00:01" }],
         missing: ["learningStyle"],
       } as T;
     });
     r = await intake({ action: "fill" });
     assert.equal(r.status, 200, JSON.stringify(r.json));
-    assert.match(aiPrompt, /lend my USDC/);
+    assert.match(aiPrompt, /client update emails/);
     assert.match(aiPrompt, /Operator|mastery/i);
-    assert.deepEqual(r.json.intake.form.goals, ["Lend USDC safely"]);
-    assert.equal(r.json.intake.evidence[0].quote, "I want to lend my USDC safely");
+    assert.deepEqual(r.json.intake.form.goals, ["Automate client update emails"]);
+    assert.equal(r.json.intake.form.technical, "low");
+    assert.match(r.json.intake.form.business, /bookkeeping/);
+    assert.equal(r.json.intake.evidence[0].quote, "I want to stop spending Mondays writing client update emails");
     assert.deepEqual(r.json.intake.missing, ["learningStyle"]);
 
     r = await syllabus({ action: "draft" });
@@ -342,31 +345,31 @@ describe("intake and syllabus routes", () => {
     r = await intake({ action: "confirm" });
     assert.equal(r.json.intake.status, "confirmed");
 
-    const items = courseItems("money-markets");
+    const items = courseItems("automate-a-workflow");
     setAiForTests(async <T>() =>
       ({
-        summary: "Lending first, then yield.",
+        summary: "Pick the workflow first, then map it.",
         weeks: [
           {
-            goal: "Understand lending",
+            goal: "Pick your first workflow",
             note: "",
-            sessionPlan: "Walk through Aave",
+            sessionPlan: "Score the three workflows together",
             items: [
-              { kind: items[0]!.kind, courseId: "money-markets", slug: items[0]!.slug, title: "", detail: "", minutes: 0 },
-              { kind: "lesson", courseId: "money-markets", slug: "made-up", title: "", detail: "", minutes: 0 },
-              { kind: "task", courseId: "", slug: "", title: "Supply $20 of USDC on Aave", detail: "On Base", minutes: 30 },
+              { kind: items[0]!.kind, courseId: "automate-a-workflow", slug: items[0]!.slug, title: "", detail: "", minutes: 0 },
+              { kind: "lesson", courseId: "automate-a-workflow", slug: "made-up", title: "", detail: "", minutes: 0 },
+              { kind: "task", courseId: "", slug: "", title: "Time last week's client updates", detail: "Write down the minutes per client", minutes: 30 },
             ],
           },
-          { goal: "First milestone", note: "", sessionPlan: "", items: [{ kind: "milestone", courseId: "", slug: "", title: "You can lend on your own", detail: "", minutes: 0 }] },
+          { goal: "First milestone", note: "", sessionPlan: "", items: [{ kind: "milestone", courseId: "", slug: "", title: "First workflow chosen", detail: "", minutes: 0 }] },
         ],
-        reasons: [{ courseId: "money-markets", reason: "Lending is the goal" }],
+        reasons: [{ courseId: "automate-a-workflow", reason: "Automating updates is the goal" }],
       }) as T
     );
     r = await syllabus({ action: "draft", startDate: "2026-11-02" });
     assert.equal(r.status, 200, JSON.stringify(r.json));
     assert.equal(r.json.syllabus.source, "ai");
-    assert.deepEqual(r.json.dropped, ["lesson money-markets/made-up"]);
-    assert.equal(r.json.syllabus.note, "You want to earn yield on your USDC without taking big risks.");
+    assert.deepEqual(r.json.dropped, ["lesson automate-a-workflow/made-up"]);
+    assert.equal(r.json.syllabus.note, "You want your weekly client updates drafted by AI so Mondays are free again.");
     const taskId = r.json.syllabus.plan[0].items.find((i: PlanItem) => i.kind === "task").id;
     assert.equal(await getClientSyllabus(CLIENT), null, "nothing is shown before publishing");
 
@@ -380,7 +383,7 @@ describe("intake and syllabus routes", () => {
     const plan = r.json.syllabus.plan as PlanWeek[];
     r = await syllabus({ action: "savePlan", plan: [{ ...plan[0]!, goal: "Changed" }, ...plan.slice(1)] });
     assert.equal(r.json.syllabus.unpublishedChanges, true);
-    assert.equal((await getClientSyllabus(CLIENT))!.plan![0]!.goal, "Understand lending");
+    assert.equal((await getClientSyllabus(CLIENT))!.plan![0]!.goal, "Pick your first workflow");
 
     r = await syllabus({ action: "toggleTask", itemId: taskId, done: true });
     assert.ok(r.json.syllabus.tasksDone[taskId]);
@@ -389,26 +392,26 @@ describe("intake and syllabus routes", () => {
 
     setAiForTests(async <T>() =>
       ({
-        summary: "Add a week on safety.",
+        summary: "Add a week on data privacy.",
         changes: [
           { op: "addWeeks", reason: "More time", itemId: "", week: 0, toWeek: 0, goal: "", count: 1, item: { kind: "task", courseId: "", slug: "", title: "", detail: "", minutes: 0 } },
           { op: "remove", reason: "Unknown", itemId: "lesson:nope/nope", week: 0, toWeek: 0, goal: "", count: 0, item: { kind: "task", courseId: "", slug: "", title: "", detail: "", minutes: 0 } },
         ],
       }) as T
     );
-    r = await syllabus({ action: "suggest", instruction: "She is worried about hacks" });
+    r = await syllabus({ action: "suggest", instruction: "She is worried about client data privacy" });
     assert.equal(r.status, 200, JSON.stringify(r.json));
     assert.equal(r.json.suggestions.length, 1, "changes that do nothing are dropped");
     r = await syllabus({ action: "applyOps", ops: r.json.suggestions.map((s: { op: unknown }) => s.op) });
     assert.equal(r.json.syllabus.plan.length, plan.length + 1);
 
-    r = await syllabus({ action: "publish", changeNote: "Added a week on safety", emailClient: false });
+    r = await syllabus({ action: "publish", changeNote: "Added a week on data privacy", emailClient: false });
     assert.equal(r.json.syllabus.version, 2);
     assert.equal(r.json.versions.length, 2);
     assert.equal(sent.length, 1, "no email when unticked");
     const client = await getClientSyllabus(CLIENT);
     assert.equal(client!.plan![0]!.goal, "Changed");
-    assert.equal(client!.changeNote, "Added a week on safety");
+    assert.equal(client!.changeNote, "Added a week on data privacy");
 
     const queue = await getQueue(await adminRequest(`${ORIGIN}/api/admin/coaching/syllabi`, undefined, "GET"));
     const row = (await queue.json()).clients.find((c: { email: string }) => c.email === CLIENT);
@@ -416,13 +419,13 @@ describe("intake and syllabus routes", () => {
   });
 
   it("plans by rules from the confirmed intake when Gemini is not set up", async () => {
-    await intake({ action: "save", form: { ...emptyForm("mastery"), goals: ["Trade perps"], level: "advanced", focusStageIds: ["trading"], knownCourseIds: ["defi-portfolio"] } });
+    await intake({ action: "save", form: { ...emptyForm("mastery"), goals: ["Automate client emails"], level: "new", focusStageIds: ["ai-builder"], knownCourseIds: ["ai-work-basics"] } });
     await intake({ action: "confirm" });
     const r = await syllabus({ action: "plan", startDate: "2026-11-02" });
     assert.equal(r.status, 200, JSON.stringify(r.json));
     assert.equal(r.json.ai, aiConfigured());
     assert.equal(r.json.syllabus.source, "rules");
-    assert.ok(!r.json.syllabus.courseIds.includes("defi-portfolio"), "known courses are left out");
+    assert.ok(!r.json.syllabus.courseIds.includes("ai-work-basics"), "known courses are left out");
     assert.ok(r.json.syllabus.plan.length > 0);
 
     const view = await getSyllabusRoute(await adminRequest(syllabusUrl, undefined, "GET"), params(CLIENT));
@@ -433,9 +436,9 @@ describe("intake and syllabus routes", () => {
 
   it("says how to turn Gemini on in Google Cloud when Vertex refuses", () => {
     const saved = process.env.GCP_PROJECT_ID;
-    process.env.GCP_PROJECT_ID = "defi-university-prod";
+    process.env.GCP_PROJECT_ID = "apexleader-prod";
     const message = vertexSetupError({ status: 404 })!.message;
-    assert.match(message, /defi-university-prod/);
+    assert.match(message, /apexleader-prod/);
     assert.match(message, /Vertex AI User/);
     assert.match(vertexSetupError(Object.assign(new Error("Permission 'aiplatform.endpoints.predict' denied"), { status: 403 }))!.message, /Google said: Permission/);
     assert.equal(vertexSetupError({ status: 500 }), null);

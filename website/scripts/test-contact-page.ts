@@ -24,7 +24,7 @@ import { GET as getContact } from "../app/api/admin/contacts/[email]/route";
 import { createMemoryFirestore, rows, type MemoryFirestore } from "./fixtures/memory-firestore";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
-const ORIGIN = "https://defiuniversity.xyz";
+const ORIGIN = "https://apexleader.ai";
 
 let mem: MemoryFirestore;
 let sent: SendEmailOptions[] = [];
@@ -39,7 +39,7 @@ beforeEach(() => {
   });
   process.env.JWT_SECRET = "test-contact-page";
   process.env.NEXT_PUBLIC_SITE_URL = ORIGIN;
-  process.env.SENDER_EMAIL = "hello@defiuniversity.xyz";
+  process.env.SENDER_EMAIL = "hello@apexleader.ai";
 });
 
 afterEach(() => {
@@ -110,7 +110,7 @@ describe("contact page 1:1 send (any known contact)", () => {
     const payload = (await res.json()) as { text: string; pipelineStatus: unknown };
     assert.equal(payload.pipelineStatus, null);
     assert.ok(payload.text.includes(ADMIN_1TO1_FOOTER_TEXT));
-    assert.match(payload.text, /Unsubscribe: https:\/\/defiuniversity\.xyz\//);
+    assert.match(payload.text, /Unsubscribe: https:\/\/apexleader\.ai\//);
     assert.equal(sent.length, 1);
     assert.equal(sent[0]?.purpose, "marketing");
     assert.equal(sent[0]?.log.source, "admin_1to1");
@@ -140,8 +140,8 @@ describe("contact page 1:1 send (any known contact)", () => {
     assert.equal(lead.status, 403);
     assert.equal(((await lead.json()) as { error: string }).error, "opted_out");
 
-    await seedClient("ops@defiuniversity.com");
-    const internal = await contactSend("ops@defiuniversity.com", sendBody({ idempotencyKey: "k-int" }));
+    await seedClient("ops@apexleader.com");
+    const internal = await contactSend("ops@apexleader.com", sendBody({ idempotencyKey: "k-int" }));
     assert.equal(((await internal.json()) as { error: string }).error, "internal");
 
     await mem.collection(CRM_CONTACTS_COLLECTION).doc("dnc@example.com").set({
@@ -212,9 +212,9 @@ describe("contact detail", () => {
       createdAt: "2026-09-01T00:00:00.000Z",
       updatedAt: "2026-09-15T00:00:00.000Z",
     });
-    await mem.collection("client_payments").doc("crypto_evm_x").set({
+    await mem.collection("client_payments").doc("manual_x").set({
       email: "ada@example.com",
-      method: "crypto",
+      method: "manual",
       amount: 83400,
       currency: "usd",
       paidAt: "2026-09-15T16:00:00.000Z",
@@ -232,7 +232,7 @@ describe("contact detail", () => {
         perPayment: 83400,
         startDate: "2026-09-15",
       }),
-      { paidAt: "2026-09-15T16:00:00.000Z", paymentId: "crypto_evm_x" }
+      { paidAt: "2026-09-15T16:00:00.000Z", paymentId: "manual_x" }
     ).schedule;
     await mem.collection("payment_schedules").doc("ada@example.com__mastery").set(
       schedule as unknown as Record<string, unknown>
@@ -295,7 +295,7 @@ describe("contact page UI contract", () => {
         dueDate: "2026-10-15",
         installmentNumber: 2,
         installments: 3,
-        payUrl: "https://defiuniversity.xyz/coaching/pay",
+        payUrl: "https://apexleader.ai/coaching/pay",
       });
       assert.equal(`${t.subject}${t.body}`.includes("—"), false, id);
       assert.equal(/^\s*(re|fwd|fw)\s*:/i.test(t.subject), false, id);
@@ -308,10 +308,10 @@ describe("contact page UI contract", () => {
       dueDate: "2026-10-15",
       installmentNumber: 2,
       installments: 3,
-      payUrl: "https://defiuniversity.xyz/coaching/pay",
+      payUrl: "https://apexleader.ai/coaching/pay",
     });
     assert.match(reminder.body, /Payment 2 of 3 for Operator \(\$834\) is due on October 15, 2026\./);
-    assert.match(reminder.body, /https:\/\/defiuniversity\.xyz\/coaching\/pay/);
+    assert.match(reminder.body, /https:\/\/apexleader\.ai\/coaching\/pay/);
   });
 
   it("renders Intake, Syllabus and Recordings through ContactClientArea", () => {

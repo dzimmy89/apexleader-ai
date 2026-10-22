@@ -33,13 +33,13 @@ function unsubscribePageHtml(token: string, email: string | null): string {
   }`;
   return `<!DOCTYPE html>
 <html>
-<head><meta charset="utf-8" /><title>Unsubscribe — DeFi University</title></head>
+<head><meta charset="utf-8" /><title>Unsubscribe — ApexLeader.ai</title></head>
 <body style="font-family:Georgia,serif;background:#0f0f0f;color:#e8e4dc;padding:40px;max-width:560px;margin:0 auto;">
   <h1>Unsubscribe</h1>
-  <p>Unsubscribe from all DeFi University marketing email.</p>
+  <p>Unsubscribe from all ApexLeader.ai marketing email.</p>
   <form method="POST" action="${action}">
     <button type="submit" style="margin-top:16px;padding:12px 20px;background:#c9a227;color:#0f0f0f;border:0;font-weight:bold;cursor:pointer;">
-      Unsubscribe from all DeFi University marketing email
+      Unsubscribe from all ApexLeader.ai marketing email
     </button>
   </form>
 </body>
@@ -49,10 +49,10 @@ function unsubscribePageHtml(token: string, email: string | null): string {
 function doneHtml(): string {
   return `<!DOCTYPE html>
 <html>
-<head><meta charset="utf-8" /><title>Unsubscribed — DeFi University</title></head>
+<head><meta charset="utf-8" /><title>Unsubscribed — ApexLeader.ai</title></head>
 <body style="font-family:Georgia,serif;background:#0f0f0f;color:#e8e4dc;padding:40px;">
   <h1>Unsubscribed</h1>
-  <p>You will no longer receive marketing emails from DeFi University.</p>
+  <p>You will no longer receive marketing emails from ApexLeader.ai.</p>
 </body>
 </html>`;
 }

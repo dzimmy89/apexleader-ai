@@ -1,6 +1,5 @@
 import { getDb } from "@/lib/firebase-admin";
 import { getAccess, grantIsLive } from "@/lib/account/access";
-import { getSkoolRecord, skoolLabel } from "@/lib/account/skool-access";
 import { getActivityLog } from "@/lib/crm/activity-log";
 import { getCrmContactByEmail, crmContactFlagsSuppressSends } from "@/lib/crm/contacts";
 import { isExcludedCrmEmail } from "@/lib/crm/excluded-accounts";
@@ -89,8 +88,6 @@ export interface ContactDetail {
     hasCourseAccess: boolean;
     membershipExpiresAt: string | null;
   };
-  /** Coaching Skool seat, e.g. "In Skool until Jan 20, 2027". Null when not tracked. */
-  skool: string | null;
   emailable: boolean;
   emailBlockReason: string | null;
   hasCrmContact: boolean;
@@ -128,7 +125,7 @@ export async function getContactDetail(rawEmail: string): Promise<ContactDetail 
   ]);
   if (!crm && !isKnownContact(sources)) return null;
 
-  const [clientSnap, memberSnap, leadSnap, appsSnap, flowsSnap, logsSnap, activityLog, payments, access, suppressed, skoolSeat] =
+  const [clientSnap, memberSnap, leadSnap, appsSnap, flowsSnap, logsSnap, activityLog, payments, access, suppressed] =
     await Promise.all([
       db.collection("client_records").doc(email).get(),
       db.collection("members").doc(email).get(),
@@ -140,7 +137,6 @@ export async function getContactDetail(rawEmail: string): Promise<ContactDetail 
       listClientPayments(db, email),
       getAccess(email),
       isSuppressed(email),
-      getSkoolRecord(email).catch(() => null),
     ]);
 
   const client = clientSnap.exists ? ((clientSnap.data() || {}) as Record<string, unknown>) : null;
@@ -294,7 +290,6 @@ export async function getContactDetail(rawEmail: string): Promise<ContactDetail 
       hasCourseAccess: access.hasCourseAccess,
       membershipExpiresAt: access.hasMembership ? membershipExpiresAt : null,
     },
-    skool: skoolSeat ? skoolLabel(skoolSeat) : null,
     emailable: emailBlockReason === null,
     emailBlockReason,
     hasCrmContact: Boolean(crm),

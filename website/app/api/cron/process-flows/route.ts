@@ -13,7 +13,6 @@ import {
 import { getTemplate } from "@/lib/email-templates";
 import { sendEmail } from "@/lib/gmail";
 import { getDb } from "@/lib/firebase-admin";
-import { processLegacyQueue } from "@/lib/crm/legacy-queue";
 import type { LeadRecord } from "@/lib/crm/lead-lifecycle";
 import { marketingSendBlockReason } from "@/lib/marketing-sends";
 import { unsubscribeUrlFor } from "@/lib/email-tokens";
@@ -31,14 +30,6 @@ export async function GET(request: NextRequest) {
 
   const dryRun = isCronDryRun(request);
   const blocked = marketingSendBlockReason();
-  let legacy = 0;
-  if (!dryRun) {
-    try {
-      legacy = await processLegacyQueue(10);
-    } catch (e) {
-      console.error("[process-flows] legacy queue", e);
-    }
-  }
 
   const pending = await getPendingEmails();
   const db = getDb();
@@ -80,7 +71,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json(result);
   }
 
-  // Owner-only morning digest of crypto payments due. At most once per day.
+  // Owner-only morning digest of manual payments due. At most once per day.
   let paymentDigest: string = "error";
   try {
     paymentDigest = (await maybeSendPaymentDigest()).status;
@@ -104,7 +95,6 @@ export async function GET(request: NextRequest) {
     ok: true,
     calendarSync,
     marketingBlocked: result.marketingBlocked,
-    legacyProcessed: legacy,
     pending: result.pending,
     sent: result.sent,
     skipped: result.skipped,

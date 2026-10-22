@@ -1,7 +1,7 @@
 import { CTAButton } from "./CTAButton";
 import { HeroTitle } from "./HeroTitle";
 
-type Variant = "home" | "skool" | "coaching";
+type Variant = "home" | "positive" | "coaching";
 
 interface HeroProps {
   variant?: Variant;
@@ -9,7 +9,7 @@ interface HeroProps {
   title: string;
   subtitle: string;
   /** `location` overrides the default `hero_<variant>` analytics location. */
-  primaryCta?: { label: string; href: string; variant: "skool" | "coaching"; location?: string };
+  primaryCta?: { label: string; href: string; variant: "positive" | "coaching"; location?: string };
   /** `location` overrides the default `hero_secondary_<variant>` analytics location. */
   secondaryCta?: { label: string; href: string; location?: string };
 }

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { trackCoachingClick, trackSkoolSignup, trackStickyCta } from "@/lib/gtm";
+import { trackCoachingClick, trackStickyCta } from "@/lib/gtm";
 import { cn } from "@/lib/utils";
 
 /**
@@ -26,18 +26,14 @@ export function StickyCta({
   variant,
   external = false,
   note,
-  skoolValue,
-  skoolPlanId,
 }: {
   page: string;
   location: string;
   label: string;
   href: string;
-  variant: "skool" | "coaching";
+  variant: "positive" | "coaching";
   external?: boolean;
   note?: string;
-  skoolValue?: number;
-  skoolPlanId?: string;
 }) {
   const [visible, setVisible] = useState(false);
 
@@ -62,15 +58,12 @@ export function StickyCta({
 
   const onClick = () => {
     trackStickyCta(page, href);
-    if (variant === "skool" && external) {
-      trackSkoolSignup(location, { value: skoolValue, planId: skoolPlanId });
-    }
     if (variant === "coaching") trackCoachingClick(location);
   };
 
   const className = cn(
     "btn shrink-0",
-    variant === "skool" ? "btn-skool" : "btn-primary",
+    variant === "positive" ? "btn-positive" : "btn-primary",
     !note && "flex-1"
   );
 

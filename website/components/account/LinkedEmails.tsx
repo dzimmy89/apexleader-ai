@@ -66,7 +66,7 @@ export function LinkedEmails({ primary, linked }: { primary: string; linked: str
         ))}
       </div>
       <p className="text-[15px] text-[var(--color-text-muted)]">
-        Joined Skool or paid for coaching with a different email? Add it here and everything shows on this account.
+        Paid for coaching with a different email? Add it here and everything shows on this account.
         Signing in with any of these emails opens the same account.
       </p>
       <form onSubmit={(e) => void add(e)} className="flex flex-col gap-3 sm:flex-row sm:items-end">

@@ -171,7 +171,7 @@ describe("manual-only sales list guard", () => {
       subject: "broadcast",
       html: "<p>hi</p>",
       text: "hi",
-      unsubscribeUrl: "https://defiuniversity.xyz/api/unsubscribe?token=t",
+      unsubscribeUrl: "https://apexleader.ai/api/unsubscribe?token=t",
       purpose: "marketing",
       log: { source: "broadcast:test" },
     });
@@ -222,7 +222,7 @@ describe("manual-only sales list guard", () => {
       const result = await captureLead({
         email: MANUAL,
         source: "checklist_lp",
-        leadMagnet: "du_safety_checklist",
+        leadMagnet: "coaching_qualifier",
       });
       assert.equal(result.ok, true);
       assert.equal(result.emailSent, true);
@@ -244,10 +244,10 @@ describe("manual-only sales list guard", () => {
   it("triggerFlow/enrollFlow refuse to create a flow", async () => {
     const mem = createMemoryFirestore();
     await seedManual(mem);
-    const enrolled = await enrollFlow("du_welcome", `lead:${encodeURIComponent(MANUAL)}`, MANUAL);
+    const enrolled = await enrollFlow("coaching_nurture", `lead:${encodeURIComponent(MANUAL)}`, MANUAL);
     assert.equal(enrolled.created, false);
     assert.equal(enrolled.blocked, "manual_only_contact");
-    const id = await triggerFlow("du_welcome", `lead:${encodeURIComponent(MANUAL)}`, MANUAL);
+    const id = await triggerFlow("coaching_nurture", `lead:${encodeURIComponent(MANUAL)}`, MANUAL);
     assert.equal(id, null);
     assert.equal(flowCount(mem.store), 0);
   });
@@ -258,7 +258,7 @@ describe("manual-only sales list guard", () => {
     await mem.collection("leads").doc(MANUAL).set({
       email: MANUAL,
       status: "pending",
-      leadMagnet: "du_safety_checklist",
+      leadMagnet: "coaching_qualifier",
       emailOptIn: true,
       consent: { given: true, textVersion: "t", formSource: "web", requestedAt: new Date().toISOString() },
     });
@@ -274,12 +274,12 @@ describe("manual-only sales list guard", () => {
     const pending: PendingEmail[] = [
       {
         flowDocId: "flow-1",
-        flowType: "reengagement",
+        flowType: "coaching_nurture",
         userId: MANUAL,
         email: MANUAL,
         stepIndex: 0,
         step: {
-          stepId: "watchlist_waiting",
+          stepId: "coaching_reminder",
           sendAt: new Date(Date.now() - 1000).toISOString(),
           sentAt: null,
           skipped: false,
@@ -301,7 +301,7 @@ describe("manual-only sales list guard", () => {
           return { ok: true };
         },
         unsubscribeUrlFor: async () =>
-          "https://defiuniversity.xyz/api/unsubscribe?token=t",
+          "https://apexleader.ai/api/unsubscribe?token=t",
         getTemplate: () => ({ subject: "x", html: "<p>x</p>", text: "x" }),
         claimStepForSend: async () => ({ ok: true, claimId: "c1" }),
         recordSendReceipt: async () => undefined,
@@ -333,7 +333,7 @@ describe("manual-only sales list guard", () => {
           loadFirstName: async () => "",
           effects: {
             sendEmail: async () => ({ ok: true }),
-            unsubscribeUrlFor: async () => "https://defiuniversity.xyz/u",
+            unsubscribeUrlFor: async () => "https://apexleader.ai/u",
             getTemplate: () => ({ subject: "x", html: "<p>x</p>" }),
             claimStepForSend: async () => ({ ok: true, claimId: "c" }),
             recordSendReceipt: async () => undefined,

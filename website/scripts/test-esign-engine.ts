@@ -122,7 +122,7 @@ function test2() {
 }
 
 (async () => {
-  console.log("DeFi University — e-signature engine smoke tests\n");
+  console.log("ApexLeader.ai — e-signature engine smoke tests\n");
   test1();
   console.log("");
   test2();

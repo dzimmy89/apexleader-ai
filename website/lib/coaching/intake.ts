@@ -20,7 +20,8 @@ export const INTAKE = "client_intake";
 /** Firestore documents stop at 1 MiB; a one-hour call is far smaller. */
 export const MAX_TRANSCRIPT_CHARS = 300_000;
 
-export type RiskComfort = "" | "low" | "medium" | "high";
+/** How comfortable the client is setting tools up themselves: no-code only, some scripting, or writes code. */
+export type TechnicalComfort = "" | "low" | "medium" | "high";
 
 export interface IntakeForm {
   goals: string[];
@@ -30,8 +31,10 @@ export interface IntakeForm {
   timelineWeeks: number;
   hoursPerWeek: number;
   level: ExperienceLevel;
+  /** What the business does, team size, and the processes they want AI to help with. */
+  business: string;
   tools: string;
-  risk: RiskComfort;
+  technical: TechnicalComfort;
   focusStageIds: string[];
   knownCourseIds: string[];
   concerns: string;
@@ -80,8 +83,9 @@ export const INTAKE_FIELDS: IntakeField[] = [
   "timelineWeeks",
   "hoursPerWeek",
   "level",
+  "business",
   "tools",
-  "risk",
+  "technical",
   "focusStageIds",
   "knownCourseIds",
   "concerns",
@@ -101,8 +105,9 @@ export function emptyForm(packageId?: string): IntakeForm {
     timelineWeeks: PACKAGE_WEEKS[packageId || ""] || 12,
     hoursPerWeek: 3,
     level: "beginner",
+    business: "",
     tools: "",
-    risk: "",
+    technical: "",
     focusStageIds: [],
     knownCourseIds: [],
     concerns: "",
@@ -131,8 +136,9 @@ export function cleanForm(raw: unknown, fallback: IntakeForm = emptyForm()): Int
     timelineWeeks: Math.min(104, Math.max(1, Math.round(Number(r.timelineWeeks) || fallback.timelineWeeks))),
     hoursPerWeek: Math.min(40, Math.max(0.5, Number(r.hoursPerWeek) || fallback.hoursPerWeek)),
     level: LEVELS.some((l) => l.id === r.level) ? (r.level as ExperienceLevel) : fallback.level,
+    business: str(r.business ?? fallback.business, 2000),
     tools: str(r.tools ?? fallback.tools, 1000),
-    risk: r.risk === "low" || r.risk === "medium" || r.risk === "high" ? r.risk : "",
+    technical: r.technical === "low" || r.technical === "medium" || r.technical === "high" ? r.technical : "",
     focusStageIds: (Array.isArray(r.focusStageIds) ? r.focusStageIds : fallback.focusStageIds)
       .map(String)
       .filter((id) => stageIds.has(id)),

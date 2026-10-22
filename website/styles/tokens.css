@@ -27,12 +27,12 @@
   --color-accent-hover: oklch(82% 0.13 92);
   --color-accent-subtle: oklch(78% 0.12 90 / 0.14);
   --color-accent-ink: oklch(48% 0.1 80);
-  --color-skool: oklch(62% 0.08 165);
-  --color-skool-subtle: oklch(62% 0.08 165 / 0.15);
+  --color-positive: oklch(62% 0.08 165);
+  --color-positive-subtle: oklch(62% 0.08 165 / 0.15);
   --color-coaching: oklch(62% 0.11 85);
   --color-coaching-subtle: oklch(62% 0.11 85 / 0.15);
   /* Small text on parchment: the brand hues above fall under 4.5:1 there. */
-  --color-skool-ink: oklch(46% 0.08 165);
+  --color-positive-ink: oklch(46% 0.08 165);
   --color-coaching-ink: oklch(48% 0.1 80);
 
   /* Status colours: done, due, problem, info. The -ink pair is for parchment. */

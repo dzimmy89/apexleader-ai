@@ -1,35 +1,33 @@
-# DeFi University — Kickstart Coaching Agreement
+# ApexLeader.ai — Kickstart Coaching Agreement
 
-**Parties.** This Coaching Agreement ("Agreement") is entered into between DeFi University LLC ("Coach") and {{clientName}} ("Client"), with email {{clientEmail}}.
+**Parties.** This Coaching Agreement ("Agreement") is entered into between ApexLeader.ai ("Coach") and {{clientName}} ("Client"), with email {{clientEmail}}.
 
 **Effective date.** {{effectiveDate}}
 
-## 1. Scope of Educational Services
+## 1. Scope of Coaching Services
 
 Coach will provide the **Kickstart** coaching package, which includes:
 
 - {{sessionCount}} private 1-on-1 sessions of {{sessionLengthMins}} minutes each
 - Coaching duration: {{durationWeeks}} weeks
-- Guided DeFi process education (not personalized strategy or advice)
-- Risk-parameter workshop (Client keeps self-custody)
-- Self-custody setup walkthrough
-- Runway onboarding — connect wallet and risk dashboard walkthrough
-- Async access for the package duration
-- Upgrade credit: if Client enrolls in the Operator package within 30 days of the effective date, the full Kickstart fee is credited toward the Operator fee
+- An AI audit of how Client's business runs today and where AI fits first
+- One workflow chosen, mapped and set up with Coach's help
+- A starter prompt library for Client's own tasks
+- Access to the course library for the coaching period
 
-## 2. Educational Only — Not Financial Advice
+## 2. Coaching Only — No Guaranteed Results
 
-DeFi University LLC provides educational content and training only. Coach does not provide financial advice, investment recommendations, or portfolio management services. All content is for informational and educational purposes. Digital asset education involves high risk. Past performance is not indicative of future results.
+Coach provides coaching and educational content on using AI and building with AI in Client's business. Coach does not guarantee time saved, revenue or any other result. Client decides which tools and workflows to adopt and remains responsible for how the business uses them, including what data is put into third-party AI tools and compliance with those tools' terms. Coach is not Client's employee, IT provider or legal advisor.
 
 ## 3. Fees and Payment
 
-**Total fee:** {{priceDisplay}} (USD). Paid by card or by crypto on the schedule below.
+**Total fee:** {{priceDisplay}} (USD).
 
 Payment method: {{paymentPlanLabel}}.
 
 ## 4. Refund Policy
 
-Client may request a full refund within 14 days of the effective date, provided no sessions have been conducted. After the 14-day window or after the first session, all fees are non-refundable.
+Client may request a full refund within 14 days of the effective date, provided no sessions have been conducted. After the 14-day window or after the first session, all fees are non-refundable. For installment plans, refunds apply only to payments collected within the 14-day window.
 
 ## 5. Scheduling and Cancellation
 
@@ -37,7 +35,7 @@ Sessions are scheduled through the client portal. Sessions require at least 24 h
 
 ## 6. Confidentiality and Intellectual Property
 
-Coach will keep Client's personal and financial information confidential. Client acknowledges that all course materials, frameworks, and methodologies are the intellectual property of DeFi University LLC and may not be redistributed.
+Coach will keep Client's business information confidential and will not put Client's confidential data into any AI tool without Client's permission. Workflows, prompts and documents built for Client's business belong to Client. The course materials, frameworks and methods Coach brings remain the intellectual property of ApexLeader.ai and may not be redistributed.
 
 ## 7. Dispute Resolution
 

@@ -10,9 +10,9 @@ describe("operator project guard", () => {
   it("reads project_id from credentials JSON", () => {
     assert.equal(
       parseCredentialsProjectId(
-        JSON.stringify({ type: "service_account", project_id: "defi-university-prod" })
+        JSON.stringify({ type: "service_account", project_id: "apexleader-prod" })
       ),
-      "defi-university-prod"
+      "apexleader-prod"
     );
   });
 
@@ -20,7 +20,7 @@ describe("operator project guard", () => {
     assert.throws(
       () =>
         assertOperatorProject({
-          credentialProjectId: "defi-university-prod",
+          credentialProjectId: "apexleader-prod",
           projectFlag: "some-other-project",
         }),
       /does not match credentials project_id/
@@ -64,11 +64,11 @@ describe("operator project guard", () => {
   it("allows the emulator when the target is not prod", () => {
     assert.equal(
       assertOperatorProject({
-        credentialProjectId: "demo-defi-university-rules",
-        expectedProject: "demo-defi-university-rules",
+        credentialProjectId: "demo-apexleader-rules",
+        expectedProject: "demo-apexleader-rules",
         emulatorHost: "127.0.0.1:8080",
       }),
-      "demo-defi-university-rules"
+      "demo-apexleader-rules"
     );
   });
 });

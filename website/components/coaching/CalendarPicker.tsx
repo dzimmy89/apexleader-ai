@@ -23,7 +23,7 @@ export interface CalendarPickerPackageContext {
   priceDisplay: string;
   durationWeeks: number;
   sessionCount: number;
-  targetCapital?: string;
+  bestFor?: string;
 }
 
 export interface BookedSession {
@@ -288,7 +288,7 @@ export function CalendarPicker({
           )}
         </div>
         <p className={cn("mt-6 text-[14px]", muted)}>
-          Educational only, not financial advice. Need to reschedule? Reply to your confirmation email.
+          Need to reschedule? Reply to your confirmation email.
         </p>
       </div>
     );

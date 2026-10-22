@@ -57,7 +57,7 @@ export function CoursesSection({
           <h2 className="mt-2 text-[length:var(--text-h2)] leading-[1.08]">Your courses</h2>
         </div>
         <Link href="/university" className="btn btn-secondary btn-sm">
-          Browse all 31 courses
+          Browse all courses
         </Link>
       </div>
 

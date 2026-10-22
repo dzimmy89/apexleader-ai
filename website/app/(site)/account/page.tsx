@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Video } from "lucide-react";
-import { SkoolJoinLink } from "@/components/SkoolJoinLink";
 import { CoachingArea } from "@/components/account/CoachingArea";
 import { CoursesSection } from "@/components/account/CoursesSection";
 import { LinkedEmails } from "@/components/account/LinkedEmails";
@@ -14,6 +13,7 @@ import { dayBrief } from "@/lib/account/dates";
 import { getAccountOverview, type AccountOverview } from "@/lib/account/overview";
 import type { AccessState } from "@/lib/account/access";
 import { getViewer } from "@/lib/learn/gate";
+import { BRAND } from "@/lib/brand";
 
 export const metadata: Metadata = { title: "Your account", robots: { index: false } };
 export const dynamic = "force-dynamic";
@@ -47,7 +47,7 @@ function nextStep(access: AccessState | null, overview: AccountOverview): NextSt
   if (last) return { kind: "link", label: `Continue: ${last.title}`, href: last.href };
   return access?.hasCourseAccess
     ? { kind: "link", label: "Browse the courses", href: "/university" }
-    : { kind: "link", label: "Start Stage 1", href: "/university" };
+    : { kind: "link", label: "See private coaching", href: "/coaching" };
 }
 
 function NextStepButton({ step }: { step: NextStep }) {
@@ -81,10 +81,9 @@ export default async function AccountPage({ searchParams }: PageProps) {
   const { progress, billing, coaching } = overview;
   const step = nextStep(access, overview);
   const firstName = coaching?.client.name.trim().split(/\s+/)[0] || "";
-  // Coaching clients hold a coaching grant; only Skool and manual grants are a "membership".
-  const skoolMember = Boolean(billing?.skool?.paying);
+  // Coaching clients hold a coaching grant; a manual grant is "full access".
   const fullAccess = Boolean(billing?.manual) || Boolean(coaching?.client.fullAccess);
-  const member = skoolMember || fullAccess || (!coaching && Boolean(access?.hasMembership));
+  const member = fullAccess || (!coaching && Boolean(access?.hasMembership));
   const client = Boolean(coaching);
   const unsignedClient = client && !coaching!.client.contractSignedAt && !coaching!.client.fullAccess && !coachingEnded(coaching!.client);
   const accessEndsAt = billing?.coaching?.accessEndsAt ?? null;
@@ -108,8 +107,8 @@ export default async function AccountPage({ searchParams }: PageProps) {
                 {client ? (
                   unsignedClient ? <Chip tone="warning">Coaching client · agreement to sign</Chip> : <Chip tone="success">Coaching client</Chip>
                 ) : null}
-                {member ? <Chip tone={skoolMember ? "skool" : "success"}>{skoolMember ? "Member on Skool" : fullAccess ? "Full access" : "Member"}</Chip> : null}
-                {!client && !member ? <Chip>Free account · Stage 1 open</Chip> : null}
+                {member ? <Chip tone="success">{fullAccess ? "Full access" : "Course access"}</Chip> : null}
+                {!client && !member ? <Chip>Free account</Chip> : null}
                 <span className="font-[family-name:var(--font-ui)] text-[15px] text-[var(--color-text-muted)]">{viewer.email}</span>
               </span>
             }
@@ -124,27 +123,24 @@ export default async function AccountPage({ searchParams }: PageProps) {
           </Notice>
         ) : link === "failed" ? (
           <Notice tone="warning" title="That email could not be added.">
-            It may already be part of another account. Sign in with it to check, or email hello@defiuniversity.xyz.
+            It may already be part of another account. Sign in with it to check, or email {BRAND.email}.
           </Notice>
         ) : null}
 
         {coaching ? <CoachingArea coaching={coaching} accessEndsAt={accessEndsAt} /> : null}
 
-        {!access?.hasCourseAccess ? (
+        {!access?.hasCourseAccess && !coaching ? (
           <div className="parchment-card p-6 md:p-8">
-            <p className="section-eyebrow">Membership</p>
+            <p className="section-eyebrow">Private coaching</p>
             <p className="mt-2 font-[family-name:var(--font-display)] text-[length:var(--text-h2)] leading-[1.1] text-on-parchment">
-              Stages 2 to 8 are for members.
+              The course library comes with coaching.
             </p>
             <p className="mt-2 max-w-2xl text-[17px] text-on-parchment">
-              The $97 membership on Skool opens all 31 courses, plus the live calls and community. If you joined Skool with
-              this email, access can take a few minutes to arrive.
+              Private coaching with {BRAND.coachFirstName} opens every course, with a syllabus built around your business. If you
+              paid under another email, add it under Settings.
             </p>
             <div className="mt-5 flex flex-wrap gap-3">
-              <SkoolJoinLink location="account_upsell" className="btn btn-skool">
-                Join on Skool
-              </SkoolJoinLink>
-              <Link href="/coaching" className="btn btn-secondary">
+              <Link href="/coaching" className="btn btn-primary">
                 Private coaching
               </Link>
             </div>

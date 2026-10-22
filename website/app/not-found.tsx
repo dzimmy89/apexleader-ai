@@ -7,9 +7,9 @@ import { PageHeader, Panel } from "@/components/system";
 import { TrackedLink } from "@/components/TrackedLink";
 
 const PLACES = [
-  { href: "/university", label: "Browse the free courses" },
+  { href: "/university", label: "Browse the courses" },
   { href: "/coaching", label: "Private coaching" },
-  { href: "/about", label: "About DeFi University" },
+  { href: "/about", label: "About ApexLeader.ai" },
 ];
 
 export default function NotFound() {
@@ -44,10 +44,10 @@ export default function NotFound() {
               Go home
             </TrackedLink>
             <Link
-              href="/skool"
-              className="inline-flex min-h-11 items-center font-[family-name:var(--font-ui)] text-[15px] font-medium text-[var(--color-skool)] underline underline-offset-4"
+              href="/coaching/book"
+              className="inline-flex min-h-11 items-center font-[family-name:var(--font-ui)] text-[15px] font-medium text-[var(--color-accent)] underline underline-offset-4"
             >
-              Join the community →
+              Book a free call →
             </Link>
           </div>
         </SectionReveal>

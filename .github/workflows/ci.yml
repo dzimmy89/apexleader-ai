@@ -1,4 +1,4 @@
-# CI for pull requests and main (same steps as the former Depot CI).
+# CI for pull requests and main.
 
 name: CI
 
@@ -44,26 +44,30 @@ jobs:
         env:
           ADMIN_PASSWORD: ci-build-only
           JWT_SECRET: ci-build-only
-          NEXT_PUBLIC_SITE_URL: https://defiuniversity.xyz
-          NEXT_PUBLIC_FIREBASE_API_KEY: AIzaSyDuGdDF6jYPcZbQTpbGZPwnl3Qynr-LMWc
-          NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN: defi-university-prod.firebaseapp.com
-          NEXT_PUBLIC_FIREBASE_PROJECT_ID: defi-university-prod
-          NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET: defi-university-prod.firebasestorage.app
-          NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID: "309871336262"
-          NEXT_PUBLIC_FIREBASE_APP_ID: 1:309871336262:web:d2dc4be5729ac1d5a6a347
+          NEXT_PUBLIC_SITE_URL: https://apexleader.ai
+          # Placeholders until the ApexLeader.ai Firebase project exists;
+          # the build only needs them to be present.
+          NEXT_PUBLIC_FIREBASE_API_KEY: ci-build-only
+          NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN: apexleader-prod.firebaseapp.com
+          NEXT_PUBLIC_FIREBASE_PROJECT_ID: apexleader-prod
+          NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET: apexleader-prod.firebasestorage.app
+          NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID: "0"
+          NEXT_PUBLIC_FIREBASE_APP_ID: ci-build-only
         run: npm run build
 
-      - name: Audit email pipeline
-        run: npx tsx scripts/audit-email-pipeline.ts
+      # The framework came from a crypto education site; keep its words out.
+      - name: No leftover DeFi wording
+        run: |
+          if grep -rnIiE "defi ?u(niversity)?\b|\bdefi\b|skool|paperbell|hubspot|stablecoin|bitcoin|blockchain|self-custody|financial advice" \
+              app components content lib middleware.ts \
+              | grep -viE "hubspot(OptedOut|Bounced|Id|LifecycleStage|LeadStatus|_import)|CRM_(CONTACT_SOURCE|SALES_LIST)_HUBSPOT|HubSpot import|HubSpot-scale|pre-enrichment HubSpot|skoolMatch|skoolTier|non-HubSpot"; then
+            echo "Found DeFi University wording (above). Replace it with ApexLeader.ai copy."
+            exit 1
+          fi
 
-      - name: Testimonial gate tests
+      - name: Courses and coaching tests
         run: |
           command -v rg >/dev/null || (sudo apt-get update -qq && sudo apt-get install -y -qq ripgrep)
-          npx tsx scripts/test-testimonial-build-grep.ts
-          npx tsx scripts/test-testimonials.ts
-
-      - name: Courses, membership and coaching tests
-        run: |
           npx tsx scripts/test-learn-courses.ts
           npx tsx scripts/test-stripe-webhook.ts
           npx tsx scripts/test-client-payments.ts
@@ -71,16 +75,24 @@ jobs:
           npx tsx scripts/test-syllabus.ts
           npx tsx scripts/test-syllabus-pipeline.ts
           npx tsx scripts/test-coaching-delivery.ts
-          npx tsx scripts/test-skool-access.ts
+          npx tsx scripts/test-account-billing.ts
+          npx tsx scripts/test-coaching-availability.ts
+          npx tsx scripts/test-installment-schedule.ts
+          npx tsx scripts/test-cron-dry-run.ts
+          npx tsx scripts/test-discovery-links.ts
+          npx tsx scripts/test-manual-only-contact.ts
+          npx tsx scripts/test-esign-engine.ts
+          npx tsx scripts/test-admin-login.ts
+          npx tsx scripts/test-operator-project-guard.ts
+          npx tsx scripts/test-build-sha.ts
 
-      # Dedicated step (not ./scripts/ci.sh): ci.sh would re-run npm ci/lint/build/audit
-      # and extra local-only scripts that this workflow does not run.
-      - name: Firestore rules tests
+      # Tests that need the Firestore emulator.
+      - name: Firestore emulator tests
         working-directory: .
         env:
           CI: "true"
         run: |
           npx --yes firebase-tools@15.31.0 emulators:exec \
             --only firestore \
-            --project demo-defi-university-rules \
-            "npx tsx website/scripts/test-firestore-rules.ts"
+            --project demo-apexleader-rules \
+            "npx tsx website/scripts/test-firestore-rules.ts && cd website && npx tsx scripts/test-list-people.ts"

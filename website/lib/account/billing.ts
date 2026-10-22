@@ -1,6 +1,5 @@
 import { getDb } from "@/lib/firebase-admin";
 import { grantIsLive, type AccessState } from "@/lib/account/access";
-import { getSkoolRecord, isManagedSeat } from "@/lib/account/skool-access";
 import {
   addMonthsToDate,
   asPaymentPlanId,
@@ -14,17 +13,9 @@ import {
 
 /**
  * "Your plans and billing" on /account: every way this person is connected
- * to DeFi University, read across their linked emails. Read-only; the only
+ * to the coaching business, read across their linked emails. Read-only; the only
  * action is the Stripe customer portal (lib/account/stripe-portal.ts).
  */
-export interface SkoolPlan {
-  /** A live "skool" grant: they pay for the membership on Skool. */
-  paying: boolean;
-  lastSeenAt: string | null;
-  /** A Skool seat that comes with coaching and ends with it. */
-  coachingSeat: { endsAt: string; status: "to_add" | "invited" | "in_skool" } | null;
-}
-
 export interface CoachingPayment {
   paidAt: string;
   /** USD cents. */
@@ -47,7 +38,7 @@ export interface CoachingPlan {
   installments: number;
   installmentsPaid: number;
   method: PaymentMethod | null;
-  /** Next installment: exact for crypto schedules, estimated for card plans. */
+  /** Next installment: exact for manual schedules, estimated for card plans. */
   nextDue: { amount: number | null; dueDate: string; estimated: boolean } | null;
   lastPaymentFailed: boolean;
   payments: CoachingPayment[];
@@ -58,7 +49,6 @@ export interface CoachingPlan {
 }
 
 export interface BillingSummary {
-  skool: SkoolPlan | null;
   coaching: CoachingPlan | null;
   /** Manual grant from the coach: null expiry means it never ends. */
   manual: { endsAt: string | null } | null;
@@ -103,7 +93,7 @@ async function loadCoaching(access: AccessState): Promise<CoachingPlan | null> {
   const forPackage = payments.filter((p) => !packageId || p.packageId === packageId);
   const installments = planInstallmentCount(planId);
   const method: PaymentMethod | null =
-    forPackage[0]?.method || (str(record.paymentSource) === "crypto" ? "crypto" : record.stripeCustomerId ? "stripe" : null);
+    forPackage[0]?.method || (str(record.paymentSource) === "manual" ? "manual" : record.stripeCustomerId ? "stripe" : null);
 
   let installmentsPaid = Math.min(installments, forPackage.length);
   let nextDue: CoachingPlan["nextDue"] = null;
@@ -157,23 +147,11 @@ async function loadCoaching(access: AccessState): Promise<CoachingPlan | null> {
   };
 }
 
-async function loadSkool(access: AccessState, now: number): Promise<SkoolPlan | null> {
-  const paying = access.grants.some((g) => g.source === "skool" && grantIsLive(g, now));
-  const seats = await Promise.all(access.emails.map((e) => getSkoolRecord(e).catch(() => null)));
-  const seat = seats.find((r) => isManagedSeat(r) && Date.parse(r!.endsAt) > now) || null;
-  if (!paying && !seat) return null;
-  return {
-    paying,
-    lastSeenAt: access.skoolLastSeenAt,
-    coachingSeat: seat ? { endsAt: seat.endsAt, status: seat.status as "to_add" | "invited" | "in_skool" } : null,
-  };
-}
-
 export async function getBillingSummary(access: AccessState, now = Date.now()): Promise<BillingSummary> {
-  const [coaching, skool] = await Promise.all([loadCoaching(access), loadSkool(access, now)]);
+  const coaching = await loadCoaching(access);
   const manualGrants = access.grants.filter((g) => g.source === "manual" && grantIsLive(g, now));
   const manual = manualGrants.length
     ? { endsAt: manualGrants.some((g) => !g.expiresAt) ? null : manualGrants.map((g) => g.expiresAt!).sort().at(-1)! }
     : null;
-  return { skool, coaching, manual };
+  return { coaching, manual };
 }

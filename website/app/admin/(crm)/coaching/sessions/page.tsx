@@ -376,7 +376,7 @@ function SessionNotesEditor({
 function StatusPill({ status }: { status: string }) {
   const colors: Record<string, string> = {
     scheduled: "text-[var(--color-coaching)]",
-    completed: "text-[var(--color-skool)]",
+    completed: "text-[var(--color-positive)]",
     cancelled: "text-[var(--color-danger)]",
     "no-show": "text-[var(--color-danger)]",
   };

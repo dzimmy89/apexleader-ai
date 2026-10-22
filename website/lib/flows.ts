@@ -425,7 +425,7 @@ export async function isAlreadyCustomer(email: string): Promise<boolean> {
   const member = await db.collection("members").doc(normalized).get();
   if (!member.exists) return false;
   const tier = member.data()?.tier as string | undefined;
-  return ["skool", "coaching", "paid", "admin"].includes(tier || "");
+  return ["coaching", "paid", "admin"].includes(tier || "");
 }
 
 export async function syncUserFromMember(

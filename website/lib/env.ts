@@ -1,10 +1,12 @@
+import { BRAND } from "@/lib/brand";
+
 /** Server-only environment helpers */
 
 export function getSiteOrigin(): string {
   return (
     process.env.NEXT_PUBLIC_SITE_URL ||
     process.env.SITE_ORIGIN ||
-    "https://defiuniversity.xyz"
+    BRAND.origin
   ).replace(/\/$/, "");
 }
 
@@ -20,10 +22,10 @@ export function optionalEnv(name: string, fallback = ""): string {
 
 export const MAILING_ADDRESS =
   process.env.MAILING_ADDRESS ||
-  "DeFi University LLC, Educational services — hello@defiuniversity.xyz";
+  `${BRAND.legalName}, Educational services — ${BRAND.email}`;
 
 export const SENDER_EMAIL =
-  process.env.SENDER_EMAIL || "hello@defiuniversity.xyz";
+  process.env.SENDER_EMAIL || BRAND.email;
 
 export const SENDER_NAME =
-  process.env.SENDER_NAME || "DeFi University";
+  process.env.SENDER_NAME || BRAND.name;

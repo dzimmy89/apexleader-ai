@@ -15,13 +15,10 @@ import {
   summarizeContactPayments,
   type PaymentSchedule,
 } from "../lib/coaching/payments";
-import { confirmCryptoNotice, logCryptoPayment } from "../lib/coaching/crypto-notices";
+import { logManualPayment, manualPaymentDocId } from "../lib/coaching/manual-payments";
 import { maybeSendPaymentDigest, buildPaymentDigestEmail } from "../lib/coaching/payment-digest";
 import { POST as postPayment } from "../app/api/admin/contacts/[email]/payments/route";
 import { createMemoryFirestore, rows, type MemoryFirestore } from "./fixtures/memory-firestore";
-
-const EVM_HASH_1 = `0x${"a".repeat(64)}`;
-const EVM_HASH_2 = `0x${"b".repeat(64)}`;
 
 let mem: MemoryFirestore;
 let sent: SendEmailOptions[] = [];
@@ -35,8 +32,8 @@ beforeEach(() => {
     return { ok: true, messageId: "m1", threadId: "t1" };
   });
   process.env.JWT_SECRET = "test-client-payments";
-  process.env.NEXT_PUBLIC_SITE_URL = "https://defiuniversity.xyz";
-  process.env.SENDER_EMAIL = "hello@defiuniversity.xyz";
+  process.env.NEXT_PUBLIC_SITE_URL = "https://apexleader.ai";
+  process.env.SENDER_EMAIL = "hello@apexleader.ai";
 });
 
 afterEach(() => {
@@ -140,17 +137,17 @@ describe("schedule math", () => {
       paidAt: "2026-09-15T16:00:00.000Z",
       paymentId: "p1",
     }).schedule;
-    const crypto = summarizeContactPayments({
-      payments: [{ amount: 83400, packageId: "mastery", method: "crypto", paidAt: "2026-09-15T16:00:00.000Z" }],
+    const manual = summarizeContactPayments({
+      payments: [{ amount: 83400, packageId: "mastery", method: "manual", paidAt: "2026-09-15T16:00:00.000Z" }],
       packageId: "mastery",
       planId: "3pay",
       planTotal: 250200,
       perPayment: 83400,
       schedule,
     });
-    assert.equal(crypto.paid, 83400);
-    assert.equal(crypto.owed, 166800);
-    assert.deepEqual(crypto.nextDue, { dueDate: "2026-10-15", amount: 83400, source: "schedule" });
+    assert.equal(manual.paid, 83400);
+    assert.equal(manual.owed, 166800);
+    assert.deepEqual(manual.nextDue, { dueDate: "2026-10-15", amount: 83400, source: "schedule" });
 
     const stripe = summarizeContactPayments({
       payments: [
@@ -168,7 +165,7 @@ describe("schedule math", () => {
     assert.equal(stripe.nextDue?.dueDate, "2026-10-02");
 
     const full = summarizeContactPayments({
-      payments: [{ amount: 75000, packageId: "foundations", method: "crypto", paidAt: "2026-09-02T15:00:00.000Z" }],
+      payments: [{ amount: 75000, packageId: "foundations", method: "manual", paidAt: "2026-09-02T15:00:00.000Z" }],
       packageId: "foundations",
       planId: "full",
       planTotal: 75000,
@@ -194,26 +191,27 @@ function logInput(extra: Record<string, unknown> = {}) {
     email: "Ada@Example.com",
     name: "Ada Client",
     amountUsd: 834,
-    asset: "USDC",
-    network: "evm",
-    txHash: EVM_HASH_1,
+    reference: "INV-1001",
     paidAt: "2026-09-15",
     packageId: "mastery",
     planId: "3pay",
     installmentNumber: 1,
+    idempotencyKey: "k1",
     ...extra,
   };
 }
 
-describe("log crypto payment", () => {
-  it("first payment grants the package, writes the ledger, schedule, pipeline, membership, and timeline", async () => {
+const FIRST_ID = manualPaymentDocId("ada@example.com", "k1");
+
+describe("log manual payment", () => {
+  it("first payment grants the package, writes the ledger, schedule, pipeline, course access, and timeline", async () => {
     await mem.collection("coaching_applications").doc("app1").set({
       email: "ada@example.com",
       name: "Ada Client",
       status: "proposal_sent",
       createdAt: "2026-09-01T00:00:00.000Z",
     });
-    const result = await logCryptoPayment(logInput(), "david");
+    const result = await logManualPayment(logInput(), "david");
     assert.equal(result.ok, true);
     if (!result.ok) return;
     assert.equal(result.created, true);
@@ -223,18 +221,17 @@ describe("log crypto payment", () => {
     const client = mem.store.get("client_records/ada@example.com");
     assert.equal(client?.status, "paid_pending_contract");
     assert.equal(client?.sessionsRemaining, 8);
-    assert.equal(client?.paymentSource, "crypto");
-    assert.deepEqual(client?.processedCheckoutSessionIds, ["crypto:ada@example.com:mastery"]);
+    assert.equal(client?.paymentSource, "manual");
+    assert.deepEqual(client?.processedCheckoutSessionIds, ["manual:ada@example.com:mastery"]);
 
     const payments = rows(mem.store, "client_payments");
     assert.equal(payments.length, 1);
     const [paymentKey, payment] = payments[0]!;
-    assert.equal(paymentKey, `client_payments/crypto_evm_${EVM_HASH_1}`);
-    assert.equal(payment.method, "crypto");
+    assert.equal(paymentKey, `client_payments/${FIRST_ID}`);
+    assert.equal(payment.method, "manual");
     assert.equal(payment.amount, 83400);
     assert.equal(payment.currency, "usd");
-    assert.equal(payment.asset, "USDC");
-    assert.equal(payment.network, "evm");
+    assert.equal(payment.reference, "INV-1001");
     assert.equal(payment.installmentNumber, 1);
     assert.equal(payment.planId, "3pay");
     assert.equal(payment.actor, "david");
@@ -253,7 +250,7 @@ describe("log crypto payment", () => {
     assert.equal(app?.status, "won");
     assert.equal(app?.packageId, "mastery");
     assert.equal(app?.closeValue, 2502);
-    assert.equal(app?.wonSource, "crypto");
+    assert.equal(app?.wonSource, "manual");
 
     const account = mem.store.get("learn_accounts/ada@example.com");
     const grants = account?.grants as Array<Record<string, unknown>>;
@@ -264,13 +261,13 @@ describe("log crypto payment", () => {
     assert.ok(activity.some((r) => r.type === "payment" && String(r.title).includes("$834")));
     assert.ok(activity.some((r) => r.type === "stage_change" && r.title === "Stage changed to won"));
 
-    assert.ok(sent.some((m) => m.log.source === "coaching_contract"), "agreement email, as confirmCryptoNotice does");
+    assert.ok(sent.some((m) => m.log.source === "coaching_contract"), "agreement email");
   });
 
   it("a later installment marks the next unpaid one and never grants twice", async () => {
-    await logCryptoPayment(logInput(), "david");
-    const second = await logCryptoPayment(
-      logInput({ txHash: "", installmentNumber: "", idempotencyKey: "k2", paidAt: "2026-10-16" }),
+    await logManualPayment(logInput(), "david");
+    const second = await logManualPayment(
+      logInput({ installmentNumber: "", idempotencyKey: "k2", paidAt: "2026-10-16" }),
       "david"
     );
     assert.equal(second.ok, true);
@@ -280,8 +277,8 @@ describe("log crypto payment", () => {
     const client = mem.store.get("client_records/ada@example.com");
     assert.equal(client?.sessionsRemaining, 8);
 
-    const again = await logCryptoPayment(
-      logInput({ txHash: "", installmentNumber: "", idempotencyKey: "k2", paidAt: "2026-10-16" }),
+    const again = await logManualPayment(
+      logInput({ installmentNumber: "", idempotencyKey: "k2", paidAt: "2026-10-16" }),
       "david"
     );
     assert.equal(again.ok && again.created, false, "same idempotency key writes no second row");
@@ -303,63 +300,18 @@ describe("log crypto payment", () => {
       [{ packageId: "gold" }, "Unknown package"],
       [{ planId: "12pay" }, "Unknown payment plan"],
       [{ amountUsd: 0 }, "Amount must be a positive number of dollars"],
-      [{ asset: "DOGE" }, "Unknown asset"],
-      [{ network: "tron" }, "Unknown network"],
-      [{ txHash: "0x123" }, "EVM tx hash must be 0x plus 64 hex characters"],
       [{ paidAt: "" }, "Date paid is required"],
       [{ paidAt: "2099-01-01" }, "Date paid is in the future"],
       [{ installmentNumber: 4 }, "Installment must be between 1 and 3"],
-      [{ txHash: "" }, "idempotencyKey is required without a tx hash"],
+      [{ idempotencyKey: "" }, "idempotencyKey is required"],
     ];
     for (const [extra, error] of cases) {
-      const result = await logCryptoPayment(logInput(extra), "david");
+      const result = await logManualPayment(logInput(extra), "david");
       assert.equal(result.ok, false, JSON.stringify(extra));
       if (!result.ok) assert.equal(result.error, error);
     }
     assert.equal(rows(mem.store, "client_payments").length, 0);
     assert.equal(mem.store.has("client_records/ada@example.com"), false);
-  });
-
-  it("refuses a tx hash already logged for another contact", async () => {
-    await logCryptoPayment(logInput(), "david");
-    const other = await logCryptoPayment(logInput({ email: "bob@example.com" }), "david");
-    assert.equal(other.ok, false);
-    if (!other.ok) assert.equal(other.status, 409);
-    assert.equal(mem.store.has("client_records/bob@example.com"), false);
-  });
-
-  it("confirming a client notice feeds the same ledger and schedule", async () => {
-    await mem.collection("crypto_payment_notices").doc("n1").set({
-      name: "Ada Client",
-      email: "ada@example.com",
-      packageId: "mastery",
-      packageName: "Operator",
-      network: "evm",
-      txHash: EVM_HASH_2,
-      txHashKey: EVM_HASH_2,
-      planId: "3pay",
-      installments: 3,
-      amountUsd: 834,
-      totalUsd: 2502,
-      status: "unconfirmed",
-      createdAt: "2026-09-15T14:00:00.000Z",
-    });
-    const confirmed = await confirmCryptoNotice("n1");
-    assert.equal(confirmed.ok, true);
-    const payment = mem.store.get(`client_payments/crypto_evm_${EVM_HASH_2}`);
-    assert.equal(payment?.source, "crypto_notice");
-    assert.equal(payment?.amount, 83400);
-    assert.equal(payment?.installmentNumber, 1);
-    const installments = mem.store.get("payment_schedules/ada@example.com__mastery")
-      ?.installments as Array<Record<string, unknown>>;
-    assert.equal(installments[0]?.paymentId, `crypto_evm_${EVM_HASH_2}`);
-    assert.equal(mem.store.get("coaching_applications/paid_ada@example.com")?.status, "won");
-
-    // The admin logs the same transfer by hand: no second row, no second grant.
-    const dup = await logCryptoPayment(logInput({ txHash: EVM_HASH_2 }), "david");
-    assert.equal(dup.ok && dup.created, false);
-    assert.equal(mem.store.get("client_records/ada@example.com")?.sessionsRemaining, 8);
-    assert.equal(rows(mem.store, "client_payments").length, 1);
   });
 
   it("the payments route needs an admin cookie and a same-site Origin", async () => {
@@ -373,11 +325,11 @@ describe("log crypto payment", () => {
         }),
         { params: Promise.resolve({ email: "ada%40example.com" }) }
       );
-    assert.equal((await call({ authorization: `Bearer ${token}`, origin: "https://defiuniversity.xyz" })).status, 401);
+    assert.equal((await call({ authorization: `Bearer ${token}`, origin: "https://apexleader.ai" })).status, 401);
     assert.equal((await call({ cookie: `${COOKIE_NAME}=${token}`, origin: "https://evil.example" })).status, 403);
-    const ok = await call({ cookie: `${COOKIE_NAME}=${token}`, origin: "https://defiuniversity.xyz" });
+    const ok = await call({ cookie: `${COOKIE_NAME}=${token}`, origin: "https://apexleader.ai" });
     assert.equal(ok.status, 200);
-    assert.ok(mem.store.has(`client_payments/crypto_evm_${EVM_HASH_1}`));
+    assert.ok(mem.store.has(`client_payments/${FIRST_ID}`));
   });
 });
 
@@ -407,7 +359,7 @@ describe("payment digest", () => {
     assert.equal(first.status, "sent");
     assert.equal(first.count, 1);
     assert.equal(sent.length, 1);
-    assert.equal(sent[0]?.to, "hello@defiuniversity.xyz");
+    assert.equal(sent[0]?.to, "hello@apexleader.ai");
     assert.equal(sent[0]?.purpose, "transactional");
     assert.equal(sent[0]?.log.source, "payment_digest");
     assert.match(sent[0]?.subject || "", /1 overdue/);
@@ -452,7 +404,7 @@ describe("payment digest", () => {
         "2026-10-20"
       ),
       "2026-10-20",
-      "https://defiuniversity.xyz"
+      "https://apexleader.ai"
     );
     assert.equal(email.text.includes("—"), false);
     assert.equal(email.html.includes("—"), false);

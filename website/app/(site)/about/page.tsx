@@ -5,27 +5,28 @@ import { SectionReveal } from "@/components/SectionReveal";
 import { CTAButton } from "@/components/CTAButton";
 import { FinalCta } from "@/components/editorial/FinalCta";
 import { URLS } from "@/content/site";
+import { BRAND } from "@/lib/brand";
 
 export const metadata: Metadata = {
   title: "About",
   alternates: { canonical: "/about" },
-  description:
-    "DeFi University LLC — structured blockchain education for serious learners. Education only, not financial advice.",
+  description: `${BRAND.name}: private coaching for business owners ${BRAND.subject}.`,
 };
 
+// Placeholder copy until the founder story is written.
 export default function AboutPage() {
   return (
     <>
       <Hero
         variant="home"
-        eyebrow="About DeFi University"
-        title="Education built for understanding."
-        subtitle="We teach blockchain technology fundamentals, risk management, and protocol analysis — not speculation or guaranteed outcomes."
+        eyebrow={`About ${BRAND.name}`}
+        title="AI that does real work in your business."
+        subtitle="One-on-one coaching that starts from your processes, not from the latest tool, and ends with workflows your team actually uses."
         primaryCta={{
-          label: "Join the community ↗",
-          href: URLS.skoolPlans,
-          variant: "skool",
-          location: "about_hero_membership",
+          label: "Book a free call",
+          href: URLS.coachingDiscovery,
+          variant: "coaching",
+          location: "about_hero_discovery",
         }}
         secondaryCta={{ label: "Explore coaching", href: "/coaching", location: "about_hero_private" }}
       />
@@ -35,16 +36,17 @@ export default function AboutPage() {
           <SectionReveal className="md:col-span-7">
             <div className="space-y-6 text-[length:var(--text-body)] leading-[1.7] text-[var(--color-text)]">
               <p className="drop-cap text-[length:var(--text-lead)]">
-                DeFi University LLC was founded to fill a gap in blockchain education: structured, live instruction that builds genuine technical understanding.
+                {BRAND.name} exists for owners who know AI could save them hours every week but have not found the time to work out where
+                to start.
               </p>
               <p>
-                Our community is on Skool with one membership at $97 a month, which includes live Q&A with David every Monday, Wednesday, and Friday. Structured University courses provide supplementary self-paced content. For learners who want personalized guidance, private coaching runs from Kickstart at $750 to Inner Circle at $7,500, and anyone can start with a free call.
+                Every client starts with a free discovery call. From what you tell {BRAND.coachFirstName} about your business, you get a
+                week-by-week plan: short lessons and exercises from the course library, real tasks in your own business, and a live
+                session each week to review what you built.
               </p>
               <p>
-                We are educators, not financial advisors. Everything we teach is for informational and educational purposes. We make no guarantees about financial outcomes — our focus is on building knowledge you can apply responsibly.
-              </p>
-              <p>
-                Sessions cover protocol mechanics, security best practices, and risk frameworks. We do not publish unverified headcounts or session totals.
+                Coaching is practical and honest. We do not promise results we cannot measure, and we never ask you to put customer or
+                confidential data into a tool before you have checked how it is handled.
               </p>
             </div>
           </SectionReveal>
@@ -54,7 +56,7 @@ export default function AboutPage() {
               <div className="relative aspect-[3/4] overflow-hidden bg-[var(--color-surface-raised)]">
                 <Image
                   src="/images/david-zimmerman.jpg"
-                  alt="David Zimmerman, founder of DeFi University"
+                  alt={`${BRAND.coachName}, founder of ${BRAND.name}`}
                   fill
                   className="object-cover object-center"
                   sizes="(max-width: 768px) 100vw, 33vw"
@@ -62,21 +64,16 @@ export default function AboutPage() {
               </div>
               <figcaption className="mt-4">
                 <p className="ui-label">Founder</p>
-                <p className="mt-1 font-[family-name:var(--font-display)] text-2xl leading-tight text-on-parchment">
-                  David Zimmerman
-                </p>
+                <p className="mt-1 font-[family-name:var(--font-display)] text-2xl leading-tight text-on-parchment">{BRAND.coachName}</p>
               </figcaption>
             </figure>
           </SectionReveal>
         </div>
       </section>
 
-      <FinalCta
-        title="Pick your way in."
-        intro="Join the membership on Skool, or talk to David about 1-on-1. Education only — not financial advice."
-      >
-        <CTAButton variant="skool" href={URLS.skoolPlans} location="about" external>
-          Join the community ↗
+      <FinalCta title="Start with a free call." intro={`Tell ${BRAND.coachFirstName} what takes up your week, and leave with a first idea of where AI fits.`}>
+        <CTAButton variant="coaching" href={URLS.coachingDiscovery} location="about">
+          Book a free call
         </CTAButton>
         <CTAButton variant="ghost" href="/coaching" location="about">
           Explore coaching

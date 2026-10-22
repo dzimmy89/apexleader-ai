@@ -1,14 +1,6 @@
 export type FlowStatus = "active" | "completed" | "exited";
 
-export type FlowType =
-  | "onboarding"
-  | "winback"
-  | "lead_nurture"
-  | "coaching_nurture"
-  | "coaching_post_call"
-  | "sample_nurture"
-  | "du_welcome"
-  | "reengagement";
+export type FlowType = "coaching_nurture" | "coaching_post_call";
 
 export interface FlowStep {
   stepId: string;

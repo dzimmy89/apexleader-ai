@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { CheckCircle, FileSignature, Calendar } from "lucide-react";
+import { redirect } from "next/navigation";
+import { CheckCircle, FileSignature } from "lucide-react";
 import { SectionReveal } from "@/components/SectionReveal";
 import { CTAButton } from "@/components/CTAButton";
 import { URLS } from "@/content/site";
@@ -11,7 +12,7 @@ export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Welcome",
-  description: "Your DeFi University membership is active. Next steps to join the Skool community.",
+  description: "Your coaching payment is in. Next steps to sign your agreement and book your first session.",
 };
 
 interface SuccessPageProps {
@@ -29,16 +30,9 @@ const COACHING_STEPS = [
   "Book your kickoff session from the portal",
 ];
 
-const SKOOL_STEPS = [
-  "Check your email for your Skool invitation",
-  "Create your Skool account and join the community",
-  "Introduce yourself in the welcome channel",
-  "Attend a live Q&A your plan includes (check the Skool Calendar)",
-];
-
 /** Numbered next steps: one row each, sans, the numeral in the accent ink. */
-function Steps({ steps, tone }: { steps: readonly string[]; tone: "coaching" | "skool" }) {
-  const ink = tone === "skool" ? "text-[var(--color-skool-ink)]" : "text-[var(--color-coaching-ink)]";
+function Steps({ steps }: { steps: readonly string[] }) {
+  const ink = "text-[var(--color-coaching-ink)]";
   return (
     <ol className="mt-2 divide-y divide-[var(--color-border)] border-y border-[var(--color-border)] font-[family-name:var(--font-ui)]">
       {steps.map((step, i) => (
@@ -77,7 +71,7 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
               </p>
 
               <p className="ui-label mt-8">What happens next</p>
-              <Steps steps={COACHING_STEPS} tone="coaching" />
+              <Steps steps={COACHING_STEPS} />
 
               <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center">
                 <CTAButton
@@ -117,45 +111,6 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
     );
   }
 
-  // Default (Skool membership) flow.
-  return (
-    <section className="flex min-h-[70vh] items-center px-6 py-[var(--space-section)]">
-      <div className="mx-auto w-full max-w-2xl">
-        <SectionReveal>
-          <div className="parchment-card p-6 md:p-10">
-            <CheckCircle size={40} className="text-[var(--color-skool-ink)]" aria-hidden="true" />
-            <p className="section-eyebrow mt-6">Membership</p>
-            <h1 className="mt-3 text-[length:var(--text-h1)] leading-[1.05] text-on-parchment">
-              You&apos;re in.
-            </h1>
-            <p className="mt-4 text-[length:var(--text-lead)] leading-[1.55] text-muted-on-parchment">
-              Your membership is active. Next: open Skool and use the Calendar to find the Monday,
-              Wednesday, and Friday live calls.
-            </p>
-
-            <p className="ui-label mt-8">What happens next</p>
-            <Steps steps={SKOOL_STEPS} tone="skool" />
-
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center">
-              <CTAButton variant="skool" size="lg" href={URLS.skoolPlans} location="success" external>
-                <Calendar size={18} aria-hidden="true" /> Go to the Skool community
-              </CTAButton>
-              <Link
-                href="/account"
-                className="inline-flex min-h-11 items-center font-[family-name:var(--font-ui)] text-[15px] font-medium text-[var(--color-skool-ink)] underline underline-offset-4"
-              >
-                Your account
-              </Link>
-              <Link
-                href="/"
-                className="inline-flex min-h-11 items-center font-[family-name:var(--font-ui)] text-[15px] text-muted-on-parchment hover:text-on-parchment"
-              >
-                Back to homepage
-              </Link>
-            </div>
-          </div>
-        </SectionReveal>
-      </div>
-    </section>
-  );
+  // Anything else (an old or hand-typed link) goes to the account page.
+  redirect("/account");
 }

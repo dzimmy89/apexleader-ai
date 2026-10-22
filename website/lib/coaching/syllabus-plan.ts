@@ -8,6 +8,7 @@ import {
   lessonKey,
   quizKey,
   PASSING_QUIZ_SCORE,
+  PREREQS,
 } from "@/lib/learn/catalog";
 import type { LearnProgress } from "@/lib/learn/progress";
 
@@ -56,17 +57,8 @@ export const MAX_WEEKS = 104;
 const MAX_ITEMS_PER_WEEK = 80;
 const CATALOG_KINDS = new Set<PlanItemKind>(["lesson", "exercise", "quiz"]);
 
-/** Stages each stage assumes. Path order does the rest. */
-export const PREREQS: Record<string, string[]> = {
-  foundations: [],
-  "defi-basics": ["foundations"],
-  bitcoin: ["foundations"],
-  operator: ["foundations", "defi-basics"],
-  yield: ["foundations", "defi-basics", "operator"],
-  trading: ["foundations", "defi-basics", "operator"],
-  quant: ["foundations", "defi-basics", "operator"],
-  enterprise: ["foundations", "defi-basics"],
-};
+/** Stages each stage assumes; kept in the catalog. */
+export { PREREQS };
 
 export function isCatalogKind(kind: PlanItemKind): boolean {
   return CATALOG_KINDS.has(kind);

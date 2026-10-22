@@ -72,8 +72,8 @@ export async function ensureCoachingAgreementEmail(
     to: email,
     purpose: "transactional",
     subject: `Sign your ${packageName} coaching agreement`,
-    text: `Your ${packageName} coaching payment is recorded. Sign the agreement to start: ${signUrl}\n\nEducation only. This is not financial advice.`,
-    html: `<p>Your ${escapeHtml(packageName)} coaching payment is recorded. Sign the agreement to start.</p><p><a href="${escapeHtml(signUrl)}">${escapeHtml(signUrl)}</a></p><p>Education only. This is not financial advice.</p>`,
+    text: `Your ${packageName} coaching payment is recorded. Sign the agreement to start: ${signUrl}`,
+    html: `<p>Your ${escapeHtml(packageName)} coaching payment is recorded. Sign the agreement to start.</p><p><a href="${escapeHtml(signUrl)}">${escapeHtml(signUrl)}</a></p>`,
     log: { source: "coaching_contract", flowType: "coaching_contract" },
   });
 

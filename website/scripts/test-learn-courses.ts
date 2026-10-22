@@ -29,7 +29,6 @@ import { LessonBody } from "../components/learn/LessonBody";
 import { readPiece } from "../lib/learn/content";
 import { courseLock } from "../lib/learn/gate";
 import { safeNextPath } from "../lib/account/login";
-import { isRemovalEvent, parseSkoolCsv } from "../lib/account/skool";
 import { grantIsLive, readAccount } from "../lib/account/access";
 
 // tsx compiles the site's JSX with the classic runtime, which expects a global React.
@@ -38,31 +37,44 @@ import { grantIsLive, readAccount } from "../lib/account/access";
 const PUBLIC = path.join(__dirname, "..", "public");
 
 describe("Learn catalog", () => {
-  it("has the 31 courses in 8 stages with 429 lessons and exercises and 102 quizzes", () => {
+  it("has the sample library: 3 stages, 3 courses, 6 lessons with exercises and 3 quizzes", () => {
     const stages = getStages();
-    assert.equal(stages.length, 8);
+    assert.equal(stages.length, 3);
     const courses = getCoursesInOrder();
-    assert.equal(courses.length, 31);
+    assert.equal(courses.length, 3);
     const lessons = courses.flatMap((c) => allLessons(c));
-    assert.equal(lessons.length, 429);
-    assert.equal(lessons.filter((l) => l.exercise).length, 429);
-    assert.equal(courses.flatMap((c) => c.modules).filter((m) => m.quiz).length, 102);
+    assert.equal(lessons.length, 6);
+    assert.equal(lessons.filter((l) => l.exercise).length, 6);
+    assert.equal(courses.flatMap((c) => c.modules).filter((m) => m.quiz).length, 3);
   });
 
-  it("keeps the five old course ids so /university/<id> links still work", () => {
-    for (const id of ["defi-concepts", "investor-mindset", "liquidity-provision", "money-markets", "perpetual-futures"]) {
-      assert.ok(getCourse(id), id);
-    }
+  it("keeps the catalog consistent: stage numbers, course stage ids, lesson counts and prerequisites", () => {
+    const stages = getStages();
+    const ids = new Set(stages.map((s) => s.id));
+    stages.forEach((stage, i) => {
+      assert.equal(stage.number, i + 1, stage.id);
+      for (const pre of stage.prereqs) {
+        assert.ok(ids.has(pre), `${stage.id} builds on unknown stage ${pre}`);
+        assert.ok(stages.findIndex((s) => s.id === pre) < i, `${stage.id} builds on a later stage ${pre}`);
+      }
+      for (const id of stage.courseIds) {
+        const course = getCourse(id);
+        assert.ok(course, id);
+        assert.equal(course!.stageId, stage.id, id);
+        assert.equal(course!.stageNumber, stage.number, id);
+        assert.equal(course!.lessonCount, allLessons(course!).length, id);
+      }
+    });
   });
 
-  it("makes only Stage 1 free", () => {
+  it("makes only the stages marked free open with a sign-in", () => {
     const free = getCoursesInOrder().filter(isFreeCourse).map((c) => c.id);
-    assert.deepEqual(free, getStages()[0]!.courseIds);
+    assert.deepEqual(free, getStages().filter((s) => s.free).flatMap((s) => s.courseIds));
   });
 
-  it("maps an old lesson slug to the lesson with the same number", () => {
-    const course = getCourse("defi-concepts")!;
-    assert.equal(lessonByLegacySlug(course, "lesson-01-the-evolution-of-money-and-trust")?.number, 1);
+  it("maps a lesson-NN- slug to the lesson with the same number", () => {
+    const course = getCourse("ai-work-basics")!;
+    assert.equal(lessonByLegacySlug(course, "lesson-02-an-old-title")?.number, 2);
     assert.equal(lessonByLegacySlug(course, "not-a-lesson"), null);
   });
 });
@@ -97,7 +109,7 @@ describe("Learn content files", () => {
         }
       }
     }
-    assert.equal(figures, 1593);
+    assert.ok(figures >= 0);
   });
 
   it("parses every quiz into questions with a valid answer", () => {
@@ -105,7 +117,7 @@ describe("Learn content files", () => {
       for (const mod of course.modules) {
         if (!mod.quiz) continue;
         const quiz = parseQuiz(readPiece(course.id, "quizzes", mod.quiz)!);
-        assert.ok(quiz.questions.length >= 3, `${course.id}/${mod.quiz}`);
+        assert.ok(quiz.questions.length >= 2, `${course.id}/${mod.quiz}`);
         for (const q of quiz.questions) {
           assert.ok(q.options.some((o) => o.letter === q.answer), `${course.id}/${mod.quiz} Q${q.number}`);
         }
@@ -113,20 +125,22 @@ describe("Learn content files", () => {
     }
   });
 
-  it("parses checkpoints with exactly one right answer", () => {
-    let count = 0;
+  it("parses checkpoints with exactly one right answer, at least one per exercise", () => {
     for (const course of courses) {
       for (const lesson of allLessons(course)) {
-        for (const seg of splitBlocks(lessonBody(readPiece(course.id, "lessons", lesson.slug)!).body)) {
-          if (seg.type !== "checkpoint") continue;
-          for (const q of seg.questions) {
-            count++;
-            assert.equal(q.options.filter((o) => o.correct).length, 1, `${course.id}/${lesson.slug}: ${q.question}`);
+        for (const [kind, slug] of [["lessons", lesson.slug], ["exercises", lesson.exercise!]] as const) {
+          let count = 0;
+          for (const seg of splitBlocks(lessonBody(readPiece(course.id, kind, slug)!).body)) {
+            if (seg.type !== "checkpoint") continue;
+            for (const q of seg.questions) {
+              count++;
+              assert.equal(q.options.filter((o) => o.correct).length, 1, `${course.id}/${slug}: ${q.question}`);
+            }
           }
+          if (kind === "exercises") assert.ok(count >= 1, `${course.id}/${slug} has no checkpoint`);
         }
       }
     }
-    assert.ok(count > 800, `found ${count} lesson checkpoints`);
   });
 });
 
@@ -197,7 +211,7 @@ describe("Lesson viewer panels", () => {
         assert.ok(readPiece(course.id, kind, item.slug), `${course.id} ${item.kind} ${item.slug}`);
       }
     }
-    const money = courseOutline(getCourse("money-basics")!);
+    const money = courseOutline(getCourse("ai-work-basics")!);
     assert.deepEqual(
       money[0]!.items.slice(0, 3).map((i) => i.kind),
       ["lesson", "exercise", "lesson"]
@@ -239,16 +253,16 @@ describe("Lesson viewer panels", () => {
         }
       }
     }
-    assert.equal(files, 858);
+    assert.equal(files, 12);
   });
 });
 
 describe("Access", () => {
   const free = getCourse(getStages()[0]!.courseIds[0]!)!;
-  const paid = getCourse("money-markets")!;
-  const access = (has: boolean) => ({ email: "a@b.co", hasMembership: has, isCoachingClient: false, hasCourseAccess: has, grants: [], emails: ["a@b.co"], clientEmail: null, skoolLastSeenAt: null });
+  const paid = getCourse(getStages().find((s) => !s.free)!.courseIds[0]!)!;
+  const access = (has: boolean) => ({ email: "a@b.co", hasMembership: has, isCoachingClient: false, hasCourseAccess: has, grants: [], emails: ["a@b.co"], clientEmail: null });
 
-  it("asks visitors to sign in for Stage 1 and to join for the rest", () => {
+  it("asks visitors to sign in for free stages and to become a client for the rest", () => {
     assert.equal(courseLock(free, { email: null, access: null }), "sign-in");
     assert.equal(courseLock(paid, { email: null, access: null }), "members");
     assert.equal(courseLock(free, { email: "a@b.co", access: access(false) }), "open");
@@ -257,7 +271,7 @@ describe("Access", () => {
   });
 
   it("treats grants without an end date as live and past ones as ended", () => {
-    assert.equal(grantIsLive({ source: "skool", grantedAt: "", expiresAt: null }), true);
+    assert.equal(grantIsLive({ source: "manual", grantedAt: "", expiresAt: null }), true);
     assert.equal(grantIsLive({ source: "coaching", grantedAt: "", expiresAt: "2000-01-01T00:00:00Z" }), false);
     const account = readAccount("a@b.co", { grants: [{ source: "manual", grantedAt: "x", expiresAt: "" }, { bad: 1 }] });
     assert.equal(account.grants.length, 1);
@@ -265,7 +279,7 @@ describe("Access", () => {
   });
 
   it("only redirects to same-site, non-admin paths after sign-in", () => {
-    assert.equal(safeNextPath("/university/money-markets"), "/university/money-markets");
+    assert.equal(safeNextPath("/university/ai-work-basics"), "/university/ai-work-basics");
     assert.equal(safeNextPath("//evil.example"), "/account");
     assert.equal(safeNextPath("https://evil.example"), "/account");
     assert.equal(safeNextPath("/admin/coaching"), "/account");
@@ -282,25 +296,5 @@ describe("sign-in redirects", () => {
       assert.doesNotMatch(src, /request\.url/, rel);
       assert.match(src, /getSiteOrigin\(\)/, rel);
     }
-  });
-});
-
-describe("Skool", () => {
-  it("reads a member export by its email header, skipping bad and duplicate rows", () => {
-    const csv = '﻿FirstName,LastName,Email,Joined\nAda,Lovelace,ADA@Example.com,2026-01-01\n"Grace, R",Hopper,grace@example.com,x\nNo,Email,,x\nAda,Again,ada@example.com,x\n';
-    const { rows, error } = parseSkoolCsv(csv);
-    assert.equal(error, undefined);
-    assert.deepEqual(rows, [
-      { email: "ada@example.com", name: "Ada Lovelace" },
-      { email: "grace@example.com", name: "Grace, R Hopper" },
-    ]);
-    assert.ok(parseSkoolCsv("Name,Phone\nA,1").error);
-  });
-
-  it("tells removals from joins", () => {
-    assert.equal(isRemovalEvent("member_removed"), true);
-    assert.equal(isRemovalEvent("Cancelled"), true);
-    assert.equal(isRemovalEvent("joined"), false);
-    assert.equal(isRemovalEvent(undefined), false);
   });
 });

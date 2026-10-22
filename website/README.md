@@ -1,47 +1,43 @@
-# DeFi University Website
+# ApexLeader.ai Website
 
-Next.js 15 marketing site for [defiuniversity.xyz](https://defiuniversity.xyz). The apex is canonical; `www` redirects for every path except `/api/*`.
+Next.js 15 site and coaching platform for [apexleader.ai](https://apexleader.ai): private 1-on-1 AI coaching for business owners.
 
-## Quick start
+## What is here
+
+- **Public site:** home, `/coaching` (packages), `/coaching/book` (free discovery call), `/coaching/pay` (Stripe checkout or an invoice by email), `/university` (course library), `/about`, `/privacy`, `/terms`.
+- **Client account** (`/account`): sessions, booking, the published syllabus, documents, coaching agreement, plans and billing, Telegram messages to the coach.
+- **Admin** (`/admin`): pipeline, clients, contacts, sessions, contracts, payments due, packages, syllabi, email flows.
+- **Syllabus pipeline:** a discovery call transcript fills the intake form (Gemini), the confirmed intake drafts a week-by-week syllabus through the course library, the coach edits and publishes it, and progress is tracked from the client's lessons, exercises and quizzes.
+
+## Where to change things
+
+| What | Where |
+| --- | --- |
+| Business name, domain, email, coach, Telegram handle | `lib/brand.ts` |
+| Packages and prices (seed values) | `content/site-fallback.ts`, then Admin → Coaching → Packages |
+| Course library | `content/learn/catalog.json` and `content/learn/courses/<courseId>/{lessons,exercises,quizzes}/*.md` |
+| Stage prerequisites, free stages, level defaults for the planner | `content/learn/catalog.json` (`prereqs`, `free`, `planner`) |
+| Intake fields and Gemini prompts | `lib/coaching/intake.ts`, `lib/coaching/coaching-ai.ts` |
+| Coaching agreements | `content/coaching-contracts/*.md` (drafts: have them reviewed) |
+| Privacy and terms | `content/legal.ts` (drafts: have them reviewed) |
+| Email templates and flows | `lib/email-templates.ts`, `lib/flow-definitions.ts` |
+
+## Develop
 
 ```bash
-cd website
 npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) and review all routes before production deploy.
+Build locally with placeholder values:
 
-## Scripts
+```bash
+ADMIN_PASSWORD=x JWT_SECRET=x NEXT_PUBLIC_SITE_URL=https://apexleader.ai \
+NEXT_PUBLIC_FIREBASE_API_KEY=x NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=x NEXT_PUBLIC_FIREBASE_PROJECT_ID=x \
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=x NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=0 NEXT_PUBLIC_FIREBASE_APP_ID=x \
+npm run build
+```
 
-| Script | Purpose |
-|--------|---------|
-| `npm run dev` | Local development with hot reload |
-| `npm run build` | Production build verification |
-| `npm run start` | Serve production build locally |
-| `npm run lint` | ESLint |
-| `npx tsx scripts/test-testimonials.ts` | Testimonial gate: verified clips, verbatim quotes, bucket media, no claim language |
-| `npx tsx scripts/test-testimonial-build-grep.ts` | After `npm run build`: banned quotes never reach `.next/` |
+Tests are plain scripts: `npx tsx scripts/test-<name>.ts`. CI runs the list in `.github/workflows/ci.yml`.
 
-## Routes
-
-- `/` — Home: offer ladder, stories, group and private coaching, free courses
-- `/skool` — Group coaching on Skool (Standard $7 / Premium $29 / VIP $97; 7-day free trial)
-- `/coaching` — Private coaching (Kickstart $750 / Operator $2,500 / Inner Circle $7,500; ids stay foundations / mastery / institutional; free 30-minute call)
-- `/testimonials` — Member and client stories (verified clips only; `noindex` while none are published)
-- `/university` — Five free courses
-- `/about`, `/success`, `/cancel`, `/privacy`, `/terms`
-
-## Adding a story
-
-1. Transcribe the clip locally, pick a verbatim quote, and note its timestamp. Quotes stay free of income, returns, and trade-instruction claims.
-2. Upload the MP4, poster, face crop, and WebVTT captions to `gs://dfu-public-media/testimonials/<person>/<clip>-v1.*` with `Cache-Control: public, max-age=31536000, immutable`. Never overwrite an object; bump the version.
-3. Add the clip to `content/testimonials.ts` with `verified: true`, `verifiedBy`, and `verifiedOn`, then run both testimonial tests.
-
-## Design
-
-See [DESIGN.md](./DESIGN.md) for the Editorial Vault design system.
-
-## Deploy
-
-Git host is Cursor Origin (`getrunway/defi-university-website`), not GitHub. A push to `main` runs the Depot production workflow (Cloud Run via `cloudbuild.yaml`, then Firestore rules). Follow [DEPLOY.md](./DEPLOY.md).
+Deploying and the one-time account setup are in [DEPLOY.md](./DEPLOY.md).

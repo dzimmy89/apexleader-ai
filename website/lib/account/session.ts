@@ -8,7 +8,7 @@ import { SIGNED_IN_HINT } from "@/lib/account/signed-in-hint";
  * Member and coaching-client sign-in. Separate cookie and role from the
  * admin session so an account cookie can never open /admin.
  */
-const COOKIE_NAME = "du_account";
+const COOKIE_NAME = "apex_account";
 const MAX_AGE = 60 * 60 * 24 * 30; // 30 days
 
 function secretBytes(): Uint8Array | null {

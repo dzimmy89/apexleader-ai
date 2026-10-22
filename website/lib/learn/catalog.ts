@@ -1,8 +1,9 @@
 import catalogJson from "@/content/learn/catalog.json";
 
 /**
- * The Learn catalog imported from TheNode-University by
- * scripts/import-learn-courses.ts. Pure data, safe on client and server.
+ * The course library: content/learn/catalog.json lists the stages and
+ * courses, and each course's markdown lives under
+ * content/learn/courses/<courseId>/. Pure data, safe on client and server.
  */
 export interface LearnLesson {
   number: number;
@@ -38,19 +39,38 @@ export interface LearnStage {
   title: string;
   blurb: string;
   level: "beginner" | "intermediate" | "advanced";
+  /** Free with a sign-in; every other stage needs coaching access. */
+  free: boolean;
+  /** Stages this stage builds on. Path order does the rest. */
+  prereqs: string[];
   courseIds: string[];
+}
+
+/** The rule-based planner's defaults per experience level, by course and stage id. */
+export interface PlannerConfig {
+  /** Courses a client at this level already knows. */
+  skipByLevel: Record<string, string[]>;
+  /** The stage to aim for when the intake names none. */
+  defaultFocusByLevel: Record<string, string>;
 }
 
 interface Catalog {
   source: { repo: string; branch: string; commit: string };
   stages: LearnStage[];
+  planner: PlannerConfig;
   courses: Record<string, LearnCourse>;
 }
 
 const catalog = catalogJson as unknown as Catalog;
 
-/** Stage 1 is free with a sign-in; every later stage needs the membership. */
-export const FREE_STAGE_IDS = new Set(["foundations"]);
+export const FREE_STAGE_IDS = new Set(catalog.stages.filter((s) => s.free).map((s) => s.id));
+
+/** Stages each stage assumes, from the catalog. */
+export const PREREQS: Record<string, string[]> = Object.fromEntries(catalog.stages.map((s) => [s.id, s.prereqs || []]));
+
+export function getPlannerConfig(): PlannerConfig {
+  return catalog.planner;
+}
 
 export function getStages(): LearnStage[] {
   return catalog.stages;

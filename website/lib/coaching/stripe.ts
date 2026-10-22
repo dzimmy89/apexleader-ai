@@ -453,15 +453,13 @@ export interface CoachingPurchaseGrant {
   packageId: string;
   packageName?: string;
   planId?: string;
-  /** Checkout session id, or `crypto:<noticeId>`. Empty skips replay protection. */
+  /** Checkout session id, or `manual:<email>:<packageId>`. Empty skips replay protection. */
   grantKey: string;
   customerId?: string;
   subscriptionId?: string;
   paymentIntentId?: string;
   amountPaid?: number | null;
-  paymentSource?: "stripe" | "crypto";
-  cryptoTxHash?: string;
-  cryptoNetwork?: string;
+  paymentSource?: "stripe" | "manual";
 }
 
 export async function grantCoachingPurchase(
@@ -485,10 +483,8 @@ export async function grantCoachingPurchase(
 
     const now = new Date().toISOString();
     const processedIds = grantKey ? [...ids, grantKey] : ids;
-    const cryptoFields: Record<string, unknown> = {};
-    if (purchase.paymentSource) cryptoFields.paymentSource = purchase.paymentSource;
-    if (purchase.cryptoTxHash) cryptoFields.cryptoTxHash = purchase.cryptoTxHash;
-    if (purchase.cryptoNetwork) cryptoFields.cryptoNetwork = purchase.cryptoNetwork;
+    const sourceFields: Record<string, unknown> = {};
+    if (purchase.paymentSource) sourceFields.paymentSource = purchase.paymentSource;
 
     if (!snap.exists) {
       tx.set(clientRef, {
@@ -511,7 +507,7 @@ export async function grantCoachingPurchase(
         processedCheckoutSessionIds: processedIds,
         createdAt: now,
         updatedAt: now,
-        ...cryptoFields,
+        ...sourceFields,
       });
     } else {
       const prevRemaining = Number(existingData?.sessionsRemaining || 0);
@@ -525,7 +521,7 @@ export async function grantCoachingPurchase(
         sessionsTotal: prevTotal + grant,
         processedCheckoutSessionIds: processedIds,
         updatedAt: now,
-        ...cryptoFields,
+        ...sourceFields,
       };
       if (purchase.clientName) patch.name = purchase.clientName;
       if (purchase.customerId) patch.stripeCustomerId = purchase.customerId;
@@ -774,9 +770,7 @@ async function syncStripeCoachingPayment(
     stripeInvoiceId: e.invoiceId || null,
     stripeSessionId: e.checkoutSessionId || null,
     stripeSubscriptionId: e.subscriptionId || null,
-    txHash: null,
-    network: null,
-    asset: null,
+    reference: null,
     note: source,
     source: "stripe_webhook",
     actor: null,

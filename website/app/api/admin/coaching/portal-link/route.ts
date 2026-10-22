@@ -30,7 +30,7 @@ export async function POST(request: NextRequest) {
 
   const html = `
     <div style="font-family: 'Libre Baskerville', Georgia, serif; max-width: 560px; margin: 0 auto; padding: 32px;">
-      <h2 style="color: #1a1814;">Your DeFi University portal link</h2>
+      <h2 style="color: #1a1814;">Your ApexLeader.ai portal link</h2>
       <p style="color: #444; line-height: 1.6;">
         Here is your coaching client portal access link. It expires in 30 days.
       </p>
@@ -40,13 +40,12 @@ export async function POST(request: NextRequest) {
           Open client portal
         </a>
       </p>
-      <p style="color: #777; font-size: 13px;">Educational only — not financial advice.</p>
     </div>
   `;
 
   await sendEmail({
     to: clientId,
-    subject: "Your DeFi University portal link",
+    subject: "Your ApexLeader.ai portal link",
     html,
     text: `Open your portal: ${link.url}`,
     log: { source: "admin_portal_link", userId: `client:${clientId}` },

@@ -12,7 +12,7 @@ export default function PrivacyPage() {
       <PageHeader
         eyebrow="Legal"
         title="Privacy Policy"
-        intro="How DeFi University LLC collects, uses, and protects your information."
+        intro="How ApexLeader.ai collects, uses, and protects your information."
       />
 
       <div className="prose-serif mt-12 space-y-10">

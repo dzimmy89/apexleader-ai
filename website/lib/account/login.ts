@@ -52,17 +52,17 @@ export async function sendLoginLink(
     ? await sendEmail({
         to: email,
         purpose: "transactional",
-        subject: "Confirm this email for your DeFi University account",
-        text: `${linkTo} asked to add this email to their DeFi University account. Confirm it: ${url}\n\nAfter you confirm, signing in with either email opens the same account, and a Skool membership or coaching under this email shows there. The link works once and expires in 30 minutes. If you did not ask for this, ignore this email.\n\nEducation only. This is not financial advice.`,
-        html: `<p>${escapeHtml(linkTo)} asked to add this email to their DeFi University account.</p><p><a href="${escapeHtml(url)}">Confirm this email</a></p><p>After you confirm, signing in with either email opens the same account, and a Skool membership or coaching under this email shows there. The link works once and expires in 30 minutes. If you did not ask for this, ignore this email.</p><p>Education only. This is not financial advice.</p>`,
+        subject: "Confirm this email for your ApexLeader.ai account",
+        text: `${linkTo} asked to add this email to their ApexLeader.ai account. Confirm it: ${url}\n\nAfter you confirm, signing in with either email opens the same account, and coaching under this email shows there. The link works once and expires in 30 minutes. If you did not ask for this, ignore this email.`,
+        html: `<p>${escapeHtml(linkTo)} asked to add this email to their ApexLeader.ai account.</p><p><a href="${escapeHtml(url)}">Confirm this email</a></p><p>After you confirm, signing in with either email opens the same account, and coaching under this email shows there. The link works once and expires in 30 minutes. If you did not ask for this, ignore this email.</p>`,
         log: { source: "account_link", flowType: "account_login" },
       })
     : await sendEmail({
         to: email,
         purpose: "transactional",
-        subject: "Your DeFi University sign-in link",
-        text: `Sign in to DeFi University: ${url}\n\nThe link works once and expires in 30 minutes. If you did not ask for it, ignore this email.\n\nEducation only. This is not financial advice.`,
-        html: `<p>Sign in to DeFi University:</p><p><a href="${escapeHtml(url)}">Sign in</a></p><p>The link works once and expires in 30 minutes. If you did not ask for it, ignore this email.</p><p>Education only. This is not financial advice.</p>`,
+        subject: "Your ApexLeader.ai sign-in link",
+        text: `Sign in to ApexLeader.ai: ${url}\n\nThe link works once and expires in 30 minutes. If you did not ask for it, ignore this email.`,
+        html: `<p>Sign in to ApexLeader.ai:</p><p><a href="${escapeHtml(url)}">Sign in</a></p><p>The link works once and expires in 30 minutes. If you did not ask for it, ignore this email.</p>`,
         log: { source: "account_login", flowType: "account_login" },
       });
   return sent.ok ? { ok: true } : { ok: false, error: sent.error || "Could not send the sign-in email" };

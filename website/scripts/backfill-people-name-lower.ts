@@ -13,7 +13,7 @@
  *   npx tsx scripts/backfill-people-name-lower.ts --apply
  *
  * Requires Application Default Credentials or GOOGLE_SERVICE_ACCOUNT_KEY
- * and GCP_PROJECT_ID (defaults to defi-university-prod).
+ * and GCP_PROJECT_ID (defaults to apexleader-prod).
  */
 import { getDb } from "../lib/firebase-admin";
 import { personNameLower } from "../lib/crm/people-search";

@@ -8,11 +8,11 @@ import { COOKIE_NAME, createAdminSession } from "../lib/auth/admin-session-cooki
 import {
   buildInstallmentSchedule,
   markInstallmentPaid,
-  rebuildCryptoSchedule,
+  rebuildManualSchedule,
   scheduleDueItems,
   scheduleUpcomingItems,
 } from "../lib/coaching/payments";
-import { logCryptoPayment } from "../lib/coaching/crypto-notices";
+import { logManualPayment } from "../lib/coaching/manual-payments";
 import {
   countUsedSessions,
   mergeCalendarEvents,
@@ -30,7 +30,7 @@ import { POST as addToPipeline } from "../app/api/admin/coaching/route";
 import { POST as changePlan } from "../app/api/admin/contacts/[email]/payment-plan/route";
 import { createMemoryFirestore, rows, type MemoryFirestore } from "./fixtures/memory-firestore";
 
-const COACH = "hello@defiuniversity.xyz";
+const COACH = "hello@apexleader.ai";
 const CLIENT = "ada@example.com";
 
 let mem: MemoryFirestore;
@@ -45,7 +45,7 @@ beforeEach(() => {
     return { ok: true, messageId: "m1", threadId: "t1" };
   });
   process.env.JWT_SECRET = "test-coaching-delivery";
-  process.env.NEXT_PUBLIC_SITE_URL = "https://defiuniversity.xyz";
+  process.env.NEXT_PUBLIC_SITE_URL = "https://apexleader.ai";
   process.env.SENDER_EMAIL = COACH;
 });
 
@@ -63,7 +63,7 @@ async function adminRequest(url: string, body: unknown): Promise<NextRequest> {
       "content-type": "application/json",
       cookie: `${COOKIE_NAME}=${token}`,
       authorization: `Bearer ${token}`,
-      origin: "https://defiuniversity.xyz",
+      origin: "https://apexleader.ai",
     },
     body: JSON.stringify(body),
   });
@@ -105,13 +105,11 @@ describe("Payments due: upcoming installments", () => {
 
 describe("Change plan rebuilds the schedule", () => {
   it("turns a payment logged as paid in full into installment 1 of 3", async () => {
-    const logged = await logCryptoPayment(
+    const logged = await logManualPayment(
       {
         email: CLIENT,
         name: "Ada",
         amountUsd: 834,
-        asset: "USDC",
-        network: "evm",
         paidAt: "2026-10-20",
         packageId: "mastery",
         planId: "full",
@@ -141,7 +139,7 @@ describe("Change plan rebuilds the schedule", () => {
     assert.equal(payment.planId, "3pay");
     assert.equal(payment.installmentNumber, 1);
 
-    const direct = await rebuildCryptoSchedule(mem as unknown as Firestore, {
+    const direct = await rebuildManualSchedule(mem as unknown as Firestore, {
       email: CLIENT,
       packageId: "mastery",
       planId: "full",
@@ -414,9 +412,9 @@ describe("coach calendars", () => {
   it("reads hello@'s primary calendar plus the booking calendar", () => {
     delete process.env.COACH_READ_CALENDAR_IDS;
     process.env.COACH_CALENDAR_ID = "group123@group.calendar.google.com";
-    assert.deepEqual(coachReadCalendarIds(), ["hello@defiuniversity.xyz", "group123@group.calendar.google.com"]);
+    assert.deepEqual(coachReadCalendarIds(), ["hello@apexleader.ai", "group123@group.calendar.google.com"]);
     delete process.env.COACH_CALENDAR_ID;
-    assert.deepEqual(coachReadCalendarIds(), ["hello@defiuniversity.xyz"]);
+    assert.deepEqual(coachReadCalendarIds(), ["hello@apexleader.ai"]);
     process.env.COACH_READ_CALENDAR_IDS = " a@x.com, b@x.com ,a@x.com,";
     assert.deepEqual(coachReadCalendarIds(), ["a@x.com", "b@x.com"]);
   });

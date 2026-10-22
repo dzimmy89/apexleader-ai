@@ -67,7 +67,7 @@ export function Panel({
   );
 }
 
-export type ChipTone = "neutral" | "success" | "warning" | "danger" | "info" | "skool";
+export type ChipTone = "neutral" | "success" | "warning" | "danger" | "info" | "positive";
 
 export function Chip({
   tone = "neutral",
@@ -184,7 +184,7 @@ export function Meter({ value, max, label = "Progress", className }: { value: nu
   );
 }
 
-type ButtonTone = "primary" | "secondary" | "ghost" | "danger" | "skool";
+type ButtonTone = "primary" | "secondary" | "ghost" | "danger" | "positive";
 type ButtonSize = "sm" | "md" | "lg";
 
 const toneClass: Record<ButtonTone, string> = {
@@ -192,7 +192,7 @@ const toneClass: Record<ButtonTone, string> = {
   secondary: "btn-secondary",
   ghost: "btn-ghost",
   danger: "btn-danger",
-  skool: "btn-skool",
+  positive: "btn-positive",
 };
 
 const sizeClass: Record<ButtonSize, string> = {

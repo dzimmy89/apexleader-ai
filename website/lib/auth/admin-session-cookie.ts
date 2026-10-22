@@ -2,7 +2,7 @@ import { SignJWT, jwtVerify } from "jose";
 import { cookies } from "next/headers";
 import type { NextResponse } from "next/server";
 
-const COOKIE_NAME = "defi_admin_session";
+const COOKIE_NAME = "apex_admin_session";
 const MAX_AGE = 60 * 60 * 12; // 12 hours
 
 /** Local/dev only. Never used when NODE_ENV === "production". */

@@ -1,15 +1,14 @@
 import type { CoachingPackage } from "@/lib/coaching/packages";
 
-// Fallback package definitions used when Firestore is empty or unreachable.
-// Display names changed Oct 2026; the ids stay foundations / mastery /
-// institutional so Stripe env vars, contracts, CRM records and the portal keep
-// matching:
-//   Kickstart $750  /  Operator $2,500  /  Inner Circle $7,500
+// Fallback package definitions used when Firestore is empty or unreachable,
+// and the seed for scripts/seed-coaching-packages.ts. Names, prices and
+// lines are placeholders to set before go-live; the ids stay foundations /
+// mastery / institutional so Stripe env vars, contracts and records match.
 export const fallbackPackages: CoachingPackage[] = [
   {
     id: "foundations",
     name: "Kickstart",
-    tagline: "Two sessions to get your setup safe. The full fee counts toward Operator.",
+    tagline: "Get AI working on one real part of your business in 30 days.",
     price: 750,
     priceDisplay: "$750",
     durationWeeks: 4,
@@ -19,17 +18,14 @@ export const fallbackPackages: CoachingPackage[] = [
     applicationOnly: false,
     cadence: "Within 30 days",
     features: [
-      "2 × 60-minute private 1-on-1 education sessions",
-      "Self-custody setup walkthrough",
-      "Risk-parameter workshop (you keep self-custody)",
-      "Async Slack access for 30 days",
-      "Full $750 credited toward Operator if you upgrade within 30 days",
+      "2 × 60-minute private 1-on-1 sessions",
+      "A short syllabus built from your discovery call",
+      "One build project on your own business",
+      "Messages between sessions for 30 days",
+      "The full fee counts toward Operator if you upgrade within 30 days",
     ],
-    deliverables: [
-      "Your written risk-parameter profile",
-      "A leverage-aware risk plan you practice before you act (education only)",
-    ],
-    targetCapital: "$1K–$25K",
+    deliverables: ["One working AI workflow in your business", "Your next-steps plan"],
+    bestFor: "Owners starting out with AI",
     sortIndex: 1,
     active: true,
     paymentPlans: [],
@@ -37,7 +33,7 @@ export const fallbackPackages: CoachingPackage[] = [
   {
     id: "mastery",
     name: "Operator",
-    tagline: "12 weeks to run your own DeFi process, with David checking your work.",
+    tagline: "12 weeks to build AI into how your business runs, with your coach checking your work.",
     price: 2500,
     priceDisplay: "$2,500",
     durationWeeks: 12,
@@ -49,19 +45,14 @@ export const fallbackPackages: CoachingPackage[] = [
     badge: "Most chosen",
     features: [
       "Everything in Kickstart",
-      "8 × 60-minute 1-on-1 education sessions over 12 weeks",
-      "3 months of the DeFi University membership included ($291 value)",
-      "Guided risk-framework blueprint (process, not portfolio management)",
-      "Curated research bulletins",
-      "Smart-contract audit checklist",
-      "Dedicated async Slack channel",
+      "8 × 60-minute 1-on-1 sessions over 12 weeks",
+      "A week-by-week syllabus built around your business",
+      "Build projects on your own processes",
+      "The full course library for 3 months",
+      "Messages between sessions",
     ],
-    deliverables: [
-      "Guided risk-framework blueprint (process, not portfolio management)",
-      "12 weeks of curated research bulletins",
-      "Smart-contract audit checklist",
-    ],
-    targetCapital: "$25K–$100K",
+    deliverables: ["Several working AI workflows and tools", "A written plan for what to build next"],
+    bestFor: "Owners and small teams ready to build",
     sortIndex: 2,
     active: true,
     paymentPlans: [],
@@ -69,7 +60,7 @@ export const fallbackPackages: CoachingPackage[] = [
   {
     id: "institutional",
     name: "Inner Circle",
-    tagline: "Six months working directly with David, every week.",
+    tagline: "Six months working directly with your coach, every week.",
     price: 7500,
     priceDisplay: "$7,500",
     durationWeeks: 26,
@@ -78,20 +69,16 @@ export const fallbackPackages: CoachingPackage[] = [
     requiresDiscoveryCall: true,
     applicationOnly: false,
     cadence: "Weekly",
-    badge: "Direct with David",
+    badge: "Direct with your coach",
     features: [
       "Everything in Operator",
       "24 × weekly 60-minute 1-on-1 sessions",
-      "Direct access to David",
-      "6 months of the DeFi University membership included ($582 value)",
-      "Due-diligence walkthroughs on protocols you bring, using the audit checklist",
-      "Quarterly risk-framework review",
+      "Build work across your business and team",
+      "The full course library for 6 months",
+      "Quarterly review of what AI is doing in your business",
     ],
-    deliverables: [
-      "24 weekly sessions over six months",
-      "Due-diligence walkthrough notes on the protocols you bring",
-    ],
-    targetCapital: "$100K+",
+    deliverables: ["24 weekly sessions over six months", "AI built into the core of how your business runs"],
+    bestFor: "Businesses making AI a core part of operations",
     sortIndex: 3,
     active: true,
     paymentPlans: [],

@@ -11,9 +11,9 @@ export async function GET() {
   const origin = getSiteOrigin();
   const previews = listTemplateIds().map((stepId) => {
     const rendered = getTemplate(stepId, {
-      email: "preview@defiuniversity.xyz",
+      email: "preview@apexleader.ai",
       firstName: "Preview",
-      unsubscribeUrl: `${origin}/api/unsubscribe?token=preview&email=preview@defiuniversity.xyz`,
+      unsubscribeUrl: `${origin}/api/unsubscribe?token=preview&email=preview@apexleader.ai`,
     });
     return { stepId, subject: rendered.subject, html: rendered.html };
   });

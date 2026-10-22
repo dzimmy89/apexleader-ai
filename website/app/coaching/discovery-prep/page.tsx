@@ -14,7 +14,7 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "Discovery Call Prep",
   description:
-    "What to prepare before your DeFi University discovery call. Educational only — not financial advice.",
+    "What to prepare before your ApexLeader.ai discovery call.",
   robots: { index: false },
 };
 
@@ -48,8 +48,8 @@ export default async function DiscoveryPrepPage({ searchParams }: PrepPageProps)
                 value={`${packageContext.sessionCount} sessions over ${packageContext.durationWeeks} weeks`}
               />
             ) : null}
-            {packageContext.targetCapital ? (
-              <Row label="Typical capital range" value={packageContext.targetCapital} />
+            {packageContext.bestFor ? (
+              <Row label="Best for" value={packageContext.bestFor} />
             ) : null}
             <p className="px-5 pb-4 pt-1 font-[family-name:var(--font-ui)] text-[length:var(--text-small)] text-[var(--color-text-muted)]">
               {packageContext.tagline}
@@ -100,7 +100,7 @@ export default async function DiscoveryPrepPage({ searchParams }: PrepPageProps)
         </div>
 
         <p className="mt-8 font-[family-name:var(--font-ui)] text-[length:var(--text-small)] text-[var(--color-text-muted)]">
-          Educational only — not financial advice. Questions before your call? Reply to your
+          Questions before your call? Reply to your
           confirmation email.
         </p>
       </div>

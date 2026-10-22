@@ -17,6 +17,7 @@ interface ApplicationFormProps {
 interface FormData {
   name: string;
   email: string;
+  /** Team size. Stored as applicationData.capital, the field's original name. */
   capital: string;
   experience: string;
   goals: string;
@@ -35,16 +36,16 @@ const EMPTY: FormData = {
 };
 
 const CAPITAL_OPTIONS = [
-  { value: "$100K-$500K", label: "$100K–$500K" },
-  { value: "$500K-$1M", label: "$500K–$1M" },
-  { value: "$1M-$5M", label: "$1M–$5M" },
-  { value: "$5M+", label: "$5M+" },
+  { value: "just-me", label: "Just me" },
+  { value: "2-10", label: "2–10 people" },
+  { value: "11-50", label: "11–50 people" },
+  { value: "50+", label: "More than 50" },
 ];
 
 const EXPERIENCE_OPTIONS = [
-  { value: "beginner", label: "Beginner (under 1 year)" },
-  { value: "intermediate", label: "Intermediate (1–3 years)" },
-  { value: "advanced", label: "Advanced (3+ years)" },
+  { value: "beginner", label: "Beginner (I use a chat assistant now and then)" },
+  { value: "intermediate", label: "Intermediate (AI tools are part of my week)" },
+  { value: "advanced", label: "Advanced (I build automations or agents)" },
 ];
 
 const TIME_OPTIONS = [
@@ -149,12 +150,12 @@ export function ApplicationForm({
       ),
     },
     {
-      title: "Your DeFi experience",
+      title: "You and your business",
       fields: (
         <>
           <Choice
             name="capital"
-            legend="Approximate portfolio size"
+            legend="Team size"
             hint="Optional"
             options={CAPITAL_OPTIONS}
             value={data.capital}
@@ -162,7 +163,7 @@ export function ApplicationForm({
           />
           <Choice
             name="experience"
-            legend="Experience level"
+            legend="Experience with AI"
             options={EXPERIENCE_OPTIONS}
             value={data.experience}
             onChange={(value) => update("experience", value)}

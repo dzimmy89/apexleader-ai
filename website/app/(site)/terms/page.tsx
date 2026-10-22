@@ -12,7 +12,7 @@ export default function TermsPage() {
       <PageHeader
         eyebrow="Legal"
         title="Terms of Service"
-        intro="Terms governing your use of DeFi University educational services."
+        intro="Terms governing your use of ApexLeader.ai educational services."
       />
 
       <div className="prose-serif mt-12 space-y-10">

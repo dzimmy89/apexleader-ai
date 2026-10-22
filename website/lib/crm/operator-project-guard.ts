@@ -3,7 +3,7 @@ import { applicationDefault, getApps, initializeApp } from "firebase-admin/app";
 import { getFirestore, type Firestore } from "firebase-admin/firestore";
 import { setDbForTests } from "@/lib/firebase-admin";
 
-export const PROD_FIRESTORE_PROJECT = "defi-university-prod";
+export const PROD_FIRESTORE_PROJECT = "apexleader-prod";
 
 export interface OperatorProjectGuardArgs {
   credentialProjectId: string;
@@ -36,7 +36,7 @@ export function readCredentialsProjectId(
 
 /**
  * Resolve the operator Firestore project from the credential file's
- * project_id. Do not use getDb()'s defi-university-prod default.
+ * project_id. Do not use getDb()'s apexleader-prod default.
  */
 export function assertOperatorProject(args: OperatorProjectGuardArgs): string {
   const expected = (args.expectedProject ?? PROD_FIRESTORE_PROJECT).trim();

@@ -161,7 +161,7 @@ export default function AdminContractsPage() {
 function StatusBadge({ status }: { status: string }) {
   const map: Record<string, { color: string; icon: typeof ShieldCheck }> = {
     pending: { color: "text-[var(--color-coaching)]", icon: ShieldAlert },
-    signed: { color: "text-[var(--color-skool)]", icon: ShieldCheck },
+    signed: { color: "text-[var(--color-positive)]", icon: ShieldCheck },
     expired: { color: "text-[var(--color-text-muted)]", icon: ShieldAlert },
     voided: { color: "text-[var(--color-danger)]", icon: Ban },
   };

@@ -9,7 +9,7 @@ import { ContactClientArea } from "@/components/admin/crm/ContactClientArea";
 import { ContactEmailComposer } from "@/components/admin/crm/ContactEmailComposer";
 import { ChangePaymentPlanForm } from "@/components/admin/crm/ChangePaymentPlanForm";
 import { ContactSessions } from "@/components/admin/crm/ContactSessions";
-import { LogCryptoPaymentForm } from "@/components/admin/crm/LogCryptoPaymentForm";
+import { LogManualPaymentForm } from "@/components/admin/crm/LogManualPaymentForm";
 import { RecordDetailLayout } from "@/components/admin/crm/RecordDetailLayout";
 import { StageBadge } from "@/components/admin/crm/StageBadge";
 import { Badge } from "@/components/ui/badge";
@@ -82,7 +82,7 @@ function Stat({
           "mt-1 text-sm text-[var(--color-text-on-obsidian)]",
           tone === "danger" && "text-red-400",
           tone === "warning" && "text-amber-400",
-          tone === "good" && "text-[var(--color-skool)]"
+          tone === "good" && "text-[var(--color-positive)]"
         )}
       >
         {value}
@@ -214,8 +214,8 @@ export default function ContactPage() {
   const nextDueTone = money.nextDue ? dueTone(money.nextDue.dueDate, today) : null;
   const accessLabel = data.access.hasMembership
     ? data.access.membershipExpiresAt
-      ? `Member until ${new Date(data.access.membershipExpiresAt).toLocaleDateString()}`
-      : "Member"
+      ? `Course access until ${new Date(data.access.membershipExpiresAt).toLocaleDateString()}`
+      : "Full course access"
     : data.access.isCoachingClient
       ? "Course access as a coaching client"
       : "No course access";
@@ -339,7 +339,7 @@ export default function ContactPage() {
                   Payments
                 </TabsTrigger>
                 <TabsTrigger value="log" className="text-xs">
-                  Log crypto payment
+                  Log payment
                 </TabsTrigger>
                 <TabsTrigger value="sessions" className="text-xs">
                   Sessions
@@ -362,7 +362,7 @@ export default function ContactPage() {
                   {data.schedule ? (
                     <div>
                       <h3 className="font-mono text-xs uppercase tracking-wider text-[var(--color-text-muted)]">
-                        Crypto schedule
+                        Installment schedule
                       </h3>
                       <ul className="mt-2 grid gap-2 sm:grid-cols-3 lg:grid-cols-6">
                         {data.schedule.installments.map((inst) => {
@@ -372,7 +372,7 @@ export default function ContactPage() {
                               key={inst.number}
                               className={cn(
                                 "border p-2 text-xs",
-                                tone === "paid" && "border-[var(--color-skool)]/50 text-[var(--color-skool)]",
+                                tone === "paid" && "border-[var(--color-positive)]/50 text-[var(--color-positive)]",
                                 tone === "overdue" && "border-red-500/60 text-red-400",
                                 tone === "soon" && "border-amber-500/60 text-amber-400",
                                 tone === "later" && "border-[var(--color-border-muted)] text-[var(--color-text-muted)]"
@@ -416,12 +416,12 @@ export default function ContactPage() {
                               <tr key={p.id} className="border-t border-[var(--color-border-muted)]/50">
                                 <td className="py-1.5 pr-3">{new Date(p.paidAt).toLocaleDateString()}</td>
                                 <td className="py-1.5 pr-3">
-                                  {p.method === "stripe" ? "Stripe" : p.method === "paypal" ? "PayPal" : `Crypto${p.asset ? ` · ${p.asset}` : ""}${p.network ? ` · ${p.network}` : ""}`}
+                                  {p.method === "stripe" ? "Stripe" : "Logged by hand"}
                                 </td>
                                 <td className="py-1.5 pr-3">{usd(p.amount)}</td>
                                 <td className="py-1.5 pr-3">{p.installmentNumber ?? "-"}</td>
-                                <td className="py-1.5 pr-3 font-mono" title={p.txHash || p.stripeInvoiceId || p.stripeSessionId || ""}>
-                                  {shortRef(p.txHash || p.stripeInvoiceId || p.stripeSessionId) || p.note || "-"}
+                                <td className="py-1.5 pr-3 font-mono" title={p.reference || p.stripeInvoiceId || p.stripeSessionId || ""}>
+                                  {shortRef(p.reference || p.stripeInvoiceId || p.stripeSessionId) || p.note || "-"}
                                 </td>
                               </tr>
                             ))}
@@ -432,9 +432,9 @@ export default function ContactPage() {
                   </div>
                   <div className="flex flex-wrap items-center justify-between gap-3">
                     <Button size="sm" variant="outline" onClick={() => setTab("log")}>
-                      Log crypto payment
+                      Log a payment
                     </Button>
-                    {currentPackage && data.payments.some((p) => p.method === "crypto" && p.packageId === currentPackage.id) ? (
+                    {currentPackage && data.payments.some((p) => p.method === "manual" && p.packageId === currentPackage.id) ? (
                       <ChangePaymentPlanForm
                         email={data.email}
                         pkg={currentPackage}
@@ -451,7 +451,7 @@ export default function ContactPage() {
                     The first payment for a package opens the client record and grants its sessions.
                     Later payments mark the next unpaid installment paid.
                   </p>
-                  <LogCryptoPaymentForm
+                  <LogManualPaymentForm
                     email={data.email}
                     name={data.name}
                     packages={data.packages}
@@ -586,9 +586,8 @@ export default function ContactPage() {
                 },
               ]
             : []),
-          { label: "Membership", value: data.access.hasMembership ? "Active" : "None" },
+          { label: "Course access", value: data.access.hasMembership ? "Active" : "None" },
           { label: "Course access", value: data.access.hasCourseAccess ? "Yes" : "No" },
-          ...(data.skool ? [{ label: "Skool", value: data.skool }] : []),
           {
             label: "Email status",
             value: data.emailable ? "Can email" : BLOCK_COPY[data.emailBlockReason || ""] || "Blocked",
@@ -614,16 +613,6 @@ export default function ContactPage() {
             >
               People record
             </Button>
-            {data.hasCrmContact ? (
-              <Button
-                variant="outline"
-                size="sm"
-                className="w-full"
-                render={<Link href={`/admin/hubspot-contacts/${encodeURIComponent(data.email)}`} />}
-              >
-                HubSpot contact
-              </Button>
-            ) : null}
           </>
         }
       />

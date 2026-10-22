@@ -1,3 +1,5 @@
+import { POSTAL_ADDRESS, isPostalAddressPlaceholder } from "@/content/site";
+import { BRAND } from "@/lib/brand";
 import { escapeHtml } from "@/lib/html";
 import type { CrmPipelineStatus } from "@/lib/crm/contacts";
 
@@ -6,15 +8,15 @@ import type { CrmPipelineStatus } from "@/lib/crm/contacts";
  * Em dash and straight quotes are intentional.
  */
 export const ADMIN_1TO1_FOOTER_TEXT =
-  "Educational only — not financial advice. You keep self-custody of your assets. No guaranteed outcomes.\nDeFi University LLC, 30 N Gould Street, Suite R, Sheridan, WY 82801\nReply \"stop\" or use the unsubscribe link below and I won't email you again.";
+  `No guaranteed outcomes.\n${BRAND.legalName}${isPostalAddressPlaceholder() ? "" : `, ${POSTAL_ADDRESS}`}\nReply "stop" or use the unsubscribe link below and I won't email you again.`;
 
 export const ADMIN_1TO1_PROMOTIONAL_IDENTIFICATION =
-  "This is a promotional email from DeFi University.";
+  `This is a promotional email from ${BRAND.name}.`;
 
 export const ADMIN_1TO1_IDEMPOTENCY_COLLECTION = "crm_admin_1to1_idempotency";
 export const ADMIN_1TO1_SEND_SOURCE = "admin_1to1";
 export const ADMIN_1TO1_MIN_INTERVAL_MS = 24 * 60 * 60 * 1000;
-export const DU_SENDER_DOMAIN = "defiuniversity.xyz";
+export const SENDER_DOMAIN = BRAND.domain;
 
 export const ADMIN_1TO1_AD_KINDS = ["promotional", "personal"] as const;
 export type Admin1to1AdKind = (typeof ADMIN_1TO1_AD_KINDS)[number];
@@ -66,7 +68,7 @@ export function isDuSenderAddress(email: string): boolean {
   const at = normalized.lastIndexOf("@");
   if (at <= 0) return false;
   const domain = normalized.slice(at + 1);
-  return domain === DU_SENDER_DOMAIN || domain.endsWith(`.${DU_SENDER_DOMAIN}`);
+  return domain === SENDER_DOMAIN || domain.endsWith(`.${SENDER_DOMAIN}`);
 }
 
 export function duSenderOrBlockReason(): { ok: true; email: string } | { ok: false; error: string } {
@@ -124,7 +126,6 @@ const PERSONAL_PRICE_PATTERNS: Array<{ label: string; pattern: RegExp }> = [
 
 const PERSONAL_LINK_PATTERNS: Array<{ label: string; pattern: RegExp }> = [
   { label: "/coaching/book", pattern: /\/coaching\/book/i },
-  { label: "skool.com", pattern: /skool\.com/i },
   { label: "buy.stripe.com", pattern: /buy\.stripe\.com/i },
   { label: "stripe.com", pattern: /stripe\.com/i },
   { label: "checkout", pattern: /\bcheckout\b/i },

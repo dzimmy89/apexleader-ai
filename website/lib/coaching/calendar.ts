@@ -46,7 +46,7 @@ const ALERT_INTERVAL_MS = 60 * 60 * 1000;
 
 export const SLOT_TAKEN_MESSAGE = "That time was just taken. Pick another time.";
 export const CALENDAR_UNAVAILABLE_MESSAGE =
-  "Scheduling is temporarily unavailable. Please try again in a few minutes, or email hello@defiuniversity.xyz.";
+  "Scheduling is temporarily unavailable. Please try again in a few minutes, or email hello@apexleader.ai.";
 
 export type { AvailabilitySlot };
 
@@ -421,7 +421,7 @@ export async function createBooking(
             : {}),
           conferenceData: {
             createRequest: {
-              requestId: `defi-${Date.now()}`,
+              requestId: `apex-${Date.now()}`,
               conferenceSolutionKey: { type: "hangoutsMeet" },
             },
           },
@@ -533,11 +533,6 @@ async function writeBookingToCrm(args: {
         await exitFlowsForUser(
           leadFlowUserId(email),
           "coaching_nurture",
-          "booked_discovery_call"
-        );
-        await exitFlowsForUser(
-          leadFlowUserId(email),
-          "du_welcome",
           "booked_discovery_call"
         );
         await enrollCoachingPostCall(email);
@@ -723,7 +718,7 @@ export async function createCoachingSessionBooking(
             ...(notify.includeAttendee ? { attendees: [{ email, displayName: input.name }] } : {}),
             conferenceData: {
               createRequest: {
-                requestId: `defi-session-${Date.now()}`,
+                requestId: `apex-session-${Date.now()}`,
                 conferenceSolutionKey: { type: "hangoutsMeet" },
               },
             },
@@ -798,10 +793,10 @@ export async function createCoachingSessionBooking(
       to: email,
       purpose: "transactional",
       subject: `Coaching session booked: ${when}`,
-      text: `Your coaching session with David is booked for ${when}.${meetUrl ? `\n\nJoin on Google Meet: ${meetUrl}` : ""}\n\nThe recording will be in your account afterwards: ${getSiteOrigin()}/account\n\nEducation only. This is not financial advice.`,
+      text: `Your coaching session with David is booked for ${when}.${meetUrl ? `\n\nJoin on Google Meet: ${meetUrl}` : ""}\n\nThe recording will be in your account afterwards: ${getSiteOrigin()}/account`,
       html: `<p>Your coaching session with David is booked for <strong>${when}</strong>.</p>${
         meetUrl ? `<p><a href="${meetUrl}">Join on Google Meet</a></p>` : ""
-      }<p>The recording will be in <a href="${getSiteOrigin()}/account">your account</a> afterwards.</p><p>Education only. This is not financial advice.</p>`,
+      }<p>The recording will be in <a href="${getSiteOrigin()}/account">your account</a> afterwards.</p>`,
       log: { source: "coaching_session_booked" },
     });
   } catch (e) {

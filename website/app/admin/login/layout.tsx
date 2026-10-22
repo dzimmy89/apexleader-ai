@@ -1,7 +1,7 @@
 import { adminFontVariables } from "@/lib/admin/mission-control-fonts";
 
 export const metadata = {
-  title: "DeFi U Mission Control",
+  title: "ApexLeader.ai Mission Control",
   robots: { index: false, follow: false },
 };
 

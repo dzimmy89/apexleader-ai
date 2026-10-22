@@ -1,59 +1,21 @@
 import Link from "next/link";
-import { URLS } from "@/content/site";
-import { SkoolJoinLink } from "@/components/SkoolJoinLink";
+import { BRAND } from "@/lib/brand";
 import { ManageCardButton } from "@/components/account/ManageCardButton";
 import { Chip, Notice, Panel, Stat } from "@/components/system";
-import type { BillingSummary, CoachingPlan, SkoolPlan } from "@/lib/account/billing";
+import type { BillingSummary, CoachingPlan } from "@/lib/account/billing";
 import { dayShort } from "@/lib/account/dates";
 import { formatUsdCents } from "@/lib/coaching/payments";
 
-const METHOD_LABEL = { stripe: "Card", crypto: "Crypto", paypal: "PayPal" } as const;
-
-function SkoolCard({ skool }: { skool: SkoolPlan }) {
-  if (skool.paying) {
-    return (
-      <Panel title="Membership on Skool" action={<Chip tone="skool">Active</Chip>}>
-        <p className="text-[17px]">$97 a month: all 31 courses, the live calls and the community.</p>
-        {skool.lastSeenAt ? (
-          <p className="mt-2 text-[15px] text-[var(--color-text-muted)]">Last confirmed in Skool on {dayShort(skool.lastSeenAt)}.</p>
-        ) : null}
-        <p className="mt-3 text-[15px] text-[var(--color-text-muted)]">
-          Skool bills this membership, so your card, receipts and cancelling live in your Skool settings. If you leave Skool,
-          course access here ends after the next member update.
-        </p>
-        <a href={URLS.skoolCommunity} target="_blank" rel="noopener noreferrer" className="btn btn-secondary mt-5">
-          Open DeFi University on Skool
-        </a>
-      </Panel>
-    );
-  }
-  const seat = skool.coachingSeat!;
-  return (
-    <Panel title="Skool community" action={<Chip tone="skool">Until {dayShort(seat.endsAt)}</Chip>}>
-      <p className="text-[17px]">Your coaching includes the Skool community for the coaching period.</p>
-      <p className="mt-2 text-[15px] text-[var(--color-text-muted)]">
-        {seat.status === "to_add"
-          ? "We are adding you to Skool. The invite comes by email."
-          : seat.status === "invited"
-            ? "Your Skool invite is in your email. Accept it to join."
-            : "You are in the Skool group."}{" "}
-        To stay after that date, join the $97 membership on Skool.
-      </p>
-      <SkoolJoinLink location="account_billing" className="btn btn-secondary mt-5">
-        Join on Skool
-      </SkoolJoinLink>
-    </Panel>
-  );
-}
+const METHOD_LABEL = { stripe: "Card", manual: "Bank transfer or invoice" } as const;
 
 function planLine(c: CoachingPlan): string {
-  if (c.fullAccess && !c.payments.length) return "Granted by DeFi University. Nothing to pay.";
+  if (c.fullAccess && !c.payments.length) return `Granted by ${BRAND.name}. Nothing to pay.`;
   if (c.installments <= 1) return c.payments.length ? "Paid in full." : "Paid in full, or payment not recorded yet.";
   return `${c.installments} monthly payments, ${c.installmentsPaid} of ${c.installments} paid.`;
 }
 
 function CoachingCard({ coaching: c }: { coaching: CoachingPlan }) {
-  const owesCrypto = c.method === "crypto" && c.nextDue;
+  const owesManual = c.method === "manual" && c.nextDue;
   const nextDueLabel = c.nextDue
     ? `${c.nextDue.amount ? formatUsdCents(c.nextDue.amount) : "Next payment"} ${c.nextDue.estimated ? "around" : "due"} ${dayShort(c.nextDue.dueDate)}`
     : null;
@@ -72,11 +34,9 @@ function CoachingCard({ coaching: c }: { coaching: CoachingPlan }) {
           Update your card below and Stripe will try again.
         </Notice>
       ) : null}
-      {owesCrypto && nextDueLabel ? (
+      {owesManual && nextDueLabel ? (
         <Notice tone="warning" title={nextDueLabel} className="mt-4">
-          <Link href={`/coaching/pay?package=${encodeURIComponent(c.packageId)}`} className="underline underline-offset-4">
-            Send the crypto payment and tell us the transaction
-          </Link>
+          Pay the way we agreed, then email <a href={`mailto:${BRAND.email}`} className="underline underline-offset-4">{BRAND.email}</a> so we can mark it paid.
         </Notice>
       ) : null}
       {c.payments.length ? (
@@ -104,15 +64,15 @@ function CoachingCard({ coaching: c }: { coaching: CoachingPlan }) {
           </p>
         </div>
       ) : null}
-      <p className="mt-5 text-[14px] text-[var(--color-text-muted)]">Questions about a payment: hello@defiuniversity.xyz.</p>
+      <p className="mt-5 text-[14px] text-[var(--color-text-muted)]">Questions about a payment: {BRAND.email}.</p>
     </Panel>
   );
 }
 
 /** "Plans and billing" on /account. */
 export function PlansAndBilling({ billing, hasCourseAccess }: { billing: BillingSummary; hasCourseAccess: boolean }) {
-  const { skool, coaching, manual } = billing;
-  const nothing = !skool && !coaching && !manual;
+  const { coaching, manual } = billing;
+  const nothing = !coaching && !manual;
   return (
     <div id="billing" className="space-y-6">
       <div>
@@ -121,25 +81,21 @@ export function PlansAndBilling({ billing, hasCourseAccess }: { billing: Billing
       </div>
       <div className="grid gap-6 md:grid-cols-2 md:[&>*:only-child]:col-span-2">
         {coaching ? <CoachingCard coaching={coaching} /> : null}
-        {skool ? <SkoolCard skool={skool} /> : null}
         {manual && !coaching?.fullAccess ? (
           <Panel title={manual.endsAt ? `Full access until ${dayShort(manual.endsAt)}` : "Full access"} action={<Chip tone="success">Granted</Chip>}>
-            <p className="text-[17px]">Granted by DeFi University. Nothing to pay.</p>
+            <p className="text-[17px]">Granted by {BRAND.name}. Nothing to pay.</p>
           </Panel>
         ) : null}
         {nothing ? (
-          <Panel title={hasCourseAccess ? "Member" : "Free account"} action={<Chip>{hasCourseAccess ? "Active" : "Stage 1 open"}</Chip>}>
+          <Panel title={hasCourseAccess ? "Client" : "Free account"} action={<Chip>{hasCourseAccess ? "Active" : "Free"}</Chip>}>
             <p className="text-[17px]">
               {hasCourseAccess
                 ? "Your access is active."
-                : "Stage 1 is open to you. The $97 membership on Skool opens all 31 courses, plus the live calls and community. Private coaching is one-on-one with David."}
+                : `Private coaching is one-on-one with ${BRAND.coachFirstName}, and it opens the course library for the coaching period.`}
             </p>
             {hasCourseAccess ? null : (
               <div className="mt-5 flex flex-wrap gap-3">
-                <SkoolJoinLink location="account_billing" className="btn btn-skool">
-                  Join on Skool
-                </SkoolJoinLink>
-                <Link href="/coaching" className="btn btn-secondary">
+                <Link href="/coaching" className="btn btn-primary">
                   Private coaching
                 </Link>
               </div>

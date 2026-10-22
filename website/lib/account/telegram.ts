@@ -3,7 +3,9 @@
  * no bot or inbox; the site hands the client a deep link into Telegram and
  * remembers their username so David knows who is writing.
  */
-export const COACH_TELEGRAM_HANDLE = "m00nsh0t777";
+import { BRAND } from "@/lib/brand";
+
+export const COACH_TELEGRAM_HANDLE = BRAND.telegramHandle;
 
 const HANDLE_RE = /^[A-Za-z][A-Za-z0-9_]{4,31}$/;
 

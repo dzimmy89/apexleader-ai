@@ -26,7 +26,7 @@ export function getAdminApp(): App {
     app = getApps()[0]!;
     return app;
   }
-  const projectId = process.env.GCP_PROJECT_ID || "defi-university-prod";
+  const projectId = process.env.GCP_PROJECT_ID || "apexleader-prod";
   // Cloud Run: use the runtime service account (ADC) for Firestore.
   // GOOGLE_SERVICE_ACCOUNT_KEY is reserved for Gmail/Calendar domain-wide delegation.
   const sa =

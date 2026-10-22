@@ -34,7 +34,7 @@ export function SignAgreementButton({
       window.location.reload();
       return;
     }
-    setError(body.error || "We could not open the agreement. Try again or email hello@defiuniversity.xyz.");
+    setError(body.error || "We could not open the agreement. Try again or email hello@apexleader.ai.");
     setState("error");
   }
 

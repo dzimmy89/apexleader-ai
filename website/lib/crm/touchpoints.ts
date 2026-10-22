@@ -8,7 +8,7 @@ export const TOUCHPOINTS_COLLECTION = "touchpoints";
 export const TOUCHPOINT_CHANNELS = [
   "email",
   "sms",
-  "skool_dm",
+  "telegram",
   "call",
   "other",
 ] as const;
@@ -49,8 +49,8 @@ export function parseTouchpointChannel(raw: string): TouchpointChannel {
     e_mail: "email",
     sms: "sms",
     text: "sms",
-    skool_dm: "skool_dm",
-    skool: "skool_dm",
+    telegram: "telegram",
+    tg: "telegram",
     call: "call",
     phone: "call",
     other: "other",
@@ -60,7 +60,7 @@ export function parseTouchpointChannel(raw: string): TouchpointChannel {
     switch (mapped) {
       case "email":
       case "sms":
-      case "skool_dm":
+      case "telegram":
       case "call":
       case "other":
         return mapped;

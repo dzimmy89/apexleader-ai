@@ -405,8 +405,8 @@ describe("admin team password login", () => {
     const passwordRes = await passwordLogin(
       loginRequest({ username: ADMIN_TEAM_USERNAME, password }, "203.0.113.16")
     );
-    const googleRes = await jsonWithAdminSession("hello@defiuniversity.xyz", {
-      email: "hello@defiuniversity.xyz",
+    const googleRes = await jsonWithAdminSession("hello@apexleader.ai", {
+      email: "hello@apexleader.ai",
     });
     const passCookie = cookieAttrs(passwordRes);
     const googleCookie = cookieAttrs(googleRes);
@@ -420,7 +420,7 @@ describe("admin team password login", () => {
 
     const googleSession = await verifyAdminSession(googleCookie?.value);
     assert.equal(googleSession.valid, true);
-    assert.equal(googleSession.username, "hello@defiuniversity.xyz");
+    assert.equal(googleSession.username, "hello@apexleader.ai");
     assert.equal(isPasswordAdminPrincipal(googleSession.username ?? ""), false);
   });
 
@@ -725,7 +725,7 @@ describe("admin login POST content-type and origin", () => {
     assert.equal(isAllowedAdminLoginOrigin("http://localhost:3000", true), true);
     assert.equal(isAllowedAdminLoginOrigin("https://evil.example", true), false);
     assert.equal(
-      parseExactOrigin("https://www.defiuniversity.xyz/admin/login"),
+      parseExactOrigin("https://www.apexleader.ai/admin/login"),
       ADMIN_LOGIN_WWW_ORIGIN
     );
   });
@@ -763,13 +763,13 @@ describe("admin login POST content-type and origin", () => {
       loginRequest(
         { username: ADMIN_TEAM_USERNAME, password },
         "203.0.113.95",
-        { origin: "https://defiuniversity.xyz" }
+        { origin: "https://apexleader.ai" }
       )
     );
     assert.equal(res.status, 200);
   });
 
-  it("accepts https://www.defiuniversity.xyz Origin on password and Google login", async () => {
+  it("accepts https://www.apexleader.ai Origin on password and Google login", async () => {
     const passwordRes = await passwordLogin(
       loginRequest(
         { username: ADMIN_TEAM_USERNAME, password },
@@ -859,12 +859,12 @@ describe("admin login POST content-type and origin", () => {
 
   it("rejects look-alike Referers that are not an exact allowlisted origin", async () => {
     const lookalikes = [
-      "https://defiuniversity.xyz.evil.com/",
-      "https://evil.com/?https://defiuniversity.xyz",
-      "https://defiuniversity.xyz@evil.com/",
-      "http://defiuniversity.xyz",
-      "http://www.defiuniversity.xyz/admin/login",
-      "https://wwwdefiuniversity.xyz",
+      "https://apexleader.ai.evil.com/",
+      "https://evil.com/?https://apexleader.ai",
+      "https://apexleader.ai@evil.com/",
+      "http://apexleader.ai",
+      "http://www.apexleader.ai/admin/login",
+      "https://wwwapexleader.ai",
     ];
     for (const referer of lookalikes) {
       assert.equal(
@@ -896,8 +896,8 @@ describe("admin login POST content-type and origin", () => {
       headers: {
         "content-type": "application/json",
         origin: "https://evil.example",
-        host: "www.defiuniversity.xyz",
-        "x-forwarded-host": "www.defiuniversity.xyz",
+        host: "www.apexleader.ai",
+        "x-forwarded-host": "www.apexleader.ai",
         "x-forwarded-for": "203.0.113.105",
       },
       body: JSON.stringify({ username: ADMIN_TEAM_USERNAME, password }),
@@ -909,8 +909,8 @@ describe("admin login POST content-type and origin", () => {
       method: "POST",
       headers: {
         "content-type": "application/json",
-        host: "defiuniversity.xyz",
-        "x-forwarded-host": "www.defiuniversity.xyz",
+        host: "apexleader.ai",
+        "x-forwarded-host": "www.apexleader.ai",
         "x-forwarded-for": "203.0.113.106",
       },
       body: JSON.stringify({ username: ADMIN_TEAM_USERNAME, password }),
@@ -1000,8 +1000,8 @@ describe("trusted admin client IP from X-Forwarded-For", () => {
 
 describe("timing-safe string compare", () => {
   it("returns true only for identical strings", () => {
-    assert.equal(timingSafeEqualString("defi_u_team", "defi_u_team"), true);
-    assert.equal(timingSafeEqualString("defi_u_team", "defi_u_teams"), false);
+    assert.equal(timingSafeEqualString("apex_team", "apex_team"), true);
+    assert.equal(timingSafeEqualString("apex_team", "apex_teams"), false);
     assert.equal(timingSafeEqualString("abc", "xyz"), false);
   });
 });

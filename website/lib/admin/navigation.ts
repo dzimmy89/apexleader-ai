@@ -13,7 +13,6 @@ export interface AdminNavGroup {
 export const adminNav = [
   { href: "/admin", label: "Overview" },
   { href: "/admin/people", label: "People" },
-  { href: "/admin/hubspot-contacts", label: "HubSpot contacts" },
   { href: "/admin/coaching", label: "Pipeline" },
   { href: "/admin/coaching/payments-due", label: "Payments due" },
   { href: "/admin/coaching/clients", label: "Clients" },
@@ -25,9 +24,6 @@ export const adminNav = [
   { href: "/admin/email/sends", label: "Sends" },
   { href: "/admin/email/flows", label: "Flows" },
   { href: "/admin/email/templates", label: "Templates" },
-  { href: "/admin/broadcast", label: "Broadcast" },
-  { href: "/admin/attribution", label: "Attribution" },
-  { href: "/admin/membership", label: "Membership" },
 ] as const;
 
 export const adminNavGroups: AdminNavGroup[] = [
@@ -41,7 +37,6 @@ export const adminNavGroups: AdminNavGroup[] = [
     label: "Contacts",
     items: [
       { href: "/admin/people", label: "People" },
-      { href: "/admin/hubspot-contacts", label: "HubSpot contacts" },
     ],
   },
   {
@@ -65,24 +60,13 @@ export const adminNavGroups: AdminNavGroup[] = [
     ],
   },
   {
-    id: "membership",
-    label: "Membership",
-    items: [{ href: "/admin/membership", label: "Members and Skool" }],
-  },
-  {
     id: "communications",
     label: "Communications",
     items: [
       { href: "/admin/email/sends", label: "Sends" },
       { href: "/admin/email/flows", label: "Flows" },
       { href: "/admin/email/templates", label: "Templates" },
-      { href: "/admin/broadcast", label: "Broadcast" },
     ],
-  },
-  {
-    id: "insights",
-    label: "Insights",
-    items: [{ href: "/admin/attribution", label: "Attribution" }],
   },
 ];
 

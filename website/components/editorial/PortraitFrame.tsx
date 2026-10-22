@@ -5,7 +5,7 @@ export const FOUNDER_PORTRAIT = {
   src: "/images/david-zimmerman-portrait.jpg",
   width: 636,
   height: 794,
-  alt: "David Zimmerman, founder of DeFi University",
+  alt: "David Zimmerman, founder of ApexLeader.ai",
 } as const;
 
 /** Parchment-framed portrait. The curtain reveal animates an overlay, not the image, so LCP is not delayed. */

@@ -1,5 +1,5 @@
 import { getDb } from "@/lib/firebase-admin";
-import { allLessons, getCourse, getStages, type LearnCourse } from "@/lib/learn/catalog";
+import { allLessons, getCourse, getPlannerConfig, getStages, type LearnCourse } from "@/lib/learn/catalog";
 import type { LearnProgress } from "@/lib/learn/progress";
 import {
   PACE_LABEL,
@@ -35,10 +35,10 @@ export { PACE_LABEL, QUIZ_MINUTES };
 export type ExperienceLevel = "new" | "beginner" | "intermediate" | "advanced";
 
 export const LEVELS: { id: ExperienceLevel; label: string; hint: string }[] = [
-  { id: "new", label: "New", hint: "Has not bought crypto yet" },
-  { id: "beginner", label: "Beginner", hint: "Has a wallet, has not used DeFi" },
-  { id: "intermediate", label: "Intermediate", hint: "Uses DeFi apps, wants depth" },
-  { id: "advanced", label: "Advanced", hint: "Runs positions, wants strategies" },
+  { id: "new", label: "New", hint: "Has not used AI tools for work yet" },
+  { id: "beginner", label: "Beginner", hint: "Uses a chat assistant now and then" },
+  { id: "intermediate", label: "Intermediate", hint: "Uses AI tools every week, wants workflows" },
+  { id: "advanced", label: "Advanced", hint: "Builds automations or agents, wants to scale them" },
 ];
 
 export interface SyllabusInputs {
@@ -81,37 +81,6 @@ export interface Syllabus {
   publishedAt: string | null;
 }
 
-/** Courses a client at this level already knows. */
-const SKIP_BY_LEVEL: Record<ExperienceLevel, string[]> = {
-  new: [],
-  beginner: ["money-basics", "crypto-fundamentals", "first-crypto-steps"],
-  intermediate: [
-    "money-basics",
-    "crypto-fundamentals",
-    "first-crypto-steps",
-    "staying-safe-crypto",
-    "intro-to-defi",
-    "defi-concepts",
-  ],
-  advanced: [
-    "money-basics",
-    "crypto-fundamentals",
-    "first-crypto-steps",
-    "staying-safe-crypto",
-    "intro-to-defi",
-    "investor-mindset",
-    "defi-concepts",
-    "money-markets",
-    "perpetual-futures",
-  ],
-};
-
-const DEFAULT_FOCUS: Record<ExperienceLevel, string> = {
-  new: "defi-basics",
-  beginner: "operator",
-  intermediate: "yield",
-  advanced: "trading",
-};
 
 export function clampInputs(raw: Partial<SyllabusInputs>): SyllabusInputs {
   const level = LEVELS.some((l) => l.id === raw.level) ? (raw.level as ExperienceLevel) : "beginner";
@@ -138,13 +107,15 @@ export function buildCourseList(
   opts: { skipCourseIds?: string[] } = {}
 ): { courseIds: string[]; laterCourseIds: string[] } {
   const stages = getStages();
-  const focus = inputs.focusStageIds.length ? inputs.focusStageIds : [DEFAULT_FOCUS[inputs.level]];
+  const planner = getPlannerConfig();
+  const fallback = planner.defaultFocusByLevel[inputs.level] || stages[0]?.id;
+  const focus = inputs.focusStageIds.length ? inputs.focusStageIds : fallback ? [fallback] : [];
   const wanted = new Set<string>();
   for (const id of focus) {
     wanted.add(id);
     for (const pre of PREREQS[id] || []) wanted.add(pre);
   }
-  const skip = new Set([...SKIP_BY_LEVEL[inputs.level], ...(opts.skipCourseIds || [])]);
+  const skip = new Set([...(planner.skipByLevel[inputs.level] || []), ...(opts.skipCourseIds || [])]);
   const ordered = stages
     .filter((s) => wanted.has(s.id))
     .flatMap((s) => s.courseIds)

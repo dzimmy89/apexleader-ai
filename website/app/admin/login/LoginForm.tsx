@@ -97,7 +97,7 @@ function LoginFormInner({ passwordEnabled }: { passwordEnabled: boolean }) {
           <ServerMark />
         </span>
         <h1 className="font-[family-name:var(--font-admin-display)] text-base font-medium tracking-wide text-zinc-100">
-          DeFi U Mission Control
+          ApexLeader.ai Mission Control
         </h1>
       </div>
 
@@ -155,7 +155,7 @@ function LoginFormInner({ passwordEnabled }: { passwordEnabled: boolean }) {
         {googleLoading ? "Signing in…" : "Sign in with Google"}
       </button>
       <p className="mt-3 text-left text-xs text-zinc-500">
-        Google access is limited to authorized @defiuniversity.xyz accounts.
+        Google access is limited to authorized @apexleader.ai accounts.
       </p>
     </div>
   );

@@ -1,5 +1,5 @@
 /**
- * Idempotent Stripe setup for DeFi University coaching packages (live mode).
+ * Idempotent Stripe setup for ApexLeader.ai coaching packages (live mode).
  *
  * Creates 3 products, 6 prices, and the production webhook. Existing products
  * are renamed to the current display names; a Price is reused only when its
@@ -8,7 +8,7 @@
  *
  * Usage:
  *   export STRIPE_SECRET_KEY="$(gcloud secrets versions access latest \
- *     --secret=STRIPE_SECRET_KEY --project=defi-university-prod)"
+ *     --secret=STRIPE_SECRET_KEY --project=apexleader-prod)"
  *   npx tsx scripts/setup-coaching-stripe.ts
  *   npx tsx scripts/setup-coaching-stripe.ts --dry-run
  *   npx tsx scripts/setup-coaching-stripe.ts --apply-secrets
@@ -17,7 +17,7 @@
 import { execSync } from "child_process";
 import Stripe from "stripe";
 
-const WEBHOOK_URL = "https://defiuniversity.xyz/api/webhooks/stripe";
+const WEBHOOK_URL = "https://apexleader.ai/api/webhooks/stripe";
 const WEBHOOK_EVENTS: Stripe.WebhookEndpointCreateParams.EnabledEvent[] = [
   "checkout.session.completed",
   "invoice.paid",
@@ -25,7 +25,7 @@ const WEBHOOK_EVENTS: Stripe.WebhookEndpointCreateParams.EnabledEvent[] = [
   "customer.subscription.deleted",
 ];
 
-const GCP_PROJECT = process.env.GCP_PROJECT_ID || "defi-university-prod";
+const GCP_PROJECT = process.env.GCP_PROJECT_ID || "apexleader-prod";
 const RUNTIME_SECRET_ACCESSOR =
   "serviceAccount:309871336262-compute@developer.gserviceaccount.com";
 
@@ -50,7 +50,7 @@ const PRICE_SPECS: PriceSpec[] = [
     secretEnvVar: "STRIPE_PRICE_FOUNDATIONS_FULL",
     packageId: "foundations",
     planId: "full",
-    productName: "DeFi University Coaching: Kickstart",
+    productName: "ApexLeader.ai Coaching: Kickstart",
     description: "Kickstart — 2 × 60-minute private 1-on-1 sessions ($750)",
     amountCents: 75000,
     recurring: false,
@@ -59,7 +59,7 @@ const PRICE_SPECS: PriceSpec[] = [
     secretEnvVar: "STRIPE_PRICE_FOUNDATIONS_3PAY",
     packageId: "foundations",
     planId: "3pay",
-    productName: "DeFi University Coaching: Kickstart",
+    productName: "ApexLeader.ai Coaching: Kickstart",
     description: "Kickstart — 3 monthly payments of $250",
     amountCents: 25000,
     recurring: true,
@@ -68,7 +68,7 @@ const PRICE_SPECS: PriceSpec[] = [
     secretEnvVar: "STRIPE_PRICE_FOUNDATIONS_6PAY",
     packageId: "foundations",
     planId: "6pay",
-    productName: "DeFi University Coaching: Kickstart",
+    productName: "ApexLeader.ai Coaching: Kickstart",
     description: "Kickstart — 6 monthly payments of $125",
     amountCents: 12500,
     recurring: true,
@@ -77,7 +77,7 @@ const PRICE_SPECS: PriceSpec[] = [
     secretEnvVar: "STRIPE_PRICE_MASTERY_FULL",
     packageId: "mastery",
     planId: "full",
-    productName: "DeFi University Coaching: Operator",
+    productName: "ApexLeader.ai Coaching: Operator",
     description: "Operator — 8 sessions over 12 weeks, pay in full ($2,500)",
     amountCents: 250000,
     recurring: false,
@@ -86,7 +86,7 @@ const PRICE_SPECS: PriceSpec[] = [
     secretEnvVar: "STRIPE_PRICE_MASTERY_3PAY",
     packageId: "mastery",
     planId: "3pay",
-    productName: "DeFi University Coaching: Operator",
+    productName: "ApexLeader.ai Coaching: Operator",
     description: "Operator — 3 monthly payments of $834",
     amountCents: 83400,
     recurring: true,
@@ -95,7 +95,7 @@ const PRICE_SPECS: PriceSpec[] = [
     secretEnvVar: "STRIPE_PRICE_MASTERY_6PAY",
     packageId: "mastery",
     planId: "6pay",
-    productName: "DeFi University Coaching: Operator",
+    productName: "ApexLeader.ai Coaching: Operator",
     description: "Operator — 6 monthly payments of $417",
     amountCents: 41700,
     recurring: true,
@@ -104,7 +104,7 @@ const PRICE_SPECS: PriceSpec[] = [
     secretEnvVar: "STRIPE_PRICE_INSTITUTIONAL_FULL",
     packageId: "institutional",
     planId: "full",
-    productName: "DeFi University Coaching: Inner Circle",
+    productName: "ApexLeader.ai Coaching: Inner Circle",
     description: "Inner Circle — 24 weekly sessions, pay in full ($7,500)",
     amountCents: 750000,
     recurring: false,
@@ -113,7 +113,7 @@ const PRICE_SPECS: PriceSpec[] = [
     secretEnvVar: "STRIPE_PRICE_INSTITUTIONAL_3PAY",
     packageId: "institutional",
     planId: "3pay",
-    productName: "DeFi University Coaching: Inner Circle",
+    productName: "ApexLeader.ai Coaching: Inner Circle",
     description: "Inner Circle — 3 monthly payments of $2,500",
     amountCents: 250000,
     recurring: true,
@@ -122,7 +122,7 @@ const PRICE_SPECS: PriceSpec[] = [
     secretEnvVar: "STRIPE_PRICE_INSTITUTIONAL_6PAY",
     packageId: "institutional",
     planId: "6pay",
-    productName: "DeFi University Coaching: Inner Circle",
+    productName: "ApexLeader.ai Coaching: Inner Circle",
     description: "Inner Circle — 6 monthly payments of $1,250",
     amountCents: 125000,
     recurring: true,
@@ -131,16 +131,16 @@ const PRICE_SPECS: PriceSpec[] = [
 
 const PRODUCT_NAMES: Record<PackageId, { name: string; description: string }> = {
   foundations: {
-    name: "DeFi University Coaching: Kickstart",
-    description: "Private 1-on-1 DeFi coaching — Kickstart ($750, 2 sessions)",
+    name: "ApexLeader.ai Coaching: Kickstart",
+    description: "Private 1-on-1 AI coaching — Kickstart ($750, 2 sessions)",
   },
   mastery: {
-    name: "DeFi University Coaching: Operator",
-    description: "Private 1-on-1 DeFi coaching — Operator ($2,500, 8 sessions)",
+    name: "ApexLeader.ai Coaching: Operator",
+    description: "Private 1-on-1 AI coaching — Operator ($2,500, 8 sessions)",
   },
   institutional: {
-    name: "DeFi University Coaching: Inner Circle",
-    description: "Private 1-on-1 DeFi coaching — Inner Circle ($7,500, 24 sessions)",
+    name: "ApexLeader.ai Coaching: Inner Circle",
+    description: "Private 1-on-1 AI coaching — Inner Circle ($7,500, 24 sessions)",
   },
 };
 
@@ -285,7 +285,7 @@ async function ensureWebhook(
   const endpoint = await stripe.webhookEndpoints.create({
     url: WEBHOOK_URL,
     enabled_events: WEBHOOK_EVENTS,
-    description: "DeFi University coaching checkout + subscriptions",
+    description: "ApexLeader.ai coaching checkout + subscriptions",
   });
   console.log(`  + created webhook: ${endpoint.id}`);
   return {
@@ -347,7 +347,7 @@ async function main() {
     process.exit(1);
   }
 
-  console.log("DeFi University — coaching Stripe setup (live mode)\n");
+  console.log("ApexLeader.ai — coaching Stripe setup (live mode)\n");
   if (dryRun) console.log("DRY RUN — no Stripe or GCP writes\n");
 
   const stripe = new Stripe(key);

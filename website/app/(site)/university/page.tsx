@@ -5,14 +5,14 @@ import { CTAButton } from "@/components/CTAButton";
 import { SectionReveal } from "@/components/SectionReveal";
 import { TrackedLink } from "@/components/TrackedLink";
 import { Chip, PageHeader } from "@/components/system";
-import { membershipPlan, SKOOL_TRIAL_DAYS, URLS } from "@/content/site";
+import { URLS } from "@/content/site";
+import { BRAND } from "@/lib/brand";
 import { getCourse, getStages, FREE_STAGE_IDS } from "@/lib/learn/catalog";
 
 export const metadata: Metadata = {
   title: "University",
   alternates: { canonical: "/university" },
-  description:
-    "31 DeFi University courses in eight stages, from money basics to DeFi yield, trading and quant. Stage 1 is free with an email; the membership opens the rest.",
+  description: `The ${BRAND.name} course library: practical courses on using AI and building with AI in your business. Coaching clients get every stage.`,
 };
 
 const LEVEL: Record<string, string> = { beginner: "Beginner", intermediate: "Intermediate", advanced: "Advanced" };
@@ -27,14 +27,15 @@ export default function UniversityPage() {
   const stages = getStages();
   const courseCount = stages.reduce((n, s) => n + s.courseIds.length, 0);
   const firstCourseId = stages[0]?.courseIds[0] ?? "";
+  const freeNote = stages.some((s) => FREE_STAGE_IDS.has(s.id)) ? "Stages marked free open with your email." : "";
 
   return (
     <section className="px-6 pb-[var(--space-section)] pt-16 md:pt-24">
       <div className="mx-auto max-w-6xl">
         <PageHeader
           eyebrow="Course library"
-          title="DeFi University Courses"
-          intro={`${courseCount} courses in eight stages, each lesson with an exercise and each module with a quiz. Stage 1 is free with your email. The membership opens every stage.`}
+          title={`${BRAND.name} Courses`}
+          intro={`${courseCount} ${courseCount === 1 ? "course" : "courses"} in ${stages.length} ${stages.length === 1 ? "stage" : "stages"}, each lesson with an exercise and each module with a quiz. ${freeNote} Coaching clients get every stage for the length of their coaching.`}
           action={
             <>
               <TrackedLink href={`/university/${firstCourseId}`} location="university_start" className="btn btn-primary">
@@ -47,7 +48,7 @@ export default function UniversityPage() {
           }
         />
         <p className="mt-6 max-w-2xl font-[family-name:var(--font-ui)] text-[length:var(--text-small)] text-[var(--color-text-muted)]">
-          Sign in to open the courses and save your progress. Skool members: use your Skool email.
+          Sign in to open the courses and save your progress. Coaching clients: use the email you paid with.
         </p>
 
         <div className="mt-16 space-y-20">
@@ -59,7 +60,7 @@ export default function UniversityPage() {
                 <section aria-labelledby={headingId}>
                   <div className="max-w-2xl">
                     <p className="section-eyebrow">
-                      Stage {stage.number} · {LEVEL[stage.level]} · {free ? "Free with sign-in" : "Members"}
+                      Stage {stage.number} · {LEVEL[stage.level]} · {free ? "Free with sign-in" : "Coaching clients"}
                     </p>
                     <h2 id={headingId} className="mt-2 text-[length:var(--text-h2)] leading-[1.08]">
                       {stage.title}
@@ -91,7 +92,7 @@ export default function UniversityPage() {
                               ) : (
                                 <Chip>
                                   <Lock size={12} aria-hidden="true" />
-                                  Members
+                                  Coaching
                                 </Chip>
                               )}
                             </div>
@@ -109,28 +110,21 @@ export default function UniversityPage() {
             <div className="parchment-card p-6 md:p-10">
               <div className="grid gap-8 md:grid-cols-[minmax(0,1fr)_auto] md:items-end">
                 <div className="max-w-2xl">
-                  <p className="section-eyebrow">Membership</p>
+                  <p className="section-eyebrow">Private coaching</p>
                   <h2 className="mt-3 text-[length:var(--text-h2)] leading-[1.08] text-on-parchment">
-                    Every stage, {membershipPlan.priceDisplay} a month.
+                    Every stage, in a plan built for your business.
                   </h2>
                   <p className="mt-4 text-[length:var(--text-lead)] leading-[1.55] text-muted-on-parchment">
-                    {membershipPlan.summary} {SKOOL_TRIAL_DAYS} days free, then {membershipPlan.priceDisplay} a month. Stage 1 stays free
-                    with your email.
+                    Coaching clients get a week-by-week syllabus through these courses, shaped around what they want AI to do in their
+                    business, plus a live session with {BRAND.coachFirstName} each week.
                   </p>
                 </div>
                 <div className="flex flex-wrap gap-3">
-                  <CTAButton
-                    variant="skool"
-                    href={URLS.skoolPlans}
-                    external
-                    location="university_membership"
-                    skoolPlanId={membershipPlan.id}
-                    skoolValue={membershipPlan.price}
-                  >
-                    Start your free week ↗
+                  <CTAButton variant="coaching" href={URLS.coachingDiscovery} location="university_coaching">
+                    Book a free call
                   </CTAButton>
-                  <Link href="/login?next=/university" className="btn btn-secondary">
-                    Already a member? Sign in
+                  <Link href="/coaching" className="btn btn-secondary">
+                    See private coaching
                   </Link>
                 </div>
               </div>

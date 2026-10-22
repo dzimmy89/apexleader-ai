@@ -42,7 +42,7 @@ export interface ClientFile {
 }
 
 export function bucketName(): string {
-  return process.env.CONTRACTS_GCS_BUCKET || "defi-university-prod-contracts";
+  return process.env.CONTRACTS_GCS_BUCKET || "apexleader-prod-contracts";
 }
 
 function readFile(id: string, data: Record<string, unknown>): ClientFile {

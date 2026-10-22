@@ -1,11 +1,5 @@
 import type { LeadRecord } from "@/lib/crm/lead-lifecycle";
-import type { FlowStatus } from "@/lib/crm/types";
 import { crmTestAccountFlagReasons } from "@/lib/crm/excluded-accounts";
-import {
-  evaluateReengagementMember,
-  INACTIVE_MS,
-} from "@/lib/crm/reengagement-eligibility";
-import { existingFlowBlocksEnroll } from "@/lib/crm/flow-step-state";
 import { decideFlowCronAction } from "@/lib/flow-send-policy";
 import type { PendingEmail } from "@/lib/flows";
 
@@ -36,21 +30,6 @@ export interface ProcessFlowsDryRunReport {
     flaggedTestAccount: number;
   };
   recipients: DryRunRecipient[];
-}
-
-export interface ReengagementDryRunReport {
-  dryRun: true;
-  writes: false;
-  sends: false;
-  inactivityMs: number;
-  counts: {
-    scanned: number;
-    wouldEnroll: number;
-    skippedTestOrLoop: number;
-    flaggedTestAccount: number;
-  };
-  recipients: DryRunRecipient[];
-  skippedTestRecipients: DryRunRecipient[];
 }
 
 export function previewProcessFlowsDryRun(args: {
@@ -139,83 +118,5 @@ export function previewProcessFlowsDryRun(args: {
       flaggedTestAccount: recipients.filter((r) => r.flaggedTestAccount).length,
     },
     recipients,
-  };
-}
-
-export function previewReengagementDryRun(args: {
-  members: Array<{ id: string; data: Record<string, unknown> }>;
-  existingReengagementStatuses: Map<string, FlowStatus[]>;
-  nowMs: number;
-  manualOnlyEmails?: Set<string>;
-}): ReengagementDryRunReport {
-  const recipients: DryRunRecipient[] = [];
-  const skippedTestRecipients: DryRunRecipient[] = [];
-  for (const member of args.members) {
-    const decision = evaluateReengagementMember(
-      member.id,
-      member.data,
-      args.nowMs
-    );
-    if (
-      decision.enroll &&
-      args.manualOnlyEmails?.has(decision.email)
-    ) {
-      continue;
-    }
-    if (!decision.enroll) {
-      if (
-        decision.reason === "excluded_email" ||
-        decision.reason === "excluded_source"
-      ) {
-        const emailRaw = (member.data.email || member.id) as unknown;
-        const email =
-          typeof emailRaw === "string" ? emailRaw.trim().toLowerCase() : "";
-        const flags = crmTestAccountFlagReasons(email, member.data.metadata);
-        skippedTestRecipients.push({
-          email,
-          userId: email,
-          flow: "reengagement",
-          step: "watchlist_waiting",
-          dueAt: new Date(args.nowMs).toISOString(),
-          action: "enroll",
-          flaggedTestAccount: true,
-          flagReasons: flags.length ? flags : [decision.reason],
-        });
-      }
-      continue;
-    }
-    const statuses = args.existingReengagementStatuses.get(decision.userId) ?? [];
-    if (existingFlowBlocksEnroll("reengagement", statuses)) {
-      continue;
-    }
-    const flags = crmTestAccountFlagReasons(
-      decision.email,
-      member.data.metadata
-    );
-    recipients.push({
-      email: decision.email,
-      userId: decision.userId,
-      flow: "reengagement",
-      step: "watchlist_waiting",
-      dueAt: new Date(args.nowMs).toISOString(),
-      action: "enroll",
-      flaggedTestAccount: flags.length > 0,
-      flagReasons: flags,
-    });
-  }
-
-  return {
-    dryRun: true,
-    writes: false,
-    sends: false,
-    inactivityMs: INACTIVE_MS,
-    counts: {
-      scanned: args.members.length,
-      wouldEnroll: recipients.length,
-      skippedTestOrLoop: skippedTestRecipients.length,
-      flaggedTestAccount: recipients.filter((r) => r.flaggedTestAccount).length,
-    },
-    recipients,
-    skippedTestRecipients,
   };
 }
