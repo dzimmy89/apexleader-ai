@@ -8,7 +8,7 @@ import { escapeHtml } from "@/lib/html";
 
 export function emailLogoImg(): string {
   const origin = getSiteOrigin();
-  return `<img src="${origin}/favicon.ico" alt="${BRAND.name}" width="48" height="48" style="display:block;max-width:48px;height:auto;" />`;
+  return `<img src="${origin}/icon-96.png" alt="${BRAND.name}" width="48" height="48" style="display:block;max-width:48px;height:auto;" />`;
 }
 
 type MarketingShell = {

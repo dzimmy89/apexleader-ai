@@ -24,7 +24,7 @@ import { GET as getContact } from "../app/api/admin/contacts/[email]/route";
 import { createMemoryFirestore, rows, type MemoryFirestore } from "./fixtures/memory-firestore";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
-const ORIGIN = "https://apexleader.ai";
+const ORIGIN = "https://fromaitobusiness.com";
 
 let mem: MemoryFirestore;
 let sent: SendEmailOptions[] = [];
@@ -110,7 +110,7 @@ describe("contact page 1:1 send (any known contact)", () => {
     const payload = (await res.json()) as { text: string; pipelineStatus: unknown };
     assert.equal(payload.pipelineStatus, null);
     assert.ok(payload.text.includes(ADMIN_1TO1_FOOTER_TEXT));
-    assert.match(payload.text, /Unsubscribe: https:\/\/apexleader\.ai\//);
+    assert.match(payload.text, /Unsubscribe: https:\/\/fromaitobusiness\.com\//);
     assert.equal(sent.length, 1);
     assert.equal(sent[0]?.purpose, "marketing");
     assert.equal(sent[0]?.log.source, "admin_1to1");
@@ -295,7 +295,7 @@ describe("contact page UI contract", () => {
         dueDate: "2026-10-15",
         installmentNumber: 2,
         installments: 3,
-        payUrl: "https://apexleader.ai/coaching/pay",
+        payUrl: "https://fromaitobusiness.com/coaching/pay",
       });
       assert.equal(`${t.subject}${t.body}`.includes("—"), false, id);
       assert.equal(/^\s*(re|fwd|fw)\s*:/i.test(t.subject), false, id);
@@ -308,10 +308,10 @@ describe("contact page UI contract", () => {
       dueDate: "2026-10-15",
       installmentNumber: 2,
       installments: 3,
-      payUrl: "https://apexleader.ai/coaching/pay",
+      payUrl: "https://fromaitobusiness.com/coaching/pay",
     });
     assert.match(reminder.body, /Payment 2 of 3 for Operator \(\$834\) is due on October 15, 2026\./);
-    assert.match(reminder.body, /https:\/\/apexleader\.ai\/coaching\/pay/);
+    assert.match(reminder.body, /https:\/\/fromaitobusiness\.com\/coaching\/pay/);
   });
 
   it("renders Intake, Syllabus and Recordings through ContactClientArea", () => {
