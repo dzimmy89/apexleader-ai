@@ -8,8 +8,8 @@ export const alt = `${BRAND.name}: ${BRAND.tagline.toLowerCase()}`;
 
 export default function Image() {
   return renderOgImage({
-    eyebrow: BRAND.name,
-    title: `${BRAND.tagline}, with ${BRAND.coachName}.`,
-    footer: "1-on-1 coaching · A plan built for your business · Free call first",
+    eyebrow: "The one-person company course",
+    title: `${BRAND.tagline}.`,
+    footer: "Claude · Duet · Dots · Grok Bot · Gemini · Cursor · Codex · GitHub",
   });
 }

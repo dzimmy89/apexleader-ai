@@ -36,7 +36,7 @@ export function FounderBlock({
             location={aboutLocation}
             className="mt-5 inline-flex min-h-[44px] items-center font-[family-name:var(--font-ui)] text-[15px] font-medium text-[var(--color-accent)] underline-offset-4 hover:underline"
           >
-            About ApexLeader.ai →
+            About FromAItoBusiness →
           </TrackedLink>
         </div>
       </div>

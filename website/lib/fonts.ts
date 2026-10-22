@@ -3,12 +3,14 @@ import localFont from "next/font/local";
 // Self-hosted (fonts/, SIL Open Font License) so builds never depend on
 // reaching Google Fonts.
 
-/** Headlines and the wordmark. */
+/** Headlines, stat numerals and the wordmark. */
 const display = localFont({
   src: [
-    { path: "../fonts/instrument-serif-latin-400-normal.woff2", weight: "400", style: "normal" },
+    { path: "../fonts/bricolage-grotesque-latin-600-normal.woff2", weight: "600", style: "normal" },
+    { path: "../fonts/bricolage-grotesque-latin-700-normal.woff2", weight: "700", style: "normal" },
+    { path: "../fonts/bricolage-grotesque-latin-800-normal.woff2", weight: "800", style: "normal" },
   ],
-  fallback: ["serif"],
+  fallback: ["system-ui", "sans-serif"],
   variable: "--font-display",
   display: "swap",
 });
@@ -16,10 +18,11 @@ const display = localFont({
 /** Long-form reading: marketing paragraphs and lesson prose. */
 const body = localFont({
   src: [
-    { path: "../fonts/libre-baskerville-latin-400-normal.woff2", weight: "400", style: "normal" },
-    { path: "../fonts/libre-baskerville-latin-700-normal.woff2", weight: "700", style: "normal" },
+    { path: "../fonts/instrument-sans-latin-400-normal.woff2", weight: "400", style: "normal" },
+    { path: "../fonts/instrument-sans-latin-500-normal.woff2", weight: "500", style: "normal" },
+    { path: "../fonts/instrument-sans-latin-600-normal.woff2", weight: "600", style: "normal" },
   ],
-  fallback: ["serif"],
+  fallback: ["system-ui", "sans-serif"],
   variable: "--font-body",
   display: "swap",
 });
@@ -27,20 +30,20 @@ const body = localFont({
 /** Everything you act on or scan: nav, buttons, labels, forms, tables, chips. */
 const ui = localFont({
   src: [
-    { path: "../fonts/ibm-plex-sans-latin-400-normal.woff2", weight: "400", style: "normal" },
-    { path: "../fonts/ibm-plex-sans-latin-500-normal.woff2", weight: "500", style: "normal" },
-    { path: "../fonts/ibm-plex-sans-latin-600-normal.woff2", weight: "600", style: "normal" },
+    { path: "../fonts/instrument-sans-latin-400-normal.woff2", weight: "400", style: "normal" },
+    { path: "../fonts/instrument-sans-latin-500-normal.woff2", weight: "500", style: "normal" },
+    { path: "../fonts/instrument-sans-latin-600-normal.woff2", weight: "600", style: "normal" },
   ],
-  fallback: ["sans-serif"],
+  fallback: ["system-ui", "sans-serif"],
   variable: "--font-ui",
   display: "swap",
 });
 
-/** Code, addresses, hashes and aligned numbers only. */
+/** Agent and system labels, code and aligned numbers. */
 const mono = localFont({
   src: [
-    { path: "../fonts/fira-code-latin-400-normal.woff2", weight: "400", style: "normal" },
-    { path: "../fonts/fira-code-latin-500-normal.woff2", weight: "500", style: "normal" },
+    { path: "../fonts/jetbrains-mono-latin-400-normal.woff2", weight: "400", style: "normal" },
+    { path: "../fonts/jetbrains-mono-latin-500-normal.woff2", weight: "500", style: "normal" },
   ],
   fallback: ["monospace"],
   variable: "--font-mono",

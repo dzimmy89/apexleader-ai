@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { siteNavLinks } from "@/content/nav";
 import { URLS } from "@/content/site";
-import { BRAND } from "@/lib/brand";
+import { Logo } from "@/components/brand/Logo";
 import { MobileMenu } from "./MobileMenu";
 import { AccountNavLink } from "./AccountNavLink";
 import { NavLinks } from "./NavLinks";
@@ -20,14 +20,15 @@ export function SiteNav() {
       <div className="mx-auto flex h-[var(--site-header-h)] max-w-6xl items-center justify-between gap-6 px-6">
         <Link
           href="/"
-          className="font-[family-name:var(--font-display)] text-[1.625rem] leading-none text-[var(--color-text)] transition-colors hover:text-[var(--color-accent)]"
+          aria-label="FromAItoBusiness home"
+          className="text-[1.375rem] leading-none text-[var(--color-text)] transition-opacity hover:opacity-85"
         >
-          {BRAND.name}
+          <Logo />
         </Link>
 
         <nav className="hidden flex-1 items-center gap-7 lg:flex" aria-label="Main">
           <NavLinks links={links} className="flex items-center gap-7" />
-          <Link href={URLS.coachingDiscovery} className="btn btn-secondary btn-sm">
+          <Link href={URLS.coachingDiscovery} className="btn btn-primary btn-sm ml-auto">
             Book a free call
           </Link>
         </nav>
@@ -38,7 +39,6 @@ export function SiteNav() {
 
         <MobileMenu links={links} />
       </div>
-      <div className="foil-rule" aria-hidden="true" />
     </header>
   );
 }

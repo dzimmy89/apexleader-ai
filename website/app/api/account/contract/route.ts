@@ -42,7 +42,7 @@ export async function GET(request: NextRequest) {
     status: 200,
     headers: {
       "Content-Type": "application/pdf",
-      "Content-Disposition": `${inline ? "inline" : "attachment"}; filename="apexleader-coaching-agreement.pdf"`,
+      "Content-Disposition": `${inline ? "inline" : "attachment"}; filename="fromaitobusiness-coaching-agreement.pdf"`,
       "X-Content-Type-Options": "nosniff",
       ...NO_STORE,
     },

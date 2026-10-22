@@ -12,7 +12,7 @@ export default function PrivacyPage() {
       <PageHeader
         eyebrow="Legal"
         title="Privacy Policy"
-        intro="How ApexLeader.ai collects, uses, and protects your information."
+        intro="How FromAItoBusiness collects, uses, and protects your information."
       />
 
       <div className="prose-serif mt-12 space-y-10">

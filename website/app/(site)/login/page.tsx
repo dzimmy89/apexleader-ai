@@ -7,7 +7,7 @@ import { safeNextPath } from "@/lib/account/login";
 
 export const metadata: Metadata = {
   title: "Sign in or create an account",
-  description: "Sign in to ApexLeader.ai, or create a free account, with Google or an email link. No password.",
+  description: "Sign in to FromAItoBusiness, or create a free account, with Google or an email link. No password.",
   robots: { index: false },
 };
 

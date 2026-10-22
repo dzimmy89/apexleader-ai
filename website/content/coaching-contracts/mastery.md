@@ -1,6 +1,6 @@
-# ApexLeader.ai — Operator Coaching Agreement
+# FromAItoBusiness — Operator Coaching Agreement
 
-**Parties.** This Coaching Agreement ("Agreement") is entered into between ApexLeader.ai ("Coach") and {{clientName}} ("Client"), with email {{clientEmail}}.
+**Parties.** This Coaching Agreement ("Agreement") is entered into between FromAItoBusiness.com, operated by Blocksqozen LLC ("Coach") and {{clientName}} ("Client"), with email {{clientEmail}}.
 
 **Effective date.** {{effectiveDate}}
 
@@ -37,7 +37,7 @@ Sessions are scheduled through the client portal. Sessions require at least 24 h
 
 ## 6. Confidentiality and Intellectual Property
 
-Coach will keep Client's business information confidential and will not put Client's confidential data into any AI tool without Client's permission. Workflows, prompts and documents built for Client's business belong to Client. The course materials, frameworks and methods Coach brings remain the intellectual property of ApexLeader.ai and may not be redistributed.
+Coach will keep Client's business information confidential and will not put Client's confidential data into any AI tool without Client's permission. Workflows, prompts and documents built for Client's business belong to Client. The course materials, frameworks and methods Coach brings remain the intellectual property of FromAItoBusiness.com and may not be redistributed.
 
 ## 7. Dispute Resolution
 

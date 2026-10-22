@@ -5,10 +5,10 @@ import { ImageResponse } from "next/og";
 export const OG_SIZE = { width: 1200, height: 630 } as const;
 export const OG_CONTENT_TYPE = "image/png";
 
-const CHARCOAL = "#1f1c17";
-const PARCHMENT = "#f2ece0";
-const GOLD = "#d4b45c";
-const MUTED = "#a39b8b";
+const INK = "#0e1119";
+const PAPER = "#faf7f0";
+const SIGNAL = "#f26a2e";
+const MUTED = "#a3abc0";
 
 async function asset(...parts: string[]): Promise<Buffer> {
   return readFile(join(process.cwd(), ...parts));
@@ -23,12 +23,10 @@ export async function renderOgImage({
   title: string;
   footer: string;
 }): Promise<ImageResponse> {
-  const [display, body, portrait] = await Promise.all([
-    asset("assets", "fonts", "instrument-serif-400.ttf"),
-    asset("assets", "fonts", "libre-baskerville-400.ttf"),
-    asset("public", "images", "david-zimmerman-portrait.jpg"),
+  const [display, body] = await Promise.all([
+    asset("assets", "fonts", "bricolage-grotesque-latin-700-normal.woff"),
+    asset("assets", "fonts", "instrument-sans-latin-500-normal.woff"),
   ]);
-  const portraitSrc = `data:image/jpeg;base64,${portrait.toString("base64")}`;
 
   return new ImageResponse(
     (
@@ -37,77 +35,63 @@ export async function renderOgImage({
           width: "100%",
           height: "100%",
           display: "flex",
-          background: CHARCOAL,
-          padding: "56px 64px",
-          fontFamily: "Baskerville",
+          flexDirection: "column",
+          background: INK,
+          backgroundImage:
+            "linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)",
+          backgroundSize: "48px 48px",
+          padding: "64px 72px",
+          fontFamily: "Instrument Sans",
         }}
       >
-        <div style={{ display: "flex", flexDirection: "column", flex: 1, paddingRight: 48 }}>
+        <div style={{ display: "flex", alignItems: "center", fontFamily: "Bricolage", fontSize: 40, color: PAPER }}>
           <div
             style={{
               display: "flex",
-              height: 1,
-              width: "100%",
-              background: `linear-gradient(90deg, ${GOLD}, transparent)`,
-            }}
-          />
-          <div
-            style={{
-              display: "flex",
-              marginTop: 28,
-              fontSize: 22,
-              letterSpacing: 6,
-              textTransform: "uppercase",
-              color: GOLD,
+              alignItems: "center",
+              width: 56,
+              height: 56,
+              borderRadius: 14,
+              background: "#1b2030",
+              marginRight: 18,
+              paddingLeft: 10,
             }}
           >
-            {eyebrow}
+            <div style={{ display: "flex", width: 11, height: 11, borderRadius: 11, background: SIGNAL }} />
+            <div style={{ display: "flex", width: 14, height: 4, background: SIGNAL, marginLeft: 4 }} />
+            <div style={{ display: "flex", width: 9, height: 22, borderRadius: 3, background: PAPER, marginLeft: 4 }} />
           </div>
-          <div
-            style={{
-              display: "flex",
-              marginTop: 24,
-              fontFamily: "Instrument Serif",
-              fontSize: 84,
-              lineHeight: 1.02,
-              color: PARCHMENT,
-            }}
-          >
-            {title}
-          </div>
-          <div style={{ display: "flex", flex: 1 }} />
-          <div style={{ display: "flex", fontSize: 22, color: MUTED }}>{footer}</div>
+          <span>From</span>
+          <span style={{ color: SIGNAL }}>AI</span>
+          <span style={{ color: SIGNAL, margin: "0 6px" }}>→</span>
+          <span>toBusiness</span>
+        </div>
+        <div style={{ display: "flex", marginTop: 56, fontSize: 26, color: SIGNAL, letterSpacing: 2 }}>
+          {eyebrow}
         </div>
         <div
           style={{
             display: "flex",
-            flexDirection: "column",
-            alignSelf: "center",
-            width: 360,
-            padding: 14,
-            background: PARCHMENT,
+            marginTop: 18,
+            fontFamily: "Bricolage",
+            fontSize: 80,
+            lineHeight: 1.02,
+            letterSpacing: -2,
+            color: PAPER,
+            maxWidth: 1000,
           }}
         >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={portraitSrc} alt="" width={332} height={415} />
-          <div
-            style={{
-              display: "flex",
-              marginTop: 14,
-              fontSize: 18,
-              color: CHARCOAL,
-            }}
-          >
-            David Zimmerman · founder, hosts every live call
-          </div>
+          {title}
         </div>
+        <div style={{ display: "flex", flex: 1 }} />
+        <div style={{ display: "flex", fontSize: 24, color: MUTED }}>{footer}</div>
       </div>
     ),
     {
       ...OG_SIZE,
       fonts: [
-        { name: "Instrument Serif", data: display, style: "normal", weight: 400 },
-        { name: "Baskerville", data: body, style: "normal", weight: 400 },
+        { name: "Bricolage", data: display, style: "normal", weight: 700 },
+        { name: "Instrument Sans", data: body, style: "normal", weight: 500 },
       ],
     }
   );

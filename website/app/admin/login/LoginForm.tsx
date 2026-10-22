@@ -97,7 +97,7 @@ function LoginFormInner({ passwordEnabled }: { passwordEnabled: boolean }) {
           <ServerMark />
         </span>
         <h1 className="font-[family-name:var(--font-admin-display)] text-base font-medium tracking-wide text-zinc-100">
-          ApexLeader.ai Mission Control
+          FromAItoBusiness Mission Control
         </h1>
       </div>
 
