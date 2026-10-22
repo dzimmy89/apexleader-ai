@@ -1,30 +1,31 @@
 # Deploying ApexLeader.ai
 
-Production is Cloud Run in the Google Cloud project `apexleader-prod`, deployed by [`.github/workflows/deploy-production.yml`](../.github/workflows/deploy-production.yml) on every push to `main`. Nothing deploys until the repository variable `DEPLOY_FROM_GITHUB` is `true`, so merging is safe before the accounts below exist.
+Production is Cloud Run service `apexleader-ai` (us-central1) in the Google Cloud project `apexleader-prod` (number 38118386790, billing account 01E44E-C71C42-B1C090), deployed by [`.github/workflows/deploy-production.yml`](../.github/workflows/deploy-production.yml) on every push to `main`. All deploy settings live in that file's `env:` block.
 
-## One-time setup (owner)
+Live address for now: https://apexleader-ai-38118386790.us-central1.run.app
 
-Do these in order. None of them can be done from this repository.
+## Done (Oct 22 2026)
 
-1. **Domain.** Register `apexleader.ai` (or the domain you settle on) and update `lib/brand.ts` if it differs.
-2. **Google Workspace.** Create `hello@apexleader.ai`. It sends all mail and owns the coaching calendars and Meet recordings.
-3. **Google Cloud project `apexleader-prod`.** Turn on Cloud Run, Cloud Build, Artifact Registry, Secret Manager, Firestore (Native, `(default)`), Vertex AI, Gmail, Calendar, Drive and Docs APIs. Create an Artifact Registry Docker repository named `cloud-run-source-deploy` in `us-central1`.
-4. **Service accounts.**
-   - A deploy account whose JSON key becomes the GitHub secret `GCP_SA_KEY`, with Cloud Build Editor, Cloud Run Admin, Service Account User, Artifact Registry Writer, Firebase Admin and Service Usage Consumer.
-   - The site account whose JSON key goes in Secret Manager as `GOOGLE_SERVICE_ACCOUNT_KEY`. In Google Admin, give it domain-wide delegation for Gmail send, Calendar, Drive read-only and Docs read-only. Give the Cloud Run runtime account the Vertex AI User role for Gemini.
-5. **Firebase.** Add Firebase to the project, turn on Authentication (Email link and Google) and add `apexleader.ai` to the authorized domains. Copy the web app config into repository variables `FIREBASE_API_KEY`, `FIREBASE_MESSAGING_SENDER_ID` and `FIREBASE_APP_ID`.
-6. **Stripe.** Create the account, add `STRIPE_SECRET_KEY` and the webhook secret `STRIPE_WEBHOOK_SECRET` (endpoint `https://apexleader.ai/api/webhooks/stripe`) to Secret Manager, then run the **Coaching setup** workflow (dry run, then apply) to create the package prices and `STRIPE_PRICE_*` secrets.
-7. **Other secrets** in Secret Manager, named exactly as in [`cloudbuild.yaml`](./cloudbuild.yaml): `CRON_SECRET`, `INTERNAL_WEBHOOK_SECRET`, `ADMIN_USERNAME`, `ADMIN_PASSWORD`, `ADMIN_TEAM_PASSWORD_HASH`, `JWT_SECRET`, `MAILING_ADDRESS`, `COACH_CALENDAR_ID`, `COACH_TIMEZONE`, `COACH_NAME`, `CONTRACTS_GCS_BUCKET` (create the bucket too), `CONTRACT_SIGN_TOKEN_TTL_DAYS`.
-8. **GitHub.** Add secrets `GCP_SA_KEY` and `GCP_PROJECT_ID` (`apexleader-prod`), then set the variable `DEPLOY_FROM_GITHUB` to `true` and run the deploy workflow once from the Actions tab.
-9. **Postal address.** Put the business address in `content/site.ts` (`POSTAL_ADDRESS`). Until then marketing email is held, and Cloud Run runs with `MARKETING_SENDS_ENABLED=false`.
-10. **Google Meet.** Turn on recording and transcription for discovery and coaching calls so transcripts reach the intake form.
+- Project, APIs, Artifact Registry repo `cloud-run-source-deploy`, Firestore `(default)` (nam5), bucket `apexleader-prod-contracts`.
+- Runtime account `38118386790-compute@developer.gserviceaccount.com`: Secret Manager accessor, Datastore user, Storage, Vertex AI user, Artifact Registry writer, Logging writer, Firebase Auth admin.
+- Deploy account `github-deploy@apexleader-prod.iam.gserviceaccount.com`, used by GitHub through Workload Identity Federation (pool and provider `github`, only `dzimmy89/apexleader-ai`). No key files.
+- Secrets: `JWT_SECRET`, `CRON_SECRET`, `INTERNAL_WEBHOOK_SECRET`, `ADMIN_USERNAME`, `ADMIN_PASSWORD`, `COACH_NAME`, `COACH_TIMEZONE`, `CONTRACT_SIGN_TOKEN_TTL_DAYS`, `CONTRACTS_GCS_BUCKET`. The deploy mounts whichever of its known secrets exist, so new ones are picked up on the next deploy.
+
+## Still to do (owner)
+
+1. **Firebase.** Add Firebase to `apexleader-prod`, add a Web app, turn on Google sign-in, and add the run.app host (later the real domain) to Authentication's authorized domains. Put `apiKey`, `messagingSenderId` and `appId` in the workflow's `env:` block. That turns on sign-in and the Firestore rules publish.
+2. **Domain and branding.** When settled, map the domain to the Cloud Run service, set `SITE_URL` in the workflow, update `lib/brand.ts`, and add the domain to Firebase authorized domains.
+3. **Google Workspace mailbox** for the brand. Until then `ADMIN_EMAIL` (admin Google sign-in, sender) is hello@defiuniversity.xyz.
+4. **Mail, calendar and Meet.** A site service account key in Secret Manager as `GOOGLE_SERVICE_ACCOUNT_KEY`, with domain-wide delegation for Gmail send, Calendar, Drive read-only and Docs read-only, plus `COACH_CALENDAR_ID`. Turn on Meet recording and transcription.
+5. **Stripe.** Add `STRIPE_SECRET_KEY` and `STRIPE_WEBHOOK_SECRET` (endpoint `<SITE_URL>/api/webhooks/stripe`) to Secret Manager, then run the **Coaching setup** workflow (dry run, then apply) to create the `STRIPE_PRICE_*` secrets.
+6. **Postal address** in `content/site.ts` (`POSTAL_ADDRESS`) and the `MAILING_ADDRESS` secret. Until then marketing email is held (`MARKETING_SENDS_ENABLED=false`).
 
 ## What a deploy does
 
-1. Lints and builds with the Firebase variables.
-2. Writes `website/BUILD_SHA` from the pinned commit and runs Cloud Build, which builds the image and deploys Cloud Run service `apexleader-ai` in `us-central1`.
-3. Publishes `database/security-rules.rules` to `apexleader-prod` and checks the live rules match the repo.
-4. Polls `https://apexleader.ai/api/version` until it reports the deployed commit.
+1. Lints and builds.
+2. Writes `website/BUILD_SHA` from the pinned commit, builds the image with Cloud Build and deploys it to Cloud Run (min instances 0, so an idle site stays in the free tier and the first visit after a quiet spell takes a few seconds).
+3. Once Firebase is set up, publishes `database/security-rules.rules` and checks the live rules match the repo.
+4. Polls `<SITE_URL>/api/version` until it reports the deployed commit.
 
 Firestore indexes (`database/indexes.json`) are not deployed by the workflow:
 
@@ -45,6 +46,6 @@ CI also runs the Firestore rules tests in the emulator (`firebase-tools@15.31.0`
 
 ## After a deploy
 
-- https://apexleader.ai/api/health
-- `curl -sf https://apexleader.ai/api/version` returns the commit SHA
-- https://apexleader.ai/coaching and https://apexleader.ai/coaching/book
+- `<SITE_URL>/api/health`
+- `curl -sf <SITE_URL>/api/version` returns the commit SHA
+- `<SITE_URL>/coaching` and `<SITE_URL>/coaching/book`
