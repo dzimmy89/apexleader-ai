@@ -1,8 +1,8 @@
-# Deploying ApexLeader.ai
+# Deploying FromAItoBusiness
 
 Production is Cloud Run service `apexleader-ai` (us-central1) in the Google Cloud project `apexleader-prod` (number 38118386790, billing account 01E44E-C71C42-B1C090), deployed by [`.github/workflows/deploy-production.yml`](../.github/workflows/deploy-production.yml) on every push to `main`. All deploy settings live in that file's `env:` block.
 
-Live address for now: https://apexleader-ai-38118386790.us-central1.run.app
+Live at https://fromaitobusiness.com (also https://apexleader-ai-38118386790.us-central1.run.app).
 
 ## Done (Oct 22 2026)
 
@@ -11,13 +11,15 @@ Live address for now: https://apexleader-ai-38118386790.us-central1.run.app
 - Deploy account `github-deploy@apexleader-prod.iam.gserviceaccount.com`, used by GitHub through Workload Identity Federation (pool and provider `github`, only `dzimmy89/apexleader-ai`). No key files.
 - Secrets: `JWT_SECRET`, `CRON_SECRET`, `INTERNAL_WEBHOOK_SECRET`, `ADMIN_USERNAME`, `ADMIN_PASSWORD`, `COACH_NAME`, `COACH_TIMEZONE`, `CONTRACT_SIGN_TOKEN_TTL_DAYS`, `CONTRACTS_GCS_BUCKET`. The deploy mounts whichever of its known secrets exist, so new ones are picked up on the next deploy.
 
+- Oct 23 2026: Firebase added to the project, web app "FromAItoBusiness web" (config in the workflow's `env:` block), Auth initialized with authorized domains localhost, apexleader-prod.firebaseapp.com, apexleader-prod.web.app, fromaitobusiness.com, www.fromaitobusiness.com and the run.app host. Google sign-in is switched on in the Firebase console (Authentication > Sign-in method). `github-deploy` has `roles/firebase.admin` and `roles/firebaserules.admin` for the rules publish.
+
 ## Still to do (owner)
 
-1. **Firebase.** Add Firebase to `apexleader-prod`, add a Web app, turn on Google sign-in, and add the run.app host (later the real domain) to Authentication's authorized domains. Put `apiKey`, `messagingSenderId` and `appId` in the workflow's `env:` block. That turns on sign-in and the Firestore rules publish.
-2. **Domain and branding.** When settled, map the domain to the Cloud Run service, set `SITE_URL` in the workflow, update `lib/brand.ts`, and add the domain to Firebase authorized domains.
+1. **Brand mailbox.** fromaitobusiness.com has no mail yet; see 3.
+2. **Domain.** Done: fromaitobusiness.com is mapped to the service and is `SITE_URL`.
 3. **Google Workspace mailbox** for the brand. Until then `ADMIN_EMAIL` (admin Google sign-in, sender) is hello@defiuniversity.xyz.
 4. **Mail, calendar and Meet.** A site service account key in Secret Manager as `GOOGLE_SERVICE_ACCOUNT_KEY`, with domain-wide delegation for Gmail send, Calendar, Drive read-only and Docs read-only, plus `COACH_CALENDAR_ID`. Turn on Meet recording and transcription.
-5. **Stripe.** Add `STRIPE_SECRET_KEY` and `STRIPE_WEBHOOK_SECRET` (endpoint `<SITE_URL>/api/webhooks/stripe`) to Secret Manager, then run the **Coaching setup** workflow (dry run, then apply) to create the `STRIPE_PRICE_*` secrets.
+5. **Stripe** (Blocksqozen LLC account). Add `STRIPE_SECRET_KEY` (a live secret key) to Secret Manager, then run the **Coaching setup** workflow (dry run, then apply). It creates the products, prices and the `<SITE_URL>/api/webhooks/stripe` webhook, and writes the `STRIPE_PRICE_*` and `STRIPE_WEBHOOK_SECRET` secrets. Its objects are tagged `fatb_source=coaching` and checkouts carry `site=fromaitobusiness.com`, so a Stripe account shared with another site is safe on this side: the webhook ignores the other site's events.
 6. **Postal address** in `content/site.ts` (`POSTAL_ADDRESS`) and the `MAILING_ADDRESS` secret. Until then marketing email is held (`MARKETING_SENDS_ENABLED=false`).
 
 ## What a deploy does
