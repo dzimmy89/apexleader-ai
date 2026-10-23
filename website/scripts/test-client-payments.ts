@@ -32,8 +32,8 @@ beforeEach(() => {
     return { ok: true, messageId: "m1", threadId: "t1" };
   });
   process.env.JWT_SECRET = "test-client-payments";
-  process.env.NEXT_PUBLIC_SITE_URL = "https://apexleader.ai";
-  process.env.SENDER_EMAIL = "hello@apexleader.ai";
+  process.env.NEXT_PUBLIC_SITE_URL = "https://fromaitobusiness.com";
+  process.env.SENDER_EMAIL = "hello@fromaitobusiness.com";
 });
 
 afterEach(() => {
@@ -325,9 +325,9 @@ describe("log manual payment", () => {
         }),
         { params: Promise.resolve({ email: "ada%40example.com" }) }
       );
-    assert.equal((await call({ authorization: `Bearer ${token}`, origin: "https://apexleader.ai" })).status, 401);
+    assert.equal((await call({ authorization: `Bearer ${token}`, origin: "https://fromaitobusiness.com" })).status, 401);
     assert.equal((await call({ cookie: `${COOKIE_NAME}=${token}`, origin: "https://evil.example" })).status, 403);
-    const ok = await call({ cookie: `${COOKIE_NAME}=${token}`, origin: "https://apexleader.ai" });
+    const ok = await call({ cookie: `${COOKIE_NAME}=${token}`, origin: "https://fromaitobusiness.com" });
     assert.equal(ok.status, 200);
     assert.ok(mem.store.has(`client_payments/${FIRST_ID}`));
   });
@@ -359,7 +359,7 @@ describe("payment digest", () => {
     assert.equal(first.status, "sent");
     assert.equal(first.count, 1);
     assert.equal(sent.length, 1);
-    assert.equal(sent[0]?.to, "hello@apexleader.ai");
+    assert.equal(sent[0]?.to, "hello@fromaitobusiness.com");
     assert.equal(sent[0]?.purpose, "transactional");
     assert.equal(sent[0]?.log.source, "payment_digest");
     assert.match(sent[0]?.subject || "", /1 overdue/);
@@ -404,7 +404,7 @@ describe("payment digest", () => {
         "2026-10-20"
       ),
       "2026-10-20",
-      "https://apexleader.ai"
+      "https://fromaitobusiness.com"
     );
     assert.equal(email.text.includes("—"), false);
     assert.equal(email.html.includes("—"), false);

@@ -39,7 +39,7 @@ beforeEach(() => {
   });
   process.env.JWT_SECRET = "test-contact-page";
   process.env.NEXT_PUBLIC_SITE_URL = ORIGIN;
-  process.env.SENDER_EMAIL = "hello@apexleader.ai";
+  process.env.SENDER_EMAIL = "hello@fromaitobusiness.com";
 });
 
 afterEach(() => {
@@ -353,7 +353,7 @@ describe("contact page UI contract", () => {
 
 describe("1:1 sender domain", () => {
   afterEach(() => {
-    process.env.SENDER_EMAIL = "hello@apexleader.ai";
+    process.env.SENDER_EMAIL = "hello@fromaitobusiness.com";
     delete process.env.SENDER_DOMAINS;
   });
 

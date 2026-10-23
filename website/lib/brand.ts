@@ -14,7 +14,7 @@ export const BRAND = {
    * The coach's inbox: sender, reply-to, admin Google sign-in and calendar
    * owner. Stays on the existing mailbox until fromaitobusiness.com has mail.
    */
-  email: "hello@apexleader.ai",
+  email: "hello@fromaitobusiness.com",
   coachName: "David Zimmerman",
   coachFirstName: "David",
   /** What the coaching is about, used in AI prompts and page copy. */

@@ -13,6 +13,7 @@ import type { ClientFile } from "@/lib/coaching/client-files";
 import type { CoachingSessionDoc } from "@/lib/coaching/sessions";
 import { PACE_LABEL, type Syllabus, type SyllabusStatus } from "@/lib/coaching/syllabus";
 import type { ResolvedItem } from "@/lib/coaching/syllabus-plan";
+import { BRAND } from "@/lib/brand";
 
 const SESSION_MINUTES = 60;
 
@@ -156,7 +157,7 @@ function SessionsPanel({
                 <Video size={18} aria-hidden /> Join on Google Meet
               </a>
             ) : null}
-            <a href="mailto:hello@apexleader.ai?subject=Reschedule%20my%20coaching%20session" className="btn btn-ghost">
+            <a href={`mailto:${BRAND.email}?subject=Reschedule%20my%20coaching%20session`} className="btn btn-ghost">
               Need to reschedule? Email David
             </a>
           </div>
@@ -193,7 +194,7 @@ function SessionsPanel({
             ) : (
               <span>
                 {ended ? "Your notes, recordings and agreement stay here. " : "Want to keep going? "}
-                <a href="mailto:hello@apexleader.ai?subject=More%20coaching%20sessions" className="underline underline-offset-4">
+                <a href={`mailto:${BRAND.email}?subject=More%20coaching%20sessions`} className="underline underline-offset-4">
                   {ended ? "Email David to start again" : "Email David about more sessions"}
                 </a>
                 .
@@ -265,7 +266,7 @@ function AgreementRow({ client, unsigned }: { client: CoachingOverview["client"]
           {signed
             ? client.signedContractPdfUrl
               ? `Signed ${dayShort(client.contractSignedAt!)}.`
-              : `Signed ${dayShort(client.contractSignedAt!)} before this site existed. For a copy, email hello@apexleader.ai.`
+              : `Signed ${dayShort(client.contractSignedAt!)} before this site existed. For a copy, email ${BRAND.email}.`
             : client.fullAccess
               ? "Not needed for your access."
               : "Not signed yet. Booking opens once it is."}
