@@ -13,7 +13,9 @@ export type LessonSegment =
   | { type: "callout"; kind: "key-concept" | "takeaways" | "warning" | "try-it"; text: string }
   | { type: "infographic"; title: string; image: string; alt: string }
   | { type: "checkpoint"; questions: CheckpointQuestion[] }
-  | { type: "interactive"; id: string; title: string };
+  | { type: "interactive"; id: string; title: string }
+  /** Extra work for 1-on-1 coaching clients; other readers see a short note instead. */
+  | { type: "coached"; text: string };
 
 const CALLOUTS = new Set(["key-concept", "takeaways", "warning", "try-it"]);
 
@@ -91,6 +93,8 @@ export function splitBlocks(body: string): LessonSegment[] {
     } else if (name === "checkpoint") {
       const questions = parseCheckpoint(text);
       if (questions.length) segments.push({ type: "checkpoint", questions });
+    } else if (name === "coached") {
+      if (text) segments.push({ type: "coached", text });
     } else if (name === "interactive") {
       const f = fields(text);
       segments.push({ type: "interactive", id: f.id || "", title: f.title || "Interactive tool" });

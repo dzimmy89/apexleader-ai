@@ -123,7 +123,10 @@ export default async function ExercisePage({ params }: PageProps) {
           ) : null}
         </Panel>
       ) : null}
-      <LessonBody body={lock === "open" ? brief.rest : previewBody(brief.rest)} />
+      <LessonBody
+        body={lock === "open" ? brief.rest : previewBody(brief.rest)}
+        showCoached={lock === "open" && !!viewer.access?.isCoachingClient}
+      />
       {lock === "open" ? (
         viewer.email ? (
           <div className="mt-12">

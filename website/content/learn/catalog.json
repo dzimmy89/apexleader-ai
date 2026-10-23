@@ -2,47 +2,91 @@
   "source": {
     "repo": "apexleader-ai",
     "branch": "main",
-    "commit": "sample"
+    "commit": "fromaitobusiness-v1"
   },
   "stages": [
     {
-      "id": "ai-foundations",
+      "id": "start-here",
       "number": 1,
-      "title": "AI Foundations",
-      "blurb": "Use AI assistants well for everyday work: writing, research and analysis, with answers you can trust.",
+      "title": "Start Here",
+      "blurb": "What a one-person company with an AI team looks like, which tools to pay for, and the rules every agent works under.",
       "level": "beginner",
       "free": true,
       "prereqs": [],
       "courseIds": [
-        "ai-work-basics"
+        "one-person-company"
       ]
     },
     {
-      "id": "ai-builder",
+      "id": "tool-mastery",
       "number": 2,
-      "title": "Build With AI",
-      "blurb": "Turn a repetitive process in your business into an AI-assisted workflow and measure the time it saves.",
+      "title": "Tool Mastery",
+      "blurb": "Learn each tool on its own: what it is for, how to set it up, and the workflows a solo founder uses every week.",
       "level": "intermediate",
       "free": false,
       "prereqs": [
-        "ai-foundations"
+        "start-here"
       ],
       "courseIds": [
-        "automate-a-workflow"
+        "claude-for-founders",
+        "claude-code",
+        "cursor",
+        "codex",
+        "github-for-founders",
+        "google-gemini",
+        "always-on-agents"
       ]
     },
     {
-      "id": "ai-leader",
+      "id": "build-the-business",
       "number": 3,
-      "title": "Lead With AI",
-      "blurb": "Roll AI out across a team with clear rules, a sensible first project and numbers that show it works.",
+      "title": "Build the Business",
+      "blurb": "Put the tools to work: validate the idea, build the product and site, and create a brand your agents can follow.",
+      "level": "intermediate",
+      "free": false,
+      "prereqs": [
+        "start-here",
+        "tool-mastery"
+      ],
+      "courseIds": [
+        "validate-the-idea",
+        "build-product-and-site",
+        "brand-in-a-day"
+      ]
+    },
+    {
+      "id": "run-the-business",
+      "number": 4,
+      "title": "Run the Business",
+      "blurb": "Staff three departments with AI: marketing, sales and accounting, each with an agent that works under your approval.",
       "level": "advanced",
       "free": false,
       "prereqs": [
-        "ai-foundations"
+        "start-here",
+        "tool-mastery",
+        "build-the-business"
       ],
       "courseIds": [
-        "lead-ai-adoption"
+        "ai-marketing",
+        "ai-sales",
+        "ai-accounting"
+      ]
+    },
+    {
+      "id": "capstone",
+      "number": 5,
+      "title": "Capstone",
+      "blurb": "Run the whole company for one week from your morning brief, with every department agent reporting in.",
+      "level": "advanced",
+      "free": false,
+      "prereqs": [
+        "start-here",
+        "tool-mastery",
+        "build-the-business",
+        "run-the-business"
+      ],
+      "courseIds": [
+        "run-the-company"
       ]
     }
   ],
@@ -51,120 +95,838 @@
       "new": [],
       "beginner": [],
       "intermediate": [
-        "ai-work-basics"
+        "one-person-company"
       ],
       "advanced": [
-        "ai-work-basics"
+        "one-person-company",
+        "claude-for-founders",
+        "github-for-founders"
       ]
     },
     "defaultFocusByLevel": {
-      "new": "ai-foundations",
-      "beginner": "ai-builder",
-      "intermediate": "ai-builder",
-      "advanced": "ai-leader"
+      "new": "tool-mastery",
+      "beginner": "build-the-business",
+      "intermediate": "run-the-business",
+      "advanced": "capstone"
     }
   },
   "courses": {
-    "ai-work-basics": {
-      "id": "ai-work-basics",
-      "title": "AI at Work: The Basics",
-      "description": "What today's AI assistants are good at, how to ask for what you want, and how to check the answer before it reaches a customer.",
+    "one-person-company": {
+      "id": "one-person-company",
+      "title": "The One-Person Company",
+      "description": "Treat AI tools as hires, not apps. Pick a stack for your budget, set logins and approval rules, and draw the org chart for your AI team.",
       "icon": "🧭",
-      "estimatedHours": 1.6,
-      "lessonCount": 3,
-      "stageId": "ai-foundations",
+      "estimatedHours": 3.0,
+      "lessonCount": 4,
+      "stageId": "start-here",
       "stageNumber": 1,
       "modules": [
         {
           "number": 1,
-          "title": "Working with AI assistants",
+          "title": "Your AI team",
           "quiz": "quiz-module-01",
           "lessons": [
             {
               "number": 1,
-              "title": "What AI Assistants Do Well",
-              "slug": "lesson-01-what-ai-assistants-do-well",
+              "title": "Agents as Staff: What Changed in 2026",
+              "slug": "lesson-01-agents-as-staff-what-changed-in-2026",
               "minutes": 12,
-              "exercise": "exercise-01-what-ai-assistants-do-well",
-              "exerciseMinutes": 15
+              "exercise": "exercise-01-agents-as-staff-what-changed-in-2026",
+              "exerciseMinutes": 25
             },
             {
               "number": 2,
-              "title": "Writing Prompts That Work",
-              "slug": "lesson-02-writing-prompts-that-work",
-              "minutes": 15,
-              "exercise": "exercise-02-writing-prompts-that-work",
-              "exerciseMinutes": 20
+              "title": "Pick Your Stack at $20, $100 and $300 a Month",
+              "slug": "lesson-02-pick-your-stack-at-20-100-and-300-a-month",
+              "minutes": 14,
+              "exercise": "exercise-02-pick-your-stack-at-20-100-and-300-a-month",
+              "exerciseMinutes": 30
             },
             {
               "number": 3,
-              "title": "Checking AI Output",
-              "slug": "lesson-03-checking-ai-output",
+              "title": "Logins, Access and Approval Rules",
+              "slug": "lesson-03-logins-access-and-approval-rules",
+              "minutes": 14,
+              "exercise": "exercise-03-logins-access-and-approval-rules",
+              "exerciseMinutes": 30
+            },
+            {
+              "number": 4,
+              "title": "Your AI Org Chart",
+              "slug": "lesson-04-your-ai-org-chart",
               "minutes": 12,
-              "exercise": "exercise-03-checking-ai-output",
-              "exerciseMinutes": 15
+              "exercise": "exercise-04-your-ai-org-chart",
+              "exerciseMinutes": 35
             }
           ]
         }
       ]
     },
-    "automate-a-workflow": {
-      "id": "automate-a-workflow",
-      "title": "Automate One Workflow",
-      "description": "Pick one repetitive task in your business, map it step by step, and build a first AI-assisted version you can measure.",
-      "icon": "⚙️",
-      "estimatedHours": 1.4,
-      "lessonCount": 2,
-      "stageId": "ai-builder",
+    "claude-for-founders": {
+      "id": "claude-for-founders",
+      "title": "Claude: Your Strategist and Writer",
+      "description": "Use Claude for strategy, writing and analysis: prompts with context, Projects as your business brain, connectors, skills and artifacts, and Cowork for file work on your computer.",
+      "icon": "✍️",
+      "estimatedHours": 3.6,
+      "lessonCount": 5,
+      "stageId": "tool-mastery",
       "stageNumber": 2,
       "modules": [
         {
           "number": 1,
-          "title": "From task to automation",
+          "title": "Working with Claude",
           "quiz": "quiz-module-01",
           "lessons": [
             {
               "number": 1,
-              "title": "Pick the Right Workflow",
-              "slug": "lesson-01-pick-the-right-workflow",
-              "minutes": 12,
-              "exercise": "exercise-01-pick-the-right-workflow",
-              "exerciseMinutes": 20
+              "title": "Prompts, Files and Memory",
+              "slug": "lesson-01-prompts-files-and-memory",
+              "minutes": 14,
+              "exercise": "exercise-01-prompts-files-and-memory",
+              "exerciseMinutes": 25
             },
             {
               "number": 2,
-              "title": "Map It Before You Build",
-              "slug": "lesson-02-map-it-before-you-build",
-              "minutes": 15,
-              "exercise": "exercise-02-map-it-before-you-build",
+              "title": "Projects: Your Business Brain",
+              "slug": "lesson-02-projects-your-business-brain",
+              "minutes": 13,
+              "exercise": "exercise-02-projects-your-business-brain",
+              "exerciseMinutes": 30
+            },
+            {
+              "number": 3,
+              "title": "Connectors Without the Risk",
+              "slug": "lesson-03-connectors-without-the-risk",
+              "minutes": 13,
+              "exercise": "exercise-03-connectors-without-the-risk",
               "exerciseMinutes": 25
+            },
+            {
+              "number": 4,
+              "title": "Skills and Artifacts",
+              "slug": "lesson-04-skills-and-artifacts",
+              "minutes": 14,
+              "exercise": "exercise-04-skills-and-artifacts",
+              "exerciseMinutes": 30
+            },
+            {
+              "number": 5,
+              "title": "Cowork: A Clerk in Your Folders",
+              "slug": "lesson-05-cowork-a-clerk-in-your-folders",
+              "minutes": 14,
+              "exercise": "exercise-05-cowork-a-clerk-in-your-folders",
+              "exerciseMinutes": 30
             }
           ]
         }
       ]
     },
-    "lead-ai-adoption": {
-      "id": "lead-ai-adoption",
-      "title": "Lead AI Adoption on Your Team",
-      "description": "Set simple rules for how your team uses AI, choose where to start, and track whether it is saving real time.",
-      "icon": "👥",
-      "estimatedHours": 0.8,
-      "lessonCount": 1,
-      "stageId": "ai-leader",
-      "stageNumber": 3,
+    "claude-code": {
+      "id": "claude-code",
+      "title": "Claude Code: Your Builder",
+      "description": "Have a coding agent build and change your site and tools from plain-English instructions, with every change saved in GitHub.",
+      "icon": "🛠️",
+      "estimatedHours": 4.3,
+      "lessonCount": 5,
+      "stageId": "tool-mastery",
+      "stageNumber": 2,
       "modules": [
         {
           "number": 1,
-          "title": "Rolling AI out",
+          "title": "Building with Claude Code",
           "quiz": "quiz-module-01",
           "lessons": [
             {
               "number": 1,
-              "title": "Set Team Ground Rules",
-              "slug": "lesson-01-set-team-ground-rules",
+              "title": "Install Claude Code and Run Your First Session",
+              "slug": "lesson-01-install-claude-code-and-run-your-first-session",
               "minutes": 15,
-              "exercise": "exercise-01-set-team-ground-rules",
-              "exerciseMinutes": 20
+              "exercise": "exercise-01-install-claude-code-and-run-your-first-session",
+              "exerciseMinutes": 30
+            },
+            {
+              "number": 2,
+              "title": "CLAUDE.md and Plan Mode",
+              "slug": "lesson-02-claude-md-and-plan-mode",
+              "minutes": 14,
+              "exercise": "exercise-02-claude-md-and-plan-mode",
+              "exerciseMinutes": 30
+            },
+            {
+              "number": 3,
+              "title": "Build a Feature End to End",
+              "slug": "lesson-03-build-a-feature-end-to-end",
+              "minutes": 15,
+              "exercise": "exercise-03-build-a-feature-end-to-end",
+              "exerciseMinutes": 45
+            },
+            {
+              "number": 4,
+              "title": "Tests, Review and Git",
+              "slug": "lesson-04-tests-review-and-git",
+              "minutes": 14,
+              "exercise": "exercise-04-tests-review-and-git",
+              "exerciseMinutes": 35
+            },
+            {
+              "number": 5,
+              "title": "Hooks, Automations and Cloud Sessions",
+              "slug": "lesson-05-hooks-automations-and-cloud-sessions",
+              "minutes": 14,
+              "exercise": "exercise-05-hooks-automations-and-cloud-sessions",
+              "exerciseMinutes": 35
+            }
+          ]
+        }
+      ]
+    },
+    "cursor": {
+      "id": "cursor",
+      "title": "Cursor: The AI Code Editor",
+      "description": "Work in an editor where agents write and fix code beside you: agent mode, parallel agents, rules and AI code review.",
+      "icon": "🖱️",
+      "estimatedHours": 3.0,
+      "lessonCount": 4,
+      "stageId": "tool-mastery",
+      "stageNumber": 2,
+      "modules": [
+        {
+          "number": 1,
+          "title": "Building with Cursor",
+          "quiz": "quiz-module-01",
+          "lessons": [
+            {
+              "number": 1,
+              "title": "A Tour of Cursor",
+              "slug": "lesson-01-a-tour-of-cursor",
+              "minutes": 12,
+              "exercise": "exercise-01-a-tour-of-cursor",
+              "exerciseMinutes": 25
+            },
+            {
+              "number": 2,
+              "title": "Agent Mode and Parallel Agents",
+              "slug": "lesson-02-agent-mode-and-parallel-agents",
+              "minutes": 14,
+              "exercise": "exercise-02-agent-mode-and-parallel-agents",
+              "exerciseMinutes": 35
+            },
+            {
+              "number": 3,
+              "title": "Rules, Context and Docs",
+              "slug": "lesson-03-rules-context-and-docs",
+              "minutes": 13,
+              "exercise": "exercise-03-rules-context-and-docs",
+              "exerciseMinutes": 30
+            },
+            {
+              "number": 4,
+              "title": "Code Review and Background Agents",
+              "slug": "lesson-04-code-review-and-background-agents",
+              "minutes": 13,
+              "exercise": "exercise-04-code-review-and-background-agents",
+              "exerciseMinutes": 30
+            }
+          ]
+        }
+      ]
+    },
+    "codex": {
+      "id": "codex",
+      "title": "Codex: Build, Design and Automate",
+      "description": "Use OpenAI's Codex to build small apps, run coding tasks in the cloud, make mockups and images, and automate work on your computer.",
+      "icon": "🧪",
+      "estimatedHours": 3.1,
+      "lessonCount": 4,
+      "stageId": "tool-mastery",
+      "stageNumber": 2,
+      "modules": [
+        {
+          "number": 1,
+          "title": "Working with Codex",
+          "quiz": "quiz-module-01",
+          "lessons": [
+            {
+              "number": 1,
+              "title": "The Codex App",
+              "slug": "lesson-01-the-codex-app",
+              "minutes": 12,
+              "exercise": "exercise-01-the-codex-app",
+              "exerciseMinutes": 25
+            },
+            {
+              "number": 2,
+              "title": "Coding Tasks in the Cloud",
+              "slug": "lesson-02-coding-tasks-in-the-cloud",
+              "minutes": 13,
+              "exercise": "exercise-02-coding-tasks-in-the-cloud",
+              "exerciseMinutes": 35
+            },
+            {
+              "number": 3,
+              "title": "Images and Mockups",
+              "slug": "lesson-03-images-and-mockups",
+              "minutes": 12,
+              "exercise": "exercise-03-images-and-mockups",
+              "exerciseMinutes": 30
+            },
+            {
+              "number": 4,
+              "title": "Computer Use and Automations",
+              "slug": "lesson-04-computer-use-and-automations",
+              "minutes": 13,
+              "exercise": "exercise-04-computer-use-and-automations",
+              "exerciseMinutes": 35
+            }
+          ]
+        }
+      ]
+    },
+    "github-for-founders": {
+      "id": "github-for-founders",
+      "title": "GitHub for Non-Developers",
+      "description": "The home for everything your agents build: repositories, pull requests as approval gates, Actions and Pages, and the Copilot coding agent.",
+      "icon": "🐙",
+      "estimatedHours": 3.0,
+      "lessonCount": 4,
+      "stageId": "tool-mastery",
+      "stageNumber": 2,
+      "modules": [
+        {
+          "number": 1,
+          "title": "GitHub in plain English",
+          "quiz": "quiz-module-01",
+          "lessons": [
+            {
+              "number": 1,
+              "title": "Repos, Commits and Branches in Plain English",
+              "slug": "lesson-01-repos-commits-and-branches-in-plain-english",
+              "minutes": 13,
+              "exercise": "exercise-01-repos-commits-and-branches-in-plain-english",
+              "exerciseMinutes": 25
+            },
+            {
+              "number": 2,
+              "title": "Pull Requests as Approval Gates",
+              "slug": "lesson-02-pull-requests-as-approval-gates",
+              "minutes": 13,
+              "exercise": "exercise-02-pull-requests-as-approval-gates",
+              "exerciseMinutes": 30
+            },
+            {
+              "number": 3,
+              "title": "Actions and Pages",
+              "slug": "lesson-03-actions-and-pages",
+              "minutes": 14,
+              "exercise": "exercise-03-actions-and-pages",
+              "exerciseMinutes": 35
+            },
+            {
+              "number": 4,
+              "title": "Copilot Coding Agent and Issues",
+              "slug": "lesson-04-copilot-coding-agent-and-issues",
+              "minutes": 13,
+              "exercise": "exercise-04-copilot-coding-agent-and-issues",
+              "exerciseMinutes": 30
+            }
+          ]
+        }
+      ]
+    },
+    "google-gemini": {
+      "id": "google-gemini",
+      "title": "Gemini, NotebookLM and Workspace",
+      "description": "Use Google's AI for cited research, a notebook that knows your documents, and help inside Gmail, Docs and Sheets.",
+      "icon": "🔎",
+      "estimatedHours": 3.8,
+      "lessonCount": 5,
+      "stageId": "tool-mastery",
+      "stageNumber": 2,
+      "modules": [
+        {
+          "number": 1,
+          "title": "Working with Google AI",
+          "quiz": "quiz-module-01",
+          "lessons": [
+            {
+              "number": 1,
+              "title": "The Gemini App and Models",
+              "slug": "lesson-01-the-gemini-app-and-models",
+              "minutes": 12,
+              "exercise": "exercise-01-the-gemini-app-and-models",
+              "exerciseMinutes": 25
+            },
+            {
+              "number": 2,
+              "title": "Deep Research",
+              "slug": "lesson-02-deep-research",
+              "minutes": 13,
+              "exercise": "exercise-02-deep-research",
+              "exerciseMinutes": 35
+            },
+            {
+              "number": 3,
+              "title": "NotebookLM",
+              "slug": "lesson-03-notebooklm",
+              "minutes": 13,
+              "exercise": "exercise-03-notebooklm",
+              "exerciseMinutes": 30
+            },
+            {
+              "number": 4,
+              "title": "Gemini in Gmail, Docs and Sheets",
+              "slug": "lesson-04-gemini-in-gmail-docs-and-sheets",
+              "minutes": 14,
+              "exercise": "exercise-04-gemini-in-gmail-docs-and-sheets",
+              "exerciseMinutes": 30
+            },
+            {
+              "number": 5,
+              "title": "Gems and Agents",
+              "slug": "lesson-05-gems-and-agents",
+              "minutes": 13,
+              "exercise": "exercise-05-gems-and-agents",
+              "exerciseMinutes": 30
+            }
+          ]
+        }
+      ]
+    },
+    "always-on-agents": {
+      "id": "always-on-agents",
+      "title": "Always-On Agents: Duet, Dots and Grok Bots",
+      "description": "Hire agents that keep working when you are away: Claude Duet as chief of staff, OpenAI Dots, and Grok Bots that operate your apps, each with a job, scoped access and an approval rule.",
+      "icon": "🤖",
+      "estimatedHours": 3.8,
+      "lessonCount": 5,
+      "stageId": "tool-mastery",
+      "stageNumber": 2,
+      "modules": [
+        {
+          "number": 1,
+          "title": "Agents that work while you don't",
+          "quiz": "quiz-module-01",
+          "lessons": [
+            {
+              "number": 1,
+              "title": "How Always-On Agents Work",
+              "slug": "lesson-01-how-always-on-agents-work",
+              "minutes": 13,
+              "exercise": "exercise-01-how-always-on-agents-work",
+              "exerciseMinutes": 25
+            },
+            {
+              "number": 2,
+              "title": "Claude Duet: Your Chief of Staff",
+              "slug": "lesson-02-claude-duet-your-chief-of-staff",
+              "minutes": 14,
+              "exercise": "exercise-02-claude-duet-your-chief-of-staff",
+              "exerciseMinutes": 30
+            },
+            {
+              "number": 3,
+              "title": "OpenAI Dots and ChatGPT Space",
+              "slug": "lesson-03-openai-dots-and-chatgpt-space",
+              "minutes": 14,
+              "exercise": "exercise-03-openai-dots-and-chatgpt-space",
+              "exerciseMinutes": 30
+            },
+            {
+              "number": 4,
+              "title": "Grok Bots: Department Staff",
+              "slug": "lesson-04-grok-bots-department-staff",
+              "minutes": 14,
+              "exercise": "exercise-04-grok-bots-department-staff",
+              "exerciseMinutes": 35
+            },
+            {
+              "number": 5,
+              "title": "Choosing and Supervising Your Agents",
+              "slug": "lesson-05-choosing-and-supervising-your-agents",
+              "minutes": 13,
+              "exercise": "exercise-05-choosing-and-supervising-your-agents",
+              "exerciseMinutes": 30
+            }
+          ]
+        }
+      ]
+    },
+    "validate-the-idea": {
+      "id": "validate-the-idea",
+      "title": "Find and Validate the Idea",
+      "description": "Research a market, talk to customers and price an offer before you build anything.",
+      "icon": "💡",
+      "estimatedHours": 3.6,
+      "lessonCount": 4,
+      "stageId": "build-the-business",
+      "stageNumber": 3,
+      "modules": [
+        {
+          "number": 1,
+          "title": "Validate before you build",
+          "quiz": "quiz-module-01",
+          "lessons": [
+            {
+              "number": 1,
+              "title": "Market Research With Deep Research",
+              "slug": "lesson-01-market-research-with-deep-research",
+              "minutes": 14,
+              "exercise": "exercise-01-market-research-with-deep-research",
+              "exerciseMinutes": 40
+            },
+            {
+              "number": 2,
+              "title": "Customer Interviews an AI Helps You Run",
+              "slug": "lesson-02-customer-interviews-an-ai-helps-you-run",
+              "minutes": 14,
+              "exercise": "exercise-02-customer-interviews-an-ai-helps-you-run",
+              "exerciseMinutes": 45
+            },
+            {
+              "number": 3,
+              "title": "Shape the Offer and the Price",
+              "slug": "lesson-03-shape-the-offer-and-the-price",
+              "minutes": 14,
+              "exercise": "exercise-03-shape-the-offer-and-the-price",
+              "exerciseMinutes": 35
+            },
+            {
+              "number": 4,
+              "title": "Name It and Check It",
+              "slug": "lesson-04-name-it-and-check-it",
+              "minutes": 12,
+              "exercise": "exercise-04-name-it-and-check-it",
+              "exerciseMinutes": 30
+            }
+          ]
+        }
+      ]
+    },
+    "build-product-and-site": {
+      "id": "build-product-and-site",
+      "title": "Build the Product and the Site",
+      "description": "Write a plain-English spec, have a coding agent build it, keep it in GitHub and put it live on your own domain.",
+      "icon": "🚀",
+      "estimatedHours": 4.2,
+      "lessonCount": 5,
+      "stageId": "build-the-business",
+      "stageNumber": 3,
+      "modules": [
+        {
+          "number": 1,
+          "title": "Ship the site",
+          "quiz": "quiz-module-01",
+          "lessons": [
+            {
+              "number": 1,
+              "title": "Specs a Coding Agent Can Follow",
+              "slug": "lesson-01-specs-a-coding-agent-can-follow",
+              "minutes": 13,
+              "exercise": "exercise-01-specs-a-coding-agent-can-follow",
+              "exerciseMinutes": 30
+            },
+            {
+              "number": 2,
+              "title": "Build the Site With Claude Code or Cursor",
+              "slug": "lesson-02-build-the-site-with-claude-code-or-cursor",
+              "minutes": 15,
+              "exercise": "exercise-02-build-the-site-with-claude-code-or-cursor",
+              "exerciseMinutes": 45
+            },
+            {
+              "number": 3,
+              "title": "Mockups and Images With Codex",
+              "slug": "lesson-03-mockups-and-images-with-codex",
+              "minutes": 12,
+              "exercise": "exercise-03-mockups-and-images-with-codex",
+              "exerciseMinutes": 30
+            },
+            {
+              "number": 4,
+              "title": "Your GitHub Workflow",
+              "slug": "lesson-04-your-github-workflow",
+              "minutes": 13,
+              "exercise": "exercise-04-your-github-workflow",
+              "exerciseMinutes": 30
+            },
+            {
+              "number": 5,
+              "title": "Deploy It and Connect Your Domain",
+              "slug": "lesson-05-deploy-it-and-connect-your-domain",
+              "minutes": 14,
+              "exercise": "exercise-05-deploy-it-and-connect-your-domain",
+              "exerciseMinutes": 40
+            }
+          ]
+        }
+      ]
+    },
+    "brand-in-a-day": {
+      "id": "brand-in-a-day",
+      "title": "Brand in a Day",
+      "description": "A voice, logo, colours and templates you can hand to every agent so the work sounds and looks like you.",
+      "icon": "🎨",
+      "estimatedHours": 2.6,
+      "lessonCount": 3,
+      "stageId": "build-the-business",
+      "stageNumber": 3,
+      "modules": [
+        {
+          "number": 1,
+          "title": "Your brand kit",
+          "quiz": "quiz-module-01",
+          "lessons": [
+            {
+              "number": 1,
+              "title": "Find Your Voice",
+              "slug": "lesson-01-find-your-voice",
+              "minutes": 13,
+              "exercise": "exercise-01-find-your-voice",
+              "exerciseMinutes": 35
+            },
+            {
+              "number": 2,
+              "title": "Logo and Imagery With AI",
+              "slug": "lesson-02-logo-and-imagery-with-ai",
+              "minutes": 13,
+              "exercise": "exercise-02-logo-and-imagery-with-ai",
+              "exerciseMinutes": 40
+            },
+            {
+              "number": 3,
+              "title": "A Brand Kit Your Agents Follow",
+              "slug": "lesson-03-a-brand-kit-your-agents-follow",
+              "minutes": 12,
+              "exercise": "exercise-03-a-brand-kit-your-agents-follow",
+              "exerciseMinutes": 35
+            }
+          ]
+        }
+      ]
+    },
+    "ai-marketing": {
+      "id": "ai-marketing",
+      "title": "AI Marketing",
+      "description": "Hire a marketing department: a content calendar that fills itself, posts that publish with your approval and a weekly results brief.",
+      "icon": "📣",
+      "estimatedHours": 5.1,
+      "lessonCount": 6,
+      "stageId": "run-the-business",
+      "stageNumber": 4,
+      "modules": [
+        {
+          "number": 1,
+          "title": "Your marketing department",
+          "quiz": "quiz-module-01",
+          "lessons": [
+            {
+              "number": 1,
+              "title": "A 30-Day Content Calendar",
+              "slug": "lesson-01-a-30-day-content-calendar",
+              "minutes": 13,
+              "exercise": "exercise-01-a-30-day-content-calendar",
+              "exerciseMinutes": 40
+            },
+            {
+              "number": 2,
+              "title": "SEO and AI-Search Visibility",
+              "slug": "lesson-02-seo-and-ai-search-visibility",
+              "minutes": 14,
+              "exercise": "exercise-02-seo-and-ai-search-visibility",
+              "exerciseMinutes": 35
+            },
+            {
+              "number": 3,
+              "title": "A Marketing Bot That Posts and Reports",
+              "slug": "lesson-03-a-marketing-bot-that-posts-and-reports",
+              "minutes": 14,
+              "exercise": "exercise-03-a-marketing-bot-that-posts-and-reports",
+              "exerciseMinutes": 40
+            },
+            {
+              "number": 4,
+              "title": "Keep Launch Materials Current With Dots",
+              "slug": "lesson-04-keep-launch-materials-current-with-dots",
+              "minutes": 12,
+              "exercise": "exercise-04-keep-launch-materials-current-with-dots",
+              "exerciseMinutes": 30
+            },
+            {
+              "number": 5,
+              "title": "Email Newsletter on Autopilot",
+              "slug": "lesson-05-email-newsletter-on-autopilot",
+              "minutes": 13,
+              "exercise": "exercise-05-email-newsletter-on-autopilot",
+              "exerciseMinutes": 35
+            },
+            {
+              "number": 6,
+              "title": "Ads With Approval Gates",
+              "slug": "lesson-06-ads-with-approval-gates",
+              "minutes": 13,
+              "exercise": "exercise-06-ads-with-approval-gates",
+              "exerciseMinutes": 35
+            }
+          ]
+        }
+      ]
+    },
+    "ai-sales": {
+      "id": "ai-sales",
+      "title": "AI Sales",
+      "description": "Hire a sales team: lead lists, outbound that waits for your OK, a CRM that updates itself and proposals that stay current.",
+      "icon": "🤝",
+      "estimatedHours": 4.3,
+      "lessonCount": 5,
+      "stageId": "run-the-business",
+      "stageNumber": 4,
+      "modules": [
+        {
+          "number": 1,
+          "title": "Your sales team",
+          "quiz": "quiz-module-01",
+          "lessons": [
+            {
+              "number": 1,
+              "title": "Build a Lead List",
+              "slug": "lesson-01-build-a-lead-list",
+              "minutes": 13,
+              "exercise": "exercise-01-build-a-lead-list",
+              "exerciseMinutes": 40
+            },
+            {
+              "number": 2,
+              "title": "Hire a Sales Bot",
+              "slug": "lesson-02-hire-a-sales-bot",
+              "minutes": 14,
+              "exercise": "exercise-02-hire-a-sales-bot",
+              "exerciseMinutes": 40
+            },
+            {
+              "number": 3,
+              "title": "Keep the CRM Clean Without Touching It",
+              "slug": "lesson-03-keep-the-crm-clean-without-touching-it",
+              "minutes": 13,
+              "exercise": "exercise-03-keep-the-crm-clean-without-touching-it",
+              "exerciseMinutes": 35
+            },
+            {
+              "number": 4,
+              "title": "Call Prep and Follow-Up With Duet",
+              "slug": "lesson-04-call-prep-and-follow-up-with-duet",
+              "minutes": 13,
+              "exercise": "exercise-04-call-prep-and-follow-up-with-duet",
+              "exerciseMinutes": 30
+            },
+            {
+              "number": 5,
+              "title": "Proposals That Update Themselves",
+              "slug": "lesson-05-proposals-that-update-themselves",
+              "minutes": 13,
+              "exercise": "exercise-05-proposals-that-update-themselves",
+              "exerciseMinutes": 35
+            }
+          ]
+        }
+      ]
+    },
+    "ai-accounting": {
+      "id": "ai-accounting",
+      "title": "AI Accounting",
+      "description": "Hire a back office: receipts to books, invoices out, money chased and a cash forecast you read every Monday.",
+      "icon": "📒",
+      "estimatedHours": 4.4,
+      "lessonCount": 5,
+      "stageId": "run-the-business",
+      "stageNumber": 4,
+      "modules": [
+        {
+          "number": 1,
+          "title": "Your back office",
+          "quiz": "quiz-module-01",
+          "lessons": [
+            {
+              "number": 1,
+              "title": "Set Up the Books",
+              "slug": "lesson-01-set-up-the-books",
+              "minutes": 14,
+              "exercise": "exercise-01-set-up-the-books",
+              "exerciseMinutes": 40
+            },
+            {
+              "number": 2,
+              "title": "Receipts and Expenses With Cowork and an Expense Bot",
+              "slug": "lesson-02-receipts-and-expenses-with-cowork-and-an-expense-bot",
+              "minutes": 14,
+              "exercise": "exercise-02-receipts-and-expenses-with-cowork-and-an-expense-bot",
+              "exerciseMinutes": 35
+            },
+            {
+              "number": 3,
+              "title": "Invoices and Collections",
+              "slug": "lesson-03-invoices-and-collections",
+              "minutes": 13,
+              "exercise": "exercise-03-invoices-and-collections",
+              "exerciseMinutes": 35
+            },
+            {
+              "number": 4,
+              "title": "A 90-Day Cash-Flow Forecast",
+              "slug": "lesson-04-a-90-day-cash-flow-forecast",
+              "minutes": 14,
+              "exercise": "exercise-04-a-90-day-cash-flow-forecast",
+              "exerciseMinutes": 40
+            },
+            {
+              "number": 5,
+              "title": "Tax-Season Prep",
+              "slug": "lesson-05-tax-season-prep",
+              "minutes": 13,
+              "exercise": "exercise-05-tax-season-prep",
+              "exerciseMinutes": 35
+            }
+          ]
+        }
+      ]
+    },
+    "run-the-company": {
+      "id": "run-the-company",
+      "title": "Run the Company for a Week",
+      "description": "Put it all together: a Monday operating rhythm, a week run from the Duet brief, and a review that tells you what to fix and what to scale.",
+      "icon": "🏁",
+      "estimatedHours": 3.2,
+      "lessonCount": 3,
+      "stageId": "capstone",
+      "stageNumber": 5,
+      "modules": [
+        {
+          "number": 1,
+          "title": "Operating week",
+          "quiz": "quiz-module-01",
+          "lessons": [
+            {
+              "number": 1,
+              "title": "The Monday Operating Rhythm",
+              "slug": "lesson-01-the-monday-operating-rhythm",
+              "minutes": 12,
+              "exercise": "exercise-01-the-monday-operating-rhythm",
+              "exerciseMinutes": 40
+            },
+            {
+              "number": 2,
+              "title": "A Week From the Morning Brief",
+              "slug": "lesson-02-a-week-from-the-morning-brief",
+              "minutes": 13,
+              "exercise": "exercise-02-a-week-from-the-morning-brief",
+              "exerciseMinutes": 60
+            },
+            {
+              "number": 3,
+              "title": "Review, Fix and Scale",
+              "slug": "lesson-03-review-fix-and-scale",
+              "minutes": 13,
+              "exercise": "exercise-03-review-fix-and-scale",
+              "exerciseMinutes": 45
             }
           ]
         }

@@ -14,40 +14,40 @@ import {
 } from "../lib/coaching/syllabus";
 import { planFromCourses } from "../lib/coaching/syllabus-plan";
 import { safeFileName, safeLink } from "../lib/coaching/client-files";
-import { getCourse, getCoursesInOrder } from "../lib/learn/catalog";
+import { getCourse, getCoursesInOrder, getStage } from "../lib/learn/catalog";
 import { EMPTY_PROGRESS, type LearnProgress } from "../lib/learn/progress";
 
 const order = getCoursesInOrder().map((c) => c.id);
 
 describe("buildCourseList", () => {
   it("starts a new client at the first stage and keeps path order", () => {
-    const { courseIds } = buildCourseList(clampInputs({ level: "new", focusStageIds: ["ai-builder"], timelineWeeks: 104, hoursPerWeek: 40 }));
-    assert.deepEqual(courseIds, ["ai-work-basics", "automate-a-workflow"]);
+    const { courseIds } = buildCourseList(clampInputs({ level: "new", focusStageIds: ["tool-mastery"], timelineWeeks: 104, hoursPerWeek: 40 }));
+    assert.deepEqual(courseIds, ["one-person-company", ...getStage("tool-mastery")!.courseIds]);
     assert.deepEqual([...courseIds].sort((a, b) => order.indexOf(a) - order.indexOf(b)), courseIds);
-    assert.ok(!courseIds.includes("lead-ai-adoption"), "Lead With AI is not a prerequisite of Build With AI");
+    assert.ok(!courseIds.includes("ai-marketing"), "Run the Business is not a prerequisite of Tool Mastery");
   });
 
   it("skips what the level already knows", () => {
-    const { courseIds } = buildCourseList(clampInputs({ level: "advanced", focusStageIds: ["ai-leader"], timelineWeeks: 104, hoursPerWeek: 40 }));
-    assert.deepEqual(courseIds, ["lead-ai-adoption"]);
+    const { courseIds } = buildCourseList(clampInputs({ level: "advanced", focusStageIds: ["tool-mastery"], timelineWeeks: 104, hoursPerWeek: 40 }));
+    assert.deepEqual(courseIds, ["claude-code", "cursor", "codex", "google-gemini", "always-on-agents"]);
   });
 
   it("fits the timeline and moves the rest to later", () => {
-    const inputs = clampInputs({ level: "new", focusStageIds: ["ai-builder"], timelineWeeks: 1, hoursPerWeek: 0.5 });
+    const inputs = clampInputs({ level: "new", focusStageIds: ["tool-mastery"], timelineWeeks: 1, hoursPerWeek: 0.5 });
     const { courseIds, laterCourseIds } = buildCourseList(inputs);
-    assert.deepEqual(courseIds, ["ai-work-basics"], "always at least one course");
-    assert.deepEqual(laterCourseIds, ["automate-a-workflow"]);
+    assert.deepEqual(courseIds, ["one-person-company"], "always at least one course");
+    assert.deepEqual(laterCourseIds, getStage("tool-mastery")!.courseIds);
   });
 
   it("defaults the focus by level", () => {
     const { courseIds } = buildCourseList(clampInputs({ level: "intermediate", focusStageIds: [], timelineWeeks: 104, hoursPerWeek: 40 }));
-    assert.deepEqual(courseIds, ["automate-a-workflow"]);
+    assert.deepEqual(courseIds, order.slice(1, order.indexOf("ai-accounting") + 1));
   });
 
   it("clamps bad input", () => {
-    const inputs = clampInputs({ level: "wizard" as never, focusStageIds: ["nope", "ai-leader"], timelineWeeks: -3, hoursPerWeek: 999 });
+    const inputs = clampInputs({ level: "wizard" as never, focusStageIds: ["nope", "capstone"], timelineWeeks: -3, hoursPerWeek: 999 });
     assert.equal(inputs.level, "beginner");
-    assert.deepEqual(inputs.focusStageIds, ["ai-leader"]);
+    assert.deepEqual(inputs.focusStageIds, ["capstone"]);
     assert.equal(inputs.timelineWeeks, 1);
     assert.equal(inputs.hoursPerWeek, 40);
   });
@@ -55,19 +55,19 @@ describe("buildCourseList", () => {
 
 describe("planWeeks", () => {
   it("covers every item once, in order, within the weekly hours", () => {
-    const items = syllabusItems(["ai-work-basics"]);
-    const weeks = planWeeks(["ai-work-basics"], 0.5, "2026-11-02");
+    const items = syllabusItems(["one-person-company"]);
+    const weeks = planWeeks(["one-person-company"], 0.5, "2026-11-02");
     assert.deepEqual(weeks.flatMap((w) => w.items), items);
     assert.equal(weeks[1]?.starts, "2026-11-09");
     for (const w of weeks) assert.ok(w.items.length === 1 || w.minutes <= 30, `week ${w.number}`);
     assert.ok(items.some((i) => i.kind === "quiz"));
-    assert.ok(courseMinutes(getCourse("ai-work-basics")!) > 30);
+    assert.ok(courseMinutes(getCourse("one-person-company")!) > 30);
   });
 });
 
 describe("syllabusStatus", () => {
   // Half an hour a week spreads the sample course over four weeks.
-  const syllabus = { courseIds: ["ai-work-basics"], startDate: "2026-11-02", inputs: clampInputs({ hoursPerWeek: 0.5 }) };
+  const syllabus = { courseIds: ["one-person-company"], startDate: "2026-11-02", inputs: clampInputs({ hoursPerWeek: 0.5 }) };
   const weeks = planFromCourses(syllabus.courseIds, 0.5);
 
   it("is not started before the start date", () => {
