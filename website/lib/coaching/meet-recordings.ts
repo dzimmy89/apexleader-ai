@@ -6,6 +6,7 @@ import { automatedSendBlockedByManualOnly } from "@/lib/crm/contacts";
 import { CLIENT_FILES } from "@/lib/coaching/client-files";
 import { MEET_RECORDINGS_FOLDER, rethrowDriveError, workspaceAuth } from "@/lib/coaching/meet-transcripts";
 import type { CoachEvent, RecordingFinder, RecordingPublisher } from "@/lib/coaching/session-sync";
+import { BRAND } from "@/lib/brand";
 
 /**
  * Google Meet recordings of coaching sessions.
@@ -99,8 +100,8 @@ export const publishMeetRecording: RecordingPublisher = async ({ session, fileId
       to: session.clientId,
       purpose: "transactional",
       subject: `Your replay is ready: ${title}`,
-      text: `Hi ${first},\n\nThe recording of your coaching session on ${dayLabel(session.scheduledAt)} is ready. Watch it in your account: ${link}\n\nDavid\nApexLeader.ai`,
-      html: `<p>Hi ${first.replace(/[<>&"]/g, "")},</p><p>The recording of your coaching session on ${dayLabel(session.scheduledAt)} is ready.</p><p><a href="${link}">Watch it in your account</a></p><p>David<br>ApexLeader.ai</p>`,
+      text: `Hi ${first},\n\nThe recording of your coaching session on ${dayLabel(session.scheduledAt)} is ready. Watch it in your account: ${link}\n\n${BRAND.coachFirstName}\n${BRAND.name}`,
+      html: `<p>Hi ${first.replace(/[<>&"]/g, "")},</p><p>The recording of your coaching session on ${dayLabel(session.scheduledAt)} is ready.</p><p><a href="${link}">Watch it in your account</a></p><p>${BRAND.coachFirstName}<br>${BRAND.name}</p>`,
       log: { source: "coaching_replay_ready" },
     }).catch((e) => console.error("[meet-recordings] replay email failed", e));
   }

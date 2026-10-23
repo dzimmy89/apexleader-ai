@@ -7,6 +7,7 @@ import sharp from "sharp";
 import satori from "satori";
 import type { AuditEnvelope } from "@/lib/coaching/signatures";
 import { getDb } from "@/lib/firebase-admin";
+import { BRAND } from "@/lib/brand";
 
 const FONTS_DIR = path.join(process.cwd(), "assets", "fonts");
 const PAGE_WIDTH = 612; // US Letter, 8.5in @ 72dpi
@@ -125,8 +126,8 @@ export async function generateSignedPdf(
     size: [PAGE_WIDTH, PAGE_HEIGHT],
     margins: { top: MARGIN, bottom: MARGIN, left: MARGIN, right: MARGIN },
     info: {
-      Title: `ApexLeader.ai ${input.packageName} Coaching Agreement`,
-      Author: "ApexLeader.ai",
+      Title: `${BRAND.name} ${input.packageName} Coaching Agreement`,
+      Author: BRAND.legalName,
       Subject: "Coaching Agreement (signed)",
     },
   });
@@ -142,7 +143,7 @@ export async function generateSignedPdf(
   doc
     .fontSize(16)
     .font("Helvetica-Bold")
-    .text(`ApexLeader.ai — ${input.packageName} Coaching Agreement`, {
+    .text(`${BRAND.name} — ${input.packageName} Coaching Agreement`, {
       align: "center",
     });
   doc.moveDown(0.5);
@@ -165,7 +166,7 @@ export async function generateSignedPdf(
     if (block.startsWith("•")) {
       doc.text(block, { indent: 14 });
     } else if (
-      /^(ApexLeader.ai|Parties|Effective date|Scope|Educational Only|Fees|Refund|Scheduling|Confidentiality|Dispute|Acknowledgment)/.test(
+      /^(FromAItoBusiness|Parties|Effective date|Scope|Educational Only|Fees|Refund|Scheduling|Confidentiality|Dispute|Acknowledgment)/.test(
         block
       )
     ) {

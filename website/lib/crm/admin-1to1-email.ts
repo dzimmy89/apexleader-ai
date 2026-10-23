@@ -19,6 +19,19 @@ export const ADMIN_1TO1_MIN_INTERVAL_MS = 24 * 60 * 60 * 1000;
 /** Sends must come from the coach's mailbox domain, which can differ from the site domain. */
 export const SENDER_DOMAIN = BRAND.email.slice(BRAND.email.lastIndexOf("@") + 1);
 
+/**
+ * Mailbox domains 1:1 sends may come from. SENDER_DOMAINS (comma separated)
+ * lets production send from the Workspace mailbox it really has while the
+ * brand domain has no mail of its own.
+ */
+export function allowedSenderDomains(): string[] {
+  const configured = (process.env.SENDER_DOMAINS || "")
+    .split(",")
+    .map((d) => d.trim().toLowerCase())
+    .filter(Boolean);
+  return configured.length ? configured : [SENDER_DOMAIN];
+}
+
 export const ADMIN_1TO1_AD_KINDS = ["promotional", "personal"] as const;
 export type Admin1to1AdKind = (typeof ADMIN_1TO1_AD_KINDS)[number];
 
@@ -69,7 +82,7 @@ export function isDuSenderAddress(email: string): boolean {
   const at = normalized.lastIndexOf("@");
   if (at <= 0) return false;
   const domain = normalized.slice(at + 1);
-  return domain === SENDER_DOMAIN || domain.endsWith(`.${SENDER_DOMAIN}`);
+  return allowedSenderDomains().some((allowed) => domain === allowed || domain.endsWith(`.${allowed}`));
 }
 
 export function duSenderOrBlockReason(): { ok: true; email: string } | { ok: false; error: string } {
