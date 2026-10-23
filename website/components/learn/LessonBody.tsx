@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { splitBlocks } from "@/lib/learn/blocks";
 import { cn } from "@/lib/utils";
 import { LessonMarkdown } from "./LessonMarkdown";
@@ -18,8 +19,12 @@ const CALLOUT_TONE: Record<string, string> = {
   "try-it": "",
 };
 
-/** A lesson or exercise body: markdown plus the course's :::blocks. */
-export function LessonBody({ body }: { body: string }) {
+/**
+ * A lesson or exercise body: markdown plus the course's :::blocks.
+ * `showCoached` is for coaching clients: everyone else gets a short note
+ * in place of each :::coached block, and its text never leaves the server.
+ */
+export function LessonBody({ body, showCoached = false }: { body: string; showCoached?: boolean }) {
   const segments = splitBlocks(body);
   return (
     <article className="lesson-prose">
@@ -55,6 +60,27 @@ export function LessonBody({ body }: { body: string }) {
             );
           case "checkpoint":
             return <Checkpoint key={i} questions={seg.questions} />;
+          case "coached":
+            return showCoached ? (
+              <aside key={i} className="notice notice-success prose-serif my-8 p-5 md:p-6 [&_p:last-child]:mb-0">
+                <div className="min-w-0">
+                  <p className="ui-label mb-2 text-[var(--color-text)]">Coached work</p>
+                  <LessonMarkdown text={seg.text} />
+                </div>
+              </aside>
+            ) : (
+              <aside key={i} className="notice my-8">
+                <div className="min-w-0">
+                  <span className="block font-semibold">Coached work</span>
+                  <span className="block text-[var(--color-text-muted)]">
+                    1-on-1 coaching clients take this exercise further on their own business and review it with their coach.{" "}
+                    <Link href="/coaching" className="underline">
+                      See coaching
+                    </Link>
+                  </span>
+                </div>
+              </aside>
+            );
           case "interactive":
             return (
               <aside key={i} className="notice my-8">

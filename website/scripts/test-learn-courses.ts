@@ -37,15 +37,15 @@ import { grantIsLive, readAccount } from "../lib/account/access";
 const PUBLIC = path.join(__dirname, "..", "public");
 
 describe("Learn catalog", () => {
-  it("has the sample library: 3 stages, 3 courses, 6 lessons with exercises and 3 quizzes", () => {
+  it("has the full library: 5 stages, 15 courses, 67 lessons with exercises and 15 quizzes", () => {
     const stages = getStages();
-    assert.equal(stages.length, 3);
+    assert.equal(stages.length, 5);
     const courses = getCoursesInOrder();
-    assert.equal(courses.length, 3);
+    assert.equal(courses.length, 15);
     const lessons = courses.flatMap((c) => allLessons(c));
-    assert.equal(lessons.length, 6);
-    assert.equal(lessons.filter((l) => l.exercise).length, 6);
-    assert.equal(courses.flatMap((c) => c.modules).filter((m) => m.quiz).length, 3);
+    assert.equal(lessons.length, 67);
+    assert.equal(lessons.filter((l) => l.exercise).length, 67);
+    assert.equal(courses.flatMap((c) => c.modules).filter((m) => m.quiz).length, 15);
   });
 
   it("keeps the catalog consistent: stage numbers, course stage ids, lesson counts and prerequisites", () => {
@@ -73,7 +73,7 @@ describe("Learn catalog", () => {
   });
 
   it("maps a lesson-NN- slug to the lesson with the same number", () => {
-    const course = getCourse("ai-work-basics")!;
+    const course = getCourse("one-person-company")!;
     assert.equal(lessonByLegacySlug(course, "lesson-02-an-old-title")?.number, 2);
     assert.equal(lessonByLegacySlug(course, "not-a-lesson"), null);
   });
@@ -121,6 +121,15 @@ describe("Learn content files", () => {
         for (const q of quiz.questions) {
           assert.ok(q.options.some((o) => o.letter === q.answer), `${course.id}/${mod.quiz} Q${q.number}`);
         }
+      }
+    }
+  });
+
+  it("gives every exercise one coached block for 1-on-1 clients", () => {
+    for (const course of courses) {
+      for (const lesson of allLessons(course)) {
+        const segs = splitBlocks(lessonBody(readPiece(course.id, "exercises", lesson.exercise!)!).body);
+        assert.equal(segs.filter((s) => s.type === "coached").length, 1, `${course.id}/${lesson.exercise}`);
       }
     }
   });
@@ -189,6 +198,19 @@ describe("Learn blocks", () => {
     assert.equal(q!.why, "Because.");
   });
 
+  it("shows coached work only to coaching clients", () => {
+    const body = "Steps.\n\n:::coached\nDo it on **your** business.\n:::";
+    assert.deepEqual(
+      splitBlocks(body).map((s) => s.type),
+      ["markdown", "coached"]
+    );
+    const member = renderToStaticMarkup(createElement(LessonBody, { body }));
+    assert.doesNotMatch(member, /your<\/strong> business/);
+    assert.match(member, /See coaching/);
+    const client = renderToStaticMarkup(createElement(LessonBody, { body, showCoached: true }));
+    assert.match(client, /your<\/strong> business/);
+  });
+
   it("grades quizzes, counting blanks as wrong", () => {
     const qs = [
       { number: 1, question: "", options: [], answer: "A", explanation: "" },
@@ -211,7 +233,7 @@ describe("Lesson viewer panels", () => {
         assert.ok(readPiece(course.id, kind, item.slug), `${course.id} ${item.kind} ${item.slug}`);
       }
     }
-    const money = courseOutline(getCourse("ai-work-basics")!);
+    const money = courseOutline(getCourse("one-person-company")!);
     assert.deepEqual(
       money[0]!.items.slice(0, 3).map((i) => i.kind),
       ["lesson", "exercise", "lesson"]
@@ -253,7 +275,7 @@ describe("Lesson viewer panels", () => {
         }
       }
     }
-    assert.equal(files, 12);
+    assert.equal(files, 134);
   });
 });
 
@@ -279,7 +301,7 @@ describe("Access", () => {
   });
 
   it("only redirects to same-site, non-admin paths after sign-in", () => {
-    assert.equal(safeNextPath("/university/ai-work-basics"), "/university/ai-work-basics");
+    assert.equal(safeNextPath("/university/one-person-company"), "/university/one-person-company");
     assert.equal(safeNextPath("//evil.example"), "/account");
     assert.equal(safeNextPath("https://evil.example"), "/account");
     assert.equal(safeNextPath("/admin/coaching"), "/account");

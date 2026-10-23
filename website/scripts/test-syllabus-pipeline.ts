@@ -131,7 +131,7 @@ describe("coaching access period", () => {
 });
 
 describe("plan", () => {
-  const items = courseItems("ai-work-basics");
+  const items = courseItems("one-person-company");
 
   it("lists each lesson with its exercise and the module quiz", () => {
     assert.ok(items.length > 3);
@@ -155,9 +155,9 @@ describe("plan", () => {
 
   it("drops items that are not in the library and keeps tasks", () => {
     const { plan, dropped } = sanitizePlan([
-      { goal: "Start", items: [{ kind: "lesson", courseId: "ai-work-basics", slug: "nope" }, { kind: "task", title: "Start a shared prompt doc", minutes: 15 }, items[0]] },
+      { goal: "Start", items: [{ kind: "lesson", courseId: "one-person-company", slug: "nope" }, { kind: "task", title: "Start a shared prompt doc", minutes: 15 }, items[0]] },
     ]);
-    assert.deepEqual(dropped, ["lesson ai-work-basics/nope"]);
+    assert.deepEqual(dropped, ["lesson one-person-company/nope"]);
     assert.equal(plan[0]!.items.length, 2);
     assert.match(plan[0]!.items[0]!.id, /^task:[0-9a-f]{12}$/);
   });
@@ -186,7 +186,7 @@ describe("plan", () => {
   });
 
   it("never loses finished work", () => {
-    const old = planFromCourses(["ai-work-basics"], 2);
+    const old = planFromCourses(["one-person-company"], 2);
     const isDone = (i: PlanItem) => i.id === items[0]!.id;
     const kept = keepFinished(old, [{ goal: "", note: "", sessionPlan: "", paused: false, items: [] }], isDone);
     assert.ok(kept.flatMap((w) => w.items).some((i) => i.id === items[0]!.id));
@@ -198,7 +198,7 @@ describe("plan", () => {
   });
 
   it("applies suggested changes without touching the original", () => {
-    const old = planFromCourses(["ai-work-basics"], 2);
+    const old = planFromCourses(["one-person-company"], 2);
     const next = applyOps(
       old,
       [
@@ -214,11 +214,11 @@ describe("plan", () => {
     assert.equal(next.length, old.length + 1);
     assert.equal(next[0]!.goal, "Get set up");
     assert.ok(next[0]!.items.some((i) => i.kind === "task"));
-    assert.equal(toOp({ op: "add", week: 1, item: { kind: "lesson", courseId: "ai-work-basics", slug: "nope" } }), null);
+    assert.equal(toOp({ op: "add", week: 1, item: { kind: "lesson", courseId: "one-person-company", slug: "nope" } }), null);
   });
 
   it("pauses and re-paces from a week on", () => {
-    const old = planFromCourses(["ai-work-basics"], 2);
+    const old = planFromCourses(["one-person-company"], 2);
     const paused = pausePlan(old, 2, 2);
     assert.equal(paused.length, old.length + 2);
     assert.equal(paused[1]!.paused, true);
@@ -279,10 +279,10 @@ describe("transcripts", () => {
   });
 
   it("keeps only real stages and courses in the form", () => {
-    const form = cleanForm({ goals: ["a", "b", "c", "d"], focusStageIds: ["ai-builder", "nope"], knownCourseIds: ["ai-work-basics", "nope"], targetDate: "soon" }, emptyForm("mastery"));
+    const form = cleanForm({ goals: ["a", "b", "c", "d"], focusStageIds: ["tool-mastery", "nope"], knownCourseIds: ["one-person-company", "nope"], targetDate: "soon" }, emptyForm("mastery"));
     assert.equal(form.goals.length, 3);
-    assert.deepEqual(form.focusStageIds, ["ai-builder"]);
-    assert.deepEqual(form.knownCourseIds, ["ai-work-basics"]);
+    assert.deepEqual(form.focusStageIds, ["tool-mastery"]);
+    assert.deepEqual(form.knownCourseIds, ["one-person-company"]);
     assert.equal(form.targetDate, "");
     assert.equal(form.timelineWeeks, 12);
   });
@@ -319,8 +319,8 @@ describe("intake and syllabus routes", () => {
         business: "Five-person bookkeeping firm; weekly client updates take most of Monday",
         tools: "Google Workspace, QuickBooks",
         technical: "low",
-        focusStageIds: ["ai-builder"],
-        knownCourseIds: ["ai-work-basics"],
+        focusStageIds: ["tool-mastery"],
+        knownCourseIds: ["one-person-company"],
         concerns: "Client data privacy",
         learningStyle: "",
         coachNotes: "",
@@ -345,7 +345,7 @@ describe("intake and syllabus routes", () => {
     r = await intake({ action: "confirm" });
     assert.equal(r.json.intake.status, "confirmed");
 
-    const items = courseItems("automate-a-workflow");
+    const items = courseItems("claude-code");
     setAiForTests(async <T>() =>
       ({
         summary: "Pick the workflow first, then map it.",
@@ -355,20 +355,20 @@ describe("intake and syllabus routes", () => {
             note: "",
             sessionPlan: "Score the three workflows together",
             items: [
-              { kind: items[0]!.kind, courseId: "automate-a-workflow", slug: items[0]!.slug, title: "", detail: "", minutes: 0 },
-              { kind: "lesson", courseId: "automate-a-workflow", slug: "made-up", title: "", detail: "", minutes: 0 },
+              { kind: items[0]!.kind, courseId: "claude-code", slug: items[0]!.slug, title: "", detail: "", minutes: 0 },
+              { kind: "lesson", courseId: "claude-code", slug: "made-up", title: "", detail: "", minutes: 0 },
               { kind: "task", courseId: "", slug: "", title: "Time last week's client updates", detail: "Write down the minutes per client", minutes: 30 },
             ],
           },
           { goal: "First milestone", note: "", sessionPlan: "", items: [{ kind: "milestone", courseId: "", slug: "", title: "First workflow chosen", detail: "", minutes: 0 }] },
         ],
-        reasons: [{ courseId: "automate-a-workflow", reason: "Automating updates is the goal" }],
+        reasons: [{ courseId: "claude-code", reason: "Automating updates is the goal" }],
       }) as T
     );
     r = await syllabus({ action: "draft", startDate: "2026-11-02" });
     assert.equal(r.status, 200, JSON.stringify(r.json));
     assert.equal(r.json.syllabus.source, "ai");
-    assert.deepEqual(r.json.dropped, ["lesson automate-a-workflow/made-up"]);
+    assert.deepEqual(r.json.dropped, ["lesson claude-code/made-up"]);
     assert.equal(r.json.syllabus.note, "You want your weekly client updates drafted by AI so Mondays are free again.");
     const taskId = r.json.syllabus.plan[0].items.find((i: PlanItem) => i.kind === "task").id;
     assert.equal(await getClientSyllabus(CLIENT), null, "nothing is shown before publishing");
@@ -419,13 +419,13 @@ describe("intake and syllabus routes", () => {
   });
 
   it("plans by rules from the confirmed intake when Gemini is not set up", async () => {
-    await intake({ action: "save", form: { ...emptyForm("mastery"), goals: ["Automate client emails"], level: "new", focusStageIds: ["ai-builder"], knownCourseIds: ["ai-work-basics"] } });
+    await intake({ action: "save", form: { ...emptyForm("mastery"), goals: ["Automate client emails"], level: "new", focusStageIds: ["tool-mastery"], knownCourseIds: ["one-person-company"] } });
     await intake({ action: "confirm" });
     const r = await syllabus({ action: "plan", startDate: "2026-11-02" });
     assert.equal(r.status, 200, JSON.stringify(r.json));
     assert.equal(r.json.ai, aiConfigured());
     assert.equal(r.json.syllabus.source, "rules");
-    assert.ok(!r.json.syllabus.courseIds.includes("ai-work-basics"), "known courses are left out");
+    assert.ok(!r.json.syllabus.courseIds.includes("one-person-company"), "known courses are left out");
     assert.ok(r.json.syllabus.plan.length > 0);
 
     const view = await getSyllabusRoute(await adminRequest(syllabusUrl, undefined, "GET"), params(CLIENT));
