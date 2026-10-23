@@ -56,9 +56,15 @@ jobs:
         run: npm run build
 
       # The framework came from a crypto education site; keep its words out.
+      # Course lessons may name HubSpot as a CRM a founder can pick, so the
+      # course files are checked for every other word.
       - name: No leftover DeFi wording
         run: |
-          if grep -rnIiE "defi ?u(niversity)?\b|\bdefi\b|skool|paperbell|hubspot|stablecoin|bitcoin|blockchain|self-custody|financial advice" \
+          if grep -rnIiE "defi ?u(niversity)?\b|\bdefi\b|skool|paperbell|stablecoin|bitcoin|blockchain|self-custody|financial advice" content/learn/courses; then
+            echo "Found DeFi University wording (above). Replace it with FromAItoBusiness copy."
+            exit 1
+          fi
+          if grep -rnIiE --exclude-dir=courses "defi ?u(niversity)?\b|\bdefi\b|skool|paperbell|hubspot|stablecoin|bitcoin|blockchain|self-custody|financial advice" \
               app components content lib middleware.ts \
               | grep -viE "hubspot(OptedOut|Bounced|Id|LifecycleStage|LeadStatus|_import)|CRM_(CONTACT_SOURCE|SALES_LIST)_HUBSPOT|HubSpot import|HubSpot-scale|pre-enrichment HubSpot|skoolMatch|skoolTier|non-HubSpot"; then
             echo "Found DeFi University wording (above). Replace it with ApexLeader.ai copy."

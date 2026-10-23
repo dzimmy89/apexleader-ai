@@ -100,7 +100,7 @@ Compare the closing cash in row 20 of the tabs "Cash forecast" and "Late payer".
 Which weeks fall below the minimum buffer in row 21 in each case? Summarize in three bullet points.
 ```
 
-If the late-payer case dips below your buffer, decide now: ask for a deposit on new work, move a purchase, or talk to your bank about a line of credit before you need it. Google's own help pages warn that Gemini can be wrong and isn't financial advice. Check the weeks it flags against the red cells yourself.
+If the late-payer case dips below your buffer, decide now: ask for a deposit on new work, move a purchase, or talk to your bank about a line of credit before you need it. Google's own help pages warn that Gemini can be wrong and is no substitute for a professional's judgment. Check the weeks it flags against the red cells yourself.
 
 :::warning
 A forecast sheet holds your bank balance and client names. Keep it private: don't share it with "anyone with the link," and remember Google notes that Gemini content in a file shared outside your organization may be visible to those people. Nothing in this sheet should be able to move money. It is a planning tool only.
