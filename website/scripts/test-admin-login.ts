@@ -405,8 +405,8 @@ describe("admin team password login", () => {
     const passwordRes = await passwordLogin(
       loginRequest({ username: ADMIN_TEAM_USERNAME, password }, "203.0.113.16")
     );
-    const googleRes = await jsonWithAdminSession("hello@apexleader.ai", {
-      email: "hello@apexleader.ai",
+    const googleRes = await jsonWithAdminSession("hello@fromaitobusiness.com", {
+      email: "hello@fromaitobusiness.com",
     });
     const passCookie = cookieAttrs(passwordRes);
     const googleCookie = cookieAttrs(googleRes);
@@ -420,7 +420,7 @@ describe("admin team password login", () => {
 
     const googleSession = await verifyAdminSession(googleCookie?.value);
     assert.equal(googleSession.valid, true);
-    assert.equal(googleSession.username, "hello@apexleader.ai");
+    assert.equal(googleSession.username, "hello@fromaitobusiness.com");
     assert.equal(isPasswordAdminPrincipal(googleSession.username ?? ""), false);
   });
 
@@ -725,7 +725,7 @@ describe("admin login POST content-type and origin", () => {
     assert.equal(isAllowedAdminLoginOrigin("http://localhost:3000", true), true);
     assert.equal(isAllowedAdminLoginOrigin("https://evil.example", true), false);
     assert.equal(
-      parseExactOrigin("https://www.apexleader.ai/admin/login"),
+      parseExactOrigin("https://www.fromaitobusiness.com/admin/login"),
       ADMIN_LOGIN_WWW_ORIGIN
     );
   });
@@ -763,13 +763,13 @@ describe("admin login POST content-type and origin", () => {
       loginRequest(
         { username: ADMIN_TEAM_USERNAME, password },
         "203.0.113.95",
-        { origin: "https://apexleader.ai" }
+        { origin: "https://fromaitobusiness.com" }
       )
     );
     assert.equal(res.status, 200);
   });
 
-  it("accepts https://www.apexleader.ai Origin on password and Google login", async () => {
+  it("accepts https://www.fromaitobusiness.com Origin on password and Google login", async () => {
     const passwordRes = await passwordLogin(
       loginRequest(
         { username: ADMIN_TEAM_USERNAME, password },
@@ -859,9 +859,9 @@ describe("admin login POST content-type and origin", () => {
 
   it("rejects look-alike Referers that are not an exact allowlisted origin", async () => {
     const lookalikes = [
-      "https://apexleader.ai.evil.com/",
-      "https://evil.com/?https://apexleader.ai",
-      "https://apexleader.ai@evil.com/",
+      "https://fromaitobusiness.com.evil.com/",
+      "https://evil.com/?https://fromaitobusiness.com",
+      "https://fromaitobusiness.com@evil.com/",
       "http://apexleader.ai",
       "http://www.apexleader.ai/admin/login",
       "https://wwwapexleader.ai",

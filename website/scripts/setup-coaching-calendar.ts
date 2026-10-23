@@ -1,13 +1,13 @@
 /**
- * Idempotent Google Calendar setup for ApexLeader.ai coaching discovery calls.
+ * Idempotent Google Calendar setup for FromAItoBusiness coaching discovery calls.
  *
- * Creates (or reuses) the "ApexLeader.ai — Discovery Calls" calendar and
+ * Creates (or reuses) the "FromAItoBusiness — Discovery Calls" calendar and
  * writes COACH_* secrets to Secret Manager.
  *
  * Prerequisites:
  *   - GOOGLE_SERVICE_ACCOUNT_KEY in env (from Secret Manager)
  *   - Domain-wide delegation for https://www.googleapis.com/auth/calendar
- *     impersonating hello@apexleader.ai
+ *     impersonating hello@fromaitobusiness.com
  *
  * Usage:
  *   export GOOGLE_SERVICE_ACCOUNT_KEY="$(gcloud secrets versions access latest \
@@ -21,10 +21,10 @@ import { execSync } from "child_process";
 import { google } from "googleapis";
 
 const GCP_PROJECT = process.env.GCP_PROJECT_ID || "apexleader-prod";
-const IMPERSONATE_SUBJECT = "hello@apexleader.ai";
-const CALENDAR_SUMMARY = "ApexLeader.ai — Discovery Calls";
+const IMPERSONATE_SUBJECT = process.env.SENDER_EMAIL || "hello@fromaitobusiness.com";
+const CALENDAR_SUMMARY = "FromAItoBusiness — Discovery Calls";
 const CALENDAR_DESCRIPTION =
-  "Discovery call bookings from apexleader.ai/coaching/book";
+  "Discovery call bookings from fromaitobusiness.com/coaching/book";
 const COACH_TIMEZONE = "America/New_York";
 const COACH_NAME = "David Zimmerman";
 

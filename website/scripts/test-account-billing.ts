@@ -30,7 +30,7 @@ import { issueMagicLink } from "../lib/coaching/portal-auth";
 import { getAccountOverview } from "../lib/account/overview";
 import { createMemoryFirestore, type MemoryFirestore } from "./fixtures/memory-firestore";
 
-const ORIGIN = "https://apexleader.ai";
+const ORIGIN = "https://fromaitobusiness.com";
 const ADA = "ada@gmail.com";
 const ADA_WORK = "ada@work.example";
 const DAY = 86_400_000;
@@ -48,7 +48,7 @@ beforeEach(() => {
   });
   process.env.JWT_SECRET = "test-account-billing";
   process.env.NEXT_PUBLIC_SITE_URL = ORIGIN;
-  process.env.SENDER_EMAIL = "hello@apexleader.ai";
+  process.env.SENDER_EMAIL = "hello@fromaitobusiness.com";
 });
 
 afterEach(() => {

@@ -30,7 +30,7 @@ import { POST as addToPipeline } from "../app/api/admin/coaching/route";
 import { POST as changePlan } from "../app/api/admin/contacts/[email]/payment-plan/route";
 import { createMemoryFirestore, rows, type MemoryFirestore } from "./fixtures/memory-firestore";
 
-const COACH = "hello@apexleader.ai";
+const COACH = "hello@fromaitobusiness.com";
 const CLIENT = "ada@example.com";
 
 let mem: MemoryFirestore;
@@ -45,7 +45,7 @@ beforeEach(() => {
     return { ok: true, messageId: "m1", threadId: "t1" };
   });
   process.env.JWT_SECRET = "test-coaching-delivery";
-  process.env.NEXT_PUBLIC_SITE_URL = "https://apexleader.ai";
+  process.env.NEXT_PUBLIC_SITE_URL = "https://fromaitobusiness.com";
   process.env.SENDER_EMAIL = COACH;
 });
 
@@ -63,7 +63,7 @@ async function adminRequest(url: string, body: unknown): Promise<NextRequest> {
       "content-type": "application/json",
       cookie: `${COOKIE_NAME}=${token}`,
       authorization: `Bearer ${token}`,
-      origin: "https://apexleader.ai",
+      origin: "https://fromaitobusiness.com",
     },
     body: JSON.stringify(body),
   });
@@ -412,9 +412,9 @@ describe("coach calendars", () => {
   it("reads hello@'s primary calendar plus the booking calendar", () => {
     delete process.env.COACH_READ_CALENDAR_IDS;
     process.env.COACH_CALENDAR_ID = "group123@group.calendar.google.com";
-    assert.deepEqual(coachReadCalendarIds(), ["hello@apexleader.ai", "group123@group.calendar.google.com"]);
+    assert.deepEqual(coachReadCalendarIds(), ["hello@fromaitobusiness.com", "group123@group.calendar.google.com"]);
     delete process.env.COACH_CALENDAR_ID;
-    assert.deepEqual(coachReadCalendarIds(), ["hello@apexleader.ai"]);
+    assert.deepEqual(coachReadCalendarIds(), ["hello@fromaitobusiness.com"]);
     process.env.COACH_READ_CALENDAR_IDS = " a@x.com, b@x.com ,a@x.com,";
     assert.deepEqual(coachReadCalendarIds(), ["a@x.com", "b@x.com"]);
   });

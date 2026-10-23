@@ -27,7 +27,10 @@ env:
   SITE_URL: https://fromaitobusiness.com
   WIF_PROVIDER: projects/38118386790/locations/global/workloadIdentityPools/github/providers/github
   DEPLOY_SA: github-deploy@apexleader-prod.iam.gserviceaccount.com
-  ADMIN_EMAIL: hello@defiuniversity.xyz
+  # Coach mailbox: sender, reply-to and the calendar 1:1 bookings land on.
+  ADMIN_EMAIL: hello@fromaitobusiness.com
+  # Google accounts allowed into /admin (comma-separated).
+  ADMIN_GOOGLE_LOGINS: hello@fromaitobusiness.com,hello@defiuniversity.xyz
   # Firebase web app "FromAItoBusiness web" (public browser config).
   FIREBASE_API_KEY: AIzaSyCG3btj18GwWVHwky3PD410asZDVMoD4fQ
   FIREBASE_MESSAGING_SENDER_ID: "38118386790"
@@ -157,7 +160,7 @@ jobs:
           done
           echo "mounting: ${SECRETS}"
 
-          ENV_VARS="NODE_ENV=production,GCP_PROJECT_ID=${GCP_PROJECT},NEXT_PUBLIC_SITE_URL=${SITE_URL},CRM_STORAGE=firestore,ADMIN_GOOGLE_ALLOWLIST=${ADMIN_EMAIL},SENDER_EMAIL=${ADMIN_EMAIL},SENDER_DOMAINS=${ADMIN_EMAIL#*@},SENDER_NAME=FromAItoBusiness,NEXT_PUBLIC_FIREBASE_API_KEY=${FIREBASE_API_KEY},NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=${GCP_PROJECT}.firebaseapp.com,NEXT_PUBLIC_FIREBASE_PROJECT_ID=${GCP_PROJECT},NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=${GCP_PROJECT}.firebasestorage.app,NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=${FIREBASE_MESSAGING_SENDER_ID},NEXT_PUBLIC_FIREBASE_APP_ID=${FIREBASE_APP_ID},MARKETING_SENDS_ENABLED=false"
+          ENV_VARS="NODE_ENV=production|GCP_PROJECT_ID=${GCP_PROJECT}|NEXT_PUBLIC_SITE_URL=${SITE_URL}|CRM_STORAGE=firestore|ADMIN_GOOGLE_ALLOWLIST=${ADMIN_GOOGLE_LOGINS}|SENDER_EMAIL=${ADMIN_EMAIL}|SENDER_DOMAINS=${ADMIN_EMAIL#*@}|SENDER_NAME=FromAItoBusiness|NEXT_PUBLIC_FIREBASE_API_KEY=${FIREBASE_API_KEY}|NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=${GCP_PROJECT}.firebaseapp.com|NEXT_PUBLIC_FIREBASE_PROJECT_ID=${GCP_PROJECT}|NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=${GCP_PROJECT}.firebasestorage.app|NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=${FIREBASE_MESSAGING_SENDER_ID}|NEXT_PUBLIC_FIREBASE_APP_ID=${FIREBASE_APP_ID}|MARKETING_SENDS_ENABLED=false"
 
           # min-instances 0 keeps an idle site inside Cloud Run's free tier
           # (the first visit after a quiet spell takes a few seconds).
@@ -174,7 +177,7 @@ jobs:
             --max-instances=10 \
             --concurrency=80 \
             --timeout=600 \
-            --set-env-vars="${ENV_VARS}" \
+            --set-env-vars="^|^${ENV_VARS}" \
             ${SECRETS:+--set-secrets="${SECRETS}"}
 
       # Pin matches .github/workflows/ci.yml (firebase-tools@15.31.0).
