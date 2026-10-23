@@ -8,7 +8,7 @@ import { NextRequest } from "next/server";
 import { setDbForTests } from "../lib/firebase-admin";
 import { setSendEmailForTests, type SendEmailOptions } from "../lib/gmail";
 import { COOKIE_NAME, createAdminSession } from "../lib/auth/admin-session-cookie";
-import { ADMIN_1TO1_FOOTER_TEXT } from "../lib/crm/admin-1to1-email";
+import { ADMIN_1TO1_FOOTER_TEXT, duSenderOrBlockReason } from "../lib/crm/admin-1to1-email";
 import { CRM_CONTACTS_COLLECTION } from "../lib/crm/contacts";
 import { getContactDetail } from "../lib/crm/contact-detail";
 import {
@@ -348,5 +348,23 @@ describe("contact page UI contract", () => {
     assert.match(composer, /\/api\/admin\/contacts\/\$\{encodeURIComponent\(email\)\}\/send/);
     assert.match(composer, /ADMIN_1TO1_PERSONAL_OFFER_ACK_TEXT/);
     assert.match(composer, /Approved by David/);
+  });
+});
+
+describe("1:1 sender domain", () => {
+  afterEach(() => {
+    process.env.SENDER_EMAIL = "hello@apexleader.ai";
+    delete process.env.SENDER_DOMAINS;
+  });
+
+  it("refuses a mailbox outside the brand's domain by default", () => {
+    process.env.SENDER_EMAIL = "coach@example.org";
+    assert.deepEqual(duSenderOrBlockReason(), { ok: false, error: "sender_not_du_domain" });
+  });
+
+  it("allows the production mailbox when SENDER_DOMAINS names its domain", () => {
+    process.env.SENDER_EMAIL = "coach@example.org";
+    process.env.SENDER_DOMAINS = "example.org";
+    assert.deepEqual(duSenderOrBlockReason(), { ok: true, email: "coach@example.org" });
   });
 });

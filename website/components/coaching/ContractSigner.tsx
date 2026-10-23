@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { AlertCircle, Check, Loader2 } from "lucide-react";
 import { SignaturePad } from "@/components/coaching/SignaturePad";
+import { BRAND } from "@/lib/brand";
 
 interface ContractData {
   ok: boolean;
@@ -95,8 +96,8 @@ export function ContractSigner({ token }: { token: string }) {
           <a href="/account" className="btn btn-primary">
             Open your account for a new link
           </a>
-          <a href="mailto:hello@apexleader.ai" className="btn btn-secondary">
-            Email hello@apexleader.ai
+          <a href={`mailto:${BRAND.email}`} className="btn btn-secondary">
+            Email {BRAND.email}
           </a>
         </div>
       </div>

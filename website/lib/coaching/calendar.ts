@@ -31,6 +31,7 @@ import {
 import { exitFlowsForUser } from "@/lib/flows";
 import { automatedSendBlockedByManualOnly } from "@/lib/crm/contacts";
 import { stampLeadPublicFormSignup } from "@/lib/crm/leads";
+import { BRAND } from "@/lib/brand";
 
 export class CalendarUnavailableError extends Error {
   constructor(message = "Calendar unavailable") {
@@ -46,7 +47,7 @@ const ALERT_INTERVAL_MS = 60 * 60 * 1000;
 
 export const SLOT_TAKEN_MESSAGE = "That time was just taken. Pick another time.";
 export const CALENDAR_UNAVAILABLE_MESSAGE =
-  "Scheduling is temporarily unavailable. Please try again in a few minutes, or email hello@apexleader.ai.";
+  `Scheduling is temporarily unavailable. Please try again in a few minutes, or email ${BRAND.email}.`;
 
 export type { AvailabilitySlot };
 

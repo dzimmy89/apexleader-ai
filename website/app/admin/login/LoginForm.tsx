@@ -6,6 +6,7 @@ import { signInWithPopup } from "firebase/auth";
 import { getFirebaseAuth, getGoogleProvider } from "@/lib/firebase-client";
 import { safeAdminNextPath } from "@/lib/auth/admin-next-path";
 import { GoogleMark } from "@/components/GoogleMark";
+import { BRAND } from "@/lib/brand";
 
 function ServerMark() {
   return (
@@ -155,7 +156,7 @@ function LoginFormInner({ passwordEnabled }: { passwordEnabled: boolean }) {
         {googleLoading ? "Signing in…" : "Sign in with Google"}
       </button>
       <p className="mt-3 text-left text-xs text-zinc-500">
-        Google access is limited to authorized @apexleader.ai accounts.
+        Google access is limited to the coach account ({BRAND.email}).
       </p>
     </div>
   );

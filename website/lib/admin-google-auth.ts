@@ -1,9 +1,10 @@
 import { getAuth } from "firebase-admin/auth";
 import { getAdminApp } from "@/lib/firebase-admin";
+import { BRAND } from "@/lib/brand";
 
 function getAllowlist(): Set<string> {
   const raw =
-    process.env.ADMIN_GOOGLE_ALLOWLIST || "hello@apexleader.ai";
+    process.env.ADMIN_GOOGLE_ALLOWLIST || BRAND.email;
   return new Set(
     raw
       .split(",")
