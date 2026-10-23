@@ -221,6 +221,7 @@ function checkoutEvent(
         payment_intent: overrides?.paymentIntentId ?? "pi_test_1",
         amount_total: 9700,
         metadata: {
+          site: "fromaitobusiness.com",
           planId: "full",
           packageName: overrides?.packageName ?? "Foundations",
           clientName: overrides?.clientName ?? "Ada Client",
@@ -255,7 +256,7 @@ function invoiceEvent(
         parent: {
           subscription_details: {
             subscription: overrides?.subscriptionId ?? "sub_test_1",
-            metadata: { packageId: "foundations", planId: "3pay" },
+            metadata: { site: "fromaitobusiness.com", packageId: "foundations", planId: "3pay" },
           },
         },
       },
@@ -275,7 +276,10 @@ function subscriptionDeletedEvent(
 ): Stripe.Event {
   const subscriptionId = overrides?.subscriptionId ?? "sub_test_1";
   const metadata: Record<string, string> = {};
-  if (overrides?.packageId) metadata.packageId = overrides.packageId;
+  if (overrides?.packageId) {
+    metadata.site = "fromaitobusiness.com";
+    metadata.packageId = overrides.packageId;
+  }
   return {
     id,
     type: "customer.subscription.deleted",
@@ -421,6 +425,7 @@ describe("stripe webhook replay safety", () => {
     object.client_reference_id = "foundations";
     object.customer_details = { email: "hosted@example.com" };
     object.metadata = {
+      site: "fromaitobusiness.com",
       planId: "full",
       packageId: "foundations",
       packageName: "Foundations",
@@ -1028,6 +1033,7 @@ function coachingInvoiceEvent(
           subscription_details: {
             subscription: args.subscriptionId,
             metadata: {
+              site: "fromaitobusiness.com",
               packageId: args.packageId ?? "mastery",
               planId: args.planId ?? "3pay",
               clientName: args.clientName ?? "Ada Client",
@@ -1165,7 +1171,7 @@ describe("stripe payments update the contact", () => {
     const session = checkout.data.object as unknown as Record<string, unknown>;
     session.invoice = "in_first";
     session.amount_total = 83400;
-    session.metadata = { planId: "3pay", packageId: "mastery", packageName: "Operator", clientName: "Ada" };
+    session.metadata = { site: "fromaitobusiness.com", planId: "3pay", packageId: "mastery", packageName: "Operator", clientName: "Ada" };
     await handleStripeWebhookEvent(checkout);
 
     assert.equal(storeRows(mem.store, "client_payments").length, 1, "one row for the first invoice");
@@ -1272,5 +1278,40 @@ describe("stripe payments update the contact", () => {
     );
     assert.equal(storeRows(mem.store, "client_payments").length, 0);
     assert.equal(storeRows(mem.store, "coaching_applications").length, 0);
+  });
+});
+
+describe("shared Stripe account", () => {
+  afterEach(() => {
+    setDbForTests(undefined);
+  });
+
+  it("ignores a checkout tagged for another site", async () => {
+    const mem = createMemoryFirestore();
+    setDbForTests(mem as unknown as Firestore);
+    const event = checkoutEvent("evt_other_site");
+    const object = event.data.object as unknown as Record<string, unknown>;
+    object.metadata = { site: "othersite.example", planId: "full", packageId: "foundations" };
+    assert.deepEqual(await processStripeEvent(event), { handled: false });
+    assert.equal(storeRows(mem.store, "client_records").length, 0);
+  });
+
+  it("ignores another site's untagged coaching checkout", async () => {
+    const mem = createMemoryFirestore();
+    setDbForTests(mem as unknown as Firestore);
+    const event = checkoutEvent("evt_untagged");
+    const object = event.data.object as unknown as Record<string, unknown>;
+    object.metadata = { planId: "full", packageId: "foundations" };
+    assert.deepEqual(await processStripeEvent(event), { handled: false });
+    assert.equal(storeRows(mem.store, "client_records").length, 0);
+  });
+
+  it("ignores another site's subscription invoice", async () => {
+    const mem = createMemoryFirestore();
+    setDbForTests(mem as unknown as Firestore);
+    const event = invoiceEvent("invoice.paid", "evt_other_invoice");
+    const object = event.data.object as unknown as Record<string, unknown>;
+    object.parent = { subscription_details: { subscription: "sub_x", metadata: { packageId: "foundations" } } };
+    assert.deepEqual(await processStripeEvent(event), { handled: false });
   });
 });

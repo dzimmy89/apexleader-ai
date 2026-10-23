@@ -8,6 +8,7 @@ import {
 } from "@/lib/coaching/packages";
 import { ensureCoachingAgreementEmail } from "@/lib/coaching/contract-email";
 import { getSiteOrigin } from "@/lib/env";
+import { BRAND } from "@/lib/brand";
 import { personNameLower } from "@/lib/crm/people-search";
 import { checkoutSignupFields } from "@/lib/crm/contacts";
 import { logActivity } from "@/lib/crm/activity-log";
@@ -94,6 +95,7 @@ export async function createCheckoutSession(
     : pkg.id;
   const customerEmail = input.email || undefined;
   const sessionMetadata = {
+    site: BRAND.domain,
     packageId: pkg.id,
     planId: plan.id,
     packageName: pkg.name,
@@ -269,6 +271,20 @@ export async function handleStripeWebhookEvent(
   return { duplicate: false, handled };
 }
 
+/**
+ * The Stripe account can be shared with another site, whose webhook gets our
+ * events and ours gets theirs. Our checkouts tag their metadata with
+ * site=BRAND.domain; tagged events for any other site, and coaching events
+ * with no site tag, belong to someone else. Events with no metadata at all
+ * (an invoice made by hand in the dashboard) are still ours to match.
+ */
+export function isOtherSitesStripeMetadata(
+  metadata: Record<string, string> | null | undefined
+): boolean {
+  if (!metadata || Object.keys(metadata).length === 0) return false;
+  return metadata.site !== BRAND.domain;
+}
+
 export async function processStripeEvent(
   event: Stripe.Event
 ): Promise<{ handled: boolean; enriched?: EnrichedStripeEvent }> {
@@ -279,6 +295,7 @@ export async function processStripeEvent(
     case "checkout.session.completed": {
       const session = event.data.object as Stripe.Checkout.Session;
       const metadata = (session.metadata || {}) as Record<string, string>;
+      if (isOtherSitesStripeMetadata(metadata)) return { handled: false };
       const email = buyerEmailFromSession(session);
       if (!email.includes("@")) {
         throw new Error(`Checkout session ${session.id} has no buyer email`);
@@ -328,6 +345,7 @@ export async function processStripeEvent(
           ?.subscription_details as Record<string, unknown> | undefined
       )?.metadata as Record<string, string> | undefined;
       const subscriptionMetadata = parentMeta || {};
+      if (isOtherSitesStripeMetadata(subscriptionMetadata)) return { handled: false };
 
       enriched = {
         type: "invoice.paid",
@@ -358,6 +376,7 @@ export async function processStripeEvent(
           ?.subscription_details as Record<string, unknown> | undefined
       )?.metadata as Record<string, string> | undefined;
       const subscriptionMetadata = parentMeta || {};
+      if (isOtherSitesStripeMetadata(subscriptionMetadata)) return { handled: false };
       enriched = {
         type: "invoice.payment_failed",
         eventId: event.id,
@@ -379,6 +398,7 @@ export async function processStripeEvent(
     case "customer.subscription.deleted": {
       const sub = event.data.object as Stripe.Subscription;
       const metadata = (sub.metadata || {}) as Record<string, string>;
+      if (isOtherSitesStripeMetadata(metadata)) return { handled: false };
       enriched = {
         type: "customer.subscription.deleted",
         eventId: event.id,

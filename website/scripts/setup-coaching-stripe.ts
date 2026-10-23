@@ -1,10 +1,11 @@
 /**
- * Idempotent Stripe setup for ApexLeader.ai coaching packages (live mode).
+ * Idempotent Stripe setup for FromAItoBusiness coaching packages (live mode).
  *
  * Creates 3 products, 6 prices, and the production webhook. Existing products
  * are renamed to the current display names; a Price is reused only when its
  * amount still matches. Tags all resources
- * with dfu_source=coaching metadata so re-runs are safe.
+ * with fatb_source=coaching metadata so re-runs are safe and never touch
+ * another site's products in a shared Stripe account.
  *
  * Usage:
  *   export STRIPE_SECRET_KEY="$(gcloud secrets versions access latest \
@@ -17,7 +18,7 @@
 import { execSync } from "child_process";
 import Stripe from "stripe";
 
-const WEBHOOK_URL = "https://apexleader.ai/api/webhooks/stripe";
+const WEBHOOK_URL = "https://fromaitobusiness.com/api/webhooks/stripe";
 const WEBHOOK_EVENTS: Stripe.WebhookEndpointCreateParams.EnabledEvent[] = [
   "checkout.session.completed",
   "invoice.paid",
@@ -27,7 +28,7 @@ const WEBHOOK_EVENTS: Stripe.WebhookEndpointCreateParams.EnabledEvent[] = [
 
 const GCP_PROJECT = process.env.GCP_PROJECT_ID || "apexleader-prod";
 const RUNTIME_SECRET_ACCESSOR =
-  "serviceAccount:309871336262-compute@developer.gserviceaccount.com";
+  "serviceAccount:38118386790-compute@developer.gserviceaccount.com";
 
 type PlanId = "full" | "3pay" | "6pay";
 type PackageId = "foundations" | "mastery" | "institutional";
@@ -50,7 +51,7 @@ const PRICE_SPECS: PriceSpec[] = [
     secretEnvVar: "STRIPE_PRICE_FOUNDATIONS_FULL",
     packageId: "foundations",
     planId: "full",
-    productName: "ApexLeader.ai Coaching: Kickstart",
+    productName: "FromAItoBusiness Coaching: Kickstart",
     description: "Kickstart — 2 × 60-minute private 1-on-1 sessions ($750)",
     amountCents: 75000,
     recurring: false,
@@ -59,7 +60,7 @@ const PRICE_SPECS: PriceSpec[] = [
     secretEnvVar: "STRIPE_PRICE_FOUNDATIONS_3PAY",
     packageId: "foundations",
     planId: "3pay",
-    productName: "ApexLeader.ai Coaching: Kickstart",
+    productName: "FromAItoBusiness Coaching: Kickstart",
     description: "Kickstart — 3 monthly payments of $250",
     amountCents: 25000,
     recurring: true,
@@ -68,7 +69,7 @@ const PRICE_SPECS: PriceSpec[] = [
     secretEnvVar: "STRIPE_PRICE_FOUNDATIONS_6PAY",
     packageId: "foundations",
     planId: "6pay",
-    productName: "ApexLeader.ai Coaching: Kickstart",
+    productName: "FromAItoBusiness Coaching: Kickstart",
     description: "Kickstart — 6 monthly payments of $125",
     amountCents: 12500,
     recurring: true,
@@ -77,7 +78,7 @@ const PRICE_SPECS: PriceSpec[] = [
     secretEnvVar: "STRIPE_PRICE_MASTERY_FULL",
     packageId: "mastery",
     planId: "full",
-    productName: "ApexLeader.ai Coaching: Operator",
+    productName: "FromAItoBusiness Coaching: Operator",
     description: "Operator — 8 sessions over 12 weeks, pay in full ($2,500)",
     amountCents: 250000,
     recurring: false,
@@ -86,7 +87,7 @@ const PRICE_SPECS: PriceSpec[] = [
     secretEnvVar: "STRIPE_PRICE_MASTERY_3PAY",
     packageId: "mastery",
     planId: "3pay",
-    productName: "ApexLeader.ai Coaching: Operator",
+    productName: "FromAItoBusiness Coaching: Operator",
     description: "Operator — 3 monthly payments of $834",
     amountCents: 83400,
     recurring: true,
@@ -95,7 +96,7 @@ const PRICE_SPECS: PriceSpec[] = [
     secretEnvVar: "STRIPE_PRICE_MASTERY_6PAY",
     packageId: "mastery",
     planId: "6pay",
-    productName: "ApexLeader.ai Coaching: Operator",
+    productName: "FromAItoBusiness Coaching: Operator",
     description: "Operator — 6 monthly payments of $417",
     amountCents: 41700,
     recurring: true,
@@ -104,7 +105,7 @@ const PRICE_SPECS: PriceSpec[] = [
     secretEnvVar: "STRIPE_PRICE_INSTITUTIONAL_FULL",
     packageId: "institutional",
     planId: "full",
-    productName: "ApexLeader.ai Coaching: Inner Circle",
+    productName: "FromAItoBusiness Coaching: Inner Circle",
     description: "Inner Circle — 24 weekly sessions, pay in full ($7,500)",
     amountCents: 750000,
     recurring: false,
@@ -113,7 +114,7 @@ const PRICE_SPECS: PriceSpec[] = [
     secretEnvVar: "STRIPE_PRICE_INSTITUTIONAL_3PAY",
     packageId: "institutional",
     planId: "3pay",
-    productName: "ApexLeader.ai Coaching: Inner Circle",
+    productName: "FromAItoBusiness Coaching: Inner Circle",
     description: "Inner Circle — 3 monthly payments of $2,500",
     amountCents: 250000,
     recurring: true,
@@ -122,7 +123,7 @@ const PRICE_SPECS: PriceSpec[] = [
     secretEnvVar: "STRIPE_PRICE_INSTITUTIONAL_6PAY",
     packageId: "institutional",
     planId: "6pay",
-    productName: "ApexLeader.ai Coaching: Inner Circle",
+    productName: "FromAItoBusiness Coaching: Inner Circle",
     description: "Inner Circle — 6 monthly payments of $1,250",
     amountCents: 125000,
     recurring: true,
@@ -131,15 +132,15 @@ const PRICE_SPECS: PriceSpec[] = [
 
 const PRODUCT_NAMES: Record<PackageId, { name: string; description: string }> = {
   foundations: {
-    name: "ApexLeader.ai Coaching: Kickstart",
+    name: "FromAItoBusiness Coaching: Kickstart",
     description: "Private 1-on-1 AI coaching — Kickstart ($750, 2 sessions)",
   },
   mastery: {
-    name: "ApexLeader.ai Coaching: Operator",
+    name: "FromAItoBusiness Coaching: Operator",
     description: "Private 1-on-1 AI coaching — Operator ($2,500, 8 sessions)",
   },
   institutional: {
-    name: "ApexLeader.ai Coaching: Inner Circle",
+    name: "FromAItoBusiness Coaching: Inner Circle",
     description: "Private 1-on-1 AI coaching — Inner Circle ($7,500, 24 sessions)",
   },
 };
@@ -149,10 +150,10 @@ function coachingMetadata(
   planId?: PlanId
 ): Record<string, string> {
   const meta: Record<string, string> = {
-    dfu_source: "coaching",
-    dfu_package_id: packageId,
+    fatb_source: "coaching",
+    fatb_package_id: packageId,
   };
-  if (planId) meta.dfu_plan_id = planId;
+  if (planId) meta.fatb_plan_id = planId;
   return meta;
 }
 
@@ -161,7 +162,7 @@ async function findProductByPackage(
   packageId: PackageId
 ): Promise<Stripe.Product | null> {
   const result = await stripe.products.search({
-    query: `metadata['dfu_source']:'coaching' AND metadata['dfu_package_id']:'${packageId}' AND active:'true'`,
+    query: `metadata['fatb_source']:'coaching' AND metadata['fatb_package_id']:'${packageId}' AND active:'true'`,
     limit: 1,
   });
   return result.data[0] ?? null;
@@ -180,7 +181,7 @@ async function findPriceByPlan(
   });
   return (
     prices.data.find(
-      (p) => p.metadata?.dfu_plan_id === planId && p.unit_amount === amountCents
+      (p) => p.metadata?.fatb_plan_id === planId && p.unit_amount === amountCents
     ) ?? null
   );
 }
@@ -285,7 +286,7 @@ async function ensureWebhook(
   const endpoint = await stripe.webhookEndpoints.create({
     url: WEBHOOK_URL,
     enabled_events: WEBHOOK_EVENTS,
-    description: "ApexLeader.ai coaching checkout + subscriptions",
+    description: "FromAItoBusiness coaching checkout + subscriptions",
   });
   console.log(`  + created webhook: ${endpoint.id}`);
   return {
@@ -347,7 +348,7 @@ async function main() {
     process.exit(1);
   }
 
-  console.log("ApexLeader.ai — coaching Stripe setup (live mode)\n");
+  console.log("FromAItoBusiness — coaching Stripe setup (live mode)\n");
   if (dryRun) console.log("DRY RUN — no Stripe or GCP writes\n");
 
   const stripe = new Stripe(key);
