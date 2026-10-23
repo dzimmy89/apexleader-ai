@@ -1,7 +1,8 @@
 /**
  * Idempotent Stripe setup for FromAItoBusiness coaching packages (live mode).
  *
- * Creates 3 products, 6 prices, and the production webhook. Existing products
+ * Creates 4 products (the 3 packages and the monthly Bot Care plan), 10
+ * prices, and the production webhook. Existing products
  * are renamed to the current display names; a Price is reused only when its
  * amount still matches. Tags all resources
  * with fatb_source=coaching metadata so re-runs are safe and never touch
@@ -30,8 +31,9 @@ const GCP_PROJECT = process.env.GCP_PROJECT_ID || "apexleader-prod";
 const RUNTIME_SECRET_ACCESSOR =
   "serviceAccount:38118386790-compute@developer.gserviceaccount.com";
 
-type PlanId = "full" | "3pay" | "6pay";
-type PackageId = "foundations" | "mastery" | "institutional";
+type PlanId = "full" | "3pay" | "6pay" | "monthly";
+// bot_care is the open-ended monthly plan (lib/coaching/bot-care.ts), not a package.
+type PackageId = "foundations" | "mastery" | "institutional" | "bot_care";
 
 interface PriceSpec {
   secretEnvVar: string;
@@ -128,6 +130,15 @@ const PRICE_SPECS: PriceSpec[] = [
     amountCents: 125000,
     recurring: true,
   },
+  {
+    secretEnvVar: "STRIPE_PRICE_BOT_CARE_MONTHLY",
+    packageId: "bot_care",
+    planId: "monthly",
+    productName: "FromAItoBusiness Bot Care",
+    description: "Bot Care — monthly plan for coaching clients ($1,000/month)",
+    amountCents: 100000,
+    recurring: true,
+  },
 ];
 
 const PRODUCT_NAMES: Record<PackageId, { name: string; description: string }> = {
@@ -142,6 +153,10 @@ const PRODUCT_NAMES: Record<PackageId, { name: string; description: string }> = 
   institutional: {
     name: "FromAItoBusiness Coaching: Inner Circle",
     description: "Private 1-on-1 AI coaching — Inner Circle ($7,500, 24 sessions)",
+  },
+  bot_care: {
+    name: "FromAItoBusiness Bot Care",
+    description: "Monthly bot review and upkeep for coaching clients ($1,000/month)",
   },
 };
 
@@ -355,7 +370,7 @@ async function main() {
 
   // Group specs by package for product creation
   const productIds = new Map<PackageId, string>();
-  const packageIds: PackageId[] = ["foundations", "mastery", "institutional"];
+  const packageIds: PackageId[] = ["foundations", "mastery", "institutional", "bot_care"];
 
   console.log("Products:");
   for (const pkgId of packageIds) {
