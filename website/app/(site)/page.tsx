@@ -4,7 +4,9 @@ import { CTAButton } from "@/components/CTAButton";
 import { SectionReveal } from "@/components/SectionReveal";
 import { AgentCard } from "@/components/brand/AgentCard";
 import { FinalCta } from "@/components/editorial/FinalCta";
+import { PortfolioCard } from "@/components/portfolio/PortfolioCard";
 import { AGENT_TEAM, MODULES, TOOLS, TRACKS } from "@/content/course";
+import { featuredPortfolio } from "@/content/portfolio";
 import { URLS } from "@/content/site";
 import { BRAND } from "@/lib/brand";
 
@@ -154,6 +156,30 @@ export default function HomePage() {
                 </p>
               </li>
             ))}
+          </ul>
+        </section>
+      </SectionReveal>
+
+      <SectionReveal>
+        <section className="mx-auto max-w-6xl px-6 pb-[var(--space-section)]">
+          <p className="section-eyebrow">Built this way</p>
+          <div className="mt-3 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <h2 className="max-w-2xl text-[length:var(--text-h2)] text-[var(--color-text)]">
+              Businesses {BRAND.coachFirstName} runs with this stack.
+            </h2>
+            <Link href="/portfolio" className="btn btn-secondary self-start md:self-auto">
+              See the portfolio
+            </Link>
+          </div>
+          <ul className="mt-10 grid gap-4 md:grid-cols-3">
+            {featuredPortfolio()
+              .filter((b) => b.slug !== "fromaitobusiness")
+              .slice(0, 3)
+              .map((business) => (
+                <li key={business.slug} className="min-w-0">
+                  <PortfolioCard business={business} />
+                </li>
+              ))}
           </ul>
         </section>
       </SectionReveal>

@@ -4,6 +4,7 @@ export type SiteNavLink = { href: string; label: string };
 export const SITE_NAV_LINKS: readonly SiteNavLink[] = [
   { href: "/course", label: "The course" },
   { href: "/university", label: "Lessons" },
+  { href: "/portfolio", label: "Portfolio" },
   { href: "/coaching", label: "1-on-1 coaching" },
   { href: "/about", label: "About" },
 ];
