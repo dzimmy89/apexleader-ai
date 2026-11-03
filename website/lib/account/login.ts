@@ -3,6 +3,7 @@ import { getDb } from "@/lib/firebase-admin";
 import { getSiteOrigin } from "@/lib/env";
 import { sendEmail } from "@/lib/gmail";
 import { escapeHtml } from "@/lib/html";
+import { BRAND } from "@/lib/brand";
 import { ACCOUNTS, normalizeEmail } from "@/lib/account/access";
 import { linkEmail, primaryEmailFor } from "@/lib/account/links";
 
@@ -52,17 +53,17 @@ export async function sendLoginLink(
     ? await sendEmail({
         to: email,
         purpose: "transactional",
-        subject: "Confirm this email for your ApexLeader.ai account",
-        text: `${linkTo} asked to add this email to their ApexLeader.ai account. Confirm it: ${url}\n\nAfter you confirm, signing in with either email opens the same account, and coaching under this email shows there. The link works once and expires in 30 minutes. If you did not ask for this, ignore this email.`,
-        html: `<p>${escapeHtml(linkTo)} asked to add this email to their ApexLeader.ai account.</p><p><a href="${escapeHtml(url)}">Confirm this email</a></p><p>After you confirm, signing in with either email opens the same account, and coaching under this email shows there. The link works once and expires in 30 minutes. If you did not ask for this, ignore this email.</p>`,
+        subject: `Confirm this email for your ${BRAND.name} account`,
+        text: `${linkTo} asked to add this email to their ${BRAND.name} account. Confirm it: ${url}\n\nAfter you confirm, signing in with either email opens the same account, and coaching under this email shows there. The link works once and expires in 30 minutes. If you did not ask for this, ignore this email.`,
+        html: `<p>${escapeHtml(linkTo)} asked to add this email to their ${BRAND.name} account.</p><p><a href="${escapeHtml(url)}">Confirm this email</a></p><p>After you confirm, signing in with either email opens the same account, and coaching under this email shows there. The link works once and expires in 30 minutes. If you did not ask for this, ignore this email.</p>`,
         log: { source: "account_link", flowType: "account_login" },
       })
     : await sendEmail({
         to: email,
         purpose: "transactional",
-        subject: "Your ApexLeader.ai sign-in link",
-        text: `Sign in to ApexLeader.ai: ${url}\n\nThe link works once and expires in 30 minutes. If you did not ask for it, ignore this email.`,
-        html: `<p>Sign in to ApexLeader.ai:</p><p><a href="${escapeHtml(url)}">Sign in</a></p><p>The link works once and expires in 30 minutes. If you did not ask for it, ignore this email.</p>`,
+        subject: `Your ${BRAND.name} sign-in link`,
+        text: `Sign in to ${BRAND.name}: ${url}\n\nThe link works once and expires in 30 minutes. If you did not ask for it, ignore this email.`,
+        html: `<p>Sign in to ${BRAND.name}:</p><p><a href="${escapeHtml(url)}">Sign in</a></p><p>The link works once and expires in 30 minutes. If you did not ask for it, ignore this email.</p>`,
         log: { source: "account_login", flowType: "account_login" },
       });
   return sent.ok ? { ok: true } : { ok: false, error: sent.error || "Could not send the sign-in email" };

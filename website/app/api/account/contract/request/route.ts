@@ -5,6 +5,7 @@ import { getAccess } from "@/lib/account/access";
 import { coachingEnded, findCoachingClient } from "@/lib/account/coaching-client";
 import { getDb } from "@/lib/firebase-admin";
 import { createSignatureRequest } from "@/lib/coaching/signatures";
+import { BRAND } from "@/lib/brand";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -26,11 +27,11 @@ export async function POST(request: NextRequest) {
   if (!client) return NextResponse.json({ error: "No coaching package on this account" }, { status: 404, headers: NO_STORE });
   if (client.contractSignedAt) return NextResponse.json({ ok: true, signed: true }, { headers: NO_STORE });
   if (coachingEnded(client)) {
-    return NextResponse.json({ error: "This coaching package has ended. Email hello@apexleader.ai to start again." }, { status: 409, headers: NO_STORE });
+    return NextResponse.json({ error: `This coaching package has ended. Email ${BRAND.email} to start again.` }, { status: 409, headers: NO_STORE });
   }
   if (!client.packageId) {
     return NextResponse.json(
-      { error: "Your package is not on file yet. Email hello@apexleader.ai and we will send the agreement." },
+      { error: `Your package is not on file yet. Email ${BRAND.email} and we will send the agreement.` },
       { status: 409, headers: NO_STORE }
     );
   }
@@ -61,7 +62,7 @@ export async function POST(request: NextRequest) {
   if (!created.ok || !created.signUrl) {
     console.error("[account/contract/request] failed", created.error);
     return NextResponse.json(
-      { error: "We could not prepare the agreement. Email hello@apexleader.ai." },
+      { error: `We could not prepare the agreement. Email ${BRAND.email}.` },
       { status: 502, headers: NO_STORE }
     );
   }
