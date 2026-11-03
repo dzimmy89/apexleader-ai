@@ -27,6 +27,7 @@ import {
 } from "../lib/learn/blocks";
 import { LessonBody } from "../components/learn/LessonBody";
 import { readPiece } from "../lib/learn/content";
+import { signLearnVideoSlots, withoutLearnVideoSlots } from "../lib/learn/video-urls";
 import { courseLock } from "../lib/learn/gate";
 import { safeNextPath } from "../lib/account/login";
 import { grantIsLive, readAccount } from "../lib/account/access";
@@ -82,13 +83,12 @@ describe("Learn catalog", () => {
 describe("Learn content files", () => {
   const courses = getCoursesInOrder();
 
-  it("has every lesson, exercise and quiz on disk, with no video blocks or brand words", () => {
+  it("has every lesson, exercise and quiz on disk, with no brand words", () => {
     for (const course of courses) {
       for (const lesson of allLessons(course)) {
         for (const [kind, slug] of [["lessons", lesson.slug], ["exercises", lesson.exercise!]] as const) {
           const md = readPiece(course.id, kind, slug);
           assert.ok(md, `${course.id}/${kind}/${slug}`);
-          assert.doesNotMatch(md!, /^:::video/m, `${course.id}/${slug} still has a video block`);
           assert.doesNotMatch(md!, /\bThe Node\b|thenode|Node Membership/, `${course.id}/${slug} names The Node`);
         }
       }
@@ -103,6 +103,8 @@ describe("Learn content files", () => {
           for (const seg of splitBlocks(lessonBody(readPiece(course.id, kind, slug)!).body)) {
             if (seg.type !== "infographic") continue;
             figures++;
+            assert.ok(seg.id && seg.title && seg.alt, `${course.id}/${slug}: an infographic slot needs id, title and alt`);
+            if (!seg.image) continue; // still in production
             assert.match(seg.image, /^\/learn\/figures\//);
             assert.ok(fs.existsSync(path.join(PUBLIC, seg.image)), seg.image);
           }
@@ -110,6 +112,29 @@ describe("Learn content files", () => {
       }
     }
     assert.ok(figures >= 0);
+  });
+
+  it("gives every video slot an id, a kind, a status and clip paths under the course", () => {
+    for (const course of courses) {
+      for (const lesson of allLessons(course)) {
+        for (const [kind, slug] of [["lessons", lesson.slug], ["exercises", lesson.exercise!]] as const) {
+          const md = readPiece(course.id, kind, slug)!;
+          for (const m of md.matchAll(/^:::video[ \t]*\n([\s\S]*?)^:::[ \t]*$/gm)) {
+            const f = Object.fromEntries(
+              m[1]!.split("\n").map((l) => l.match(/^([a-z-]+):\s?(.*)$/)).filter(Boolean).map((x) => [x![1], x![2]!.trim()])
+            );
+            const where = `${course.id}/${slug} ${f.id ?? "(no id)"}`;
+            assert.ok(f.id, `${where}: needs an id`);
+            assert.ok(["overview", "inline", "exercise-setup", "exercise-reveal"].includes(f.kind), `${where}: kind`);
+            assert.ok(["ready", "paused"].includes(f.status), `${where}: status is ready or paused`);
+            for (const key of ["src", "captions", "poster"]) {
+              if (f[key]) assert.match(f[key], new RegExp(`^/learn/video/${course.id}/[a-z0-9-]+\\.(mp4|webm|vtt|jpe?g|png|webp)$`), `${where}: ${key}`);
+            }
+            if (f.status === "ready") assert.ok(f.src && f.captions && f.poster && f.transcript, `${where}: a ready clip needs src, captions, poster and transcript`);
+          }
+        }
+      }
+    }
   });
 
   it("parses every quiz into questions with a valid answer", () => {
@@ -209,6 +234,74 @@ describe("Learn blocks", () => {
     assert.match(member, /See coaching/);
     const client = renderToStaticMarkup(createElement(LessonBody, { body, showCoached: true }));
     assert.match(client, /your<\/strong> business/);
+  });
+
+  it("plays ready clips, drops paused ones and keeps exercise examples closed", () => {
+    const body = [
+      ":::video",
+      "id: as-l1-overview",
+      "kind: overview",
+      "status: ready",
+      "src: /learn/video/ai-sales/as-l1-overview.mp4",
+      "captions: /learn/video/ai-sales/as-l1-overview.vtt",
+      "poster: /learn/video/ai-sales/as-l1-overview.jpg",
+      "transcript: Thirty businesses beat five thousand names.",
+      ":::",
+      "",
+      ":::video",
+      "id: as-l1-scoring",
+      "kind: inline",
+      "status: paused",
+      "src: /learn/video/ai-sales/as-l1-scoring.mp4",
+      ":::",
+      "",
+      ":::infographic",
+      "id: fig-1",
+      "title: The five-part profile",
+      "alt: Who, where, size, pain and disqualifier.",
+      ":::",
+      "",
+      ":::example",
+      "title: See an example result",
+      "Here is a finished list.",
+      "",
+      ":::video",
+      "id: as-ex1-reveal",
+      "kind: exercise-reveal",
+      "status: ready",
+      "src: /learn/video/ai-sales/as-ex1-reveal.mp4",
+      "captions: /learn/video/ai-sales/as-ex1-reveal.vtt",
+      "poster: /learn/video/ai-sales/as-ex1-reveal.jpg",
+      ":::",
+      "",
+      "## Inside the example",
+      ":::",
+      "",
+      "## After",
+    ].join("\n");
+    const segs = splitBlocks(body);
+    assert.deepEqual(segs.map((s) => s.type), ["video", "infographic", "example", "markdown"]);
+    const example = segs[2] as Extract<(typeof segs)[number], { type: "example" }>;
+    assert.deepEqual(example.segments.map((s) => s.type), ["markdown", "video", "markdown"]);
+    assert.deepEqual(lessonSections(body).map((s) => s.title), ["After"]);
+    const html = renderToStaticMarkup(createElement(LessonBody, { body }));
+    assert.match(html, /<video[^>]*poster="\/learn\/video\/ai-sales\/as-l1-overview.jpg"/);
+    assert.match(html, /<track[^>]*src="\/learn\/video\/ai-sales\/as-l1-overview.vtt"/);
+    assert.match(html, /Read the transcript/);
+    assert.doesNotMatch(html, /as-l1-scoring/);
+    assert.match(html, /Infographic in production/);
+    assert.match(html, /<details class="lesson-example[^"]*"><summary[^>]*>See an example result<\/summary>/);
+    assert.match(html, /as-ex1-reveal\.mp4/);
+  });
+
+  it("signs clip links for readers and strips them from previews", async () => {
+    const body = ":::video\nid: x\nkind: overview\nstatus: ready\nsrc: /learn/video/ai-sales/x.mp4\ncaptions: /learn/video/ai-sales/x.vtt\nposter: /learn/video/ai-sales/x.jpg\n:::\n\nText.";
+    const signed = await signLearnVideoSlots(body, async (p) => `https://signed.example/${p}?sig=1`);
+    assert.match(signed, /src: https:\/\/signed\.example\/learn\/video\/ai-sales\/x\.mp4\?sig=1/);
+    assert.match(signed, /captions: https:\/\/signed\.example\/learn\/video\/ai-sales\/x\.vtt\?sig=1/);
+    const html = renderToStaticMarkup(createElement(LessonBody, { body: signed }));
+    assert.match(html, /crossorigin="anonymous"/i);
+    assert.equal(withoutLearnVideoSlots(body).trim(), "Text.");
   });
 
   it("grades quizzes, counting blanks as wrong", () => {

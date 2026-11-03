@@ -46,3 +46,6 @@ next-env.d.ts
 # local HubSpot import dry-run reports
 /hubspot-import-report.*
 
+
+# Lesson clips live in the private video bucket; this folder is only for local preview.
+/public/learn/video/
