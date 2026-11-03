@@ -524,6 +524,18 @@ describe("firestore rules (emulator)", async () => {
     );
   });
 
+  it("denies client reads and writes of crypto_payment_notices, even for admins", async () => {
+    await seed("crypto_payment_notices/n1", { email: "buyer@example.com", status: "unconfirmed" });
+    const anon = testEnv.unauthenticatedContext().firestore();
+    await assertFails(getDoc(doc(anon, "crypto_payment_notices/n1")));
+    await assertFails(setDoc(doc(anon, "crypto_payment_notices/n2"), { status: "confirmed" }));
+
+    await seed("members/admin@example.com", { email: "admin@example.com", tier: "admin" });
+    const adminDb = authed("uid-admin-crypto", "admin@example.com", true);
+    await assertFails(getDoc(doc(adminDb, "crypto_payment_notices/n1")));
+    await assertFails(updateDoc(doc(adminDb, "crypto_payment_notices/n1"), { status: "confirmed" }));
+  });
+
   it("settings read denied for unverified token and allowed for verified", async () => {
     await seed("settings/app", { feature: "ok" });
 

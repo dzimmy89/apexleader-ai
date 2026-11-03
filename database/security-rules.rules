@@ -275,6 +275,10 @@ service cloud.firestore {
     match /client_records/{clientId} {
       allow read, write: if false;
     }
+    // Crypto transfer notices from /coaching/pay (Admin SDK on Cloud Run only).
+    match /crypto_payment_notices/{noticeId} {
+      allow read, write: if false;
+    }
     match /coaching_sessions/{sessionId} {
       allow read, write: if false;
     }
