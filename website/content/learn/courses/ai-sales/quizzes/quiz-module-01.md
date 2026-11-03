@@ -111,6 +111,6 @@ Which LinkedIn practice is consistent with this course and LinkedIn's terms?
 
 **Answer:** C
 
-**Explanation:** LinkedIn prohibits bots, scrapers and automation that act on the site for you, so use it manually and keep agents off it.
+**Explanation:** LinkedIn prohibits bots, scrapers and automation that act on the site for you. Keep your Sales Bot off it. Lesson 7 covers the risks and limits if you choose a LinkedIn sequencer later.
 
 ---
