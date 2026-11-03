@@ -95,3 +95,27 @@ export function trackCoachingDiscoveryBooked() {
     transaction_id: `coaching_discovery_${Date.now()}`,
   });
 }
+
+export function trackCoachingCryptoAddressCopy(input: {
+  network: string;
+  packageId: string;
+}) {
+  pushEvent({
+    event: "conversion",
+    conversion_type: "coaching_crypto_address_copy",
+    network: input.network,
+    package_id: input.packageId,
+  });
+}
+
+export function trackCoachingCryptoNoticeSubmit(input: {
+  packageId: string;
+  network: string;
+}) {
+  pushEvent({
+    event: "conversion",
+    conversion_type: "coaching_crypto_notice_submit",
+    package_id: input.packageId,
+    network: input.network,
+  });
+}

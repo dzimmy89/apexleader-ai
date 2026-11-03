@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import type { PackageCardData } from "@/components/coaching/PackageCard";
+import { CryptoPayPanel } from "@/components/coaching/CryptoPayPanel";
 import { Notice, Panel } from "@/components/system";
 import { URLS } from "@/content/site";
 import { trackCoachingCheckoutStart } from "@/lib/gtm";
@@ -83,6 +84,17 @@ export function PayChooser({
         : pkg.priceDisplay;
     const subject = `Invoice for ${pkg.name}`;
     const body = `Name:\nCompany:\nPackage: ${pkg.name}\nSchedule: ${plan.label}\nAmount this payment: ${due}\n`;
+    return `mailto:${URLS.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  }, [pkg, plan]);
+
+  const cryptoMailto = useMemo(() => {
+    if (!pkg || !plan) return `mailto:${URLS.email}`;
+    const due =
+      plan.installments > 1
+        ? `${usd(plan.perPayment)} (${plan.label}, total ${usd(plan.total)})`
+        : pkg.priceDisplay;
+    const subject = `Crypto payment ${pkg.name}`;
+    const body = `Name:\nPackage: ${pkg.name}\nSchedule: ${plan.label}\nUSD amount this payment: ${due}\nNetwork:\nTransaction hash:\n`;
     return `mailto:${URLS.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   }, [pkg, plan]);
 
@@ -188,7 +200,8 @@ export function PayChooser({
         </p>
       </div>
 
-      <div className="lg:col-span-5">
+      <div className="space-y-8 lg:col-span-5">
+        <CryptoPayPanel pkg={pkg} plan={plan} emailHref={cryptoMailto} />
         <Panel title="Need an invoice?" bodyClassName="panel-body space-y-4">
           <p className="font-[family-name:var(--font-ui)] text-[15px] text-[var(--color-text)]">
             If your business pays by bank transfer or needs an invoice first, email us with the package and schedule. We

@@ -324,6 +324,13 @@ export default function CoachingKanbanPage() {
             <Button
               variant="outline"
               size="sm"
+              render={<Link href="/admin/coaching/crypto-notices" />}
+            >
+              Crypto notices
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
               render={<Link href="/admin/coaching/clients" />}
             >
               <ExternalLink size={12} /> Clients
