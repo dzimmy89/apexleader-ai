@@ -1,0 +1,48 @@
+# FromAItoBusiness — Build and Launch Coaching Agreement
+
+**Parties.** This Coaching Agreement ("Agreement") is entered into between FromAItoBusiness.com, operated by Blocksqozen LLC ("Coach") and {{clientName}} ("Client"), with email {{clientEmail}}.
+
+**Effective date.** {{effectiveDate}}
+
+## 1. Scope of Coaching Services
+
+Coach will provide the **Build and Launch** private coaching program, which includes:
+
+- {{sessionCount}} private 1-on-1 sessions of {{sessionLengthMins}} minutes each, held weekly
+- Coaching duration: {{durationWeeks}} weeks, in four phases: foundation (AI desk, niche and offer), build (demo workflows and a reusable build library), market and sell (brand, site, outreach and proposals), and run (first client pilot, AI operations and accounting)
+- A week-by-week syllabus built from Client's goals
+- Three demo-ready AI workflows
+- AI marketing, sales and accounting systems set up for Client's business
+- Coach review of Client's first client pilot
+- Messages with Coach between sessions
+- Access to the course library for the coaching period
+
+## 2. Coaching Only — No Guaranteed Results
+
+Coach provides coaching and educational content on using AI and building with AI in Client's business. Coach does not guarantee time saved, clients won, revenue or any other result. Client decides which tools and workflows to adopt and remains responsible for how the business uses them, including what data is put into third-party AI tools and compliance with those tools' terms. Coach is not Client's employee, IT provider or legal advisor.
+
+## 3. Fees and Payment
+
+**Total fee:** {{priceDisplay}} (USD).
+
+Payment method: {{paymentPlanLabel}}.
+
+## 4. Refund Policy
+
+Client may request a full refund within 14 days of the effective date, provided no sessions have been conducted. After the 14-day window or after the first session, all fees are non-refundable. For installment plans, refunds apply only to payments collected within the 14-day window.
+
+## 5. Scheduling and Cancellation
+
+Sessions are scheduled through the client portal. Sessions require at least 24 hours notice to reschedule. Sessions cancelled with less than 24 hours notice may be forfeited at Coach's discretion.
+
+## 6. Confidentiality and Intellectual Property
+
+Coach will keep Client's business information confidential and will not put Client's confidential data into any AI tool without Client's permission. Workflows, prompts and documents built for Client's business belong to Client. The course materials, frameworks and methods Coach brings remain the intellectual property of FromAItoBusiness.com and may not be redistributed.
+
+## 7. Dispute Resolution
+
+Any disputes arising under this Agreement will be resolved through good-faith negotiation first, followed by binding arbitration in accordance with the rules of the American Arbitration Association.
+
+## 8. Acknowledgment
+
+By signing below, Client acknowledges that they have read, understood, and agree to the terms of this Agreement.

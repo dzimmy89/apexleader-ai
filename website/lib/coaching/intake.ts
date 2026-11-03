@@ -95,7 +95,7 @@ export const INTAKE_FIELDS: IntakeField[] = [
 ];
 
 /** Weeks of coaching each package runs, used as the default timeline. */
-export const PACKAGE_WEEKS: Record<string, number> = { foundations: 4, mastery: 12, institutional: 26 };
+export const PACKAGE_WEEKS: Record<string, number> = { foundations: 4, mastery: 12, institutional: 26, build_launch: 16 };
 
 export function emptyForm(packageId?: string): IntakeForm {
   return {

@@ -44,6 +44,7 @@ export const DEFAULT_PACKAGE_PRICES: Record<string, number> = {
   foundations: 600,
   mastery: 1800,
   institutional: 7200,
+  build_launch: 2500,
 };
 
 export function effectiveCloseValue(

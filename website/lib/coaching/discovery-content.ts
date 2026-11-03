@@ -210,7 +210,7 @@ export function getInstitutionalApplicationEmailContent(args: {
   return { subject, html, text };
 }
 
-const PREP_BY_PACKAGE: Record<PackageId | "general", DiscoveryPrepContent> = {
+const PREP_BY_PACKAGE: Partial<Record<PackageId, DiscoveryPrepContent>> & { general: DiscoveryPrepContent } = {
   general: {
     headline: "Prepare for your discovery call",
     intro:

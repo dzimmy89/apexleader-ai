@@ -18,14 +18,16 @@ export const PAYMENT_TIMEZONE = "America/New_York";
 
 /** "manual": logged by the coach (bank transfer, wire, cash, an outside invoice). */
 export type PaymentMethod = "stripe" | "manual";
-export type PaymentPlanId = "full" | "3pay" | "6pay";
+export type PaymentPlanId = "full" | "2pay" | "3pay" | "6pay";
 
 export function asPaymentPlanId(value: unknown): PaymentPlanId {
-  return value === "3pay" || value === "6pay" ? value : "full";
+  return value === "2pay" || value === "3pay" || value === "6pay" ? value : "full";
 }
 
 export function planInstallmentCount(planId: PaymentPlanId): number {
   switch (planId) {
+    case "2pay":
+      return 2;
     case "3pay":
       return 3;
     case "6pay":
