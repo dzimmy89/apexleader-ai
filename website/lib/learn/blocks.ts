@@ -11,11 +11,19 @@ export interface CheckpointQuestion {
 export type LessonSegment =
   | { type: "markdown"; text: string }
   | { type: "callout"; kind: "key-concept" | "takeaways" | "warning" | "try-it"; text: string }
-  | { type: "infographic"; title: string; image: string; alt: string }
+  /** A figure. `image` is empty while the figure is still being made. */
+  | { type: "infographic"; id: string; title: string; image: string; alt: string }
+  /** A clip that is switched on (`status: ready`); paused or unwritten slots are dropped. */
+  | { type: "video"; id: string; kind: VideoKind; src: string; captions: string; poster: string; transcript: string }
+  /** A finished example for an exercise, closed by default; it holds its own blocks. */
+  | { type: "example"; title: string; segments: LessonSegment[] }
   | { type: "checkpoint"; questions: CheckpointQuestion[] }
   | { type: "interactive"; id: string; title: string }
   /** Extra work for 1-on-1 coaching clients; other readers see a short note instead. */
   | { type: "coached"; text: string };
+
+export type VideoKind = "overview" | "inline" | "exercise-setup" | "exercise-reveal";
+const VIDEO_KINDS = new Set<string>(["overview", "inline", "exercise-setup", "exercise-reveal"]);
 
 const CALLOUTS = new Set(["key-concept", "takeaways", "warning", "try-it"]);
 
@@ -79,9 +87,21 @@ export function splitBlocks(body: string): LessonSegment[] {
       continue;
     }
     const name = open[1]!;
+    // Blocks can hold blocks (an :::example holds its :::video), so match the closing ::: by depth.
     const inner: string[] = [];
     let j = i + 1;
-    for (; j < lines.length && lines[j]!.trim() !== ":::"; j++) inner.push(lines[j]!);
+    let depth = 0;
+    let innerFence = false;
+    for (; j < lines.length; j++) {
+      const l = lines[j]!;
+      if (/^\s*(```|~~~)/.test(l)) innerFence = !innerFence;
+      if (!innerFence && /^:::[a-z-]+\s*$/.test(l)) depth++;
+      else if (!innerFence && l.trim() === ":::") {
+        if (depth === 0) break;
+        depth--;
+      }
+      inner.push(l);
+    }
     i = j;
     flush();
     const text = inner.join("\n").trim();
@@ -89,7 +109,30 @@ export function splitBlocks(body: string): LessonSegment[] {
       segments.push({ type: "callout", kind: name as "key-concept", text });
     } else if (name === "infographic") {
       const f = fields(text);
-      if (f.image) segments.push({ type: "infographic", title: f.title || "", image: f.image, alt: f.alt || f.title || "" });
+      segments.push({
+        type: "infographic",
+        id: f.id || "",
+        title: f.title || "",
+        image: f.image || "",
+        alt: f.alt || f.title || "",
+      });
+    } else if (name === "video") {
+      const f = fields(text);
+      if (f.status === "ready" && f.src) {
+        segments.push({
+          type: "video",
+          id: f.id || "",
+          kind: (VIDEO_KINDS.has(f.kind || "") ? f.kind : "inline") as VideoKind,
+          src: f.src,
+          captions: f.captions || "",
+          poster: f.poster || "",
+          transcript: f.transcript || "",
+        });
+      }
+    } else if (name === "example") {
+      const lead = text.match(/^title:\s?(.*)\n?/);
+      const rest = lead ? text.slice(lead[0].length) : text;
+      segments.push({ type: "example", title: lead?.[1]?.trim() || "See an example result", segments: splitBlocks(rest) });
     } else if (name === "checkpoint") {
       const questions = parseCheckpoint(text);
       if (questions.length) segments.push({ type: "checkpoint", questions });
@@ -99,7 +142,7 @@ export function splitBlocks(body: string): LessonSegment[] {
       const f = fields(text);
       segments.push({ type: "interactive", id: f.id || "", title: f.title || "Interactive tool" });
     }
-    // :::video and unknown blocks are dropped.
+    // Unknown blocks are dropped.
   }
   flush();
   return segments;
@@ -136,13 +179,13 @@ export function sectionId(text: string): string {
 export function lessonSections(body: string): LessonSection[] {
   const sections: LessonSection[] = [];
   let fence = false;
-  let block = false;
+  let depth = 0;
   for (const line of body.split("\n")) {
     if (/^\s*(```|~~~)/.test(line)) fence = !fence;
     if (fence) continue;
-    if (/^:::([a-z-]+)\s*$/.test(line)) block = true;
-    else if (line.trim() === ":::") block = false;
-    if (block) continue;
+    if (/^:::([a-z-]+)\s*$/.test(line)) depth++;
+    else if (line.trim() === ":::") depth = Math.max(0, depth - 1);
+    if (depth > 0) continue;
     const m = line.match(/^(##|###)\s+(.+?)\s*#*\s*$/);
     if (!m) continue;
     const title = plainHeading(m[2]!);
