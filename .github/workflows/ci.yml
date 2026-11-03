@@ -87,7 +87,7 @@ jobs:
       - name: Crypto receive addresses match the pinned copies
         run: |
           python3 -m pip install --quiet pycryptodome
-          python3 -I scripts/test-crypto-addresses.py
+          python3 scripts/test-crypto-addresses.py
 
       - name: Courses and coaching tests
         run: |
