@@ -1,0 +1,235 @@
+{
+ "inputs": {
+  "aloneN": 7,
+  "aloneMin": 190,
+  "draftN": 9,
+  "draftMin": 310,
+  "onlyN": 9,
+  "onlyMin": 260,
+  "hireMin": 75
+ },
+ "values": {
+  "totalN": "aloneN + draftN + onlyN",
+  "totalMin": "aloneMin + draftMin + onlyMin"
+ },
+ "shots": [
+  {
+   "id": "answer",
+   "type": "reveal",
+   "question": {
+    "clip": "opc-ex1-setup",
+    "shot": "ask"
+   },
+   "answers": [
+    {
+     "text": "Agent drafts, {draftMin|0} min",
+     "at": "L0:three"
+    }
+   ]
+  },
+  {
+   "id": "week",
+   "type": "ledger",
+   "from": "L1",
+   "kicker": "Groomer Books · example numbers",
+   "title": "How the example week came out",
+   "grid": {
+    "columns": [
+     {
+      "text": "Pile",
+      "w": "1.6fr"
+     },
+     {
+      "text": "Tasks",
+      "w": "0.45fr",
+      "num": true
+     },
+     {
+      "text": "Minutes",
+      "w": "0.6fr",
+      "num": true
+     },
+     {
+      "text": "Like",
+      "w": "1.7fr",
+      "sub": true
+     }
+    ],
+    "rows": [
+     {
+      "cells": [
+       "Agent alone",
+       {
+        "text": "{aloneN|0}",
+        "at": "L2:seven"
+       },
+       {
+        "text": "{aloneMin|0}",
+        "at": "L2:hundred"
+       },
+       {
+        "text": "Researching competitors, sorting receipts",
+        "at": "L2:like"
+       }
+      ],
+      "at": "L2:agent"
+     },
+     {
+      "cells": [
+       "Agent drafts, you approve",
+       {
+        "text": "{draftN|0}",
+        "at": "L3:nine"
+       },
+       {
+        "text": "{draftMin|0}",
+        "at": "L3:three"
+       },
+       {
+        "text": "Client emails, social posts, invoice reminders",
+        "at": "L3:including"
+       }
+      ],
+      "at": "L3:agent"
+     },
+     {
+      "cells": [
+       "Only you",
+       {
+        "text": "{onlyN|0}",
+        "at": "L4:nine"
+       },
+       {
+        "text": "{onlyMin|0}",
+        "at": "L4:two"
+       },
+       {
+        "text": "Reconciling the bank feed, paying bills, signing a new client",
+        "at": "L4:like"
+       }
+      ],
+      "at": "L4:only"
+     }
+    ],
+    "total": {
+     "cells": [
+      "All tasks",
+      "{totalN|0}",
+      "{totalMin|0}",
+      ""
+     ],
+     "at": "L1:twentyfive"
+    }
+   },
+   "hero": {
+    "row": 1
+   }
+  },
+  {
+   "id": "money",
+   "type": "story-cards",
+   "from": "L5",
+   "kicker": "Notice where money went",
+   "cards": [
+    {
+     "icon": "landmark",
+     "label": "Reconciling the bank feed",
+     "status": "Only you",
+     "statusTone": "sig",
+     "at": "L5:reconciling"
+    },
+    {
+     "icon": "banknote",
+     "label": "Paying bills",
+     "status": "Only you",
+     "statusTone": "sig",
+     "at": "L5:paying"
+    }
+   ],
+   "hero": {
+    "card": [
+     0,
+     1
+    ],
+    "at": "L5:only"
+   }
+  },
+  {
+   "id": "hire",
+   "type": "figure",
+   "from": "L6",
+   "src": "public/learn/figures/one-person-company/exercise-01-fig-2.webp",
+   "title": "The first hire",
+   "regions": [
+    {
+     "rect": [
+      0.035,
+      0.18,
+      0.93,
+      0.375
+     ],
+     "at": "L6:middle",
+     "label": "The biggest recurring job in the middle pile"
+    },
+    {
+     "rect": [
+      0.035,
+      0.79,
+      0.93,
+      0.145
+     ],
+     "at": "L6:seventyfive",
+     "label": "Overdue-invoice reminders"
+    }
+   ],
+   "hero": {
+    "region": 1
+   }
+  },
+  {
+   "id": "brief",
+   "type": "story-cards",
+   "from": "L7",
+   "cardW": 1120,
+   "equal": false,
+   "cards": [
+    {
+     "agent": true,
+     "icon": "mail",
+     "label": "Invoice reminder agent",
+     "status": "Asks first",
+     "statusTone": "sig",
+     "sub": "The brief",
+     "at": "L7:brief",
+     "rows": [
+      {
+       "text": "Read access to the invoicing app",
+       "at": "L7:read"
+      },
+      {
+       "text": "Drafts reminders",
+       "at": "L7:draft"
+      },
+      {
+       "text": "Asks before anything sends",
+       "at": "L7:ask"
+      }
+     ]
+    }
+   ],
+   "hero": {
+    "card": 0,
+    "at": "L7:ask"
+   },
+   "notes": [
+    {
+     "text": "Your first agent job",
+     "icon": "check",
+     "at": "L7:thats",
+     "screen": "top",
+     "tone": "signal"
+    }
+   ]
+  }
+ ]
+}

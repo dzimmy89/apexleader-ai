@@ -1,0 +1,179 @@
+{
+ "inputs": {},
+ "shots": [
+  {
+   "id": "hook",
+   "type": "desk",
+   "items": [
+    {
+     "id": "chat",
+     "kind": "card",
+     "x": 170,
+     "y": 300,
+     "w": 760,
+     "icon": "message-square",
+     "title": "Chat assistant",
+     "status": "Stopped",
+     "sub": "Stops when you stop typing"
+    },
+    {
+     "id": "always",
+     "kind": "agent",
+     "x": 990,
+     "y": 300,
+     "w": 760,
+     "icon": "moon",
+     "name": "Always-on agent",
+     "status": "Working",
+     "statusTone": "sig",
+     "lines": [
+      {
+       "text": "Keeps working while you sleep",
+       "at": "L0:keep"
+      }
+     ],
+     "at": "L0:others"
+    }
+   ],
+   "hero": {
+    "move": "light",
+    "target": "always",
+    "at": "L0:sleep"
+   },
+   "camera": "push-in"
+  },
+  {
+   "id": "title",
+   "type": "chapter-card",
+   "from": "L1",
+   "over": "hook",
+   "kicker": "Agents as staff",
+   "title": "Three kinds of AI help",
+   "sub": "Here's how to tell them apart",
+   "subAt": "L1:tell"
+  },
+  {
+   "id": "kinds",
+   "type": "story-cards",
+   "from": "L2",
+   "cards": [
+    {
+     "icon": "message-square",
+     "label": "Chat assistant",
+     "sub": "Answers when you ask, then stops",
+     "at": "L2:chat",
+     "rows": [
+      {
+       "text": "Claude, ChatGPT, Gemini",
+       "at": "L2:claude"
+      },
+      {
+       "text": "Thinking, drafting, research",
+       "at": "L2:thinking"
+      }
+     ]
+    },
+    {
+     "icon": "monitor",
+     "label": "Desktop agent",
+     "sub": "Works on your computer or your files",
+     "at": "L3:desktop",
+     "rows": [
+      {
+       "text": "Claude Cowork, Codex, Cursor",
+       "at": "L3:claude"
+      },
+      {
+       "text": "Spreadsheets, sites, code",
+       "at": "L3:spreadsheets"
+      },
+      {
+       "text": "While you watch, or step away",
+       "at": "L3:watch"
+      }
+     ]
+    },
+    {
+     "icon": "cloud",
+     "label": "Always-on agent",
+     "sub": "Runs on its own cloud computer",
+     "at": "L4:alwayson",
+     "rows": [
+      {
+       "text": "Checks your apps on a schedule",
+       "at": "L4:schedule"
+      },
+      {
+       "text": "Comes to you first",
+       "at": "L4:first"
+      }
+     ]
+    }
+   ],
+   "hero": {
+    "card": 2
+   },
+   "camera": "dolly-right"
+  },
+  {
+   "id": "always",
+   "type": "story-cards",
+   "from": "L5",
+   "kicker": "Always-on agents, in 2026",
+   "cards": [
+    {
+     "agent": true,
+     "icon": "globe",
+     "label": "Grok Bot",
+     "sub": "Logs in to your web apps with its own browser",
+     "at": "L5:grok"
+    },
+    {
+     "agent": true,
+     "icon": "list-checks",
+     "label": "A dot in ChatGPT",
+     "sub": "Follows custom rules about what it may do alone",
+     "at": "L5:dot"
+    },
+    {
+     "agent": true,
+     "icon": "sunrise",
+     "label": "Claude Duet",
+     "sub": "Sends a morning brief",
+     "at": "L5:claude",
+     "rows": [
+      {
+       "text": "Asks before it sends, pays, signs or deletes",
+       "at": "L5:asks"
+      }
+     ]
+    }
+   ],
+   "hero": {
+    "card": 2,
+    "at": "L5:asks"
+   },
+   "camera": "push-in"
+  },
+  {
+   "id": "pattern",
+   "type": "rule",
+   "from": "L6",
+   "kicker": "Still preview or beta",
+   "kickerIcon": "flask-conical",
+   "statement": "Build on the pattern, not on any one menu.",
+   "highlight": {
+    "text": "the pattern",
+    "at": "L6:pattern"
+   },
+   "notes": [
+    {
+     "text": "Next: how to manage them",
+     "icon": "arrow-right",
+     "at": "L7:next",
+     "screen": "low"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,214 @@
+{
+ "opc-l1-overview": {
+  "shape": "overview",
+  "chapter": "The One-Person Company · Lesson 1 · Agents as staff",
+  "lead": 0.5,
+  "tail": 2.5,
+  "lines": [
+   [
+    "A founder closes the laptop at six. By morning, three agents have sorted the inbox, drafted two client emails and left a short report, and nothing went out without a yes.",
+    0.35
+   ],
+   [
+    "This is The One-Person Company, lesson one: agents as staff.",
+    0.35
+   ],
+   [
+    "In this lesson: the three kinds of AI help, what changed in 2026, and the four things every agent you hire needs.",
+    0.35
+   ],
+   [
+    "Chat assistants answer when you ask. Desktop agents work on your files while you watch or step away.",
+    0.35
+   ],
+   [
+    "The new group is always-on agents. They run on their own cloud computer, check your apps on a schedule, and message you first.",
+    0.35
+   ],
+   [
+    "Three of them launched in a few months: Grok Bot in August, OpenAI dots in September, and Claude Duet in October 2026.",
+    0.35
+   ],
+   [
+    "Tools that capable change the founder's job. You stop opening apps and start managing staff.",
+    0.35
+   ],
+   [
+    "Every agent gets a brief, its own access, an approval rule and a regular review.",
+    0.35
+   ],
+   [
+    "And one rule sits over all of it: if a task leaves the business or touches money, a human clicks the final button.",
+    0.35
+   ],
+   [
+    "First, let's meet the three kinds of AI help.",
+    0.0
+   ]
+  ]
+ },
+ "opc-l1-three-kinds": {
+  "shape": "inline",
+  "chapter": "Lesson 1 · Three kinds of AI help",
+  "lead": 0.5,
+  "tail": 2.5,
+  "lines": [
+   [
+    "Some AI tools stop when you stop typing. Others keep working while you sleep.",
+    0.35
+   ],
+   [
+    "Here's how to tell them apart.",
+    0.35
+   ],
+   [
+    "A chat assistant, like Claude, ChatGPT or Gemini, answers when you ask, and then it stops. It's best for thinking, drafting and research.",
+    0.35
+   ],
+   [
+    "A desktop agent, like Claude Cowork, Codex or Cursor, works on your computer or your files. It builds spreadsheets, sites and code while you watch, or while you step away for a while.",
+    0.35
+   ],
+   [
+    "An always-on agent runs on its own cloud computer. It checks your apps on a schedule and comes to you first.",
+    0.35
+   ],
+   [
+    "Grok Bot can log in to your web apps with its own browser. A dot in ChatGPT follows custom rules about what it may do alone. Claude Duet sends a morning brief and asks before it sends, pays, signs or deletes anything.",
+    0.35
+   ],
+   [
+    "Parts of all three are still preview or beta, so build on the pattern, not on any one menu.",
+    0.35
+   ],
+   [
+    "Next: how to manage them.",
+    0.0
+   ]
+  ]
+ },
+ "opc-l1-sort-the-work": {
+  "shape": "inline",
+  "chapter": "Lesson 1 · Sort the work",
+  "lead": 0.5,
+  "tail": 2.5,
+  "lines": [
+   [
+    "Before you hire a single agent, there's one question to ask about every task in your week: who clicks the final button?",
+    0.35
+   ],
+   [
+    "Sort your work into three piles.",
+    0.35
+   ],
+   [
+    "Agent alone: research, summaries, sorting, and drafts saved as drafts.",
+    0.35
+   ],
+   [
+    "Agent drafts, you approve: customer emails, social posts, proposals and invoices, anything with your name on it.",
+    0.35
+   ],
+   [
+    "Only you: moving money, signing contracts, tax and legal calls.",
+    0.35
+   ],
+   [
+    "The test is simple. If a mistake would leave your business or touch money, a human clicks the final button. That holds even when a product allows more.",
+    0.35
+   ],
+   [
+    "Claude Duet, for example, can check out with a one-time virtual card after your approval. In this course, the house rule is stricter: agents never move money.",
+    0.35
+   ],
+   [
+    "Look at the middle pile. That's where your first hire comes from, and in the exercise you'll build that map from your own week.",
+    0.0
+   ]
+  ]
+ },
+ "opc-ex1-setup": {
+  "shape": "exercise-setup",
+  "chapter": "Exercise 1 · Your delegation map",
+  "lead": 0.5,
+  "tail": 4.0,
+  "lines": [
+   [
+    "Twenty-five tasks, one week, and one founder doing all of them. Time to find out which ones you can hand off.",
+    0.35
+   ],
+   [
+    "In this exercise you'll build a delegation map.",
+    0.35
+   ],
+   [
+    "Dump last week's work, one task per line with rough minutes, at least twenty lines.",
+    0.35
+   ],
+   [
+    "If you don't have a business yet, use Groomer Books, a bookkeeping and invoicing service for independent dog groomers.",
+    0.35
+   ],
+   [
+    "Then sort every task into three piles: agent alone, agent drafts and you approve, or only you.",
+    0.35
+   ],
+   [
+    "Be strict. If it leaves the business or touches money, it can't be agent alone.",
+    0.35
+   ],
+   [
+    "Total the minutes in each pile. Then pick the recurring task with the most minutes from the middle pile, and write it as a brief.",
+    0.35
+   ],
+   [
+    "So: which pile holds the most of your week, and what's your first hire?",
+    0.35
+   ],
+   [
+    "Pause here and build your map.",
+    0.0
+   ]
+  ]
+ },
+ "opc-ex1-reveal": {
+  "shape": "exercise-reveal",
+  "chapter": "Exercise 1 · An example result",
+  "lead": 0.5,
+  "tail": 2.5,
+  "lines": [
+   [
+    "For Groomer Books, the biggest pile is the middle one: three hundred and ten minutes a week of work an agent can draft and the founder approves.",
+    0.35
+   ],
+   [
+    "Here's how the example week came out, with example numbers. Twenty-five tasks, seven hundred and sixty minutes.",
+    0.35
+   ],
+   [
+    "Agent alone: seven tasks, one hundred and ninety minutes, like researching competitors and sorting receipts.",
+    0.35
+   ],
+   [
+    "Agent drafts, you approve: nine tasks, three hundred and ten minutes, including client emails, social posts and invoice reminders.",
+    0.35
+   ],
+   [
+    "Only you: nine tasks, two hundred and sixty minutes, like reconciling the bank feed, paying bills and signing a new client.",
+    0.35
+   ],
+   [
+    "Notice where money went. Reconciling the bank feed and paying bills sit in only you.",
+    0.35
+   ],
+   [
+    "The first hire is the biggest recurring job in the middle pile: overdue-invoice reminders, seventy-five minutes a week.",
+    0.35
+   ],
+   [
+    "The brief gives the agent read access to the invoicing app, lets it draft reminders, and makes it ask before anything sends. That's your first agent job.",
+    0.0
+   ]
+  ]
+ }
+}

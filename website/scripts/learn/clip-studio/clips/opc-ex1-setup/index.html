@@ -1,0 +1,23 @@
+<!doctype html>
+<!-- Desk clip page: identical for every clip (node clips/kit/kit.mjs init <clip> writes it). The clip is its shots.json
+     plus its scripts.json entry; ../desk/player.mjs reads ./shots.json, ./timeline.json, ./words.json, ./beats.json and
+     exposes window.renderAt(t) for render.mjs. Served from website/ (npm run serve). See clips/desk/SHOTS.md. -->
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="../desk/desk.css"></head>
+<body><div id="stage">
+<div id="world">
+ <div id="desk"></div>
+ <!-- the founder's desk, seen from above, drawn in faint lines at the edges: a notebook and pen, a mug, a phone, a plant -->
+ <svg id="props" viewBox="-480 -270 2880 1620">
+  <g transform="translate(-150 -40) rotate(-7)"><rect class="fillp" x="0" y="0" width="330" height="430" rx="14"/><path d="M40 70h250M40 120h250M40 170h250M40 220h250M40 270h190M40 320h220"/><path d="M20 0v430"/></g>
+  <g transform="translate(250 -30) rotate(28)"><path d="M0 0h230M0 0l-22 6l22 6M230 0v12H0"/></g>
+  <g transform="translate(1930 120)"><circle class="fillp" r="92"/><circle r="70"/><path d="M90 -26c52 -6 52 58 0 52"/></g>
+  <g transform="translate(1985 820) rotate(12)"><rect class="fillp" x="0" y="0" width="210" height="400" rx="34"/><rect x="18" y="40" width="174" height="300" rx="10"/><path d="M85 22h40"/></g>
+  <g transform="translate(-200 900)"><circle class="fillp" r="120"/><path d="M0 0c-40-60-20-110 0-120M0 0c50-40 90-40 110-20M0 0c-60 10-100-10-110-40M0 0c30 50 30 90 10 110M0 0c-40 50-80 60-100 50"/></g>
+ </svg>
+ <div id="shots"></div>
+</div>
+<div id="hud"></div>
+<div id="cap"></div>
+</div>
+<script type="module" src="../desk/player.mjs"></script>
+</body></html>
