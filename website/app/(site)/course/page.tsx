@@ -15,7 +15,7 @@ const TOOL_COURSES = (getStage("tool-mastery")?.courseIds ?? []).map((id) => get
 export const metadata: Metadata = {
   title: "The course",
   description:
-    "Eighteen courses on building and running a one-person business with AI: Claude, Claude Duet, OpenAI Dots, Grok Bot, Gemini, Cursor, Codex, T3 Code, agent skills and GitHub, with full tracks on SEO, AI marketing, sales and accounting.",
+    "Nineteen courses on building and running a one-person business with AI: Claude, Claude Duet, OpenAI Dots, Grok Bot, Gemini, Cursor, Codex, T3 Code, agent skills, GitHub and an agent build line, with full tracks on SEO, AI marketing, sales and accounting.",
   alternates: { canonical: "/course" },
 };
 

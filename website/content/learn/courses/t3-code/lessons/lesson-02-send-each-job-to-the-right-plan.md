@@ -166,3 +166,4 @@ Why: Switching mid-thread is lossy. That's why every handoff ends with a short n
 - [A deep dive into T3 Code](https://flaviocopes.com/t3-code/) - model switching, `delegate_task` and plan mode
 - [Codex usage limits and pricing](https://www.developersdigest.tech/blog/codex-usage-limits-pricing-2026) - ChatGPT plans and Codex windows, updated October 2026
 - [Cursor plan changes](https://pricingsaas.com/companies/cursor/diffs/2026W43) - the October 19, 2026 plan rebuild
+- [The Agent Build Line, Lesson 4](/university/agent-build-line) - run Claude Code and Codex side by side in worktrees with Orca

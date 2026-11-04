@@ -122,3 +122,4 @@ Why: Adding the domain at the host before pointing DNS prevents someone else fro
 - [Verifying your custom domain for GitHub Pages](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/verifying-your-custom-domain-for-github-pages) - the TXT record that protects your domain
 - [Securing your GitHub Pages site with HTTPS](https://docs.github.com/en/pages/getting-started-with-github-pages/securing-your-github-pages-site-with-https) - Enforce HTTPS, certificate troubleshooting, mixed content
 - [Cloudflare Pages custom domains](https://developers.cloudflare.com/pages/platform/custom-domains/) - apex versus subdomain setup on Cloudflare
+- [The Agent Build Line, Lesson 3](/university/agent-build-line) - a Vercel preview for every pull request, with sandbox keys

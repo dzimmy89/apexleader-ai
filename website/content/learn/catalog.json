@@ -53,6 +53,7 @@
       "courseIds": [
         "validate-the-idea",
         "build-product-and-site",
+        "agent-build-line",
         "brand-in-a-day"
       ]
     },
@@ -710,10 +711,10 @@
     "build-product-and-site": {
       "id": "build-product-and-site",
       "title": "Build the Product and the Site",
-      "description": "Write a plain-English spec, have a coding agent build it, keep it in GitHub and put it live on your own domain.",
+      "description": "Write a plain-English spec, have a coding agent build it, keep it in GitHub and put it live on your own domain. Then design with agents: four versions of every screen in Paper, annotated references, and a design review before any code.",
       "icon": "🚀",
-      "estimatedHours": 4.2,
-      "lessonCount": 5,
+      "estimatedHours": 8.1,
+      "lessonCount": 8,
       "stageId": "build-the-business",
       "stageNumber": 3,
       "modules": [
@@ -761,6 +762,104 @@
               "minutes": 14,
               "exercise": "exercise-05-deploy-it-and-connect-your-domain",
               "exerciseMinutes": 40
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "title": "Design with agents",
+          "quiz": "quiz-module-02",
+          "lessons": [
+            {
+              "number": 6,
+              "title": "Four Versions of Every Screen",
+              "slug": "lesson-06-four-versions-of-every-screen",
+              "minutes": 14,
+              "exercise": "exercise-06-four-versions-of-every-screen",
+              "exerciseMinutes": 50
+            },
+            {
+              "number": 7,
+              "title": "\"Make It Feel Like This\"",
+              "slug": "lesson-07-make-it-feel-like-this",
+              "minutes": 13,
+              "exercise": "exercise-07-make-it-feel-like-this",
+              "exerciseMinutes": 45
+            },
+            {
+              "number": 8,
+              "title": "Design Review Before Code",
+              "slug": "lesson-08-design-review-before-code",
+              "minutes": 13,
+              "exercise": "exercise-08-design-review-before-code",
+              "exerciseMinutes": 60
+            }
+          ]
+        }
+      ]
+    },
+    "agent-build-line": {
+      "id": "agent-build-line",
+      "title": "The Agent Build Line: Agents That Build, Bill and Ship",
+      "description": "Give agents a database and billing on safe copies, ship every change as a pull request with a preview link, run three agents at once in worktrees, cut your token use and let agents work overnight while you keep the merge button.",
+      "icon": "🏭",
+      "estimatedHours": 7.8,
+      "lessonCount": 6,
+      "stageId": "build-the-business",
+      "stageNumber": 3,
+      "modules": [
+        {
+          "number": 1,
+          "title": "Build with a crew of agents",
+          "quiz": "quiz-module-01",
+          "lessons": [
+            {
+              "number": 1,
+              "title": "Give Your Agent a Database",
+              "slug": "lesson-01-give-your-agent-a-database",
+              "minutes": 14,
+              "exercise": "exercise-01-give-your-agent-a-database",
+              "exerciseMinutes": 50
+            },
+            {
+              "number": 2,
+              "title": "Billing With Stripe and a Read-Only Key",
+              "slug": "lesson-02-billing-with-stripe-and-a-read-only-key",
+              "minutes": 14,
+              "exercise": "exercise-02-billing-with-stripe-and-a-read-only-key",
+              "exerciseMinutes": 50
+            },
+            {
+              "number": 3,
+              "title": "From Pull Request to Preview",
+              "slug": "lesson-03-from-pull-request-to-preview",
+              "minutes": 15,
+              "exercise": "exercise-03-from-pull-request-to-preview",
+              "exerciseMinutes": 60
+            },
+            {
+              "number": 4,
+              "title": "Three Agents, Three Worktrees",
+              "slug": "lesson-04-three-agents-three-worktrees",
+              "minutes": 14,
+              "exercise": "exercise-04-three-agents-three-worktrees",
+              "exerciseMinutes": 60
+            },
+            {
+              "number": 5,
+              "title": "Spend Fewer Tokens",
+              "slug": "lesson-05-spend-fewer-tokens",
+              "minutes": 14,
+              "exercise": "exercise-05-spend-fewer-tokens",
+              "exerciseMinutes": 60
+            },
+            {
+              "number": 6,
+              "title": "Overnight Loops and the Morning Review",
+              "slug": "lesson-06-overnight-loops-and-the-morning-review",
+              "minutes": 14,
+              "exercise": "exercise-06-overnight-loops-and-the-morning-review",
+              "exerciseMinutes": 50
             }
           ]
         }

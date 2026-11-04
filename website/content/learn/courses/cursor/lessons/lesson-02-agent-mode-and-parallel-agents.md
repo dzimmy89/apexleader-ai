@@ -128,3 +128,4 @@ Why: Separate worktrees keep the agents from overwriting each other's edits to t
 - [Cursor 3 ditches the classic IDE layout](https://the-decoder.com/new-cursor-3-ditches-the-classic-ide-layout-for-an-agent-first-interface-built-around-parallel-ai-fleets/) - an independent look at local-to-cloud handoff and the agent sidebar
 - [Cursor changelog](https://cursor.com/changelog) - recent additions including Projects
 - [T3 Code](https://t3.codes/) - run Cursor, Claude Code and Codex agents from one window
+- [The Agent Build Line, Lesson 4](/university/agent-build-line) - three agents in three worktrees, and how to merge them one at a time

@@ -1,0 +1,23 @@
+<!doctype html><meta charset="utf-8">
+<!-- Figure source for the Agent Build Line course. -->
+<meta name="out" content="public/learn/figures/agent-build-line/lesson-04-fig-1.webp">
+<link rel="stylesheet" href="../../../../scripts/learn/infographics/brand.css">
+<style>
+  .paper { display: flex; gap: 10px; }
+  .paper .label, .paper .icon { color: var(--paper-text); }
+  .arrow { font-size: 30px; color: var(--muted); }
+  .row { flex: 1; display: grid; grid-template-columns: 0.9fr auto 1.8fr auto 1fr; gap: 12px; align-items: center; }
+  .repo { flex-direction: column; gap: 8px; align-items: flex-start; }
+  .repo .icon, .wt .icon { width: 34px; height: 34px; color: var(--muted); }
+  .stack { display: flex; flex-direction: column; gap: 12px; }
+  .wt { align-items: center; justify-content: space-between; padding: 10px 14px; }
+  .wt .label { font-size: 26px; }
+  .wt .small { font-size: 26px; }
+  .wt .pill { color: var(--signal); font-size: 26px; padding: 6px 10px; }
+  .out { flex-direction: column; gap: 8px; align-self: stretch; justify-content: center; }
+
+</style>
+<div class="fig wide">
+  <span class="sys">One repo, three worktrees</span>
+  <div class="row"><div class="card repo"><!-- git-fork --><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><path d="M18 9v2c0 .6-.4 1-1 1H7c-.6 0-1-.4-1-1V9"/><path d="M12 12v3"/></svg><span class="label">rolling-ledger-site</span></div><span class="arrow">→</span><div class="stack"><div class="card agent wt"><div><div class="label">receipt-upload</div><div class="small">Codex</div></div><span class="pill">PR</span></div><div class="card agent wt"><div><div class="label">monthly-summary</div><div class="small">Claude Code</div></div><span class="pill">PR</span></div><div class="card agent wt"><div><div class="label">portal-tests</div><div class="small">Claude Code</div></div><span class="pill">PR</span></div></div><span class="arrow">→</span><div class="paper out"><span class="label">You review three pull requests</span></div></div>
+</div>
