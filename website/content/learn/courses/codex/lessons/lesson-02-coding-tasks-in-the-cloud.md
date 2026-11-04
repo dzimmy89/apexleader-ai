@@ -37,7 +37,7 @@ When ChatGPT asks to connect to GitHub, grant access to the specific repositorie
 An environment is the saved recipe for the workspace each cloud task gets. Per OpenAI's Codex Cloud docs:
 
 1. In ChatGPT on the web or the desktop app, choose **Work in**, then **Cloud**, then **Select environment** to create a new one.
-2. Select the repository, for example `groomer-books-site`.
+2. Select the repository, for example `rolling-ledger-site`.
 3. Codex inspects the repository, installs the dependencies and tools it needs, and tests that the workflow runs.
 4. Review the setup and test results, save, and select **Publish**. Wait for "Environment published."
 
@@ -58,7 +58,7 @@ A good rule for a founder: a website or internal-tool environment should need no
 Each task gets a fresh workspace from the environment, so you can send several at once without them colliding. Write each like a work ticket:
 
 ```text
-Repository: groomer-books-site
+Repository: rolling-ledger-site
 Task: Add an FAQ section after "How it works" using the questions and
 answers in content/faq.md, word for word.
 Rules: Follow AGENTS.md. Plain HTML and CSS. Don't change other sections.

@@ -28,7 +28,7 @@ Each Project has three parts:
 
 | Part | What it is | Founder example |
 | --- | --- | --- |
-| Instructions | Standing orders Claude follows in every chat in the Project | "You are the strategist for Groomer Books. Always write in our voice. Never give tax advice." |
+| Instructions | Standing orders Claude follows in every chat in the Project | "You are the strategist for Rolling Ledger. Always write in our voice. Never give tax advice." |
 | Knowledge | Files and text Claude uses as background | Founder brief, price list, customer interview notes, brand voice guide |
 | Chats | The conversations you have inside the Project | "Plan the referral program," "Draft the welcome email" |
 
@@ -51,8 +51,8 @@ If you have the Google Drive connector turned on (Lesson 3), you can add Drive f
 Project instructions are the most valuable 300 words you will write this month. Make them specific and testable. Here is a strong starting set for a "Company HQ" Project:
 
 ```text
-You are the chief of staff and strategist for Groomer Books, a monthly
-bookkeeping service for independent dog grooming salons in the US.
+You are the chief of staff and strategist for Rolling Ledger, a monthly
+bookkeeping service for independent food trucks in the US.
 
 Always:
 - Read the founder brief and price list in project knowledge before answering.

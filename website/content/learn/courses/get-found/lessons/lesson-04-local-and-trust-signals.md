@@ -39,7 +39,7 @@ Large companies get trust for free: everyone already knows them. A one-person co
 | Your business | Eligible? | What to do |
 |---|---|---|
 | Shop, studio or office customers visit | Yes | List your address and hours |
-| You travel to customers, such as a mobile groomer | Yes, as a service-area business | Hide your home address; list the areas you serve |
+| You travel to customers, such as a food truck that parks in different spots | Yes, as a service-area business | Hide your home address; list the areas you serve |
 | Online only, such as software or a course | No | Skip it. Put your effort into reviews on the platforms your buyers use and into Lesson 11's mentions |
 
 If you're eligible, fill in everything: the right primary category, services, hours, photos of real work, and a description in your own words. Add **Bing Places**, which can import from Google.
@@ -60,7 +60,7 @@ status: paused
 src: /learn/video/get-found/gf-l4-business-profile.mp4
 captions: /learn/video/get-found/gf-l4-business-profile.vtt
 poster: /learn/video/get-found/gf-l4-business-profile.jpg
-transcript: Here's a service-area profile for a mobile groomer, one of Groomer Books' customers. They travel to clients, so they're eligible, but the home address is hidden and the service area lists three towns. The primary category is "Pet groomer", the services list matches the website, and the photos are real before-and-after shots. Groomer Books itself is software sold online, so it isn't eligible, and puts its effort into reviews and mentions instead.
+transcript: Here's a service-area profile for a food truck, one of Rolling Ledger's customers. It parks in different spots, so it's eligible, but the home address is hidden and the service area lists three towns. The primary category is "Food truck", the services list matches the website, and the photos are real shots of the truck and menu. Rolling Ledger itself is software sold online, so it isn't eligible, and puts its effort into reviews and mentions instead.
 :::
 
 ## Reviews, the honest way
@@ -106,7 +106,7 @@ An author page proves experience. It's linked from every article you write and m
 id: fig-2
 type: comparison
 title: A thin about page versus a strong one
-shows: Two page cards side by side. Thin: "We're passionate about helping businesses grow", a stock photo, no names. Strong: a real photo, "I ran the books for 40 grooming salons over 9 years", the reason the business exists, links to official profiles, a contact line, and a "Last updated" date. Checkmarks beside each strong element.
+shows: Two page cards side by side. Thin: "We're passionate about helping businesses grow", a stock photo, no names. Strong: a real photo, "I ran the books for 40 food trucks over 9 years", the reason the business exists, links to official profiles, a contact line, and a "Last updated" date. Checkmarks beside each strong element.
 data: none
 alt: A thin about page says nothing checkable. A strong one has a real photo, specific experience, the reason for the business, links to official profiles and a way to get in touch.
 :::
@@ -118,7 +118,7 @@ status: paused
 src: /learn/video/get-found/gf-l4-author-page.mp4
 captions: /learn/video/get-found/gf-l4-author-page.vtt
 poster: /learn/video/get-found/gf-l4-author-page.jpg
-transcript: Here's the Groomer Books founder page before and after. Before, it said "we're passionate about small business". After, it says she kept the books for forty grooming salons over nine years, shows her photo and links her LinkedIn. Claude drafted it from a fact sheet she wrote, and flagged one claim she couldn't prove, which she removed. Every article now links here as its author.
+transcript: Here's the Rolling Ledger founder page before and after. Before, it said "we're passionate about small business". After, it says she kept the books for forty food trucks over nine years, shows her photo and links her LinkedIn. Claude drafted it from a fact sheet she wrote, and flagged one claim she couldn't prove, which she removed. Every article now links here as its author.
 :::
 
 :::warning

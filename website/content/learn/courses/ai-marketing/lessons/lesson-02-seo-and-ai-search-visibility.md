@@ -57,7 +57,7 @@ Assistants cite pages that answer one question clearly, early and in text. Googl
 
 An answer page has a shape:
 
-1. **The question as the title**, in the customer's words: "Do mobile dog groomers need to track mileage?"
+1. **The question as the title**, in the customer's words: "Do food truck owners need to track mileage?"
 2. **A two or three sentence direct answer** at the top.
 3. **The detail**: steps, a short table, an example with real numbers you can stand behind.
 4. **Who wrote it and why they know**: your name, your experience, the date it was last checked.
@@ -79,7 +79,7 @@ Add one answer page a week to your content calendar from Lesson 1. Repurpose eac
 Assistants lean on sources they already trust: review sites, industry directories, partner pages, podcasts, community threads and news coverage. A mention there often matters as much as your own page. Practical moves for a one-person company:
 
 - Claim and complete your Google Business Profile and Bing Places listing, if you serve customers locally or by region.
-- Get listed in the two or three directories your customers actually use (for Groomer Books, grooming associations and their vendor lists).
+- Get listed in the two or three directories your customers actually use (for Rolling Ledger, food truck associations and their vendor lists).
 - Ask happy customers for reviews on the platform your buyers check.
 - Offer to answer questions on a niche podcast or newsletter. Bring one specific, quotable idea.
 - Keep your name, description and offer consistent everywhere, so assistants connect the mentions to you.

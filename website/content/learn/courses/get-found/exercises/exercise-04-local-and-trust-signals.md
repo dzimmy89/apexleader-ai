@@ -79,7 +79,7 @@ Why: Trust signals only work if they're true and checkable. A vague or false cla
 :::example
 title: See an example result
 
-Groomer Books found 9 profiles, and 4 had an old tagline from before the founder narrowed the business to groomers. She fixed 3 herself and asked one directory to update its listing. Groomer Books is software sold online, so it isn't eligible for a Business Profile. Five review requests went out and 2 reviews came in within a week. The author page says she kept the books for 40 grooming salons over 9 years, links her LinkedIn, and is marked up as a Person.
+Rolling Ledger found 9 profiles, and 4 had an old tagline from before the founder narrowed the business to food truck owners. She fixed 3 herself and asked one directory to update its listing. Rolling Ledger is software sold online, so it isn't eligible for a Business Profile. Five review requests went out and 2 reviews came in within a week. The author page says she kept the books for 40 food trucks over 9 years, links her LinkedIn, and is marked up as a Person.
 
 :::video
 id: gf-ex4-reveal
@@ -88,7 +88,7 @@ status: paused
 src: /learn/video/get-found/gf-ex4-reveal.mp4
 captions: /learn/video/get-found/gf-ex4-reveal.vtt
 poster: /learn/video/get-found/gf-ex4-reveal.jpg
-transcript: Here's the Groomer Books result. Nine profiles found, four with an old tagline, all now fixed or requested. It's online-only, so no Business Profile, and that's noted. Five honest review requests brought two reviews in a week. The author page went from "we're passionate about small business" to forty salons over nine years, with a real photo, profile links and Person markup that passes the test.
+transcript: Here's the Rolling Ledger result. Nine profiles found, four with an old tagline, all now fixed or requested. It's online-only, so no Business Profile, and that's noted. Five honest review requests brought two reviews in a week. The author page went from "we're passionate about small business" to forty trucks over nine years, with a real photo, profile links and Person markup that passes the test.
 :::
 
 :::infographic
@@ -97,7 +97,7 @@ type: anatomy
 title: A finished trust checklist
 shows: The same six-row checklist, now ticked: details doc written, 9 profiles checked and 4 fixed, "Not eligible: online only" for the listing, 5 requests sent with 2 reviews in, fact sheet written, author page live with Person markup passing. A small preview of the author page sits beside it.
 data: 9 profiles, 4 fixed, 5 requests, 2 reviews.
-alt: Every trust task ticked for Groomer Books: consistent details on 9 profiles, a note that it's not eligible for a listing, 2 new reviews from 5 requests, and a live author page with Person markup.
+alt: Every trust task ticked for Rolling Ledger: consistent details on 9 profiles, a note that it's not eligible for a listing, 2 new reviews from 5 requests, and a live author page with Person markup.
 :::
 :::
 

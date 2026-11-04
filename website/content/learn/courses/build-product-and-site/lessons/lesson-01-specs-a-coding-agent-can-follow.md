@@ -22,15 +22,15 @@ A coding agent builds what you write down, not what you meant. A one-page spec i
 
 You are not going to read every line of code your agent writes. That is fine. What you can do is control the brief. Anthropic's own Claude Code guidance says the most useful specs are self-contained: they name what is involved, state what is out of scope, and end with a verification step that proves the work. Founders who skip this step get a site that looks plausible and is wrong in ten small ways. Founders who write the spec get a first draft that is close, and they spend their time on taste, not repairs.
 
-This course builds one real asset: a landing page for your business, live on your own domain. If you don't have a business idea locked yet, use the sample business that runs through every exercise: **Groomer Books**, a monthly bookkeeping service for independent dog groomers.
+This course builds one real asset: a landing page for your business, live on your own domain. If you don't have a business idea locked yet, use the sample business that runs through every exercise: **Rolling Ledger**, a monthly bookkeeping service for independent food truck owners.
 
 ## What a coding agent needs from you
 
 A coding agent like Claude Code or Cursor can read files, run commands and check its own work in a browser. It cannot read your mind about your customer, your offer or your taste. A good spec answers five questions.
 
-| Question | What to write | Example (Groomer Books) |
+| Question | What to write | Example (Rolling Ledger) |
 |---|---|---|
-| Who is it for? | One sentence on the visitor | Independent dog groomers, 1 to 3 chairs, who do their own books at night |
+| Who is it for? | One sentence on the visitor | Independent food truck owners, 1 to 3 trucks, who do their own books at night |
 | What must they do? | The one action that counts | Book a free 15-minute call |
 | What goes on the page? | Sections, in order, with the real copy or a placeholder | Hero, problem, how it works, price, FAQ, call to action, footer |
 | What are the rules? | Tech, style and limits | Plain HTML and CSS, no framework, loads fast on a phone, no tracking scripts |
@@ -43,13 +43,13 @@ Notice the last row. Without it, the agent stops when the page "looks done." Wit
 Keep it to one page. Plain headings. Short bullets. Here is a skeleton you can reuse.
 
 ```text
-# SPEC: Groomer Books landing page
+# SPEC: Rolling Ledger landing page
 
 ## Goal
-One page that gets independent dog groomers to book a free 15-minute call.
+One page that gets independent food truck owners to book a free 15-minute call.
 
 ## Audience
-Groomers running 1 to 3 chairs. They read on a phone between appointments.
+Food truck owners running 1 to 3 trucks. They read on a phone between services.
 They hate jargon and have been burned by software that promised to "automate" things.
 
 ## Sections (in this order)
@@ -104,12 +104,12 @@ Answer in plain words. If you don't know, say "I don't know yet, suggest two opt
 
 ## Write copy before code
 
-Agents are good at layout and decent at copy. They are bad at knowing your customer. Put your real words in a folder the agent can read, for example `/content/hero.md`, `/content/faq.md`. If you ran customer interviews in the Find and Validate the Idea course, lift phrases from those notes. "I do my books at 11pm after the last dog leaves" is better copy than anything an agent will invent.
+Agents are good at layout and decent at copy. They are bad at knowing your customer. Put your real words in a folder the agent can read, for example `/content/hero.md`, `/content/faq.md`. If you ran customer interviews in the Find and Validate the Idea course, lift phrases from those notes. "I do my books at 11pm after I hose down the truck" is better copy than anything an agent will invent.
 
 A useful rule in your spec: "Use the copy in /content exactly. If copy is missing, write [TODO]." That one line prevents made-up testimonials, fake customer counts and invented prices, which is the most common way an AI-built page embarrasses a founder.
 
 :::warning
-Never let an agent invent social proof. No made-up testimonials, logos, star ratings or "trusted by 500 groomers." Beyond being embarrassing, fake reviews and endorsements can break consumer protection rules. Put "No testimonials until we have real ones" in your spec.
+Never let an agent invent social proof. No made-up testimonials, logos, star ratings or "trusted by 500 food truck owners." Beyond being embarrassing, fake reviews and endorsements can break consumer protection rules. Put "No testimonials until we have real ones" in your spec.
 :::
 
 ## Plan first, then build

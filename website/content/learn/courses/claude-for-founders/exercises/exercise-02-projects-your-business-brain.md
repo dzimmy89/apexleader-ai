@@ -25,7 +25,7 @@ Why: A decision log tells Claude what is already settled and why, so it builds o
 
 ## Steps
 
-1. Go to Projects and click **+ New Project**. Name it "Company HQ" (or "Groomer Books HQ" if you're using the sample business).
+1. Go to Projects and click **+ New Project**. Name it "Company HQ" (or "Rolling Ledger HQ" if you're using the sample business).
 2. Click **Set project instructions** and paste the template from Lesson 2. Replace the business details with yours. Keep the Never list, including "Never give tax or legal advice" and the DRAFT FOR FOUNDER APPROVAL rule.
 3. Create your knowledge files. If you don't have them yet, have Claude draft them in a normal chat, then review each one before you upload:
 

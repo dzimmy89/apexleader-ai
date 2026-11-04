@@ -70,7 +70,7 @@ Why: Copilot's answers are grounded in Bing's index, so Bingbot access and Bing 
 :::example
 title: See an example result
 
-Groomer Books' robots.txt allowed every crawler, but the logs told a different story: PerplexityBot got 43 responses with status 403 in a week, from a "block AI scrapers" setting the host had switched on by default. The founder turned that setting off and kept a rule against unknown bots. She chose to allow search crawlers and block GPTBot and ClaudeBot for training, and wrote down why: the help articles are the product's edge. The next week's logs showed PerplexityBot fetching the pillar page with 200 responses.
+Rolling Ledger's robots.txt allowed every crawler, but the logs told a different story: PerplexityBot got 43 responses with status 403 in a week, from a "block AI scrapers" setting the host had switched on by default. The founder turned that setting off and kept a rule against unknown bots. She chose to allow search crawlers and block GPTBot and ClaudeBot for training, and wrote down why: the help articles are the product's edge. The next week's logs showed PerplexityBot fetching the pillar page with 200 responses.
 
 :::video
 id: gf-ex9-reveal
@@ -79,7 +79,7 @@ status: paused
 src: /learn/video/get-found/gf-ex9-reveal.mp4
 captions: /learn/video/get-found/gf-ex9-reveal.vtt
 poster: /learn/video/get-found/gf-ex9-reveal.jpg
-transcript: Here's the Groomer Books crawler table. Robots.txt looked fine, but the logs showed PerplexityBot refused 43 times by a default "block AI scrapers" setting. That's fixed. Search crawlers are all allowed. GPTBot and ClaudeBot are blocked for training, with the reason written down. A week later, PerplexityBot is reading the pillar page. Nothing technical stands in the way of a citation now.
+transcript: Here's the Rolling Ledger crawler table. Robots.txt looked fine, but the logs showed PerplexityBot refused 43 times by a default "block AI scrapers" setting. That's fixed. Search crawlers are all allowed. GPTBot and ClaudeBot are blocked for training, with the reason written down. A week later, PerplexityBot is reading the pillar page. Nothing technical stands in the way of a citation now.
 :::
 
 :::infographic
@@ -88,7 +88,7 @@ type: anatomy
 title: A finished crawler table
 shows: The Crawler Access table filled: all search crawlers green (allowed, firewall OK, visiting), PerplexityBot marked "403 x43 fixed" with a strikethrough, GPTBot and ClaudeBot marked "blocked for training" with a one-line reason, Google-Extended "blocked for training". A note: "Log search saved for monthly check".
 data: PerplexityBot 43 responses with status 403 before the fix.
-alt: Groomer Books' finished table: every search crawler allowed and visiting after a firewall fix, and two training crawlers blocked on purpose with the reason recorded.
+alt: Rolling Ledger's finished table: every search crawler allowed and visiting after a firewall fix, and two training crawlers blocked on purpose with the reason recorded.
 :::
 :::
 

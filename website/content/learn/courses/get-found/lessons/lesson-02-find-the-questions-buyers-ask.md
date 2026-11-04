@@ -58,7 +58,7 @@ status: paused
 src: /learn/video/get-found/gf-l2-where-questions-live.mp4
 captions: /learn/video/get-found/gf-l2-where-questions-live.vtt
 poster: /learn/video/get-found/gf-l2-where-questions-live.jpg
-transcript: Let's collect questions for Groomer Books. Our inbox has twelve, like "can I deduct my grooming van?" Search Console shows eight we already appear for on page two. People Also Ask adds a branch of tax questions. Grok searches X and Reddit and finds groomers complaining about tracking tips and cash payments, with links to each post. Every question keeps its source, so nothing in the bank is made up.
+transcript: Let's collect questions for Rolling Ledger. Our inbox has twelve, like "can I deduct my food truck?" Search Console shows eight we already appear for on page two. People Also Ask adds a branch of tax questions. Grok searches X and Reddit and finds food truck owners complaining about tracking cash sales and card payouts, with links to each post. Every question keeps its source, so nothing in the bank is made up.
 :::
 
 ## Use AI to find more, not to invent
@@ -113,7 +113,7 @@ status: paused
 src: /learn/video/get-found/gf-l2-clustering.mp4
 captions: /learn/video/get-found/gf-l2-clustering.vtt
 poster: /learn/video/get-found/gf-l2-clustering.jpg
-transcript: Now Claude groups forty questions into six topics. "Can I deduct my van", "is mileage deductible for mobile groomers" and "van expenses for groomers" become one topic with one main page, because they're the same question in different words. A comparison topic, "QuickBooks or a groomer app", gets its own page. We check every grouping, merge one more pair by hand, and the topic map is ready for Lesson 5.
+transcript: Now Claude groups forty questions into six topics. "Can I deduct my truck", "is fuel deductible for food truck owners" and "truck expenses for food truck owners" become one topic with one main page, because they're the same question in different words. A comparison topic, "QuickBooks or a food truck app", gets its own page. We check every grouping, merge one more pair by hand, and the topic map is ready for Lesson 5.
 :::
 
 :::warning
@@ -125,7 +125,7 @@ Open your sent and received email for the last three months and search for "?". 
 :::
 
 :::checkpoint
-Q: Three questions in your bank are "Can groomers deduct a van?", "Is a grooming van tax deductible?" and "Van write-off for mobile groomers". How many pages should they get?
+Q: Three questions in your bank are "Can food truck owners deduct their truck?", "Is a food truck tax deductible?" and "Truck write-off for food truck owners". How many pages should they get?
 - [x] One page that answers all three
 - [ ] Three pages, one per question
 - [ ] None, because they have low search volume

@@ -74,7 +74,7 @@ Why: Answers vary from run to run. One missed citation is noise until it repeats
 :::example
 title: See an example result
 
-Groomer Books' panel has 12 questions, so each run is 60 answers. In month one it was mentioned in 7 and linked in 4, all from Perplexity and ChatGPT, mostly for the comparison page. Search Console showed 1,240 AI-feature impressions, with the comparison page top. Bing showed 38 Copilot citations and the grounding query "groomer bookkeeping mileage". Analytics showed 11 visits from perplexity.ai and 6 from chatgpt.com, with 4 trial sign-ups. The panel took 40 minutes, so the founder stayed manual and wrote: "revisit at 20 questions or the spring launch."
+Rolling Ledger's panel has 12 questions, so each run is 60 answers. In month one it was mentioned in 7 and linked in 4, all from Perplexity and ChatGPT, mostly for the comparison page. Search Console showed 1,240 AI-feature impressions, with the comparison page top. Bing showed 38 Copilot citations and the grounding query "food truck bookkeeping fuel". Analytics showed 11 visits from perplexity.ai and 6 from chatgpt.com, with 4 trial sign-ups. The panel took 40 minutes, so the founder stayed manual and wrote: "revisit at 20 questions or the spring launch."
 
 :::video
 id: gf-ex12-reveal
@@ -83,16 +83,16 @@ status: paused
 src: /learn/video/get-found/gf-ex12-reveal.mp4
 captions: /learn/video/get-found/gf-ex12-reveal.vtt
 poster: /learn/video/get-found/gf-ex12-reveal.jpg
-transcript: Here's the Groomer Books dashboard after month one. Sixty answers: mentioned in seven, linked in four, mostly for the comparison page. Twelve hundred forty AI-feature impressions in Google, thirty-eight Copilot citations in Bing, and seventeen visits from assistants with four trial sign-ups. The panel took forty minutes, so it stays manual for now. The notes say what changed, so next month we'll know what moved the numbers.
+transcript: Here's the Rolling Ledger dashboard after month one. Sixty answers: mentioned in seven, linked in four, mostly for the comparison page. Twelve hundred forty AI-feature impressions in Google, thirty-eight Copilot citations in Bing, and seventeen visits from assistants with four trial sign-ups. The panel took forty minutes, so it stays manual for now. The notes say what changed, so next month we'll know what moved the numbers.
 :::
 
 :::infographic
 id: fig-2
 type: anatomy
 title: The dashboard after month one
-shows: The dashboard filled: panel score 7 mentions and 4 links out of 60 answers; Google AI impressions 1,240 with the comparison page top; Bing 38 citations, top grounding query "groomer bookkeeping mileage"; AI referrals 11 from perplexity.ai and 6 from chatgpt.com with 4 trial sign-ups. Notes: comparison and data pages published, 3 pages refreshed, 1 directory listing. Tracker decision: stay manual, revisit at 20 questions.
+shows: The dashboard filled: panel score 7 mentions and 4 links out of 60 answers; Google AI impressions 1,240 with the comparison page top; Bing 38 citations, top grounding query "food truck bookkeeping fuel"; AI referrals 11 from perplexity.ai and 6 from chatgpt.com with 4 trial sign-ups. Notes: comparison and data pages published, 3 pages refreshed, 1 directory listing. Tracker decision: stay manual, revisit at 20 questions.
 data: 60 answers, 7 mentions, 4 links; 1,240 AI impressions; 38 Copilot citations; 17 AI referral visits; 4 trial sign-ups.
-alt: Groomer Books' first-month dashboard: 7 mentions and 4 links in 60 answers, 1,240 Google AI impressions, 38 Copilot citations, 17 visits from assistants with 4 trial sign-ups, and a decision to stay manual for now.
+alt: Rolling Ledger's first-month dashboard: 7 mentions and 4 links in 60 answers, 1,240 Google AI impressions, 38 Copilot citations, 17 visits from assistants with 4 trial sign-ups, and a decision to stay manual for now.
 :::
 :::
 

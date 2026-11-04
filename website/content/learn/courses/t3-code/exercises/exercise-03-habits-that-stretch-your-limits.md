@@ -20,7 +20,7 @@ status: paused
 src: /learn/video/t3-code/t3-ex3-setup.mp4
 captions: /learn/video/t3-code/t3-ex3-setup.vtt
 poster: /learn/video/t3-code/t3-ex3-setup.jpg
-transcript: In this exercise you'll prove the habits to yourself. The job is the same both times: add an FAQ section to the Groomer Books home page. Round one happens in an old, long thread, and you fix things by typing corrections. Round two starts fresh in a worktree with a setup script, one clear prompt, a revert and line comments. Record tokens and turns for both, then write your top three habits into AGENTS.md.
+transcript: In this exercise you'll prove the habits to yourself. The job is the same both times: add an FAQ section to the Rolling Ledger home page. Round one happens in an old, long thread, and you fix things by typing corrections. Round two starts fresh in a worktree with a setup script, one clear prompt, a revert and line comments. Record tokens and turns for both, then write your top three habits into AGENTS.md.
 :::
 
 ## Warm-up
@@ -35,7 +35,7 @@ Why: Every turn carries the conversation so far. Caching makes repeated parts ch
 
 ## Steps
 
-1. **Pick the job.** Add an FAQ section to your home page with four questions. For Groomer Books, use: "What does monthly bookkeeping include?", "Do I need to switch banks?", "How do I send receipts?", "What if I'm behind on my books?"
+1. **Pick the job.** Add an FAQ section to your home page with four questions. For Rolling Ledger, use: "What does monthly bookkeeping include?", "Do I need to switch banks?", "How do I send receipts?", "What if I'm behind on my books?"
 
 2. **Round 1, the messy way.** Open an existing thread that already has several messages in it, on the current checkout. Send: "Add an FAQ section to the home page." Fix everything by typing corrections in the chat ("no, put it below pricing", "undo the font change"). Stop when it looks right, or after eight messages.
 
@@ -74,7 +74,7 @@ Done when: It looks right at 375px and 1280px, with screenshots.
 :::example
 title: See an example result
 
-In this example run on Groomer Books, Round 1 took 7 messages in an old thread, including two "undo" corrections, and scored 3 out of 5 because a stray font change slipped through. Round 2 took 2 messages and one line comment in a fresh worktree, scored 5 out of 5, and used well under half the tokens of Round 1. The founder's top three habits were one job per thread, revert instead of undo, and always brief with goal, constraints and done-when. Your numbers will differ. What matters is that you now have your own.
+In this example run on Rolling Ledger, Round 1 took 7 messages in an old thread, including two "undo" corrections, and scored 3 out of 5 because a stray font change slipped through. Round 2 took 2 messages and one line comment in a fresh worktree, scored 5 out of 5, and used well under half the tokens of Round 1. The founder's top three habits were one job per thread, revert instead of undo, and always brief with goal, constraints and done-when. Your numbers will differ. What matters is that you now have your own.
 
 :::video
 id: t3-ex3-reveal
@@ -83,7 +83,7 @@ status: paused
 src: /learn/video/t3-code/t3-ex3-reveal.mp4
 captions: /learn/video/t3-code/t3-ex3-reveal.vtt
 poster: /learn/video/t3-code/t3-ex3-reveal.jpg
-transcript: Here's an example result for Groomer Books. Round one took seven messages, two of them undo corrections, and a stray font change slipped through, so it scored three out of five. Round two took two messages and one line comment in a fresh worktree, scored five, and used well under half the tokens. The founder wrote three habits into AGENTS.md: one job per thread, revert instead of undo, and brief with goal, constraints and done when.
+transcript: Here's an example result for Rolling Ledger. Round one took seven messages, two of them undo corrections, and a stray font change slipped through, so it scored three out of five. Round two took two messages and one line comment in a fresh worktree, scored five, and used well under half the tokens. The founder wrote three habits into AGENTS.md: one job per thread, revert instead of undo, and brief with goal, constraints and done when.
 :::
 :::
 

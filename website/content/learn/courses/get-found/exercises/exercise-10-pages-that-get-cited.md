@@ -72,7 +72,7 @@ Why: Every cell must be verifiable. A wrong fact about a competitor costs more t
 :::example
 title: See an example result
 
-Groomer Books published "QuickBooks or a groomer app: which should a dog groomer use?", comparing four options on tips, mileage, quarterly estimates, price and setup time, checked on one date. Checking every cell caught one wrong price and one feature Claude had marked "yes" that the vendor didn't list. The verdict recommends a competitor for large multi-location salons. The data page, "How long month-end takes for grooming salons", reports a median of 6 hours before and 1.8 after across 40 salon clients, with consent and the method in two sentences.
+Rolling Ledger published "QuickBooks or a food truck app: which should a food truck owner use?", comparing four options on cash sales, fuel, quarterly estimates, price and setup time, checked on one date. Checking every cell caught one wrong price and one feature Claude had marked "yes" that the vendor didn't list. The verdict recommends a competitor for large multi-truck fleets. The data page, "How long month-end takes for food trucks", reports a median of 6 hours before and 1.8 after across 40 truck clients, with consent and the method in two sentences.
 
 :::video
 id: gf-ex10-reveal
@@ -81,16 +81,16 @@ status: paused
 src: /learn/video/get-found/gf-ex10-reveal.mp4
 captions: /learn/video/get-found/gf-ex10-reveal.vtt
 poster: /learn/video/get-found/gf-ex10-reveal.jpg
-transcript: Here are the two Groomer Books pages. The comparison checks four options on five attributes, all dated. Checking each cell caught a wrong price and a feature the vendor doesn't actually list. The verdict even recommends a competitor for large salons. The data page leads with one number: month-end went from a median of 6 hours to 1.8 across 40 salons, with the method in two sentences. Both are answer-first and linked from the pillar page.
+transcript: Here are the two Rolling Ledger pages. The comparison checks four options on five attributes, all dated. Checking each cell caught a wrong price and a feature the vendor doesn't actually list. The verdict even recommends a competitor for large fleets. The data page leads with one number: month-end went from a median of 6 hours to 1.8 across 40 trucks, with the method in two sentences. Both are answer-first and linked from the pillar page.
 :::
 
 :::infographic
 id: fig-2
 type: anatomy
 title: The two finished pages
-shows: Two page cards. Left: the comparison page with a 2-sentence answer, a 4 by 5 table dated "checked 1 Nov 2026", and a verdict by buyer type (salon, mobile, solo, multi-location) where one pick is a competitor. Right: the data page with the headline "6 hours to 1.8 hours", "40 salon clients, Jan to Sep 2026", a two-line method, and a simple bar chart.
-data: 4 options x 5 attributes; median month-end 6 hours before, 1.8 after, 40 salons.
-alt: Groomer Books' finished comparison page, with a dated four-option table and an honest verdict, and its data page showing month-end falling from 6 hours to 1.8 across 40 salons.
+shows: Two page cards. Left: the comparison page with a 2-sentence answer, a 4 by 5 table dated "checked 1 Nov 2026", and a verdict by buyer type (single truck, multi-truck, truck plus catering, multi-location) where one pick is a competitor. Right: the data page with the headline "6 hours to 1.8 hours", "40 truck clients, Jan to Sep 2026", a two-line method, and a simple bar chart.
+data: 4 options x 5 attributes; median month-end 6 hours before, 1.8 after, 40 trucks.
+alt: Rolling Ledger's finished comparison page, with a dated four-option table and an honest verdict, and its data page showing month-end falling from 6 hours to 1.8 across 40 trucks.
 :::
 :::
 

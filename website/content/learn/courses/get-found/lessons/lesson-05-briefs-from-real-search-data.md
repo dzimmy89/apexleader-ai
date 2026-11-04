@@ -30,7 +30,7 @@ A content brief is the plan for one page: the reader, the main question, what th
 
 ## Why this matters
 
-If you ask an AI to "write a blog post about bookkeeping for groomers", you get the average of the internet. It won't rank, because the internet already has it, and no assistant will cite it, because it adds nothing. A brief turns your experience into instructions. It takes 20 minutes, and it's the difference between a page that works and one that sits on page five.
+If you ask an AI to "write a blog post about bookkeeping for food truck owners", you get the average of the internet. It won't rank, because the internet already has it, and no assistant will cite it, because it adds nothing. A brief turns your experience into instructions. It takes 20 minutes, and it's the difference between a page that works and one that sits on page five.
 
 ## Collect the data
 
@@ -68,7 +68,7 @@ status: paused
 src: /learn/video/get-found/gf-l5-mcp-data.mp4
 captions: /learn/video/get-found/gf-l5-mcp-data.vtt
 poster: /learn/video/get-found/gf-l5-mcp-data.jpg
-transcript: Here are both routes for one Groomer Books topic. The free route: we search "best bookkeeping software for dog groomers" in a private window, copy the top ten links, and ask Claude Research to read them and list each page's headings. The faster route: Claude Code, connected to a data service through MCP, pulls the same results page and the People Also Ask questions as a table in a few seconds, for a few cents. Same data, less copying.
+transcript: Here are both routes for one Rolling Ledger topic. The free route: we search "best bookkeeping software for food truck owners" in a private window, copy the top ten links, and ask Claude Research to read them and list each page's headings. The faster route: Claude Code, connected to a data service through MCP, pulls the same results page and the People Also Ask questions as a table in a few seconds, for a few cents. Same data, less copying.
 :::
 
 ## Find the gap
@@ -120,7 +120,7 @@ status: paused
 src: /learn/video/get-found/gf-l5-finding-the-gap.mp4
 captions: /learn/video/get-found/gf-l5-finding-the-gap.vtt
 poster: /learn/video/get-found/gf-l5-finding-the-gap.jpg
-transcript: Claude reads the ten pages and finds the pattern. Every one lists five apps with a paragraph each. None compares how each app handles cash tips, mileage for a grooming van, or quarterly tax estimates, which are the three questions groomers ask most in our bank. That's the gap. The brief's opening answer names the best fit for each type of groomer, and the facts list asks our founder for her real numbers from forty salons.
+transcript: Claude reads the ten pages and finds the pattern. Every one lists five apps with a paragraph each. None compares how each app handles cash sales, mileage for a food truck, or quarterly tax estimates, which are the three questions food truck owners ask most in our bank. That's the gap. The brief's opening answer names the best fit for each type of food truck owner, and the facts list asks our founder for her real numbers from forty trucks.
 :::
 
 :::warning

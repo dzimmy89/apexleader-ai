@@ -74,7 +74,7 @@ Why: The bank holds real questions only. A question with no source may be invent
 :::example
 title: See an example result
 
-Groomer Books collected 58 questions and kept 43 after removing duplicates and two Grok rows with dead links. Claude grouped them into 6 topics: van and mileage deductions, tracking tips and cash, choosing bookkeeping software, quarterly taxes for groomers, pricing grooming services, and hiring a first assistant. Priority 1 went to "choosing bookkeeping software" because it held 9 purchase-stage questions, including "QuickBooks or a groomer app?"
+Rolling Ledger collected 58 questions and kept 43 after removing duplicates and two Grok rows with dead links. Claude grouped them into 6 topics: truck and fuel deductions, tracking cash sales, choosing bookkeeping software, quarterly taxes for food truck owners, pricing food truck services, and hiring a first assistant. Priority 1 went to "choosing bookkeeping software" because it held 9 purchase-stage questions, including "QuickBooks or a food truck app?"
 
 :::video
 id: gf-ex2-reveal
@@ -83,16 +83,16 @@ status: paused
 src: /learn/video/get-found/gf-ex2-reveal.mp4
 captions: /learn/video/get-found/gf-ex2-reveal.vtt
 poster: /learn/video/get-found/gf-ex2-reveal.jpg
-transcript: Here's the Groomer Books result. Fifty-eight questions came in and forty-three stayed, every one with a source. Claude grouped them into six topics, and we merged two by hand. Priority one is choosing bookkeeping software, because it holds nine purchase-stage questions like "QuickBooks or a groomer app?" That's the page we'll brief and write in Module 2.
+transcript: Here's the Rolling Ledger result. Fifty-eight questions came in and forty-three stayed, every one with a source. Claude grouped them into six topics, and we merged two by hand. Priority one is choosing bookkeeping software, because it holds nine purchase-stage questions like "QuickBooks or a food truck app?" That's the page we'll brief and write in Module 2.
 :::
 
 :::infographic
 id: fig-2
 type: diagram
 title: The finished topic map
-shows: Six topic cards in a grid, each with its main question and a count of supporting questions: van and mileage (7), tips and cash (6), choosing software (9, highlighted as priority 1), quarterly taxes (8), pricing services (7), first hire (6). Lines link each card to its planned main page.
+shows: Six topic cards in a grid, each with its main question and a count of supporting questions: truck and fuel (7), cash sales (6), choosing software (9, highlighted as priority 1), quarterly taxes (8), pricing services (7), first hire (6). Lines link each card to its planned main page.
 data: Topics and question counts: 7, 6, 9, 8, 7, 6 (43 total).
-alt: Groomer Books' 43 questions grouped into six topics, with "choosing bookkeeping software" marked priority 1 because it holds nine purchase-stage questions.
+alt: Rolling Ledger's 43 questions grouped into six topics, with "choosing bookkeeping software" marked priority 1 because it holds nine purchase-stage questions.
 :::
 :::
 

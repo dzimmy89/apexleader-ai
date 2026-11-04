@@ -20,7 +20,7 @@ status: paused
 src: /learn/video/t3-code/t3-ex4-setup.mp4
 captions: /learn/video/t3-code/t3-ex4-setup.vtt
 poster: /learn/video/t3-code/t3-ex4-setup.jpg
-transcript: In this exercise you'll make your phone a remote and read the meter. Pair your phone over your home network or Tailscale, then queue one small Groomer Books job from it and approve the diff on the phone. Then open the Usage page, set the range to seven days, and fill in the Friday report: one row per plan, with price, tokens, limit hits, API-equivalent value and a decision.
+transcript: In this exercise you'll make your phone a remote and read the meter. Pair your phone over your home network or Tailscale, then queue one small Rolling Ledger job from it and approve the diff on the phone. Then open the Usage page, set the range to seven days, and fill in the Friday report: one row per plan, with price, tokens, limit hits, API-equivalent value and a decision.
 :::
 
 ## Warm-up
@@ -41,7 +41,7 @@ Why: The pairing link is a credential for your host computer. Treat it like a pa
 
 3. **Check the connection.** In **Settings → Connections** on the host, confirm your phone is listed. Take a screenshot.
 
-4. **Start a job from the phone.** In a new worktree thread with Supervised mode on, send a small job. For Groomer Books: "Add the line 'Monthly bookkeeping for independent dog groomers' under the footer logo. Only edit index.html."
+4. **Start a job from the phone.** In a new worktree thread with Supervised mode on, send a small job. For Rolling Ledger: "Add the line 'Monthly bookkeeping for independent food truck owners' under the footer logo. Only edit index.html."
 
 5. **Approve from the phone.** When the diff is ready, read it on the phone. Approve it, or comment and send back, then open the pull request from the phone.
 
@@ -71,7 +71,7 @@ Count limit hits from your memory and each provider's own usage screen. Use T3 C
 :::example
 title: See an example result
 
-For a week of Groomer Books work, the founder paired their iPhone over Tailscale, approved the footer change from the phone, and filled the report. Claude Pro hit its limit twice and showed about four times its price in API-equivalent value, so keep. ChatGPT Plus hit its limit three times, and the founder waited half a day for a reset, so upgrade to Pro at $100 next month if it happens again. Cursor Plus at $8 had almost no jobs on the routing card, so drop it. These are example numbers, and your report will differ.
+For a week of Rolling Ledger work, the founder paired their iPhone over Tailscale, approved the footer change from the phone, and filled the report. Claude Pro hit its limit twice and showed about four times its price in API-equivalent value, so keep. ChatGPT Plus hit its limit three times, and the founder waited half a day for a reset, so upgrade to Pro at $100 next month if it happens again. Cursor Plus at $8 had almost no jobs on the routing card, so drop it. These are example numbers, and your report will differ.
 
 :::video
 id: t3-ex4-reveal
@@ -80,7 +80,7 @@ status: paused
 src: /learn/video/t3-code/t3-ex4-reveal.mp4
 captions: /learn/video/t3-code/t3-ex4-reveal.vtt
 poster: /learn/video/t3-code/t3-ex4-reveal.jpg
-transcript: Here's an example report for Groomer Books. The phone is paired over Tailscale and listed under Connections, and the footer change was approved from the phone. In the report, Claude Pro hit its limit twice and gave about four times its price in value, so keep. ChatGPT Plus hit its limit three times, so upgrade next month if it happens again. Cursor Plus had almost no jobs, so drop it. Ten minutes, one decision per plan.
+transcript: Here's an example report for Rolling Ledger. The phone is paired over Tailscale and listed under Connections, and the footer change was approved from the phone. In the report, Claude Pro hit its limit twice and gave about four times its price in value, so keep. ChatGPT Plus hit its limit three times, so upgrade next month if it happens again. Cursor Plus had almost no jobs, so drop it. Ten minutes, one decision per plan.
 :::
 :::
 

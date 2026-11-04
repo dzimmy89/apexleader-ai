@@ -27,12 +27,12 @@ Why: `AGENTS.md` is read by every Codex task in that project, travels with the f
 
 1. **Install and sign in.** Install the ChatGPT desktop app, sign in, and switch to Codex. Open settings and find the **Usage** panel so you know where to check credits.
 
-2. **Create the project folder.** Make a folder called `<yourbusiness>-tools` with nothing else in it, and add it as a project. If you don't have a business settled, use **Groomer Books**, a monthly bookkeeping service for independent dog groomers.
+2. **Create the project folder.** Make a folder called `<yourbusiness>-tools` with nothing else in it, and add it as a project. If you don't have a business settled, use **Rolling Ledger**, a monthly bookkeeping service for independent food truck owners.
 
 3. **Add your pricing rules.** Create `pricing-rules.md` in the folder. Use your own, or this sample:
 
 ```text
-# Groomer Books pricing (sample)
+# Rolling Ledger pricing (sample)
 - Base fee: $149 per month, includes 1 bank account and up to 150 transactions
 - Each extra bank account: $25 per month
 - 151 to 300 transactions: add $50 per month
@@ -43,8 +43,8 @@ Why: `AGENTS.md` is read by every Codex task in that project, travels with the f
 4. **Write AGENTS.md with Codex.** Send:
 
 ```text
-Write AGENTS.md for this project. Include: a two-line summary of Groomer
-Books; "build simple, single-file tools a non-developer can open in a
+Write AGENTS.md for this project. Include: a two-line summary of Rolling
+Ledger; "build simple, single-file tools a non-developer can open in a
 browser"; "never put passwords, API keys or client data in files"; "ask
 before installing anything or using the internet"; "never send emails or
 submit data to outside services"; "explain every change in plain English".

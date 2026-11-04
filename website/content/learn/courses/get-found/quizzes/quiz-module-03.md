@@ -49,7 +49,7 @@ Robots.txt allows PerplexityBot, but your logs show it getting 403 responses. Wh
 Which passage is an assistant most likely to cite?
 
 - A) "There are many great options."
-- B) "For mobile groomers, App A logs van mileage automatically and costs $15 a month (checked November 2026)."
+- B) "For food truck owners, App A logs fuel and mileage automatically and costs $15 a month (checked November 2026)."
 - C) "Click here to learn more."
 - D) "We're the best in the business."
 
@@ -74,7 +74,7 @@ You can't confirm a competitor's price for your comparison table. What goes in t
 ---
 
 ## Question 6
-A forum thread asks which app groomers use, and you run one. What's the right move?
+A forum thread asks which app food truck owners use, and you run one. What's the right move?
 
 - A) Post praise from a second account
 - B) Pay a regular poster to mention you

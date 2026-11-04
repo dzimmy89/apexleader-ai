@@ -79,7 +79,7 @@ Why: The drafting rules make missing facts visible. You supply them or cut the s
 :::example
 title: See an example result
 
-The Groomer Books page "What bookkeeping software should a dog groomer use?" went from a 1,900-word draft to 1,450 words after the edit. The two NEED markers became the founder's real month-end times for salon clients (from about 6 hours to under 2). The three experience inserts covered a mobile groomer's van miles, a salon's cash tips, and a solo groomer who missed a quarterly tax payment. The comparison table rated four apps on tips, mileage and quarterly estimates, with a pick for each type of groomer.
+The Rolling Ledger page "What bookkeeping software should a food truck owner use?" went from a 1,900-word draft to 1,450 words after the edit. The two NEED markers became the founder's real month-end times for truck clients (from about 6 hours to under 2). The three experience inserts covered a food truck owner's fuel miles, a taco truck's cash sales, and a solo truck owner who missed a quarterly tax payment. The comparison table rated four apps on cash sales, fuel and quarterly estimates, with a pick for each type of truck.
 
 :::video
 id: gf-ex6-reveal
@@ -88,16 +88,16 @@ status: paused
 src: /learn/video/get-found/gf-ex6-reveal.mp4
 captions: /learn/video/get-found/gf-ex6-reveal.vtt
 poster: /learn/video/get-found/gf-ex6-reveal.jpg
-transcript: Here's the published Groomer Books page. The edit cut it from nineteen hundred words to fourteen fifty, and every number now comes from the founder's own client work. Three short stories, a van, cash tips and a missed tax payment, make it clearly hers. The comparison table picks an app for salon, mobile and solo groomers. Her name, the date and Article markup are on the page, and it's in Search Console's queue.
+transcript: Here's the published Rolling Ledger page. The edit cut it from nineteen hundred words to fourteen fifty, and every number now comes from the founder's own client work. Three short stories, a fuel log, cash sales and a missed tax payment, make it clearly hers. The comparison table picks an app for single-truck, multi-truck and catering owners. Her name, the date and Article markup are on the page, and it's in Search Console's queue.
 :::
 
 :::infographic
 id: fig-2
 type: anatomy
 title: The finished page
-shows: The published page with labelled parts: H1 question, a 48-word direct answer, a comparison table of four apps on tips, mileage and quarterly estimates, three experience inserts marked with a person icon, the author line and "Last updated" date, and one link to the Groomer Books trial. A green "Article markup valid" badge.
+shows: The published page with labelled parts: H1 question, a 48-word direct answer, a comparison table of four apps on cash sales, fuel and quarterly estimates, three experience inserts marked with a person icon, the author line and "Last updated" date, and one link to the Rolling Ledger trial. A green "Article markup valid" badge.
 data: 1,900 words drafted, 1,450 published; 4 apps compared; 3 experience inserts.
-alt: The finished Groomer Books pillar page: the question and a short answer, a four-app comparison, three first-hand stories, the founder's name and date, one next step, and valid Article markup.
+alt: The finished Rolling Ledger pillar page: the question and a short answer, a four-app comparison, three first-hand stories, the founder's name and date, one next step, and valid Article markup.
 :::
 :::
 

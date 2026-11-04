@@ -40,14 +40,14 @@ Since April 2026, Codex usage on Plus, Pro, Business and Enterprise plans is pri
 
 1. Install the ChatGPT desktop app from OpenAI's site and sign in with your ChatGPT account.
 2. Switch to Codex.
-3. Create a folder on your computer, for example `groomer-books-tools`, and add it as a project. A project is a folder Codex is allowed to work in. It can't see the rest of your computer through the project.
+3. Create a folder on your computer, for example `rolling-ledger-tools`, and add it as a project. A project is a folder Codex is allowed to work in. It can't see the rest of your computer through the project.
 4. Add an `AGENTS.md` file to the folder (Codex can write it with you). This is the standing brief every Codex task reads: who you are, how you build, and what's off limits. The same file works in Cursor and GitHub Copilot.
 
 A first brief that keeps you in control:
 
 ```text
 I'm a non-technical founder. This folder is for small internal tools for
-Groomer Books, a monthly bookkeeping service for independent dog groomers.
+Rolling Ledger, a monthly bookkeeping service for independent food truck owners.
 First, write AGENTS.md with: a two-line business summary; "build simple tools
 a non-developer can run"; "never put passwords, API keys or client data in
 files"; "ask before installing anything or using the internet"; "explain

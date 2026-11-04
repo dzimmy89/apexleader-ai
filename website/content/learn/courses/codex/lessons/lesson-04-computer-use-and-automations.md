@@ -47,7 +47,7 @@ For web apps you're building yourself, use the in-app browser instead. It's more
 One app, one flow, a clear stopping point:
 
 ```text
-@Numbers Open "Client fees Oct.numbers" in my Groomer Books folder.
+@Numbers Open "Client fees Oct.numbers" in my Rolling Ledger folder.
 For each row where "Paid" is empty, copy client name and amount into a new
 sheet called "Unpaid - review". Don't change any existing cells, don't email
 anyone, and don't open any other app. Stop and show me the new sheet.

@@ -25,7 +25,7 @@ Why: It has a trigger (each morning), an action, a gate (approval) and a report.
 
 ## Steps
 
-1. **Pick the business.** Use yours, or the sample *Groomer Books*: bookkeeping and invoicing for independent dog groomers, run by one founder.
+1. **Pick the business.** Use yours, or the sample *Rolling Ledger*: bookkeeping and invoicing for independent food truck owners, run by one founder.
 
 2. **List trigger moments.** Write five moments last month when you wished someone had noticed something first: a late invoice, a missed email, a calendar clash, a lead that went cold, a supplier price change.
 

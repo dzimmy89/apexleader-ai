@@ -26,7 +26,7 @@ In Lesson 2 you became the approver. But you can't see everything in two minutes
 
 GitHub Pages hosts static websites: HTML, CSS, images and JavaScript that run in the visitor's browser. That covers landing pages, documentation, help centers and simple portfolios. It does not run server code or databases.
 
-Your site gets an address like `yourname.github.io/groomer-books-site`, and you can connect your own domain.
+Your site gets an address like `yourname.github.io/rolling-ledger-site`, and you can connect your own domain.
 
 To turn it on:
 

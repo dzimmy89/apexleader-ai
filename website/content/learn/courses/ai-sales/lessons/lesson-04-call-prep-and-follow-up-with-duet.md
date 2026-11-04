@@ -20,7 +20,7 @@ Claude Duet is Anthropic's proactive agent: it checks your connected apps, sends
 
 ## Why this matters
 
-Calls are where deals move, and founders lose deals in the two places around them: walking in unprepared, and following up three days late. Neither takes skill. Both take time you don't have on a busy day. Duet is built to reach out before you ask, which is exactly what a sales assistant should do: "Your 2pm is with Happy Paws Grooming. Here's your brief."
+Calls are where deals move, and founders lose deals in the two places around them: walking in unprepared, and following up three days late. Neither takes skill. Both take time you don't have on a busy day. Duet is built to reach out before you ask, which is exactly what a sales assistant should do: "Your 2pm is with Smoke and Salt Tacos. Here's your brief."
 
 ## Meet Claude Duet
 
@@ -80,8 +80,8 @@ Recording laws differ by state and country. Some US states require everyone on t
 Within an hour of the call, send your notes to Duet:
 
 ```text
-Notes from my call with Dana at Happy Paws Grooming:
-- 2 locations, 6 groomers, Dana does books on Sunday nights
+Notes from my call with Dana at Smoke and Salt Tacos:
+- 2 trucks, 6 staff, Dana does books on Sunday nights
 - Uses a spreadsheet, accountant complained last April
 - Wants monthly P&L, worried about cost
 - Next step: I send pricing for monthly package + sample report by Thursday

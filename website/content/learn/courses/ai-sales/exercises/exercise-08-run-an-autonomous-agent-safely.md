@@ -26,7 +26,7 @@ Why: The FTC guide requires honest header and "from" information, a postal addre
 ## Steps
 
 :::warning
-Only send real emails for a real business you run. If you're working with the Groomer Books sample business, do steps 1 to 5 to see how the tool behaves, then stop. Don't add credit or let it send on behalf of a business that doesn't exist.
+Only send real emails for a real business you run. If you're working with the Rolling Ledger sample business, do steps 1 to 5 to see how the tool behaves, then stop. Don't add credit or let it send on behalf of a business that doesn't exist.
 :::
 
 1. **Add a Test log tab** to your Lead list workbook with these columns:

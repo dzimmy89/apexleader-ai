@@ -29,8 +29,8 @@ Per Cursor's docs, Agent can search your files and the web, read files including
 That's a lot of reach, so a clear brief matters. Use this structure:
 
 ```text
-Goal: Add a "How it works" section to index.html for Groomer Books.
-Context: Audience is independent dog groomers reading on their phones.
+Goal: Add a "How it works" section to index.html for Rolling Ledger.
+Context: Audience is independent food truck owners reading on their phones.
 Use the three steps in content/how-it-works.md, word for word.
 Constraints: Plain HTML and CSS only. Don't touch the header or footer.
 No new fonts, scripts or images.
@@ -85,7 +85,7 @@ One cost to know before you pick a model: Cursor's own and Grok models come from
 
 ```text
 /best-of-n Redesign the hero section of index.html to feel warm and
-trustworthy for dog groomers. Keep the exact headline and button text.
+trustworthy for food truck owners. Keep the exact headline and button text.
 Plain HTML and CSS only.
 ```
 
