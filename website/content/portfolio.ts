@@ -202,6 +202,34 @@ export const PORTFOLIO: readonly PortfolioBusiness[] = [
     featured: true,
   },
   {
+    slug: "runway",
+    name: "Runway",
+    status: "building",
+    url: "https://getrunway.trade",
+    oneLine: "Runway vault and Hermes: an automated pairs strategy and the AI trading co-pilot behind it.",
+    about: [
+      "The public site at getrunway.trade is Runway vault, which runs Hermes, Runway's automated strategy that trades the gap between two related markets on Hyperliquid. It is a private offering, open only to admitted investors under its offering documents.",
+      "Behind it is the Runway desk, an AI co-pilot that interviews the trader before each trade, checks the risk against their own rules, keeps a journal and watches open positions.",
+    ],
+    tools: ["Claude Code", "Cursor", "Gemini", "GitHub"],
+    modules: [
+      { number: 2, built: "A written product plan and agent instructions before the build." },
+      { number: 3, built: "The vault site, the desk app, the risk engine and the journal, built with Cursor and Claude Code." },
+    ],
+    team: [
+      { role: "Builder", tool: "Cursor · Claude Code", track: "build", task: "Builds the site and the desk from written agent instructions.", rule: "Every change lands in GitHub" },
+      { role: "Research", tool: "Gemini", track: "build", task: "Runs the pre-trade interview and adds market context.", rule: "Cites every source" },
+    ],
+    screenshot: {
+      src: "/portfolio/runway.png",
+      alt: "The Runway vault homepage",
+      caption: "A private offering for admitted investors only. Shown here as an example of what was built, not as an offer.",
+    },
+    stack: ["Next.js", "FastAPI", "Google Cloud Run", "PostgreSQL", "Vertex AI (Gemini)", "Hyperliquid"],
+    next: "The desk app back online alongside the vault.",
+    results: [],
+  },
+  {
     slug: "omnifolio",
     name: "Omnifolio",
     status: "building",
@@ -250,6 +278,32 @@ export const PORTFOLIO: readonly PortfolioBusiness[] = [
     },
     stack: ["Canton Network", "Claude design canvas"],
     next: "A working prototype and a filed grant proposal.",
+    results: [],
+  },
+  {
+    slug: "laminar",
+    name: "Laminar Finance",
+    status: "building",
+    oneLine: "A white-label platform for licensed managers to launch on-chain funds on Euler vaults.",
+    about: [
+      "Laminar lets a licensed fund manager launch a fund from two sides: a credit vault that pays depositors a disclosed rate the manager sets, and a collateral vault that holds fixed-yield tokens and other assets the manager allows. The fund share is priced on net asset value.",
+      "It is built as an add-on to unmodified Euler vaults, with a keeper that reduces risk when needed. The work so far is the smart contracts and their tests; there is no public site yet.",
+    ],
+    tools: ["Claude Code", "GitHub"],
+    modules: [
+      { number: 2, built: "A design spec and research notes written before the contracts." },
+      { number: 3, built: "The fund contracts, with unit, fuzz and mainnet-fork tests, scaffolded with Claude Code." },
+    ],
+    team: [
+      { role: "Builder", tool: "Claude Code", track: "build", task: "Writes the contracts and the tests that run them against live Euler and Pendle.", rule: "Every change lands in GitHub" },
+    ],
+    screenshot: {
+      src: "/portfolio/laminar.png",
+      alt: "The Laminar Finance project overview",
+      caption: "No public site yet. This shows the project README.",
+    },
+    stack: ["Solidity", "Foundry", "Euler EVK", "Pendle"],
+    next: "One fund running end to end on a mainnet fork, then an audit.",
     results: [],
   },
 ];

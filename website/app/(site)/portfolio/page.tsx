@@ -55,7 +55,7 @@ export default function PortfolioPage() {
             <p className="section-eyebrow">On the bench</p>
             <h2 className="mt-3 text-[length:var(--text-h2)] text-[var(--color-text)]">In progress</h2>
             <p className="mt-4 max-w-2xl font-[family-name:var(--font-ui)] text-[var(--color-text-muted)]">
-              Built or being validated, and not public yet. Shown so you can see the early modules at work.
+              Built or being validated, and most are not public yet. Shown so you can see the early modules at work.
             </p>
             <ul className="mt-10 grid gap-4 sm:grid-cols-2">
               {building.map((business) => (
