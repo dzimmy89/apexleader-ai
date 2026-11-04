@@ -1,6 +1,6 @@
 import { google } from "googleapis";
 import { SENDER_EMAIL, getSiteOrigin } from "@/lib/env";
-import { coachReadCalendarIds, coachWriteCalendarId } from "@/lib/coaching/coach-calendars";
+import { coachBusyCalendarIds, coachWriteCalendarId } from "@/lib/coaching/coach-calendars";
 import {
   BUFFER_MS,
   COACH_TIMEZONE,
@@ -155,7 +155,7 @@ type CalendarClient = NonNullable<ReturnType<typeof getCalendarClient>>;
 const busyCache = new Map<string, { at: number; busy: BusyInterval[] }>();
 
 /**
- * Busy blocks across every calendar in coachReadCalendarIds(). Google's
+ * Busy blocks across every calendar in coachBusyCalendarIds(). Google's
  * free/busy already leaves out events marked Free and invites hello@ declined.
  * A calendar Google can't read fails the whole check: skipping it would offer
  * times that may be taken.
@@ -165,7 +165,7 @@ export async function fetchBusyIntervals(
   timeMin: Date,
   timeMax: Date
 ): Promise<BusyInterval[]> {
-  const ids = coachReadCalendarIds();
+  const ids = coachBusyCalendarIds();
   let data;
   try {
     const res = await calendar.freebusy.query({
@@ -238,7 +238,7 @@ export async function getAvailability(
 
   const timeMin = new Date(rangeStart.getTime() - BUFFER_MS);
   const timeMax = new Date(rangeEnd.getTime() + BUFFER_MS);
-  const key = `${timeMin.toISOString()}|${timeMax.toISOString()}|${coachReadCalendarIds().join(",")}`;
+  const key = `${timeMin.toISOString()}|${timeMax.toISOString()}|${coachBusyCalendarIds().join(",")}`;
   const cached = busyCache.get(key);
   let busy: BusyInterval[];
   if (cached && Date.now() - cached.at < BUSY_CACHE_TTL_MS) {
