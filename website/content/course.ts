@@ -121,8 +121,9 @@ export const MODULES: readonly Module[] = [
       "Keep the CRM clean without touching it",
       "Call prep and follow-up with Duet",
       "Proposals that update themselves",
+      "Outbound agents with Origami and Explee",
     ],
-    tools: ["Grok Bot", "OpenAI Dots", "Claude Duet", "Claude"],
+    tools: ["Grok Bot", "OpenAI Dots", "Claude Duet", "Claude", "Origami", "Explee"],
     deliverable: "A 50-lead pipeline with an agent drafting follow-ups for approval",
   },
   {
@@ -176,7 +177,7 @@ export const AGENT_TEAM: readonly Agent[] = [
   },
   {
     role: "Sales",
-    tool: "Grok Bot · Duet",
+    tool: "Grok Bot · Duet · Origami",
     track: "sales",
     task: "Researches leads, drafts outreach and keeps the CRM current.",
     rule: "Sends only what you approve",

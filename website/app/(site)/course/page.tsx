@@ -3,6 +3,7 @@ import Link from "next/link";
 import { CTAButton } from "@/components/CTAButton";
 import { FinalCta } from "@/components/editorial/FinalCta";
 import { MODULES, TOOLS, TRACKS } from "@/content/course";
+import { portfolioForModule } from "@/content/portfolio";
 import { URLS } from "@/content/site";
 import { allLessons, getCourse, getCoursesInOrder, getStage } from "@/lib/learn/catalog";
 
@@ -111,6 +112,20 @@ export default function CoursePage() {
                         {module.deliverable}
                       </p>
                     </div>
+                    {portfolioForModule(module.number).length > 0 ? (
+                      <div>
+                        <p className="ui-label">Seen in</p>
+                        <ul className="mt-2 flex flex-wrap gap-x-4 gap-y-1 font-[family-name:var(--font-ui)] text-[length:var(--text-small)]">
+                          {portfolioForModule(module.number).map((b) => (
+                            <li key={b.slug}>
+                              <Link href={`/portfolio/${b.slug}`} className="text-[var(--color-accent)] hover:underline">
+                                {b.name}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ) : null}
                   </div>
                 </div>
               </li>

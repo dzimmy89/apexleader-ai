@@ -80,7 +80,7 @@ Google's help page notes the AI function can only see the cells you point it at,
 This step keeps you out of trouble.
 
 - **Public business information only.** A salon's published contact email is fine to note. A personal cell number from a data broker is not something you need.
-- **Don't scrape LinkedIn.** LinkedIn's User Agreement and its help page on prohibited software ban bots, scrapers and automation tools that collect data or act on the site for you. Read profiles yourself if you want, and add notes by hand. Don't point an agent at LinkedIn to harvest names or send connection requests.
+- **Don't scrape LinkedIn.** LinkedIn's User Agreement and its help page on prohibited software ban bots, scrapers and automation tools that collect data or act on the site for you. Read profiles yourself if you want, and add notes by hand. Don't point your own agents or browser extensions at LinkedIn to harvest names. Lesson 7 covers the one LinkedIn automation this course teaches, Origami's Sequencer, along with the account risk and the limits to use if you choose it.
 - **Don't buy email lists.** Purchased lists hurt your sender reputation (more in Lesson 2) and often include people who never agreed to anything.
 - **Record the source.** If someone asks "where did you get my email?", you want a one-line answer: "From the contact page on your website."
 - **Keep personal data minimal.** If you sell in or into the EU or UK, privacy rules are stricter for personal data. When in doubt, collect only business contact details and check with a lawyer before scaling.

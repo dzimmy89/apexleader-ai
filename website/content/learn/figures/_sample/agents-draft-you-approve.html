@@ -1,0 +1,33 @@
+<!doctype html><meta charset="utf-8">
+<!-- Sample figure for the renderer and the brand rules; not used by any lesson. -->
+<meta name="out" content="public/learn/figures/_sample/agents-draft-you-approve.webp">
+<link rel="stylesheet" href="../../../../scripts/learn/infographics/brand.css">
+<style>
+  .flow { flex: 1; display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; align-items: stretch; gap: 14px; }
+  .step { flex-direction: column; justify-content: space-between; }
+  .step .sys { font-size: 26px; }
+  .arrow { align-self: center; }
+  .paper .label { color: var(--paper-text); }
+</style>
+<div class="fig wide sales">
+  <span class="sys track">Sales agent · drafts, you send</span>
+  <div class="flow">
+    <div class="card agent step">
+      <svg class="icon track" viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+      <span class="label">Finds 30 groomers</span>
+      <span class="small">each with a source</span>
+    </div>
+    <span class="arrow">→</span>
+    <div class="card agent step">
+      <svg class="icon track" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg>
+      <span class="label">Drafts one email each</span>
+      <span class="small">into the queue</span>
+    </div>
+    <span class="arrow">→</span>
+    <div class="paper step card" style="border:0">
+      <svg class="icon signal" style="stroke:var(--signal-ink)" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 21a8 8 0 0 1 13.292-6"/><circle cx="10" cy="8" r="5"/><path d="m16 19 2 2 4-4"/></svg>
+      <span class="label">You approve</span>
+      <span class="small">before anything sends</span>
+    </div>
+  </div>
+</div>

@@ -88,7 +88,7 @@ Google and Yahoo's strictest rules (including one-click unsubscribe headers) app
 
 Each violating email can cost up to $53,088, per the FTC guide. Keep a "Do not contact" tab in your lead sheet, and tell the Bot to check it before drafting. If you email people in Canada, the EU or the UK, rules are stricter (often requiring consent first), so check with a lawyer before you do.
 
-**LinkedIn.** LinkedIn's terms prohibit bots and automation that act on the site for you, including scraping and automated messages or connection requests. Accounts get restricted for it. Use LinkedIn yourself, by hand, and keep your Bot off it.
+**LinkedIn.** LinkedIn's terms prohibit bots and automation that act on the site for you, including scraping and automated messages or connection requests. Accounts get restricted for it. Keep your Sales Bot off LinkedIn. If you later decide the time saved is worth that risk, Lesson 7 shows how to run LinkedIn steps in Origami's Sequencer with one real profile, a low daily cap and approval on.
 
 ## Step 5: Review drafts like an editor
 

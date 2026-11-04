@@ -38,7 +38,7 @@ import { GET as getSyllabusRoute, POST as postSyllabus } from "../app/api/admin/
 import { GET as getQueue } from "../app/api/admin/coaching/syllabi/route";
 import { createMemoryFirestore, type MemoryFirestore } from "./fixtures/memory-firestore";
 
-const ORIGIN = "https://apexleader.ai";
+const ORIGIN = "https://fromaitobusiness.com";
 const CLIENT = "ada@example.com";
 
 let mem: MemoryFirestore;
@@ -54,7 +54,7 @@ beforeEach(() => {
   });
   process.env.JWT_SECRET = "test-syllabus-pipeline";
   process.env.NEXT_PUBLIC_SITE_URL = ORIGIN;
-  process.env.SENDER_EMAIL = "hello@apexleader.ai";
+  process.env.SENDER_EMAIL = "hello@fromaitobusiness.com";
 });
 
 afterEach(() => {

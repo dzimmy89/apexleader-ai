@@ -774,10 +774,10 @@
     "ai-sales": {
       "id": "ai-sales",
       "title": "AI Sales",
-      "description": "Hire a sales team: lead lists, outbound that waits for your OK, a CRM that updates itself and proposals that stay current.",
+      "description": "Hire a sales team: lead lists, outbound that waits for your OK, a CRM that updates itself, proposals that stay current, and outbound agents run with approval and caps.",
       "icon": "🤝",
-      "estimatedHours": 4.3,
-      "lessonCount": 5,
+      "estimatedHours": 7.8,
+      "lessonCount": 9,
       "stageId": "run-the-business",
       "stageNumber": 4,
       "modules": [
@@ -824,6 +824,45 @@
               "slug": "lesson-05-proposals-that-update-themselves",
               "minutes": 13,
               "exercise": "exercise-05-proposals-that-update-themselves",
+              "exerciseMinutes": 35
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "title": "Outbound agents",
+          "quiz": "quiz-module-02",
+          "lessons": [
+            {
+              "number": 6,
+              "title": "Prospect With a Research Agent",
+              "slug": "lesson-06-prospect-with-a-research-agent",
+              "minutes": 13,
+              "exercise": "exercise-06-prospect-with-a-research-agent",
+              "exerciseMinutes": 40
+            },
+            {
+              "number": 7,
+              "title": "A Sequence That Waits for You",
+              "slug": "lesson-07-a-sequence-that-waits-for-you",
+              "minutes": 14,
+              "exercise": "exercise-07-a-sequence-that-waits-for-you",
+              "exerciseMinutes": 40
+            },
+            {
+              "number": 8,
+              "title": "Run an Autonomous Agent Safely",
+              "slug": "lesson-08-run-an-autonomous-agent-safely",
+              "minutes": 13,
+              "exercise": "exercise-08-run-an-autonomous-agent-safely",
+              "exerciseMinutes": 35
+            },
+            {
+              "number": 9,
+              "title": "Pick Your Outbound Stack and Measure It",
+              "slug": "lesson-09-pick-your-outbound-stack-and-measure-it",
+              "minutes": 12,
+              "exercise": "exercise-09-pick-your-outbound-stack-and-measure-it",
               "exerciseMinutes": 35
             }
           ]

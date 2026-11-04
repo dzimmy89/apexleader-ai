@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Check, X } from "lucide-react";
 import { CTAButton } from "@/components/CTAButton";
 import { SectionReveal } from "@/components/SectionReveal";
 import { PackageGrid } from "@/components/coaching/PackageGrid";
 import { PayNowLink } from "@/components/coaching/PayNowLink";
+import { PortfolioCard } from "@/components/portfolio/PortfolioCard";
 import type { PackageCardData } from "@/components/coaching/PackageCard";
 import { FaqSection } from "@/components/editorial/FaqSection";
 import { FinalCta } from "@/components/editorial/FinalCta";
@@ -11,6 +13,7 @@ import { FounderBlock } from "@/components/editorial/FounderBlock";
 import { PortraitHero } from "@/components/editorial/PortraitHero";
 import { SectionHeading } from "@/components/editorial/SectionHeading";
 import { StickyCta } from "@/components/editorial/StickyCta";
+import { featuredPortfolio } from "@/content/portfolio";
 import { URLS } from "@/content/site";
 import { BRAND } from "@/lib/brand";
 import { getPackages } from "@/lib/coaching/packages";
@@ -272,6 +275,35 @@ export default async function CoachingPage() {
               </li>
             ))}
           </ol>
+        </div>
+      </section>
+
+      <section className="px-6 py-[var(--space-section)]">
+        <div className="mx-auto max-w-6xl">
+          <SectionHeading
+            folio="03"
+            eyebrow="Proof of work"
+            title={`${BRAND.coachFirstName} built these businesses the same way.`}
+            intro="The same tools and steps you would learn, used on real businesses. Each case study shows what was built and who does the work."
+          />
+          <ul className="mt-10 grid gap-4 md:grid-cols-3">
+            {featuredPortfolio()
+              .filter((b) => b.slug !== "fromaitobusiness")
+              .slice(0, 3)
+              .map((business) => (
+                <li key={business.slug} className="min-w-0">
+                  <PortfolioCard business={business} />
+                </li>
+              ))}
+          </ul>
+          <p className="mt-6">
+            <Link
+              href="/portfolio"
+              className="inline-flex min-h-11 items-center font-[family-name:var(--font-ui)] text-[15px] font-medium text-[var(--color-accent)] underline underline-offset-4 hover:text-[var(--color-accent-hover)]"
+            >
+              See the whole portfolio →
+            </Link>
+          </p>
         </div>
       </section>
 
