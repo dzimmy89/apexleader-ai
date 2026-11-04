@@ -23,6 +23,9 @@ async function main() {
     try {
       await page.goto(business.url, { waitUntil: "load", timeout: 45_000 });
       await page.waitForLoadState("networkidle", { timeout: 15_000 }).catch(() => {});
+      // Dismiss a cookie banner with its most private choice, if there is one.
+      const consent = page.getByRole("button", { name: /^(necessary only|reject all|decline|only necessary)$/i }).first();
+      if (await consent.isVisible().catch(() => false)) await consent.click().catch(() => {});
       // Let entrance animations settle so the frame is at rest.
       await page.waitForTimeout(3_000);
       await page.screenshot({ path: join(outDir, `${business.slug}.png`) });
