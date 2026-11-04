@@ -25,13 +25,13 @@ Why: The email leaves the business, so you approve it. Research for yourself is 
 
 ## Steps
 
-1. **Pick your business.** Use your own. If you do not have one yet, use the sample: *Groomer Books*, a monthly bookkeeping and invoicing service for independent dog groomers, run by one founder.
+1. **Pick your business.** Use your own. If you do not have one yet, use the sample: *Rolling Ledger*, a monthly bookkeeping and invoicing service for independent food truck owners, run by one founder.
 
 2. **Dump last week.** Open your calendar, to-do list or sent mail and list every task you did, one per line, with rough minutes. Aim for 20 or more lines. If you use the sample business, ask the AI to generate a realistic week:
 
 ```text
-Generate a realistic list of 25 tasks a solo founder running "Groomer Books"
-(bookkeeping and invoicing for independent dog groomers) does in a week.
+Generate a realistic list of 25 tasks a solo founder running "Rolling Ledger"
+(bookkeeping and invoicing for independent food truck owners) does in a week.
 Include minutes for each. Mix client work, sales, admin, marketing and finance.
 ```
 

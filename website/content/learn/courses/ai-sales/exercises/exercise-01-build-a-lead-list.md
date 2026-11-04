@@ -16,7 +16,7 @@ You'll write a one-page customer profile and turn it into a Google Sheet of 25 s
 ## Warm-up
 
 :::checkpoint
-Q: Which of these is the best "why now" signal for a dog grooming salon prospect?
+Q: Which of these is the best "why now" signal for a food truck prospect?
 - [ ] They have a website
 - [x] They announced a second location last month
 - [ ] They have more than 100 Google reviews
@@ -25,7 +25,7 @@ Why: A "why now" signal is a recent change that creates a need. A new location m
 
 ## Steps
 
-1. **Pick your business.** Use your own, or the sample business for this course: a monthly bookkeeping service for independent dog groomers, run by one founder. Write one sentence at the top of a new Google Doc called "ICP": "I help [who] with [problem] so they can [outcome]."
+1. **Pick your business.** Use your own, or the sample business for this course: a monthly bookkeeping service for independent food truck owners, run by one founder. Write one sentence at the top of a new Google Doc called "ICP": "I help [who] with [problem] so they can [outcome]."
 
 2. **Fill in the five-part profile** under that sentence: Who, Where, Size signal, Pain signal, Disqualifier. Add a "Why now" line with two or three recent events that make a prospect more likely to buy.
 

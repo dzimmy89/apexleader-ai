@@ -32,7 +32,7 @@ Why: Regions and waitlists decide access more than price does. Read the eligibil
 3. **Draft the stack.** Use the Lesson 2 shapes for your tier. Then run this prompt:
 
 ```text
-I run [business, or "Groomer Books", a bookkeeping service for dog groomers].
+I run [business, or "Rolling Ledger", a bookkeeping service for food truck owners].
 Budget: [$20 / $100 / $300] a month. I am based in [country].
 My top jobs to delegate: [job 1], [job 2], [job 3].
 Draft stack: [plans].

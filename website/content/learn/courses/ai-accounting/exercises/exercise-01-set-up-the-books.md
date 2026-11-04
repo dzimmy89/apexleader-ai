@@ -25,14 +25,14 @@ Why: Personal spending from the business account is an owner draw, not an expens
 
 ## Steps
 
-1. **Make the money decision.** If you don't have a separate business checking account and card, list two banks you'll compare this week and book the time to open one. If you do, write down its name and the last four digits only. Using the sample business (a bookkeeping service for dog groomers)? Pretend it's a single-member LLC with a new business account.
+1. **Make the money decision.** If you don't have a separate business checking account and card, list two banks you'll compare this week and book the time to open one. If you do, write down its name and the last four digits only. Using the sample business (a bookkeeping service for food truck owners)? Pretend it's a single-member LLC with a new business account.
 
 2. **Choose your app.** Using the comparison table in Lesson 1, pick QuickBooks Online or Wave. Write two sentences on why. If you have an accountant, ask which one they prefer.
 
 3. **Create your category list.** Run this in Claude or ChatGPT:
 
 ```text
-I run [your business, or: a one-person bookkeeping service for dog grooming salons] as a [sole proprietor / single-member LLC] in the US.
+I run [your business, or: a one-person bookkeeping service for food truck owners] as a [sole proprietor / single-member LLC] in the US.
 Suggest a chart of accounts with no more than 15 expense categories, each mapped to the matching Schedule C line.
 Add income categories and owner equity accounts (owner contribution, owner draw).
 Flag any category with special tax rules so I can ask my accountant. No tax advice, only the mapping and flags.
