@@ -79,6 +79,8 @@ Agent 3: Check every link on the site and list broken ones. Don't edit files.
 
 Notice each one has its own files. Two agents editing the same file is the main way parallel work goes wrong.
 
+One cost to know before you pick a model: Cursor's own and Grok models come from your plan's usage pool, but on Premium, models from other companies such as Claude and GPT are billed at their API list price. If you also pay for Claude or ChatGPT, run those models in Claude Code or Codex instead. The T3 Code course shows how to run all three from one window.
+
 **Race the same job.** When the result is a matter of taste, like a hero section or a pricing table, use `/best-of-n` so several models try the same brief in separate worktrees:
 
 ```text
@@ -125,3 +127,4 @@ Why: Separate worktrees keep the agents from overwriting each other's edits to t
 - [Cursor 3.0 changelog](https://cursor.com/changelog/3-0) - Agents Window, Agent Tabs and best-of-n
 - [Cursor 3 ditches the classic IDE layout](https://the-decoder.com/new-cursor-3-ditches-the-classic-ide-layout-for-an-agent-first-interface-built-around-parallel-ai-fleets/) - an independent look at local-to-cloud handoff and the agent sidebar
 - [Cursor changelog](https://cursor.com/changelog) - recent additions including Projects
+- [T3 Code](https://t3.codes/) - run Cursor, Claude Code and Codex agents from one window

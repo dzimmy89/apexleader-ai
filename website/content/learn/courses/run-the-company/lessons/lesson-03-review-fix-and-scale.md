@@ -31,6 +31,7 @@ You built the inputs during the week:
 - **Triage Log** and the Friday summary from Exercise 2
 - **Corrections** doc with every miss
 - Each agent's activity record: Grok Bot routine run history, Dot Activity View, your builder's merged pull requests, Duet's thread
+- **Friday usage report** from the T3 Code course, if you run your coding agents there: tokens, limit hits and a keep, upgrade or drop decision for each AI plan
 
 Ask Duet (or your fallback) to assemble a first draft, then check it:
 
