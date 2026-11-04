@@ -73,6 +73,10 @@ export interface Intake {
   status: "empty" | "draft" | "confirmed";
   filledByAiAt: string | null;
   confirmedAt: string | null;
+  /** When David last emailed the client the self-serve intake form. */
+  formSentAt: string | null;
+  /** When the client sent their answers through that form. */
+  clientSubmittedAt: string | null;
   updatedAt: string;
 }
 
@@ -179,6 +183,8 @@ function readIntake(email: string, data: Record<string, unknown> | undefined): I
     status: d.status === "draft" || d.status === "confirmed" ? d.status : "empty",
     filledByAiAt: typeof d.filledByAiAt === "string" ? d.filledByAiAt : null,
     confirmedAt: typeof d.confirmedAt === "string" ? d.confirmedAt : null,
+    formSentAt: typeof d.formSentAt === "string" ? d.formSentAt : null,
+    clientSubmittedAt: typeof d.clientSubmittedAt === "string" ? d.clientSubmittedAt : null,
     updatedAt: String(d.updatedAt || ""),
   };
 }

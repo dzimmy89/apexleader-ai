@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import { BRAND } from "@/lib/brand";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -131,6 +132,29 @@ export function ClientIntake({ email, onConfirmed }: { email: string; onConfirme
 
   return (
     <div className="space-y-4">
+      <div className={panelClass}>
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <p className="text-sm font-medium">Client intake form</p>
+            <p className="mt-1 text-xs text-[var(--color-text-muted)]">
+              {intake.clientSubmittedAt
+                ? `They answered it ${when(intake.clientSubmittedAt)}. Their answers are below, and a draft syllabus was built from them.`
+                : intake.formSentAt
+                  ? `Emailed ${when(intake.formSentAt)}. Not answered yet. Their answers fill this form and build a draft syllabus.`
+                  : `Email them a private link from ${BRAND.email} to answer these questions themselves. Their answers fill this form and build a draft syllabus.`}
+            </p>
+          </div>
+          <Button
+            size="sm"
+            variant={intake.formSentAt ? "outline" : "default"}
+            disabled={Boolean(busy)}
+            onClick={() => void post("sendForm", { action: "sendForm" }, "Intake form emailed")}
+          >
+            {busy === "sendForm" ? "Sending…" : intake.formSentAt ? "Send it again" : "Send intake form"}
+          </Button>
+        </div>
+      </div>
+
       <div className={panelClass}>
         <div className="flex flex-wrap items-start justify-between gap-3">
           <div>

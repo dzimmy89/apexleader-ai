@@ -15,6 +15,7 @@ import {
   type Intake,
 } from "@/lib/coaching/intake";
 import { DriveAccessError, findTranscriptCandidates, readTranscriptDoc } from "@/lib/coaching/meet-transcripts";
+import { sendIntakeFormEmail } from "@/lib/coaching/intake-form";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -62,6 +63,7 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
 // { action: "save", form }            David's edits
 // { action: "confirm", form? }        the form is right; the syllabus draft can use it
 // { action: "reopen" }                back to draft
+// { action: "sendForm" }              email the client a link to fill in the intake themselves
 export async function POST(request: NextRequest, { params }: { params: Promise<{ email: string }> }) {
   const auth = await requireAdmin(request);
   if (!auth.ok) return NextResponse.json({ error: "Unauthorized" }, { status: auth.status, headers: NO_STORE });
@@ -150,6 +152,11 @@ export async function POST(request: NextRequest, { params }: { params: Promise<{
             : { status: existing.status === "empty" ? ("draft" as const) : existing.status }),
         });
         return NextResponse.json(view(saved), { headers: NO_STORE });
+      }
+      case "sendForm": {
+        const sent = await sendIntakeFormEmail(email);
+        if (!sent.ok) return fail(sent.error, 502);
+        return NextResponse.json(view(await getIntake(email, ctx.packageId)), { headers: NO_STORE });
       }
       case "reopen": {
         const saved = await saveIntake(email, { status: "draft", confirmedAt: null });
