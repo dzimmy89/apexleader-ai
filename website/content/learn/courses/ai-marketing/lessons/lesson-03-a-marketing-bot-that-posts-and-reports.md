@@ -7,6 +7,16 @@ template: v2
 
 # Lesson 3: A Marketing Bot That Posts and Reports
 
+:::video
+id: mkt-l3-overview
+kind: overview
+status: paused
+src: /learn/video/ai-marketing/mkt-l3-overview.mp4
+captions: /learn/video/ai-marketing/mkt-l3-overview.vtt
+poster: /learn/video/ai-marketing/mkt-l3-overview.jpg
+transcript: Writing posts is the easy part. The shuttling between tools is what eats a founder's week. Hand that to a bot. This is AI Marketing, lesson three: a Marketing Bot that posts and reports. In this lesson: its own logins, a written job, approval rules, a weekly brief, and supervision. A Grok Bot is a persistent agent with its own cloud computer. Give it smaller logins: a scheduler seat that can only queue drafts, one calendar sheet, and read-only analytics. Write its job: every weekday, queue approved rows as drafts. Every Monday, send a results brief. Then write what it may not do. Add Ask first rules for anything that leaves the business. And remember: all your Bots share one computer, so keep money tools off this account. The Bot prepares. You click publish. First, the logins.
+:::
+
 :::key-concept
 A Grok Bot is a persistent agent with its own cloud computer that can log into your tools, work on a schedule and report back. Set one up as your Marketing Bot: it drafts from your approved calendar, queues posts for your click, and sends you a weekly results brief. It never publishes on its own.
 :::
@@ -46,6 +56,16 @@ Before you create the Bot, set up the accounts it will use:
 
 Do not give it your main email, your password manager or admin rights on your social accounts. Enter any password through Takeover or the secure request form, never in the chat.
 
+:::infographic
+id: fig-1
+type: diagram
+title: The Marketing Bot's smaller logins
+shows: The Marketing Bot in the centre with three allowed connections: scheduler (drafts only), calendar sheet (one file), analytics (read only). Below, a crossed-out row: main email, password manager, social admin, bank.
+data: none
+image: /learn/figures/ai-marketing/lesson-03-fig-1.webp
+alt: The Marketing Bot gets three small logins: a scheduler seat that can only create drafts, access to one calendar sheet, and read-only analytics. It never gets your main email, your password manager, admin rights on your social accounts or any money tool.
+:::
+
 ## Step 2: Write the job description
 
 Create a Bot named `Marketing Bot`. The description is where its standing rules live, so be specific.
@@ -71,11 +91,31 @@ You may not:
 If a row is missing a link or image, leave it, set Status = needs info, and tell me.
 ```
 
+:::video
+id: mkt-l3-job
+kind: inline
+status: paused
+src: /learn/video/ai-marketing/mkt-l3-job.mp4
+captions: /learn/video/ai-marketing/mkt-l3-job.vtt
+poster: /learn/video/ai-marketing/mkt-l3-job.jpg
+transcript: A Bot's description is where its standing rules live. Write it like a job description, in three parts. First, the role: Marketing Bot for your business, reporting to you. Second, the job. Every weekday at eight, read the content calendar, and find rows dated in the next three days with status approved. Prepare each one in your scheduler as a draft for approval, using the exact approved copy, fixing only formatting. Then set the row to queued. Every Monday at nine, write the weekly brief. Third, the may-not list. No publishing, sending, replying or deleting on any channel. No changes to approved copy beyond formatting. No ads, budgets, billing or settings. And no tools beyond the ones listed. If a row is missing a link or an image, the Bot marks it needs info and tells you. If you can't write the may-not list in two minutes, the job is too broad. Next: approvals.
+:::
+
 ## Step 3: Set Auto-review rules
 
 Auto-review evaluates actions before they run. Add narrow **Ask first** rules for anything that leaves the business: publishing, sending messages, posting replies, deleting, purchasing and changing account settings. SpaceXAI's docs say Ask first wins when both kinds of rule match, and that Auto-review is model-based, so treat it as a second lock, not the only one. Your first lock is the scheduler role: if the Bot's seat can't publish, it can't publish.
 
 One detail matters for routines: approval requests raised during unattended work expire after about ten minutes, and the action does not run. That is fine for this design. The Bot doesn't ask to publish; it queues drafts and you approve them in the scheduler when you're ready.
+
+:::video
+id: mkt-l3-approvals
+kind: inline
+status: paused
+src: /learn/video/ai-marketing/mkt-l3-approvals.mp4
+captions: /learn/video/ai-marketing/mkt-l3-approvals.vtt
+poster: /learn/video/ai-marketing/mkt-l3-approvals.jpg
+transcript: Auto-review decides which actions stop and wait for you. Add narrow Ask first rules for everything that leaves the business: publishing, sending messages, posting replies, deleting, purchasing, and changing account settings. When both kinds of rule match, Ask first wins. Now one detail that shapes the whole design. When a routine runs while you're asleep, its approval requests expire after about ten minutes, and the action doesn't run. So never design a job that needs your yes at eight in the morning. Design it so the Bot never asks to publish at all. It queues drafts in the scheduler, and you approve them there, whenever you're ready. Then the weekly brief: what was published, the best and worst post, calendar health, AI visibility, and three recommendations marked needs your decision. Every number links to its source. In the exercise, you'll hire your Bot.
+:::
 
 ## Step 4: Teach it the weekly brief
 
@@ -91,6 +131,16 @@ Weekly marketing brief, week of [date]
 5. Three recommendations for next week, each marked "needs your decision"
 Sources: link every number to where you read it.
 ```
+
+:::infographic
+id: fig-2
+type: flow
+title: From approved row to posted
+shows: A five-step flow: approved row in the sheet, the Bot queues a draft, Ask first rules stop anything public, your click in the scheduler (highlighted), posted. Below: Monday brief with linked numbers.
+data: none
+image: /learn/figures/ai-marketing/lesson-03-fig-2.webp
+alt: An approved row becomes a draft the Bot queues in the scheduler. Ask first rules stop anything public. The post goes out only after your click in the scheduler, and every Monday the Bot sends a brief with a source link for each number.
+:::
 
 Run the job once by hand in conversation. When the output is right, ask the Bot to save it as a skill, including the sources, output format and approval rules. Then ask it to create a routine on the schedule above. Open **View conversation details**, then **Routines**, and use **Test run** with safe inputs. Test runs do real work, which is why the scheduler role and Ask first rules must already be in place.
 

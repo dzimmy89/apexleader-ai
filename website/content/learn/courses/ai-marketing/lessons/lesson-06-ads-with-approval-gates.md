@@ -7,6 +7,16 @@ template: v2
 
 # Lesson 6: Ads With Approval Gates
 
+:::video
+id: mkt-l6-overview
+kind: overview
+status: paused
+src: /learn/video/ai-marketing/mkt-l6-overview.mp4
+captions: /learn/video/ai-marketing/mkt-l6-overview.vtt
+poster: /learn/video/ai-marketing/mkt-l6-overview.jpg
+transcript: Ads are the one marketing job where a mistake costs money by the hour. This is AI Marketing, lesson six: ads with approval gates. In this lesson: hard caps, the right access, your launch click, a daily check, and when to scale. Let agents do the research, the copy variations and the daily reporting. Keep three gates in human hands. Gate one: a hard spending ceiling, set in the ad platform itself, before anything runs. Gate two: the agent's access, usually read-only, and never billing. Gate three: the click that turns a campaign on is yours. Then the agent checks results every morning, and recommends a pause when spend or cost runs high. It never changes a budget, a bid or a campaign itself. Start with an amount you'd be fine losing while you learn, and run for two weeks. First, the caps.
+:::
+
 :::key-concept
 Ads are the one marketing job where a mistake costs money by the hour. Let agents do the research, the copy variations and the daily reporting. Keep three gates in human hands: the hard spending cap set in the ad platform, the click that turns a campaign on, and any budget change.
 :::
@@ -36,6 +46,16 @@ Meta may also apply its own daily spending limit to new accounts and raise it ov
 
 A starting rule for a first test: pick the amount you'd be fine losing entirely while you learn (for many founders, a few hundred dollars), set the account or campaign ceiling to that, and run for two weeks.
 
+:::video
+id: mkt-l6-caps
+kind: inline
+status: paused
+src: /learn/video/ai-marketing/mkt-l6-caps.mp4
+captions: /learn/video/ai-marketing/mkt-l6-caps.vtt
+poster: /learn/video/ai-marketing/mkt-l6-caps.jpg
+transcript: A budget you set in a campaign is a target. A spending limit is a ceiling. Set the ceiling first. On Meta, an account spending limit is a lifetime ceiling across every campaign. When it's hit, all ads stop. A campaign spending limit caps one campaign. On Google Ads, the average daily budget isn't a ceiling. Google may spend up to twice it on a busy day, but over a month you're not charged more than about thirty point four times the daily amount. On X, a campaign total budget stops the campaign when it's spent. Menu names move, so check each platform's current help pages. For a first test, pick the amount you'd accept losing entirely while you learn. For many founders, that's a few hundred dollars. Set the ceiling to that, and run for two weeks. And never give an agent your payment method or billing role. Next: the agent's access.
+:::
+
 :::warning
 Never give an agent your ad account's payment method, billing admin role or your own login. Payment confirmations should always land on your screen: Grok Bot hands payment steps to you through Takeover, and Dots require approval for purchases. Keep it that way.
 :::
@@ -48,6 +68,16 @@ Each platform lets you add people (or a separate agent email) with limited roles
 - **For drafting campaigns** (later, if you trust the routine): a role that can create and edit campaigns but not manage billing. The agent builds campaigns in a paused state, and you turn them on.
 
 Give the agent its own email login for this, entered through a secure form or Takeover, and add Ask first or Custom Rules for "turn on a campaign," "change a budget or bid," and "change billing." The platform role is the hard lock; the agent's rules are the second lock.
+
+:::infographic
+id: fig-1
+type: diagram
+title: Three gates stay human
+shows: Three gates in a row: 1 hard cap, set in the platform; 2 agent access, read-only, no billing; 3 the launch click, yours (highlighted). Below, the agent's side: research, copy, daily reports.
+data: none
+image: /learn/figures/ai-marketing/lesson-06-fig-1.webp
+alt: Three gates stay in human hands: a hard spending cap set in the ad platform, the agent's access kept read-only with no billing role, and the click that turns a campaign on. Agents do the research, the copy and the daily reports.
+:::
 
 ## Gate 3: The launch click is yours
 
@@ -80,7 +110,27 @@ unusual. Rules:
 - Put all recommendations under "Needs your decision."
 ```
 
+:::infographic
+id: fig-2
+type: comparison
+title: The daily ads check
+shows: Two trigger cards: spend above 120% of the daily budget; cost per result more than double target for 2 days. Both lead to a highlighted RECOMMEND PAUSE card. Footer with a ban icon: the agent never changes budgets, bids or status.
+data: none
+image: /learn/figures/ai-marketing/lesson-06-fig-2.webp
+alt: The daily ads check flags RECOMMEND PAUSE when spend is above 120% of the daily budget, or cost per result is more than double the target for two days. The agent never changes budgets, bids, audiences or campaign status itself.
+:::
+
 You read it in two minutes. If it says pause, you pause. Over the two weeks, the weekly marketing brief from Lesson 3 adds an ads section: total spend, results, cost per result, and one recommendation.
+
+:::video
+id: mkt-l6-daily-check
+kind: inline
+status: paused
+src: /learn/video/ai-marketing/mkt-l6-daily-check.mp4
+captions: /learn/video/ai-marketing/mkt-l6-daily-check.vtt
+poster: /learn/video/ai-marketing/mkt-l6-daily-check.jpg
+transcript: Once a campaign runs, the agent looks and reports, with rules you agreed in advance. Every morning at nine, it reads yesterday's results, read-only. It reports spend against the cap, cost per result, the best and worst ad, and anything unusual. Two rules trigger a flag. If spend is above one hundred twenty percent of the daily budget, or cost per result is more than double your target for two days, it writes recommend pause at the top, and explains why. It never changes budgets, bids, audiences or campaign status itself. Every recommendation goes under needs your decision. You read it in two minutes. If it says pause, you pause. Scale only after two clean weeks: results at or under target, reports that match the platform, and no surprises. Then raise the cap in steps you choose, like twenty-five percent at a time. In the exercise, you'll set your gates.
+:::
 
 :::try-it
 Open the ad platform you're most likely to use and find where the account spending limit or campaign total budget lives. Don't launch anything. Just find the ceiling, so you know where it is before you need it.
