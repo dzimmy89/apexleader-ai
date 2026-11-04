@@ -39,6 +39,14 @@ export type PortfolioResult = {
   confirmedBy: string;
 };
 
+export type PortfolioScreenshot = {
+  /** Path under public/, 1440x900. */
+  src: string;
+  alt: string;
+  /** Shown under the image, for example when it shows example data. */
+  caption?: string;
+};
+
 export type PortfolioBusiness = {
   slug: string;
   name: string;
@@ -53,6 +61,8 @@ export type PortfolioBusiness = {
   tools: string[];
   modules: PortfolioModule[];
   team: Agent[];
+  /** The homepage, captured at 1440x900. */
+  screenshot?: PortfolioScreenshot;
   /** Hosting, payments, data and models. */
   stack: string[];
   /** What is next for it, said plainly. */
@@ -89,6 +99,10 @@ export const PORTFOLIO: readonly PortfolioBusiness[] = [
       { role: "Research", tool: "Claude", track: "build", task: "Researched the course topics and the new brand direction.", rule: "Cites every source" },
       { role: "Sales", tool: "Claude", track: "sales", task: "Drafts follow-up emails to people who book a call.", rule: "Sends only what you approve" },
     ],
+    screenshot: {
+      src: "/portfolio/fromaitobusiness.png",
+      alt: "The FromAItoBusiness homepage",
+    },
     stack: ["Next.js", "Google Cloud Run", "Firestore", "Firebase Auth", "Stripe", "Google Workspace"],
     next: "Course lessons with video, and the cold email and X outreach plans going live.",
     results: [],
@@ -117,6 +131,10 @@ export const PORTFOLIO: readonly PortfolioBusiness[] = [
       { role: "Marketing", tool: "Grok Bot", track: "marketing", task: "One bot per channel drafts posts and briefs and files weekly reports.", rule: "Publishes after your OK" },
       { role: "Research", tool: "Gemini", track: "build", task: "Researches each lecture topic before the script is written.", rule: "Cites every source" },
     ],
+    screenshot: {
+      src: "/portfolio/defi-university.png",
+      alt: "The DeFi University homepage",
+    },
     stack: ["Next.js", "Google Cloud Run", "Firestore", "Stripe", "Vertex AI (Gemini)", "YouTube"],
     next: "More channels handed to bots, with the owner approving each week's plan.",
     results: [],
@@ -127,24 +145,28 @@ export const PORTFOLIO: readonly PortfolioBusiness[] = [
     name: "The Node",
     status: "live",
     url: "https://thenode.pro",
-    oneLine: "A market briefing newsletter that an AI pipeline drafts for each reader's watchlist.",
+    oneLine: "A live crypto finance membership: training, a live desk three nights a week, and an AI market brief.",
     about: [
-      "A newsletter for people who follow markets. Every day a pipeline pulls prices, macro data and the economic calendar from several data vendors, and Gemini drafts a brief shaped around the reader's own watchlist, from bonds to currencies to crypto.",
-      "Readers can see a sample brief before they subscribe. Subscriptions run through Shopify, with a $1 trial and then $20 a month.",
+      "An education membership for people who manage their own crypto positions. Members start with a free week of Basic Training, then join the Node Membership at $97 a month for live sessions with David and co-hosts, a course library and a community. Larger accounts can book private coaching.",
+      "Behind it, a daily pipeline pulls prices, macro data and the economic calendar from several data vendors, and Gemini drafts a market brief shaped around each reader's watchlist.",
     ],
     tools: ["Claude Code", "Gemini", "GitHub"],
     modules: [
-      { number: 3, built: "The site, the sample brief and the subscriber pages, built with Claude Code." },
+      { number: 3, built: "The membership site, course library and member pages, built with Claude Code." },
       { number: 4, built: "A written design contract with a colour per asset class." },
-      { number: 5, built: "The newsletter itself: a daily pipeline that drafts each brief with Gemini." },
-      { number: 7, built: "Shopify subscriptions with a $1 trial." },
+      { number: 5, built: "A daily market brief drafted by Gemini, plus a live show schedule and YouTube replays." },
+      { number: 7, built: "Membership checkout with a free first week." },
     ],
     team: [
-      { role: "Builder", tool: "Claude Code", track: "build", task: "Builds the site and the newsletter pipeline.", rule: "Every change lands in GitHub" },
+      { role: "Builder", tool: "Claude Code", track: "build", task: "Builds the site, the member area and the brief pipeline.", rule: "Every change lands in GitHub" },
       { role: "Research", tool: "Gemini", track: "build", task: "Reads the day's market data and drafts each reader's brief.", rule: "Cites every source" },
     ],
+    screenshot: {
+      src: "/portfolio/the-node.png",
+      alt: "The Node homepage",
+    },
     stack: ["Next.js", "Google Cloud Run", "Firestore", "Vertex AI (Gemini)", "Shopify"],
-    next: "More data sources and a brief for each asset class.",
+    next: "More live shows and a brief for each asset class.",
     results: [],
     featured: true,
   },
@@ -170,33 +192,14 @@ export const PORTFOLIO: readonly PortfolioBusiness[] = [
       { role: "Research", tool: "Gemini", track: "build", task: "Identifies ingredients in photos and drafts recipes and plans.", rule: "Cites every source" },
       { role: "Marketing", tool: "Grok Bot", track: "marketing", task: "Planned: drafts posts for each channel.", rule: "Publishes after your OK" },
     ],
+    screenshot: {
+      src: "/portfolio/we-like-food.png",
+      alt: "The We Like Food homepage",
+    },
     stack: ["React", "Google Cloud Run", "Firebase Auth", "Vertex AI (Gemini)", "fal", "Stripe"],
     next: "Its own domain and a mobile app.",
     results: [],
     featured: true,
-  },
-  {
-    slug: "getrunway",
-    name: "GetRunway",
-    status: "building",
-    url: "https://getrunway.trade",
-    oneLine: "An AI co-pilot for traders: a pre-trade interview, a risk check and a trade journal.",
-    about: [
-      "A co-pilot that interviews a trader before each trade, checks the risk against their own rules and keeps a journal before and after. It watches open positions and sends alerts.",
-      "The public site is a coming-soon page while the app is paused.",
-    ],
-    tools: ["Claude Code", "Cursor", "Gemini", "GitHub"],
-    modules: [
-      { number: 2, built: "A written product plan and agent instructions before the build." },
-      { number: 3, built: "The app, the risk engine and the journal, built with Cursor and Claude Code." },
-    ],
-    team: [
-      { role: "Builder", tool: "Cursor · Claude Code", track: "build", task: "Builds the app from written agent instructions.", rule: "Every change lands in GitHub" },
-      { role: "Research", tool: "Gemini", track: "build", task: "Runs the pre-trade interview and adds market context.", rule: "Cites every source" },
-    ],
-    stack: ["Next.js", "FastAPI", "Google Cloud Run", "PostgreSQL", "Vertex AI (Gemini)"],
-    next: "Back to public once the paused app is ready.",
-    results: [],
   },
   {
     slug: "omnifolio",
@@ -214,6 +217,11 @@ export const PORTFOLIO: readonly PortfolioBusiness[] = [
     team: [
       { role: "Builder", tool: "Claude Code", track: "build", task: "Builds each data reader with tests, working from written agent instructions.", rule: "Every change lands in GitHub" },
     ],
+    screenshot: {
+      src: "/portfolio/omnifolio.png",
+      alt: "The Omnifolio landing page",
+      caption: "Landing page from a local build. The portfolio on it is example data.",
+    },
     stack: ["Next.js", "Google Cloud Run", "PostgreSQL"],
     next: "A public address.",
     results: [],
@@ -235,6 +243,11 @@ export const PORTFOLIO: readonly PortfolioBusiness[] = [
     team: [
       { role: "Research", tool: "Claude", track: "build", task: "Researched the grant programme and what reviewers asked of similar proposals.", rule: "Cites every source" },
     ],
+    screenshot: {
+      src: "/portfolio/zins.png",
+      alt: "The Zins markets screen mockup",
+      caption: "App mockup. Every figure on it is illustrative example data.",
+    },
     stack: ["Canton Network", "Claude design canvas"],
     next: "A working prototype and a filed grant proposal.",
     results: [],

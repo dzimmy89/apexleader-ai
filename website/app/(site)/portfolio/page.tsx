@@ -57,7 +57,7 @@ export default function PortfolioPage() {
             <p className="mt-4 max-w-2xl font-[family-name:var(--font-ui)] text-[var(--color-text-muted)]">
               Built or being validated, and not public yet. Shown so you can see the early modules at work.
             </p>
-            <ul className="mt-10 grid gap-4 md:grid-cols-3">
+            <ul className="mt-10 grid gap-4 sm:grid-cols-2">
               {building.map((business) => (
                 <li key={business.slug} className="min-w-0">
                   <PortfolioCard business={business} />

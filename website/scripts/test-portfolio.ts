@@ -1,5 +1,8 @@
 import assert from "node:assert/strict";
+import { existsSync } from "node:fs";
+import { dirname, join } from "node:path";
 import { describe, it } from "node:test";
+import { fileURLToPath } from "node:url";
 import { MODULES, TOOLS } from "../content/course";
 import { PORTFOLIO, type PortfolioBusiness } from "../content/portfolio";
 
@@ -45,6 +48,15 @@ describe("portfolio", () => {
       for (const tool of b.tools) assert.ok(tools.has(tool), `${b.slug}: "${tool}" is not in the toolkit`);
       assert.ok(b.modules.length > 0, `${b.slug}: needs at least one module`);
       for (const m of b.modules) assert.ok(modules.has(m.number), `${b.slug}: module ${m.number} does not exist`);
+    }
+  });
+
+  it("has a homepage screenshot file for every business", () => {
+    const publicDir = join(dirname(fileURLToPath(import.meta.url)), "..", "public");
+    for (const b of PORTFOLIO) {
+      assert.ok(b.screenshot, `${b.slug}: needs a screenshot`);
+      assert.ok(b.screenshot.alt.trim(), `${b.slug}: screenshot needs alt text`);
+      assert.ok(existsSync(join(publicDir, b.screenshot.src)), `${b.slug}: ${b.screenshot.src} is missing from public/`);
     }
   });
 

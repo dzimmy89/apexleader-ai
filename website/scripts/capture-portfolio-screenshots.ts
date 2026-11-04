@@ -8,12 +8,15 @@
 import { mkdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { chromium } from "playwright";
 import { PORTFOLIO } from "../content/portfolio";
 
 const outDir = join(dirname(fileURLToPath(import.meta.url)), "..", "public", "portfolio");
 
+// Not a site dependency: the workflow installs it just for this script.
+const PLAYWRIGHT: string = "playwright";
+
 async function main() {
+  const { chromium } = await import(PLAYWRIGHT);
   mkdirSync(outDir, { recursive: true });
   const browser = await chromium.launch();
   const failed: string[] = [];
