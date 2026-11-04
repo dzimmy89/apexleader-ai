@@ -77,7 +77,7 @@ watch, off track). Use only numbers that appear in the reports, with links.
 If a number is missing, mark it "missing" rather than estimating.
 ```
 
-For Groomer Books, a first scorecard might be: newsletter signups, discovery calls booked, new customers, monthly recurring revenue, cash in bank, invoices overdue more than 14 days, and hours you spent on approvals. That last one matters. If approvals take more than four hours a week, an agent's job is too loose. If you built the Scorecard tab in AI Sales Exercise 9, add it to the reports: positive replies per channel is often the best early sales number.
+For Groomer Books, a first scorecard might be: newsletter signups, discovery calls booked, new customers, monthly recurring revenue, cash in bank, invoices overdue more than 14 days, and hours you spent on approvals. That last one matters. If approvals take more than four hours a week, an agent's job is too loose. If you built the Scorecard tab in AI Sales Exercise 9, add it to the reports: positive replies per channel is often the best early sales number. If you took Get Found, add two marketing numbers from your weekly SEO brief and AI-visibility dashboard: organic search clicks, and mentions in your monthly prompt panel.
 
 ## Step 3: The 90-minute session
 

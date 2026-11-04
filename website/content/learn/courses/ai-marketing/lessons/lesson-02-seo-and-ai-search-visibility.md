@@ -86,7 +86,7 @@ Assistants lean on sources they already trust: review sites, industry directorie
 
 ## Step 4: Measure monthly
 
-Two free tools show part of the picture. Google says AI Overviews and AI Mode clicks are included in the Search Console Performance report under the "Web" search type. Bing Webmaster Tools added an AI Performance report that shows how often your pages are cited in Copilot answers. Verify your site in both.
+Two free tools show part of the picture. Google says AI Overviews and AI Mode clicks are included in the Search Console Performance report under the "Web" search type, and its Generative AI performance report, added in June 2026, shows impressions in AI Overviews, AI Mode and Discover. Bing Webmaster Tools added an AI Performance report that shows how often your pages are cited in Copilot answers. Verify your site in both.
 
 Then run your own "AI visibility check" once a month. Ask each assistant the same five questions your buyers ask, and log the results.
 
@@ -118,6 +118,7 @@ Why: OpenAI says sites that opt out of OAI-SearchBot won't appear in ChatGPT sea
 
 ## Go deeper
 
+- [Get Found: SEO, GEO and AI SEO](/university/get-found) - the full course on everything in this lesson: the free search stack, technical SEO by agent, AI-assisted writing, citable pages, real mentions and an AI-visibility dashboard
 - [Google: AI features and your website](https://developers.google.com/search/docs/appearance/ai-features) - Google's own requirements, controls and measurement for AI Overviews and AI Mode
 - [OpenAI: Overview of OpenAI crawlers](https://developers.openai.com/api/docs/bots) - OAI-SearchBot, GPTBot and ChatGPT-User, and how each affects ChatGPT search
 - [Perplexity crawlers](https://docs.perplexity.ai/docs/resources/perplexity-crawlers.md) - PerplexityBot, Perplexity-User and firewall guidance

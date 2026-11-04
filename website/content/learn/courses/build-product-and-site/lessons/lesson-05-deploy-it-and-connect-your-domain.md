@@ -90,6 +90,8 @@ Check for mixed content (any image, CSS or script loaded over http://).
 
 You can paste this into your coding agent, or do it by hand in a private browser window and on your phone with Wi-Fi off.
 
+Once the site is live on your domain, make it findable: check that your sitemap and canonical links use the real domain, not the host's preview address, and verify the site in Google Search Console and Bing Webmaster Tools. The Get Found course walks through both in its first three lessons.
+
 :::warning
 Your registrar account controls your domain, and with it your website and any email on that domain. Turn on two-factor authentication, use a unique password, turn on auto-renew and registrar lock, and don't hand that login to any agent. Agents can prepare DNS changes as a list; you make them, one record at a time, and keep a note of the old values.
 :::
