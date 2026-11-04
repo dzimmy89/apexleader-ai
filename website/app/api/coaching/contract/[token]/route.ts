@@ -46,13 +46,19 @@ export async function POST(request: NextRequest, { params }: RouteContext) {
     "";
   const userAgent = request.headers.get("user-agent") || "";
 
-  const result = await captureSignature({
-    token,
-    typedName,
-    signatureDataUri,
-    ipAddress,
-    userAgent,
-  });
+  let result: Awaited<ReturnType<typeof captureSignature>>;
+  try {
+    result = await captureSignature({
+      token,
+      typedName,
+      signatureDataUri,
+      ipAddress,
+      userAgent,
+    });
+  } catch (e) {
+    console.error("[coaching/contract] signing failed", e instanceof Error ? e.message : e);
+    return NextResponse.json({ error: "We could not save your signature. Try again in a minute." }, { status: 500 });
+  }
 
   if (!result.ok) {
     return NextResponse.json({ error: result.error }, { status: 400 });
