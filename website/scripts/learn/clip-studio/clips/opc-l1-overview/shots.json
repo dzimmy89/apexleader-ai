@@ -14,6 +14,7 @@
    "hero": {"move": "light", "target": "yes", "at": "L0:yes"}, "camera": "push-in"},
   {"id": "title", "type": "chapter-card", "from": "L1", "over": "hook",
    "kicker": "The One-Person Company · Lesson {lesson|0}", "title": "Agents as staff",
+   "sub": "In this lesson", "subAt": "L2:lesson",
    "agenda": [
     {"text": "Three kinds of AI help", "icon": "layers", "at": "L2:three"},
     {"text": "What changed in 2026", "icon": "calendar", "at": "L2:changed"},

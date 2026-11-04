@@ -19,7 +19,8 @@
      "statusTone": "sig",
      "lines": [
       {
-       "text": "A reply to a client, with your name on it"
+       "text": "A reply to a client, with your name on it",
+       "at": "L0:agent"
       }
      ]
     },
@@ -140,13 +141,18 @@
      "icon": "info",
      "text": "Even when a product allows more",
      "at": "L5:holds"
+    },
+    {
+     "icon": "credit-card",
+     "text": "Claude Duet: a one-time virtual card, after your approval",
+     "at": "L6:claude"
     }
    ]
   },
   {
    "id": "house",
    "type": "rule",
-   "from": "L6",
+   "from": "L6:in",
    "kicker": "This course's house rule",
    "kickerIcon": "shield-check",
    "at": "L6:course",
@@ -154,14 +160,7 @@
    "highlight": {
     "text": "never move money.",
     "at": "L6:never"
-   },
-   "chips": [
-    {
-     "icon": "credit-card",
-     "text": "Claude Duet: a one-time virtual card, after your approval",
-     "at": "L6:claude"
-    }
-   ]
+   }
   },
   {
    "id": "middle",
