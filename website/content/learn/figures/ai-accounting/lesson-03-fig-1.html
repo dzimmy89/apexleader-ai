@@ -1,0 +1,25 @@
+<!doctype html><meta charset="utf-8">
+<meta name="out" content="public/learn/figures/ai-accounting/lesson-03-fig-1.webp">
+<link rel="stylesheet" href="../../../../scripts/learn/infographics/brand.css">
+<style>
+.fig.tl-f{justify-content:center;gap:40px}
+.tl{position:relative;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;align-items:start;padding-top:20px}
+.line{position:absolute;left:4%;right:4%;top:44px;height:3px;background:var(--line-strong)}
+.st{position:relative;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
+.dot{width:48px;height:48px;border-radius:50%;background:var(--panel-raised);border:2px solid var(--line-strong)}
+.st.due .dot{background:var(--text)}
+.st.key .dot{background:var(--track);border-color:var(--track)}
+.d{font:800 32px/1 var(--display)}
+.st.key .d{color:var(--track)}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:12px}
+</style>
+<div class="fig wide accounting tl-f">
+  <div class="tl"><div class="line"></div>
+    <div class="st"><div class="dot"></div><span class="d">&minus;3</span><span class="small">Heads-up</span></div>
+    <div class="st due"><div class="dot"></div><span class="d">Due</span><span class="small">Due date</span></div>
+    <div class="st"><div class="dot"></div><span class="d">+3</span><span class="small">Polite nudge</span></div>
+    <div class="st"><div class="dot"></div><span class="d">+14</span><span class="small">Offer a call</span></div>
+    <div class="st key"><div class="dot"></div><span class="d">15+</span><span class="label">Monday review</span></div>
+  </div>
+  <div class="foot"><span class="pill muted">Sent by the app, in days</span><span class="pill track">Needs you</span></div>
+</div>

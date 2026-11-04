@@ -7,6 +7,16 @@ template: v2
 
 # Lesson 2: Receipts and Expenses With Cowork and an Expense Bot
 
+:::video
+id: acct-l2-overview
+kind: overview
+status: paused
+src: /learn/video/ai-accounting/acct-l2-overview.mp4
+captions: /learn/video/ai-accounting/acct-l2-overview.vtt
+poster: /learn/video/ai-accounting/acct-l2-overview.jpg
+transcript: Receipts land in three places: your inbox, vendor websites, and your pocket. Two agents can gather all of them. This is AI Accounting, lesson two: receipts and expenses. In this lesson: one folder, Claude Cowork filing, an Expense Bot for vendor portals, and matching to the bank feed. Start with one Inbox folder and one naming rule: date, vendor, amount. Connect only your Finance folder to Claude Cowork, and it renames each receipt, logs it in a spreadsheet with a suggested category and a confidence score, and files it by month. A Grok Bot called Expense Bot signs in to vendor portals on the third of each month and downloads last month's invoices. You type every password yourself. Then the bank feed becomes the source of truth. The agents match paperwork to it and list the gaps, and they never pay anything. Your part is fifteen minutes a week. First, the folder.
+:::
+
 :::key-concept
 Receipts pile up in three places: your email, vendor websites, and your pocket. Use Claude Cowork to file and log everything that lands in one folder on your computer, and a Grok Bot "Expense Bot" to collect invoices from vendor websites on a schedule. Your accounting app's bank feed is the source of truth. The agents match paperwork to it and flag gaps. They never pay anything.
 :::
@@ -36,6 +46,16 @@ Finance/
 
 The naming rule: `YYYY-MM-DD_Vendor_Amount.pdf`, for example `2026-10-14_Canva_15.00.pdf`. A consistent name makes receipts searchable forever, by you, your accountant, or any agent.
 
+:::infographic
+id: fig-1
+type: diagram
+title: One folder, one naming rule
+shows: Three sources on the left (email receipts, phone photos, vendor portals) flow into one Inbox folder, which the agent files into Filed/2026 by month. Below, a paper card shows the naming rule YYYY-MM-DD_Vendor_Amount.pdf with the example 2026-10-14_Canva_15.00.pdf.
+data: none
+image: /learn/figures/ai-accounting/lesson-02-fig-1.webp
+alt: Email receipts, phone photos and vendor portal invoices all go into one Inbox folder, and the agent files them into Filed/2026 by month. Every file follows one naming rule, YYYY-MM-DD_Vendor_Amount.pdf, for example 2026-10-14_Canva_15.00.pdf.
+:::
+
 Getting receipts into Inbox:
 
 - **Email receipts:** forward or save as PDF into Inbox. Many email apps can do this with a filter.
@@ -64,6 +84,16 @@ Once that runs cleanly a couple of times, make it weekly. In Cowork, type `/sche
 
 Cowork asks for permission before permanently deleting files, and you can watch each step and stop it. Anthropic also notes that Cowork activity isn't captured in its audit logs, so it isn't meant for regulated workloads. For a solo founder's receipts, the practical rule is: review its work weekly, and keep the original files.
 
+:::video
+id: acct-l2-cowork
+kind: inline
+status: paused
+src: /learn/video/ai-accounting/acct-l2-cowork.mp4
+captions: /learn/video/ai-accounting/acct-l2-cowork.vtt
+poster: /learn/video/ai-accounting/acct-l2-cowork.jpg
+transcript: Claude Cowork works on the files in folders you connect, and nothing else. So connect one folder: Finance. Then give it a five-part job. For every file in the receipts Inbox, read the date, vendor, total and currency. Rename it with the naming rule. Add a row to the Log sheet, with a suggested category from your list, business or personal, and a confidence of high, medium or low. Move the file into that month's Filed folder. And if a receipt is unreadable, a duplicate, or looks personal, leave it in Inbox and add it to a Needs review list. Two rules close the prompt: never delete a file, and never change an existing row. Run it by hand a couple of times. Once it runs cleanly, schedule it weekly, at a time your computer is awake and the desktop app is open. Next: the receipts that live behind a login.
+:::
+
 ## Step 3: Hire an Expense Bot for vendor portals
 
 Some receipts only live behind a login: your web host, your software subscriptions, your phone carrier. Downloading them monthly is a classic job for an agent that can operate a browser. Grok Bot (SpaceXAI, in beta since August 2026) lists "Expense Manager" among its example roles.
@@ -91,6 +121,16 @@ Lock it down using Grok Bot's own controls:
 Agents never move money. The Expense Bot reads billing pages and downloads PDFs. It doesn't pay invoices, change cards on file, or accept new terms. If a vendor portal shows a "pay now" button for a failed charge, the Bot reports it and you pay it yourself.
 :::
 
+:::video
+id: acct-l2-expense-bot
+kind: inline
+status: paused
+src: /learn/video/ai-accounting/acct-l2-expense-bot.mp4
+captions: /learn/video/ai-accounting/acct-l2-expense-bot.vtt
+poster: /learn/video/ai-accounting/acct-l2-expense-bot.jpg
+transcript: Some receipts only live behind a login: your web host, your software, your phone carrier. That's a job for an Expense Bot. Give it one job. On the third of each month, sign in to each vendor portal, download last month's invoice as a PDF, upload it to the receipts Inbox, and message you a list of vendors, amounts, and anything unusual, like a price change or a failed payment. Then lock it down three ways. Logins: when the Bot reaches a sign-in page, take over and type the password and code yourself. Approvals: add Ask first rules for purchases, transfers, settings changes and deletions. And separation: your Bots share one cloud computer, so never sign it in to your bank. If a portal offers to update the card and retry, the Bot stops and reports it. You make that change yourself. In the exercise, you'll build both agents.
+:::
+
 ## Step 4: Match receipts to the bank feed
 
 Your accounting app's bank feed already has every transaction. Now match paperwork to it.
@@ -105,6 +145,16 @@ Compare "Bank export.csv" (from my accounting app) with the Log sheet in Expense
 List: (a) bank transactions over $25 with no matching receipt, (b) receipts with no matching bank transaction, (c) any amount mismatch.
 Match on vendor and amount within 3 days. Don't change either file.
 ```
+
+:::infographic
+id: fig-2
+type: diagram
+title: The bank feed is the source of truth
+shows: The receipts log on the left is matched to the bank feed (highlighted paper card) on vendor and amount within 3 days. Three exception cards on the right: a charge over $25 with no receipt, a receipt with no charge, and amounts that differ. Footer: you clear them in the weekly 15 minutes.
+data: none
+image: /learn/figures/ai-accounting/lesson-02-fig-2.webp
+alt: The receipts log is matched to the bank feed on vendor and amount within 3 days. What does not match becomes one of three exceptions: a charge over $25 with no receipt, a receipt with no bank charge, or amounts that differ. You clear them in your weekly 15-minute review.
+:::
 
 ## Step 5: The weekly 15 minutes
 

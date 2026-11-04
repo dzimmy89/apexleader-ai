@@ -7,6 +7,16 @@ template: v2
 
 # Lesson 3: Invoices and Collections
 
+:::video
+id: acct-l3-overview
+kind: overview
+status: paused
+src: /learn/video/ai-accounting/acct-l3-overview.mp4
+captions: /learn/video/ai-accounting/acct-l3-overview.vtt
+poster: /learn/video/ai-accounting/acct-l3-overview.jpg
+transcript: Most late payments aren't hostile. The client forgot, or nobody reminded them. So make getting paid a system. This is AI Accounting, lesson three: invoices and collections. In this lesson: terms, automatic reminders, a Monday receivables review, and the fraud rule. Set your terms before the first invoice: a due date, a deposit for project work, a payment link, and the name of the person who pays the bills. Let your accounting app draft invoices and send reminders on a schedule. You approve the wording once. Then, every Monday, an agent reads your aging report and gives every open invoice a next step. It drafts the personal emails. It sends nothing. And one rule is absolute: no agent ever touches payment details, payment links, refunds or credits. First, the terms.
+:::
+
 :::key-concept
 Getting paid is a system, not a mood. Set clear terms, let your accounting app draft invoices and send scheduled reminders, and have an agent build a weekly "who owes what" list with suggested follow-ups. You approve every invoice and every personal chase. No agent ever touches refunds, payment details or bank accounts.
 :::
@@ -50,7 +60,27 @@ Help me write three short, friendly invoice reminder emails for a one-person boo
 Each under 80 words. No guilt, no threats, no legal language. Use [Client name], [Invoice number], [Amount], [Due date], [Payment link].
 ```
 
+:::infographic
+id: fig-1
+type: timeline
+title: A reminder schedule that stays friendly
+shows: A timeline around the due date: 3 days before, heads-up; due date; 3 days after, polite nudge; 14 days after, offer a call; then from day 15 the Monday review (highlighted) takes over. The first three are sent by the app, the last needs you.
+data: none
+image: /learn/figures/ai-accounting/lesson-03-fig-1.webp
+alt: Reminder timeline: a heads-up 3 days before the due date, a polite nudge 3 days after, and an offer of a quick call 14 days after, all sent by the app. From day 15 the Monday review takes over and the next step needs you.
+:::
+
 Paste the results into your app's reminder templates. You approve the wording once. The app handles the timing.
+
+:::video
+id: acct-l3-reminders
+kind: inline
+status: paused
+src: /learn/video/ai-accounting/acct-l3-reminders.mp4
+captions: /learn/video/ai-accounting/acct-l3-reminders.vtt
+poster: /learn/video/ai-accounting/acct-l3-reminders.jpg
+transcript: You write the reminders once. The app handles the timing. Here's a schedule that stays friendly. Three days before the due date, a heads-up, with the amount and the payment link. Three days after, a polite nudge that assumes they forgot. Fourteen days after, still polite: is anything blocking payment, and would a quick call help? Keep each one under eighty words, with no guilt, no threats and no legal language. Ask Claude to draft all three with placeholders for the client name, invoice number, amount, due date and payment link. Edit them to sound like you, and paste them into your app's reminder templates. QuickBooks can draft invoices and schedule reminders for you to review. Wave Pro sends reminders three, seven and fourteen days after the due date. After day fourteen, reminders stop being enough, and your Monday review takes over. Next: that review.
+:::
 
 ## Step 3: Hire an agent for the weekly receivables review
 
@@ -73,10 +103,30 @@ Make a one-page summary:
 Never change invoice amounts, due dates, or payment details.
 ```
 
+:::infographic
+id: fig-2
+type: comparison
+title: Every overdue invoice gets a next step
+shows: Four rows by days overdue: 1 to 14 days, automatic reminders, no action; 15 to 30 days, draft a personal email; over 30 days, a call with talking points; over 60 days (highlighted), you decide on pausing work or a payment plan. Footer: the agent drafts, nothing is sent.
+data: none
+image: /learn/figures/ai-accounting/lesson-03-fig-2.webp
+alt: Next steps by days overdue: 1 to 14 days, automatic reminders handle it; 15 to 30 days, the agent drafts a personal email; over 30 days, it suggests a call and drafts talking points; over 60 days, you decide whether to pause work or offer a payment plan. The agent drafts and never sends.
+:::
+
 The output is a list you read in five minutes and a few drafts you send yourself.
 
 :::warning
 Invoice fraud often works by changing payment details: a "new bank account" on an invoice, or an email asking a client to pay somewhere else. Your rule: no agent may edit payment instructions, bank details or payment links, and no agent may issue refunds or credits. If a client ever receives a message about changed payment details, they should call you to confirm. Tell them that in your first invoice email.
+:::
+
+:::video
+id: acct-l3-fraud
+kind: inline
+status: paused
+src: /learn/video/ai-accounting/acct-l3-fraud.mp4
+captions: /learn/video/ai-accounting/acct-l3-fraud.vtt
+poster: /learn/video/ai-accounting/acct-l3-fraud.jpg
+transcript: Automation makes invoicing faster. It also gives fraud a new door. Here's the pattern. A client gets an email that looks like yours: we've changed banks, please pay this new account. Or an invoice arrives with a new payment link. The money goes to a stranger, and the client still owes you. So the rule is simple. No agent may edit payment instructions, bank details or payment links. No agent may issue refunds or credits. Your receivables agent may read amounts and draft emails, but it never changes an amount or a due date. Then tell every client, on your very first invoice, that you will never change payment details by email, and that they should call you if they get a message saying otherwise. If an agent ever proposes a new payment link, deny it and check the link yourself. In the exercise, you'll set this up.
 :::
 
 ## Step 4: Handle the hard cases yourself

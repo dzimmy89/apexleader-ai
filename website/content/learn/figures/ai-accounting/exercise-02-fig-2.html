@@ -1,0 +1,36 @@
+<!doctype html><meta charset="utf-8">
+<meta name="out" content="public/learn/figures/ai-accounting/exercise-02-fig-2.webp">
+<link rel="stylesheet" href="../../../../scripts/learn/infographics/brand.css">
+<style>
+.head{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.wrap{flex:1;display:grid;grid-template-columns:1.2fr 1fr;gap:24px;align-items:center}
+.left{display:flex;flex-direction:column;gap:12px}
+.big{display:flex;align-items:baseline;gap:12px}
+.big .num{font-size:64px}
+.bar{display:flex;height:60px;border-radius:12px;overflow:hidden;border:1.5px solid var(--line)}
+.seg{display:flex;align-items:center;justify-content:center;font:600 26px/1 var(--body)}
+.seg{white-space:nowrap}
+.hi{flex:6;background:color-mix(in oklch,var(--track) 45%,transparent)}
+.me{flex:2.8;background:color-mix(in oklch,var(--track) 20%,transparent)}
+.lo{flex:1.4;background:var(--panel-raised);color:var(--muted)}
+.ex{display:flex;flex-direction:column;gap:10px}
+.c{display:flex;align-items:baseline;gap:12px}
+.c .num{font-size:48px;width:40px;text-align:right}
+.foot{display:flex;align-items:center;gap:12px}
+</style>
+<div class="fig wide accounting">
+  <div class="head"><span class="label">Rolling Ledger, October</span><span class="sys">example</span></div>
+  <div class="wrap">
+    <div class="left">
+      <div class="big"><span class="num">10</span><span class="label">receipts</span></div>
+      <div class="bar"><div class="seg hi">7 high</div><div class="seg me">2 med</div><div class="seg lo">1</div></div>
+      <span class="small">9 filed. The low one went to review: personal.</span>
+    </div>
+    <div class="ex"><span class="sys">Exceptions</span>
+      <div class="c"><span class="num">2</span><span class="small">charges, no receipt</span></div>
+      <div class="c"><span class="num">1</span><span class="small">receipt, no charge</span></div>
+      <div class="c"><span class="num">0</span><span class="small">mismatches</span></div>
+    </div>
+  </div>
+  <div class="card foot"><svg class="icon track" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg><span class="small">The Expense Bot cleared 1 the same day</span></div>
+</div>
