@@ -7,6 +7,16 @@ template: v2
 
 # Lesson 1: Set Up the Books
 
+:::video
+id: acct-l1-overview
+kind: overview
+status: paused
+src: /learn/video/ai-accounting/acct-l1-overview.mp4
+captions: /learn/video/ai-accounting/acct-l1-overview.vtt
+poster: /learn/video/ai-accounting/acct-l1-overview.jpg
+transcript: Every receipt bot, forecast and tax summary starts with the same question: was this business or personal? Answer it once, today. This is AI Accounting, lesson one: set up the books. In this lesson: separate the money, pick one app, connect a read-only feed, and write your back-office rules. Open one business account and one card, and put every business dollar through them. Pick one accounting app: QuickBooks Online if you want built-in agents and room to grow, or Wave if you want free and simple. Connect your bank inside the app, as a read-only feed. Set up a short category list that maps to Schedule C, so tax season becomes a report, not a project. Then write your rules before you hire a single agent. Rule one: agents never move money. First, separate the money.
+:::
+
 :::key-concept
 Your AI back office can only be as clean as the system it writes into. Open a separate business bank account, pick one accounting app (QuickBooks Online or Wave are the common choices), connect the bank as a read-only feed, and set up categories that match your tax form. Then decide, in writing, what each AI helper may touch.
 :::
@@ -52,6 +62,16 @@ A useful rule: if you plan to use the in-app agents and expect more than a few d
 
 Inside the accounting app, connect your business bank and card. This is a read-only data feed: the app imports transactions, it does not send money. Do this inside the accounting app itself, never by giving an AI chat your bank password.
 
+:::infographic
+id: fig-1
+type: diagram
+title: One account, one feed, one app
+shows: A left-to-right flow: Business account and card (every business dollar), a read-only feed arrow labelled "can't send money", the accounting app (categories mapped to Schedule C) as a highlighted paper card, then AI helpers reading through their own limited logins. A crossed-out line from helpers to the bank: never.
+data: none
+image: /learn/figures/ai-accounting/lesson-01-fig-1.webp
+alt: Your business account and card feed transactions into the accounting app through a read-only connection that cannot send money. AI helpers read from the app through their own limited logins and never connect to the bank.
+:::
+
 Then set up your categories. Keep the list short and map it to the US Schedule C (the form a sole proprietor or single-member LLC usually files) so tax season is a report, not a project:
 
 ```text
@@ -80,6 +100,16 @@ Do not give tax advice, just the mapping and the flags.
 
 Run the result past your accountant once. Their 15-minute review now prevents a year of miscategorized expenses.
 
+:::video
+id: acct-l1-feed
+kind: inline
+status: paused
+src: /learn/video/ai-accounting/acct-l1-feed.mp4
+captions: /learn/video/ai-accounting/acct-l1-feed.vtt
+poster: /learn/video/ai-accounting/acct-l1-feed.jpg
+transcript: Your AI helpers need to see your transactions. They never need your bank password. Here's how the money data flows. Your business account and card hold every business dollar. Inside your accounting app, connect them as a read-only feed. The app imports transactions. It can't send money. Your categories live in the app too. Keep them short, fifteen expense categories at most, each mapped to a line on Schedule C, like advertising, contract labor, and legal and professional fees. Then your AI helpers read from the app, through their own limited logins, and never through your bank. Ask Claude to draft the category list, and have your accountant review it once. Fifteen minutes now prevents a year of miscategorized expenses. Next: the rules every helper follows.
+:::
+
 ## Step 4: Write your back-office access policy
 
 You are about to hire several AI helpers in this course. Decide what each one may touch before you hire it. Copy this into a document called "Back office rules":
@@ -95,10 +125,30 @@ Back office rules
 6. I review the agent's work weekly. If it gets something wrong twice, I reduce its access.
 ```
 
+:::infographic
+id: fig-2
+type: comparison
+title: What agents may touch
+shows: Two columns. May (check icons): read transactions, attach receipts, suggest categories, draft invoices and reminders, build reports. Never (ban icons, highlighted): bank logins, transfers, paying bills, changing payment details. Footer: anything that leaves the business waits for your click.
+data: none
+image: /learn/figures/ai-accounting/lesson-01-fig-2.webp
+alt: Agents may read transactions, attach receipts, suggest categories, draft invoices and reminders, and build reports. They never get bank logins, make transfers, pay bills or change payment details. Anything that leaves the business waits for your click.
+:::
+
 QuickBooks lets you add users with different roles, and Wave lets you invite collaborators. Exact role names vary by plan, so check the current help pages and pick the least access that still lets the helper do its job.
 
 :::warning
 Some agents can sign in to websites and operate them like a person. That is exactly why rule 1 matters. An agent with your bank login can do anything you can. Give it nothing it would need to move money, and keep two-factor authentication on your bank and accounting app tied to your own phone.
+:::
+
+:::video
+id: acct-l1-rules
+kind: inline
+status: paused
+src: /learn/video/ai-accounting/acct-l1-rules.mp4
+captions: /learn/video/ai-accounting/acct-l1-rules.vtt
+poster: /learn/video/ai-accounting/acct-l1-rules.jpg
+transcript: You're about to hire several AI helpers. Decide what each one may touch before you hire it. Write six back-office rules. One: agents never move money. No bank logins, no transfers, no paying bills. Two: each agent gets its own login, with the lowest role that works. Three: agents may read transactions, attach receipts, suggest categories, and draft invoices and reports. Four: anything that leaves the business waits for your click. Five: no passwords, card numbers or account numbers in any AI chat. Six: review the work weekly, and if an agent gets something wrong twice, reduce its access. Some agents can sign in to websites like a person. That's why rule one matters most. Keep two-factor on your bank and your accounting app, tied to your own phone. In the exercise, you'll write your own rules.
 :::
 
 ## Step 5: Clean the starting line

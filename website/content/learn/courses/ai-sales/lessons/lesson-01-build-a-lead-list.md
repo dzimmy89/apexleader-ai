@@ -7,6 +7,16 @@ template: v2
 
 # Lesson 1: Build a Lead List
 
+:::video
+id: sales-l1-overview
+kind: overview
+status: paused
+src: /learn/video/ai-sales/sales-l1-overview.mp4
+captions: /learn/video/ai-sales/sales-l1-overview.vtt
+poster: /learn/video/ai-sales/sales-l1-overview.jpg
+transcript: Five thousand scraped names nobody wanted to hear from, or thirty businesses you picked for a reason. The short list wins. This is AI Sales, lesson one: build a lead list. In this lesson: write the profile, research matches, score the list, and know where the lines are. First, write a five-part customer profile: who, where, size, pain and disqualifier, plus a why-now signal. Then have an AI research assistant find thirty matches, with fixed columns and a source link for every fact. Unknown is an allowed answer. A guessed email is not. Spot-check five rows yourself. Score each row on fit and signal, and keep the top twenty to thirty. Use public business information only: no LinkedIn scraping, and no bought lists. Then refresh the list every month. First, the profile.
+:::
+
 :::key-concept
 A lead list is only as good as the definition behind it. Write down exactly who you sell to, then have an AI research assistant find public businesses that match, fill in a fixed set of columns, and cite where every fact came from. You review the list before a single message goes out.
 :::
@@ -36,9 +46,29 @@ Your ICP needs five parts:
 | Pain signal | Booking-only website, no posted prices for packages, owner does admin, recent expansion or new location |
 | Disqualifier | Franchise locations (they have corporate accounting), vet clinics, pet stores |
 
+:::infographic
+id: fig-1
+type: diagram
+title: A five-part profile, plus why now
+shows: Five stacked cards with Lucide icons: Who (independent groomers), Where (two metro areas), Size (1 to 10 staff), Pain (booking-only site, owner does admin), Disqualifier (franchises, vet clinics, pet stores). Below, a highlighted paper card: Why now (new location, hiring post, price change).
+data: none
+image: /learn/figures/ai-sales/lesson-01-fig-1.webp
+alt: A five-part customer profile: who, where, size, pain signal and disqualifier, using the dog groomer example. Under it, a why-now line lists recent events, such as a new location, a hiring post or a price change, that make a prospect likelier to buy this month.
+:::
+
 If you don't have a business idea locked in yet, use this sample business for the whole course. Every exercise works with it.
 
 Write a second line under the table called "Why now." This is the event that makes a prospect more likely to say yes this month: a new location, a hiring post, a recent opening, a price change on their site. Signals like these turn a list into a reason to reach out.
+
+:::video
+id: sales-l1-profile
+kind: inline
+status: paused
+src: /learn/video/ai-sales/sales-l1-profile.mp4
+captions: /learn/video/ai-sales/sales-l1-profile.vtt
+poster: /learn/video/ai-sales/sales-l1-profile.jpg
+transcript: AI researchers are fast and literal. Ask for small businesses that need bookkeeping, and you'll get a vague pile. Give it a profile instead, in five parts. Who: independent dog grooming salons and mobile groomers. Where: start with two metro areas you know. Size signal: one to ten staff, and one or two locations. Pain signal: a booking-only website, no posted package prices, and an owner doing the admin. Disqualifier: franchises, vet clinics and pet stores. Then add one more line: why now. That's the recent event that makes a yes more likely this month, like a new location, a hiring post, or a price change. A profile like this turns a list of names into a list of reasons to reach out. Next: let the researcher find matches.
+:::
 
 ## Step 2: Have an AI researcher find matches
 
@@ -75,6 +105,16 @@ Add three columns: Fit (1 to 3), Signal (0 to 2), and Score (Fit plus Signal). Y
 
 Google's help page notes the AI function can only see the cells you point it at, generates a limited number of cells per run, and can be wrong. Treat its numbers as a suggestion and override anything that looks off. Then sort by Score and keep the top 20 to 30.
 
+:::infographic
+id: fig-2
+type: diagram
+title: Score = Fit + Signal
+shows: Three tiles in a row: Fit 1 to 3, plus, Signal 0 to 2, equals, Score up to 5 (highlighted). Under it: sort by Score, keep the top 20 to 30. A small note: AI scores are a first pass you review.
+data: Fit 1-3, Signal 0-2, Score 1-5, keep 20-30
+image: /learn/figures/ai-sales/lesson-01-fig-2.webp
+alt: Each prospect gets a Fit score from 1 to 3 and a Signal score from 0 to 2. Add them for a Score of up to 5, sort, and keep the top 20 to 30. Treat any AI-suggested score as a first pass you review.
+:::
+
 ## Step 4: Know where the lines are
 
 This step keeps you out of trouble.
@@ -87,6 +127,16 @@ This step keeps you out of trouble.
 
 :::warning
 Research agents will sometimes invent an email address that "looks right," like info@ plus the domain. Never send to an address you can't trace to a source the business published. Bounces from guessed addresses damage your domain's reputation for every future email.
+:::
+
+:::video
+id: sales-l1-lines
+kind: inline
+status: paused
+src: /learn/video/ai-sales/sales-l1-lines.mp4
+captions: /learn/video/ai-sales/sales-l1-lines.vtt
+poster: /learn/video/ai-sales/sales-l1-lines.jpg
+transcript: A fast list is no use if it gets your domain blocked or your account banned. Here are the lines. Public business information only. A salon's published contact email is fine. A personal cell number from a data broker is not. Don't scrape LinkedIn. Its terms ban bots and scrapers, so read profiles yourself and take notes by hand. Don't buy email lists, because they hurt your sender reputation. Record the source of every contact, so you can always say where you got an address. Keep personal data minimal, and check with a lawyer before you scale into the EU or UK. And watch for invented emails. If an address isn't on the business's own site, mark it unknown. One guessed address that bounces hurts every email you send after it. In the exercise, you'll build your first list.
 :::
 
 ## Step 5: Keep the list alive

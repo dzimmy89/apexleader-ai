@@ -1,0 +1,34 @@
+<!doctype html><meta charset="utf-8">
+<meta name="out" content="public/learn/figures/ai-sales/exercise-01-fig-2.webp">
+<link rel="stylesheet" href="../../../../scripts/learn/infographics/brand.css">
+<style>
+.head{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.wrap{flex:1;display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center}
+.counts{display:flex;flex-direction:column;gap:10px}
+.c{display:flex;align-items:baseline;gap:12px}
+.c .num{font-size:48px;width:64px;text-align:right}
+.c.key .num{color:var(--track)}
+.bars{display:flex;flex-direction:column;gap:10px}
+.b{display:flex;align-items:center;gap:12px}
+.b .sys{width:120px;flex:none}
+.fill{height:40px;border-radius:8px;background:color-mix(in oklch,var(--track) 40%,transparent);display:flex;align-items:center;padding:0 12px;font:600 26px/1 var(--body)}
+.fill.cut{background:var(--panel-raised);color:var(--muted)}
+</style>
+<div class="fig wide sales">
+  <div class="head"><span class="label">Groomer Books lead list</span><span class="sys">example</span></div>
+  <div class="wrap">
+    <div class="counts">
+      <div class="c"><span class="num">30</span><span class="small">found</span></div>
+      <div class="c"><span class="num">3</span><span class="small">excluded</span></div>
+      <div class="c"><span class="num">27</span><span class="small">scored</span></div>
+      <div class="c key"><span class="num">25</span><span class="label">kept</span></div>
+    </div>
+    <div class="bars">
+      <div class="b"><span class="sys">Score 5</span><div class="fill" style="width:30%">6</div></div>
+      <div class="b"><span class="sys">Score 4</span><div class="fill" style="width:55%">11</div></div>
+      <div class="b"><span class="sys">Score 3</span><div class="fill" style="width:40%">8</div></div>
+      <div class="b"><span class="sys">Score 2</span><div class="fill cut" style="width:22%">2 cut</div></div>
+      <span class="small">4 of the 25 use a contact form</span>
+    </div>
+  </div>
+</div>
