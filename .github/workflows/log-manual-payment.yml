@@ -72,7 +72,6 @@ jobs:
       GCP_PROJECT_ID: apexleader-prod
       GCP_REGION: us-central1
       SERVICE: apexleader-ai
-      NODE_ENV: production
       NEXT_PUBLIC_SITE_URL: https://fromaitobusiness.com
       CRM_STORAGE: firestore
       PAY_EMAIL: ${{ inputs.email }}
@@ -93,6 +92,8 @@ jobs:
           cache: npm
           cache-dependency-path: website/package-lock.json
 
+      # NODE_ENV=production is set per step, not for the job: on npm ci it
+      # would skip the dev dependencies (tsx, sharp's platform binary).
       - name: Install dependencies
         run: npm ci
 
@@ -132,6 +133,8 @@ jobs:
 
       - name: Payment
         if: inputs.mode == 'apply'
+        env:
+          NODE_ENV: production
         run: npx tsx scripts/log-manual-payment.ts --apply
 
       - name: Full access (dry run)
@@ -140,4 +143,6 @@ jobs:
 
       - name: Full access
         if: inputs.mode == 'apply' && inputs.full_access
+        env:
+          NODE_ENV: production
         run: npx tsx scripts/grant-full-access.ts --apply
