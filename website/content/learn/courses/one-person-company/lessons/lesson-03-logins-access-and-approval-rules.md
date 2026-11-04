@@ -7,6 +7,16 @@ template: v2
 
 # Lesson 3: Logins, Access and Approval Rules
 
+:::video
+id: opc-l3-overview
+kind: overview
+status: paused
+src: /learn/video/one-person-company/opc-l3-overview.mp4
+captions: /learn/video/one-person-company/opc-l3-overview.vtt
+poster: /learn/video/one-person-company/opc-l3-overview.jpg
+transcript: An agent with your main email password misreads one thread, and every client gets the wrong message before you wake up. Ten minutes of setup prevents that. This is The One-Person Company, lesson three: logins, access and approval rules. In this lesson: four rules that keep an always-on agent safe. One: separate logins. Use an official connector or a separate limited user, and never share your main password. Two: least access. Start read only, then drafts, then narrow actions, and widen only when the agent has earned it. Three: a written approval rule. What it does alone, what it asks about, what it hands to you, and what it never does. Four: know your off switch before you turn it on. And remember: stopping an agent doesn't undo what it did. That's why the approval rule matters most. First, logins.
+:::
+
 :::key-concept
 An agent is only as safe as the access you give it. Give each agent its own scoped login or connector, the least access its job needs, and a written approval rule. Anything that leaves the business or changes money needs your click, and agents never move money.
 :::
@@ -32,6 +42,16 @@ Use the safest connection method the tool supports, in this order:
 
 Never type a password, one-time code or API key into ordinary chat. Grok Bot's docs say this in plain words, and it applies everywhere.
 
+:::video
+id: opc-l3-logins
+kind: inline
+status: paused
+src: /learn/video/one-person-company/opc-l3-logins.mp4
+captions: /learn/video/one-person-company/opc-l3-logins.vtt
+poster: /learn/video/one-person-company/opc-l3-logins.jpg
+transcript: Your agent needs to get into your apps. Your password never needs to go with it. There are three safe ways in, in this order. First, an official connector or plugin. You approve access on the app's own sign-in screen, and the agent gets a token, not your password. Second, a separate account for the agent, like ops at your business dot com, with a viewer or editor role. Third, when an agent hits a login page, you type the password yourself, in a secure screen. Claude Duet gives you a separate form. Grok Bot lets you take over, sign in, then press I'm done. And one rule applies everywhere: never type a password, a one-time code or an API key into ordinary chat. Next: how much access to give.
+:::
+
 ## Rule 2: Least access
 
 Start every agent with the smallest set of permissions, then widen only when it has earned trust.
@@ -42,6 +62,16 @@ Start every agent with the smallest set of permissions, then widen only when it 
 | Week 2 to 4: draft | Create drafts you review | Drafts replies and saves them as drafts in Gmail |
 | Later: act on narrow tasks | Do low-risk actions alone | Files receipts into a folder, adds calendar holds for internal work |
 | Never | Move money, sign, delete records, change passwords | Stays with you |
+
+:::infographic
+id: fig-1
+type: timeline
+title: Least access, stage by stage
+shows: Four stacked rows with Lucide icons: Week 1, read only, reads and summarizes; Weeks 2 to 4, drafts you review; Later, narrow low-risk actions alone; Never, in a red-outlined row: money, signing, deleting, stays with you.
+data: none
+image: /learn/figures/one-person-company/lesson-03-fig-1.webp
+alt: An agent starts read only in week 1, moves to drafts you review in weeks 2 to 4, then to narrow low-risk actions later. Moving money, signing and deleting never move to the agent.
+:::
 
 Some products bake this in. OpenAI's dots use read-only access when doing "proactive research", so they cannot send or change anything while looking around. Grok Bots have no access by default and act only with accounts you sign them into.
 
@@ -54,6 +84,16 @@ An approval rule says what the agent may do alone, what it must ask about, and w
 - **Claude Duet** asks before it sends a message, makes a payment, signs a document or deletes anything. Trading securities and moving money between accounts are blocked even with approval. Only you can mark a task as finished.
 - **OpenAI dots** have **Custom rules** with four behaviors: take action without asking, take action only when you say so, ask before taking action, or hand off to you. An automatic review checks actions that could affect your accounts or share information.
 - **Grok Bot** has **Auto-review** rules: **Ask first** always stops matching actions for your approval, and **Allow automatically** lets them through unless the review sees a reason to stop. If both match, Ask first wins. When it asks, you choose **Allow once**, **Always allow** or **Deny**.
+
+:::infographic
+id: fig-2
+type: anatomy
+title: The four parts of an approval rule
+shows: A 2 by 2 grid with Lucide icons: Do alone (read, summarize, research, draft); Ask me first (anything sent, posted or invoiced); Hand to me (logins, codes, payments, contracts); and a paper card, Never (move money, delete records, share client data).
+data: none
+image: /learn/figures/one-person-company/lesson-03-fig-2.webp
+alt: An approval rule has four parts: do alone for reading, summarizing, research and drafts; ask me first for anything sent, posted or invoiced; hand to me for logins, codes, payments and contracts; and never for moving money, deleting records or sharing client data.
+:::
 
 Write your rule in plain language first, then copy it into the product. A starter:
 
@@ -70,6 +110,16 @@ When unsure: stop and ask.
 ```
 
 A tip from OpenAI's docs that applies to every agent: asking for drafts does not authorize sending them. Be explicit. And prefer "Allow once" over "Always allow" for anything sensitive.
+
+:::video
+id: opc-l3-approval-rule
+kind: inline
+status: paused
+src: /learn/video/one-person-company/opc-l3-approval-rule.mp4
+captions: /learn/video/one-person-company/opc-l3-approval-rule.vtt
+poster: /learn/video/one-person-company/opc-l3-approval-rule.jpg
+transcript: Drafting an email doesn't mean permission to send it. Your approval rule makes the difference explicit. Write it in four parts. Do alone: read, summarize, research and create drafts. Ask me first: anything sent to a customer, a vendor or the public, and any post, proposal, quote or invoice. Hand to me: logins, two-factor codes, payments, contracts and signatures. Never: move money, delete records, or share client data outside your apps. Then copy the rule into each product's controls. Claude Duet asks before it sends, pays, signs or deletes. Dots have custom rules. Grok Bot has auto-review, where ask first always wins. For anything sensitive, choose allow once, not always allow. In the exercise, you'll write your own rule.
+:::
 
 :::try-it
 Open the app you use most for customers (email, invoicing or CRM). Find the settings page for users or connected apps. Check: does it let you add a second user with limited rights? Is any old app still connected that you no longer use? Disconnect one thing you do not need.

@@ -13,6 +13,16 @@ You'll produce a one-page Access and Approval Policy: which logins each agent ge
 
 **Time:** 30 minutes · **You'll need:** Your Delegation Map and Stack Decision, admin access to your email and one business app (invoicing, CRM or calendar) · **Builds on:** Lesson 3
 
+:::video
+id: opc-ex3-setup
+kind: exercise-setup
+status: paused
+src: /learn/video/one-person-company/opc-ex3-setup.mp4
+captions: /learn/video/one-person-company/opc-ex3-setup.vtt
+poster: /learn/video/one-person-company/opc-ex3-setup.jpg
+transcript: One agent, a handful of apps, and not one of them using your main password. Let's write the policy that keeps it that way. In this exercise you'll write an access and approval policy. List every app your first agent job needs. For each, choose the access method: an official connector, a separate limited user, or you log in yourself through the secure handoff. Then set the level: read, draft or act. Clean one thing now: remove an unused app from your email, and confirm two-factor is on. Write your approval rule in four parts, with money under never, and map it to your product's real controls. Finally, write down your off switch. So: which apps does your agent get, at what level, and what does it never do? Pause here and write your policy.
+:::
+
 ## Warm-up
 
 :::checkpoint
@@ -24,6 +34,16 @@ Why: Codes and passwords never go in ordinary chat. The products hand these step
 :::
 
 ## Steps
+
+:::infographic
+id: fig-1
+type: flow
+title: Three ways in, best first
+shows: Under "Three ways in, best first": three numbered cards with Lucide icons: 1 Official connector, the agent gets a token, not your password; 2 A separate limited user, ops@yourbusiness.com, viewer or editor; 3 You log in yourself, through the secure handoff screen. Footer: then set the level, read, draft or act.
+data: none
+image: /learn/figures/one-person-company/exercise-03-fig-1.webp
+alt: Three ways to give an agent access, best first: an official connector so the agent gets a token, not your password; a separate limited user such as ops@yourbusiness.com; or you log in yourself through the secure handoff screen. Then set the level: read, draft or act.
+:::
 
 1. **Inventory your apps.** List every app your first agent job needs (from Exercise 1). For each, note whether it has an official connector in your chosen tool, whether it allows a second user with limited rights, or neither.
 
@@ -60,6 +80,57 @@ Keep it under 150 words, plain language.
 - [ ] You have mapped the rule to your product's actual controls
 - [ ] You removed at least one unused connection and confirmed two-factor on your main email
 - [ ] Your off-switch steps are written down
+
+:::example
+title: See an example result
+Here is an Access and Approval Policy for the billing assistant from the sample business's first brief. The user name is an example.
+
+:::video
+id: opc-ex3-reveal
+kind: exercise-reveal
+status: paused
+src: /learn/video/one-person-company/opc-ex3-reveal.mp4
+captions: /learn/video/one-person-company/opc-ex3-reveal.vtt
+poster: /learn/video/one-person-company/opc-ex3-reveal.jpg
+transcript: For Groomer Books, the billing assistant gets two apps and never sees a password. Here's the example policy. The invoicing app gets a separate viewer user, so the agent can read overdue invoices and nothing more. Gmail connects through Claude's official connector at the draft level, so reminders land as drafts. The bank isn't connected at all. The rule has four parts. Do alone: read invoices and draft reminders. Ask me first: sending any email, or changing an invoice. Hand to me: logins, codes, refunds and payment questions. Never: move money, delete records, or share client data. For the cleanup, the founder removed an old scheduling app and confirmed two-factor on the main email. And the off switch is written down: disconnect Gmail in Claude, and remove the agent's user from the invoicing app. That's a policy you can set up today.
+:::
+
+:::infographic
+id: fig-2
+type: anatomy
+title: Billing assistant access
+shows: Under "Billing assistant access" tagged example: three rows with Lucide icons and level pills: Invoicing app, separate viewer user, Read; Gmail, Claude connector, Draft; Bank, not connected, Never in red. A paper card: Asks before any email is sent.
+data: none
+image: /learn/figures/one-person-company/exercise-03-fig-2.webp
+alt: Example access for the Groomer Books billing assistant: the invoicing app through a separate viewer user at read level, Gmail through the Claude connector at draft level, and the bank not connected. It asks before any email is sent.
+:::
+
+| App | Access method | Level |
+|---|---|---|
+| Invoicing app | Separate user, billing-agent@groomerbooks.example, viewer role | Read |
+| Gmail | Claude's official Gmail connector | Draft |
+| Bank | Not connected | Never |
+
+**Cleaned up:** removed an old social-scheduling app from the Google account and confirmed two-factor is on.
+
+```text
+APPROVAL RULE for Billing assistant
+Do alone: read overdue invoices, draft reminder emails, save drafts in Gmail.
+Ask me first: sending any email; any change to an invoice.
+Hand to me: logins, two-factor codes, refunds, payment questions from clients.
+Never: move money, delete records, share client data outside Gmail and the
+invoicing app.
+When unsure: stop and ask.
+
+PRODUCT CONTROLS
+Claude: only the Gmail connector enabled; built-in approvals cover send and
+delete; Link and Shop Pay stay disconnected.
+
+OFF SWITCH
+Claude: disconnect Gmail in Claude's connector settings.
+Invoicing app: remove the billing-agent user.
+```
+:::
 
 :::coached
 **For 1-on-1 coaching clients.** Stress-test the policy on your real stack.
