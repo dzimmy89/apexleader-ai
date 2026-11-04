@@ -147,5 +147,6 @@ Why: The agent filled a gap in the spec. Fixing the spec makes the rule stick fo
 ## Go deeper
 
 - [Best practices for Claude Code](https://code.claude.com/docs/en/best-practices) - explore, plan, code; letting Claude interview you; giving the agent a way to verify its work
+- [mattpocock/skills](https://github.com/mattpocock/skills) - its `/grill-me` skill runs this interview for you every time, covered in the Agent Skills and Plugins course
 - [Cursor Plan Mode](https://cursor.com/docs/agent/plan-mode) - how Cursor researches, asks questions and drafts a plan before building
 - [Claude Code quickstart](https://code.claude.com/docs/en/quickstart) - install and first session, if you want to run the interview inside Claude Code

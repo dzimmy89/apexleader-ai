@@ -38,15 +38,15 @@ import { grantIsLive, readAccount } from "../lib/account/access";
 const PUBLIC = path.join(__dirname, "..", "public");
 
 describe("Learn catalog", () => {
-  it("has the full library: 5 stages, 16 courses, 75 lessons with exercises and 17 quizzes", () => {
+  it("has the full library: 5 stages, 17 courses, 79 lessons with exercises and 18 quizzes", () => {
     const stages = getStages();
     assert.equal(stages.length, 5);
     const courses = getCoursesInOrder();
-    assert.equal(courses.length, 16);
+    assert.equal(courses.length, 17);
     const lessons = courses.flatMap((c) => allLessons(c));
-    assert.equal(lessons.length, 75);
-    assert.equal(lessons.filter((l) => l.exercise).length, 75);
-    assert.equal(courses.flatMap((c) => c.modules).filter((m) => m.quiz).length, 17);
+    assert.equal(lessons.length, 79);
+    assert.equal(lessons.filter((l) => l.exercise).length, 79);
+    assert.equal(courses.flatMap((c) => c.modules).filter((m) => m.quiz).length, 18);
   });
 
   it("keeps the catalog consistent: stage numbers, course stage ids, lesson counts and prerequisites", () => {
@@ -368,7 +368,7 @@ describe("Lesson viewer panels", () => {
         }
       }
     }
-    assert.equal(files, 150);
+    assert.equal(files, 158);
   });
 });
 

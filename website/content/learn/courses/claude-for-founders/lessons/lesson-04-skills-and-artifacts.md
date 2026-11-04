@@ -158,5 +158,6 @@ Why: Claude decides when to load a skill from its name and description, so a vag
 
 - [Use skills in Claude](https://support.claude.com/en/articles/12512180-use-skills-in-claude) - enabling, uploading and safety
 - [How to create custom skills](https://support.claude.com/en/articles/12512198-how-to-create-custom-skills) - SKILL.md structure and best practices
+- [Anthropic's skills repository](https://github.com/anthropics/skills) - example skills, including skill-creator; the Agent Skills and Plugins course shows how to share one set of skills across Claude Code, Codex and Cursor
 - [What are artifacts and how do I use them?](https://support.claude.com/en/articles/17153992-what-are-artifacts-and-how-do-i-use-them) - templates, sharing, storage and export
 - [Claude release notes](https://support.claude.com/en/articles/12138966-release-notes) - the September 2026 Docs, Slides and Design launch
