@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { PORTFOLIO_STATUS, portfolioHost, type PortfolioBusiness } from "@/content/portfolio";
 
@@ -5,7 +6,18 @@ import { PORTFOLIO_STATUS, portfolioHost, type PortfolioBusiness } from "@/conte
 export function PortfolioCard({ business }: { business: PortfolioBusiness }) {
   const status = PORTFOLIO_STATUS[business.status];
   return (
-    <article className="panel relative flex h-full flex-col gap-4 p-6 transition-colors hover:border-[var(--color-accent)]">
+    <article className="panel relative flex h-full flex-col gap-4 overflow-hidden p-6 transition-colors hover:border-[var(--color-accent)]">
+      {business.screenshot ? (
+        <div className="relative -mx-6 -mt-6 aspect-[16/10] overflow-hidden border-b border-[var(--color-border)] bg-[var(--color-bg)]">
+          <Image
+            src={business.screenshot.src}
+            alt={business.screenshot.alt}
+            fill
+            className="object-cover object-top"
+            sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 600px"
+          />
+        </div>
+      ) : null}
       <div className="flex items-center justify-between gap-3">
         <span className={`chip shrink-0 ${status.chip}`}>{status.label}</span>
         <span className="mono-label min-w-0 truncate normal-case tracking-normal">

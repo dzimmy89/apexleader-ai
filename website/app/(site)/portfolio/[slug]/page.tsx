@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CTAButton } from "@/components/CTAButton";
@@ -77,6 +78,38 @@ export default async function PortfolioCaseStudyPage({ params }: PageProps) {
           </p>
         </div>
       </section>
+
+      {business.screenshot ? (
+        <section className="mx-auto max-w-6xl px-6 pt-[var(--space-section)]">
+          <figure>
+            <div className="panel overflow-hidden">
+              <div className="flex items-center gap-2 border-b border-[var(--color-border)] px-4 py-3" aria-hidden="true">
+                <span className="size-2.5 rounded-full bg-[var(--color-border-strong)]" />
+                <span className="size-2.5 rounded-full bg-[var(--color-border-strong)]" />
+                <span className="size-2.5 rounded-full bg-[var(--color-border-strong)]" />
+                <span className="mono-label ml-3 min-w-0 truncate normal-case tracking-normal">
+                  {business.url ? portfolioHost(business.url) : business.name}
+                </span>
+              </div>
+              <div className="relative aspect-[16/10] bg-[var(--color-bg)]">
+                <Image
+                  src={business.screenshot.src}
+                  alt={business.screenshot.alt}
+                  fill
+                  priority
+                  className="object-cover object-top"
+                  sizes="(max-width: 1200px) 100vw, 1152px"
+                />
+              </div>
+            </div>
+            {business.screenshot.caption ? (
+              <figcaption className="mt-3 font-[family-name:var(--font-ui)] text-[length:var(--text-caption)] text-[var(--color-text-faint)]">
+                {business.screenshot.caption}
+              </figcaption>
+            ) : null}
+          </figure>
+        </section>
+      ) : null}
 
       <section className="mx-auto grid max-w-6xl gap-12 px-6 py-[var(--space-section)] md:grid-cols-[1.4fr_1fr]">
         <div className="space-y-5 text-[length:var(--text-body)] leading-[1.7] text-[var(--color-text)]">
