@@ -47,6 +47,8 @@ interface CalendarPickerProps {
    * The account cookie identifies them, so name and email are not asked.
    */
   accountBooking?: boolean;
+  /** With accountBooking: move this booked session instead of booking a new one. */
+  rescheduleSessionId?: string;
   /** Called once a booking is confirmed (the account page refreshes its session list). */
   onBooked?: (booking: BookedSession) => void;
   /** Parchment (the default, for /coaching/book) or the charcoal panel on /account. */
@@ -111,6 +113,7 @@ export function CalendarPicker({
   defaultEmail,
   applicationId,
   accountBooking = false,
+  rescheduleSessionId,
   onBooked,
   surface = "parchment",
 }: CalendarPickerProps) {
@@ -188,7 +191,13 @@ export function CalendarPicker({
     setStatus("submitting");
     setErrorMsg("");
     try {
-      const res = accountBooking
+      const res = accountBooking && rescheduleSessionId
+        ? await fetch(`/api/coaching/sessions/${encodeURIComponent(rescheduleSessionId)}/reschedule`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ startTime: selectedSlot.start, timezone: viewerTimezone }),
+          })
+        : accountBooking
         ? await fetch("/api/coaching/sessions/book", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -254,10 +263,10 @@ export function CalendarPicker({
     return (
       <div className={shell} role="status">
         <span className={cn("chip chip-success")}>
-          <Check size={14} aria-hidden /> Booked
+          <Check size={14} aria-hidden /> {rescheduleSessionId ? "Moved" : "Booked"}
         </span>
         <h3 className="mt-4 font-[family-name:var(--font-display)] text-[length:var(--text-h3)] leading-tight">
-          {accountBooking ? "Your session is booked." : "Your discovery call is booked."}
+          {rescheduleSessionId ? "Your session has moved." : accountBooking ? "Your session is booked." : "Your discovery call is booked."}
         </h3>
         {packageContext && !accountBooking && (
           <p className={cn("mt-2", muted)}>
@@ -281,14 +290,31 @@ export function CalendarPicker({
               <Video size={18} aria-hidden /> Join on Google Meet
             </a>
           ) : null}
-          {accountBooking ? null : (
+          {accountBooking ? (
+            rescheduleSessionId ? null : (
+              <button
+                type="button"
+                className="btn btn-secondary"
+                onClick={() => {
+                  setConfirmation(null);
+                  setSelectedSlot(null);
+                  setView("form");
+                  if (selectedDate) void loadSlots(selectedDate);
+                }}
+              >
+                Book another session
+              </button>
+            )
+          ) : (
             <Link href={prepUrl} className="btn btn-secondary">
               <ExternalLink size={16} aria-hidden /> What to prepare
             </Link>
           )}
         </div>
         <p className={cn("mt-6 text-[14px]", muted)}>
-          Need to reschedule? Reply to your confirmation email.
+          {accountBooking
+            ? "Need a different time? Use Reschedule next to the session in your Sessions list, at least 24 hours before it starts."
+            : "Need to reschedule? Reply to your confirmation email."}
         </p>
       </div>
     );
