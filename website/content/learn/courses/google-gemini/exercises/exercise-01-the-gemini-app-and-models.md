@@ -25,7 +25,7 @@ Why: Flash handles everyday work well and uses less of your allowance. Save Pro 
 
 ## Steps
 
-1. **Pick your business.** If you don't have an idea yet, use the sample business for this course: "Groomer Books," monthly bookkeeping for independent dog groomers in the US.
+1. **Pick your business.** If you don't have an idea yet, use the sample business for this course: "Rolling Ledger," monthly bookkeeping for independent food truck owners in the US.
 2. **Check your plan.** In the Gemini app, open the model menu by the prompt box and write down which models you see. Compare with the [Google AI plans page](https://gemini.google/subscriptions/). Note whether you have Pro and Gemini 4 Argon.
 3. **Draft your business profile.** Start a new chat on Flash and paste:
 
@@ -56,7 +56,7 @@ Using my business profile, write the three questions a skeptical first-time cust
 :::coached
 **For 1-on-1 coaching clients.** Do this on your real business, then push it further:
 
-1. Write a second profile for your ideal customer ("You are a groomer who...") and save it as its own Doc.
+1. Write a second profile for your ideal customer ("You are a food truck owner who...") and save it as its own Doc.
 2. Run the customer-question prompt on three models and score each answer 1 to 5 on accuracy and usefulness.
 3. Draft a one-page "AI use policy" for your business: which data never goes into AI, which plan holds client data, and who approves outbound messages.
 

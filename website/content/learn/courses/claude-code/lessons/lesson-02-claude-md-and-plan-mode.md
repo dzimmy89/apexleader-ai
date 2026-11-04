@@ -51,11 +51,11 @@ Claude scans the project and writes a starting CLAUDE.md with what it found. If 
 Anthropic's guidance is clear: keep it under about 200 lines, make each rule specific enough to check, and cut anything Claude would do anyway. For each line, ask: "Would removing this cause Claude to make mistakes?" Here's a founder-sized example:
 
 ```text
-# Groomer Books website
+# Rolling Ledger website
 
 ## About the business
-Monthly bookkeeping for independent dog grooming salons in the US.
-Audience: salon owners, busy, not technical, mostly on phones.
+Monthly bookkeeping for independent food trucks in the US.
+Audience: truck owners, busy, not technical, mostly on phones.
 Voice: plain, warm, practical. Short sentences. No accounting jargon.
 
 ## How this project works

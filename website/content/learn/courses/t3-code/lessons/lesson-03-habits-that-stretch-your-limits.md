@@ -82,7 +82,7 @@ status: paused
 src: /learn/video/t3-code/t3-l3-revert.mp4
 captions: /learn/video/t3-code/t3-l3-revert.vtt
 poster: /learn/video/t3-code/t3-l3-revert.jpg
-transcript: Watch the difference. The agent rewrote the whole Groomer Books hero section when we only wanted a new headline. Typing undo that would cost a full turn and keep the mistake in the thread. Instead we choose revert to this message on our last good turn. The files and the conversation go back. Now we send a clearer prompt: change only the headline text in index.html. One clean turn, and the thread stays short.
+transcript: Watch the difference. The agent rewrote the whole Rolling Ledger hero section when we only wanted a new headline. Typing undo that would cost a full turn and keep the mistake in the thread. Instead we choose revert to this message on our last good turn. The files and the conversation go back. Now we send a clearer prompt: change only the headline text in index.html. One clean turn, and the thread stays short.
 :::
 
 :::infographic

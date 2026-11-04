@@ -66,7 +66,7 @@ status: paused
 src: /learn/video/get-found/gf-l8-scheduling.mp4
 captions: /learn/video/get-found/gf-l8-scheduling.vtt
 poster: /learn/video/get-found/gf-l8-scheduling.jpg
-transcript: Here's the setup with the Groomer Books Marketing Bot. First, in Search Console, we add the Bot's own login as a Restricted user. Then we add an SEO section to its Monday routine: read last week's Performance and Pages reports, compare with the week before, check the refresh log, and draft the brief. Auto-review stays on for anything that sends or changes. We run it once by hand to check the output before it goes on the schedule.
+transcript: Here's the setup with the Rolling Ledger Marketing Bot. First, in Search Console, we add the Bot's own login as a Restricted user. Then we add an SEO section to its Monday routine: read last week's Performance and Pages reports, compare with the week before, check the refresh log, and draft the brief. Auto-review stays on for anything that sends or changes. We run it once by hand to check the output before it goes on the schedule.
 :::
 
 ## The job description
@@ -102,7 +102,7 @@ status: paused
 src: /learn/video/get-found/gf-l8-reading-the-brief.mp4
 captions: /learn/video/get-found/gf-l8-reading-the-brief.vtt
 poster: /learn/video/get-found/gf-l8-reading-the-brief.jpg
-transcript: Here's a Monday brief for Groomer Books. Clicks up 8 percent. The refreshed tax page is up again. One page is newly not indexed, an old tag page, which is fine. Two new queries have no page, including "can groomers write off dog shampoo". Three suggested actions: add that question to the bank, compress one slow image, and link the new pillar page from the pricing guide. We approve two and skip one. Five minutes.
+transcript: Here's a Monday brief for Rolling Ledger. Clicks up 8 percent. The refreshed tax page is up again. One page is newly not indexed, an old tag page, which is fine. Two new queries have no page, including "can food truck owners write off commissary fees". Three suggested actions: add that question to the bank, compress one slow image, and link the new pillar page from the pricing guide. We approve two and skip one. Five minutes.
 :::
 
 :::warning

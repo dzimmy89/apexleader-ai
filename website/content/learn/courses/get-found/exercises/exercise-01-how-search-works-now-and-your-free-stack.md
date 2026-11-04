@@ -81,7 +81,7 @@ Why: A domain property, verified with a DNS record, collects data for all versio
 :::example
 title: See an example result
 
-For Groomer Books, verification took 20 minutes because the DNS record needed one retry. Search Console showed 14 pages indexed and 3 not indexed: two old test pages marked "Crawled, currently not indexed" and a thank-you page with noindex, which is correct. The top query was "bookkeeping for dog groomers" with 210 impressions and an average position of 18. The agent check found that canonical links pointed at the hosting preview address instead of the real domain, which went on the list for Lesson 3.
+For Rolling Ledger, verification took 20 minutes because the DNS record needed one retry. Search Console showed 14 pages indexed and 3 not indexed: two old test pages marked "Crawled, currently not indexed" and a thank-you page with noindex, which is correct. The top query was "bookkeeping for food truck owners" with 210 impressions and an average position of 18. The agent check found that canonical links pointed at the hosting preview address instead of the real domain, which went on the list for Lesson 3.
 
 :::video
 id: gf-ex1-reveal
@@ -90,16 +90,16 @@ status: paused
 src: /learn/video/get-found/gf-ex1-reveal.mp4
 captions: /learn/video/get-found/gf-ex1-reveal.vtt
 poster: /learn/video/get-found/gf-ex1-reveal.jpg
-transcript: Here's a finished setup for Groomer Books. Search Console is verified as a domain property, with 14 pages indexed and 3 left out for good reasons. Bing imported the site in one click and IndexNow is on. The agent check found one real problem: canonical links pointed at the hosting preview address. And the baseline tab records today's numbers, including 210 impressions for "bookkeeping for dog groomers" at position 18. That's the starting line.
+transcript: Here's a finished setup for Rolling Ledger. Search Console is verified as a domain property, with 14 pages indexed and 3 left out for good reasons. Bing imported the site in one click and IndexNow is on. The agent check found one real problem: canonical links pointed at the hosting preview address. And the baseline tab records today's numbers, including 210 impressions for "bookkeeping for food truck owners" at position 18. That's the starting line.
 :::
 
 :::infographic
 id: fig-2
 type: anatomy
 title: A finished baseline
-shows: A sheet tab named Search Baseline with one dated row: 14 indexed, 3 not indexed, top query "bookkeeping for dog groomers" 210 impressions at position 18, AI-feature impressions 0, Bing citations 0. A sticky note lists the agent's one problem: canonicals point at the preview address.
+shows: A sheet tab named Search Baseline with one dated row: 14 indexed, 3 not indexed, top query "bookkeeping for food truck owners" 210 impressions at position 18, AI-feature impressions 0, Bing citations 0. A sticky note lists the agent's one problem: canonicals point at the preview address.
 data: 14 indexed, 3 not indexed, 210 impressions, position 18, 0 AI impressions, 0 Bing citations.
-alt: The Groomer Books baseline: 14 pages indexed, 3 not indexed, a top query with 210 impressions at position 18, no AI impressions or citations yet, and one problem to fix.
+alt: The Rolling Ledger baseline: 14 pages indexed, 3 not indexed, a top query with 210 impressions at position 18, no AI impressions or citations yet, and one problem to fix.
 :::
 :::
 

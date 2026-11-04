@@ -27,7 +27,7 @@ Why: Authors can't approve their own pull requests. Solo founders require a pull
 
 1. **Merge last exercise's branch.** In your playbook repo, GitHub likely shows a banner for `add-decisions-log`. Click **Compare & pull request**, read the summary, open **Files changed**, then **Merge pull request**. That was your first gate. Delete the branch when GitHub offers.
 
-2. **Create the site repo.** Make a new repository called `<yourbusiness>-site`, for example `groomer-books-site`. Choose **Public** (needed for free Pages and rulesets on GitHub Free in Exercise 3; a landing page has nothing secret in it). Tick **Add a README file**.
+2. **Create the site repo.** Make a new repository called `<yourbusiness>-site`, for example `rolling-ledger-site`. Choose **Public** (needed for free Pages and rulesets on GitHub Free in Exercise 3; a landing page has nothing secret in it). Tick **Add a README file**.
 
 3. **Add a starter page on `main`.** Click **Add file**, then **Create new file**, name it `index.html`, paste this, and commit to `main` (the last time you'll do that):
 
@@ -37,11 +37,11 @@ Why: Authors can't approve their own pull requests. Solo founders require a pull
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Groomer Books | Bookkeeping for dog groomers</title>
+  <title>Rolling Ledger | Bookkeeping for food truck owners</title>
 </head>
 <body>
-  <h1>Bookkeeping for independent dog groomers</h1>
-  <p>Monthly books, done for you, so you can get back to the grooming table.</p>
+  <h1>Bookkeeping for independent food truck owners</h1>
+  <p>Monthly books, done for you, so you can get back to the food truck table.</p>
   <h2>How it works</h2>
   <p>Connect your bank, send receipts by photo, get a clean report every month.</p>
   <p><a href="mailto:hello@example.com">Contact us</a></p>

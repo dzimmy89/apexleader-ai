@@ -29,7 +29,7 @@ Why: Run Everything removes the sandbox and classifier entirely, and even Auto-r
 
 2. **Set your run mode.** Open Settings, then Agents, then Approvals & Execution. Choose **Auto-review** (default) or **Allowlist** with an empty list if you want to approve every command. Don't choose Run Everything.
 
-3. **Make the project folder.** Create a folder called `<yourbusiness>-site`. If you did the GitHub course, clone your site repo instead. Open it in Cursor. If you don't have a business settled, use **Groomer Books**, a monthly bookkeeping service for independent dog groomers.
+3. **Make the project folder.** Create a folder called `<yourbusiness>-site`. If you did the GitHub course, clone your site repo instead. Open it in Cursor. If you don't have a business settled, use **Rolling Ledger**, a monthly bookkeeping service for independent food truck owners.
 
 4. **Open the Agents Window.** Press Cmd+Shift+P (Ctrl+Shift+P), type "Agents Window" and open it. Find the agent sidebar, then switch back to the Editor. Notice where the file tree is.
 
@@ -37,8 +37,8 @@ Why: Run Everything removes the sandbox and classifier entirely, and even Auto-r
 
 ```text
 I'm a non-technical founder. This folder will hold a one-page website for
-Groomer Books, a monthly bookkeeping service for independent dog groomers in
-the US. The goal of the page is to get groomers to book a 15-minute call.
+Rolling Ledger, a monthly bookkeeping service for independent food truck owners in
+the US. The goal of the page is to get food truck owners to book a 15-minute call.
 Ask me up to five questions first. Then propose a plan: page sections in
 order, what each section says, files you'll create (plain HTML and CSS only),
 and the content you need from me. Don't write any code yet.

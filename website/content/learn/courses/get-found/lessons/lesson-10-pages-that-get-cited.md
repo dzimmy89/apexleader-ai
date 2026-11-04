@@ -30,7 +30,7 @@ A citable page gives an assistant something it can quote and stand behind: the a
 
 ## Why this matters
 
-An assistant cites a few sources per answer, and it picks the ones that support its sentences best. A page of general advice supports nothing in particular. A table that says app A handles cash tips and app B doesn't, checked on a date, supports a precise claim. One study of Bing's citation data found that a detailed comparison page, with pricing, features and named vendors, earned most of one site's Copilot citations. Specifics are the cheapest advantage a small business has.
+An assistant cites a few sources per answer, and it picks the ones that support its sentences best. A page of general advice supports nothing in particular. A table that says app A handles cash sales and app B doesn't, checked on a date, supports a precise claim. One study of Bing's citation data found that a detailed comparison page, with pricing, features and named vendors, earned most of one site's Copilot citations. Specifics are the cheapest advantage a small business has.
 
 ## The shape of a citable page
 
@@ -60,7 +60,7 @@ status: paused
 src: /learn/video/get-found/gf-l10-answer-first.mp4
 captions: /learn/video/get-found/gf-l10-answer-first.vtt
 poster: /learn/video/get-found/gf-l10-answer-first.jpg
-transcript: Here's a Groomer Books page before and after. Before, the first paragraph talks about how busy groomers are. The answer is in paragraph four. After, the first two sentences say which app fits a mobile groomer and why, with the price and date. Each section opens with its own answer. We asked Perplexity the same question a few weeks later, and the opening sentence was the passage it quoted.
+transcript: Here's a Rolling Ledger page before and after. Before, the first paragraph talks about how busy food truck owners are. The answer is in paragraph four. After, the first two sentences say which app fits a food truck owner and why, with the price and date. Each section opens with its own answer. We asked Perplexity the same question a few weeks later, and the opening sentence was the passage it quoted.
 :::
 
 ## The honest comparison page
@@ -86,7 +86,7 @@ Check every cell against the vendor's own page before you publish. A comparison 
 
 Assistants and journalists love numbers nobody else has. You have some: from your customers, your own operations, or a small survey.
 
-- **Your operations:** "Across 40 salons, month-end close took a median of 6 hours before switching and 1.8 after."
+- **Your operations:** "Across 40 trucks, month-end close took a median of 6 hours before switching and 1.8 after."
 - **A small survey:** ask 50 customers three questions and publish the results with the method.
 - **A benchmark:** time five tools doing the same task and publish the method and results.
 
@@ -96,7 +96,7 @@ Rules: get consent, never publish anything that identifies a customer without pe
 id: fig-2
 type: comparison
 title: Vague versus specific
-shows: Two passages side by side. Vague: "Many apps can help groomers with taxes and are affordable." Specific: "App A tracks van mileage automatically and costs $15 a month (checked 1 Nov 2026); App B needs manual entries." The specific passage has a quote mark and "cited" stamp; the vague one has "skipped".
+shows: Two passages side by side. Vague: "Many apps can help food truck owners with taxes and are affordable." Specific: "App A tracks fuel and mileage automatically and costs $15 a month (checked 1 Nov 2026); App B needs manual entries." The specific passage has a quote mark and "cited" stamp; the vague one has "skipped".
 data: none
 alt: A vague sentence about apps being affordable gets skipped. A specific sentence naming the app, the feature, the price and the date checked gets cited.
 :::
@@ -108,7 +108,7 @@ status: paused
 src: /learn/video/get-found/gf-l10-comparison-table.mp4
 captions: /learn/video/get-found/gf-l10-comparison-table.vtt
 poster: /learn/video/get-found/gf-l10-comparison-table.jpg
-transcript: Now the comparison table. We give Claude the four apps' pricing and feature pages and our own facts. It builds a table on tips, mileage, quarterly estimates and price, with "not stated" where a vendor doesn't say. Then we check every cell against the vendor pages ourselves, fix one wrong price, and add the date checked. The verdict names the best fit for salon, mobile and solo groomers, and for one of them, it isn't us.
+transcript: Now the comparison table. We give Claude the four apps' pricing and feature pages and our own facts. It builds a table on cash sales, fuel, quarterly estimates and price, with "not stated" where a vendor doesn't say. Then we check every cell against the vendor pages ourselves, fix one wrong price, and add the date checked. The verdict names the best fit for single-truck, multi-truck and catering owners, and for one of them, it isn't us.
 :::
 
 ## Make it machine-clear too
@@ -128,7 +128,7 @@ Take your pillar page from Exercise 6 and read only its first two sentences. Do 
 :::checkpoint
 Q: Which passage is most likely to be cited by an assistant?
 - [ ] "There are lots of great options, and the best one depends on your needs."
-- [x] "For mobile groomers, App A is the best fit: it logs van mileage automatically and costs $15 a month (checked November 2026)."
+- [x] "For food truck owners, App A is the best fit: it logs fuel and mileage automatically and costs $15 a month (checked November 2026)."
 - [ ] "Click here to learn more about our amazing app."
 Why: It answers directly with specifics an assistant can stand behind: who it's for, the feature, the price and the date.
 :::

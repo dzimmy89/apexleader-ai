@@ -73,7 +73,7 @@ Why: The agent watches and suggests. Every change to your site comes back throug
 :::example
 title: See an example result
 
-Groomer Books added an SEO section to its existing Marketing Bot's Monday routine. The Bot's own Google account was added to Search Console as Restricted. The first hand-run brief got clicks right but reported impressions for 28 days instead of 7; one correction fixed it. The brief now opens with clicks, AI-feature impressions and pages not indexed, the three numbers the founder cares about. The first approved action added "Can groomers write off dog shampoo?" to the question bank.
+Rolling Ledger added an SEO section to its existing Marketing Bot's Monday routine. The Bot's own Google account was added to Search Console as Restricted. The first hand-run brief got clicks right but reported impressions for 28 days instead of 7; one correction fixed it. The brief now opens with clicks, AI-feature impressions and pages not indexed, the three numbers the founder cares about. The first approved action added "Can food truck owners write off commissary fees?" to the question bank.
 
 :::video
 id: gf-ex8-reveal
@@ -82,7 +82,7 @@ status: paused
 src: /learn/video/get-found/gf-ex8-reveal.mp4
 captions: /learn/video/get-found/gf-ex8-reveal.vtt
 poster: /learn/video/get-found/gf-ex8-reveal.jpg
-transcript: Here's the Groomer Books setup. The Marketing Bot has its own login as a Restricted user. The first hand run read 28 days of impressions instead of 7, so we corrected it and ran it again. Now the brief opens with clicks, AI-feature impressions and pages not indexed. It's scheduled for 7 every Monday, and the first approved action is already in the question bank.
+transcript: Here's the Rolling Ledger setup. The Marketing Bot has its own login as a Restricted user. The first hand run read 28 days of impressions instead of 7, so we corrected it and ran it again. Now the brief opens with clicks, AI-feature impressions and pages not indexed. It's scheduled for 7 every Monday, and the first approved action is already in the question bank.
 :::
 
 :::infographic

@@ -20,7 +20,7 @@ status: paused
 src: /learn/video/t3-code/t3-ex2-setup.mp4
 captions: /learn/video/t3-code/t3-ex2-setup.vtt
 poster: /learn/video/t3-code/t3-ex2-setup.jpg
-transcript: In this exercise you'll route one real feature across two plans. First fill in a routing card for six Groomer Books jobs, using only the plans you pay for. Then add a Monthly and Annual toggle to the pricing page. Plan it with Claude Code in plan mode, write the five-line handoff note, and have Codex build it in its own worktree. Open a pull request, but don't merge it yet, and note what each plan used.
+transcript: In this exercise you'll route one real feature across two plans. First fill in a routing card for six Rolling Ledger jobs, using only the plans you pay for. Then add a Monthly and Annual toggle to the pricing page. Plan it with Claude Code in plan mode, write the five-line handoff note, and have Codex build it in its own worktree. Open a pull request, but don't merge it yet, and note what each plan used.
 :::
 
 ## Warm-up
@@ -76,7 +76,7 @@ a five-line handoff note: Goal, Files, Decisions, Done when, Don't.
 :::example
 title: See an example result
 
-For Groomer Books on Claude Pro, ChatGPT Plus and Cursor Plus, the card sent copy, planning and reviews to Claude Code, the booking form fix, tests and blog layout to Codex, and typos to Cursor. Claude Code's plan for the toggle took one thread with a handoff note. Codex built it in a worktree in two rounds, with one diff comment to fix the button colour. The pull request showed the $149 monthly price and $1,490 annual price with "2 months free" under Annual.
+For Rolling Ledger on Claude Pro, ChatGPT Plus and Cursor Plus, the card sent copy, planning and reviews to Claude Code, the booking form fix, tests and blog layout to Codex, and typos to Cursor. Claude Code's plan for the toggle took one thread with a handoff note. Codex built it in a worktree in two rounds, with one diff comment to fix the button colour. The pull request showed the $149 monthly price and $1,490 annual price with "2 months free" under Annual.
 
 :::video
 id: t3-ex2-reveal
@@ -85,7 +85,7 @@ status: paused
 src: /learn/video/t3-code/t3-ex2-reveal.mp4
 captions: /learn/video/t3-code/t3-ex2-reveal.vtt
 poster: /learn/video/t3-code/t3-ex2-reveal.jpg
-transcript: Here's a finished example for Groomer Books. The routing card sends copy, planning and reviews to Claude Code, building and tests to Codex, and typos to Cursor. Claude Code planned the toggle and wrote the handoff note. Codex built it in its own worktree, and one diff comment fixed the button colour. The pull request shows 149 dollars a month or 1,490 dollars a year, with 2 months free. Two plans shared the work.
+transcript: Here's a finished example for Rolling Ledger. The routing card sends copy, planning and reviews to Claude Code, building and tests to Codex, and typos to Cursor. Claude Code planned the toggle and wrote the handoff note. Codex built it in its own worktree, and one diff comment fixed the button colour. The pull request shows 149 dollars a month or 1,490 dollars a year, with 2 months free. Two plans shared the work.
 :::
 :::
 

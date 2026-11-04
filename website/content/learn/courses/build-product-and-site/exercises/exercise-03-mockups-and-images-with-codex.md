@@ -17,9 +17,9 @@ You'll use Codex to generate three hero mockups, pick one, and then produce the 
 
 :::checkpoint
 Q: Which image is safe to put on your landing page?
-- [ ] A generated photo of a groomer who looks like a well-known TV host
+- [ ] A generated photo of a food truck owner who looks like a well-known TV host
 - [ ] A generated laptop with a real software company's logo on the lid
-- [x] A generated scene of a tidy salon with no faces in focus, no text and no brands
+- [x] A generated scene of a tidy food truck with no faces in focus, no text and no brands
 Why: Recognizable people and real logos create legal and trust problems. A generic scene with no text or brands is the safe default.
 :::
 

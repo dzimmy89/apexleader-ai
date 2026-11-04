@@ -22,7 +22,7 @@ Your brand voice is a short set of rules for how your business sounds: who you a
 
 You're about to have several agents writing for you: landing page copy, emails, social posts, proposals, follow-ups. Without a voice guide, each one defaults to the same polished, slightly generic AI tone, and your business sounds like everyone else's. Customers notice. A one-page guide fixes that, and it's the cheapest piece of brand work you'll ever do.
 
-If you don't have a business yet, use the sample from this program: Groomer Books, monthly bookkeeping for independent dog groomers.
+If you don't have a business yet, use the sample from this program: Rolling Ledger, monthly bookkeeping for independent food truck owners.
 
 ## Voice versus tone
 
@@ -41,7 +41,7 @@ Your voice already exists. It's in how you talk about your business and how your
 - **Your customers' words:** quotes from interviews or calls (the Find and Validate the Idea course produces these), reviews of competitors, posts in communities where your customers hang out.
 - **Anti-examples:** two or three pieces of writing in your market that make you cringe.
 
-Customer words are the most valuable part. "I do my books at 11pm after the last dog leaves" tells you more about how to sound than any adjective.
+Customer words are the most valuable part. "I do my books at 11pm after I hose down the truck" tells you more about how to sound than any adjective.
 
 :::warning
 Remove names, emails, phone numbers and anything private before pasting customer messages or call notes into any AI tool. Keep the quote, drop the identity. If a customer told you something in confidence, leave it out.
@@ -71,19 +71,19 @@ You'll get a draft. Now do the founder's job: push back. Cut any trait that ever
 A voice guide that agents actually follow is short and concrete. Use this structure:
 
 ```text
-# Groomer Books voice guide
+# Rolling Ledger voice guide
 
 ## Who we sound like
-A sharp friend who happens to be good with numbers. We talk like groomers talk.
+A sharp friend who happens to be good with numbers. We talk like food truck owners talk.
 
 ## Traits
 - Plain, not dumbed down. Short sentences. Explain any money term in five words or fewer.
-- Warm, not cute. We like dogs. We don't do dog puns in serious moments.
+- Warm, not cute. We like a good taco. We don't do food puns in serious moments.
 - Practical, not preachy. Every message ends with one clear next step.
 - Honest, not hyped. No "revolutionary," no guarantees about taxes, no fake urgency.
 
 ## Words we use / words we avoid
-Use: books, receipts, money in, money out, your chair, slow season
+Use: books, receipts, money in, money out, your truck, slow season
 Avoid: leverage, synergy, solutions, seamless, game-changer, "financial wellness"
 
 ## Tone by situation

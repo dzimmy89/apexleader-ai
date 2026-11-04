@@ -60,7 +60,7 @@ status: paused
 src: /learn/video/get-found/gf-l6-scaled-content-line.mp4
 captions: /learn/video/get-found/gf-l6-scaled-content-line.vtt
 poster: /learn/video/get-found/gf-l6-scaled-content-line.jpg
-transcript: Here's the line in practice. An agent offers to write "bookkeeping for groomers in" every one of fifty cities, same page, city name swapped. That's scaled content abuse, and it can hurt the whole site. Instead, Groomer Books writes one strong page on choosing bookkeeping software, from the founder's real numbers, and publishes it after she edits it. Same tools. Different purpose, and a different result.
+transcript: Here's the line in practice. An agent offers to write "bookkeeping for food truck owners in" every one of fifty cities, same page, city name swapped. That's scaled content abuse, and it can hurt the whole site. Instead, Rolling Ledger writes one strong page on choosing bookkeeping software, from the founder's real numbers, and publishes it after she edits it. Same tools. Different purpose, and a different result.
 :::
 
 ## Draft from the brief
@@ -80,7 +80,7 @@ Write the page from this brief (pasted below). Rules:
 
 ## Add experience inserts
 
-Each `[EXPERIENCE]` marker is a place for two to four sentences only you could write: what happened, what you did, the result, ideally with a number. For example: "When I moved a mobile groomer from a shoebox of receipts to a mileage app, her deductible van miles went from a guess to 11,400 for the year."
+Each `[EXPERIENCE]` marker is a place for two to four sentences only you could write: what happened, what you did, the result, ideally with a number. For example: "When I moved a food truck owner from a shoebox of receipts to a mileage app, her deductible fuel miles went from a guess to 11,400 for the year."
 
 These inserts are what readers remember, what Google's guidance means by first-hand experience, and what assistants quote.
 
@@ -119,7 +119,7 @@ status: paused
 src: /learn/video/get-found/gf-l6-expert-edit.mp4
 captions: /learn/video/get-found/gf-l6-expert-edit.vtt
 poster: /learn/video/get-found/gf-l6-expert-edit.jpg
-transcript: Here's the expert edit on the Groomer Books draft. Claude flags an opening paragraph that doesn't answer the question, two sentences with no source, and the word "affordable" with no price. The founder fixes each one, writes three short stories from her salon clients into the experience markers, and adds her name and the date. The page went from a decent draft to something only Groomer Books could have published.
+transcript: Here's the expert edit on the Rolling Ledger draft. Claude flags an opening paragraph that doesn't answer the question, two sentences with no source, and the word "affordable" with no price. The founder fixes each one, writes three short stories from her truck clients into the experience markers, and adds her name and the date. The page went from a decent draft to something only Rolling Ledger could have published.
 :::
 
 :::warning
@@ -139,7 +139,7 @@ Why: The policy targets mass-producing pages mainly to manipulate rankings, howe
 :::
 
 :::checkpoint
-Q: Claude's draft says "Groomers save an average of 6 hours a month with bookkeeping software." The figure isn't in your brief. What do you do?
+Q: Claude's draft says "Food truck owners save an average of 6 hours a month with bookkeeping software." The figure isn't in your brief. What do you do?
 - [ ] Keep it; it sounds right
 - [ ] Change it to "many hours"
 - [x] Remove it, or replace it with a number you can prove or a source you link

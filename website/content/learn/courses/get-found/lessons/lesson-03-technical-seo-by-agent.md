@@ -61,7 +61,7 @@ status: paused
 src: /learn/video/get-found/gf-l3-audit-prompt.mp4
 captions: /learn/video/get-found/gf-l3-audit-prompt.vtt
 poster: /learn/video/get-found/gf-l3-audit-prompt.jpg
-transcript: Here's the audit on the Groomer Books site in Claude Code. We paste the eight-check prompt and ask for read-only. The agent reads the robots file, the sitemap code and every page template. It reports in plain English: canonicals point at the preview address, four pages share one title, the blog has no Article markup, and the hero image is 2 megabytes. Each item has a file and a proposed fix. Nothing has changed yet.
+transcript: Here's the audit on the Rolling Ledger site in Claude Code. We paste the eight-check prompt and ask for read-only. The agent reads the robots file, the sitemap code and every page template. It reports in plain English: canonicals point at the preview address, four pages share one title, the blog has no Article markup, and the hero image is 2 megabytes. Each item has a file and a proposed fix. Nothing has changed yet.
 :::
 
 ## Run the audit

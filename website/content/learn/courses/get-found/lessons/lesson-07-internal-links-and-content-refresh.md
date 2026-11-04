@@ -70,7 +70,7 @@ status: paused
 src: /learn/video/get-found/gf-l7-spotting-decay.mp4
 captions: /learn/video/get-found/gf-l7-spotting-decay.vtt
 poster: /learn/video/get-found/gf-l7-spotting-decay.jpg
-transcript: Here's the comparison on Groomer Books. Last three months against the three before, sorted by clicks lost. Three pages stand out. The quarterly tax page lost 41 percent, and its deadlines are last year's. The mileage page and the van deduction page compete for the same queries, so they'll be merged. The pricing guide's clicks fell while its position held, because an AI Overview now answers the question, so it needs a sharper opening answer.
+transcript: Here's the comparison on Rolling Ledger. Last three months against the three before, sorted by clicks lost. Three pages stand out. The quarterly tax page lost 41 percent, and its deadlines are last year's. The fuel page and the truck deduction page compete for the same queries, so they'll be merged. The pricing guide's clicks fell while its position held, because an AI Overview now answers the question, so it needs a sharper opening answer.
 :::
 
 ## Refresh honestly
@@ -106,7 +106,7 @@ Then open one pull request with the links. Don't change anything else.
 id: fig-2
 type: diagram
 title: Link from strength
-shows: A site map of 8 page circles sized by monthly clicks. The two largest (home page and pillar page) have arrows to three smaller pages marked "refreshing". Each arrow carries a short descriptive link text, such as "quarterly tax deadlines for groomers". A paper card says "Describe the target, never 'click here'".
+shows: A site map of 8 page circles sized by monthly clicks. The two largest (home page and pillar page) have arrows to three smaller pages marked "refreshing". Each arrow carries a short descriptive link text, such as "quarterly tax deadlines for food truck owners". A paper card says "Describe the target, never 'click here'".
 data: none
 alt: Your strongest pages, such as the home page and pillar page, link to the pages you're refreshing with link text that describes each target.
 :::

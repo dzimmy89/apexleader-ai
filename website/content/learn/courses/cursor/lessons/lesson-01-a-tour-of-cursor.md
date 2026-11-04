@@ -37,7 +37,7 @@ None of this changes the core skill. You brief an agent, it works, you review. T
 
 1. Download Cursor from cursor.com/downloads. It runs on macOS 12 or later, Windows 10 or later, and Linux.
 2. Open it and sign in.
-3. Create an empty folder on your computer called `groomer-books-site` (or your business name) and open it in Cursor. A folder is a project. Everything the agent does happens inside it.
+3. Create an empty folder on your computer called `rolling-ledger-site` (or your business name) and open it in Cursor. A folder is a project. Everything the agent does happens inside it.
 
 If you followed the GitHub for Non-Developers course, clone your site repo instead so every change can go through a pull request.
 
@@ -59,8 +59,8 @@ For a founder, the Agents Window is where you'll spend most time. The Editor is 
 Start small. A good first prompt asks the agent to explain before it builds:
 
 ```text
-This folder will hold the website for Groomer Books, a monthly bookkeeping
-service for independent dog groomers. It's empty right now.
+This folder will hold the website for Rolling Ledger, a monthly bookkeeping
+service for independent food truck owners. It's empty right now.
 Don't write any code yet. Propose a simple plan for a one-page site in plain
 HTML and CSS: sections, files, and what you'll need from me (copy, images,
 contact email). Ask me any questions first.

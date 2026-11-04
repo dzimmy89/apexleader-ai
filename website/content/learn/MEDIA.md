@@ -14,7 +14,7 @@ FromAItoBusiness brand. Plan: https://claude.ai/artifact/Xjrwo1uuni9DaDzL35iYeV
 
 Exercises ask members to build something for their own business, so there is
 no single right answer. The reveal shows a finished example for the sample
-business, Groomer Books, inside an `:::example` block that stays closed until
+business, Rolling Ledger, inside an `:::example` block that stays closed until
 the reader opens it. Nothing above that block may give the example away.
 
 ## Blocks
@@ -45,10 +45,10 @@ transcript: The narration, on one line.
 id: fig-1
 type: flow                # flow | comparison | timeline | diagram | chart | anatomy
 title: Agents draft, you approve
-shows: Three cards left to right: the research agent finds 30 groomers, the sales agent drafts one email each, and you approve on the paper card.
+shows: Three cards left to right: the research agent finds 30 food truck owners, the sales agent drafts one email each, and you approve on the paper card.
 data: none                # or the numbers it plots
 image: /learn/figures/ai-sales/lesson-01-fig-1.webp
-alt: A research agent finds 30 groomers, a sales agent drafts one email each, and nothing sends until you approve.
+alt: A research agent finds 30 food truck owners, a sales agent drafts one email each, and nothing sends until you approve.
 :::
 ```
 

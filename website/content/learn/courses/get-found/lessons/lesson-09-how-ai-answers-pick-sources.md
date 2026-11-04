@@ -44,7 +44,7 @@ Each step is a filter. A page blocked from the crawler never reaches step 2. A p
 id: fig-1
 type: flow
 title: From question to citation
-shows: Left to right: a user's question ("best bookkeeping app for a mobile groomer?"), the assistant fans it out into three search queries, retrieval pulls about 20 pages from an index and crawler, grounding picks 3 to 5 passages, and the answer shows with 3 cited links. Under each step, a filter label: "blocked bots stop here", "irrelevant pages stop here", "vague pages stop here".
+shows: Left to right: a user's question ("best bookkeeping app for a food truck owner?"), the assistant fans it out into three search queries, retrieval pulls about 20 pages from an index and crawler, grounding picks 3 to 5 passages, and the answer shows with 3 cited links. Under each step, a filter label: "blocked bots stop here", "irrelevant pages stop here", "vague pages stop here".
 data: Illustrative: 1 question, 3 queries, about 20 pages retrieved, 3 to 5 passages, 3 citations.
 alt: An assistant rewrites a question into several searches, retrieves pages, and grounds its answer in a few passages it cites. Blocked, irrelevant and vague pages drop out at each step.
 :::

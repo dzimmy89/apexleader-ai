@@ -70,7 +70,7 @@ status: paused
 src: /learn/video/get-found/gf-l12-prompt-panel.mp4
 captions: /learn/video/get-found/gf-l12-prompt-panel.vtt
 poster: /learn/video/get-found/gf-l12-prompt-panel.jpg
-transcript: Here's the Groomer Books panel run. Twelve questions, five assistants, fresh sessions, same wording as last month. For "best bookkeeping app for a mobile groomer", Perplexity now cites the comparison page, and ChatGPT mentions Groomer Books without a link. Gemini and Claude don't mention it yet. Each answer goes into the sheet as a row: mentioned, linked, position, and who else was cited. It takes about forty minutes a month.
+transcript: Here's the Rolling Ledger panel run. Twelve questions, five assistants, fresh sessions, same wording as last month. For "best bookkeeping app for a food truck owner", Perplexity now cites the comparison page, and ChatGPT mentions Rolling Ledger without a link. Gemini and Claude don't mention it yet. Each answer goes into the sheet as a row: mentioned, linked, position, and who else was cited. It takes about forty minutes a month.
 :::
 
 ## Source 4: AI referrals in analytics
@@ -108,7 +108,7 @@ status: paused
 src: /learn/video/get-found/gf-l12-free-reports.mp4
 captions: /learn/video/get-found/gf-l12-free-reports.vtt
 poster: /learn/video/get-found/gf-l12-free-reports.jpg
-transcript: Now the free reports side by side. Search Console's Generative AI report shows the comparison page gaining impressions in AI Mode since it went live. Bing's AI Performance shows Copilot citing the same page, with grounding queries like "bookkeeping app for groomers mileage". Analytics shows eleven visits from perplexity.ai and four trial sign-ups. Same page, three signals. That's the change worth repeating.
+transcript: Now the free reports side by side. Search Console's Generative AI report shows the comparison page gaining impressions in AI Mode since it went live. Bing's AI Performance shows Copilot citing the same page, with grounding queries like "bookkeeping app for food trucks fuel". Analytics shows eleven visits from perplexity.ai and four trial sign-ups. Same page, three signals. That's the change worth repeating.
 :::
 
 :::warning

@@ -25,7 +25,7 @@ Why: Manual lets you see and approve every step on a new folder. Move to Auto on
 
 ## Steps
 
-1. Create a folder called "Cowork Inbox." Copy in 10 to 20 non-sensitive files: drafts, notes, screenshots, call notes, marketing ideas. No bank statements, IDs, passwords or client personal data. If you're using the sample business, ask Claude in a normal chat to generate ten short sample documents for Groomer Books (call notes, a flyer draft, a vendor quote) and save them there.
+1. Create a folder called "Cowork Inbox." Copy in 10 to 20 non-sensitive files: drafts, notes, screenshots, call notes, marketing ideas. No bank statements, IDs, passwords or client personal data. If you're using the sample business, ask Claude in a normal chat to generate ten short sample documents for Rolling Ledger (call notes, a flyer draft, a vendor quote) and save them there.
 2. Back up the folder (copy it somewhere else) before you start.
 3. Open the Claude Desktop app and connect the "Cowork Inbox" folder. If you see Chat and Cowork options, choose Cowork. Set the mode to **Manual**.
 4. Add folder instructions:

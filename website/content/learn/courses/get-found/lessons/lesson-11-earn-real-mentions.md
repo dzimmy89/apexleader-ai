@@ -62,7 +62,7 @@ status: paused
 src: /learn/video/get-found/gf-l11-finding-cited-sources.mp4
 captions: /learn/video/get-found/gf-l11-finding-cited-sources.vtt
 poster: /learn/video/get-found/gf-l11-finding-cited-sources.jpg
-transcript: Here's the source hunt for Groomer Books. Five questions, five assistants, and Claude groups the sources. Two grooming associations' vendor directories come up in almost every answer. So does one trade newsletter, a software review site, and two Reddit threads where groomers argue about bookkeeping. Groomer Books appears in none of them. That's the target list for the next 90 days.
+transcript: Here's the source hunt for Rolling Ledger. Five questions, five assistants, and Claude groups the sources. Two food truck associations' vendor directories come up in almost every answer. So does one trade newsletter, a software review site, and two Reddit threads where food truck owners argue about bookkeeping. Rolling Ledger appears in none of them. That's the target list for the next 90 days.
 :::
 
 ## Five channels for a one-person company
@@ -114,7 +114,7 @@ status: paused
 src: /learn/video/get-found/gf-l11-pitch.mp4
 captions: /learn/video/get-found/gf-l11-pitch.vtt
 poster: /learn/video/get-found/gf-l11-pitch.jpg
-transcript: Here's a pitch that worked. The trade newsletter runs a monthly money column. Claude drafts a pitch around one number: month-end fell from 6 hours to 1.8 across 40 salons. It names a column from last month that the founder actually read, and asks one question: would readers want the three changes behind that number? Ninety-five words. She checks it, sends it herself, and gets a yes for next month's issue.
+transcript: Here's a pitch that worked. The trade newsletter runs a monthly money column. Claude drafts a pitch around one number: month-end fell from 6 hours to 1.8 across 40 trucks. It names a column from last month that the founder actually read, and asks one question: would readers want the three changes behind that number? Ninety-five words. She checks it, sends it herself, and gets a yes for next month's issue.
 :::
 
 :::warning
@@ -126,7 +126,7 @@ Ask Perplexity your most important buyer question and open every source it cites
 :::
 
 :::checkpoint
-Q: A forum thread asks which bookkeeping app groomers use, and you run one. What's the right move?
+Q: A forum thread asks which bookkeeping app food truck owners use, and you run one. What's the right move?
 - [ ] Post from a second account praising your app
 - [ ] Ask friends to upvote a thread that mentions you
 - [x] Answer the question fully as yourself, say you run one of the options, and follow the forum's rules

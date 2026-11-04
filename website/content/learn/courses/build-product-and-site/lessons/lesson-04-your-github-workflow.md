@@ -24,9 +24,9 @@ Without version control, your site lives in one folder on one laptop, and every 
 
 ## Four words in plain English
 
-| Word | Plain English | Groomer Books example |
+| Word | Plain English | Rolling Ledger example |
 |---|---|---|
-| Repository (repo) | The project folder, stored on GitHub with its full history | `groomer-books-site` |
+| Repository (repo) | The project folder, stored on GitHub with its full history | `rolling-ledger-site` |
 | Commit | A saved snapshot with a note about what changed | "Add FAQ section from content/faq.md" |
 | Branch | A safe copy to work on without touching the live version | `faq-section` |
 | Pull request (PR) | A request to merge a branch into the main version, with a list of changes for review | "Add FAQ section" waiting for your approval |
@@ -47,7 +47,7 @@ A first-time setup prompt for your coding agent:
 
 ```text
 Turn this folder into a git repository and publish it to GitHub as a new
-repository called groomer-books-site under my account.
+repository called rolling-ledger-site under my account.
 Before the first commit:
 - Create a .gitignore that excludes .env files, any file with "secret" or "key"
   in the name, .DS_Store, node_modules and the /mockups folder.

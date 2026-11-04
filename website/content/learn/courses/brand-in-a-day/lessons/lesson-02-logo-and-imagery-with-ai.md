@@ -20,7 +20,7 @@ AI image tools are excellent for exploring logo ideas and producing on-brand ima
 
 ## Why this matters
 
-Your logo goes on your site, your invoices, your social profiles and maybe a van. Changing it later costs money and recognition. AI makes it tempting to type "logo for a bookkeeping business" and ship the first result. That is how founders end up with a generic mark, a blurry file they can't resize, or a lookalike of a company they've never heard of. One focused day avoids all three.
+Your logo goes on your site, your invoices, your social profiles and maybe the side of a truck. Changing it later costs money and recognition. AI makes it tempting to type "logo for a bookkeeping business" and ship the first result. That is how founders end up with a generic mark, a blurry file they can't resize, or a lookalike of a company they've never heard of. One focused day avoids all three.
 
 ## The tools, as of October 2026
 
@@ -37,11 +37,11 @@ Plans and limits change; check each tool's current plan page before you rely on 
 Good logos for small businesses are simple: a wordmark (your name in a well-chosen font), sometimes with a small symbol. Give the AI the brief a designer would want.
 
 ```text
-I'm creating a logo for Groomer Books, monthly bookkeeping for independent dog groomers.
+I'm creating a logo for Rolling Ledger, monthly bookkeeping for independent food truck owners.
 Voice: plain, warm, practical, honest (not cute, not corporate).
 Generate 8 different logo concepts on a white background:
 - 4 wordmarks using different type styles (serif, rounded sans, geometric sans, slab)
-- 4 with a simple symbol plus the name (ideas: a ledger line that becomes a leash,
+- 4 with a simple symbol plus the name (ideas: a ledger line that becomes a road,
   a tag shape, a simple paw combined with a check mark)
 Flat, two colors maximum, no gradients, no shadows, no tiny details.
 Must still read clearly at 32 pixels wide. Show them in a grid, numbered.
@@ -90,9 +90,9 @@ Beyond the logo, you'll need dozens of images over the next year: social posts, 
 ```text
 # Image style (paste into every image prompt)
 - Realistic photo style, warm natural light, slightly muted colors
-- Settings: small independent grooming salons, front desks, vans; never corporate offices
-- Dogs relaxed and happy; people shown from the side or behind, no faces in focus
-- Accent color #E8664A appears once in each scene (a towel, a leash, a mug)
+- Settings: small independent food trucks, service windows, commissary kitchens; never corporate offices
+- Trucks clean and busy; people shown from the side or behind, no faces in focus
+- Accent color #E8664A appears once in each scene (an apron, an awning, a mug)
 - No text, no logos, no brand names on objects
 - Leave clear space on one side for a headline
 ```
@@ -101,8 +101,8 @@ Gemini's image models are strong at keeping a style or a character consistent wh
 
 ```text
 Using the attached image as the style reference, create three more images in the same
-light, palette and mood: 1) a groomer's van parked at dawn, 2) a receipt box on a
-salon counter, 3) a groomer checking a phone between appointments.
+light, palette and mood: 1) a food truck parked at dawn, 2) a receipt box on a
+truck counter, 3) a food truck owner checking a phone between services.
 Follow the style rules below. [paste rules]
 ```
 

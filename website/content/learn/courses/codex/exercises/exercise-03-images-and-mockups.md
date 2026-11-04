@@ -31,7 +31,7 @@ Why: Text inside an image can't be edited, read by screen readers or found by se
 
 ```text
 Read AGENTS.md. Generate three phone-size (9:16) mockups of a one-page
-client intake form for Groomer Books. Fields: name, business name, email,
+client intake form for Rolling Ledger. Fields: name, business name, email,
 number of bank accounts, monthly transactions (dropdown: under 150,
 150 to 300, over 300), "What's your biggest bookkeeping headache?"
 (text box), Submit button. Use made-up sample entries only.

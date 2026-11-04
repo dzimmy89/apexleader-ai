@@ -32,7 +32,7 @@ Why: A trait with a contrast and a concrete rule tells an agent exactly what to 
     - 5 to 15 customer quotes about their problem (from interviews, calls, reviews of competitors, community posts). Remove names and contact details.
     - 2 or 3 pieces of writing in your market you dislike
 
-    No business yet? Use Groomer Books and search groomer forums or competitor reviews for real phrasing.
+    No business yet? Use Rolling Ledger and search food truck owner forums or competitor reviews for real phrasing.
 
 3. **Analyze.** Upload the document to the Project and paste:
 

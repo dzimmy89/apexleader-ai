@@ -53,7 +53,7 @@ You have two choices for where emails send from:
 | Option | Good | Watch out |
 |---|---|---|
 | Your own business inbox | Replies come straight to you; your real name and domain | A spam complaint or bounce hurts the domain you use for clients and invoices |
-| A separate sending domain (for example getgroomerbooks.com) | Problems stay away from your main domain | Needs its own SPF, DKIM and DMARC, warmup, and a real reply path to you |
+| A separate sending domain (for example getrollingledger.com) | Problems stay away from your main domain | Needs its own SPF, DKIM and DMARC, warmup, and a real reply path to you |
 
 For cold outreach, use a separate sending domain. Origami can set up sending inboxes for you, which it says "keep your main address safe." Whichever you pick, check SPF, DKIM and DMARC on that sending domain the way you did in Exercise 2, and confirm replies reach an inbox you read daily.
 
@@ -95,7 +95,7 @@ Origami's Sequencer can send LinkedIn connection requests and messages from your
 5. **Watch for warnings.** If LinkedIn shows a warning, asks you to verify your identity, or acceptance drops sharply, pause LinkedIn steps for two weeks and go back to doing LinkedIn by hand.
 6. **Keep your other bots off LinkedIn.** Your Grok Bot Sales Bot still never touches LinkedIn. Origami is the one tool you've chosen to accept this risk for, and you set its limits.
 
-A sample mixed sequence for Groomer Books:
+A sample mixed sequence for Rolling Ledger:
 
 | Day | Channel | Step |
 |---|---|---|

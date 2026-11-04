@@ -20,7 +20,7 @@ The 45 minutes covers prep and synthesis. Book the interviews themselves over th
 :::checkpoint
 Q: Which question passes The Mom Test?
 - [ ] "Would you pay $150 a month for monthly bookkeeping?"
-- [ ] "Do you think a bookkeeping service for groomers is a good idea?"
+- [ ] "Do you think a bookkeeping service for food truck owners is a good idea?"
 - [x] "Tell me about the last time you did your books. How long did it take?"
 Why: It asks about a specific past event, not an opinion about your idea or a promise about the future.
 :::

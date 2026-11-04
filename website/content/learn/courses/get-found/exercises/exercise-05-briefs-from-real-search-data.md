@@ -72,7 +72,7 @@ Why: The gap is the reason your page deserves to rank and be cited. It comes fro
 :::example
 title: See an example result
 
-The Groomer Books brief for "What bookkeeping software should a dog groomer use?" found that all ten top pages listed general small-business apps with a paragraph each. The gap: a comparison of how each app handles cash tips, van mileage and quarterly tax estimates, plus a recommendation by type of groomer (salon, mobile, solo). The founder filled 11 facts, including how long month-end took her salon clients before and after switching, and cut one section on payroll she couldn't support.
+The Rolling Ledger brief for "What bookkeeping software should a food truck owner use?" found that all ten top pages listed general small-business apps with a paragraph each. The gap: a comparison of how each app handles cash sales, fuel and quarterly tax estimates, plus a recommendation by type of truck (single truck, multi-truck, truck plus catering). The founder filled 11 facts, including how long month-end took her truck clients before and after switching, and cut one section on payroll she couldn't support.
 
 :::video
 id: gf-ex5-reveal
@@ -81,16 +81,16 @@ status: paused
 src: /learn/video/get-found/gf-ex5-reveal.mp4
 captions: /learn/video/get-found/gf-ex5-reveal.vtt
 poster: /learn/video/get-found/gf-ex5-reveal.jpg
-transcript: Here's the finished Groomer Books brief. The top ten pages were all generic app lists. The gap is a comparison on the three things groomers actually ask about: cash tips, van mileage and quarterly taxes, with a pick for salon, mobile and solo groomers. The founder filled in eleven facts from her own client work and cut the payroll section she couldn't back up. The brief is ready to write.
+transcript: Here's the finished Rolling Ledger brief. The top ten pages were all generic app lists. The gap is a comparison on the three things food truck owners actually ask about: cash sales, fuel and quarterly taxes, with a pick for single-truck, multi-truck and catering owners. The founder filled in eleven facts from her own client work and cut the payroll section she couldn't back up. The brief is ready to write.
 :::
 
 :::infographic
 id: fig-2
 type: anatomy
 title: A finished brief
-shows: The eight-section brief, filled: reader "a groomer choosing their first bookkeeping app", a 46-word opening answer, five must-cover H2s, the gap highlighted (tips, mileage, quarterly taxes by groomer type), an outline, 11 facts ticked, three internal links, and two questions moved to "not this page".
+shows: The eight-section brief, filled: reader "a food truck owner choosing their first bookkeeping app", a 46-word opening answer, five must-cover H2s, the gap highlighted (cash sales, fuel, quarterly taxes by truck type), an outline, 11 facts ticked, three internal links, and two questions moved to "not this page".
 data: 46-word answer, 5 must-cover sections, 11 facts, 3 internal links.
-alt: The finished Groomer Books brief, with its gap highlighted, eleven facts supplied by the founder, and two questions moved to other pages.
+alt: The finished Rolling Ledger brief, with its gap highlighted, eleven facts supplied by the founder, and two questions moved to other pages.
 :::
 :::
 

@@ -48,13 +48,13 @@ brand/
 `BRAND.md` is the entry point. Keep it under a page:
 
 ```text
-# Groomer Books brand, read this first
-Who we are: monthly bookkeeping for independent dog groomers.
+# Rolling Ledger brand, read this first
+Who we are: monthly bookkeeping for independent food truck owners.
 Voice: see voice-guide.md. Short version: plain, warm, practical, honest.
 Colors: see colors.md. Primary Ink #1F2A37, Accent Coral #E8664A, Background Cream #FFF8F0.
 Type: headings Fraunces, body Inter (both free from Google Fonts).
 Logo: use logo/logo.svg. Never stretch, recolor or add effects. Minimum 24px tall on screen.
-Never: invent customer quotes or numbers; use dog puns in money or deadline messages;
+Never: invent customer quotes or numbers; use food puns in money or deadline messages;
 use stock photos of people in suits.
 Approval: every draft that leaves the business goes to the founder first.
 ```
@@ -90,7 +90,7 @@ For fonts, pick from a free library like Google Fonts so every tool and agent ca
 Projects keep files and standing instructions together, and they're available on every Claude plan (free accounts have a limit on how many). Create a project called "[Business] brand desk," upload everything in `brand/` as project knowledge, and set project instructions:
 
 ```text
-You write and review content for Groomer Books.
+You write and review content for Rolling Ledger.
 Before writing anything, follow BRAND.md and voice-guide.md in project knowledge.
 Use only facts, prices and quotes found in project knowledge; otherwise write [CHECK].
 End every draft with: "Brand check:" and list any rule you weren't sure about.
@@ -105,11 +105,11 @@ A skill is a folder with a `SKILL.md` file (a name, a description of when to use
 
 ```text
 ---
-name: groomer-books-brand
-description: Use whenever writing, editing or designing anything for Groomer Books,
+name: rolling-ledger-brand
+description: Use whenever writing, editing or designing anything for Rolling Ledger,
   including posts, emails, web copy, proposals and images.
 ---
-# Groomer Books brand
+# Rolling Ledger brand
 1. Read BRAND.md, then voice-guide.md and colors.md in this folder.
 2. Write in the voice; use exact hex colors and the named fonts.
 3. Never invent quotes, numbers or prices. Mark unknowns [CHECK].

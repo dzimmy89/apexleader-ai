@@ -75,7 +75,7 @@ Why: Two pages competing for the same queries split their strength. Merging with
 :::example
 title: See an example result
 
-Groomer Books found five slipping pages. The quarterly tax page (down 41% in clicks) was refreshed with this year's deadlines and a new section on safe-harbour payments. The mileage page was merged into the van deduction page with a 301 redirect. The pricing guide got a sharper 45-word opening answer, because an AI Overview now answers its main question. Two pages with normal seasonal dips were left alone. The pillar page and home page now link to all three refreshed pages. Six weeks later, the tax page was back above its old click level.
+Rolling Ledger found five slipping pages. The quarterly tax page (down 41% in clicks) was refreshed with this year's deadlines and a new section on safe-harbour payments. The fuel page was merged into the truck deduction page with a 301 redirect. The pricing guide got a sharper 45-word opening answer, because an AI Overview now answers its main question. Two pages with normal seasonal dips were left alone. The pillar page and home page now link to all three refreshed pages. Six weeks later, the tax page was back above its old click level.
 
 :::video
 id: gf-ex7-reveal
@@ -84,16 +84,16 @@ status: paused
 src: /learn/video/get-found/gf-ex7-reveal.mp4
 captions: /learn/video/get-found/gf-ex7-reveal.vtt
 poster: /learn/video/get-found/gf-ex7-reveal.jpg
-transcript: Here's the Groomer Books refresh. Five slipping pages, five decisions. The tax page got this year's deadlines. The mileage page was merged into the van page with a redirect. The pricing guide got a sharper opening answer. Two seasonal dips were left alone. One pull request carried it all, plus links from the pillar and home pages. Six weeks later the tax page was back above where it started.
+transcript: Here's the Rolling Ledger refresh. Five slipping pages, five decisions. The tax page got this year's deadlines. The fuel page was merged into the truck page with a redirect. The pricing guide got a sharper opening answer. Two seasonal dips were left alone. One pull request carried it all, plus links from the pillar and home pages. Six weeks later the tax page was back above where it started.
 :::
 
 :::infographic
 id: fig-2
 type: anatomy
 title: A finished refresh log
-shows: The Refresh Log tab with five rows filled: quarterly tax page (refresh, deadlines out of date), mileage page (merge into van page, 301), pricing guide (refresh opening answer, AI Overview), two seasonal pages (leave). Done dates filled. A small sparkline beside the tax page shows the recovery.
+shows: The Refresh Log tab with five rows filled: quarterly tax page (refresh, deadlines out of date), fuel page (merge into truck page, 301), pricing guide (refresh opening answer, AI Overview), two seasonal pages (leave). Done dates filled. A small sparkline beside the tax page shows the recovery.
 data: 5 pages: 2 refreshed, 1 merged, 2 left.
-alt: Groomer Books' refresh log with five slipping pages: two refreshed, one merged with a redirect, and two seasonal dips left alone.
+alt: Rolling Ledger's refresh log with five slipping pages: two refreshed, one merged with a redirect, and two seasonal dips left alone.
 :::
 :::
 

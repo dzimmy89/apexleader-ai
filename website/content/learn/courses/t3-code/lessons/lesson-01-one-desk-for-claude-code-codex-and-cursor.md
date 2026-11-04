@@ -14,7 +14,7 @@ status: paused
 src: /learn/video/t3-code/t3-l1-overview.mp4
 captions: /learn/video/t3-code/t3-l1-overview.vtt
 poster: /learn/video/t3-code/t3-l1-overview.jpg
-transcript: You already pay for Claude, ChatGPT or Cursor, and each one comes with its own coding agent and its own window. T3 Code is a free app that puts all of them on one desk. It doesn't sell you tokens and it doesn't add any. It drives the logins you already have, so you can run Claude Code and Codex side by side on the Groomer Books site, compare their work, and see what each one used. In this lesson you'll learn what T3 Code is, what it isn't, and how to set it up safely.
+transcript: You already pay for Claude, ChatGPT or Cursor, and each one comes with its own coding agent and its own window. T3 Code is a free app that puts all of them on one desk. It doesn't sell you tokens and it doesn't add any. It drives the logins you already have, so you can run Claude Code and Codex side by side on the Rolling Ledger site, compare their work, and see what each one used. In this lesson you'll learn what T3 Code is, what it isn't, and how to set it up safely.
 :::
 
 :::key-concept
@@ -66,7 +66,7 @@ You need at least one coding agent already installed and signed in on the comput
 1. **Sign in to each agent's own tool on this computer.** For Claude Code that's `claude auth login`, and for Codex it's `codex login`. Cursor signs in through your browser from inside T3 Code.
 2. **Install T3 Code.** Use the desktop app from t3.codes (Homebrew on a Mac: `brew install --cask t3-code`), or try it from a terminal with `npx t3@latest`, which needs Node 22.16 or newer. Intel Macs use the desktop app.
 3. **Check the providers.** Open **Settings → Providers**. Each agent it found shows as ready. Cursor, Grok and OpenCode have to be switched on there first.
-4. **Add a project.** Point T3 Code at your site's folder, for example the Groomer Books site from Build the Product and Site. Only add folders that hold one project.
+4. **Add a project.** Point T3 Code at your site's folder, for example the Rolling Ledger site from Build the Product and Site. Only add folders that hold one project.
 
 :::video
 id: t3-l1-install-and-connect
@@ -75,7 +75,7 @@ status: paused
 src: /learn/video/t3-code/t3-l1-install-and-connect.mp4
 captions: /learn/video/t3-code/t3-l1-install-and-connect.vtt
 poster: /learn/video/t3-code/t3-l1-install-and-connect.jpg
-transcript: Here's the setup on a Mac. First we check that Claude Code and Codex are signed in. Then we install T3 Code and open Settings, then Providers. Claude Code and Codex show as ready. Cursor is off, so we switch it on and sign in through the browser. Finally we add the Groomer Books site as a project. If a provider stays grey, its tool isn't installed or isn't signed in on this computer.
+transcript: Here's the setup on a Mac. First we check that Claude Code and Codex are signed in. Then we install T3 Code and open Settings, then Providers. Claude Code and Codex show as ready. Cursor is off, so we switch it on and sign in through the browser. Finally we add the Rolling Ledger site as a project. If a provider stays grey, its tool isn't installed or isn't signed in on this computer.
 :::
 
 If a provider stays grey, the cause is almost always that its tool isn't installed, isn't signed in, or isn't on the computer's path. Sign in again in a terminal on that computer, or set the tool's location in that provider's settings.
@@ -100,7 +100,7 @@ status: paused
 src: /learn/video/t3-code/t3-l1-threads-and-worktrees.mp4
 captions: /learn/video/t3-code/t3-l1-threads-and-worktrees.vtt
 poster: /learn/video/t3-code/t3-l1-threads-and-worktrees.jpg
-transcript: A thread is one job for one agent. Here, Claude Code fixes the Groomer Books booking form in the main folder while Codex builds a new pricing section in its own worktree. Each has its own copy, so neither can overwrite the other. When a job is done, its branch becomes a pull request, and you decide whether it goes in.
+transcript: A thread is one job for one agent. Here, Claude Code fixes the Rolling Ledger booking form in the main folder while Codex builds a new pricing section in its own worktree. Each has its own copy, so neither can overwrite the other. When a job is done, its branch becomes a pull request, and you decide whether it goes in.
 :::
 
 ## Permissions and privacy

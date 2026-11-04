@@ -26,9 +26,9 @@ Founders tend to underprice and overbuild. You spend weeks on features nobody as
 
 Go back to your interview synthesis. Your offer should use the customer's own words for the pain and the outcome. Use this structure:
 
-| Part | Groomer Books example |
+| Part | Rolling Ledger example |
 |---|---|
-| Who it's for | Independent grooming shops with 1 to 5 staff |
+| Who it's for | Independent food trucks with 1 to 5 staff |
 | The problem, in their words | "I do my books at midnight once a quarter and dread tax season" |
 | The outcome | Books done every month, tax-ready, without touching a spreadsheet |
 | What they get | Monthly reconciliation, a one-page monthly report, a year-end package for their accountant |
@@ -91,7 +91,7 @@ Interviews tell you about the problem. Only a real ask tells you about the offer
 Go back to the most interested people from your interviews first. Let AI draft the message, then you edit and send it yourself:
 
 ```text
-Write a short follow-up email to a groomer I interviewed last week.
+Write a short follow-up email to a food truck owner I interviewed last week.
 Thank her, remind her of the problem she described ([quote]).
 Offer to be one of 5 founding customers: [offer], [price], founding discount [X], full refund if not delivered by [date].
 One clear call to action: reply "in" or book a 15-minute call. No pressure language.

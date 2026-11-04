@@ -27,7 +27,7 @@ Why: Pages hosts static sites, and GitHub's usage limits say it isn't meant to r
 
 1. **Turn on Pages.** In your site repo, open **Settings**, then **Pages**. Under Build and deployment, choose **Deploy from a branch**, select `main` and `/ (root)`, and save.
 
-2. **Find your URL.** Refresh the Pages settings after a minute or two. Copy the live address (it looks like `yourname.github.io/groomer-books-site`). Open it on your phone.
+2. **Find your URL.** Refresh the Pages settings after a minute or two. Copy the live address (it looks like `yourname.github.io/rolling-ledger-site`). Open it on your phone.
 
 3. **Watch the deploy.** Click the **Actions** tab. You'll see a "pages build and deployment" run. Click it and look at the steps. This is what runs every time you merge.
 

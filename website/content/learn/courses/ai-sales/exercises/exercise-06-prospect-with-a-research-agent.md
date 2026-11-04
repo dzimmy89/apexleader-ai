@@ -27,13 +27,13 @@ Why: Origami defines a play as "one way of getting customers." Each play is a di
 
 1. **Write the prompt.** In your ICP doc, add a section called "Origami prompt" with four parts: Find (who and where), Include (size), Signal (one "why now" event with a time window), Exclude (your disqualifiers). Use the Lesson 6 example as a model. Ask for a source link for each fact.
 
-2. **Create a workspace.** In Origami, start a new search or workspace named "Groomer Books: hiring signal" (or your own business and signal). Paste the prompt.
+2. **Create a workspace.** In Origami, start a new search or workspace named "Rolling Ledger: hiring signal" (or your own business and signal). Paste the prompt.
 
 3. **Read the first 10 rows.** Before fetching more, count how many of the first 10 are wrong fits. If more than two are, add what went wrong to Exclude and rerun. Note how many reruns you needed.
 
 4. **Pull 30 matches.** Let it return up to 30 businesses. Don't request phone numbers.
 
-5. **Prune, then enrich.** Delete franchises, chains, vet clinics and anything else your profile rules out. Then request emails for the rows you kept. Write down the credits or plan usage shown before and after.
+5. **Prune, then enrich.** Delete franchises, chains, restaurant groups and anything else your profile rules out. Then request emails for the rows you kept. Write down the credits or plan usage shown before and after.
 
 6. **Spot-check five.** Pick five rows at random. For each, open the source link and confirm (a) the signal is real and within your time window, and (b) the email appears on the business's own site or listing. Record Pass or Fail in a new column.
 

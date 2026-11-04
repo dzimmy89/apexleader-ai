@@ -14,7 +14,7 @@ status: paused
 src: /learn/video/t3-code/t3-l2-overview.mp4
 captions: /learn/video/t3-code/t3-l2-overview.vtt
 poster: /learn/video/t3-code/t3-l2-overview.jpg
-transcript: Every AI plan is cheapest when you use its maker's own models. Claude's plan covers Claude. ChatGPT's plan covers Codex. Cursor's plan covers Cursor's and Grok's models, but bills Claude and GPT at API prices. With T3 Code you can send each job to the plan that covers it, plan with one agent, build with another, and spread one feature across two limits instead of draining one. In this lesson you'll make a routing card for Groomer Books and build a feature across two plans.
+transcript: Every AI plan is cheapest when you use its maker's own models. Claude's plan covers Claude. ChatGPT's plan covers Codex. Cursor's plan covers Cursor's and Grok's models, but bills Claude and GPT at API prices. With T3 Code you can send each job to the plan that covers it, plan with one agent, build with another, and spread one feature across two limits instead of draining one. In this lesson you'll make a routing card for Rolling Ledger and build a feature across two plans.
 :::
 
 :::key-concept
@@ -118,7 +118,7 @@ status: paused
 src: /learn/video/t3-code/t3-l2-delegate.mp4
 captions: /learn/video/t3-code/t3-l2-delegate.vtt
 poster: /learn/video/t3-code/t3-l2-delegate.jpg
-transcript: Here's a delegated job on the Groomer Books site. Claude Code in plan mode reads the pricing page and writes a plan with a five-line handoff note. Then we ask it to delegate the build to Codex in a new worktree. Codex builds the toggle, Claude Code checks the result against the note, and the change becomes a pull request for us to review. Two plans shared the work, and neither hit its limit.
+transcript: Here's a delegated job on the Rolling Ledger site. Claude Code in plan mode reads the pricing page and writes a plan with a five-line handoff note. Then we ask it to delegate the build to Codex in a new worktree. Codex builds the toggle, Claude Code checks the result against the note, and the change becomes a pull request for us to review. Two plans shared the work, and neither hit its limit.
 :::
 
 ## One brief for every agent

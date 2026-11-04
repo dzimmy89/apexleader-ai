@@ -74,7 +74,7 @@ Why: Mentions only work if they're honest and disclosed. Agents can draft; you c
 :::example
 title: See an example result
 
-Groomer Books' 25 answers cited 31 different sources. The most cited were two grooming associations' vendor directories (in 14 answers), a software review site (9), one trade newsletter (6) and two Reddit threads (5). Groomer Books appeared in none. Week 1's requests: an application to the larger association's vendor directory, a pitch to the trade newsletter built on the month-end data page, and an honest, disclosed answer in one of the Reddit threads, which the subreddit's rules allowed in its weekly tools thread.
+Rolling Ledger's 25 answers cited 31 different sources. The most cited were two food truck associations' vendor directories (in 14 answers), a software review site (9), one trade newsletter (6) and two Reddit threads (5). Rolling Ledger appeared in none. Week 1's requests: an application to the larger association's vendor directory, a pitch to the trade newsletter built on the month-end data page, and an honest, disclosed answer in one of the Reddit threads, which the subreddit's rules allowed in its weekly tools thread.
 
 :::video
 id: gf-ex11-reveal
@@ -83,16 +83,16 @@ status: paused
 src: /learn/video/get-found/gf-ex11-reveal.mp4
 captions: /learn/video/get-found/gf-ex11-reveal.vtt
 poster: /learn/video/get-found/gf-ex11-reveal.jpg
-transcript: Here's the Groomer Books result. Twenty-five answers cited thirty-one sources, and the same few kept coming up: two association directories, a review site, one trade newsletter and two Reddit threads. Groomer Books was in none. The 90-day plan is on the calendar, and three requests went out in week one: a directory application, a data pitch to the newsletter, and one disclosed Reddit answer in the allowed thread.
+transcript: Here's the Rolling Ledger result. Twenty-five answers cited thirty-one sources, and the same few kept coming up: two association directories, a review site, one trade newsletter and two Reddit threads. Rolling Ledger was in none. The 90-day plan is on the calendar, and three requests went out in week one: a directory application, a data pitch to the newsletter, and one disclosed Reddit answer in the allowed thread.
 :::
 
 :::infographic
 id: fig-2
 type: timeline
 title: A finished 90-day plan
-shows: The 13-week grid filled in for Groomer Books: week 1 association directory application, newsletter pitch and a Reddit answer (all ticked as sent); directory listings in weeks 1 to 2; pitches spread across weeks 2 to 12; review requests every week; community answers twice a week; "re-run source hunt" at week 13. A side panel lists the top 5 targets with citation counts 14, 9, 6, 5, 5.
+shows: The 13-week grid filled in for Rolling Ledger: week 1 association directory application, newsletter pitch and a Reddit answer (all ticked as sent); directory listings in weeks 1 to 2; pitches spread across weeks 2 to 12; review requests every week; community answers twice a week; "re-run source hunt" at week 13. A side panel lists the top 5 targets with citation counts 14, 9, 6, 5, 5.
 data: 31 sources from 25 answers; top targets cited 14, 9, 6, 5 and 5 times.
-alt: Groomer Books' 90-day mention plan, with three requests sent in week one, pitches and community answers spread across the quarter, and its top targets ranked by how often assistants cited them.
+alt: Rolling Ledger's 90-day mention plan, with three requests sent in week one, pitches and community answers spread across the quarter, and its top targets ranked by how often assistants cited them.
 :::
 :::
 

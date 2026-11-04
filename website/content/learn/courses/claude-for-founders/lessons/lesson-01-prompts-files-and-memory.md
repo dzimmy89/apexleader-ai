@@ -46,12 +46,12 @@ Write a cold email for my business.
 ```text
 Act as a direct-response copywriter for small service businesses.
 
-Context: I run Groomer Books, a monthly bookkeeping service for independent
-dog grooming salons in the US. Owners are busy, work with their hands all day,
+Context: I run Rolling Ledger, a monthly bookkeeping service for independent
+food trucks in the US. Owners are busy, work with their hands all day,
 and hate paperwork. Most use a card reader and a shoebox of receipts.
 Our offer is flat-fee monthly books plus a one-page profit report.
 
-Task: Write a first-touch cold email to a salon owner.
+Task: Write a first-touch cold email to a food truck owner.
 
 Output: Under 120 words. Plain language, no jargon. One clear call to action:
 reply "yes" for a free 15-minute books check. Give me two subject line options.
@@ -118,15 +118,15 @@ The fastest way to get value is a reusable founder brief: a short block of conte
 
 ```text
 FOUNDER BRIEF
-Business: Groomer Books, monthly bookkeeping for independent dog grooming salons (US).
-Customer: salon owner-operators, 1 to 5 staff, $150k to $600k revenue.
+Business: Rolling Ledger, monthly bookkeeping for independent food trucks (US).
+Customer: food truck owner-operators, 1 to 5 staff, $150k to $600k revenue.
 Offer: flat monthly fee, books closed by the 10th, one-page profit report.
 Voice: plain, warm, practical. No accounting jargon. Short sentences.
 Goals this quarter: 10 paying clients, a simple website, a referral program.
 Rules: never promise tax outcomes; tax questions go to a licensed CPA.
 ```
 
-If you don't have a business yet, use Groomer Books as your practice business through this course.
+If you don't have a business yet, use Rolling Ledger as your practice business through this course.
 
 :::checkpoint
 Q: You want Claude to help plan a surprise party for your partner, and you don't want that to show up in future business chats. What should you use?

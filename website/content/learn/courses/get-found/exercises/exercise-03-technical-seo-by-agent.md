@@ -70,7 +70,7 @@ Why: Fix the earliest broken step first. A page that can't be crawled or indexed
 :::example
 title: See an example result
 
-For Groomer Books, the audit found three problems and one improvement. Canonicals pointed at the hosting preview address, four service pages shared the title "Groomer Books", and the hero image was 2 MB, which put mobile LCP at 4.1 seconds. The first pull request fixed the canonicals and wrote four unique titles. A second, smaller pull request compressed the hero image, and LCP dropped to 1.9 seconds on the next PageSpeed run. Article markup for the blog was left for Lesson 6, when the first article gets an author.
+For Rolling Ledger, the audit found three problems and one improvement. Canonicals pointed at the hosting preview address, four service pages shared the title "Rolling Ledger", and the hero image was 2 MB, which put mobile LCP at 4.1 seconds. The first pull request fixed the canonicals and wrote four unique titles. A second, smaller pull request compressed the hero image, and LCP dropped to 1.9 seconds on the next PageSpeed run. Article markup for the blog was left for Lesson 6, when the first article gets an author.
 
 :::video
 id: gf-ex3-reveal
@@ -79,7 +79,7 @@ status: paused
 src: /learn/video/get-found/gf-ex3-reveal.mp4
 captions: /learn/video/get-found/gf-ex3-reveal.vtt
 poster: /learn/video/get-found/gf-ex3-reveal.jpg
-transcript: Here's how it went for Groomer Books. The audit found canonicals on the preview address, four pages with the same title, and a 2 megabyte hero image. One pull request fixed the canonicals and titles, and we checked the preview source before merging. A second one compressed the image, and mobile LCP went from 4.1 seconds to 1.9. Every check is green except blog markup, which waits for the first article.
+transcript: Here's how it went for Rolling Ledger. The audit found canonicals on the preview address, four pages with the same title, and a 2 megabyte hero image. One pull request fixed the canonicals and titles, and we checked the preview source before merging. A second one compressed the image, and mobile LCP went from 4.1 seconds to 1.9. Every check is green except blog markup, which waits for the first article.
 :::
 
 :::infographic
@@ -88,7 +88,7 @@ type: comparison
 title: Before and after the fixes
 shows: Two audit cards side by side. Before: 3 red, 1 amber, 4 green, mobile LCP 4.1 s. After: 0 red, 1 amber (blog markup, waiting for Lesson 6), 7 green, mobile LCP 1.9 s. Two merged pull requests link the cards.
 data: LCP 4.1 s before, 1.9 s after. Red items 3 before, 0 after.
-alt: Groomer Books went from three problems and a 4.1-second mobile LCP to none and 1.9 seconds, after two reviewed pull requests.
+alt: Rolling Ledger went from three problems and a 4.1-second mobile LCP to none and 1.9 seconds, after two reviewed pull requests.
 :::
 :::
 
