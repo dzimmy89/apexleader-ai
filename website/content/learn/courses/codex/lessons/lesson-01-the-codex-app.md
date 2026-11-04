@@ -34,7 +34,7 @@ You may still see the Codex name and icon, and OpenAI's docs still describe "the
 
 ## How Codex is billed
 
-Since April 2026, Codex usage on Plus, Pro, Business and Enterprise plans is priced by tokens: each task uses credits depending on the model and how much it reads and writes. OpenAI's help center says Codex, ChatGPT Work and some other agents share one usage and credit pool. Check the **Usage** panel in Codex settings to see what's left, and read OpenAI's Codex pricing article before turning on auto-reload. Models change often too; for example, an older model was retired from Codex on October 14, 2026. Use the default model unless you have a reason not to.
+Since April 2026, Codex usage on Plus, Pro, Business and Enterprise plans is priced by tokens: each task uses credits depending on the model and how much it reads and writes. OpenAI's help center says Codex, ChatGPT Work and some other agents share one usage and credit pool. Check the **Usage** panel in Codex settings to see what's left, and read OpenAI's Codex pricing article before turning on auto-reload. Models change often too; for example, an older model was retired from Codex on October 14, 2026. Use the default model unless you have a reason not to. If you also pay for Claude or Cursor, the T3 Code course shows how to watch Codex usage next to your other plans in one place.
 
 ## Your first project
 

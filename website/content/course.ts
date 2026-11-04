@@ -75,7 +75,7 @@ export const MODULES: readonly Module[] = [
       "GitHub for non-developers",
       "Deploy it and connect your domain",
     ],
-    tools: ["Claude Code", "Cursor", "Codex", "GitHub"],
+    tools: ["Claude Code", "Cursor", "Codex", "T3 Code", "GitHub"],
     deliverable: "A live landing page on your own domain, stored in GitHub",
   },
   {

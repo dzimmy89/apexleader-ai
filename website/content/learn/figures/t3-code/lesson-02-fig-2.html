@@ -1,0 +1,35 @@
+<!doctype html><meta charset="utf-8">
+<!-- Figure source for the T3 Code course. -->
+<meta name="out" content="public/learn/figures/t3-code/lesson-02-fig-2.webp">
+<link rel="stylesheet" href="../../../../scripts/learn/infographics/brand.css">
+<style>
+  .paper .label { color: var(--paper-text); }
+
+  .flow { flex: 1; display: grid; grid-template-columns: 1fr auto 1.15fr auto 1fr; gap: 10px; align-items: stretch; }
+  .step { flex-direction: column; justify-content: center; gap: 6px; padding: 12px 14px; }
+  .arrow { align-self: center; }
+  .note5 { display: flex; flex-direction: column; gap: 2px; justify-content: center; }
+
+</style>
+<div class="fig wide">
+  <span class="sys">Plan · hand off · build</span>
+  <div class="flow">
+    <div class="card agent step">
+      <svg class="icon track" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 5h8"/><path d="M13 12h8"/><path d="M13 19h8"/><path d="m3 17 2 2 4-4"/><path d="m3 7 2 2 4-4"/></svg>
+      <span class="label">Claude Code plans</span>
+      <span class="small">Claude plan</span>
+    </div>
+    <span class="arrow">→</span>
+    <div class="paper card note5" style="border:0">
+      <span class="label">Handoff note</span>
+      <span class="small">Goal</span><span class="small">Files</span><span class="small">Decisions</span><span class="small">Done when</span><span class="small">Don't</span>
+    </div>
+    <span class="arrow">→</span>
+    <div class="card agent step">
+      <svg class="icon track" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6a9 9 0 0 0-9 9V3"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/></svg>
+      <span class="label">Codex builds</span>
+      <span class="small">ChatGPT plan, own worktree</span>
+    </div>
+  </div>
+  <span class="note">Then you review the pull request.</span>
+</div>

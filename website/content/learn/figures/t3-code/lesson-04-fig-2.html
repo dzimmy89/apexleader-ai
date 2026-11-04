@@ -1,0 +1,25 @@
+<!doctype html><meta charset="utf-8">
+<!-- Figure source for the T3 Code course. -->
+<meta name="out" content="public/learn/figures/t3-code/lesson-04-fig-2.webp">
+<link rel="stylesheet" href="../../../../scripts/learn/infographics/brand.css">
+<style>
+  .paper .label { color: var(--paper-text); }
+
+  .tab { display: flex; flex-direction: column; gap: 8px; }
+  .rw { display: grid; grid-template-columns: 1.5fr .7fr 1.2fr 1fr; gap: 12px; align-items: center; background: var(--panel); border: 1.5px solid var(--line); border-radius: 12px; padding: 8px 14px; }
+  .rw .pill { justify-self: start; }
+  .rules { margin-top: auto; display: flex; flex-direction: column; gap: 2px; }
+
+</style>
+<div class="fig wide">
+  <span class="sys">Friday usage report · example</span>
+  <div class="tab">
+    <div class="rw"><span class="label">Claude Pro</span><span class="small">$20</span><span class="small">2 limit hits</span><span class="pill muted">Keep</span></div>
+    <div class="rw"><span class="label">ChatGPT Plus</span><span class="small">$20</span><span class="small">3 limit hits</span><span class="pill signal">Upgrade</span></div>
+    <div class="rw"><span class="label">Cursor Plus</span><span class="small">$8</span><span class="small">0 limit hits</span><span class="pill bad">Drop</span></div>
+  </div>
+  <div class="paper rules">
+    <span class="small">Upgrade: more than 2 limit hits a week</span>
+    <span class="small">Drop: under a third used, 2 weeks running</span>
+  </div>
+</div>

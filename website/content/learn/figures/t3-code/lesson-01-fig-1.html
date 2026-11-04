@@ -1,0 +1,34 @@
+<!doctype html><meta charset="utf-8">
+<!-- Figure source for the T3 Code course. -->
+<meta name="out" content="public/learn/figures/t3-code/lesson-01-fig-1.webp">
+<link rel="stylesheet" href="../../../../scripts/learn/infographics/brand.css">
+<style>
+  .paper .label { color: var(--paper-text); }
+
+  .stack { flex: 1; display: flex; flex-direction: column; gap: 12px; }
+  .row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+  .row .card { align-items: center; }
+  .top { display: flex; align-items: center; gap: 14px; }
+  .tag { width: 150px; flex: none; }
+
+</style>
+<div class="fig wide">
+  <span class="sys">The desk, not the worker</span>
+  <div class="stack">
+    <div class="paper card top" style="border:0">
+      <svg class="icon " style="stroke:var(--signal-ink)" viewBox="0 0 24 24" aria-hidden="true"><path d="m16 11 2 2 4-4"/><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+      <span class="label">T3 Code: one window. You give jobs and approve</span>
+    </div>
+    <div class="row">
+      <div class="card agent"><span class="label">Claude Code</span></div>
+      <div class="card agent"><span class="label">Codex</span></div>
+      <div class="card agent"><span class="label">Cursor</span></div>
+    </div>
+    <div class="row">
+      <div class="card"><span class="small">Claude plan</span></div>
+      <div class="card"><span class="small">ChatGPT plan</span></div>
+      <div class="card"><span class="small">Cursor plan</span></div>
+    </div>
+    <span class="note">Each agent uses its own login. T3 Code adds no tokens.</span>
+  </div>
+</div>

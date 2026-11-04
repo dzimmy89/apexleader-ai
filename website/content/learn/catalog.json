@@ -32,6 +32,7 @@
         "claude-code",
         "cursor",
         "codex",
+        "t3-code",
         "github-for-founders",
         "google-gemini",
         "always-on-agents"
@@ -376,6 +377,57 @@
               "slug": "lesson-04-computer-use-and-automations",
               "minutes": 13,
               "exercise": "exercise-04-computer-use-and-automations",
+              "exerciseMinutes": 35
+            }
+          ]
+        }
+      ]
+    },
+    "t3-code": {
+      "id": "t3-code",
+      "title": "T3 Code: One Desk for All Your Agents",
+      "description": "Run Claude Code, Codex and Cursor from one free app on the plans you already pay for: send each job to the right plan, keep threads lean, work from your phone and read your usage every week.",
+      "icon": "🗂️",
+      "estimatedHours": 3.5,
+      "lessonCount": 4,
+      "stageId": "tool-mastery",
+      "stageNumber": 2,
+      "modules": [
+        {
+          "number": 1,
+          "title": "Stretch your agent plans",
+          "quiz": "quiz-module-01",
+          "lessons": [
+            {
+              "number": 1,
+              "title": "One Desk for Claude Code, Codex and Cursor",
+              "slug": "lesson-01-one-desk-for-claude-code-codex-and-cursor",
+              "minutes": 13,
+              "exercise": "exercise-01-one-desk-for-claude-code-codex-and-cursor",
+              "exerciseMinutes": 40
+            },
+            {
+              "number": 2,
+              "title": "Send Each Job to the Right Plan",
+              "slug": "lesson-02-send-each-job-to-the-right-plan",
+              "minutes": 14,
+              "exercise": "exercise-02-send-each-job-to-the-right-plan",
+              "exerciseMinutes": 45
+            },
+            {
+              "number": 3,
+              "title": "Habits That Stretch Your Limits",
+              "slug": "lesson-03-habits-that-stretch-your-limits",
+              "minutes": 13,
+              "exercise": "exercise-03-habits-that-stretch-your-limits",
+              "exerciseMinutes": 40
+            },
+            {
+              "number": 4,
+              "title": "Run Agents From Your Phone and Read the Meter",
+              "slug": "lesson-04-run-agents-from-your-phone-and-read-the-meter",
+              "minutes": 12,
+              "exercise": "exercise-04-run-agents-from-your-phone-and-read-the-meter",
               "exerciseMinutes": 35
             }
           ]
