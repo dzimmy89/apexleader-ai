@@ -69,6 +69,7 @@
       ],
       "courseIds": [
         "ai-marketing",
+        "get-found",
         "ai-sales",
         "ai-accounting"
       ]
@@ -818,6 +819,135 @@
               "minutes": 13,
               "exercise": "exercise-06-ads-with-approval-gates",
               "exerciseMinutes": 35
+            }
+          ]
+        }
+      ]
+    },
+    "get-found": {
+      "id": "get-found",
+      "title": "Get Found: SEO, GEO and AI SEO",
+      "description": "Get found on Google and cited by ChatGPT, Gemini, Perplexity, Claude and Copilot: a free search stack, pages built from real questions, an SEO agent that reports every Monday, and a dashboard that shows what's working.",
+      "icon": "🔎",
+      "estimatedHours": 11.4,
+      "lessonCount": 12,
+      "stageId": "run-the-business",
+      "stageNumber": 4,
+      "modules": [
+        {
+          "number": 1,
+          "title": "SEO foundations",
+          "quiz": "quiz-module-01",
+          "lessons": [
+            {
+              "number": 1,
+              "title": "How Search Works Now, and Your Free Stack",
+              "slug": "lesson-01-how-search-works-now-and-your-free-stack",
+              "minutes": 13,
+              "exercise": "exercise-01-how-search-works-now-and-your-free-stack",
+              "exerciseMinutes": 35
+            },
+            {
+              "number": 2,
+              "title": "Find the Questions Buyers Ask",
+              "slug": "lesson-02-find-the-questions-buyers-ask",
+              "minutes": 13,
+              "exercise": "exercise-02-find-the-questions-buyers-ask",
+              "exerciseMinutes": 45
+            },
+            {
+              "number": 3,
+              "title": "Technical SEO by Agent",
+              "slug": "lesson-03-technical-seo-by-agent",
+              "minutes": 15,
+              "exercise": "exercise-03-technical-seo-by-agent",
+              "exerciseMinutes": 40
+            },
+            {
+              "number": 4,
+              "title": "Local and Trust Signals",
+              "slug": "lesson-04-local-and-trust-signals",
+              "minutes": 13,
+              "exercise": "exercise-04-local-and-trust-signals",
+              "exerciseMinutes": 40
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "title": "AI-powered SEO",
+          "quiz": "quiz-module-02",
+          "lessons": [
+            {
+              "number": 5,
+              "title": "Briefs From Real Search Data",
+              "slug": "lesson-05-briefs-from-real-search-data",
+              "minutes": 14,
+              "exercise": "exercise-05-briefs-from-real-search-data",
+              "exerciseMinutes": 40
+            },
+            {
+              "number": 6,
+              "title": "Write With AI, Edit Like an Expert",
+              "slug": "lesson-06-write-with-ai-edit-like-an-expert",
+              "minutes": 14,
+              "exercise": "exercise-06-write-with-ai-edit-like-an-expert",
+              "exerciseMinutes": 45
+            },
+            {
+              "number": 7,
+              "title": "Internal Links and Content Refresh",
+              "slug": "lesson-07-internal-links-and-content-refresh",
+              "minutes": 13,
+              "exercise": "exercise-07-internal-links-and-content-refresh",
+              "exerciseMinutes": 40
+            },
+            {
+              "number": 8,
+              "title": "A Weekly SEO Agent",
+              "slug": "lesson-08-a-weekly-seo-agent",
+              "minutes": 12,
+              "exercise": "exercise-08-a-weekly-seo-agent",
+              "exerciseMinutes": 35
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "title": "GEO: get cited by AI assistants",
+          "quiz": "quiz-module-03",
+          "lessons": [
+            {
+              "number": 9,
+              "title": "How AI Answers Pick Sources",
+              "slug": "lesson-09-how-ai-answers-pick-sources",
+              "minutes": 15,
+              "exercise": "exercise-09-how-ai-answers-pick-sources",
+              "exerciseMinutes": 35
+            },
+            {
+              "number": 10,
+              "title": "Pages That Get Cited",
+              "slug": "lesson-10-pages-that-get-cited",
+              "minutes": 14,
+              "exercise": "exercise-10-pages-that-get-cited",
+              "exerciseMinutes": 45
+            },
+            {
+              "number": 11,
+              "title": "Earn Real Mentions",
+              "slug": "lesson-11-earn-real-mentions",
+              "minutes": 14,
+              "exercise": "exercise-11-earn-real-mentions",
+              "exerciseMinutes": 45
+            },
+            {
+              "number": 12,
+              "title": "Measure AI Visibility",
+              "slug": "lesson-12-measure-ai-visibility",
+              "minutes": 14,
+              "exercise": "exercise-12-measure-ai-visibility",
+              "exerciseMinutes": 45
             }
           ]
         }

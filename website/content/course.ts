@@ -101,13 +101,14 @@ export const MODULES: readonly Module[] = [
     lessons: [
       "A 30-day content calendar",
       "SEO and AI-search visibility",
+      "Get Found: SEO, GEO and AI SEO in depth",
       "A Marketing Bot that posts and reports",
       "Keep launch materials current with Dots",
       "Email newsletter on autopilot",
       "Ads with approval gates",
     ],
-    tools: ["Grok Bot", "OpenAI Dots", "Claude Duet", "Claude", "Gemini"],
-    deliverable: "A 30-day content calendar with the first week published by an agent",
+    tools: ["Grok Bot", "OpenAI Dots", "Claude Duet", "Claude", "Gemini", "Search Console", "Bing Webmaster Tools"],
+    deliverable: "A 30-day content calendar with the first week published by an agent, and an AI-visibility dashboard",
   },
   {
     number: 6,
