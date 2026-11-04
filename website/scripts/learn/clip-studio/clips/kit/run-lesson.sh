@@ -8,7 +8,7 @@
 #   3 mix        mix.py with BED=none: voice plus the soft cue ticks, -14 LUFS (no music)
 #   4 contrast   render.mjs check: every label at least 4.5:1 against what is behind it
 #   5 frames     render.mjs reframes with motion blur (BLUR subframes, default 3)
-#   6 encode     encode.sh: mp4 + poster + captions, then the sync check (check-sync.mjs)
+#   6 encode     encode.sh: mp4 + poster + the .vtt caption sidecar (captions are player-only, never burned in), then the sync check (check-sync.mjs)
 #   7 loudness   the decoded mp4: integrated -14 LUFS +/- 1 LU, true peak at most -1 dBTP
 #   8 copy       mp4, jpg and vtt into the lesson's video folder (kit/kit.mjs dest: shots.json "dest", else kit/lessons.json)
 # A failed step stops that clip only, logs why, and the run moves on to the next clip. The summary lists both.
@@ -26,7 +26,7 @@ MAC_CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 if [ -z "$CHROME_PATH" ] && [ -x "$MAC_CHROME" ]; then export CHROME_PATH="$MAC_CHROME"; fi
 VOICE=${VOICE:-kokoro}
 if [ -z "$KOKORO_PYTHON" ]; then
-  KOKORO_PYTHON=python3; [ -x "$HOME/.cache/fromai-voice/venv-kt/bin/python" ] && KOKORO_PYTHON="$HOME/.cache/fromai-voice/venv-kt/bin/python"
+  KOKORO_PYTHON=python3; [ -x "$HOME/.cache/thenode-voice/venv-kt/bin/python" ] && KOKORO_PYTHON="$HOME/.cache/thenode-voice/venv-kt/bin/python"
 fi
 if [ "$VOICE" = eleven ] && [ -z "$VOICE_ID" ]; then echo "VOICE=eleven needs VOICE_ID"; exit 2; fi
 if [ "$VOICE" = kokoro ] && ! "$KOKORO_PYTHON" -c 'import kokoro' 2>/dev/null; then echo "$KOKORO_PYTHON cannot import kokoro (set KOKORO_PYTHON)"; exit 2; fi

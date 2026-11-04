@@ -1,0 +1,149 @@
+{
+ "inputs": {
+  "t1": 20,
+  "t2": 100,
+  "t3": 300,
+  "review": 90
+ },
+ "shots": [
+  {
+   "id": "hook",
+   "type": "desk",
+   "items": [
+    {
+     "id": "a",
+     "kind": "card",
+     "x": 170,
+     "y": 380,
+     "w": 500,
+     "icon": "wallet",
+     "title": "{t1|$0} a month",
+     "sub": "One shape of team"
+    },
+    {
+     "id": "b",
+     "kind": "card",
+     "x": 710,
+     "y": 380,
+     "w": 500,
+     "icon": "wallet",
+     "title": "{t2|$0} a month",
+     "sub": "Another shape",
+     "at": "L0:one"
+    },
+    {
+     "id": "c",
+     "kind": "card",
+     "x": 1250,
+     "y": 380,
+     "w": 500,
+     "icon": "wallet",
+     "title": "{t3|$0} a month",
+     "sub": "A bigger team",
+     "at": "L0:three"
+    }
+   ],
+   "hero": {
+    "move": "light",
+    "target": "b",
+    "at": "L0:month"
+   },
+   "camera": "push-in"
+  },
+  {
+   "id": "title",
+   "type": "chapter-card",
+   "from": "L1",
+   "over": "hook",
+   "kicker": "Pick your stack",
+   "title": "Three starter stacks",
+   "sub": "Each budget buys a different shape of team",
+   "subAt": "L1:budget"
+  },
+  {
+   "id": "stacks",
+   "type": "story-cards",
+   "from": "L2",
+   "cards": [
+    {
+     "icon": "wallet",
+     "label": "Under {t1|$0}",
+     "sub": "One main office on an entry plan",
+     "at": "L2:under",
+     "rows": [
+      {
+       "text": "Free tools, like GitHub",
+       "at": "L2:free"
+      },
+      {
+       "text": "US: Claude Pro and the Duet waitlist",
+       "at": "L3:claude"
+      },
+      {
+       "text": "Or SuperGrok with Grok Bot. Pick one.",
+       "at": "L3:supergrok"
+      }
+     ]
+    },
+    {
+     "icon": "building-2",
+     "label": "Around {t2|$0}",
+     "sub": "A stronger main office, plus one specialist",
+     "at": "L4:around",
+     "rows": [
+      {
+       "text": "Like Claude's entry Max tier",
+       "at": "L4:max"
+      },
+      {
+       "text": "Cursor Premium brings Grok Bot",
+       "at": "L4:cursor"
+      }
+     ]
+    },
+    {
+     "icon": "users",
+     "label": "Around {t3|$0}",
+     "sub": "Two offices and a department of agents",
+     "at": "L5:around",
+     "rows": [
+      {
+       "text": "Led by Claude, OpenAI or Grok",
+       "at": "L5:led"
+      },
+      {
+       "text": "Only when agents replace real hours",
+       "at": "L5:only"
+      }
+     ]
+    }
+   ],
+   "hero": {
+    "card": 2,
+    "at": "L5:hours"
+   },
+   "camera": "dolly-right",
+   "cardW": 500
+  },
+  {
+   "id": "review",
+   "type": "rule",
+   "from": "L6",
+   "kicker": "Whatever the tier",
+   "kickerIcon": "calendar-check",
+   "statement": "Review every {review|0} days. Cancel any plan you didn't open last month.",
+   "highlight": {
+    "text": "Cancel any plan you didn't open last month.",
+    "at": "L6:cancel"
+   },
+   "notes": [
+    {
+     "text": "In the exercise: price your own stack",
+     "icon": "arrow-right",
+     "at": "L7:exercise",
+     "screen": "low"
+    }
+   ]
+  }
+ ]
+}

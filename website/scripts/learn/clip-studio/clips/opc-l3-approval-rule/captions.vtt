@@ -1,0 +1,54 @@
+WEBVTT
+
+1
+00:00:00.510 --> 00:00:04.004
+Drafting an email doesn't mean permission to send it.
+
+2
+00:00:04.273 --> 00:00:07.444
+Your approval rule makes the difference explicit.
+
+3
+00:00:07.756 --> 00:00:09.548
+Write it in four parts.
+
+4
+00:00:09.840 --> 00:00:14.088
+Do alone: read, summarize, research and create drafts.
+
+5
+00:00:14.366 --> 00:00:22.259
+Ask me first: anything sent to a customer, a vendor or the public, and any post, proposal, quote or invoice.
+
+6
+00:00:22.531 --> 00:00:28.137
+Hand to me: logins, two-factor codes, payments, contracts and signatures.
+
+7
+00:00:28.455 --> 00:00:33.913
+Never: move money, delete records, or share client data outside your apps.
+
+8
+00:00:34.186 --> 00:00:37.529
+Then copy the rule into each product's controls.
+
+9
+00:00:37.782 --> 00:00:42.245
+Claude Duet asks before it sends, pays, signs or deletes.
+
+10
+00:00:42.554 --> 00:00:44.527
+Dots have custom rules.
+
+11
+00:00:44.782 --> 00:00:49.060
+Grok Bot has auto-review, where ask first always wins.
+
+12
+00:00:49.310 --> 00:00:53.289
+For anything sensitive, choose allow once, not always allow.
+
+13
+00:00:53.547 --> 00:00:56.439
+In the exercise, you'll write your own rule.
+

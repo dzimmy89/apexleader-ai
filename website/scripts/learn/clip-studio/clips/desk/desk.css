@@ -134,8 +134,4 @@ body { color: var(--text); font-family: var(--body); -webkit-font-smoothing: ant
 .ans { display: inline-flex; align-items: center; justify-content: center; min-width: 96px; height: 76px; padding: 0 26px; border-radius: 38px; border: 3px dashed var(--signal); font: 800 46px/1 var(--display); color: var(--signal); white-space: nowrap; }
 .ans.done { border-style: solid; background: var(--paper); color: var(--paper-text); border-color: var(--paper); }
 
-/* captions: the spoken sentence, bottom centre, on its own plate */
-#cap { position: absolute; left: 50%; bottom: 46px; transform: translateX(-50%); max-width: 1480px; text-align: center; font: 600 38px/1.32 var(--body); color: var(--text);
-  background: oklch(14% 0.02 262 / 0.9); padding: 14px 30px; border-radius: 16px; text-wrap: balance; }
-#cap:empty { display: none; }
 .note { position: absolute; }

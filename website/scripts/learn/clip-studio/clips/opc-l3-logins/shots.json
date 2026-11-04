@@ -1,0 +1,158 @@
+{
+ "inputs": {},
+ "shots": [
+  {
+   "id": "hook",
+   "type": "desk",
+   "items": [
+    {
+     "id": "agent",
+     "kind": "agent",
+     "x": 170,
+     "y": 220,
+     "w": 860,
+     "icon": "workflow",
+     "name": "Your agent",
+     "status": "Needs access",
+     "statusTone": "sig",
+     "lines": [
+      {
+       "text": "Email, calendar, invoicing",
+       "at": "L0:apps"
+      }
+     ]
+    },
+    {
+     "id": "pw",
+     "kind": "chip",
+     "x": 170,
+     "y": 520,
+     "icon": "key-round",
+     "text": "Your password",
+     "at": "L1:password"
+    },
+    {
+     "id": "stay",
+     "kind": "paper",
+     "x": 1130,
+     "y": 260,
+     "w": 640,
+     "icon": "lock",
+     "text": "Your password stays with you",
+     "at": "L1:never"
+    }
+   ],
+   "hero": {
+    "move": "light",
+    "target": "stay",
+    "at": "L1:go"
+   },
+   "camera": "push-in"
+  },
+  {
+   "id": "title",
+   "type": "chapter-card",
+   "from": "L2",
+   "over": "hook",
+   "kicker": "Logins, access and approval rules",
+   "title": "Three safe ways in",
+   "sub": "In this order",
+   "subAt": "L2:order"
+  },
+  {
+   "id": "ways",
+   "type": "story-cards",
+   "from": "L3",
+   "numbered": true,
+   "cards": [
+    {
+     "icon": "plug",
+     "label": "Official connector",
+     "sub": "Or plugin",
+     "at": "L3:official",
+     "rows": [
+      {
+       "text": "Approve on the app's own sign-in screen",
+       "at": "L4:approve"
+      },
+      {
+       "text": "The agent gets a token, not your password",
+       "at": "L4:token"
+      }
+     ]
+    },
+    {
+     "icon": "user-plus",
+     "label": "A separate account",
+     "sub": "Like ops@yourbusiness.com",
+     "at": "L5:separate",
+     "rows": [
+      {
+       "text": "A viewer or editor role",
+       "at": "L5:viewer"
+      }
+     ]
+    },
+    {
+     "icon": "lock",
+     "label": "You type it yourself",
+     "sub": "In a secure screen",
+     "at": "L6:type",
+     "rows": [
+      {
+       "text": "Claude Duet: a separate form",
+       "at": "L7:claude"
+      },
+      {
+       "text": "Grok Bot: take over, sign in, press I'm done",
+       "at": "L8:grok"
+      }
+     ]
+    }
+   ],
+   "hero": {
+    "card": 0,
+    "at": "L4:token"
+   },
+   "camera": "dolly-right",
+   "cardW": 500
+  },
+  {
+   "id": "never",
+   "type": "rule",
+   "from": "L9",
+   "kicker": "One rule, everywhere",
+   "kickerIcon": "hand",
+   "statement": "Never type a password, a one-time code or an API key into ordinary chat.",
+   "highlight": {
+    "text": "into ordinary chat.",
+    "at": "L9:ordinary"
+   },
+   "notes": [
+    {
+     "text": "Next: how much access to give",
+     "icon": "arrow-right",
+     "at": "L10:next",
+     "screen": "low"
+    }
+   ],
+   "chips": [
+    {
+     "icon": "key-round",
+     "text": "A password",
+     "at": "L9:password"
+    },
+    {
+     "icon": "hash",
+     "text": "A one-time code",
+     "at": "L9:onetime"
+    },
+    {
+     "icon": "code",
+     "text": "An API key",
+     "at": "L9:api"
+    }
+   ]
+  }
+ ]
+}

@@ -18,8 +18,8 @@ Not in git: `node_modules`, the narration audio, frames, stills, checks and the 
     npm run icons                       # clips/desk/icons.json from every "icon" in the shots
     npm run serve &                     # serves website/ on http://127.0.0.1:8768 (fonts and figures load from there)
     # Kokoro needs a Python with kokoro>=0.9, soundfile, numpy and spaCy en_core_web_sm:
-    export KOKORO_PYTHON=~/.cache/fromai-voice/venv-kt/bin/python
-    $KOKORO_PYTHON clips/voice_kokoro.py opc-l1-overview          # voice.wav, words.json, timeline.json, captions.vtt
+    export KOKORO_PYTHON=~/.cache/thenode-voice/venv-kt/bin/python
+    $KOKORO_PYTHON clips/voice_kokoro.py opc-l1-overview          # voice.wav, words.json, timeline.json, captions.vtt (the player's caption track; nothing is burned in)
     node clips/kit/kit.mjs retime opc-l1-overview                 # lint + every on-screen number next to the narration
     node clips/render.mjs opc-l1-overview stills 0,11,31.4,70.9   # look first
     python3 clips/sheet.py opc-l1-overview                        # contact sheet of the stills

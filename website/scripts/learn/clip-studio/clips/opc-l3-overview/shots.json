@@ -1,0 +1,259 @@
+{
+ "inputs": {
+  "lesson": 3,
+  "setupMin": 10,
+  "rules": 4
+ },
+ "shots": [
+  {
+   "id": "hook",
+   "type": "desk",
+   "items": [
+    {
+     "id": "agent",
+     "kind": "agent",
+     "x": 170,
+     "y": 200,
+     "w": 860,
+     "icon": "key-round",
+     "name": "Inbox agent",
+     "status": "Has your password",
+     "statusTone": "bad",
+     "lines": [
+      {
+       "text": "Misreads one thread",
+       "at": "L0:misreads"
+      },
+      {
+       "text": "Every client gets the wrong message",
+       "at": "L0:every"
+      }
+     ]
+    },
+    {
+     "id": "night",
+     "kind": "chip",
+     "x": 170,
+     "y": 600,
+     "icon": "moon",
+     "text": "Before you wake up",
+     "at": "L0:wake"
+    },
+    {
+     "id": "fix",
+     "kind": "paper",
+     "x": 1130,
+     "y": 260,
+     "w": 640,
+     "icon": "shield-check",
+     "text": "{setupMin|0} minutes of setup prevents that",
+     "at": "L0:ten"
+    }
+   ],
+   "hero": {
+    "move": "light",
+    "target": "fix",
+    "at": "L0:prevents"
+   },
+   "camera": "push-in"
+  },
+  {
+   "id": "title",
+   "type": "chapter-card",
+   "from": "L1",
+   "over": "hook",
+   "kicker": "The One-Person Company · Lesson {lesson|0}",
+   "title": "Logins, access and approval rules",
+   "sub": "Keep an always-on agent safe",
+   "subAt": "L1:access",
+   "agenda": [
+    {
+     "text": "{rules|0} rules",
+     "icon": "shield-check",
+     "at": "L2:four"
+    }
+   ]
+  },
+  {
+   "id": "logins",
+   "type": "rule",
+   "from": "L3",
+   "kicker": "One · Separate logins",
+   "kickerIcon": "key-round",
+   "statement": "Never share your main password.",
+   "highlight": {
+    "text": "Never share your main password.",
+    "at": "L3:never"
+   },
+   "chips": [
+    {
+     "icon": "plug",
+     "text": "An official connector",
+     "at": "L3:official"
+    },
+    {
+     "icon": "user-plus",
+     "text": "Or a separate limited user",
+     "at": "L3:limited"
+    }
+   ]
+  },
+  {
+   "id": "access",
+   "type": "figure",
+   "from": "L4",
+   "src": "public/learn/figures/one-person-company/lesson-03-fig-1.webp",
+   "zoom": false,
+   "title": "Two · Least access",
+   "regions": [
+    {
+     "rect": [
+      0.04,
+      0.06,
+      0.92,
+      0.225
+     ],
+     "at": "L4:read",
+     "label": "Start read only"
+    },
+    {
+     "rect": [
+      0.04,
+      0.3,
+      0.92,
+      0.225
+     ],
+     "at": "L4:drafts",
+     "label": "Then drafts"
+    },
+    {
+     "rect": [
+      0.04,
+      0.537,
+      0.92,
+      0.225
+     ],
+     "at": "L4:narrow",
+     "label": "Then narrow actions, once it has earned it"
+    }
+   ],
+   "hero": {
+    "region": 2
+   }
+  },
+  {
+   "id": "rule",
+   "type": "figure",
+   "from": "L5",
+   "src": "public/learn/figures/one-person-company/lesson-03-fig-2.webp",
+   "zoom": false,
+   "title": "Three · A written approval rule",
+   "regions": [
+    {
+     "rect": [
+      0.04,
+      0.06,
+      0.455,
+      0.43
+     ],
+     "at": "L5:alone",
+     "label": "What it does alone"
+    },
+    {
+     "rect": [
+      0.505,
+      0.06,
+      0.455,
+      0.43
+     ],
+     "at": "L5:asks",
+     "label": "What it asks about"
+    },
+    {
+     "rect": [
+      0.04,
+      0.51,
+      0.455,
+      0.43
+     ],
+     "at": "L5:hands",
+     "label": "What it hands to you"
+    },
+    {
+     "rect": [
+      0.505,
+      0.51,
+      0.455,
+      0.43
+     ],
+     "at": "L5:never",
+     "label": "What it never does"
+    }
+   ],
+   "hero": {
+    "region": 3
+   }
+  },
+  {
+   "id": "off",
+   "type": "desk",
+   "from": "L6",
+   "items": [
+    {
+     "id": "k",
+     "kind": "text",
+     "cls": "kicker",
+     "x": 560,
+     "y": 300,
+     "text": "Four",
+     "at": "L6:four"
+    },
+    {
+     "id": "sw",
+     "kind": "card",
+     "x": 560,
+     "y": 360,
+     "w": 800,
+     "icon": "power",
+     "title": "Know your off switch",
+     "sub": "Before you turn it on",
+     "at": "L6:know"
+    }
+   ],
+   "hero": {
+    "move": "light",
+    "target": "sw",
+    "at": "L6:switch"
+   },
+   "camera": "push-in"
+  },
+  {
+   "id": "undo",
+   "type": "rule",
+   "from": "L7",
+   "kicker": "And remember",
+   "kickerIcon": "rotate-ccw",
+   "statement": "Stopping an agent doesn't undo what it did.",
+   "highlight": {
+    "text": "doesn't undo what it did.",
+    "at": "L7:undo"
+   },
+   "chips": [
+    {
+     "icon": "file-check",
+     "text": "That's why the approval rule matters most",
+     "at": "L7:matters",
+     "tone": "signal"
+    }
+   ],
+   "notes": [
+    {
+     "text": "Next: logins",
+     "icon": "arrow-right",
+     "at": "L8:first",
+     "screen": "low"
+    }
+   ]
+  }
+ ]
+}

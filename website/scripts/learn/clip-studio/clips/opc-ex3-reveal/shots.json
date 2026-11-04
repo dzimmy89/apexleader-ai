@@ -1,0 +1,170 @@
+{
+ "inputs": {
+  "apps": 2
+ },
+ "shots": [
+  {
+   "id": "answer",
+   "type": "reveal",
+   "question": {
+    "clip": "opc-ex3-setup",
+    "shot": "ask"
+   },
+   "answers": [
+    {
+     "text": "{apps|0} apps",
+     "at": "L0:two"
+    },
+    {
+     "text": "Sees a password",
+     "at": "L0:sees"
+    }
+   ]
+  },
+  {
+   "id": "access",
+   "type": "figure",
+   "from": "L1",
+   "src": "public/learn/figures/one-person-company/exercise-03-fig-2.webp",
+   "title": "Billing assistant access",
+   "regions": [
+    {
+     "rect": [
+      0.05,
+      0.283,
+      0.9,
+      0.125
+     ],
+     "at": "L2:invoicing",
+     "label": "Invoicing app: a separate viewer user"
+    },
+    {
+     "rect": [
+      0.05,
+      0.283,
+      0.9,
+      0.125
+     ],
+     "at": "L2:read",
+     "label": "Reads overdue invoices and nothing more"
+    },
+    {
+     "rect": [
+      0.05,
+      0.414,
+      0.9,
+      0.125
+     ],
+     "at": "L3:gmail",
+     "label": "Gmail: Claude's official connector, at the draft level"
+    },
+    {
+     "rect": [
+      0.05,
+      0.414,
+      0.9,
+      0.125
+     ],
+     "at": "L3:reminders",
+     "label": "Reminders land as drafts"
+    },
+    {
+     "rect": [
+      0.05,
+      0.546,
+      0.9,
+      0.125
+     ],
+     "at": "L4:bank",
+     "label": "The bank: not connected at all"
+    }
+   ],
+   "hero": {
+    "region": 4
+   }
+  },
+  {
+   "id": "rule",
+   "type": "story-cards",
+   "from": "L5",
+   "kicker": "The rule has four parts",
+   "titleAt": "L5:rule",
+   "cards": [
+    {
+     "icon": "list-checks",
+     "label": "Do alone",
+     "sub": "Read invoices, draft reminders",
+     "at": "L5:do"
+    },
+    {
+     "icon": "mail",
+     "label": "Ask me first",
+     "sub": "Sending any email, changing an invoice",
+     "at": "L5:ask"
+    },
+    {
+     "icon": "key-round",
+     "label": "Hand to me",
+     "sub": "Logins, codes, refunds, payment questions",
+     "at": "L5:hand"
+    },
+    {
+     "icon": "ban",
+     "label": "Never",
+     "sub": "Move money, delete records, share client data",
+     "at": "L5:never"
+    }
+   ],
+   "hero": {
+    "card": 3,
+    "at": "L5:money"
+   },
+   "cardW": 380,
+   "gap": 36
+  },
+  {
+   "id": "off",
+   "type": "story-cards",
+   "from": "L6",
+   "cards": [
+    {
+     "icon": "trash-2",
+     "label": "The cleanup",
+     "sub": "Removed an old scheduling app",
+     "at": "L6:cleanup",
+     "rows": [
+      {
+       "text": "Two-factor on the main email",
+       "at": "L6:confirmed"
+      }
+     ]
+    },
+    {
+     "icon": "power",
+     "label": "The off switch, written down",
+     "sub": "Disconnect Gmail in Claude",
+     "at": "L7:off",
+     "rows": [
+      {
+       "text": "Remove the agent's user from the invoicing app",
+       "at": "L7:remove"
+      }
+     ]
+    }
+   ],
+   "hero": {
+    "card": 1,
+    "at": "L7:written"
+   },
+   "notes": [
+    {
+     "text": "A policy you can set up today",
+     "icon": "check",
+     "at": "L8:policy",
+     "screen": "top",
+     "tone": "signal"
+    }
+   ]
+  }
+ ]
+}

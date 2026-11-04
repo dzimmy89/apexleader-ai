@@ -22,7 +22,7 @@ const bump = (T, at, d = .32, a = .05) => { const u = (T - (at - d * .3)) / d; r
 const lerp = (a, b, u) => a + (b - a) * u;
 
 // ---------- DOM ----------
-const $world = document.getElementById('world'), $shots = document.getElementById('shots'), $hud = document.getElementById('hud'), $cap = document.getElementById('cap');
+const $world = document.getElementById('world'), $shots = document.getElementById('shots'), $hud = document.getElementById('hud');
 const el = (cls, html = '', parent = null, tag = 'div') => { const d = document.createElement(tag); if (cls) d.className = cls; if (html) d.innerHTML = html; if (parent) parent.appendChild(d); return d; };
 const icon = (name, cls = 'icon') => { if (!name) return ''; const s = ICONS[name]; if (!s) throw new Error(`desk: icon "${name}" is not in icons.json (run npm run icons)`); return `<svg class="${cls}" viewBox="0 0 24 24" aria-hidden="true">${s}</svg>`; };
 const at = (d, x, y, w) => { d.style.left = x + 'px'; d.style.top = y + 'px'; if (w) d.style.width = w + 'px'; return d; };
@@ -379,9 +379,7 @@ for (const b of built) if (b.hero && b.hero.word) window.__cues.push({word: b.he
 window.__kit = {clip, shots: built.map(b => ({id: b.id, type: b.type, t0: b.t0, t1: b.t1, hero: b.hero && {t: b.hero.t, word: b.hero.word, what: b.hero.what}})), numbers: window.__numbers};
 
 const allRoots = [...document.querySelectorAll('.shot')];
-const captions = T => { let bi = -1; for (let i = 0; i < TL.starts.length; i++) if (T >= TL.starts[i] - .08) bi = i;
-  const on = bi >= 0 && T <= TL.starts[bi] + TL.durs[bi] + .35; const txt = on ? BEATS[bi] : '';
-  if ($cap.textContent !== txt) $cap.textContent = txt; };
+// captions are player-only: the .vtt sidecar (voice_kokoro.py) is the caption track; nothing is burned into the frames
 
 window.renderAt = T => {
   let i = 0; for (let j = 0; j < built.length; j++) if (T >= built[j].t0) i = j;
@@ -393,7 +391,6 @@ window.renderAt = T => {
   if (s.base) { s.base.root.style.opacity = 1 - (s.type === 'question' ? .7 : 1) * en(T, s.t0, .45); s.base.hud.style.opacity = 1 - en(T, s.t0, .3); s.base.update(s.base.t1 - 1e-3); for (const n of s.base.notes) n.update(s.base.t1 - 1e-3); }
   s.root.style.opacity = 1; s.hud.style.opacity = 1;
   s.update(T); for (const n of s.notes) n.update(T);
-  captions(T);
 };
 await document.fonts.ready; await Promise.all([...document.images].map(im => im.decode().catch(() => {})));
 window.renderAt(0); window.ready = true;

@@ -1,0 +1,322 @@
+{
+ "inputs": {
+  "lesson": 4,
+  "replies": 3,
+  "boxes": 5,
+  "cardLines": 6,
+  "reviewMin": 15,
+  "cleanWeeks": 4
+ },
+ "shots": [
+  {
+   "id": "hook",
+   "type": "desk",
+   "items": [
+    {
+     "id": "inbox",
+     "kind": "chip",
+     "x": 170,
+     "y": 230,
+     "icon": "inbox",
+     "text": "One client email"
+    },
+    {
+     "id": "a1",
+     "kind": "agent",
+     "x": 930,
+     "y": 170,
+     "w": 860,
+     "icon": "list-checks",
+     "name": "A dot",
+     "status": "Replying",
+     "statusTone": "bad",
+     "lines": [
+      {
+       "text": "Reading the same inbox"
+      }
+     ]
+    },
+    {
+     "id": "a2",
+     "kind": "agent",
+     "x": 930,
+     "y": 352,
+     "w": 860,
+     "icon": "globe",
+     "name": "Grok Bot",
+     "status": "Replying",
+     "statusTone": "bad",
+     "lines": [
+      {
+       "text": "Reading the same inbox"
+      }
+     ],
+     "at": "L0:grok"
+    },
+    {
+     "id": "a3",
+     "kind": "agent",
+     "x": 930,
+     "y": 534,
+     "w": 860,
+     "icon": "sunrise",
+     "name": "Claude Duet",
+     "status": "Replying",
+     "statusTone": "bad",
+     "lines": [
+      {
+       "text": "Reading the same inbox"
+      }
+     ],
+     "at": "L0:claude"
+    },
+    {
+     "id": "n",
+     "kind": "text",
+     "cls": "h2",
+     "x": 170,
+     "y": 360,
+     "w": 700,
+     "text": "{replies|0} different replies to one client",
+     "at": "L0:different"
+    },
+    {
+     "id": "chart",
+     "kind": "paper",
+     "x": 170,
+     "y": 600,
+     "w": 700,
+     "icon": "network",
+     "text": "An org chart stops that",
+     "at": "L0:org"
+    }
+   ],
+   "hero": {
+    "move": "light",
+    "target": "chart",
+    "at": "L0:stops"
+   },
+   "camera": "push-in"
+  },
+  {
+   "id": "title",
+   "type": "chapter-card",
+   "from": "L1",
+   "over": "hook",
+   "kicker": "The One-Person Company · Lesson {lesson|0}",
+   "title": "Your AI org chart",
+   "sub": "In this lesson",
+   "subAt": "L2:lesson",
+   "agenda": [
+    {
+     "text": "The {boxes|0} boxes every solo business needs",
+     "icon": "layout-grid",
+     "at": "L2:five"
+    },
+    {
+     "text": "The role card",
+     "icon": "id-card",
+     "at": "L2:role"
+    },
+    {
+     "text": "The weekly review",
+     "icon": "calendar-check",
+     "at": "L2:weekly"
+    }
+   ]
+  },
+  {
+   "id": "shape",
+   "type": "figure",
+   "from": "L3",
+   "src": "public/learn/figures/one-person-company/lesson-04-fig-1.webp",
+   "title": "The shape",
+   "regions": [
+    {
+     "rect": [
+      0.09,
+      0.055,
+      0.82,
+      0.17
+     ],
+     "at": "L3:top",
+     "label": "You: approve anything external or about money"
+    },
+    {
+     "rect": [
+      0.04,
+      0.258,
+      0.303,
+      0.33
+     ],
+     "at": "L3:chief",
+     "label": "Chief of staff"
+    },
+    {
+     "rect": [
+      0.348,
+      0.258,
+      0.303,
+      0.33
+     ],
+     "at": "L3:sales",
+     "label": "Sales and customers"
+    },
+    {
+     "rect": [
+      0.657,
+      0.258,
+      0.303,
+      0.33
+     ],
+     "at": "L3:marketing",
+     "label": "Marketing and content"
+    },
+    {
+     "rect": [
+      0.04,
+      0.607,
+      0.303,
+      0.33
+     ],
+     "at": "L3:finance",
+     "label": "Finance assistant"
+    },
+    {
+     "rect": [
+      0.348,
+      0.607,
+      0.303,
+      0.33
+     ],
+     "at": "L3:product",
+     "label": "Product and website"
+    },
+    {
+     "rect": [
+      0.657,
+      0.607,
+      0.303,
+      0.33
+     ],
+     "at": "L4:fill",
+     "label": "Fill the box that costs you the most hours first"
+    }
+   ],
+   "hero": {
+    "region": 6
+   },
+   "zoom": false
+  },
+  {
+   "id": "card",
+   "type": "story-cards",
+   "from": "L5",
+   "kicker": "Each filled box gets",
+   "titleAt": "L5:each",
+   "cards": [
+    {
+     "icon": "wrench",
+     "label": "One tool",
+     "at": "L5:tool"
+    },
+    {
+     "icon": "user-round",
+     "label": "One owner",
+     "at": "L5:owner"
+    },
+    {
+     "icon": "id-card",
+     "label": "A {cardLines|0}-line role card",
+     "at": "L5:sixline"
+    }
+   ],
+   "hero": {
+    "card": 2
+   },
+   "camera": "dolly-right",
+   "cardW": 500
+  },
+  {
+   "id": "review",
+   "type": "figure",
+   "from": "L6",
+   "src": "public/learn/figures/one-person-company/lesson-04-fig-2.webp",
+   "zoom": false,
+   "title": "Every Friday, {reviewMin|0} minutes",
+   "regions": [
+    {
+     "rect": [
+      0.04,
+      0.185,
+      0.455,
+      0.29
+     ],
+     "at": "L6:read",
+     "label": "Read the logs"
+    },
+    {
+     "rect": [
+      0.505,
+      0.185,
+      0.455,
+      0.29
+     ],
+     "at": "L6:count",
+     "label": "Count misses"
+    },
+    {
+     "rect": [
+      0.04,
+      0.495,
+      0.455,
+      0.29
+     ],
+     "at": "L6:change",
+     "label": "Change one thing"
+    },
+    {
+     "rect": [
+      0.505,
+      0.495,
+      0.455,
+      0.29
+     ],
+     "at": "L6:prune",
+     "label": "Prune"
+    },
+    {
+     "rect": [
+      0.04,
+      0.82,
+      0.92,
+      0.17
+     ],
+     "at": "L7:after",
+     "label": "After {cleanWeeks|0} clean weeks: a narrow action"
+    },
+    {
+     "rect": [
+      0.04,
+      0.82,
+      0.92,
+      0.17
+     ],
+     "at": "L7:sends",
+     "label": "Sends and money stay with you"
+    }
+   ],
+   "hero": {
+    "region": 4
+   },
+   "notes": [
+    {
+     "text": "Next: the shape of a one-person company",
+     "icon": "arrow-right",
+     "at": "L8:first",
+     "screen": "low"
+    }
+   ]
+  }
+ ]
+}

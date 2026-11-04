@@ -1,0 +1,46 @@
+WEBVTT
+
+1
+00:00:00.512 --> 00:00:03.240
+Your agent needs to get into your apps.
+
+2
+00:00:03.654 --> 00:00:06.574
+Your password never needs to go with it.
+
+3
+00:00:06.975 --> 00:00:09.710
+There are three safe ways in, in this order.
+
+4
+00:00:10.152 --> 00:00:12.948
+First, an official connector or plugin.
+
+5
+00:00:13.363 --> 00:00:20.352
+You approve access on the app's own sign-in screen, and the agent gets a token, not your password.
+
+6
+00:00:20.824 --> 00:00:28.118
+Second, a separate account for the agent, like ops at your business dot com, with a viewer or editor role.
+
+7
+00:00:28.557 --> 00:00:35.020
+Third, when an agent hits a login page, you type the password yourself, in a secure screen.
+
+8
+00:00:35.429 --> 00:00:37.934
+Claude Duet gives you a separate form.
+
+9
+00:00:38.353 --> 00:00:42.259
+Grok Bot lets you take over, sign in, then press I'm done.
+
+10
+00:00:42.658 --> 00:00:50.920
+And one rule applies everywhere: never type a password, a one-time code or an API key into ordinary chat.
+
+11
+00:00:51.399 --> 00:00:53.542
+Next: how much access to give.
+

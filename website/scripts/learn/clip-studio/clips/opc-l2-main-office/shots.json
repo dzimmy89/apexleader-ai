@@ -1,0 +1,260 @@
+{
+ "inputs": {},
+ "shots": [
+  {
+   "id": "hook",
+   "type": "desk",
+   "items": [
+    {
+     "id": "q",
+     "kind": "text",
+     "cls": "title",
+     "x": 170,
+     "y": 140,
+     "w": 1600,
+     "text": "More AI tools?",
+     "until": "L0:they"
+    },
+    {
+     "id": "t1",
+     "kind": "chip",
+     "x": 170,
+     "y": 360,
+     "icon": "message-square",
+     "text": "Chat app",
+     "until": "L0:they"
+    },
+    {
+     "id": "t2",
+     "kind": "chip",
+     "x": 560,
+     "y": 330,
+     "icon": "pen-line",
+     "text": "Writing app",
+     "until": "L0:they"
+    },
+    {
+     "id": "t3",
+     "kind": "chip",
+     "x": 1010,
+     "y": 380,
+     "icon": "image",
+     "text": "Image app",
+     "until": "L0:they"
+    },
+    {
+     "id": "t4",
+     "kind": "chip",
+     "x": 1400,
+     "y": 340,
+     "icon": "mic",
+     "text": "Meeting notes",
+     "until": "L0:they"
+    },
+    {
+     "id": "t5",
+     "kind": "chip",
+     "x": 360,
+     "y": 560,
+     "icon": "search",
+     "text": "Research app",
+     "until": "L0:they"
+    },
+    {
+     "id": "t6",
+     "kind": "chip",
+     "x": 1100,
+     "y": 590,
+     "icon": "calendar",
+     "text": "Scheduler",
+     "until": "L0:they"
+    },
+    {
+     "id": "few",
+     "kind": "paper",
+     "x": 560,
+     "y": 400,
+     "w": 800,
+     "icon": "check",
+     "text": "Fewer, used well",
+     "at": "L0:they"
+    }
+   ],
+   "hero": {
+    "move": "light",
+    "target": "few",
+    "at": "L0:fewer"
+   },
+   "camera": "push-in"
+  },
+  {
+   "id": "title",
+   "type": "chapter-card",
+   "from": "L1",
+   "over": "hook",
+   "kicker": "Pick your stack",
+   "title": "One main office",
+   "sub": "The shape that works",
+   "subAt": "L1:shape"
+  },
+  {
+   "id": "office",
+   "type": "figure",
+   "from": "L2",
+   "src": "public/learn/figures/one-person-company/lesson-02-fig-2.webp",
+   "title": "The shape",
+   "regions": [
+    {
+     "rect": [
+      0.04,
+      0.06,
+      0.455,
+      0.9
+     ],
+     "at": "L2:main",
+     "label": "One main office"
+    },
+    {
+     "rect": [
+      0.04,
+      0.06,
+      0.455,
+      0.9
+     ],
+     "at": "L2:claude",
+     "label": "Claude, ChatGPT or Gemini, whichever fits how you work"
+    },
+    {
+     "rect": [
+      0.04,
+      0.06,
+      0.455,
+      0.9
+     ],
+     "at": "L3:files",
+     "label": "Files, instructions and connectors go here first"
+    },
+    {
+     "rect": [
+      0.04,
+      0.06,
+      0.455,
+      0.9
+     ],
+     "at": "L3:context",
+     "label": "That context is what makes an agent useful"
+    },
+    {
+     "rect": [
+      0.04,
+      0.06,
+      0.455,
+      0.9
+     ],
+     "at": "L3:transfer",
+     "label": "And it doesn't transfer between vendors"
+    },
+    {
+     "rect": [
+      0.505,
+      0.14,
+      0.455,
+      0.82
+     ],
+     "at": "L4:specialists",
+     "label": "One or two specialists, each for a job your main tool does badly"
+    },
+    {
+     "rect": [
+      0.505,
+      0.145,
+      0.455,
+      0.235
+     ],
+     "at": "L5:cursor",
+     "label": "Cursor builds and fixes your website"
+    },
+    {
+     "rect": [
+      0.505,
+      0.395,
+      0.455,
+      0.31
+     ],
+     "at": "L5:codex",
+     "label": "Codex: code and computer use on a Mac"
+    },
+    {
+     "rect": [
+      0.505,
+      0.72,
+      0.455,
+      0.235
+     ],
+     "at": "L5:grok",
+     "label": "Grok: fast real-time research"
+    }
+   ],
+   "hero": {
+    "region": 2
+   },
+   "zoom": false
+  },
+  {
+   "id": "plans",
+   "type": "story-cards",
+   "from": "L6",
+   "kicker": "Always-on agents come with certain plans",
+   "titleAt": "L6:alwayson",
+   "cards": [
+    {
+     "agent": true,
+     "icon": "sunrise",
+     "label": "Claude Duet",
+     "sub": "With Claude Pro and Max",
+     "at": "L7:claude",
+     "rows": [
+      {
+       "text": "US accounts, admitted from the waitlist",
+       "at": "L7:us"
+      }
+     ]
+    },
+    {
+     "agent": true,
+     "icon": "list-checks",
+     "label": "The first dot",
+     "sub": "With ChatGPT Pro and Business Premium",
+     "at": "L7:first"
+    },
+    {
+     "agent": true,
+     "icon": "globe",
+     "label": "Grok Bot",
+     "sub": "With SuperGrok plans",
+     "at": "L7:grok",
+     "rows": [
+      {
+       "text": "And Cursor plans from Premium up",
+       "at": "L7:cursor"
+      }
+     ]
+    }
+   ],
+   "hero": {
+    "card": 0,
+    "at": "L7:waitlist"
+   },
+   "camera": "dolly-right",
+   "notes": [
+    {
+     "text": "Next: three starter stacks, by budget",
+     "icon": "arrow-right",
+     "at": "L8:next",
+     "screen": "low"
+    }
+   ],
+   "cardW": 500
+  }
+ ]
+}

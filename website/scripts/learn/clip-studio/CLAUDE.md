@@ -11,13 +11,15 @@ number. Never ask a video model to draw a chart, a number, a formula or a word.
 
 ## What done means
 
-- `clips/out/<clip>.mp4` exists at 1920x1080, 24 fps, with `.vtt` captions and a `.jpg` poster.
+- `clips/out/<clip>.mp4` exists at 1920x1080, 24 fps, with a `.vtt` caption sidecar and a `.jpg` poster.
 - The checkpoint stills (frame 0, each hero, the last frame) were rendered and read; each note fixed or declined.
 - **Every number on screen is computed from the clip's `inputs`** through a `{expr|fmt}` template and logged.
   `kit.mjs retime` checks that the narration says it. Numbers inside a lesson figure come from the lesson itself.
 - Frame 0 is a composed shot that names the hook. No black first frame, no logo.
 - One hero move per shot. Everything else is quieter.
-- Works muted: captions burned in from the script's own sentences, plus the `.vtt` track.
+- Works muted through the player: captions are player-only, never burned into the frames. The `.vtt` track holds
+  the script's own sentences (written by `voice_kokoro.py`), and the lesson player shows it. Keep content above
+  y ≈ 880 so the player's captions don't cover it.
 - Audio about −14 LUFS, true peak ≤ −1 dBTP, measured on the encoded MP4.
 - The last frame holds still (the exercise setup ends on its question card). No fade to black.
 

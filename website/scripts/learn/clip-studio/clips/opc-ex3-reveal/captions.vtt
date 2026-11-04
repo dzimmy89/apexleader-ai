@@ -1,0 +1,54 @@
+WEBVTT
+
+1
+00:00:00.507 --> 00:00:05.775
+For Groomer Books, the billing assistant gets two apps and never sees a password.
+
+2
+00:00:05.795 --> 00:00:07.882
+Here's the example policy.
+
+3
+00:00:07.902 --> 00:00:15.080
+The invoicing app gets a separate viewer user, so the agent can read overdue invoices and nothing more.
+
+4
+00:00:15.144 --> 00:00:22.091
+Gmail connects through Claude's official connector at the draft level, so reminders land as drafts.
+
+5
+00:00:22.111 --> 00:00:24.227
+The bank isn't connected at all.
+
+6
+00:00:24.247 --> 00:00:26.327
+The rule has four parts.
+
+7
+00:00:26.347 --> 00:00:30.202
+Do alone: read invoices and draft reminders.
+
+8
+00:00:30.222 --> 00:00:34.527
+Ask me first: sending any email, or changing an invoice.
+
+9
+00:00:34.547 --> 00:00:39.090
+Hand to me: logins, codes, refunds and payment questions.
+
+10
+00:00:39.110 --> 00:00:43.347
+Never: move money, delete records, or share client data.
+
+11
+00:00:43.367 --> 00:00:50.204
+For the cleanup, the founder removed an old scheduling app and confirmed two-factor on the main email.
+
+12
+00:00:50.224 --> 00:00:58.182
+And the off switch is written down: disconnect Gmail in Claude, and remove the agent's user from the invoicing app.
+
+13
+00:00:58.209 --> 00:01:00.837
+That's a policy you can set up today.
+

@@ -4,7 +4,7 @@ Same format and rules as The Node's kit (`TheNode-University/scripts/learn/clip-
 `inputs`, `values`, `shots`; every time is a **cue** (`"word"`, `"word#1"`, `"L3"`, `"L3:word"`, `"end"`, plus
 `"+0.4"`); every number is `{expr|fmt}`; one hero per shot; every shot has a camera preset. The pure parts are
 unchanged in `../kit/spec.mjs` (cues, the safe evaluator, formats, lint) and `../kit/kit.mjs` (`init`, `retime`,
-`dest`). Positions are px on the 1920x1080 sheet. Keep content above y ≈ 880: the caption band sits below.
+`dest`). Positions are px on the 1920x1080 sheet. Keep content above y ≈ 880: captions are player-only (the `.vtt` track), and the player draws them over the bottom band.
 
 Camera presets: `push-in` (default), `pull-back`, `dolly-left`, `dolly-right`, `hold-drift`.
 

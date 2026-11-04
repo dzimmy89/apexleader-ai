@@ -1,0 +1,229 @@
+{
+ "inputs": {
+  "reviewMin": 15,
+  "cleanWeeks": 4
+ },
+ "shots": [
+  {
+   "id": "hook",
+   "type": "desk",
+   "items": [
+    {
+     "id": "k",
+     "kind": "text",
+     "cls": "h2",
+     "x": 170,
+     "y": 230,
+     "w": 760,
+     "text": "Managers review their staff"
+    },
+    {
+     "id": "staff",
+     "kind": "list",
+     "x": 1030,
+     "y": 220,
+     "w": 740,
+     "title": "Your AI staff",
+     "rows": [
+      {
+       "text": "Chief of staff"
+      },
+      {
+       "text": "Finance assistant"
+      },
+      {
+       "text": "Product and website"
+      }
+     ]
+    },
+    {
+     "id": "fri",
+     "kind": "paper",
+     "x": 170,
+     "y": 420,
+     "w": 760,
+     "icon": "calendar-check",
+     "text": "{reviewMin|0} minutes on Friday",
+     "at": "L0:fifteen"
+    }
+   ],
+   "hero": {
+    "move": "light",
+    "target": "fri",
+    "at": "L0:enough"
+   },
+   "camera": "push-in"
+  },
+  {
+   "id": "title",
+   "type": "chapter-card",
+   "from": "L1",
+   "over": "hook",
+   "kicker": "Your AI org chart",
+   "title": "The weekly review",
+   "sub": "Here's the routine",
+   "subAt": "L1:routine"
+  },
+  {
+   "id": "routine",
+   "type": "figure",
+   "from": "L2",
+   "src": "public/learn/figures/one-person-company/lesson-04-fig-2.webp",
+   "title": "Friday review",
+   "regions": [
+    {
+     "rect": [
+      0.04,
+      0.185,
+      0.455,
+      0.29
+     ],
+     "at": "L2:read",
+     "label": "Read the log"
+    },
+    {
+     "rect": [
+      0.04,
+      0.185,
+      0.455,
+      0.29
+     ],
+     "at": "L2:duet",
+     "label": "Duet: updates in one thread"
+    },
+    {
+     "rect": [
+      0.04,
+      0.185,
+      0.455,
+      0.29
+     ],
+     "at": "L2:dots",
+     "label": "Dots: their work in Activity"
+    },
+    {
+     "rect": [
+      0.04,
+      0.185,
+      0.455,
+      0.29
+     ],
+     "at": "L2:grok",
+     "label": "Grok Bots: proposals and approvals in the conversation"
+    },
+    {
+     "rect": [
+      0.505,
+      0.185,
+      0.455,
+      0.29
+     ],
+     "at": "L3:count",
+     "label": "Wrong drafts, missed urgent items, false alarms"
+    },
+    {
+     "rect": [
+      0.04,
+      0.495,
+      0.455,
+      0.29
+     ],
+     "at": "L4:change",
+     "label": "Change one thing"
+    },
+    {
+     "rect": [
+      0.04,
+      0.495,
+      0.455,
+      0.29
+     ],
+     "at": "L4:tighten",
+     "label": "Tighten a rule, add an example, or remove an app"
+    },
+    {
+     "rect": [
+      0.505,
+      0.495,
+      0.455,
+      0.29
+     ],
+     "at": "L5:prune",
+     "label": "Pause stale routines"
+    },
+    {
+     "rect": [
+      0.505,
+      0.495,
+      0.455,
+      0.29
+     ],
+     "at": "L5:cancel",
+     "label": "Cancel any plan nobody used"
+    },
+    {
+     "rect": [
+      0.04,
+      0.82,
+      0.92,
+      0.17
+     ],
+     "at": "L6:trust",
+     "label": "Then decide on trust"
+    },
+    {
+     "rect": [
+      0.04,
+      0.82,
+      0.92,
+      0.17
+     ],
+     "at": "L6:four",
+     "label": "After {cleanWeeks|0} clean weeks: from drafts to a narrow action"
+    },
+    {
+     "rect": [
+      0.04,
+      0.82,
+      0.92,
+      0.17
+     ],
+     "at": "L6:filing",
+     "label": "Like filing receipts"
+    }
+   ],
+   "hero": {
+    "region": 10
+   },
+   "zoom": false
+  },
+  {
+   "id": "fail",
+   "type": "rule",
+   "from": "L7",
+   "kicker": "If it repeats a mistake",
+   "kickerIcon": "rotate-ccw",
+   "statement": "Change the brief once. If it still fails, remove the role.",
+   "highlight": {
+    "text": "remove the role.",
+    "at": "L7:remove"
+   },
+   "chips": [
+    {
+     "icon": "hand",
+     "text": "Customer sends and money stay behind your click",
+     "at": "L7:customer",
+     "tone": "signal"
+    }
+   ],
+   "notes": [
+    {
+     "text": "In the exercise: draw your own chart",
+     "icon": "arrow-right",
+     "at": "L8:exercise",
+     "screen": "low"
+    }
+   ]
+  }
+ ]
+}
