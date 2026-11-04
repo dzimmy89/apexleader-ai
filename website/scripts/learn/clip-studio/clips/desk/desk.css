@@ -24,6 +24,7 @@
   --signal-ink: oklch(53% 0.18 40);
   --ok: oklch(78% 0.15 150);
   --bad: oklch(68% 0.17 25);
+  --track: var(--signal);   /* a course's track colour: shots.json "track" (marketing, sales, accounting) */
   --display: "Bricolage Grotesque", system-ui, sans-serif;
   --body: "Instrument Sans", system-ui, sans-serif;
   --mono: "JetBrains Mono", ui-monospace, monospace;
@@ -93,10 +94,14 @@ body { color: var(--text); font-family: var(--body); -webkit-font-smoothing: ant
 /* chapter card */
 .chap { position: absolute; left: 150px; top: 190px; width: 1620px; }
 .chap .kicker { margin-bottom: 26px; }
-.chap .rule { width: 120px; height: 8px; border-radius: 4px; background: var(--signal); margin: 34px 0 42px; }
+.chap .rule { width: 120px; height: 8px; border-radius: 4px; background: var(--track); margin: 34px 0 42px; }
 .agenda { display: flex; flex-direction: column; gap: 22px; }
 .agenda .ag { display: flex; align-items: center; gap: 22px; font: 600 42px/1.1 var(--body); color: var(--text); }
-.agenda .ag .icon { width: 50px; height: 50px; color: var(--signal); }
+.agenda .ag .icon { width: 50px; height: 50px; color: var(--track); }
+:root[data-track="marketing"] { --track: oklch(76% 0.12 190); }
+:root[data-track="sales"] { --track: oklch(72% 0.14 295); }
+:root[data-track="accounting"] { --track: oklch(84% 0.16 125); }
+:root[data-track] .chap .kicker { color: var(--track); }
 
 /* timeline */
 .rail { position: absolute; height: 6px; border-radius: 3px; background: var(--line-strong); transform-origin: left center; }

@@ -1,0 +1,214 @@
+{
+ "track": "accounting",
+ "inputs": {
+  "six": 6
+ },
+ "shots": [
+  {
+   "id": "hook",
+   "type": "desk",
+   "items": [
+    {
+     "id": "head",
+     "kind": "text",
+     "cls": "title",
+     "x": 170,
+     "y": 130,
+     "w": 1600,
+     "text": "Several AI helpers, about to start"
+    },
+    {
+     "id": "a1",
+     "kind": "agent",
+     "x": 150,
+     "y": 330,
+     "w": 520,
+     "icon": "receipt",
+     "name": "receipt-bot",
+     "status": "New",
+     "statusTone": "sig"
+    },
+    {
+     "id": "a2",
+     "kind": "agent",
+     "x": 700,
+     "y": 330,
+     "w": 520,
+     "icon": "file-text",
+     "name": "invoice-bot",
+     "status": "New",
+     "statusTone": "sig",
+     "at": "L0:several"
+    },
+    {
+     "id": "a3",
+     "kind": "agent",
+     "x": 1250,
+     "y": 330,
+     "w": 520,
+     "icon": "chart-column",
+     "name": "report-bot",
+     "status": "New",
+     "statusTone": "sig",
+     "at": "L0:helpers"
+    },
+    {
+     "id": "touch",
+     "kind": "paper",
+     "x": 170,
+     "y": 600,
+     "w": 1580,
+     "icon": "shield-check",
+     "text": "Decide what each one may touch first",
+     "at": "L1:decide"
+    }
+   ],
+   "hero": {
+    "move": "light",
+    "target": "touch",
+    "at": "L1:before"
+   },
+   "camera": "push-in"
+  },
+  {
+   "id": "title",
+   "type": "chapter-card",
+   "from": "L2",
+   "over": "hook",
+   "kicker": "Set up the books",
+   "title": "Back-office rules",
+   "sub": "{six|0} rules, written before you hire",
+   "subAt": "L2:six"
+  },
+  {
+   "id": "one",
+   "type": "rule",
+   "from": "L3",
+   "kicker": "Rule one",
+   "kickerIcon": "ban",
+   "statement": "Agents never move money.",
+   "highlight": {
+    "text": "never move money",
+    "at": "L3:never"
+   },
+   "chips": [
+    {
+     "icon": "ban",
+     "text": "No bank logins",
+     "at": "L4:bank"
+    },
+    {
+     "icon": "ban",
+     "text": "No transfers",
+     "at": "L4:transfers"
+    },
+    {
+     "icon": "ban",
+     "text": "No paying bills",
+     "at": "L4:paying"
+    }
+   ]
+  },
+  {
+   "id": "rest",
+   "type": "ledger",
+   "from": "L5",
+   "kicker": "The other rules",
+   "title": "What each helper may do",
+   "grid": {
+    "columns": [
+     {
+      "text": "Rule",
+      "w": "0.7fr"
+     },
+     {
+      "text": "What it says",
+      "w": "3.3fr"
+     }
+    ],
+    "rows": [
+     {
+      "cells": [
+       "Two",
+       {
+        "text": "Its own login, the lowest role that works",
+        "at": "L5:own"
+       }
+      ],
+      "at": "L5:two"
+     },
+     {
+      "cells": [
+       "Three",
+       {
+        "text": "Read, attach receipts, suggest categories, draft invoices and reports",
+        "at": "L6:suggest"
+       }
+      ],
+      "at": "L6:three"
+     },
+     {
+      "cells": [
+       "Four",
+       {
+        "text": "Anything that leaves the business waits for your click",
+        "at": "L7:leaves"
+       }
+      ],
+      "at": "L7:four"
+     },
+     {
+      "cells": [
+       "Five",
+       {
+        "text": "No passwords, card or account numbers in any AI chat",
+        "at": "L8:passwords"
+       }
+      ],
+      "at": "L8:five"
+     },
+     {
+      "cells": [
+       "Six",
+       {
+        "text": "Review weekly. Wrong twice? Reduce its access.",
+        "at": "L9:wrong"
+       }
+      ],
+      "at": "L9:six"
+     }
+    ]
+   },
+   "hero": {
+    "row": 2
+   }
+  },
+  {
+   "id": "why",
+   "type": "rule",
+   "from": "L10",
+   "kicker": "Some agents sign in to websites like a person",
+   "kickerIcon": "user-round",
+   "statement": "That's why rule one matters most.",
+   "highlight": {
+    "text": "rule one",
+    "at": "L11:rule"
+   },
+   "chips": [
+    {
+     "icon": "smartphone",
+     "text": "Two-factor on your bank and app, tied to your own phone",
+     "at": "L12:twofactor"
+    }
+   ],
+   "notes": [
+    {
+     "text": "Next: write your own rules",
+     "icon": "arrow-right",
+     "at": "L13:exercise",
+     "screen": "low"
+    }
+   ]
+  }
+ ]
+}

@@ -1,5 +1,5 @@
 [
- "For Groomer Books, the billing assistant gets two apps and never sees a password.",
+ "For Rolling Ledger, the billing assistant gets two apps and never sees a password.",
  "Here's the example policy.",
  "The invoicing app gets a separate viewer user, so the agent can read overdue invoices and nothing more.",
  "Gmail connects through Claude's official connector at the draft level, so reminders land as drafts.",

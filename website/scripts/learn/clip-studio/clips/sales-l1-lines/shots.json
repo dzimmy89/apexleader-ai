@@ -1,0 +1,181 @@
+{
+ "track": "sales",
+ "inputs": {},
+ "shots": [
+  {
+   "id": "hook",
+   "type": "desk",
+   "items": [
+    {
+     "id": "fast",
+     "kind": "card",
+     "x": 170,
+     "y": 220,
+     "w": 760,
+     "icon": "zap",
+     "title": "A fast list",
+     "sub": "Built in an afternoon"
+    },
+    {
+     "id": "dom",
+     "kind": "chip",
+     "x": 990,
+     "y": 240,
+     "icon": "globe",
+     "text": "Your domain",
+     "swap": {
+      "icon": "ban",
+      "text": "Blocked",
+      "at": "L0:blocked"
+     },
+     "swapW": 380
+    },
+    {
+     "id": "acc",
+     "kind": "chip",
+     "x": 990,
+     "y": 380,
+     "icon": "user",
+     "text": "Your account",
+     "swap": {
+      "icon": "ban",
+      "text": "Banned",
+      "at": "L0:banned"
+     },
+     "swapW": 380
+    },
+    {
+     "id": "nouse",
+     "kind": "paper",
+     "x": 170,
+     "y": 580,
+     "w": 1580,
+     "icon": "circle-alert",
+     "text": "A fast list is no use if it gets you blocked",
+     "at": "L0:blocked"
+    }
+   ],
+   "hero": {
+    "move": "light",
+    "target": "nouse",
+    "at": "L0:banned"
+   },
+   "camera": "push-in"
+  },
+  {
+   "id": "title",
+   "type": "chapter-card",
+   "from": "L1",
+   "over": "hook",
+   "kicker": "Build a lead list",
+   "title": "Know where the lines are"
+  },
+  {
+   "id": "public",
+   "type": "story-cards",
+   "from": "L2",
+   "kicker": "Public business information only",
+   "titleAt": "L2:public",
+   "cardW": 680,
+   "gap": 48,
+   "cards": [
+    {
+     "icon": "mail-check",
+     "label": "Published contact email",
+     "sub": "On the truck's own pages",
+     "at": "L3:published",
+     "status": "Fine",
+     "statusTone": "ok"
+    },
+    {
+     "icon": "phone-off",
+     "label": "Personal cell number",
+     "sub": "From a data broker",
+     "at": "L4:personal",
+     "status": "No",
+     "statusTone": "bad"
+    }
+   ],
+   "hero": {
+    "card": 1,
+    "at": "L4:not"
+   }
+  },
+  {
+   "id": "dont",
+   "type": "story-cards",
+   "from": "L5",
+   "kicker": "The lines",
+   "cardW": 390,
+   "gap": 32,
+   "cards": [
+    {
+     "icon": "ban",
+     "label": "No LinkedIn scraping",
+     "sub": "Its terms ban bots and scrapers",
+     "at": "L5:scrape",
+     "rows": [
+      {
+       "text": "Read profiles yourself, take notes by hand",
+       "at": "L6:read"
+      }
+     ]
+    },
+    {
+     "icon": "ban",
+     "label": "No bought lists",
+     "sub": "They hurt your sender reputation",
+     "at": "L7:buy"
+    },
+    {
+     "icon": "link",
+     "label": "Record the source",
+     "sub": "Of every contact",
+     "at": "L8:record",
+     "rows": [
+      {
+       "text": "So you can say where you got an address",
+       "at": "L8:say"
+      }
+     ]
+    },
+    {
+     "icon": "lock",
+     "label": "Keep data minimal",
+     "sub": "Ask a lawyer before the EU or UK",
+     "at": "L9:minimal"
+    }
+   ],
+   "hero": {
+    "card": 0
+   }
+  },
+  {
+   "id": "invented",
+   "type": "rule",
+   "from": "L10",
+   "kicker": "Watch for invented emails",
+   "kickerIcon": "mail-warning",
+   "statement": "Not on the business's own site? Mark it unknown.",
+   "highlight": {
+    "text": "unknown",
+    "at": "L11:unknown"
+   },
+   "chips": [
+    {
+     "icon": "mail-x",
+     "text": "One bounce hurts every email after it",
+     "at": "L12:bounces"
+    }
+   ],
+   "notes": [
+    {
+     "text": "Next: build your first list",
+     "icon": "arrow-right",
+     "at": "L13:build",
+     "screen": "low"
+    }
+   ]
+  }
+ ]
+}

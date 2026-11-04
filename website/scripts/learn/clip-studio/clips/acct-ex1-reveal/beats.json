@@ -1,0 +1,12 @@
+[
+ "For Rolling Ledger, the books are open, and no helper can touch a dollar.",
+ "Here's the example.",
+ "The business is a single-member LLC, with a new business checking account and one debit card.",
+ "The app is QuickBooks Online Essentials, because later lessons use its receipt and invoicing agents.",
+ "The chart of accounts has one income category, eleven expense categories mapped to Schedule C, and two owner accounts.",
+ "Two categories are flagged for the accountant: meals, which are usually only half deductible, and car costs, where mileage and actual expenses are two different methods.",
+ "The bank feed is connected, read only.",
+ "The back office rules name two helpers: Claude Cowork, with the Finance folder only, and an expense bot that may read and download from vendor portals.",
+ "Their user role can't pay bills or change bank details.",
+ "And two-factor is on for both the bank and the app."
+]

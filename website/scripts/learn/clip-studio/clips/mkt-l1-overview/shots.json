@@ -1,0 +1,297 @@
+{
+ "track": "marketing",
+ "inputs": {
+  "lesson": 1,
+  "posts": 3,
+  "days": 30,
+  "pillars": 4,
+  "inputs": 3,
+  "cols": 10,
+  "mins": 45,
+  "articles": 1
+ },
+ "shots": [
+  {
+   "id": "hook",
+   "type": "desk",
+   "items": [
+    {
+     "id": "head",
+     "kind": "text",
+     "cls": "title",
+     "x": 170,
+     "y": 130,
+     "w": 1600,
+     "text": "{posts|0} posts in a good week"
+    },
+    {
+     "id": "good",
+     "kind": "card",
+     "x": 170,
+     "y": 360,
+     "w": 760,
+     "icon": "trending-up",
+     "title": "A good week",
+     "status": "Busy",
+     "sub": "{posts|0} posts go out"
+    },
+    {
+     "id": "quiet",
+     "kind": "card",
+     "x": 990,
+     "y": 360,
+     "w": 760,
+     "icon": "calendar-x",
+     "title": "The next month",
+     "status": "Silence",
+     "statusTone": "bad",
+     "sub": "Nothing",
+     "at": "L0:nothing"
+    },
+    {
+     "id": "buyers",
+     "kind": "chip",
+     "x": 990,
+     "y": 650,
+     "icon": "eye",
+     "text": "Buyers notice the silence",
+     "at": "L1:buyers"
+    },
+    {
+     "id": "fix",
+     "kind": "paper",
+     "x": 170,
+     "y": 630,
+     "w": 760,
+     "icon": "calendar-check",
+     "text": "A calendar fixes that",
+     "at": "L2:calendar"
+    }
+   ],
+   "hero": {
+    "move": "light",
+    "target": "fix",
+    "at": "L2:fixes"
+   },
+   "camera": "push-in"
+  },
+  {
+   "id": "title",
+   "type": "chapter-card",
+   "from": "L3",
+   "over": "hook",
+   "kicker": "AI Marketing · Lesson {lesson|0}",
+   "title": "A {days|0}-day content calendar",
+   "sub": "One sheet your agents work from",
+   "subAt": "L3:content",
+   "agenda": [
+    {
+     "text": "Pillars",
+     "icon": "columns-3",
+     "at": "L4:pillars"
+    },
+    {
+     "text": "A rhythm you can keep",
+     "icon": "repeat",
+     "at": "L4:rhythm"
+    },
+    {
+     "text": "The calendar sheet",
+     "icon": "table",
+     "at": "L4:calendar"
+    },
+    {
+     "text": "A one-sitting review",
+     "icon": "list-checks",
+     "at": "L4:onesitting"
+    }
+   ]
+  },
+  {
+   "id": "inputs",
+   "type": "figure",
+   "from": "L5",
+   "src": "public/learn/figures/ai-marketing/lesson-01-fig-1.webp",
+   "title": "Start from what you have",
+   "zoom": false,
+   "regions": [
+    {
+     "rect": [
+      0.045,
+      0.12,
+      0.385,
+      0.21
+     ],
+     "at": "L5:brand",
+     "label": "Your brand kit"
+    },
+    {
+     "rect": [
+      0.045,
+      0.36,
+      0.385,
+      0.21
+     ],
+     "at": "L5:offer",
+     "label": "Your offer"
+    },
+    {
+     "rect": [
+      0.045,
+      0.6,
+      0.385,
+      0.28
+     ],
+     "at": "L5:customer",
+     "label": "Your customer"
+    },
+    {
+     "rect": [
+      0.045,
+      0.12,
+      0.385,
+      0.76
+     ],
+     "at": "L6:project",
+     "label": "All {inputs|0} in one project"
+    },
+    {
+     "rect": [
+      0.51,
+      0.17,
+      0.45,
+      0.66
+     ],
+     "at": "L6:four",
+     "label": "{pillars|0} pillars, in your customer's own words"
+    }
+   ],
+   "hero": {
+    "region": 4
+   }
+  },
+  {
+   "id": "rhythm",
+   "type": "story-cards",
+   "from": "L7",
+   "kicker": "A rhythm you can approve every week",
+   "titleAt": "L7:rhythm",
+   "cardW": 520,
+   "gap": 48,
+   "cards": [
+    {
+     "icon": "message-square",
+     "label": "{posts|0} posts",
+     "sub": "On one channel",
+     "at": "L8:three"
+    },
+    {
+     "icon": "file-text",
+     "label": "{articles|0} article",
+     "sub": "Each week",
+     "at": "L8:article"
+    }
+   ],
+   "hero": {
+    "card": 0,
+    "at": "L8:plenty"
+   },
+   "notes": [
+    {
+     "text": "That is plenty",
+     "icon": "check",
+     "at": "L8:plenty",
+     "screen": "low",
+     "tone": "signal"
+    }
+   ]
+  },
+  {
+   "id": "sheet",
+   "type": "rule",
+   "from": "L9",
+   "kicker": "The calendar sheet",
+   "kickerIcon": "table",
+   "statement": "{cols|0} fixed columns. The one that matters most is Status.",
+   "highlight": {
+    "text": "Status",
+    "at": "L10:status"
+   }
+  },
+  {
+   "id": "flow",
+   "type": "figure",
+   "from": "L11",
+   "src": "public/learn/figures/ai-marketing/lesson-01-fig-2.webp",
+   "title": "Only approved rows move",
+   "zoom": false,
+   "regions": [
+    {
+     "rect": [
+      0.045,
+      0.065,
+      0.172,
+      0.665
+     ],
+     "at": "L11:draft",
+     "label": "Every row starts as draft"
+    },
+    {
+     "rect": [
+      0.414,
+      0.065,
+      0.172,
+      0.665
+     ],
+     "at": "L11:approved",
+     "label": "The Marketing Bot only touches approved rows"
+    }
+   ],
+   "hero": {
+    "region": 1
+   }
+  },
+  {
+   "id": "review",
+   "type": "rule",
+   "from": "L12",
+   "kicker": "Review the month in one sitting",
+   "kickerIcon": "timer",
+   "statement": "{mins|0} minutes, four questions.",
+   "highlight": {
+    "text": "four questions",
+    "at": "L12:true"
+   },
+   "chips": [
+    {
+     "icon": "badge-check",
+     "text": "Is it true?",
+     "at": "L12:true"
+    },
+    {
+     "icon": "mic",
+     "text": "Does it sound like you?",
+     "at": "L12:sound"
+    },
+    {
+     "icon": "shield",
+     "text": "Is it safe?",
+     "at": "L12:safe"
+    },
+    {
+     "icon": "sparkles",
+     "text": "Does it earn attention?",
+     "at": "L12:earn"
+    }
+   ],
+   "notes": [
+    {
+     "text": "First: your three inputs",
+     "icon": "arrow-right",
+     "at": "L13:first",
+     "screen": "low"
+    }
+   ]
+  }
+ ]
+}

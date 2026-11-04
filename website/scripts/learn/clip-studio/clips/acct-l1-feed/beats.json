@@ -1,0 +1,15 @@
+[
+ "Your AI helpers need to see your transactions.",
+ "They never need your bank password.",
+ "Here's how the money data flows.",
+ "Your business account and card hold every business dollar.",
+ "Inside your accounting app, connect them as a read-only feed.",
+ "The app imports transactions.",
+ "It can't send money.",
+ "Your categories live in the app too.",
+ "Keep them short, fifteen expense categories at most, each mapped to a line on Schedule C, like advertising, contract labor, and legal and professional fees.",
+ "Then your AI helpers read from the app, through their own limited logins, and never through your bank.",
+ "Ask Claude to draft the category list, and have your accountant review it once.",
+ "Fifteen minutes now prevents a year of miscategorized expenses.",
+ "Next: the rules every helper follows."
+]

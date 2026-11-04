@@ -31,7 +31,7 @@
    "id": "week",
    "type": "ledger",
    "from": "L1",
-   "kicker": "Groomer Books · example numbers",
+   "kicker": "Rolling Ledger · example numbers",
    "title": "How the example week came out",
    "grid": {
     "columns": [

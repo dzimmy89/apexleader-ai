@@ -1,0 +1,202 @@
+{
+ "track": "accounting",
+ "inputs": {
+  "lesson": 1
+ },
+ "shots": [
+  {
+   "id": "hook",
+   "type": "desk",
+   "items": [
+    {
+     "id": "head",
+     "kind": "text",
+     "cls": "title",
+     "x": 170,
+     "y": 130,
+     "w": 1600,
+     "text": "Was this business or personal?"
+    },
+    {
+     "id": "c1",
+     "kind": "chip",
+     "x": 170,
+     "y": 340,
+     "icon": "receipt",
+     "text": "Receipt bot",
+     "at": "L0:receipt"
+    },
+    {
+     "id": "c2",
+     "kind": "chip",
+     "x": 640,
+     "y": 340,
+     "icon": "trending-up",
+     "text": "Forecast",
+     "at": "L0:forecast"
+    },
+    {
+     "id": "c3",
+     "kind": "chip",
+     "x": 1060,
+     "y": 340,
+     "icon": "file-text",
+     "text": "Tax summary",
+     "at": "L0:tax"
+    },
+    {
+     "id": "once",
+     "kind": "paper",
+     "x": 170,
+     "y": 560,
+     "w": 1580,
+     "icon": "calendar-check",
+     "text": "Answer it once, today",
+     "at": "L1:answer"
+    }
+   ],
+   "hero": {
+    "move": "light",
+    "target": "once",
+    "at": "L1:today"
+   },
+   "camera": "push-in"
+  },
+  {
+   "id": "title",
+   "type": "chapter-card",
+   "from": "L2",
+   "over": "hook",
+   "kicker": "AI Accounting · Lesson {lesson|0}",
+   "title": "Set up the books",
+   "agenda": [
+    {
+     "text": "Separate the money",
+     "icon": "wallet",
+     "at": "L3:separate"
+    },
+    {
+     "text": "Pick one app",
+     "icon": "book-open",
+     "at": "L3:pick"
+    },
+    {
+     "text": "Connect a read-only feed",
+     "icon": "eye",
+     "at": "L3:readonly"
+    },
+    {
+     "text": "Write your back-office rules",
+     "icon": "shield-check",
+     "at": "L3:backoffice"
+    }
+   ]
+  },
+  {
+   "id": "setup",
+   "type": "story-cards",
+   "from": "L4",
+   "kicker": "The money, then the app",
+   "titleAt": "L4:open",
+   "cardW": 480,
+   "gap": 40,
+   "cards": [
+    {
+     "icon": "landmark",
+     "label": "One account, one card",
+     "sub": "Every business dollar goes through them",
+     "at": "L4:open"
+    },
+    {
+     "icon": "book-open",
+     "label": "QuickBooks Online",
+     "sub": "Built-in agents and room to grow",
+     "at": "L5:quickbooks"
+    },
+    {
+     "icon": "feather",
+     "label": "Wave",
+     "sub": "Free and simple",
+     "at": "L5:wave"
+    }
+   ],
+   "hero": {
+    "card": 0,
+    "at": "L4:every"
+   }
+  },
+  {
+   "id": "feed",
+   "type": "figure",
+   "from": "L6",
+   "src": "public/learn/figures/ai-accounting/lesson-01-fig-1.webp",
+   "title": "One account, one feed, one app",
+   "zoom": false,
+   "regions": [
+    {
+     "rect": [
+      0.045,
+      0.175,
+      0.177,
+      0.43
+     ],
+     "at": "L6:bank",
+     "label": "Your bank"
+    },
+    {
+     "rect": [
+      0.225,
+      0.28,
+      0.11,
+      0.22
+     ],
+     "at": "L6:readonly",
+     "label": "A read-only feed, inside the app"
+    },
+    {
+     "rect": [
+      0.365,
+      0.135,
+      0.25,
+      0.51
+     ],
+     "at": "L7:category",
+     "label": "A short category list, mapped to Schedule C"
+    },
+    {
+     "rect": [
+      0.365,
+      0.135,
+      0.25,
+      0.51
+     ],
+     "at": "L7:report",
+     "label": "Tax season becomes a report"
+    }
+   ],
+   "hero": {
+    "region": 1
+   }
+  },
+  {
+   "id": "rules",
+   "type": "rule",
+   "from": "L8",
+   "kicker": "Before you hire a single agent",
+   "kickerIcon": "shield-check",
+   "statement": "Rule one: agents never move money.",
+   "highlight": {
+    "text": "never move money",
+    "at": "L9:never"
+   },
+   "notes": [
+    {
+     "text": "First: separate the money",
+     "icon": "arrow-right",
+     "at": "L10:first",
+     "screen": "low"
+    }
+   ]
+  }
+ ]
+}

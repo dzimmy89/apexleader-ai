@@ -11,6 +11,8 @@ const getJSON = async u => { const r = await fetch(u); if (!r.ok) throw new Erro
 const clip = location.pathname.split('/').filter(Boolean).slice(-2, -1)[0];
 const [spec, WORDS, TL, BEATS, ICONS] = await Promise.all(['shots.json', 'words.json', 'timeline.json', 'beats.json', '../desk/icons.json'].map(getJSON));
 window.__numbers = []; window.__cues = [];
+// the course's track colour (brand.css: marketing, sales, accounting) for the quiet accents; the hero stays signal
+if (spec.track) document.documentElement.dataset.track = spec.track;
 await document.fonts.ready;
 
 // ---------- motion helpers (pure functions of T) ----------

@@ -1,0 +1,183 @@
+{
+ "track": "sales",
+ "inputs": {
+  "prospects": 25,
+  "parts": 5,
+  "cols": 12,
+  "matches": 30,
+  "spot": 5,
+  "wrong": 2
+ },
+ "shots": [
+  {
+   "id": "hook",
+   "type": "desk",
+   "items": [
+    {
+     "id": "prof",
+     "kind": "card",
+     "x": 170,
+     "y": 220,
+     "w": 760,
+     "icon": "user-search",
+     "title": "One profile",
+     "sub": "Who you sell to"
+    },
+    {
+     "id": "sheet",
+     "kind": "card",
+     "x": 170,
+     "y": 480,
+     "w": 760,
+     "icon": "table",
+     "title": "One sheet",
+     "sub": "Every prospect, sourced",
+     "at": "L0:sheet"
+    },
+    {
+     "id": "list",
+     "kind": "paper",
+     "x": 1010,
+     "y": 330,
+     "w": 780,
+     "icon": "target",
+     "text": "{prospects|0} prospects you can defend",
+     "at": "L0:twentyfive"
+    }
+   ],
+   "hero": {
+    "move": "light",
+    "target": "list",
+    "at": "L0:defend"
+   },
+   "camera": "push-in"
+  },
+  {
+   "id": "title",
+   "type": "chapter-card",
+   "from": "L1",
+   "over": "hook",
+   "kicker": "Exercise · Build a lead list",
+   "title": "Your first lead list",
+   "sub": "A profile, then a scored list",
+   "subAt": "L2:profile"
+  },
+  {
+   "id": "steps",
+   "type": "figure",
+   "from": "L3",
+   "src": "public/learn/figures/ai-sales/exercise-01-fig-1.webp",
+   "title": "Step by step",
+   "regions": [
+    {
+     "rect": [
+      0.058,
+      0.122,
+      0.885,
+      0.112
+     ],
+     "at": "L3:sentence",
+     "label": "One sentence: who, what problem, what outcome"
+    },
+    {
+     "rect": [
+      0.058,
+      0.122,
+      0.885,
+      0.112
+     ],
+     "at": "L4:fivepart",
+     "label": "The {parts|0}-part profile and a why-now line"
+    },
+    {
+     "rect": [
+      0.058,
+      0.251,
+      0.885,
+      0.112
+     ],
+     "at": "L5:sheet",
+     "label": "A sheet with {cols|0} columns"
+    },
+    {
+     "rect": [
+      0.058,
+      0.38,
+      0.885,
+      0.112
+     ],
+     "at": "L6:research",
+     "label": "Research {matches|0} matches"
+    },
+    {
+     "rect": [
+      0.058,
+      0.509,
+      0.885,
+      0.112
+     ],
+     "at": "L7:sources",
+     "label": "Open the sources for {spot|0} random rows"
+    },
+    {
+     "rect": [
+      0.058,
+      0.509,
+      0.885,
+      0.112
+     ],
+     "at": "L8:wrong",
+     "label": "{wrong|0} or more wrong? Tighten the prompt and rerun"
+    },
+    {
+     "rect": [
+      0.058,
+      0.637,
+      0.885,
+      0.112
+     ],
+     "at": "L9:score",
+     "label": "Score: fit plus signal"
+    },
+    {
+     "rect": [
+      0.058,
+      0.637,
+      0.885,
+      0.112
+     ],
+     "at": "L10:keep",
+     "label": "Keep the top {prospects|0}"
+    },
+    {
+     "rect": [
+      0.058,
+      0.766,
+      0.885,
+      0.112
+     ],
+     "at": "L11:donotcontact",
+     "label": "An empty do-not-contact tab"
+    }
+   ],
+   "hero": {
+    "region": 5
+   }
+  },
+  {
+   "id": "ask",
+   "type": "question",
+   "from": "L12",
+   "over": "steps",
+   "kicker": "Your turn",
+   "question": "Does every row trace back to a source the business published?",
+   "lines": [
+    {
+     "text": "Every row sourced",
+     "at": "L12:source"
+    }
+   ],
+   "pulse": "L13:pause"
+  }
+ ]
+}

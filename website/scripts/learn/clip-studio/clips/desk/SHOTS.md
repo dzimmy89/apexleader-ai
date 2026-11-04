@@ -6,6 +6,9 @@ Same format and rules as The Node's kit (`TheNode-University/scripts/learn/clip-
 unchanged in `../kit/spec.mjs` (cues, the safe evaluator, formats, lint) and `../kit/kit.mjs` (`init`, `retime`,
 `dest`). Positions are px on the 1920x1080 sheet. Keep content above y ≈ 880: captions are player-only (the `.vtt` track), and the player draws them over the bottom band.
 
+Optional top-level `"track": "marketing" | "sales" | "accounting"` tints the quiet accents (the chapter card's kicker, rule and
+agenda icons) in that course's colour from `brand.css`. Heroes stay signal orange.
+
 Camera presets: `push-in` (default), `pull-back`, `dolly-left`, `dolly-right`, `hold-drift`.
 
 Any shot may carry `"over": "<earlier shot id>"` (the earlier shot fades out behind it; under a question it stays at

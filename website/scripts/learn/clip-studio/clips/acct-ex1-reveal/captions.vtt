@@ -1,0 +1,42 @@
+WEBVTT
+
+1
+00:00:00.518 --> 00:00:05.362
+For Rolling Ledger, the books are open, and no helper can touch a dollar.
+
+2
+00:00:05.398 --> 00:00:07.017
+Here's the example.
+
+3
+00:00:07.037 --> 00:00:13.798
+The business is a single-member LLC, with a new business checking account and one debit card.
+
+4
+00:00:13.818 --> 00:00:20.797
+The app is QuickBooks Online Essentials, because later lessons use its receipt and invoicing agents.
+
+5
+00:00:20.817 --> 00:00:29.461
+The chart of accounts has one income category, eleven expense categories mapped to Schedule C, and two owner accounts.
+
+6
+00:00:29.481 --> 00:00:41.355
+Two categories are flagged for the accountant: meals, which are usually only half deductible, and car costs, where mileage and actual expenses are two different methods.
+
+7
+00:00:41.375 --> 00:00:44.171
+The bank feed is connected, read only.
+
+8
+00:00:44.191 --> 00:00:54.902
+The back office rules name two helpers: Claude Cowork, with the Finance folder only, and an expense bot that may read and download from vendor portals.
+
+9
+00:00:54.922 --> 00:00:58.848
+Their user role can't pay bills or change bank details.
+
+10
+00:00:58.868 --> 00:01:02.309
+And two-factor is on for both the bank and the app.
+

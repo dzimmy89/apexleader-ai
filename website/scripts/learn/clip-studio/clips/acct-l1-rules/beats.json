@@ -1,0 +1,16 @@
+[
+ "You're about to hire several AI helpers.",
+ "Decide what each one may touch before you hire it.",
+ "Write six back-office rules.",
+ "One: agents never move money.",
+ "No bank logins, no transfers, no paying bills.",
+ "Two: each agent gets its own login, with the lowest role that works.",
+ "Three: agents may read transactions, attach receipts, suggest categories, and draft invoices and reports.",
+ "Four: anything that leaves the business waits for your click.",
+ "Five: no passwords, card numbers or account numbers in any AI chat.",
+ "Six: review the work weekly, and if an agent gets something wrong twice, reduce its access.",
+ "Some agents can sign in to websites like a person.",
+ "That's why rule one matters most.",
+ "Keep two-factor on your bank and your accounting app, tied to your own phone.",
+ "In the exercise, you'll write your own rules."
+]

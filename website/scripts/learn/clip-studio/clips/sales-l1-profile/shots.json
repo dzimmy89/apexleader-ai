@@ -1,0 +1,247 @@
+{
+ "track": "sales",
+ "inputs": {
+  "parts": 5,
+  "metros": 2,
+  "tLo": 1,
+  "tHi": 3,
+  "staff": 10
+ },
+ "shots": [
+  {
+   "id": "hook",
+   "type": "desk",
+   "items": [
+    {
+     "id": "head",
+     "kind": "text",
+     "cls": "title",
+     "x": 170,
+     "y": 130,
+     "w": 1600,
+     "text": "AI researchers are fast and literal"
+    },
+    {
+     "id": "ask",
+     "kind": "chip",
+     "x": 170,
+     "y": 370,
+     "icon": "search",
+     "text": "\"Small businesses that need bookkeeping\"",
+     "at": "L1:ask"
+    },
+    {
+     "id": "p0",
+     "kind": "chip",
+     "x": 240,
+     "y": 460,
+     "icon": "circle-question-mark",
+     "text": "Some business",
+     "at": "L1:vague"
+    },
+    {
+     "id": "p1",
+     "kind": "chip",
+     "x": 700,
+     "y": 430,
+     "icon": "circle-question-mark",
+     "text": "Some business",
+     "at": "L1:vague"
+    },
+    {
+     "id": "p2",
+     "kind": "chip",
+     "x": 1180,
+     "y": 480,
+     "icon": "circle-question-mark",
+     "text": "Some business",
+     "at": "L1:vague"
+    },
+    {
+     "id": "p3",
+     "kind": "chip",
+     "x": 420,
+     "y": 620,
+     "icon": "circle-question-mark",
+     "text": "Some business",
+     "at": "L1:vague"
+    },
+    {
+     "id": "p4",
+     "kind": "chip",
+     "x": 980,
+     "y": 640,
+     "icon": "circle-question-mark",
+     "text": "Some business",
+     "at": "L1:vague"
+    },
+    {
+     "id": "p5",
+     "kind": "chip",
+     "x": 1400,
+     "y": 580,
+     "icon": "circle-question-mark",
+     "text": "Some business",
+     "at": "L1:vague"
+    },
+    {
+     "id": "pile",
+     "kind": "paper",
+     "x": 460,
+     "y": 760,
+     "w": 1000,
+     "icon": "circle-question-mark",
+     "text": "You get a vague pile",
+     "at": "L1:vague"
+    }
+   ],
+   "hero": {
+    "move": "light",
+    "target": "pile",
+    "at": "L1:pile"
+   },
+   "camera": "push-in"
+  },
+  {
+   "id": "title",
+   "type": "chapter-card",
+   "from": "L2",
+   "over": "hook",
+   "kicker": "Build a lead list",
+   "title": "Write the profile",
+   "sub": "Give it a profile, in {parts|0} parts",
+   "subAt": "L2:five"
+  },
+  {
+   "id": "parts",
+   "type": "ledger",
+   "from": "L3",
+   "kicker": "The profile",
+   "title": "Bookkeeping for food truck owners",
+   "grid": {
+    "columns": [
+     {
+      "text": "Part",
+      "w": "1fr"
+     },
+     {
+      "text": "Example",
+      "w": "2.6fr"
+     }
+    ],
+    "rows": [
+     {
+      "cells": [
+       "Who",
+       {
+        "text": "Food truck owners, single trucks to small fleets",
+        "at": "L3:independent"
+       }
+      ],
+      "at": "L3:who"
+     },
+     {
+      "cells": [
+       "Where",
+       {
+        "text": "{metros|0} metro areas you know",
+        "at": "L4:two"
+       }
+      ],
+      "at": "L4:where"
+     },
+     {
+      "cells": [
+       "Size signal",
+       {
+        "text": "{tLo|0} to {tHi|0} trucks, up to {staff|0} staff",
+        "at": "L5:ten"
+       }
+      ],
+      "at": "L5:size"
+     },
+     {
+      "cells": [
+       "Pain signal",
+       {
+        "text": "Cash-heavy sales, catering by DM, owner does the admin",
+        "at": "L6:catering"
+       }
+      ],
+      "at": "L6:pain"
+     },
+     {
+      "cells": [
+       "Disqualifier",
+       {
+        "text": "Franchise trucks, restaurant groups, commissary kitchens",
+        "at": "L7:franchise"
+       }
+      ],
+      "at": "L7:disqualifier"
+     }
+    ]
+   },
+   "hero": {
+    "row": 4
+   }
+  },
+  {
+   "id": "why",
+   "type": "story-cards",
+   "from": "L8:more",
+   "kicker": "One more line: why now",
+   "titleAt": "L8:why",
+   "cardW": 460,
+   "gap": 40,
+   "cards": [
+    {
+     "icon": "truck",
+     "label": "A second truck",
+     "at": "L9:second"
+    },
+    {
+     "icon": "user-plus",
+     "label": "A hiring post",
+     "at": "L9:hiring"
+    },
+    {
+     "icon": "utensils",
+     "label": "A new catering menu",
+     "at": "L9:catering"
+    }
+   ],
+   "hero": {
+    "card": 0
+   },
+   "notes": [
+    {
+     "text": "A recent event makes a yes more likely this month",
+     "icon": "zap",
+     "at": "L9:recent",
+     "screen": "low"
+    }
+   ]
+  },
+  {
+   "id": "reasons",
+   "type": "rule",
+   "from": "L10",
+   "kicker": "A profile like this",
+   "kickerIcon": "user-search",
+   "statement": "A list of names becomes a list of reasons to reach out.",
+   "highlight": {
+    "text": "reasons",
+    "at": "L10:reasons"
+   },
+   "notes": [
+    {
+     "text": "Next: let the researcher find matches",
+     "icon": "arrow-right",
+     "at": "L11:next",
+     "screen": "low"
+    }
+   ]
+  }
+ ]
+}

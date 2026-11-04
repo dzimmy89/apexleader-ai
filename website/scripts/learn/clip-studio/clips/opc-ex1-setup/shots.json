@@ -99,13 +99,13 @@
      ]
     },
     {
-     "icon": "dog",
+     "icon": "truck",
      "label": "No business yet?",
-     "sub": "Use Groomer Books",
+     "sub": "Use Rolling Ledger",
      "at": "L3:if",
      "rows": [
       {
-       "text": "Bookkeeping and invoicing for independent dog groomers",
+       "text": "Bookkeeping and invoicing for independent food truck owners",
        "at": "L3:bookkeeping"
       }
      ]

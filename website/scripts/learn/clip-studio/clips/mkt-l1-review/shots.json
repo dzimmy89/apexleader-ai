@@ -1,0 +1,215 @@
+{
+ "track": "marketing",
+ "inputs": {
+  "mins": 45,
+  "ways": 3,
+  "checks": 4
+ },
+ "shots": [
+  {
+   "id": "hook",
+   "type": "desk",
+   "items": [
+    {
+     "id": "head",
+     "kind": "text",
+     "cls": "kicker",
+     "x": 170,
+     "y": 190,
+     "text": "Your calendar"
+    },
+    {
+     "id": "r1",
+     "kind": "card",
+     "x": 170,
+     "y": 250,
+     "w": 520,
+     "icon": "file-pen",
+     "title": "Monday post",
+     "status": "Draft",
+     "sub": "Money mistakes"
+    },
+    {
+     "id": "r2",
+     "kind": "card",
+     "x": 720,
+     "y": 250,
+     "w": 520,
+     "icon": "file-pen",
+     "title": "Wednesday post",
+     "status": "Draft",
+     "sub": "Tax season"
+    },
+    {
+     "id": "r3",
+     "kind": "card",
+     "x": 1270,
+     "y": 250,
+     "w": 520,
+     "icon": "file-pen",
+     "title": "Thursday article",
+     "status": "Draft",
+     "sub": "Behind the scenes"
+    },
+    {
+     "id": "earn",
+     "kind": "paper",
+     "x": 170,
+     "y": 590,
+     "w": 1620,
+     "icon": "badge-check",
+     "text": "How a row earns approval",
+     "at": "L1:heres"
+    }
+   ],
+   "hero": {
+    "move": "light",
+    "target": "earn",
+    "at": "L1:approval"
+   },
+   "camera": "push-in"
+  },
+  {
+   "id": "title",
+   "type": "chapter-card",
+   "from": "L2",
+   "over": "hook",
+   "kicker": "A content calendar",
+   "title": "Review in one sitting",
+   "sub": "{mins|0} minutes, row by row",
+   "subAt": "L2:row"
+  },
+  {
+   "id": "ways",
+   "type": "story-cards",
+   "from": "L3",
+   "kicker": "For each row, one of {ways|0} things",
+   "titleAt": "L3:each",
+   "numbered": true,
+   "cardW": 460,
+   "gap": 40,
+   "cards": [
+    {
+     "icon": "check",
+     "label": "Approve it",
+     "at": "L3:approve"
+    },
+    {
+     "icon": "pencil",
+     "label": "Edit, then approve",
+     "at": "L3:edit"
+    },
+    {
+     "icon": "trash-2",
+     "label": "Delete it",
+     "at": "L3:delete"
+    }
+   ],
+   "hero": {
+    "card": 1
+   }
+  },
+  {
+   "id": "checks",
+   "type": "story-cards",
+   "from": "L4",
+   "kicker": "Before you approve, check {checks|0} things",
+   "titleAt": "L4:check",
+   "cardW": 420,
+   "gap": 28,
+   "cards": [
+    {
+     "icon": "badge-check",
+     "label": "Is it true?",
+     "at": "L5:true",
+     "rows": [
+      {
+       "text": "Every claim has a source you can name",
+       "at": "L6:claim"
+      }
+     ]
+    },
+    {
+     "icon": "mic",
+     "label": "Sounds like you?",
+     "at": "L7:sound",
+     "rows": [
+      {
+       "text": "Read the hook out loud",
+       "at": "L8:hook"
+      }
+     ]
+    },
+    {
+     "icon": "shield",
+     "label": "Is it safe?",
+     "at": "L9:safe",
+     "rows": [
+      {
+       "text": "No client names without permission",
+       "at": "L10:client"
+      },
+      {
+       "text": "No tax or legal advice",
+       "at": "L10:tax"
+      }
+     ]
+    },
+    {
+     "icon": "sparkles",
+     "label": "Earns attention?",
+     "at": "L11:earn",
+     "rows": [
+      {
+       "text": "Teaches, shows or proves one thing",
+       "at": "L11:teaching"
+      }
+     ]
+    }
+   ],
+   "hero": {
+    "card": 0
+   },
+   "notes": [
+    {
+     "text": "Then Claude refills the rows you cut",
+     "icon": "refresh-cw",
+     "at": "L12:refill",
+     "screen": "low"
+    }
+   ]
+  },
+  {
+   "id": "plan",
+   "type": "rule",
+   "from": "L13",
+   "kicker": "Remember",
+   "kickerIcon": "shield-check",
+   "statement": "A calendar is a plan, not permission.",
+   "highlight": {
+    "text": "not permission",
+    "at": "L13:permission"
+   },
+   "chips": [
+    {
+     "icon": "calendar-clock",
+     "text": "The bot schedules approved rows only",
+     "at": "L14:approved"
+    },
+    {
+     "icon": "mouse-pointer-click",
+     "text": "Then it waits for your final click",
+     "at": "L14:final"
+    }
+   ],
+   "notes": [
+    {
+     "text": "Next: build and approve your own",
+     "icon": "arrow-right",
+     "at": "L15:build",
+     "screen": "low"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,217 @@
+{
+ "track": "marketing",
+ "inputs": {
+  "days": 30,
+  "cols": 10,
+  "pillars": 4,
+  "keep": 3,
+  "keepHi": 4,
+  "posts": 3
+ },
+ "shots": [
+  {
+   "id": "hook",
+   "type": "desk",
+   "items": [
+    {
+     "id": "days",
+     "kind": "card",
+     "x": 170,
+     "y": 220,
+     "w": 760,
+     "icon": "calendar-days",
+     "title": "{days|0} days of posts",
+     "sub": "Planned, not improvised"
+    },
+    {
+     "id": "sheet",
+     "kind": "card",
+     "x": 170,
+     "y": 480,
+     "w": 760,
+     "icon": "table",
+     "title": "One sheet",
+     "sub": "Every post in one place",
+     "at": "L0:sheet"
+    },
+    {
+     "id": "status",
+     "kind": "paper",
+     "x": 1010,
+     "y": 330,
+     "w": 780,
+     "icon": "toggle-right",
+     "text": "A Status column that you control",
+     "at": "L0:status"
+    }
+   ],
+   "hero": {
+    "move": "light",
+    "target": "status",
+    "at": "L0:control"
+   },
+   "camera": "push-in"
+  },
+  {
+   "id": "title",
+   "type": "chapter-card",
+   "from": "L1",
+   "over": "hook",
+   "kicker": "Exercise · A content calendar",
+   "title": "Your first calendar",
+   "sub": "Build it, then approve it",
+   "subAt": "L2:approve"
+  },
+  {
+   "id": "steps",
+   "type": "figure",
+   "from": "L3",
+   "src": "public/learn/figures/ai-marketing/exercise-01-fig-1.webp",
+   "title": "Step by step",
+   "regions": [
+    {
+     "rect": [
+      0.058,
+      0.122,
+      0.885,
+      0.112
+     ],
+     "at": "L3:set",
+     "label": "Set up a Marketing project"
+    },
+    {
+     "rect": [
+      0.058,
+      0.122,
+      0.885,
+      0.112
+     ],
+     "at": "L3:brand",
+     "label": "Brand kit, offer and a short customer profile"
+    },
+    {
+     "rect": [
+      0.058,
+      0.251,
+      0.885,
+      0.112
+     ],
+     "at": "L4:four",
+     "label": "Ask Claude for {pillars|0} pillars"
+    },
+    {
+     "rect": [
+      0.058,
+      0.251,
+      0.885,
+      0.112
+     ],
+     "at": "L4:keep",
+     "label": "Keep the {keep|0} or {keepHi|0} that sound like your customers"
+    },
+    {
+     "rect": [
+      0.058,
+      0.38,
+      0.885,
+      0.112
+     ],
+     "at": "L5:write",
+     "label": "Write your rhythm in one line"
+    },
+    {
+     "rect": [
+      0.058,
+      0.38,
+      0.885,
+      0.112
+     ],
+     "at": "L5:linkedin",
+     "label": "LinkedIn Monday, Wednesday and Friday"
+    },
+    {
+     "rect": [
+      0.058,
+      0.38,
+      0.885,
+      0.112
+     ],
+     "at": "L5:blog",
+     "label": "Plus a blog article on Thursday"
+    },
+    {
+     "rect": [
+      0.058,
+      0.509,
+      0.885,
+      0.112
+     ],
+     "at": "L6:generate",
+     "label": "{cols|0} columns, every row as draft"
+    },
+    {
+     "rect": [
+      0.058,
+      0.509,
+      0.885,
+      0.112
+     ],
+     "at": "L7:move",
+     "label": "Move it into a sheet"
+    },
+    {
+     "rect": [
+      0.058,
+      0.637,
+      0.885,
+      0.112
+     ],
+     "at": "L7:review",
+     "label": "Review in one pass: approve, edit or delete"
+    },
+    {
+     "rect": [
+      0.058,
+      0.766,
+      0.885,
+      0.112
+     ],
+     "at": "L8:refill",
+     "label": "Refill the gaps"
+    },
+    {
+     "rect": [
+      0.058,
+      0.766,
+      0.885,
+      0.112
+     ],
+     "at": "L8:repurpose",
+     "label": "Repurpose week one into {posts|0} posts and a newsletter paragraph"
+    }
+   ],
+   "hero": {
+    "region": 9
+   }
+  },
+  {
+   "id": "ask",
+   "type": "question",
+   "from": "L9",
+   "over": "steps",
+   "kicker": "Your turn",
+   "question": "How many rows can you honestly approve, and does every claim have a source?",
+   "lines": [
+    {
+     "text": "Rows approved",
+     "at": "L9:approve"
+    },
+    {
+     "text": "Every claim sourced",
+     "at": "L9:source"
+    }
+   ],
+   "pulse": "L10:pause"
+  }
+ ]
+}

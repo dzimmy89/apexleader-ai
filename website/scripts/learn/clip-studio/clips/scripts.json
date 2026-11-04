@@ -146,7 +146,7 @@
     0.35
    ],
    [
-    "If you don't have a business yet, use Groomer Books, a bookkeeping and invoicing service for independent dog groomers.",
+    "If you don't have a business yet, use Rolling Ledger, a bookkeeping and invoicing service for independent food truck owners.",
     0.35
    ],
    [
@@ -178,7 +178,7 @@
   "tail": 2.5,
   "lines": [
    [
-    "For Groomer Books, the biggest pile is the middle one: three hundred and ten minutes a week of work an agent can draft and the founder approves.",
+    "For Rolling Ledger, the biggest pile is the middle one: three hundred and ten minutes a week of work an agent can draft and the founder approves.",
     0.35
    ],
    [
@@ -690,7 +690,7 @@
   "tail": 2.5,
   "lines": [
    [
-    "For Groomer Books, one twenty-dollar plan covers all three top jobs.",
+    "For Rolling Ledger, one twenty-dollar plan covers all three top jobs.",
     0.35
    ],
    [
@@ -790,7 +790,7 @@
   "tail": 2.5,
   "lines": [
    [
-    "For Groomer Books, the billing assistant gets two apps and never sees a password.",
+    "For Rolling Ledger, the billing assistant gets two apps and never sees a password.",
     0.35
    ],
    [
@@ -886,7 +886,7 @@
   "tail": 2.5,
   "lines": [
    [
-    "For Groomer Books, two boxes are filled, three wait, and every job has one owner.",
+    "For Rolling Ledger, two boxes are filled, three wait, and every job has one owner.",
     0.35
    ],
    [
@@ -898,7 +898,7 @@
     0.35
    ],
    [
-    "The finance assistant is Claude Pro with a Groomer Books project. It sorts receipts and drafts overdue-invoice reminders each Monday. It reads the invoicing app as a viewer, and drafts in Gmail, never sending without a yes.",
+    "The finance assistant is Claude Pro with a Rolling Ledger project. It sorts receipts and drafts overdue-invoice reminders each Monday. It reads the invoicing app as a viewer, and drafts in Gmail, never sending without a yes.",
     0.35
    ],
    [
@@ -923,6 +923,886 @@
    ],
    [
     "And the Friday review is on the calendar.",
+    0.0
+   ]
+  ]
+ },
+ "mkt-l1-overview": {
+  "shape": "overview",
+  "chapter": "AI Marketing · Lesson 1 · A content calendar",
+  "lead": 0.5,
+  "tail": 2.5,
+  "lines": [
+   [
+    "Three posts in a good week, then nothing for a month.",
+    0.35
+   ],
+   [
+    "Buyers notice the silence.",
+    0.35
+   ],
+   [
+    "A calendar fixes that.",
+    0.35
+   ],
+   [
+    "This is AI Marketing, lesson one: a thirty-day content calendar.",
+    0.35
+   ],
+   [
+    "In this lesson: pillars, a rhythm you can keep, the calendar sheet, and a one-sitting review.",
+    0.35
+   ],
+   [
+    "Start from what you already have: your brand kit, your offer and your customer.",
+    0.35
+   ],
+   [
+    "Put all three in one project, and ask Claude for four content pillars in your customer's own words.",
+    0.35
+   ],
+   [
+    "Then pick a rhythm you can approve every week.",
+    0.35
+   ],
+   [
+    "Three posts on one channel, plus one article, is plenty.",
+    0.35
+   ],
+   [
+    "Generate the calendar as a spreadsheet with ten fixed columns.",
+    0.35
+   ],
+   [
+    "The one that matters most is Status.",
+    0.35
+   ],
+   [
+    "Every row starts as draft, and your Marketing Bot only ever touches rows you've marked approved.",
+    0.35
+   ],
+   [
+    "Then review the whole month in one forty-five minute sitting: is it true, does it sound like you, is it safe, and does it earn attention?",
+    0.35
+   ],
+   [
+    "First, your three inputs.",
+    0.0
+   ]
+  ]
+ },
+ "mkt-l1-rhythm": {
+  "shape": "inline",
+  "chapter": "Lesson 1 · A rhythm you can keep",
+  "lead": 0.5,
+  "tail": 3.5,
+  "lines": [
+   [
+    "AI can draft a hundred posts.",
+    0.9
+   ],
+   [
+    "You still have to read every one.",
+    0.9
+   ],
+   [
+    "So pick the rhythm you can approve.",
+    0.9
+   ],
+   [
+    "For one founder, a realistic week looks like this.",
+    0.9
+   ],
+   [
+    "Three posts on your main social channel.",
+    0.9
+   ],
+   [
+    "Two repurposed posts on a second channel, if you want one.",
+    0.9
+   ],
+   [
+    "One blog article, drafted by Claude from your notes.",
+    0.9
+   ],
+   [
+    "And one newsletter, which arrives in lesson five.",
+    0.9
+   ],
+   [
+    "That's roughly twenty-five to thirty pieces a month, and about forty-five minutes of review each week, once the system runs.",
+    0.9
+   ],
+   [
+    "If that feels like a lot, start smaller: one channel and the blog.",
+    0.9
+   ],
+   [
+    "Consistency beats volume, because a calendar you keep for thirty days does more than one you abandon in week two.",
+    0.9
+   ],
+   [
+    "Next, turn the rhythm into a sheet.",
+    0.0
+   ]
+  ]
+ },
+ "mkt-l1-review": {
+  "shape": "inline",
+  "chapter": "Lesson 1 · Review in one sitting",
+  "lead": 0.5,
+  "tail": 3.0,
+  "lines": [
+   [
+    "Every row in your calendar starts as draft.",
+    0.55
+   ],
+   [
+    "Here's how it earns approval.",
+    0.55
+   ],
+   [
+    "Block forty-five minutes and go row by row.",
+    0.55
+   ],
+   [
+    "For each, do one of three things: approve it, edit it and then approve it, or delete it.",
+    0.55
+   ],
+   [
+    "Before you approve, check four things.",
+    0.55
+   ],
+   [
+    "Is it true?",
+    0.55
+   ],
+   [
+    "Every claim needs a source you can name.",
+    0.55
+   ],
+   [
+    "Does it sound like you?",
+    0.55
+   ],
+   [
+    "Read the hook out loud.",
+    0.55
+   ],
+   [
+    "Is it safe?",
+    0.55
+   ],
+   [
+    "No client names without permission, and nothing that reads as tax or legal advice.",
+    0.55
+   ],
+   [
+    "And does it earn attention, by teaching, showing or proving one thing?",
+    0.55
+   ],
+   [
+    "Then ask Claude to refill the rows you cut, and review those the same way.",
+    0.55
+   ],
+   [
+    "Remember, a calendar is a plan, not permission.",
+    0.55
+   ],
+   [
+    "Your Marketing Bot schedules approved rows only, and even then it waits for your final click.",
+    0.55
+   ],
+   [
+    "In the exercise, you'll build and approve your own.",
+    0.0
+   ]
+  ]
+ },
+ "mkt-ex1-setup": {
+  "shape": "exercise-setup",
+  "chapter": "Exercise 1 · Your first calendar",
+  "lead": 0.5,
+  "tail": 4.5,
+  "lines": [
+   [
+    "Thirty days of posts, one sheet, and a Status column that you control.",
+    0.7
+   ],
+   [
+    "Let's build it.",
+    0.7
+   ],
+   [
+    "In this exercise you'll build and approve your first content calendar.",
+    0.7
+   ],
+   [
+    "Set up a Marketing project with your brand kit, your offer and a short customer profile.",
+    0.7
+   ],
+   [
+    "Ask Claude for four pillars, and keep the three or four that sound like your customers.",
+    0.7
+   ],
+   [
+    "Write your rhythm in one line, like LinkedIn on Monday, Wednesday and Friday, plus a blog article on Thursday.",
+    0.7
+   ],
+   [
+    "Generate the calendar with ten columns, every row as draft.",
+    0.7
+   ],
+   [
+    "Move it into a sheet, then review it in one pass: approve, edit, or delete.",
+    0.7
+   ],
+   [
+    "Refill the gaps, and repurpose week one's article into three posts and a newsletter paragraph.",
+    0.7
+   ],
+   [
+    "So: how many rows can you honestly approve, and does every claim have a source?",
+    0.7
+   ],
+   [
+    "Pause here and build your calendar.",
+    0.0
+   ]
+  ]
+ },
+ "mkt-ex1-reveal": {
+  "shape": "exercise-reveal",
+  "chapter": "Exercise 1 · An example result",
+  "lead": 0.5,
+  "tail": 2.5,
+  "lines": [
+   [
+    "For Rolling Ledger, thirty days became twenty-one rows, and fifteen of them earned approval.",
+    0.35
+   ],
+   [
+    "Here's the example.",
+    0.35
+   ],
+   [
+    "The rhythm is LinkedIn on Monday, Wednesday and Friday, plus a blog article every Thursday.",
+    0.35
+   ],
+   [
+    "Over thirty days, that's thirteen posts and four articles: seventeen rows.",
+    0.35
+   ],
+   [
+    "The four pillars are money mistakes food truck owners make, tax season without panic, behind the scenes, and client stories.",
+    0.35
+   ],
+   [
+    "The review took forty minutes.",
+    0.35
+   ],
+   [
+    "Ten rows were approved as written, and three more after edits.",
+    0.35
+   ],
+   [
+    "Four were deleted: one quoted a four-thousand-dollar figure with no source, and one named a real client.",
+    0.35
+   ],
+   [
+    "Claude refilled those four rows, and two of the new ones were approved.",
+    0.35
+   ],
+   [
+    "Then week one's article became three LinkedIn posts and a newsletter paragraph, all still draft.",
+    0.35
+   ],
+   [
+    "That's fifteen approved rows, and six drafts waiting for next week's review.",
+    0.0
+   ]
+  ]
+ },
+ "sales-l1-overview": {
+  "shape": "overview",
+  "chapter": "AI Sales · Lesson 1 · Build a lead list",
+  "lead": 0.5,
+  "tail": 2.5,
+  "lines": [
+   [
+    "Five thousand scraped names nobody wanted to hear from, or thirty businesses you picked for a reason.",
+    0.5
+   ],
+   [
+    "The short list wins.",
+    0.5
+   ],
+   [
+    "This is AI Sales, lesson one: build a lead list.",
+    0.5
+   ],
+   [
+    "In this lesson: write the profile, research matches, score the list, and know where the lines are.",
+    0.5
+   ],
+   [
+    "First, write a five-part customer profile: who, where, size, pain and disqualifier, plus a why-now signal.",
+    0.5
+   ],
+   [
+    "Then have an AI research assistant find thirty matches, with fixed columns and a source link for every fact.",
+    0.5
+   ],
+   [
+    "Unknown is an allowed answer.",
+    0.5
+   ],
+   [
+    "A guessed email is not.",
+    0.5
+   ],
+   [
+    "Spot-check five rows yourself.",
+    0.5
+   ],
+   [
+    "Score each row on fit and signal, and keep the top twenty to thirty.",
+    0.5
+   ],
+   [
+    "Use public business information only: no LinkedIn scraping, and no bought lists.",
+    0.5
+   ],
+   [
+    "Then refresh the list every month.",
+    0.5
+   ],
+   [
+    "First, the profile.",
+    0.0
+   ]
+  ]
+ },
+ "sales-l1-profile": {
+  "shape": "inline",
+  "chapter": "Lesson 1 · Write the profile",
+  "lead": 0.5,
+  "tail": 3.0,
+  "lines": [
+   [
+    "AI researchers are fast and literal.",
+    0.65
+   ],
+   [
+    "Ask for small businesses that need bookkeeping, and you'll get a vague pile.",
+    0.65
+   ],
+   [
+    "Give it a profile instead, in five parts.",
+    0.65
+   ],
+   [
+    "Who: independent food truck owners, from single trucks to small fleets.",
+    0.65
+   ],
+   [
+    "Where: start with two metro areas you know.",
+    0.65
+   ],
+   [
+    "Size signal: one to three trucks, and up to ten staff.",
+    0.65
+   ],
+   [
+    "Pain signal: cash-heavy sales, catering requests handled by DM, and an owner doing the admin.",
+    0.65
+   ],
+   [
+    "Disqualifier: franchise trucks, restaurant groups and commissary kitchens.",
+    0.65
+   ],
+   [
+    "Then add one more line: why now.",
+    0.65
+   ],
+   [
+    "That's the recent event that makes a yes more likely this month, like a second truck, a hiring post, or a new catering menu.",
+    0.65
+   ],
+   [
+    "A profile like this turns a list of names into a list of reasons to reach out.",
+    0.65
+   ],
+   [
+    "Next: let the researcher find matches.",
+    0.0
+   ]
+  ]
+ },
+ "sales-l1-lines": {
+  "shape": "inline",
+  "chapter": "Lesson 1 · Know where the lines are",
+  "lead": 0.5,
+  "tail": 2.5,
+  "lines": [
+   [
+    "A fast list is no use if it gets your domain blocked or your account banned.",
+    0.5
+   ],
+   [
+    "Here are the lines.",
+    0.5
+   ],
+   [
+    "Public business information only.",
+    0.5
+   ],
+   [
+    "A truck's published contact email is fine.",
+    0.5
+   ],
+   [
+    "A personal cell number from a data broker is not.",
+    0.5
+   ],
+   [
+    "Don't scrape LinkedIn.",
+    0.5
+   ],
+   [
+    "Its terms ban bots and scrapers, so read profiles yourself and take notes by hand.",
+    0.5
+   ],
+   [
+    "Don't buy email lists, because they hurt your sender reputation.",
+    0.5
+   ],
+   [
+    "Record the source of every contact, so you can always say where you got an address.",
+    0.5
+   ],
+   [
+    "Keep personal data minimal, and check with a lawyer before you scale into the EU or UK.",
+    0.5
+   ],
+   [
+    "And watch for invented emails.",
+    0.5
+   ],
+   [
+    "If an address isn't on the business's own site, mark it unknown.",
+    0.5
+   ],
+   [
+    "One guessed address that bounces hurts every email you send after it.",
+    0.5
+   ],
+   [
+    "In the exercise, you'll build your first list.",
+    0.0
+   ]
+  ]
+ },
+ "sales-ex1-setup": {
+  "shape": "exercise-setup",
+  "chapter": "Exercise 1 · Your first lead list",
+  "lead": 0.5,
+  "tail": 4.5,
+  "lines": [
+   [
+    "One profile, one sheet, and twenty-five prospects you can defend.",
+    0.7
+   ],
+   [
+    "Let's build your first lead list.",
+    0.7
+   ],
+   [
+    "In this exercise you'll write your customer profile and turn it into a scored list.",
+    0.7
+   ],
+   [
+    "Write one sentence: I help who, with what problem, so they can reach what outcome.",
+    0.7
+   ],
+   [
+    "Fill in the five-part profile and a why-now line.",
+    0.7
+   ],
+   [
+    "Create a sheet with twelve columns, from business name to date added.",
+    0.7
+   ],
+   [
+    "Run the research prompt for thirty matches.",
+    0.7
+   ],
+   [
+    "Paste the table in, then open the sources for five random rows.",
+    0.7
+   ],
+   [
+    "If two or more are wrong, tighten the prompt and rerun.",
+    0.7
+   ],
+   [
+    "Score each row as fit plus signal.",
+    0.7
+   ],
+   [
+    "Delete the excluded rows, sort by score, and keep the top twenty-five.",
+    0.7
+   ],
+   [
+    "Finally, add an empty do-not-contact tab.",
+    0.7
+   ],
+   [
+    "So: does every row trace back to a source the business published?",
+    0.7
+   ],
+   [
+    "Pause here and build your list.",
+    0.0
+   ]
+  ]
+ },
+ "sales-ex1-reveal": {
+  "shape": "exercise-reveal",
+  "chapter": "Exercise 1 · An example result",
+  "lead": 0.5,
+  "tail": 3.0,
+  "lines": [
+   [
+    "For Rolling Ledger, thirty matches became twenty-five prospects, and not one guessed email.",
+    0.55
+   ],
+   [
+    "Here's the example.",
+    0.55
+   ],
+   [
+    "The profile targets independent food truck owners in Austin and Denver, with one to three trucks.",
+    0.55
+   ],
+   [
+    "The researcher returned thirty rows.",
+    0.55
+   ],
+   [
+    "Three were franchise trucks, marked exclude.",
+    0.55
+   ],
+   [
+    "The spot-check opened five rows.",
+    0.55
+   ],
+   [
+    "One listed an owner email that didn't appear on the truck's own pages, so it became unknown.",
+    0.55
+   ],
+   [
+    "One wrong out of five passes the check.",
+    0.55
+   ],
+   [
+    "That left twenty-seven rows to score.",
+    0.55
+   ],
+   [
+    "Six scored five, eleven scored four, eight scored three, and two scored two.",
+    0.55
+   ],
+   [
+    "The two lowest were cut, leaving twenty-five.",
+    0.55
+   ],
+   [
+    "Four of them have no public email, so the sheet uses their contact form instead.",
+    0.55
+   ],
+   [
+    "Every row is marked new, and the do-not-contact tab is ready for exercise two.",
+    0.0
+   ]
+  ]
+ },
+ "acct-l1-overview": {
+  "shape": "overview",
+  "chapter": "AI Accounting · Lesson 1 · Set up the books",
+  "lead": 0.5,
+  "tail": 3.0,
+  "lines": [
+   [
+    "Every receipt bot, forecast and tax summary starts with the same question: was this business or personal?",
+    0.55
+   ],
+   [
+    "Answer it once, today.",
+    0.55
+   ],
+   [
+    "This is AI Accounting, lesson one: set up the books.",
+    0.55
+   ],
+   [
+    "In this lesson: separate the money, pick one app, connect a read-only feed, and write your back-office rules.",
+    0.55
+   ],
+   [
+    "Open one business account and one card, and put every business dollar through them.",
+    0.55
+   ],
+   [
+    "Pick one accounting app: QuickBooks Online if you want built-in agents and room to grow, or Wave if you want free and simple.",
+    0.55
+   ],
+   [
+    "Connect your bank inside the app, as a read-only feed.",
+    0.55
+   ],
+   [
+    "Set up a short category list that maps to Schedule C, so tax season becomes a report, not a project.",
+    0.55
+   ],
+   [
+    "Then write your rules before you hire a single agent.",
+    0.55
+   ],
+   [
+    "Rule one: agents never move money.",
+    0.55
+   ],
+   [
+    "First, separate the money.",
+    0.0
+   ]
+  ]
+ },
+ "acct-l1-feed": {
+  "shape": "inline",
+  "chapter": "Lesson 1 · A read-only feed",
+  "lead": 0.5,
+  "tail": 2.5,
+  "lines": [
+   [
+    "Your AI helpers need to see your transactions.",
+    0.5
+   ],
+   [
+    "They never need your bank password.",
+    0.5
+   ],
+   [
+    "Here's how the money data flows.",
+    0.5
+   ],
+   [
+    "Your business account and card hold every business dollar.",
+    0.5
+   ],
+   [
+    "Inside your accounting app, connect them as a read-only feed.",
+    0.5
+   ],
+   [
+    "The app imports transactions.",
+    0.5
+   ],
+   [
+    "It can't send money.",
+    0.5
+   ],
+   [
+    "Your categories live in the app too.",
+    0.5
+   ],
+   [
+    "Keep them short, fifteen expense categories at most, each mapped to a line on Schedule C, like advertising, contract labor, and legal and professional fees.",
+    0.5
+   ],
+   [
+    "Then your AI helpers read from the app, through their own limited logins, and never through your bank.",
+    0.5
+   ],
+   [
+    "Ask Claude to draft the category list, and have your accountant review it once.",
+    0.5
+   ],
+   [
+    "Fifteen minutes now prevents a year of miscategorized expenses.",
+    0.5
+   ],
+   [
+    "Next: the rules every helper follows.",
+    0.0
+   ]
+  ]
+ },
+ "acct-l1-rules": {
+  "shape": "inline",
+  "chapter": "Lesson 1 · Back-office rules",
+  "lead": 0.5,
+  "tail": 2.5,
+  "lines": [
+   [
+    "You're about to hire several AI helpers.",
+    0.35
+   ],
+   [
+    "Decide what each one may touch before you hire it.",
+    0.35
+   ],
+   [
+    "Write six back-office rules.",
+    0.35
+   ],
+   [
+    "One: agents never move money.",
+    0.35
+   ],
+   [
+    "No bank logins, no transfers, no paying bills.",
+    0.35
+   ],
+   [
+    "Two: each agent gets its own login, with the lowest role that works.",
+    0.35
+   ],
+   [
+    "Three: agents may read transactions, attach receipts, suggest categories, and draft invoices and reports.",
+    0.35
+   ],
+   [
+    "Four: anything that leaves the business waits for your click.",
+    0.35
+   ],
+   [
+    "Five: no passwords, card numbers or account numbers in any AI chat.",
+    0.35
+   ],
+   [
+    "Six: review the work weekly, and if an agent gets something wrong twice, reduce its access.",
+    0.35
+   ],
+   [
+    "Some agents can sign in to websites like a person.",
+    0.35
+   ],
+   [
+    "That's why rule one matters most.",
+    0.35
+   ],
+   [
+    "Keep two-factor on your bank and your accounting app, tied to your own phone.",
+    0.35
+   ],
+   [
+    "In the exercise, you'll write your own rules.",
+    0.0
+   ]
+  ]
+ },
+ "acct-ex1-setup": {
+  "shape": "exercise-setup",
+  "chapter": "Exercise 1 · Open your books",
+  "lead": 0.5,
+  "tail": 4.5,
+  "lines": [
+   [
+    "One account, one app, and six rules every helper follows.",
+    0.7
+   ],
+   [
+    "Let's open your books.",
+    0.7
+   ],
+   [
+    "In this exercise you'll set up working books and write your back-office rules.",
+    0.7
+   ],
+   [
+    "First, the money: a business-only account and card, or time booked to open one.",
+    0.7
+   ],
+   [
+    "Choose QuickBooks Online or Wave, and write two sentences on why.",
+    0.7
+   ],
+   [
+    "Have Claude draft a category list with no more than fifteen expense categories, each mapped to Schedule C.",
+    0.7
+   ],
+   [
+    "Set up the app, and connect the bank feed if you can.",
+    0.7
+   ],
+   [
+    "Copy the six rules into a doc called Back office rules, and name each helper you plan to use.",
+    0.7
+   ],
+   [
+    "Check the app's user roles, so a helper can't pay bills or change bank details.",
+    0.7
+   ],
+   [
+    "Then turn on two-factor for your bank and your app.",
+    0.7
+   ],
+   [
+    "So: is there any path an agent could use to move money?",
+    0.7
+   ],
+   [
+    "Pause here and set up your books.",
+    0.0
+   ]
+  ]
+ },
+ "acct-ex1-reveal": {
+  "shape": "exercise-reveal",
+  "chapter": "Exercise 1 · An example result",
+  "lead": 0.5,
+  "tail": 2.5,
+  "lines": [
+   [
+    "For Rolling Ledger, the books are open, and no helper can touch a dollar.",
+    0.35
+   ],
+   [
+    "Here's the example.",
+    0.35
+   ],
+   [
+    "The business is a single-member LLC, with a new business checking account and one debit card.",
+    0.35
+   ],
+   [
+    "The app is QuickBooks Online Essentials, because later lessons use its receipt and invoicing agents.",
+    0.35
+   ],
+   [
+    "The chart of accounts has one income category, eleven expense categories mapped to Schedule C, and two owner accounts.",
+    0.35
+   ],
+   [
+    "Two categories are flagged for the accountant: meals, which are usually only half deductible, and car costs, where mileage and actual expenses are two different methods.",
+    0.35
+   ],
+   [
+    "The bank feed is connected, read only.",
+    0.35
+   ],
+   [
+    "The back office rules name two helpers: Claude Cowork, with the Finance folder only, and an expense bot that may read and download from vendor portals.",
+    0.35
+   ],
+   [
+    "Their user role can't pay bills or change bank details.",
+    0.35
+   ],
+   [
+    "And two-factor is on for both the bank and the app.",
     0.0
    ]
   ]

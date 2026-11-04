@@ -1,0 +1,231 @@
+{
+ "track": "marketing",
+ "inputs": {
+  "hundred": 100,
+  "posts": 3,
+  "rep": 2,
+  "blog": 1,
+  "news": 1,
+  "lessonN": 5,
+  "lo": 25,
+  "hi": 30,
+  "mins": 45,
+  "days": 30
+ },
+ "shots": [
+  {
+   "id": "hook",
+   "type": "desk",
+   "items": [
+    {
+     "id": "head",
+     "kind": "text",
+     "cls": "title",
+     "x": 170,
+     "y": 130,
+     "w": 1600,
+     "text": "AI can draft {hundred|0} posts"
+    },
+    {
+     "id": "d0",
+     "kind": "chip",
+     "x": 170,
+     "y": 360,
+     "icon": "file-text",
+     "text": "Draft post",
+     "until": "L2:pick"
+    },
+    {
+     "id": "d1",
+     "kind": "chip",
+     "x": 560,
+     "y": 330,
+     "icon": "file-text",
+     "text": "Draft post",
+     "until": "L2:pick"
+    },
+    {
+     "id": "d2",
+     "kind": "chip",
+     "x": 980,
+     "y": 380,
+     "icon": "file-text",
+     "text": "Draft post",
+     "until": "L2:pick"
+    },
+    {
+     "id": "d3",
+     "kind": "chip",
+     "x": 1400,
+     "y": 340,
+     "icon": "file-text",
+     "text": "Draft post",
+     "until": "L2:pick"
+    },
+    {
+     "id": "d4",
+     "kind": "chip",
+     "x": 360,
+     "y": 560,
+     "icon": "file-text",
+     "text": "Draft post",
+     "until": "L2:pick"
+    },
+    {
+     "id": "d5",
+     "kind": "chip",
+     "x": 1120,
+     "y": 590,
+     "icon": "file-text",
+     "text": "Draft post",
+     "until": "L2:pick"
+    },
+    {
+     "id": "read",
+     "kind": "chip",
+     "x": 700,
+     "y": 470,
+     "icon": "eye",
+     "text": "You still read every one",
+     "at": "L1:read",
+     "until": "L2:pick"
+    },
+    {
+     "id": "pick",
+     "kind": "paper",
+     "x": 460,
+     "y": 420,
+     "w": 1000,
+     "icon": "calendar-check",
+     "text": "Pick the rhythm you can approve",
+     "at": "L2:pick"
+    }
+   ],
+   "hero": {
+    "move": "light",
+    "target": "pick",
+    "at": "L2:approve"
+   },
+   "camera": "push-in"
+  },
+  {
+   "id": "title",
+   "type": "chapter-card",
+   "from": "L3",
+   "over": "hook",
+   "kicker": "A content calendar",
+   "title": "A rhythm you can keep",
+   "sub": "A realistic week for one founder",
+   "subAt": "L3:realistic"
+  },
+  {
+   "id": "week",
+   "type": "ledger",
+   "from": "L4",
+   "kicker": "One founder",
+   "title": "A realistic week",
+   "grid": {
+    "columns": [
+     {
+      "text": "Channel",
+      "w": "1.3fr"
+     },
+     {
+      "text": "Per week",
+      "w": "1.7fr"
+     }
+    ],
+    "rows": [
+     {
+      "cells": [
+       "Main social channel",
+       {
+        "text": "{posts|0} posts",
+        "at": "L4:three"
+       }
+      ],
+      "at": "L4:main"
+     },
+     {
+      "cells": [
+       "Second channel, optional",
+       {
+        "text": "{rep|0} repurposed posts",
+        "at": "L5:two"
+       }
+      ],
+      "at": "L5:second"
+     },
+     {
+      "cells": [
+       "Blog",
+       {
+        "text": "{blog|0} article, drafted by Claude",
+        "at": "L6:drafted"
+       }
+      ],
+      "at": "L6:blog"
+     },
+     {
+      "cells": [
+       "Newsletter",
+       {
+        "text": "{news|0}, from lesson {lessonN|0}",
+        "at": "L7:five"
+       }
+      ],
+      "at": "L7:newsletter"
+     }
+    ],
+    "total": {
+     "cells": [
+      "A month",
+      "{lo|0} to {hi|0} pieces"
+     ],
+     "at": "L8:twentyfive"
+    }
+   },
+   "hero": "total",
+   "notes": [
+    {
+     "text": "About {mins|0} minutes of review a week",
+     "icon": "timer",
+     "at": "L8:fortyfive",
+     "screen": "low"
+    }
+   ]
+  },
+  {
+   "id": "start",
+   "type": "rule",
+   "from": "L9",
+   "kicker": "Feels like a lot?",
+   "kickerIcon": "minimize-2",
+   "statement": "Consistency beats volume.",
+   "highlight": {
+    "text": "Consistency",
+    "at": "L10:consistency"
+   },
+   "chips": [
+    {
+     "icon": "layers",
+     "text": "Start smaller: one channel and the blog",
+     "at": "L9:start"
+    },
+    {
+     "icon": "calendar-check",
+     "text": "A calendar you keep for {days|0} days",
+     "at": "L10:keep"
+    }
+   ],
+   "notes": [
+    {
+     "text": "Next: turn the rhythm into a sheet",
+     "icon": "arrow-right",
+     "at": "L11:next",
+     "screen": "low"
+    }
+   ]
+  }
+ ]
+}

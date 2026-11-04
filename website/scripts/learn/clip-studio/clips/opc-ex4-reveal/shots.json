@@ -28,7 +28,7 @@
    "type": "figure",
    "from": "L1",
    "src": "public/learn/figures/one-person-company/exercise-04-fig-2.webp",
-   "title": "Groomer Books · example",
+   "title": "Rolling Ledger · example",
    "regions": [
     {
      "rect": [
@@ -38,7 +38,7 @@
       0.375
      ],
      "at": "L3:finance",
-     "label": "Finance assistant: Claude Pro, with a Groomer Books project"
+     "label": "Finance assistant: Claude Pro, with a Rolling Ledger project"
     },
     {
      "rect": [
