@@ -1,0 +1,199 @@
+{
+ "inputs": {
+  "piles": 3
+ },
+ "shots": [
+  {
+   "id": "hook",
+   "type": "desk",
+   "items": [
+    {
+     "id": "draft",
+     "kind": "agent",
+     "x": 170,
+     "y": 200,
+     "w": 860,
+     "icon": "mail",
+     "name": "Email agent",
+     "status": "Draft ready",
+     "statusTone": "sig",
+     "lines": [
+      {
+       "text": "A reply to a client, with your name on it",
+       "at": "L0:agent"
+      }
+     ]
+    },
+    {
+     "id": "send",
+     "kind": "paper",
+     "x": 1160,
+     "y": 228,
+     "w": 420,
+     "icon": "send",
+     "text": "Send"
+    },
+    {
+     "id": "who",
+     "kind": "text",
+     "cls": "title",
+     "x": 170,
+     "y": 560,
+     "w": 1600,
+     "text": "Who clicks the final button?",
+     "at": "L0:who"
+    }
+   ],
+   "hero": {
+    "move": "light",
+    "target": "send",
+    "at": "L0:button"
+   },
+   "camera": "push-in"
+  },
+  {
+   "id": "title",
+   "type": "chapter-card",
+   "from": "L1",
+   "over": "hook",
+   "kicker": "Agents as staff",
+   "title": "Sort the work",
+   "sub": "Into {piles|0} piles",
+   "subAt": "L1:three"
+  },
+  {
+   "id": "piles",
+   "type": "story-cards",
+   "from": "L2",
+   "cards": [
+    {
+     "icon": "layers",
+     "label": "Agent alone",
+     "at": "L2:agent",
+     "rows": [
+      {
+       "text": "Research, summaries, sorting",
+       "at": "L2:research"
+      },
+      {
+       "text": "Drafts saved as drafts",
+       "at": "L2:drafts#1"
+      }
+     ]
+    },
+    {
+     "icon": "user-pen",
+     "label": "Agent drafts, you approve",
+     "at": "L3:agent",
+     "rows": [
+      {
+       "text": "Customer emails, social posts",
+       "at": "L3:customer"
+      },
+      {
+       "text": "Proposals and invoices",
+       "at": "L3:proposals"
+      },
+      {
+       "text": "Anything with your name on it",
+       "at": "L3:name"
+      }
+     ]
+    },
+    {
+     "icon": "user-round",
+     "label": "Only you",
+     "at": "L4:only",
+     "rows": [
+      {
+       "text": "Moving money",
+       "at": "L4:moving"
+      },
+      {
+       "text": "Signing contracts",
+       "at": "L4:signing"
+      },
+      {
+       "text": "Tax and legal calls",
+       "at": "L4:tax"
+      }
+     ]
+    }
+   ],
+   "hero": {
+    "card": 2
+   },
+   "camera": "dolly-right"
+  },
+  {
+   "id": "test",
+   "type": "rule",
+   "from": "L5",
+   "kicker": "The test",
+   "kickerIcon": "hand",
+   "statement": "If a mistake would leave your business or touch money, a human clicks the final button.",
+   "highlight": {
+    "text": "a human clicks the final button.",
+    "at": "L5:human"
+   },
+   "chips": [
+    {
+     "icon": "info",
+     "text": "Even when a product allows more",
+     "at": "L5:holds"
+    },
+    {
+     "icon": "credit-card",
+     "text": "Claude Duet: a one-time virtual card, after your approval",
+     "at": "L6:claude"
+    }
+   ]
+  },
+  {
+   "id": "house",
+   "type": "rule",
+   "from": "L6:in",
+   "kicker": "This course's house rule",
+   "kickerIcon": "shield-check",
+   "at": "L6:course",
+   "statement": "Agents never move money.",
+   "highlight": {
+    "text": "never move money.",
+    "at": "L6:never"
+   }
+  },
+  {
+   "id": "middle",
+   "type": "figure",
+   "from": "L7",
+   "src": "public/learn/figures/one-person-company/lesson-01-fig-2.webp",
+   "title": "Look at the middle pile",
+   "regions": [
+    {
+     "rect": [
+      0.055,
+      0.317,
+      0.89,
+      0.178
+     ],
+     "at": "L7:middle",
+     "label": "Agent drafts, you approve"
+    },
+    {
+     "rect": [
+      0.055,
+      0.317,
+      0.89,
+      0.178
+     ],
+     "at": "L7:first",
+     "label": "Your first hire comes from here"
+    }
+   ],
+   "hero": {
+    "region": 0
+   },
+   "zoom": false
+  }
+ ]
+}

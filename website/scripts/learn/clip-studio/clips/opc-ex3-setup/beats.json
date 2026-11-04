@@ -1,0 +1,13 @@
+[
+ "One agent, a handful of apps, and not one of them using your main password.",
+ "Let's write the policy that keeps it that way.",
+ "In this exercise you'll write an access and approval policy.",
+ "List every app your first agent job needs.",
+ "For each, choose the access method: an official connector, a separate limited user, or you log in yourself through the secure handoff.",
+ "Then set the level: read, draft or act.",
+ "Clean one thing now: remove an unused app from your email, and confirm two-factor is on.",
+ "Write your approval rule in four parts, with money under never, and map it to your product's real controls.",
+ "Finally, write down your off switch.",
+ "So: which apps does your agent get, at what level, and what does it never do?",
+ "Pause here and write your policy."
+]

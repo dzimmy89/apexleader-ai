@@ -7,6 +7,16 @@ template: v2
 
 # Lesson 2: Pick Your Stack at $20, $100 and $300 a Month
 
+:::video
+id: opc-l2-overview
+kind: overview
+status: paused
+src: /learn/video/one-person-company/opc-l2-overview.mp4
+captions: /learn/video/one-person-company/opc-l2-overview.vtt
+poster: /learn/video/one-person-company/opc-l2-overview.jpg
+transcript: Four chatbots, four bills, and not one of them knows your business. There's a cheaper way to build your AI team. This is The One-Person Company, lesson two: pick your stack at twenty, one hundred and three hundred dollars a month. In this lesson: the tool families, three starter stacks, and the rules that stop subscriptions creeping. Start with one main office. That's the tool where your files, instructions and connectors live, because that memory doesn't move between vendors. Then add a specialist only for a job you named, like Cursor for the website. At twenty dollars, you get one main office and free tools. At around one hundred, a stronger office plus one specialist. At around three hundred, two offices and a department of agents, but only when they replace real hours. Watch usage as well as price, because background agents use your plan's limits. And check prices and regions on the vendor's own page before you buy. First, let's meet the tool families.
+:::
+
 :::key-concept
 You do not need every AI subscription. You need one main "office" where most of your work and memory lives, plus one or two specialists for jobs your main tool does badly. Pick by the jobs you sorted in Lesson 1, then by budget, and add an always-on agent only when you have a recurring job for it.
 :::
@@ -40,6 +50,16 @@ Two facts worth knowing:
 - **Grok Bot comes cheap.** As of October 2026, Grok Bot is included with SuperGrok, SuperGrok Plus and SuperGrok Heavy subscriptions, and with Cursor plans from Premium up (Premium, Super, Ultra, Teams and Enterprise, per Cursor's pricing page after its October 12, 2026 plan change). Bot usage resets weekly. It launched as a beta on August 11, 2026, and early reports quoted plan access inconsistently, so check the current docs.
 - **Claude Duet costs nothing extra but is gated.** It is included with Claude Pro and Max during the research preview, but only for US accounts admitted from the waitlist, and its background checks use your normal Claude limits.
 
+:::video
+id: opc-l2-main-office
+kind: inline
+status: paused
+src: /learn/video/one-person-company/opc-l2-main-office.mp4
+captions: /learn/video/one-person-company/opc-l2-main-office.vtt
+poster: /learn/video/one-person-company/opc-l2-main-office.jpg
+transcript: Most founders don't need more AI tools. They need fewer, used well. Here's the shape that works. Pick one main office: Claude, ChatGPT or Gemini, whichever already fits how you work. Put your files, instructions and connectors there first, because that context is what makes an agent useful, and it doesn't transfer between vendors. Then add one or two specialists, each for a job your main tool does badly. Cursor builds and fixes your website. Codex handles code and computer use on a Mac. Grok is fast at real-time research. Always-on agents come with certain plans. Claude Duet is included with Claude Pro and Max, for US accounts admitted from the waitlist. The first dot comes with ChatGPT Pro and Business Premium. Grok Bot is included with SuperGrok plans, and with Cursor plans from Premium up. Next: three starter stacks, by budget.
+:::
+
 ## Stack 1: Under $20 a month
 
 One main office. Everything else free.
@@ -72,6 +92,26 @@ Pick one of these shapes:
 
 Good for: a founder with steady revenue who wants three or four recurring jobs (inbox triage, bookkeeping prep, weekly reporting, site updates) running without them.
 
+:::infographic
+id: fig-1
+type: comparison
+title: Three stacks by budget
+shows: Three columns: $20 (one entry plan, free tools like GitHub, Duet waitlist or Grok Bot); $100 highlighted (a stronger main office, one specialist, Cursor Premium brings Grok Bot); $300 (two offices, a department of agents, only when they replace real hours). Footer: a month, check prices on vendor pages.
+data: none
+image: /learn/figures/one-person-company/lesson-02-fig-1.webp
+alt: Three budget tiers a month: $20 buys one entry plan plus free tools and either the Duet waitlist or Grok Bot; $100 buys a stronger main office plus one specialist, such as Cursor Premium with Grok Bot; $300 buys two offices and a department of agents, only when they replace real hours.
+:::
+
+:::video
+id: opc-l2-three-stacks
+kind: inline
+status: paused
+src: /learn/video/one-person-company/opc-l2-three-stacks.mp4
+captions: /learn/video/one-person-company/opc-l2-three-stacks.vtt
+poster: /learn/video/one-person-company/opc-l2-three-stacks.jpg
+transcript: Twenty, one hundred, or three hundred dollars a month. Each budget buys a different shape of team. Under twenty dollars: one main office on an entry plan, plus free tools like GitHub for your website code. If you're in the US, Claude Pro gets you on the Duet waitlist. Or an entry SuperGrok plan includes Grok Bot. Pick one, not both. Around one hundred: a stronger main office, like Claude's entry Max tier, plus one specialist. Cursor Premium covers the website and brings Grok Bot with it. Around three hundred: two offices and a department of agents, led by Claude, OpenAI or Grok. Only spend this when agents replace real hours, like inbox triage, bookkeeping prep and weekly reports. Whatever the tier, review every ninety days, and cancel any plan you didn't open last month. In the exercise, you'll price your own stack.
+:::
+
 :::try-it
 Write down your three most time-consuming recurring jobs from Lesson 1. Next to each, write which tool family from the table fits it best. If one family wins two or three jobs, that is your main office.
 :::
@@ -84,6 +124,16 @@ Write down your three most time-consuming recurring jobs from Lesson 1. Next to 
 4. **Review every 90 days.** Cancel any plan you did not open in the last month.
 5. **Run your coding agents from one desk.** If you pay for two coding agents (say Claude Code and Codex), T3 Code is a free app that runs both from one window on the plans you already have, so you can send each job to the plan that covers it. The Tool Mastery course T3 Code: One Desk for All Your Agents shows how.
 6. **Regions and accounts matter.** Duet is US-only in the preview. Dots on ChatGPT Pro is not available in the EEA, Switzerland or the UK at launch. Check before you pay.
+
+:::infographic
+id: fig-2
+type: diagram
+title: One main office, a few specialists
+shows: A paper card on the left: One main office, where your files, instructions and connectors live. On the right, three specialist cards with Lucide icons: Cursor for your website or app, Codex for code and Mac computer use, Grok for real-time research.
+data: none
+image: /learn/figures/one-person-company/lesson-02-fig-2.webp
+alt: One main office holds your files, instructions and connectors. Beside it sit specialists with one job each: Cursor for your website or app, Codex for code and Mac computer use, and Grok for real-time research.
+:::
 
 Here is a prompt to pressure-test your choice:
 

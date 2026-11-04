@@ -1,0 +1,10 @@
+{
+ "about": "Where a clip's finished files go (relative to website/). run-lesson.sh copies <clip>.mp4/.jpg/.vtt there. The longest matching clip-id prefix wins; null means keep it in clips/out only. A clip's shots.json \"dest\" (a path, or null) overrides this. public/learn/video/ is gitignored: clips never go into git.",
+ "prefixes": {
+  "opc-": "public/learn/video/one-person-company",
+  "mkt-": "public/learn/video/ai-marketing",
+  "sales-": "public/learn/video/ai-sales",
+  "acct-": "public/learn/video/ai-accounting",
+  "demo-": null
+ }
+}

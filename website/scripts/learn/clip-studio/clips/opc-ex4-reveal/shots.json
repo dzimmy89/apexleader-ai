@@ -1,0 +1,192 @@
+{
+ "inputs": {
+  "filled": 2,
+  "waiting": 3,
+  "instaMin": 45
+ },
+ "shots": [
+  {
+   "id": "answer",
+   "type": "reveal",
+   "question": {
+    "clip": "opc-ex4-setup",
+    "shot": "ask"
+   },
+   "answers": [
+    {
+     "text": "{filled|0} filled, {waiting|0} wait",
+     "at": "L0:filled"
+    },
+    {
+     "text": "Yes, one each",
+     "at": "L0:owner"
+    }
+   ]
+  },
+  {
+   "id": "chart",
+   "type": "figure",
+   "from": "L1",
+   "src": "public/learn/figures/one-person-company/exercise-04-fig-2.webp",
+   "title": "Rolling Ledger · example",
+   "regions": [
+    {
+     "rect": [
+      0.04,
+      0.565,
+      0.3,
+      0.375
+     ],
+     "at": "L3:finance",
+     "label": "Finance assistant: Claude Pro, with a Rolling Ledger project"
+    },
+    {
+     "rect": [
+      0.04,
+      0.565,
+      0.3,
+      0.375
+     ],
+     "at": "L3:sorts",
+     "label": "Sorts receipts, drafts overdue-invoice reminders each Monday"
+    },
+    {
+     "rect": [
+      0.04,
+      0.565,
+      0.3,
+      0.375
+     ],
+     "at": "L3:reads",
+     "label": "Reads the invoicing app as a viewer"
+    },
+    {
+     "rect": [
+      0.04,
+      0.565,
+      0.3,
+      0.375
+     ],
+     "at": "L3:gmail",
+     "label": "Drafts in Gmail, never sends without a yes"
+    },
+    {
+     "rect": [
+      0.348,
+      0.565,
+      0.3,
+      0.375
+     ],
+     "at": "L4:product",
+     "label": "Product and website: free GitHub plus Claude Pro"
+    },
+    {
+     "rect": [
+      0.04,
+      0.18,
+      0.3,
+      0.375
+     ],
+     "at": "L5:chief",
+     "label": "Chief of staff: Claude Duet, once the waitlist lets the account in"
+    },
+    {
+     "rect": [
+      0.04,
+      0.18,
+      0.3,
+      0.375
+     ],
+     "at": "L5:until",
+     "label": "Until then, that box says open"
+    },
+    {
+     "rect": [
+      0.348,
+      0.18,
+      0.3,
+      0.375
+     ],
+     "at": "L6:sales",
+     "label": "Sales and customers: me for now"
+    },
+    {
+     "rect": [
+      0.657,
+      0.18,
+      0.3,
+      0.375
+     ],
+     "at": "L6:marketing",
+     "label": "Marketing and content: me for now"
+    }
+   ],
+   "hero": {
+    "region": 0
+   },
+   "notes": [
+    {
+     "text": "The founder approves anything external or about money",
+     "icon": "crown",
+     "at": "L2:founder",
+     "screen": "top",
+     "until": "L3"
+    }
+   ],
+   "zoom": false
+  },
+  {
+   "id": "audit",
+   "type": "story-cards",
+   "from": "L7",
+   "kicker": "The audit found two fixes",
+   "titleAt": "L7:audit",
+   "cards": [
+    {
+     "icon": "calendar-x",
+     "label": "Remove calendar access",
+     "sub": "The finance assistant didn't need it",
+     "at": "L7:remove"
+    },
+    {
+     "icon": "file-pen-line",
+     "label": "Add delete to the rule",
+     "sub": "The chief of staff's approval rule",
+     "at": "L7:add"
+    }
+   ],
+   "hero": {
+    "card": 1
+   }
+  },
+  {
+   "id": "next",
+   "type": "story-cards",
+   "from": "L8",
+   "cards": [
+    {
+     "icon": "megaphone",
+     "label": "Next hire: marketing and content",
+     "sub": "For the Instagram posts",
+     "at": "L8:next",
+     "rows": [
+      {
+       "text": "{instaMin|0} minutes a week",
+       "at": "L8:fortyfive"
+      }
+     ]
+    },
+    {
+     "icon": "calendar-check",
+     "label": "The Friday review",
+     "sub": "On the calendar",
+     "at": "L9:friday"
+    }
+   ],
+   "hero": {
+    "card": 1,
+    "at": "L9:calendar"
+   }
+  }
+ ]
+}

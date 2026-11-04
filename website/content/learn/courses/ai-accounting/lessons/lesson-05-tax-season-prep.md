@@ -7,6 +7,16 @@ template: v2
 
 # Lesson 5: Tax-Season Prep
 
+:::video
+id: acct-l5-overview
+kind: overview
+status: paused
+src: /learn/video/ai-accounting/acct-l5-overview.mp4
+captions: /learn/video/ai-accounting/acct-l5-overview.vtt
+poster: /learn/video/ai-accounting/acct-l5-overview.jpg
+transcript: If the earlier lessons are running, tax season is mostly a packaging job. This is AI Accounting, lesson five: tax-season prep. In this lesson: the forms, clean categories, contractor forms, the year-end packet, and better questions. This is general information for US sole proprietors and single-member LLCs, not tax advice. Your business usually shows up on your personal return, through Schedule C and Schedule SE, with quarterly estimates during the year. In December, run a full-year profit and loss, and clear anything uncategorized. Collect W-9s from contractors before year end, not in January. Then, in January, Claude Cowork assembles a packet: reports, a summary, and a list of questions for your accountant. You fill in the facts only you know. AI assembles and asks. Your accountant advises and prepares. You review and sign. First, the forms.
+:::
+
 :::key-concept
 If the earlier lessons are running, tax season is mostly a packaging job. An agent assembles your year-end packet (reports, receipts, contractor forms, estimated payments) and a list of questions. Your accountant prepares and reviews the return. You sign it. This lesson is general information for US sole proprietors and single-member LLCs, not tax advice.
 :::
@@ -41,6 +51,16 @@ For a US sole proprietor, or a single-member LLC taxed the default way, the busi
 
 Two changes to know for the 2026 tax year. Under the 2025 tax law often called the One Big Beautiful Bill Act, the 1099-NEC reporting threshold rises from $600 to $2,000 for payments made in 2026, and 1099-K reporting thresholds for payment platforms changed as well. Confirm the current numbers with your accountant or on IRS.gov.
 
+:::infographic
+id: fig-1
+type: comparison
+title: The federal forms, in one picture
+shows: Six form cards in two groups. On your return: Schedule C (business profit), Schedule SE (self-employment tax), 1040-ES (quarterly estimates). Contractors and platforms: W-9 (you collect), 1099-NEC (you send, by Jan 31, highlighted), 1099-K (platforms may send). Footer: general information, confirm with your accountant.
+data: none
+image: /learn/figures/ai-accounting/lesson-05-fig-1.webp
+alt: Federal forms for a typical US sole proprietor. On your return: Schedule C for business profit, Schedule SE for self-employment tax, and 1040-ES for quarterly estimates. For contractors and platforms: you collect a W-9, you send a 1099-NEC by January 31, and platforms may send you a 1099-K. General information only; confirm with your accountant.
+:::
+
 If your LLC has more than one owner, or you elected S corporation or C corporation tax treatment, your forms and deadlines are different. Ask your accountant which apply. State and local taxes (including sales tax, if you sell taxable goods or services) are separate.
 
 ## Step 2: Make your categories do the work
@@ -71,6 +91,16 @@ Then you email the flagged contractors for a W-9. Payments made by card or throu
 W-9s contain Social Security or tax ID numbers. Store them in a private folder, never paste their contents into an AI chat, and don't let any agent email them. When an agent checks for W-9s, it only needs to know the file exists.
 :::
 
+:::video
+id: acct-l5-w9
+kind: inline
+status: paused
+src: /learn/video/ai-accounting/acct-l5-w9.mp4
+captions: /learn/video/ai-accounting/acct-l5-w9.vtt
+poster: /learn/video/ai-accounting/acct-l5-w9.jpg
+transcript: January thirty-first comes fast when you're chasing contractors for tax forms. Start now. If you paid a designer, an assistant or a developer, you need a W-9 from each one. Have Claude Cowork read your expense log and bank export, and list everyone you paid for contract labor or professional fees: total paid, how you paid, and whether a W-9 file exists. It flags anyone paid two thousand dollars or more by bank transfer or check, with no W-9 on file. That two-thousand-dollar threshold is new for payments made in twenty twenty-six, so confirm it with your accountant. Payments by card or some payment platforms are usually reported by the platform instead. Then you email the flagged contractors yourself. W-9s carry tax ID numbers, so store them privately, never paste them into a chat, and never let an agent email them. The agent only needs to know the file exists. Next: the packet.
+:::
+
 ## Step 4: Build the year-end packet
 
 Create `Finance/Tax/2026 packet/` and have Claude Cowork assemble it in January:
@@ -91,6 +121,16 @@ Never delete or modify original files.
 
 You fill in the blanks (home office square footage, mileage log, retirement contributions, health insurance premiums) and review the questions. Then share the packet with your accountant through their secure portal, not as a plain email attachment.
 
+:::video
+id: acct-l5-packet
+kind: inline
+status: paused
+src: /learn/video/ai-accounting/acct-l5-packet.mp4
+captions: /learn/video/ai-accounting/acct-l5-packet.vtt
+poster: /learn/video/ai-accounting/acct-l5-packet.jpg
+transcript: Accountants charge for time, and most of that time goes into chasing missing information. Hand them a packet instead. In January, create a packet folder for the year, and have Claude Cowork assemble it. It copies in the full-year profit and loss, the balance sheet, your expense log and the receipts index. It builds a summary: income by month, expenses by category, estimated tax payments made, and contractor totals. And it writes a document called Questions for my accountant: any expense over twenty-five hundred dollars that might be equipment, your meals and travel totals, anything still marked unsure, and blanks for the facts only you know, like home office size, mileage and health insurance. The prompt forbids tax conclusions. Everything is a question, or a fact with a source. Fill in your blanks, then share the packet through your accountant's secure portal, not as an email attachment. In the exercise, you'll build yours.
+:::
+
 ## Step 5: Ask better questions with AI
 
 Before the accountant meeting, use Claude or ChatGPT to understand, not decide:
@@ -107,6 +147,16 @@ You arrive informed, the meeting is shorter, and the decisions stay with the lic
 ## The rule for every tax step
 
 AI assembles, summarizes and asks. Your accountant advises and prepares. You review and sign. No agent pays taxes, files returns, or submits forms on your behalf. Paying estimated taxes is a money movement, so you do it yourself through IRS Direct Pay or your accountant's process.
+
+:::infographic
+id: fig-2
+type: comparison
+title: Who does what at tax time
+shows: Three columns: AI (assembles, summarizes, asks), your accountant (advises, prepares), and you (highlighted: review, sign, pay). Footer with a ban icon: no agent files, pays or submits anything.
+data: none
+image: /learn/figures/ai-accounting/lesson-05-fig-2.webp
+alt: At tax time, AI assembles the packet, summarizes and asks questions. Your accountant advises and prepares the return. You review, sign and pay. No agent files a return, pays a tax or submits a form.
+:::
 
 :::try-it
 Search your business bank account for payments to people (not companies) this year. How many did you pay by bank transfer, and do you have a W-9 for each? That's the first item on your tax checklist.

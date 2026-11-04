@@ -1,0 +1,27 @@
+<!doctype html><meta charset="utf-8">
+<meta name="out" content="public/learn/figures/ai-accounting/exercise-03-fig-2.webp">
+<link rel="stylesheet" href="../../../../scripts/learn/infographics/brand.css">
+<style>
+.head{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.wrap{flex:1;display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center}
+.tot{display:flex;flex-direction:column;gap:6px}
+.tot .num{font-size:60px}
+.tot .num.o{font-size:44px;color:var(--bad)}
+.bars{display:flex;flex-direction:column;gap:8px}
+.b{display:grid;grid-template-columns:150px 1fr;gap:12px;align-items:center}
+.fill{width:fit-content;height:44px;border-radius:8px;background:color-mix(in oklch,var(--track) 35%,transparent);display:flex;align-items:center;padding:0 12px;font:600 26px/1 var(--body);white-space:nowrap}
+.fill.key{background:var(--track);color:var(--ink)}
+</style>
+<div class="fig wide accounting">
+  <div class="head"><span class="label">Rolling Ledger AR</span><span class="sys">example</span></div>
+  <div class="wrap">
+    <div class="tot"><span class="num">$1,192</span><span class="small">owed, 8 &times; $149</span><span class="num o">$298</span><span class="small">over 30 days</span></div>
+    <div class="bars">
+      <div class="b"><span class="sys">Current</span><div class="fill">2</div></div>
+      <div class="b"><span class="sys">5-14 d</span><div class="fill">2 reminders</div></div>
+      <div class="b"><span class="sys">15-30 d</span><div class="fill">2 drafts</div></div>
+      <div class="b"><span class="sys">45 d</span><div class="fill">1 call</div></div>
+      <div class="b"><span class="sys">75 d</span><div class="fill key">1 you decide</div></div>
+    </div>
+  </div>
+</div>

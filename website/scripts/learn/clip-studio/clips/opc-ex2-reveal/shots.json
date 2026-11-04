@@ -1,0 +1,186 @@
+{
+ "inputs": {
+  "tier": 20,
+  "jobs": 3,
+  "remind": 75,
+  "insta": 45,
+  "receipts": 40,
+  "review": 90
+ },
+ "shots": [
+  {
+   "id": "answer",
+   "type": "reveal",
+   "question": {
+    "clip": "opc-ex2-setup",
+    "shot": "ask"
+   },
+   "answers": [
+    {
+     "text": "One {tier|$0} plan",
+     "at": "L0:plan"
+    },
+    {
+     "text": "Yes, all {jobs|0} jobs",
+     "at": "L0:jobs"
+    }
+   ]
+  },
+  {
+   "id": "example",
+   "type": "figure",
+   "from": "L1",
+   "src": "public/learn/figures/one-person-company/exercise-02-fig-2.webp",
+   "title": "Rolling Ledger · example",
+   "regions": [
+    {
+     "rect": [
+      0.035,
+      0.045,
+      0.43,
+      0.115
+     ],
+     "at": "L2:tier",
+     "label": "The tier: {tier|$0} a month"
+    },
+    {
+     "rect": [
+      0.035,
+      0.33,
+      0.485,
+      0.145
+     ],
+     "at": "L3:overdueinvoice",
+     "label": "Overdue-invoice reminders: {remind|0} minutes a week"
+    },
+    {
+     "rect": [
+      0.035,
+      0.488,
+      0.485,
+      0.145
+     ],
+     "at": "L3:instagram",
+     "label": "Instagram posts: {insta|0} minutes"
+    },
+    {
+     "rect": [
+      0.035,
+      0.645,
+      0.485,
+      0.145
+     ],
+     "at": "L3:sorting",
+     "label": "Sorting receipts: {receipts|0} minutes"
+    },
+    {
+     "rect": [
+      0.035,
+      0.325,
+      0.485,
+      0.475
+     ],
+     "at": "L4:writing",
+     "label": "All writing and sorting jobs"
+    },
+    {
+     "rect": [
+      0.525,
+      0.18,
+      0.435,
+      0.76
+     ],
+     "at": "L4:claude",
+     "label": "One main office handles them: Claude Pro"
+    },
+    {
+     "rect": [
+      0.525,
+      0.18,
+      0.435,
+      0.76
+     ],
+     "at": "L4:drafts",
+     "label": "Drafts the reminders and the posts"
+    },
+    {
+     "rect": [
+      0.525,
+      0.18,
+      0.435,
+      0.76
+     ],
+     "at": "L4:sorts",
+     "label": "Sorts receipts in a project"
+    },
+    {
+     "rect": [
+      0.525,
+      0.18,
+      0.435,
+      0.76
+     ],
+     "at": "L5:manual",
+     "label": "Posting stays manual. Nothing publishes without the founder."
+    }
+   ],
+   "hero": {
+    "region": 5
+   },
+   "zoom": false
+  },
+  {
+   "id": "checks",
+   "type": "story-cards",
+   "from": "L6",
+   "kicker": "The checks",
+   "titleAt": "L6:no",
+   "cards": [
+    {
+     "icon": "layers",
+     "label": "No overlap",
+     "sub": "There is only one plan",
+     "at": "L6:overlap"
+    },
+    {
+     "icon": "sunrise",
+     "label": "Always-on agent",
+     "sub": "The Claude Duet waitlist",
+     "at": "L7:alwayson",
+     "rows": [
+      {
+       "text": "After checking the account is in the US",
+       "at": "L7:checking"
+      }
+     ]
+    },
+    {
+     "icon": "hourglass",
+     "label": "Specialists wait",
+     "sub": "Until a week of real use",
+     "at": "L8:specialists"
+    },
+    {
+     "icon": "calendar-check",
+     "label": "A review date",
+     "sub": "{review|0} days out",
+     "at": "L8:review"
+    }
+   ],
+   "hero": {
+    "card": 3
+   },
+   "notes": [
+    {
+     "text": "A stack decision you can act on today",
+     "icon": "check",
+     "at": "L9:stack",
+     "screen": "top",
+     "tone": "signal"
+    }
+   ],
+   "cardW": 380,
+   "gap": 36
+  }
+ ]
+}

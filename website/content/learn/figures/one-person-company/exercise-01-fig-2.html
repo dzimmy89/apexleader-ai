@@ -1,0 +1,23 @@
+<!doctype html><meta charset="utf-8">
+<meta name="out" content="public/learn/figures/one-person-company/exercise-01-fig-2.webp">
+<link rel="stylesheet" href="../../../../scripts/learn/infographics/brand.css">
+<style>
+  .bars { display: flex; flex-direction: column; gap: 14px; }
+  .row { display: grid; grid-template-columns: 250px 1fr; align-items: center; gap: 16px; }
+  .track { height: 44px; position: relative; }
+  .bar { height: 44px; border-radius: 6px; background: var(--panel-raised); border: 1.5px solid var(--line-strong); display: flex; align-items: center; justify-content: flex-end; padding-right: 12px; font: 600 26px/1 var(--body); color: var(--text); }
+  .bar.hire { background: var(--signal-soft); border-color: var(--signal); }
+  .head { display: flex; justify-content: space-between; align-items: baseline; }
+  .foot { margin-top: auto; display: flex; align-items: center; gap: 14px; }
+  .foot .label { color: var(--paper-text); }
+</style>
+<div class="fig wide">
+  <div class="head"><span class="label">Rolling Ledger, one week</span><span class="sys">example numbers</span></div>
+  <div class="bars">
+    <!-- Widths are minutes / 310 (the longest pile) of the 462 px track. -->
+    <div class="row"><span class="label">Agent alone</span><div class="track"><div class="bar" style="width:283px">190 min</div></div></div>
+    <div class="row"><span class="label">Agent drafts</span><div class="track"><div class="bar hire" style="width:462px">310 min</div></div></div>
+    <div class="row"><span class="label">Only you</span><div class="track"><div class="bar" style="width:387px">260 min</div></div></div>
+  </div>
+  <div class="paper foot"><span class="label">First hire: invoice reminders, 75 min a week</span></div>
+</div>

@@ -1,0 +1,250 @@
+{
+ "track": "accounting",
+ "inputs": {
+  "cats": 15,
+  "mins": 15
+ },
+ "shots": [
+  {
+   "id": "hook",
+   "type": "desk",
+   "items": [
+    {
+     "id": "head",
+     "kind": "text",
+     "cls": "title",
+     "x": 170,
+     "y": 130,
+     "w": 1600,
+     "text": "Your AI helpers need your transactions"
+    },
+    {
+     "id": "tx",
+     "kind": "list",
+     "x": 170,
+     "y": 380,
+     "w": 760,
+     "title": "Transactions",
+     "rows": [
+      {
+       "text": "Software subscription"
+      },
+      {
+       "text": "Client payment",
+       "at": "L0:see"
+      },
+      {
+       "text": "Card processing fee",
+       "at": "L0:transactions"
+      }
+     ]
+    },
+    {
+     "id": "pw",
+     "kind": "paper",
+     "x": 1010,
+     "y": 430,
+     "w": 760,
+     "icon": "key-round",
+     "text": "They never need your bank password",
+     "at": "L1:never"
+    }
+   ],
+   "hero": {
+    "move": "light",
+    "target": "pw",
+    "at": "L1:password"
+   },
+   "camera": "push-in"
+  },
+  {
+   "id": "title",
+   "type": "chapter-card",
+   "from": "L2",
+   "over": "hook",
+   "kicker": "Set up the books",
+   "title": "How the money data flows"
+  },
+  {
+   "id": "flow",
+   "type": "figure",
+   "from": "L3",
+   "src": "public/learn/figures/ai-accounting/lesson-01-fig-1.webp",
+   "title": "One account, one feed, one app",
+   "zoom": false,
+   "regions": [
+    {
+     "rect": [
+      0.045,
+      0.175,
+      0.177,
+      0.43
+     ],
+     "at": "L3:business",
+     "label": "Every business dollar"
+    },
+    {
+     "rect": [
+      0.365,
+      0.135,
+      0.25,
+      0.51
+     ],
+     "at": "L4:inside",
+     "label": "Connect them inside your accounting app"
+    },
+    {
+     "rect": [
+      0.225,
+      0.28,
+      0.11,
+      0.22
+     ],
+     "at": "L4:readonly",
+     "label": "A read-only feed, inside the app"
+    },
+    {
+     "rect": [
+      0.365,
+      0.135,
+      0.25,
+      0.51
+     ],
+     "at": "L5:imports",
+     "label": "The app imports transactions"
+    },
+    {
+     "rect": [
+      0.225,
+      0.28,
+      0.11,
+      0.22
+     ],
+     "at": "L6:cant",
+     "label": "It can't send money"
+    },
+    {
+     "rect": [
+      0.365,
+      0.135,
+      0.25,
+      0.51
+     ],
+     "at": "L7:categories",
+     "label": "Your categories live in the app too"
+    }
+   ],
+   "hero": {
+    "region": 4
+   }
+  },
+  {
+   "id": "cats",
+   "type": "story-cards",
+   "from": "L8",
+   "kicker": "Your categories live in the app",
+   "title": "{cats|0} expense categories at most",
+   "titleAt": "L8:keep",
+   "cardW": 460,
+   "gap": 40,
+   "cards": [
+    {
+     "icon": "megaphone",
+     "label": "Advertising",
+     "at": "L8:advertising"
+    },
+    {
+     "icon": "hard-hat",
+     "label": "Contract labor",
+     "at": "L8:contract"
+    },
+    {
+     "icon": "scale",
+     "label": "Legal and professional fees",
+     "at": "L8:legal"
+    }
+   ],
+   "hero": {
+    "card": 0
+   },
+   "notes": [
+    {
+     "text": "Each mapped to a line on Schedule C",
+     "icon": "file-text",
+     "at": "L8:mapped",
+     "screen": "low"
+    }
+   ]
+  },
+  {
+   "id": "helpers",
+   "type": "figure",
+   "from": "L9",
+   "src": "public/learn/figures/ai-accounting/lesson-01-fig-1.webp",
+   "title": "Helpers read the app",
+   "zoom": false,
+   "regions": [
+    {
+     "rect": [
+      0.78,
+      0.14,
+      0.175,
+      0.5
+     ],
+     "at": "L9:helpers",
+     "label": "AI helpers read from the app"
+    },
+    {
+     "rect": [
+      0.78,
+      0.14,
+      0.175,
+      0.5
+     ],
+     "at": "L9:limited",
+     "label": "Through their own limited logins"
+    },
+    {
+     "rect": [
+      0.045,
+      0.76,
+      0.91,
+      0.17
+     ],
+     "at": "L9:never",
+     "label": "Never through your bank"
+    }
+   ],
+   "hero": {
+    "region": 2
+   }
+  },
+  {
+   "id": "review",
+   "type": "rule",
+   "from": "L10",
+   "kicker": "Claude drafts the list",
+   "kickerIcon": "pencil",
+   "statement": "{mins|0} minutes now prevents a year of miscategorized expenses.",
+   "highlight": {
+    "text": "a year",
+    "at": "L11:year"
+   },
+   "chips": [
+    {
+     "icon": "user-check",
+     "text": "Your accountant reviews it once",
+     "at": "L10:accountant"
+    }
+   ],
+   "notes": [
+    {
+     "text": "Next: the rules every helper follows",
+     "icon": "arrow-right",
+     "at": "L12:next",
+     "screen": "low"
+    }
+   ]
+  }
+ ]
+}

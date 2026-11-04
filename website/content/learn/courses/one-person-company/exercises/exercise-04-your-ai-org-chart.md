@@ -13,6 +13,16 @@ You'll build a one-page AI Org Chart for your business: you at the top, five fun
 
 **Time:** 35 minutes · **You'll need:** Your three documents from Exercises 1 to 3, any AI chat, a doc or whiteboard tool · **Builds on:** Lesson 4
 
+:::video
+id: opc-ex4-setup
+kind: exercise-setup
+status: paused
+src: /learn/video/one-person-company/opc-ex4-setup.mp4
+captions: /learn/video/one-person-company/opc-ex4-setup.vtt
+poster: /learn/video/one-person-company/opc-ex4-setup.jpg
+transcript: Three documents, five boxes, and you at the top. Time to turn your work so far into one chart. In this exercise you'll draw your AI org chart. Put yourself at the top: you approve anything external or about money. Under you go five boxes: chief of staff, sales and customers, marketing and content, finance assistant, and product and website. Fill each box you can from your stack decision, and mark the rest as me for now, or open. Write a six-line role card for each filled box. Run the audit prompt, apply the fixes you agree with, and ignore anything that gives an agent money access. Then add the Friday review, and put it on your calendar. So: which box do you fill first, and does every job have exactly one owner? Pause here and draw your chart.
+:::
+
 ## Warm-up
 
 :::checkpoint
@@ -24,6 +34,16 @@ Why: One owner per job avoids duplicate drafts and wasted usage, and approval ru
 :::
 
 ## Steps
+
+:::infographic
+id: fig-1
+type: flow
+title: Three documents, one chart
+shows: Three cards with Lucide icons on the left: Delegation Map, Stack Decision, Access Policy. An orange arrow points to a paper card: AI Org Chart v1, 5 boxes, a role card each, a Friday review.
+data: none
+image: /learn/figures/one-person-company/exercise-04-fig-1.webp
+alt: Your Delegation Map, Stack Decision and Access Policy combine into AI Org Chart v1: five boxes, a role card for each, and a Friday review.
+:::
 
 1. **Draw the frame.** Put "Founder (you): approves anything external or about money" at the top. Under it, five boxes: Chief of Staff, Sales and Customers, Marketing and Content, Finance Assistant, Product and Website.
 
@@ -75,6 +95,51 @@ FRIDAY REVIEW (15 minutes)
 - [ ] No job has two owners, and no agent has money access
 - [ ] You applied at least two fixes from the audit
 - [ ] The Friday review checklist is on the chart and on your calendar
+
+:::example
+title: See an example result
+Here is the org chart for the sample business, Rolling Ledger, on the example $20 stack from Exercise 2.
+
+:::video
+id: opc-ex4-reveal
+kind: exercise-reveal
+status: paused
+src: /learn/video/one-person-company/opc-ex4-reveal.mp4
+captions: /learn/video/one-person-company/opc-ex4-reveal.vtt
+poster: /learn/video/one-person-company/opc-ex4-reveal.jpg
+transcript: For Rolling Ledger, two boxes are filled, three wait, and every job has one owner. Here's the example chart. The founder sits at the top and approves anything external or about money. The finance assistant is Claude Pro with a Rolling Ledger project. It sorts receipts and drafts overdue-invoice reminders each Monday. It reads the invoicing app as a viewer, and drafts in Gmail, never sending without a yes. Product and website is free GitHub plus Claude Pro. The chief of staff will be Claude Duet once the waitlist lets the account in. Until then, that box says open. Sales and customers, and marketing and content, say me for now. The audit found two fixes: remove calendar access the finance assistant didn't need, and add delete to the chief of staff's rule. The next hire is marketing and content, for the Instagram posts, forty-five minutes a week. And the Friday review is on the calendar.
+:::
+
+:::infographic
+id: fig-2
+type: diagram
+title: Rolling Ledger org chart
+shows: Under "Rolling Ledger org chart" tagged example: a 3 by 2 grid. Chief of Staff, open, Duet waitlist; Sales, me for now; Marketing, me for now, next hire; Finance, highlighted, Claude Pro project; Product, GitHub plus Claude Pro; Friday review, 15 min, on the calendar.
+data: none
+image: /learn/figures/one-person-company/exercise-04-fig-2.webp
+alt: Example Rolling Ledger org chart: the chief of staff is open until the Duet waitlist admits the account, sales and marketing are the founder for now with marketing as the next hire, finance is a Claude Pro project, product is GitHub plus Claude Pro, and a 15-minute Friday review is on the calendar.
+:::
+
+| Box | Tool | Status |
+|---|---|---|
+| Chief of Staff | Claude Duet, once admitted from the waitlist | Open |
+| Sales and Customers | - | Me for now |
+| Marketing and Content | - | Me for now, next hire (Instagram posts, 45 min a week) |
+| Finance Assistant | Claude Pro, a Rolling Ledger project | Filled |
+| Product and Website | Free GitHub plus Claude Pro | Filled |
+
+```text
+ROLE: Finance Assistant
+TOOL: Claude Pro, a Rolling Ledger project
+JOB: Sort receipts weekly; each Monday, draft reminders for invoices
+     more than 7 days overdue.
+ACCESS: Invoicing app as a viewer user; Gmail via connector, drafts only.
+APPROVAL: Asks before sending any email or changing an invoice. No money.
+REVIEW: I check drafts each Monday; 15-minute review on Fridays.
+```
+
+**Fixes applied from the audit:** removed calendar access the finance assistant did not need, and added "delete" to the chief of staff's approval rule.
+:::
 
 :::coached
 **For 1-on-1 coaching clients.** Build the 90-day version.

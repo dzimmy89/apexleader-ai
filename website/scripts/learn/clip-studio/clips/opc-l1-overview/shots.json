@@ -1,0 +1,54 @@
+{
+ "inputs": {"lesson": 1, "closeHour": 6, "agents": 3, "emails": 2, "launches": 3},
+ "shots": [
+  {"id": "hook", "type": "desk",
+   "items": [
+    {"id": "laptop", "kind": "laptop", "x": 160, "y": 200, "closeAt": "L0:closes"},
+    {"id": "clock", "kind": "chip", "x": 310, "y": 700, "icon": "clock", "text": "{closeHour|0} PM", "swap": {"icon": "sunrise", "text": "By morning", "at": "L0:morning"}, "swapW": 330},
+    {"id": "head", "kind": "text", "cls": "kicker", "x": 930, "y": 118, "text": "{agents|0} agents, overnight", "at": "L0:three"},
+    {"id": "inbox", "kind": "agent", "x": 930, "y": 170, "w": 860, "icon": "inbox", "name": "Inbox agent", "status": "Done", "statusTone": "ok", "statusIcon": "check", "lines": [{"text": "Inbox sorted"}], "at": "L0:sorted"},
+    {"id": "email", "kind": "agent", "x": 930, "y": 352, "w": 860, "icon": "mail", "name": "Email agent", "status": "Drafts", "lines": [{"text": "{emails|0} client emails drafted"}], "at": "L0:drafted"},
+    {"id": "report", "kind": "agent", "x": 930, "y": 534, "w": 860, "icon": "file-text", "name": "Report agent", "status": "Done", "statusTone": "ok", "statusIcon": "check", "lines": [{"text": "A short report, left for you"}], "at": "L0:report"},
+    {"id": "yes", "kind": "paper", "x": 930, "y": 718, "w": 860, "icon": "shield-check", "text": "Nothing went out without a yes", "at": "L0:nothing"}
+   ],
+   "hero": {"move": "light", "target": "yes", "at": "L0:yes"}, "camera": "push-in"},
+  {"id": "title", "type": "chapter-card", "from": "L1", "over": "hook",
+   "kicker": "The One-Person Company · Lesson {lesson|0}", "title": "Agents as staff",
+   "sub": "In this lesson", "subAt": "L2:lesson",
+   "agenda": [
+    {"text": "Three kinds of AI help", "icon": "layers", "at": "L2:three"},
+    {"text": "What changed in 2026", "icon": "calendar", "at": "L2:changed"},
+    {"text": "Four things every agent needs", "icon": "clipboard-list", "at": "L2:four"}
+   ]},
+  {"id": "kinds", "type": "story-cards", "from": "L3",
+   "cards": [
+    {"icon": "message-square", "label": "Chat assistant", "sub": "Answers when you ask", "at": "L3:chat"},
+    {"icon": "monitor", "label": "Desktop agent", "sub": "Works on your files while you watch or step away", "at": "L3:desktop"},
+    {"icon": "cloud", "label": "Always-on agent", "sub": "Runs on its own cloud computer", "at": "L4:alwayson",
+     "rows": [{"text": "Checks your apps on a schedule", "at": "L4:schedule"}, {"text": "Messages you first", "at": "L4:message"}]}
+   ],
+   "hero": {"card": 2}, "camera": "dolly-right"},
+  {"id": "launches", "type": "timeline", "from": "L5", "kicker": "What changed in 2026", "title": "{launches|0} launched in a few months", "titleAt": "L5:three",
+   "markers": [
+    {"date": "Aug 2026", "label": "Grok Bot", "icon": "calendar", "at": "L5:august"},
+    {"date": "Sep 2026", "label": "OpenAI dots", "icon": "calendar", "at": "L5:september"},
+    {"date": "Oct 2026", "label": "Claude Duet", "icon": "calendar", "at": "L5:october"}
+   ],
+   "hero": {"marker": 2}},
+  {"id": "job", "type": "rule", "from": "L6", "kicker": "The founder's new job", "kickerIcon": "briefcase",
+   "statement": "Stop opening apps. Start managing staff.", "highlight": {"text": "Start managing staff.", "at": "L6:managing"}},
+  {"id": "four", "type": "figure", "from": "L7", "src": "public/learn/figures/one-person-company/lesson-01-fig-1.webp", "zoom": false,
+   "title": "Every agent gets",
+   "regions": [
+    {"rect": [0.045, 0.067, 0.445, 0.414], "at": "L7:brief", "label": "A brief"},
+    {"rect": [0.51, 0.067, 0.445, 0.414], "at": "L7:access", "label": "Its own access"},
+    {"rect": [0.045, 0.518, 0.445, 0.414], "at": "L7:approval", "label": "An approval rule"},
+    {"rect": [0.51, 0.518, 0.445, 0.414], "at": "L7:review", "label": "A regular review"}
+   ],
+   "hero": {"region": 2}},
+  {"id": "rule", "type": "rule", "from": "L8", "kicker": "One rule over all of it", "kickerIcon": "hand",
+   "statement": "If a task leaves the business or touches money, a human clicks the final button.",
+   "highlight": {"text": "a human clicks the final button.", "at": "L8:human"},
+   "notes": [{"text": "Next: the three kinds of AI help", "icon": "arrow-right", "at": "L9:first", "screen": "low"}]}
+ ]
+}

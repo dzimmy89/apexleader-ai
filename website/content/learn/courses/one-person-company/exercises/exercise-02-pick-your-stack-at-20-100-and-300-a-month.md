@@ -13,6 +13,16 @@ You'll pick a real AI stack for your budget tier, check every plan's current pri
 
 **Time:** 30 minutes · **You'll need:** Your Delegation Map from Exercise 1, a browser, any AI chat · **Builds on:** Lesson 2
 
+:::video
+id: opc-ex2-setup
+kind: exercise-setup
+status: paused
+src: /learn/video/one-person-company/opc-ex2-setup.mp4
+captions: /learn/video/one-person-company/opc-ex2-setup.vtt
+poster: /learn/video/one-person-company/opc-ex2-setup.jpg
+transcript: One budget line, three jobs, and a stack that has to fit under it. Here's how to choose yours. In this exercise you'll pick a real AI stack and price it. Choose your tier: twenty, one hundred or three hundred dollars a month. If you're unsure, start at twenty. Copy your top three jobs from your delegation map. Draft a stack using the shapes from lesson two. Then check every plan on the vendor's own pages: price, region, waitlist and usage limits. Add up the verified prices. If you're over your line, drop the specialist with the fewest job minutes. Then write your stack decision, with a ninety-day review date. So: what's your main office, and does your verified total fit your budget? Pause here and build your stack.
+:::
+
 ## Warm-up
 
 :::checkpoint
@@ -24,6 +34,16 @@ Why: Regions and waitlists decide access more than price does. Read the eligibil
 :::
 
 ## Steps
+
+:::infographic
+id: fig-1
+type: flow
+title: Six steps to a Stack Decision
+shows: Six numbered cards, top to bottom: 1 Pick your tier ($20, $100 or $300); 2 List 3 jobs from your Delegation Map; 3 Draft the stack with the Lesson 2 shapes; 4 Verify on vendor pages, highlighted (price, region, waitlist, limits); 5 Total it, and drop a specialist if over the line; 6 Write the decision with a 90-day review.
+data: none
+image: /learn/figures/one-person-company/exercise-02-fig-1.webp
+alt: Six steps: pick your tier of $20, $100 or $300, list your top three jobs, draft the stack, verify price, region, waitlist and limits on vendor pages, total it and drop a specialist if you are over, then write the decision with a 90-day review.
+:::
 
 1. **Pick your tier.** Write down your honest monthly AI budget: $20, $100 or $300. If unsure, start at $20. You can move up after a month of real use.
 
@@ -69,6 +89,49 @@ Review date (90 days): ______
 - [ ] The verified total is at or under your budget line
 - [ ] No two plans cover the same job
 - [ ] Your Stack Decision is saved with a 90-day review date
+
+:::example
+title: See an example result
+Here is a Stack Decision for the sample business, Rolling Ledger, using the top jobs from its example Delegation Map. Prices are examples; check the vendor pages for yours.
+
+:::video
+id: opc-ex2-reveal
+kind: exercise-reveal
+status: paused
+src: /learn/video/one-person-company/opc-ex2-reveal.mp4
+captions: /learn/video/one-person-company/opc-ex2-reveal.vtt
+poster: /learn/video/one-person-company/opc-ex2-reveal.jpg
+transcript: For Rolling Ledger, one twenty-dollar plan covers all three top jobs. Here's the example. The tier is twenty dollars a month. The top jobs from the delegation map are overdue-invoice reminders at seventy-five minutes a week, Instagram posts at forty-five, and sorting receipts at forty. All three are writing and sorting jobs, so one main office handles them: Claude Pro. It drafts the reminders and the posts, and sorts receipts in a project. The gap is posting itself, which stays manual, because nothing publishes without the founder. No two plans overlap, because there's only one. The always-on agent is the Claude Duet waitlist, after checking the account is in the US. Specialists wait until the main office has had a week of real use. And the decision has a review date, ninety days out. That's a stack decision you can act on today.
+:::
+
+:::infographic
+id: fig-2
+type: comparison
+title: Rolling Ledger at $20
+shows: Under "Rolling Ledger at $20" tagged example: three job cards (Invoice reminders 75 min, Instagram posts 45 min, Sort receipts 40 min) beside a paper card: Main office: Claude Pro. Covers all 3 jobs. Duet waitlist joined. Posting stays manual.
+data: example numbers: 75, 45 and 40 minutes a week; $20 tier
+image: /learn/figures/one-person-company/exercise-02-fig-2.webp
+alt: Example Rolling Ledger stack at $20 a month: invoice reminders at 75 minutes, Instagram posts at 45 and sorting receipts at 40 all go to one main office, Claude Pro, with the Duet waitlist joined and posting kept manual.
+:::
+
+| Job | Min a week | Tool in the stack | Kind | Gap |
+|---|---|---|---|---|
+| Overdue-invoice reminders | 75 | Claude Pro | Chat | None: drafts only, the founder sends |
+| Weekly Instagram posts | 45 | Claude Pro | Chat | Posting stays manual |
+| Sort receipts into categories | 40 | Claude Pro, in a project | Chat | None |
+
+**Overlaps:** none, because there is one plan.
+
+```text
+STACK DECISION (example)
+Tier: $20
+Main office: Claude Pro (why: all three top jobs are writing and sorting)
+Specialist(s): none yet (job it covers: -)
+Always-on agent: Claude Duet waitlist (eligibility checked: yes, US account)
+Monthly total (verified on vendor pages): about $20, example only
+Review date (90 days): 90 days from today
+```
+:::
 
 :::coached
 **For 1-on-1 coaching clients.** Price your stack against real time saved.

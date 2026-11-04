@@ -1,0 +1,217 @@
+{
+ "inputs": {},
+ "shots": [
+  {
+   "id": "hook",
+   "type": "desk",
+   "items": [
+    {
+     "id": "agent",
+     "kind": "agent",
+     "x": 170,
+     "y": 200,
+     "w": 860,
+     "icon": "workflow",
+     "name": "Your first agent",
+     "status": "Needs access",
+     "statusTone": "sig",
+     "lines": [
+      {
+       "text": "A handful of apps",
+       "at": "L0:handful"
+      }
+     ]
+    },
+    {
+     "id": "a1",
+     "kind": "chip",
+     "x": 170,
+     "y": 470,
+     "icon": "mail",
+     "text": "Email",
+     "at": "L0:handful"
+    },
+    {
+     "id": "a2",
+     "kind": "chip",
+     "x": 420,
+     "y": 470,
+     "icon": "calendar",
+     "text": "Calendar",
+     "at": "L0:apps"
+    },
+    {
+     "id": "a3",
+     "kind": "chip",
+     "x": 720,
+     "y": 470,
+     "icon": "receipt",
+     "text": "Invoicing",
+     "at": "L0:apps"
+    },
+    {
+     "id": "pw",
+     "kind": "paper",
+     "x": 1130,
+     "y": 240,
+     "w": 640,
+     "icon": "lock",
+     "text": "Not one of them using your main password",
+     "at": "L0:not"
+    }
+   ],
+   "hero": {
+    "move": "light",
+    "target": "pw",
+    "at": "L0:password"
+   },
+   "camera": "push-in"
+  },
+  {
+   "id": "title",
+   "type": "chapter-card",
+   "from": "L1",
+   "over": "hook",
+   "kicker": "Exercise · Logins, access and approval rules",
+   "title": "Your access and approval policy",
+   "sub": "Write the policy that keeps it that way",
+   "subAt": "L1:policy",
+   "agenda": [
+    {
+     "text": "Access for each app",
+     "icon": "plug",
+     "at": "L2:access"
+    },
+    {
+     "text": "An approval rule",
+     "icon": "file-check",
+     "at": "L2:approval"
+    }
+   ]
+  },
+  {
+   "id": "ways",
+   "type": "figure",
+   "from": "L3",
+   "src": "public/learn/figures/one-person-company/exercise-03-fig-1.webp",
+   "title": "For each app",
+   "regions": [
+    {
+     "rect": [
+      0.04,
+      0.155,
+      0.92,
+      0.7
+     ],
+     "at": "L3:list",
+     "label": "List every app your first agent job needs"
+    },
+    {
+     "rect": [
+      0.04,
+      0.155,
+      0.92,
+      0.225
+     ],
+     "at": "L4:official",
+     "label": "An official connector"
+    },
+    {
+     "rect": [
+      0.04,
+      0.393,
+      0.92,
+      0.225
+     ],
+     "at": "L4:separate",
+     "label": "A separate limited user"
+    },
+    {
+     "rect": [
+      0.04,
+      0.632,
+      0.92,
+      0.225
+     ],
+     "at": "L4:log",
+     "label": "You log in yourself, through the secure handoff"
+    },
+    {
+     "rect": [
+      0.03,
+      0.87,
+      0.6,
+      0.11
+     ],
+     "at": "L5:level",
+     "label": "Then set the level: read, draft or act"
+    }
+   ],
+   "hero": {
+    "region": 1
+   }
+  },
+  {
+   "id": "steps",
+   "type": "story-cards",
+   "from": "L6",
+   "numbered": true,
+   "cards": [
+    {
+     "icon": "trash-2",
+     "label": "Clean one thing",
+     "sub": "Remove an unused app from your email",
+     "at": "L6:clean",
+     "rows": [
+      {
+       "text": "Confirm two-factor is on",
+       "at": "L6:confirm"
+      }
+     ]
+    },
+    {
+     "icon": "file-check",
+     "label": "Write the approval rule",
+     "sub": "Four parts, with money under never",
+     "at": "L7:write",
+     "rows": [
+      {
+       "text": "Mapped to your product's real controls",
+       "at": "L7:map"
+      }
+     ]
+    },
+    {
+     "icon": "power",
+     "label": "Write down your off switch",
+     "at": "L8:write"
+    }
+   ],
+   "hero": {
+    "card": 1,
+    "at": "L7:never"
+   },
+   "camera": "dolly-right",
+   "cardW": 500
+  },
+  {
+   "id": "ask",
+   "type": "question",
+   "from": "L9",
+   "over": "steps",
+   "kicker": "Your turn",
+   "question": "Which apps does your agent get, at what level, and what does it never do?",
+   "lines": [
+    {
+     "text": "Apps and levels",
+     "at": "L9:apps"
+    },
+    {
+     "text": "Never",
+     "at": "L9:never"
+    }
+   ],
+   "pulse": "L10:pause"
+  }
+ ]
+}

@@ -1,0 +1,194 @@
+{
+ "inputs": {
+  "t1": 20,
+  "t2": 100,
+  "t3": 300,
+  "jobs": 3,
+  "review": 90
+ },
+ "shots": [
+  {
+   "id": "hook",
+   "type": "desk",
+   "items": [
+    {
+     "id": "line",
+     "kind": "card",
+     "x": 170,
+     "y": 200,
+     "w": 760,
+     "icon": "wallet",
+     "title": "One budget line",
+     "sub": "A month, every month"
+    },
+    {
+     "id": "jobs",
+     "kind": "list",
+     "x": 170,
+     "y": 440,
+     "w": 760,
+     "title": "{jobs|0} jobs",
+     "at": "L0:three",
+     "rows": [
+      {
+       "text": "Your biggest job"
+      },
+      {
+       "text": "The next one"
+      },
+      {
+       "text": "And the one after"
+      }
+     ]
+    },
+    {
+     "id": "stack",
+     "kind": "paper",
+     "x": 1010,
+     "y": 300,
+     "w": 780,
+     "icon": "layers",
+     "text": "A stack that fits under it",
+     "at": "L0:stack"
+    }
+   ],
+   "hero": {
+    "move": "light",
+    "target": "stack",
+    "at": "L0:under"
+   },
+   "camera": "push-in"
+  },
+  {
+   "id": "title",
+   "type": "chapter-card",
+   "from": "L1",
+   "over": "hook",
+   "kicker": "Exercise · Pick your stack",
+   "title": "Your stack decision",
+   "sub": "Pick a real AI stack and price it",
+   "subAt": "L2:pick"
+  },
+  {
+   "id": "steps",
+   "type": "figure",
+   "from": "L3",
+   "src": "public/learn/figures/one-person-company/exercise-02-fig-1.webp",
+   "title": "Step by step",
+   "regions": [
+    {
+     "rect": [
+      0.05,
+      0.11,
+      0.9,
+      0.125
+     ],
+     "at": "L3:choose",
+     "label": "Choose your tier: {t1|$0}, {t2|$0} or {t3|$0} a month"
+    },
+    {
+     "rect": [
+      0.05,
+      0.11,
+      0.9,
+      0.125
+     ],
+     "at": "L4:unsure",
+     "label": "Unsure? Start at {t1|$0}"
+    },
+    {
+     "rect": [
+      0.05,
+      0.241,
+      0.9,
+      0.125
+     ],
+     "at": "L5:copy",
+     "label": "Copy your top {jobs|0} jobs from your delegation map"
+    },
+    {
+     "rect": [
+      0.05,
+      0.372,
+      0.9,
+      0.125
+     ],
+     "at": "L6:draft",
+     "label": "Draft a stack from the lesson's shapes"
+    },
+    {
+     "rect": [
+      0.05,
+      0.503,
+      0.9,
+      0.125
+     ],
+     "at": "L7:check",
+     "label": "Check every plan on the vendor's own pages"
+    },
+    {
+     "rect": [
+      0.05,
+      0.503,
+      0.9,
+      0.125
+     ],
+     "at": "L7:price",
+     "label": "Price, region, waitlist and usage limits"
+    },
+    {
+     "rect": [
+      0.05,
+      0.635,
+      0.9,
+      0.125
+     ],
+     "at": "L8:add",
+     "label": "Add up the verified prices"
+    },
+    {
+     "rect": [
+      0.05,
+      0.635,
+      0.9,
+      0.125
+     ],
+     "at": "L9:drop",
+     "label": "Over your line? Drop the specialist with the fewest job minutes"
+    },
+    {
+     "rect": [
+      0.05,
+      0.766,
+      0.9,
+      0.125
+     ],
+     "at": "L10:write",
+     "label": "Write the decision, with a {review|0}-day review date"
+    }
+   ],
+   "hero": {
+    "region": 4
+   }
+  },
+  {
+   "id": "ask",
+   "type": "question",
+   "from": "L11",
+   "over": "steps",
+   "kicker": "Your turn",
+   "question": "What's your main office, and does your verified total fit your budget?",
+   "lines": [
+    {
+     "text": "Main office",
+     "at": "L11:main"
+    },
+    {
+     "text": "Fits the budget",
+     "at": "L11:fit"
+    }
+   ],
+   "pulse": "L12:pause"
+  }
+ ]
+}

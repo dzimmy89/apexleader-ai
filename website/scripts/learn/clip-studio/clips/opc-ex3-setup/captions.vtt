@@ -1,0 +1,46 @@
+WEBVTT
+
+1
+00:00:00.534 --> 00:00:05.973
+One agent, a handful of apps, and not one of them using your main password.
+
+2
+00:00:06.254 --> 00:00:09.060
+Let's write the policy that keeps it that way.
+
+3
+00:00:09.322 --> 00:00:13.641
+In this exercise you'll write an access and approval policy.
+
+4
+00:00:13.923 --> 00:00:17.026
+List every app your first agent job needs.
+
+5
+00:00:17.283 --> 00:00:26.596
+For each, choose the access method: an official connector, a separate limited user, or you log in yourself through the secure handoff.
+
+6
+00:00:26.872 --> 00:00:30.137
+Then set the level: read, draft or act.
+
+7
+00:00:30.396 --> 00:00:36.915
+Clean one thing now: remove an unused app from your email, and confirm two-factor is on.
+
+8
+00:00:37.212 --> 00:00:44.667
+Write your approval rule in four parts, with money under never, and map it to your product's real controls.
+
+9
+00:00:44.959 --> 00:00:47.312
+Finally, write down your off switch.
+
+10
+00:00:47.643 --> 00:00:52.384
+So: which apps does your agent get, at what level, and what does it never do?
+
+11
+00:00:52.633 --> 00:00:54.803
+Pause here and write your policy.
+

@@ -1,0 +1,54 @@
+WEBVTT
+
+1
+00:00:00.509 --> 00:00:03.933
+Your AI helpers need to see your transactions.
+
+2
+00:00:04.083 --> 00:00:06.561
+They never need your bank password.
+
+3
+00:00:06.711 --> 00:00:09.012
+Here's how the money data flows.
+
+4
+00:00:09.162 --> 00:00:12.981
+Your business account and card hold every business dollar.
+
+5
+00:00:13.160 --> 00:00:17.475
+Inside your accounting app, connect them as a read-only feed.
+
+6
+00:00:17.637 --> 00:00:19.891
+The app imports transactions.
+
+7
+00:00:20.041 --> 00:00:21.726
+It can't send money.
+
+8
+00:00:21.877 --> 00:00:24.267
+Your categories live in the app too.
+
+9
+00:00:24.417 --> 00:00:36.169
+Keep them short, fifteen expense categories at most, each mapped to a line on Schedule C, like advertising, contract labor, and legal and professional fees.
+
+10
+00:00:36.337 --> 00:00:43.147
+Then your AI helpers read from the app, through their own limited logins, and never through your bank.
+
+11
+00:00:43.324 --> 00:00:48.507
+Ask Claude to draft the category list, and have your accountant review it once.
+
+12
+00:00:48.666 --> 00:00:53.529
+Fifteen minutes now prevents a year of miscategorized expenses.
+
+13
+00:00:53.745 --> 00:00:56.718
+Next: the rules every helper follows.
+

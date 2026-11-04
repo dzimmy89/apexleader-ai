@@ -1,0 +1,23 @@
+<!doctype html><meta charset="utf-8">
+<meta name="out" content="public/learn/figures/ai-accounting/lesson-01-fig-1.webp">
+<link rel="stylesheet" href="../../../../scripts/learn/infographics/brand.css">
+<style>
+.flow{flex:1;display:grid;grid-template-columns:1fr auto 1.1fr auto 1fr;gap:12px;align-items:center}
+.card{flex-direction:column;align-items:flex-start;gap:8px;padding:16px}
+.app{display:flex;flex-direction:column;gap:8px;padding:18px}
+.app .label,.app .small{color:var(--paper-text)}
+.ar{display:flex;flex-direction:column;align-items:center;gap:4px}
+.ar .arrow{font-size:40px;color:var(--track)}
+.foot{display:flex;align-items:center;gap:12px}
+.foot .label{color:var(--bad)}
+</style>
+<div class="fig wide accounting">
+  <div class="flow">
+    <div class="card"><svg class="icon muted" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 18v-7"/><path d="M11.119 2.205a2 2 0 0 1 1.762 0l7.84 3.846A.5.5 0 0 1 20.5 7h-17a.5.5 0 0 1-.22-.949z"/><path d="M14 18v-7"/><path d="M18 18v-7"/><path d="M3 22h18"/><path d="M6 18v-7"/></svg><span class="label">Bank</span><span class="small">Business only</span></div>
+    <div class="ar"><span class="arrow">&rarr;</span><span class="sys">read only</span></div>
+    <div class="paper app"><svg class="icon signal" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg><span class="label">Accounting app</span><span class="small">Schedule C categories</span></div>
+    <div class="ar"><span class="arrow">&rarr;</span><span class="sys">own login</span></div>
+    <div class="card"><svg class="icon muted" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg><span class="label">AI helpers</span><span class="small">Read the app</span></div>
+  </div>
+  <div class="card foot" style="flex-direction:row"><svg class="icon bad" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M4.929 4.929 19.07 19.071"/></svg><span class="label">Helpers never connect to the bank</span></div>
+</div>

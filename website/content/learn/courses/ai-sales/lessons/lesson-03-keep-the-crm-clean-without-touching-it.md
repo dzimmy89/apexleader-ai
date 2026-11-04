@@ -7,6 +7,16 @@ template: v2
 
 # Lesson 3: Keep the CRM Clean Without Touching It
 
+:::video
+id: sales-l3-overview
+kind: overview
+status: paused
+src: /learn/video/ai-sales/sales-l3-overview.mp4
+captions: /learn/video/ai-sales/sales-l3-overview.vtt
+poster: /learn/video/ai-sales/sales-l3-overview.jpg
+transcript: A CRM is just a list of people and deals, each with a status and a next step. It goes stale because updating it is boring. So give that job to an agent. This is AI Sales, lesson three: keep the CRM clean without touching it. In this lesson: pick a CRM you'll keep, define six fields, hire a CRM keeper, split apply from propose, and read the report. Start with a Pipeline tab in a Google Sheet, or HubSpot's free CRM. Write six fields with allowed values and rules: stage, last touch, next step, next step date, value and notes. Then an agent runs every weekday at five. It reads today's email and calendar, but only for people in your pipeline. It updates the low-risk fields, proposes the judgment calls, and writes a short report. You read the report, not the CRM. First, the CRM.
+:::
+
 :::key-concept
 A CRM is just a list of people and deals with a status and a next step. The reason founders' CRMs go stale is that updating them is boring. Give that job to an agent on a schedule: it reads your email, calendar and outreach queue, proposes updates, and applies the safe ones. You read a short weekly report instead of typing into fields.
 :::
@@ -51,6 +61,16 @@ When you add outbound tools in Module 2, you'll add a seventh field, Source, tha
 
 Paste this table into a "CRM rules" document. It becomes the agent's instructions.
 
+:::infographic
+id: fig-1
+type: comparison
+title: Six fields that matter
+shows: Six field cards: Stage (moves forward on evidence), Last touch (date), Next step (always filled for open deals), Next step date (never in the past), Value (first-year estimate), Notes (one dated line).
+data: none
+image: /learn/figures/ai-sales/lesson-03-fig-1.webp
+alt: Six CRM fields: stage, which moves forward only on evidence; last touch date; next step, always filled for open deals; next step date, never in the past; value, a first-year estimate; and notes, one dated line, newest first.
+:::
+
 ## Step 3: Hire the CRM keeper
 
 You have three good options for the agent. Pick the one you already use.
@@ -79,6 +99,16 @@ You are my CRM Keeper. Every weekday at 5pm:
 6. Write a short report at the top of the "CRM report" tab: changes made, flags, and three suggested next steps for tomorrow.
 ```
 
+:::video
+id: sales-l3-keeper
+kind: inline
+status: paused
+src: /learn/video/ai-sales/sales-l3-keeper.mp4
+captions: /learn/video/ai-sales/sales-l3-keeper.vtt
+poster: /learn/video/ai-sales/sales-l3-keeper.jpg
+transcript: Here's the CRM Keeper's job, in any agent you already use: Claude Cowork, a Grok Bot routine, or Claude Duet. Every weekday at five, it reads your CRM rules doc and follows it exactly. It checks today's sent and received email and your calendar, but only for people already in the Pipeline tab. That one rule keeps it out of everything else in your inbox. For each person with activity, it updates last touch, moves the stage forward only when the evidence matches the rules, like a reply moving contacted to replied, and adds a one-line dated note. Then it flags, without changing: any open deal with a next step date in the past, any deal quiet for fourteen days, anyone who said no thanks or unsubscribe, and duplicate rows. It never deletes a row, never emails anyone, and never changes value. And it writes a short report at the top of a CRM report tab. Next: what it applies, and what it only proposes.
+:::
+
 ## Step 4: Split "apply" from "propose"
 
 The trick to trusting an agent with your CRM is deciding in advance which changes are safe.
@@ -91,6 +121,26 @@ The opt-out case is the important one. When someone replies "please stop emailin
 
 :::warning
 Your inbox holds more than sales email: customer details, bank notices, personal messages. Give the CRM agent the narrowest access that works. The rule "only for people already in the Pipeline tab" keeps it from reading unrelated mail into your CRM. If you use a connector, review which scopes it requests before you click Allow.
+:::
+
+:::infographic
+id: fig-2
+type: comparison
+title: Apply or propose
+shows: Two columns. The agent applies: last touch, notes, forward stage moves with evidence. It proposes, you approve (highlighted): Lost or Do not contact, merging duplicates, changing value, anything that deletes. Footer: opt-outs flagged the same day.
+data: none
+image: /learn/figures/ai-sales/lesson-03-fig-2.webp
+alt: The agent applies low-risk changes: last touch, notes and forward stage moves backed by an email or calendar event. It only proposes judgment calls for you to approve: moving to Lost or Do not contact, merging duplicates, changing value and anything that deletes. Opt-outs are flagged the same day.
+:::
+
+:::video
+id: sales-l3-apply
+kind: inline
+status: paused
+src: /learn/video/ai-sales/sales-l3-apply.mp4
+captions: /learn/video/ai-sales/sales-l3-apply.vtt
+poster: /learn/video/ai-sales/sales-l3-apply.jpg
+transcript: The trick to trusting an agent with your CRM is deciding in advance which changes are safe. The agent applies the low-risk ones: last touch, notes, and forward stage moves backed by an email or a calendar event. They're easy to check. The agent only proposes the judgment calls: moving anyone to lost or do not contact, merging duplicates, changing a deal's value, and anything that deletes data. You approve those. The opt-out case matters most. When someone writes please stop emailing me, the law gives you ten business days to honor it. Your agent spots it the same day and flags it. You confirm, and every tool stops. Then your weekly habit takes ten minutes. Read the report, approve or reject each proposal, give every overdue deal a next step or move it to lost, and spot-check three changed rows against the real emails. If it's wrong twice in a month, tighten the rules. In the exercise, you'll set it up.
 :::
 
 ## Step 5: Read the report, not the CRM

@@ -1,0 +1,288 @@
+{
+ "track": "sales",
+ "inputs": {
+  "lesson": 1,
+  "scraped": 5000,
+  "picked": 30,
+  "parts": 5,
+  "matches": 30,
+  "spot": 5,
+  "lo": 20,
+  "hi": 30
+ },
+ "shots": [
+  {
+   "id": "hook",
+   "type": "desk",
+   "items": [
+    {
+     "id": "big",
+     "kind": "card",
+     "x": 170,
+     "y": 240,
+     "w": 760,
+     "icon": "users",
+     "title": "{scraped|0,0} scraped names",
+     "sub": "Nobody wanted to hear from you",
+     "status": "Ignored",
+     "statusTone": "bad"
+    },
+    {
+     "id": "short",
+     "kind": "card",
+     "x": 990,
+     "y": 240,
+     "w": 760,
+     "icon": "target",
+     "title": "{picked|0} businesses",
+     "sub": "Each one picked for a reason",
+     "at": "L0:thirty"
+    },
+    {
+     "id": "wins",
+     "kind": "paper",
+     "x": 170,
+     "y": 560,
+     "w": 1580,
+     "icon": "trophy",
+     "text": "The short list wins",
+     "at": "L1:short"
+    }
+   ],
+   "hero": {
+    "move": "light",
+    "target": "wins",
+    "at": "L1:wins"
+   },
+   "camera": "push-in"
+  },
+  {
+   "id": "title",
+   "type": "chapter-card",
+   "from": "L2",
+   "over": "hook",
+   "kicker": "AI Sales · Lesson {lesson|0}",
+   "title": "Build a lead list",
+   "agenda": [
+    {
+     "text": "Write the profile",
+     "icon": "user-search",
+     "at": "L3:write"
+    },
+    {
+     "text": "Research matches",
+     "icon": "search",
+     "at": "L3:research"
+    },
+    {
+     "text": "Score the list",
+     "icon": "list-ordered",
+     "at": "L3:score"
+    },
+    {
+     "text": "Know where the lines are",
+     "icon": "shield-check",
+     "at": "L3:lines"
+    }
+   ]
+  },
+  {
+   "id": "profile",
+   "type": "figure",
+   "from": "L4",
+   "src": "public/learn/figures/ai-sales/lesson-01-fig-1.webp",
+   "title": "A {parts|0}-part profile",
+   "zoom": false,
+   "regions": [
+    {
+     "rect": [
+      0.045,
+      0.065,
+      0.45,
+      0.275
+     ],
+     "at": "L4:who",
+     "label": "Who"
+    },
+    {
+     "rect": [
+      0.505,
+      0.065,
+      0.45,
+      0.275
+     ],
+     "at": "L4:where",
+     "label": "Where"
+    },
+    {
+     "rect": [
+      0.045,
+      0.365,
+      0.45,
+      0.27
+     ],
+     "at": "L4:size",
+     "label": "Size"
+    },
+    {
+     "rect": [
+      0.505,
+      0.365,
+      0.45,
+      0.27
+     ],
+     "at": "L4:pain",
+     "label": "Pain"
+    },
+    {
+     "rect": [
+      0.045,
+      0.66,
+      0.45,
+      0.285
+     ],
+     "at": "L4:disqualifier",
+     "label": "Disqualifier"
+    },
+    {
+     "rect": [
+      0.505,
+      0.66,
+      0.45,
+      0.285
+     ],
+     "at": "L4:whynow",
+     "label": "Plus a why-now signal"
+    }
+   ],
+   "hero": {
+    "region": 5
+   }
+  },
+  {
+   "id": "research",
+   "type": "story-cards",
+   "from": "L5",
+   "kicker": "An AI research assistant",
+   "titleAt": "L5:research",
+   "cardW": 500,
+   "gap": 40,
+   "cards": [
+    {
+     "icon": "search",
+     "label": "{matches|0} matches",
+     "sub": "Fixed columns, a source link for every fact",
+     "at": "L5:thirty"
+    },
+    {
+     "icon": "circle-question-mark",
+     "label": "Unknown",
+     "sub": "An allowed answer",
+     "at": "L6:unknown",
+     "status": "OK",
+     "statusTone": "ok"
+    },
+    {
+     "icon": "mail-x",
+     "label": "A guessed email",
+     "sub": "Is not",
+     "at": "L7:guessed",
+     "status": "Never",
+     "statusTone": "bad"
+    }
+   ],
+   "hero": {
+    "card": 2,
+    "at": "L7:not"
+   },
+   "notes": [
+    {
+     "text": "Spot-check {spot|0} rows yourself",
+     "icon": "eye",
+     "at": "L8:spotcheck",
+     "screen": "low"
+    }
+   ]
+  },
+  {
+   "id": "score",
+   "type": "figure",
+   "from": "L9",
+   "src": "public/learn/figures/ai-sales/lesson-01-fig-2.webp",
+   "title": "Score = Fit + Signal",
+   "zoom": false,
+   "regions": [
+    {
+     "rect": [
+      0.045,
+      0.27,
+      0.26,
+      0.33
+     ],
+     "at": "L9:fit",
+     "label": "Fit"
+    },
+    {
+     "rect": [
+      0.37,
+      0.27,
+      0.26,
+      0.33
+     ],
+     "at": "L9:signal",
+     "label": "Signal"
+    },
+    {
+     "rect": [
+      0.045,
+      0.84,
+      0.48,
+      0.12
+     ],
+     "at": "L9:keep",
+     "label": "Keep the top {lo|0} to {hi|0}"
+    }
+   ],
+   "hero": {
+    "region": 2
+   }
+  },
+  {
+   "id": "lines",
+   "type": "rule",
+   "from": "L10",
+   "kicker": "The lines",
+   "kickerIcon": "shield-check",
+   "statement": "Public business information only.",
+   "highlight": {
+    "text": "Public",
+    "at": "L10:public"
+   },
+   "chips": [
+    {
+     "icon": "ban",
+     "text": "No LinkedIn scraping",
+     "at": "L10:linkedin"
+    },
+    {
+     "icon": "ban",
+     "text": "No bought lists",
+     "at": "L10:bought"
+    },
+    {
+     "icon": "refresh-cw",
+     "text": "Refresh the list every month",
+     "at": "L11:refresh"
+    }
+   ],
+   "notes": [
+    {
+     "text": "First: the profile",
+     "icon": "arrow-right",
+     "at": "L12:first",
+     "screen": "low"
+    }
+   ]
+  }
+ ]
+}

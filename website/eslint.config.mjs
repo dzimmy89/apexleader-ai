@@ -18,6 +18,8 @@ const eslintConfig = [
       "out/**",
       "build/**",
       "next-env.d.ts",
+      // the clip studio is its own browser + Node package (scripts/learn/clip-studio/package.json)
+      "scripts/learn/clip-studio/**",
     ],
   },
 ];

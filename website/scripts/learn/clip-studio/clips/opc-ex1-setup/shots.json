@@ -1,0 +1,196 @@
+{
+ "inputs": {
+  "tasks": 25,
+  "minLines": 20,
+  "piles": 3
+ },
+ "shots": [
+  {
+   "id": "hook",
+   "type": "desk",
+   "items": [
+    {
+     "id": "count",
+     "kind": "text",
+     "cls": "title",
+     "x": 170,
+     "y": 120,
+     "w": 1600,
+     "text": "{tasks|0} tasks, one week"
+    },
+    {
+     "id": "list",
+     "kind": "list",
+     "x": 170,
+     "y": 300,
+     "w": 860,
+     "title": "Last week",
+     "rows": [
+      {
+       "text": "Send client invoices"
+      },
+      {
+       "text": "Reconcile the bank feed"
+      },
+      {
+       "text": "Post on Instagram"
+      },
+      {
+       "text": "Answer client emails",
+       "at": "L0:week"
+      },
+      {
+       "text": "Sort receipts",
+       "at": "L0:founder"
+      }
+     ]
+    },
+    {
+     "id": "solo",
+     "kind": "chip",
+     "x": 1130,
+     "y": 330,
+     "icon": "user-round",
+     "text": "One founder, doing all of them",
+     "at": "L0:founder"
+    },
+    {
+     "id": "hand",
+     "kind": "paper",
+     "x": 1130,
+     "y": 480,
+     "w": 640,
+     "icon": "hand-helping",
+     "text": "Which ones can you hand off?",
+     "at": "L0:time"
+    }
+   ],
+   "hero": {
+    "move": "light",
+    "target": "hand",
+    "at": "L0:hand"
+   },
+   "camera": "push-in"
+  },
+  {
+   "id": "title",
+   "type": "chapter-card",
+   "from": "L1",
+   "over": "hook",
+   "kicker": "Exercise · Agents as staff",
+   "title": "Your delegation map"
+  },
+  {
+   "id": "steps",
+   "type": "story-cards",
+   "from": "L2",
+   "numbered": true,
+   "cards": [
+    {
+     "icon": "list",
+     "label": "Dump last week's work",
+     "sub": "One task per line, rough minutes",
+     "at": "L2:dump",
+     "rows": [
+      {
+       "text": "At least {minLines|0} lines",
+       "at": "L2:least"
+      }
+     ]
+    },
+    {
+     "icon": "truck",
+     "label": "No business yet?",
+     "sub": "Use Rolling Ledger",
+     "at": "L3:if",
+     "rows": [
+      {
+       "text": "Bookkeeping and invoicing for independent food truck owners",
+       "at": "L3:bookkeeping"
+      }
+     ]
+    },
+    {
+     "icon": "layers",
+     "label": "Sort into {piles|0} piles",
+     "at": "L4:sort",
+     "rows": [
+      {
+       "text": "Agent alone",
+       "at": "L4:alone"
+      },
+      {
+       "text": "Agent drafts, you approve",
+       "at": "L4:drafts"
+      },
+      {
+       "text": "Only you",
+       "at": "L4:only"
+      }
+     ]
+    }
+   ],
+   "hero": {
+    "card": 2,
+    "at": "L4:only"
+   },
+   "camera": "dolly-right"
+  },
+  {
+   "id": "strict",
+   "type": "rule",
+   "from": "L5",
+   "kicker": "Be strict",
+   "kickerIcon": "hand",
+   "statement": "If it leaves the business or touches money, it can't be agent alone.",
+   "highlight": {
+    "text": "it can't be agent alone.",
+    "at": "L5:cant"
+   }
+  },
+  {
+   "id": "finish",
+   "type": "story-cards",
+   "from": "L6",
+   "numbered": true,
+   "cards": [
+    {
+     "icon": "sigma",
+     "label": "Total the minutes",
+     "sub": "In each pile",
+     "at": "L6:total"
+    },
+    {
+     "icon": "file-pen-line",
+     "label": "Write your first brief",
+     "sub": "The recurring task with the most minutes, from the middle pile",
+     "at": "L6:pick"
+    }
+   ],
+   "hero": {
+    "card": 1,
+    "at": "L6:brief"
+   },
+   "camera": "push-in"
+  },
+  {
+   "id": "ask",
+   "type": "question",
+   "from": "L7",
+   "over": "finish",
+   "kicker": "Your turn",
+   "question": "Which pile holds the most of your week, and what's your first hire?",
+   "lines": [
+    {
+     "text": "Biggest pile",
+     "at": "L7:which"
+    },
+    {
+     "text": "First hire",
+     "at": "L7:hire"
+    }
+   ],
+   "pulse": "L8:pause"
+  }
+ ]
+}

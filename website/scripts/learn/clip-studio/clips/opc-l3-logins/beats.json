@@ -1,0 +1,13 @@
+[
+ "Your agent needs to get into your apps.",
+ "Your password never needs to go with it.",
+ "There are three safe ways in, in this order.",
+ "First, an official connector or plugin.",
+ "You approve access on the app's own sign-in screen, and the agent gets a token, not your password.",
+ "Second, a separate account for the agent, like ops at your business dot com, with a viewer or editor role.",
+ "Third, when an agent hits a login page, you type the password yourself, in a secure screen.",
+ "Claude Duet gives you a separate form.",
+ "Grok Bot lets you take over, sign in, then press I'm done.",
+ "And one rule applies everywhere: never type a password, a one-time code or an API key into ordinary chat.",
+ "Next: how much access to give."
+]

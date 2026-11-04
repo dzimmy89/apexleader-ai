@@ -1,0 +1,54 @@
+WEBVTT
+
+1
+00:00:00.507 --> 00:00:05.801
+For Rolling Ledger, the billing assistant gets two apps and never sees a password.
+
+2
+00:00:05.821 --> 00:00:07.908
+Here's the example policy.
+
+3
+00:00:07.928 --> 00:00:15.106
+The invoicing app gets a separate viewer user, so the agent can read overdue invoices and nothing more.
+
+4
+00:00:15.170 --> 00:00:22.117
+Gmail connects through Claude's official connector at the draft level, so reminders land as drafts.
+
+5
+00:00:22.137 --> 00:00:24.253
+The bank isn't connected at all.
+
+6
+00:00:24.273 --> 00:00:26.353
+The rule has four parts.
+
+7
+00:00:26.373 --> 00:00:30.228
+Do alone: read invoices and draft reminders.
+
+8
+00:00:30.248 --> 00:00:34.553
+Ask me first: sending any email, or changing an invoice.
+
+9
+00:00:34.573 --> 00:00:39.116
+Hand to me: logins, codes, refunds and payment questions.
+
+10
+00:00:39.136 --> 00:00:43.373
+Never: move money, delete records, or share client data.
+
+11
+00:00:43.393 --> 00:00:50.230
+For the cleanup, the founder removed an old scheduling app and confirmed two-factor on the main email.
+
+12
+00:00:50.250 --> 00:00:58.208
+And the off switch is written down: disconnect Gmail in Claude, and remove the agent's user from the invoicing app.
+
+13
+00:00:58.235 --> 00:01:00.863
+That's a policy you can set up today.
+

@@ -1,0 +1,236 @@
+{
+ "track": "sales",
+ "inputs": {
+  "found": 30,
+  "kept": 25,
+  "tLo": 1,
+  "tHi": 3,
+  "excl": 3,
+  "spot": 5,
+  "wrong": 1,
+  "scored": 27,
+  "s5": 6,
+  "s4": 11,
+  "s3": 8,
+  "s2": 2,
+  "forms": 4
+ },
+ "shots": [
+  {
+   "id": "answer",
+   "type": "reveal",
+   "question": {
+    "clip": "sales-ex1-setup",
+    "shot": "ask"
+   },
+   "answers": [
+    {
+     "text": "Yes, all {kept|0}",
+     "at": "L0:twentyfive"
+    }
+   ]
+  },
+  {
+   "id": "profile",
+   "type": "story-cards",
+   "from": "L2",
+   "kicker": "Rolling Ledger · example",
+   "title": "The profile",
+   "titleAt": "L2:profile",
+   "cardW": 460,
+   "gap": 40,
+   "cards": [
+    {
+     "icon": "truck",
+     "label": "Food truck owners",
+     "at": "L2:independent"
+    },
+    {
+     "icon": "map-pin",
+     "label": "Austin and Denver",
+     "at": "L2:austin"
+    },
+    {
+     "icon": "layers",
+     "label": "{tLo|0} to {tHi|0} trucks",
+     "at": "L2:three"
+    }
+   ],
+   "hero": {
+    "card": 1
+   }
+  },
+  {
+   "id": "list",
+   "type": "figure",
+   "from": "L3",
+   "src": "public/learn/figures/ai-sales/exercise-01-fig-2.webp",
+   "title": "The lead list",
+   "zoom": false,
+   "regions": [
+    {
+     "rect": [
+      0.045,
+      0.31,
+      0.25,
+      0.1
+     ],
+     "at": "L3:thirty",
+     "label": "The researcher returned {found|0} rows"
+    },
+    {
+     "rect": [
+      0.045,
+      0.44,
+      0.25,
+      0.1
+     ],
+     "at": "L4:three",
+     "label": "{excl|0} franchise trucks, marked exclude"
+    },
+    {
+     "rect": [
+      0.045,
+      0.31,
+      0.25,
+      0.37
+     ],
+     "at": "L5:spotcheck",
+     "label": "The spot-check opened {spot|0} rows"
+    },
+    {
+     "rect": [
+      0.045,
+      0.31,
+      0.25,
+      0.37
+     ],
+     "at": "L6:owner",
+     "label": "An owner email wasn't on the truck's own pages"
+    },
+    {
+     "rect": [
+      0.045,
+      0.31,
+      0.25,
+      0.37
+     ],
+     "at": "L6:unknown",
+     "label": "So it became unknown"
+    },
+    {
+     "rect": [
+      0.045,
+      0.31,
+      0.25,
+      0.37
+     ],
+     "at": "L7:passes",
+     "label": "{wrong|0} wrong out of {spot|0} passes"
+    },
+    {
+     "rect": [
+      0.045,
+      0.565,
+      0.25,
+      0.1
+     ],
+     "at": "L8:twentyseven",
+     "label": "{scored|0} rows to score"
+    },
+    {
+     "rect": [
+      0.295,
+      0.29,
+      0.54,
+      0.1
+     ],
+     "at": "L9:six",
+     "label": "{s5|0} scored five"
+    },
+    {
+     "rect": [
+      0.295,
+      0.405,
+      0.54,
+      0.1
+     ],
+     "at": "L9:eleven",
+     "label": "{s4|0} scored four"
+    },
+    {
+     "rect": [
+      0.295,
+      0.515,
+      0.54,
+      0.1
+     ],
+     "at": "L9:eight",
+     "label": "{s3|0} scored three"
+    },
+    {
+     "rect": [
+      0.295,
+      0.625,
+      0.54,
+      0.1
+     ],
+     "at": "L9:two",
+     "label": "{s2|0} scored two"
+    },
+    {
+     "rect": [
+      0.295,
+      0.625,
+      0.54,
+      0.1
+     ],
+     "at": "L10:cut",
+     "label": "The {s2|0} lowest were cut"
+    },
+    {
+     "rect": [
+      0.045,
+      0.69,
+      0.25,
+      0.1
+     ],
+     "at": "L10:leaving",
+     "label": "{kept|0} kept"
+    },
+    {
+     "rect": [
+      0.295,
+      0.735,
+      0.48,
+      0.1
+     ],
+     "at": "L11:contact",
+     "label": "{forms|0} use a contact form instead"
+    }
+   ],
+   "hero": {
+    "region": 12
+   }
+  },
+  {
+   "id": "ready",
+   "type": "rule",
+   "from": "L12",
+   "kicker": "Ready for exercise two",
+   "kickerIcon": "check",
+   "statement": "Every row is marked New.",
+   "highlight": {
+    "text": "New",
+    "at": "L12:new"
+   },
+   "chips": [
+    {
+     "icon": "user-x",
+     "text": "The do-not-contact tab is ready",
+     "at": "L12:donotcontact"
+    }
+   ]
+  }
+ ]
+}

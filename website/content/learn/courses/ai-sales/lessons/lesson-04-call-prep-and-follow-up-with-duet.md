@@ -7,6 +7,16 @@ template: v2
 
 # Lesson 4: Call Prep and Follow-Up With Duet
 
+:::video
+id: sales-l4-overview
+kind: overview
+status: paused
+src: /learn/video/ai-sales/sales-l4-overview.mp4
+captions: /learn/video/ai-sales/sales-l4-overview.vtt
+poster: /learn/video/ai-sales/sales-l4-overview.jpg
+transcript: Founders lose deals in two places around a call: walking in unprepared, and following up three days late. Neither takes skill. Both take a system. This is AI Sales, lesson four: call prep and follow-up with Duet. In this lesson: connect only what calls need, read the brief, capture the call, approve the follow-up, and learn from your calls. Claude Duet is Anthropic's proactive agent, in research preview. It checks your connected apps, sends a morning brief, and flags what needs attention. Connect four things: your calendar, your email, your CRM and your notes folder. Before each call, Duet writes a one-page brief. After the call, you send it your notes, and within the hour it drafts a follow-up email and a CRM update. You approve both. Every outgoing message waits for your click. First, the connections.
+:::
+
 :::key-concept
 Claude Duet is Anthropic's proactive agent: it checks your connected apps, sends you a morning brief, and messages you when something needs attention. Use it as your sales assistant around every call. It prepares a one-page brief before, drafts the follow-up and CRM notes after, and asks for your approval before anything is sent.
 :::
@@ -59,6 +69,16 @@ Brief format:
 After calls: When I send you notes from a call, draft (a) a follow-up email and (b) CRM updates. Don't send or update anything until I approve.
 ```
 
+:::infographic
+id: fig-1
+type: diagram
+title: A one-page call brief
+shows: A page outline with six numbered parts: 1 Who, 2 History, 3 Their business (3 sourced facts), 4 Likely needs (labelled guesses), 5 My goal: one next step (highlighted), 6 Three questions.
+data: none
+image: /learn/figures/ai-sales/lesson-04-fig-1.webp
+alt: A call brief in six parts: who they are, the history of every email and meeting, three sourced facts about their business, two likely needs labelled as guesses, your goal as one next step, and three questions to ask.
+:::
+
 ## Step 2: Read the brief like a pilot's checklist
 
 A good brief takes three minutes to read. Before the call, check:
@@ -68,6 +88,16 @@ A good brief takes three minutes to read. Before the call, check:
 - **Is the goal one specific next step?** "Book a 30-minute walkthrough of their books for next week" beats "build rapport."
 
 If the briefs are too long, tell Duet: "Cut briefs to half a page. Drop section 4 unless the CRM has notes." It remembers your preferences.
+
+:::video
+id: sales-l4-brief
+kind: inline
+status: paused
+src: /learn/video/ai-sales/sales-l4-brief.mp4
+captions: /learn/video/ai-sales/sales-l4-brief.vtt
+poster: /learn/video/ai-sales/sales-l4-brief.jpg
+transcript: A good brief takes three minutes to read, in six parts. Who: name, role, business, how you met, and their CRM stage. History: every email and meeting, newest first, one line each. Their business: three facts from their own website, with links. Likely needs: two guesses, labeled as guesses. Your goal for this call: one next step that moves the deal forward. And three questions to ask. Then read it like a pilot's checklist. Is the history complete? If a conversation is missing, the gap is in your connected data. Are the facts sourced? Click one link, because agents can mix up businesses with similar names. And is the goal one specific next step? Book a thirty-minute walkthrough next week beats build rapport. If briefs run long, tell Duet to cut them to half a page. It remembers your preferences. Next: the call itself.
+:::
 
 ## Step 3: Capture the call
 
@@ -105,6 +135,26 @@ If I haven't sent Dana the pricing by Thursday noon, remind me. If she hasn't re
 ```
 
 That's the follow-up habit most founders never build, now running on its own. Every outgoing message still waits for your click.
+
+:::infographic
+id: fig-2
+type: timeline
+title: The call cycle
+shows: A timeline: morning brief; the call; within an hour, notes to Duet; Duet drafts the email and CRM update; you approve (highlighted); then a watch: reminder if the next step slips, check-in draft after 3 quiet business days.
+data: none
+image: /learn/figures/ai-sales/lesson-04-fig-2.webp
+alt: The call cycle: a morning brief, the call, your notes to Duet within the hour, drafts of the follow-up email and CRM update, your approval, and then a watch that reminds you if the next step slips and drafts a check-in after three quiet business days.
+:::
+
+:::video
+id: sales-l4-follow-up
+kind: inline
+status: paused
+src: /learn/video/ai-sales/sales-l4-follow-up.mp4
+captions: /learn/video/ai-sales/sales-l4-follow-up.vtt
+poster: /learn/video/ai-sales/sales-l4-follow-up.jpg
+transcript: Within an hour of the call, paste your notes into the Duet thread. A few bullets is enough: their situation, what worries them, and the next step you agreed. Duet returns two drafts. First, the email. Check that it restates what they said in their own words, confirms the next step and the date, and promises only what you agreed. Cut any line that sounds like a brochure. Second, the CRM update: the new stage, a dated note, the next step, and its date. Approve both. Then ask Duet to keep watch. If you haven't sent the pricing by Thursday noon, remind me. If they haven't replied three business days after I send it, draft a short check-in for me to approve. That's the follow-up habit most founders never build. One rule before any of this: always ask before you record a call. Some states require everyone's consent. In the exercise, you'll run a full call cycle.
+:::
 
 ## Step 5: Learn from your calls
 

@@ -1,0 +1,15 @@
+[
+ "For Rolling Ledger, the billing assistant gets two apps and never sees a password.",
+ "Here's the example policy.",
+ "The invoicing app gets a separate viewer user, so the agent can read overdue invoices and nothing more.",
+ "Gmail connects through Claude's official connector at the draft level, so reminders land as drafts.",
+ "The bank isn't connected at all.",
+ "The rule has four parts.",
+ "Do alone: read invoices and draft reminders.",
+ "Ask me first: sending any email, or changing an invoice.",
+ "Hand to me: logins, codes, refunds and payment questions.",
+ "Never: move money, delete records, or share client data.",
+ "For the cleanup, the founder removed an old scheduling app and confirmed two-factor on the main email.",
+ "And the off switch is written down: disconnect Gmail in Claude, and remove the agent's user from the invoicing app.",
+ "That's a policy you can set up today."
+]

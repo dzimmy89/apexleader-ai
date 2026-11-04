@@ -1,0 +1,189 @@
+{
+ "track": "accounting",
+ "inputs": {
+  "income": 1,
+  "exp": 11,
+  "owner": 2,
+  "flags": 2,
+  "helpers": 2
+ },
+ "shots": [
+  {
+   "id": "answer",
+   "type": "reveal",
+   "question": {
+    "clip": "acct-ex1-setup",
+    "shot": "ask"
+   },
+   "answers": [
+    {
+     "text": "None",
+     "at": "L0:dollar"
+    }
+   ]
+  },
+  {
+   "id": "money",
+   "type": "story-cards",
+   "from": "L2",
+   "kicker": "Rolling Ledger · example",
+   "title": "The money and the app",
+   "titleAt": "L2:business",
+   "cardW": 480,
+   "gap": 40,
+   "cards": [
+    {
+     "icon": "landmark",
+     "label": "Single-member LLC",
+     "sub": "A new business checking account",
+     "at": "L2:singlemember"
+    },
+    {
+     "icon": "credit-card",
+     "label": "One debit card",
+     "at": "L2:debit"
+    },
+    {
+     "icon": "book-open",
+     "label": "QuickBooks Online Essentials",
+     "at": "L3:quickbooks",
+     "rows": [
+      {
+       "text": "Later lessons use its receipt and invoicing agents",
+       "at": "L3:receipt"
+      }
+     ]
+    }
+   ],
+   "hero": {
+    "card": 2
+   }
+  },
+  {
+   "id": "books",
+   "type": "figure",
+   "from": "L4",
+   "src": "public/learn/figures/ai-accounting/exercise-01-fig-2.webp",
+   "title": "The chart of accounts",
+   "zoom": false,
+   "regions": [
+    {
+     "rect": [
+      0.06,
+      0.53,
+      0.4,
+      0.075
+     ],
+     "at": "L4:one",
+     "label": "{income|0} income category"
+    },
+    {
+     "rect": [
+      0.06,
+      0.615,
+      0.4,
+      0.08
+     ],
+     "at": "L4:eleven",
+     "label": "{exp|0} expense categories, mapped to Schedule C"
+    },
+    {
+     "rect": [
+      0.06,
+      0.7,
+      0.4,
+      0.08
+     ],
+     "at": "L4:two",
+     "label": "{owner|0} owner accounts"
+    },
+    {
+     "rect": [
+      0.53,
+      0.21,
+      0.425,
+      0.715
+     ],
+     "at": "L5:flagged",
+     "label": "{flags|0} flagged for the accountant"
+    },
+    {
+     "rect": [
+      0.53,
+      0.31,
+      0.425,
+      0.29
+     ],
+     "at": "L5:meals",
+     "label": "Meals: usually only half deductible"
+    },
+    {
+     "rect": [
+      0.53,
+      0.63,
+      0.425,
+      0.29
+     ],
+     "at": "L5:car",
+     "label": "Car: mileage or actual expenses, two methods"
+    },
+    {
+     "rect": [
+      0.355,
+      0.065,
+      0.245,
+      0.105
+     ],
+     "at": "L6:bank",
+     "label": "Bank feed connected, read only"
+    }
+   ],
+   "hero": {
+    "region": 3
+   }
+  },
+  {
+   "id": "helpers",
+   "type": "story-cards",
+   "from": "L7:rules",
+   "kicker": "The back office rules name {helpers|0} helpers",
+   "titleAt": "L7:helpers",
+   "cardW": 480,
+   "gap": 40,
+   "cards": [
+    {
+     "agent": true,
+     "icon": "folder-lock",
+     "label": "Claude Cowork",
+     "sub": "The Finance folder only",
+     "at": "L7:claude"
+    },
+    {
+     "agent": true,
+     "icon": "receipt",
+     "label": "Expense bot",
+     "sub": "Reads and downloads from vendor portals",
+     "at": "L7:expense"
+    },
+    {
+     "icon": "shield",
+     "label": "Their user role",
+     "sub": "Can't pay bills or change bank details",
+     "at": "L8:role"
+    }
+   ],
+   "hero": {
+    "card": 2
+   },
+   "notes": [
+    {
+     "text": "Two-factor is on for the bank and the app",
+     "icon": "smartphone",
+     "at": "L9:twofactor",
+     "screen": "low",
+     "tone": "signal"
+    }
+   ]
+  }
+ ]
+}

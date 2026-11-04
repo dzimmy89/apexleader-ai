@@ -1,0 +1,181 @@
+{
+ "inputs": {},
+ "shots": [
+  {
+   "id": "hook",
+   "type": "desk",
+   "items": [
+    {
+     "id": "draft",
+     "kind": "agent",
+     "x": 170,
+     "y": 220,
+     "w": 860,
+     "icon": "mail",
+     "name": "Email agent",
+     "status": "Draft ready",
+     "statusTone": "sig",
+     "lines": [
+      {
+       "text": "A reply to a customer"
+      }
+     ]
+    },
+    {
+     "id": "send",
+     "kind": "chip",
+     "x": 170,
+     "y": 520,
+     "icon": "send",
+     "text": "Permission to send?",
+     "at": "L0:permission"
+    },
+    {
+     "id": "rule",
+     "kind": "paper",
+     "x": 1130,
+     "y": 260,
+     "w": 640,
+     "icon": "file-check",
+     "text": "Your approval rule makes it explicit",
+     "at": "L1:approval"
+    }
+   ],
+   "hero": {
+    "move": "light",
+    "target": "rule",
+    "at": "L1:explicit"
+   },
+   "camera": "push-in"
+  },
+  {
+   "id": "title",
+   "type": "chapter-card",
+   "from": "L2",
+   "over": "hook",
+   "kicker": "Logins, access and approval rules",
+   "title": "Your approval rule",
+   "sub": "Write it in four parts",
+   "subAt": "L2:four"
+  },
+  {
+   "id": "parts",
+   "type": "figure",
+   "from": "L3",
+   "src": "public/learn/figures/one-person-company/lesson-03-fig-2.webp",
+   "title": "The approval rule",
+   "regions": [
+    {
+     "rect": [
+      0.04,
+      0.06,
+      0.455,
+      0.43
+     ],
+     "at": "L3:do",
+     "label": "Read, summarize, research, create drafts"
+    },
+    {
+     "rect": [
+      0.505,
+      0.06,
+      0.455,
+      0.43
+     ],
+     "at": "L4:ask",
+     "label": "Anything sent to a customer, a vendor or the public"
+    },
+    {
+     "rect": [
+      0.505,
+      0.06,
+      0.455,
+      0.43
+     ],
+     "at": "L4:post",
+     "label": "Any post, proposal, quote or invoice"
+    },
+    {
+     "rect": [
+      0.04,
+      0.51,
+      0.455,
+      0.43
+     ],
+     "at": "L5:hand",
+     "label": "Logins, two-factor codes, payments, contracts, signatures"
+    },
+    {
+     "rect": [
+      0.505,
+      0.51,
+      0.455,
+      0.43
+     ],
+     "at": "L6:never",
+     "label": "Move money, delete records, share client data"
+    }
+   ],
+   "hero": {
+    "region": 4
+   },
+   "zoom": false
+  },
+  {
+   "id": "controls",
+   "type": "story-cards",
+   "from": "L7",
+   "kicker": "Copy it into each product's controls",
+   "titleAt": "L7:copy",
+   "cards": [
+    {
+     "agent": true,
+     "icon": "sunrise",
+     "label": "Claude Duet",
+     "sub": "Asks before it sends, pays, signs or deletes",
+     "at": "L8:claude"
+    },
+    {
+     "agent": true,
+     "icon": "list-checks",
+     "label": "Dots",
+     "sub": "Custom rules",
+     "at": "L9:dots"
+    },
+    {
+     "agent": true,
+     "icon": "globe",
+     "label": "Grok Bot",
+     "sub": "Auto-review, where ask first always wins",
+     "at": "L10:grok"
+    }
+   ],
+   "hero": {
+    "card": 2,
+    "at": "L10:wins"
+   },
+   "camera": "dolly-right",
+   "cardW": 500
+  },
+  {
+   "id": "once",
+   "type": "rule",
+   "from": "L11",
+   "kicker": "For anything sensitive",
+   "kickerIcon": "hand",
+   "statement": "Choose allow once, not always allow.",
+   "highlight": {
+    "text": "allow once,",
+    "at": "L11:once"
+   },
+   "notes": [
+    {
+     "text": "In the exercise: write your own rule",
+     "icon": "arrow-right",
+     "at": "L12:exercise",
+     "screen": "low"
+    }
+   ]
+  }
+ ]
+}

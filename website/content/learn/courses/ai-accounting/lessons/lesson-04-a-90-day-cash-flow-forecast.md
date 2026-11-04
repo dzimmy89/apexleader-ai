@@ -7,6 +7,16 @@ template: v2
 
 # Lesson 4: A 90-Day Cash-Flow Forecast
 
+:::video
+id: acct-l4-overview
+kind: overview
+status: paused
+src: /learn/video/ai-accounting/acct-l4-overview.mp4
+captions: /learn/video/ai-accounting/acct-l4-overview.vtt
+poster: /learn/video/ai-accounting/acct-l4-overview.jpg
+transcript: Profit tells you if the business works. Cash tells you if it survives the next three months. This is AI Accounting, lesson four: a ninety-day cash forecast. In this lesson: the sheet, the formulas, honest numbers, a late-payer scenario, and a ten-minute Monday update. Build a Google Sheet with thirteen weekly columns. Cash in and cash out go in rows, and each week's closing cash becomes next week's opening cash. That one link is what makes it a forecast. Gemini in Sheets can write the formulas, turn the weeks below your minimum buffer red, and draw the chart. Fill it with honest numbers: money arrives when clients actually pay, not when invoices are due. Then move your biggest payment four weeks later, and see what breaks. AI helps build it. You decide what the numbers mean. First, the layout.
+:::
+
 :::key-concept
 Profit tells you if the business works. Cash tells you if it survives the next three months. Build a simple 13-week cash forecast in Google Sheets, use Gemini to write the formulas and spot problems, and update it every Monday in ten minutes. The forecast is a planning tool you own: AI helps build it, you decide what the numbers mean.
 :::
@@ -47,6 +57,16 @@ Row 21: Minimum cash buffer (a fixed amount you never want to drop below)
 ```
 
 Next week's opening cash is this week's closing cash. That single link is what makes it a forecast instead of a list.
+
+:::infographic
+id: fig-1
+type: diagram
+title: One link makes it a forecast
+shows: Two weekly columns side by side. Week 1: opening cash, plus cash in, minus cash out, equals closing cash. An arrow carries week 1 closing cash into week 2 opening cash (highlighted). Footer: repeat for 13 weeks.
+data: none
+image: /learn/figures/ai-accounting/lesson-04-fig-1.webp
+alt: Each week, opening cash plus cash in minus cash out gives closing cash. That closing cash becomes the next week's opening cash, repeated across 13 weekly columns.
+:::
 
 ## Step 2: Let Gemini build the formulas
 
@@ -91,6 +111,16 @@ Do not change any source files.
 
 You check its assumptions, then paste the tables in. QuickBooks also offers cash flow scenarios and P&L forecasting in its business intelligence tools (all plans, with limited capacity), which you can use to cross-check.
 
+:::video
+id: acct-l4-honest
+kind: inline
+status: paused
+src: /learn/video/ai-accounting/acct-l4-honest.mp4
+captions: /learn/video/ai-accounting/acct-l4-honest.vtt
+poster: /learn/video/ai-accounting/acct-l4-honest.jpg
+transcript: A forecast is only as honest as its inputs. Here's where each one comes from. Opening cash is today's bank balance, read from your accounting app's feed. Cash in comes from your receivables list, placed by when each client actually pays. If a client always pays twenty days late, plan for twenty days late. Recurring costs come from your categorized expenses: every vendor that charged at least twice in the last ninety days, in the week it bills. Then taxes. Set aside a percentage of every payment, and put each quarterly estimated payment in its week: around April fifteenth, June fifteenth, September fifteenth and January fifteenth. Claude Cowork can gather these tables from your Finance folder, and show its assumption for each client. Check those assumptions before you paste anything in. Next: the scenario that tests your plan.
+:::
+
 ## Step 4: Add the "what if a big client is late" scenario
 
 Duplicate the forecast tab and call it "Late payer." Move your largest expected invoice four weeks later. Then ask Gemini:
@@ -100,7 +130,27 @@ Compare the closing cash in row 20 of the tabs "Cash forecast" and "Late payer".
 Which weeks fall below the minimum buffer in row 21 in each case? Summarize in three bullet points.
 ```
 
+:::infographic
+id: fig-2
+type: chart
+title: What one late client does to cash
+shows: A line chart over 13 weeks: the base case stays above a dashed minimum buffer line; the late payer line dips below it for two weeks (shaded, labelled act now), then recovers when the late payment lands.
+data: illustrative shape, no real numbers
+image: /learn/figures/ai-accounting/lesson-04-fig-2.webp
+alt: Closing cash over 13 weeks. The base case stays above the minimum buffer. In the late payer case, the largest payment arrives four weeks later and cash dips below the buffer for two weeks before recovering. That dip is the time to act.
+:::
+
 If the late-payer case dips below your buffer, decide now: ask for a deposit on new work, move a purchase, or talk to your bank about a line of credit before you need it. Google's own help pages warn that Gemini can be wrong and is no substitute for a professional's judgment. Check the weeks it flags against the red cells yourself.
+
+:::video
+id: acct-l4-late-payer
+kind: inline
+status: paused
+src: /learn/video/ai-accounting/acct-l4-late-payer.mp4
+captions: /learn/video/ai-accounting/acct-l4-late-payer.vtt
+poster: /learn/video/ai-accounting/acct-l4-late-payer.jpg
+transcript: Your forecast assumes everyone pays on their usual schedule. Test what happens when one client doesn't. Duplicate the forecast tab, and name it Late payer. Find your largest expected payment and move it four weeks later. Then ask Gemini to compare closing cash on both tabs, and list the weeks that fall below your minimum buffer. Check its answer against the red cells yourself, because Gemini can be wrong. If the late-payer case dips below the buffer, decide now, while you still have time. Ask for a deposit on new work. Move a purchase. Or talk to your bank about a line of credit before you need one. And keep the sheet private: it holds your bank balance and your clients' names. Nothing in it can move money. It's a planning tool. In the exercise, you'll build your own.
+:::
 
 :::warning
 A forecast sheet holds your bank balance and client names. Keep it private: don't share it with "anyone with the link," and remember Google notes that Gemini content in a file shared outside your organization may be visible to those people. Nothing in this sheet should be able to move money. It is a planning tool only.

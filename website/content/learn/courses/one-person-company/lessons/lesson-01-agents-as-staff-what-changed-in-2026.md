@@ -7,6 +7,16 @@ template: v2
 
 # Lesson 1: Agents as Staff: What Changed in 2026
 
+:::video
+id: opc-l1-overview
+kind: overview
+status: paused
+src: /learn/video/one-person-company/opc-l1-overview.mp4
+captions: /learn/video/one-person-company/opc-l1-overview.vtt
+poster: /learn/video/one-person-company/opc-l1-overview.jpg
+transcript: A founder closes the laptop at six. By morning, three agents have sorted the inbox, drafted two client emails and left a short report, and nothing went out without a yes. This is The One-Person Company, lesson one: agents as staff. In this lesson: the three kinds of AI help, what changed in 2026, and the four things every agent you hire needs. Chat assistants answer when you ask. Desktop agents work on your files while you watch or step away. The new group is always-on agents. They run on their own cloud computer, check your apps on a schedule, and message you first. Three of them launched in a few months: Grok Bot in August, OpenAI dots in September, and Claude Duet in October 2026. Tools that capable change the founder's job. You stop opening apps and start managing staff. Every agent gets a brief, its own access, an approval rule and a regular review. And one rule sits over all of it: if a task leaves the business or touches money, a human clicks the final button. First, let's meet the three kinds of AI help.
+:::
+
 :::key-concept
 In 2026 AI tools stopped being apps you open and started being staff you assign. The big labs now ship agents that keep working when you close the laptop, check your inbox on a schedule, and come back to you for approval. Your job as founder is to hire them for specific jobs, give them limited access, and decide what they may do without asking.
 :::
@@ -40,6 +50,16 @@ The always-on group is the new part. Three launches in a few months changed what
 
 The desktop agents matured too. Claude Cowork works on files in folders you grant it. Codex, OpenAI's desktop agent, writes code, browses, makes images and can use your Mac. Cursor 3 runs several coding agents in parallel. And in June 2026 SpaceX agreed to buy Cursor's parent company, Anysphere, which is why Grok Bot now ships inside Cursor plans.
 
+:::video
+id: opc-l1-three-kinds
+kind: inline
+status: paused
+src: /learn/video/one-person-company/opc-l1-three-kinds.mp4
+captions: /learn/video/one-person-company/opc-l1-three-kinds.vtt
+poster: /learn/video/one-person-company/opc-l1-three-kinds.jpg
+transcript: Some AI tools stop when you stop typing. Others keep working while you sleep. Here's how to tell them apart. A chat assistant, like Claude, ChatGPT or Gemini, answers when you ask, and then it stops. It's best for thinking, drafting and research. A desktop agent, like Claude Cowork, Codex or Cursor, works on your computer or your files. It builds spreadsheets, sites and code while you watch, or while you step away for a while. An always-on agent runs on its own cloud computer. It checks your apps on a schedule and comes to you first. Grok Bot can log in to your web apps with its own browser. A dot in ChatGPT follows custom rules about what it may do alone. Claude Duet sends a morning brief and asks before it sends, pays, signs or deletes anything. Parts of all three are still preview or beta, so build on the pattern, not on any one menu. Next: how to manage them.
+:::
+
 ## The manager mindset
 
 Every agent you hire gets the same four things a new employee would get.
@@ -48,6 +68,16 @@ Every agent you hire gets the same four things a new employee would get.
 2. **Access.** Its own scoped login or connector, only to the apps that job needs. Never your main password.
 3. **An approval rule.** What it may do alone, what it drafts for you, and what it never touches.
 4. **A review.** A regular look at its work, like a weekly one-on-one.
+
+:::infographic
+id: fig-1
+type: anatomy
+title: The four things every agent gets
+shows: Four cards in a 2 by 2 grid, each with a Lucide icon: 1 Brief, one job written down; 2 Access, its own login with only the apps it needs; 3 Approval rule, alone, drafts for you, or never; 4 Review, a regular look at its work.
+data: none
+image: /learn/figures/one-person-company/lesson-01-fig-1.webp
+alt: Four cards: a brief with one written job, access through its own login to only the apps it needs, an approval rule saying what it does alone, drafts or never does, and a regular review of its work.
+:::
 
 Here is a brief you can paste into almost any agent to start a job:
 
@@ -69,6 +99,26 @@ Before you pick tools, list the work. Most founders find their week splits into 
 - **Agent can do alone:** research, summaries, sorting, first drafts saved as drafts, internal notes, reminders to you.
 - **Agent drafts, you approve:** customer emails, social posts, proposals, invoices, job posts, anything with your name on it.
 - **Only you:** moving money, signing contracts, firing a client, tax and legal decisions, anything you'd regret if it went wrong at 3 a.m.
+
+:::infographic
+id: fig-2
+type: comparison
+title: Three piles, one rule
+shows: Three stacked cards with icons: Agent alone (research, summaries, sorting, drafts saved as drafts), Agent drafts, you approve (customer emails, posts, proposals, invoices), Only you (moving money, contracts, tax and legal calls). A paper card at the bottom: if it leaves the business or touches money, a human clicks the final button.
+data: none
+image: /learn/figures/one-person-company/lesson-01-fig-2.webp
+alt: Three piles of work: agent alone for research and internal drafts, agent drafts and you approve for anything sent to customers, and only you for money, contracts, tax and legal. If it leaves the business or touches money, a human clicks the final button.
+:::
+
+:::video
+id: opc-l1-sort-the-work
+kind: inline
+status: paused
+src: /learn/video/one-person-company/opc-l1-sort-the-work.mp4
+captions: /learn/video/one-person-company/opc-l1-sort-the-work.vtt
+poster: /learn/video/one-person-company/opc-l1-sort-the-work.jpg
+transcript: Before you hire a single agent, there's one question to ask about every task in your week: who clicks the final button? Sort your work into three piles. Agent alone: research, summaries, sorting, and drafts saved as drafts. Agent drafts, you approve: customer emails, social posts, proposals and invoices, anything with your name on it. Only you: moving money, signing contracts, tax and legal calls. The test is simple. If a mistake would leave your business or touch money, a human clicks the final button. That holds even when a product allows more. Claude Duet, for example, can check out with a one-time virtual card after your approval. In this course, the house rule is stricter: agents never move money. Look at the middle pile. That's where your first hire comes from, and in the exercise you'll build that map from your own week.
+:::
 
 A simple test: if a mistake would leave your business or touch money, a human clicks the final button. That rule holds even when a product technically allows more. Claude Duet, for example, can check out with a one-time virtual card after your approval, and it hard-blocks moving money between accounts. In this course, our house rule is stricter: agents never move money.
 

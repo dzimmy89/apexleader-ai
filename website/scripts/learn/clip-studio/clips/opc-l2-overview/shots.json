@@ -1,0 +1,252 @@
+{
+ "inputs": {
+  "lesson": 2,
+  "bots": 4,
+  "t1": 20,
+  "t2": 100,
+  "t3": 300
+ },
+ "shots": [
+  {
+   "id": "hook",
+   "type": "desk",
+   "items": [
+    {
+     "id": "head",
+     "kind": "text",
+     "cls": "kicker",
+     "x": 170,
+     "y": 200,
+     "text": "{bots|0} chatbots, {bots|0} bills"
+    },
+    {
+     "id": "b1",
+     "kind": "card",
+     "x": 170,
+     "y": 260,
+     "w": 380,
+     "icon": "message-square",
+     "title": "Chatbot",
+     "status": "Bill",
+     "sub": "Doesn't know your business"
+    },
+    {
+     "id": "b2",
+     "kind": "card",
+     "x": 580,
+     "y": 260,
+     "w": 380,
+     "icon": "message-square",
+     "title": "Chatbot",
+     "status": "Bill",
+     "sub": "Doesn't know your business",
+     "at": "L0:four#1"
+    },
+    {
+     "id": "b3",
+     "kind": "card",
+     "x": 990,
+     "y": 260,
+     "w": 380,
+     "icon": "message-square",
+     "title": "Chatbot",
+     "status": "Bill",
+     "sub": "Doesn't know your business",
+     "at": "L0:bills"
+    },
+    {
+     "id": "b4",
+     "kind": "card",
+     "x": 1400,
+     "y": 260,
+     "w": 380,
+     "icon": "message-square",
+     "title": "Chatbot",
+     "status": "Bill",
+     "sub": "Doesn't know your business",
+     "at": "L0:knows"
+    },
+    {
+     "id": "team",
+     "kind": "paper",
+     "x": 170,
+     "y": 600,
+     "w": 1610,
+     "icon": "users",
+     "text": "A cheaper way to build your AI team",
+     "at": "L0:theres"
+    }
+   ],
+   "hero": {
+    "move": "light",
+    "target": "team",
+    "at": "L0:build"
+   },
+   "camera": "push-in"
+  },
+  {
+   "id": "title",
+   "type": "chapter-card",
+   "from": "L1",
+   "over": "hook",
+   "kicker": "The One-Person Company · Lesson {lesson|0}",
+   "title": "Pick your stack",
+   "sub": "At {t1|$0}, {t2|$0} and {t3|$0} a month",
+   "subAt": "L1:twenty",
+   "agenda": [
+    {
+     "text": "The tool families",
+     "icon": "layers",
+     "at": "L2:tool"
+    },
+    {
+     "text": "Three starter stacks",
+     "icon": "wallet",
+     "at": "L2:three"
+    },
+    {
+     "text": "Rules that stop subscriptions creeping",
+     "icon": "shield-check",
+     "at": "L2:rules"
+    }
+   ]
+  },
+  {
+   "id": "office",
+   "type": "figure",
+   "from": "L3",
+   "src": "public/learn/figures/one-person-company/lesson-02-fig-2.webp",
+   "title": "Start here",
+   "regions": [
+    {
+     "rect": [
+      0.04,
+      0.06,
+      0.455,
+      0.9
+     ],
+     "at": "L3:main",
+     "label": "One main office"
+    },
+    {
+     "rect": [
+      0.04,
+      0.06,
+      0.455,
+      0.9
+     ],
+     "at": "L3:files",
+     "label": "Your files, instructions and connectors live here"
+    },
+    {
+     "rect": [
+      0.04,
+      0.06,
+      0.455,
+      0.9
+     ],
+     "at": "L3:memory",
+     "label": "That memory doesn't move between vendors"
+    },
+    {
+     "rect": [
+      0.505,
+      0.14,
+      0.455,
+      0.82
+     ],
+     "at": "L4:specialist",
+     "label": "A specialist, only for a job you named"
+    }
+   ],
+   "hero": {
+    "region": 0
+   }
+  },
+  {
+   "id": "tiers",
+   "type": "figure",
+   "from": "L5",
+   "src": "public/learn/figures/one-person-company/lesson-02-fig-1.webp",
+   "zoom": false,
+   "title": "Three starter stacks",
+   "regions": [
+    {
+     "rect": [
+      0.04,
+      0.06,
+      0.3,
+      0.78
+     ],
+     "at": "L5:twenty",
+     "label": "{t1|$0}: one main office and free tools"
+    },
+    {
+     "rect": [
+      0.35,
+      0.06,
+      0.3,
+      0.78
+     ],
+     "at": "L5:hundred",
+     "label": "{t2|$0}: a stronger office plus one specialist"
+    },
+    {
+     "rect": [
+      0.66,
+      0.06,
+      0.3,
+      0.78
+     ],
+     "at": "L5:three",
+     "label": "{t3|$0}: two offices and a department of agents"
+    },
+    {
+     "rect": [
+      0.66,
+      0.06,
+      0.3,
+      0.78
+     ],
+     "at": "L5:replace",
+     "label": "Only when they replace real hours"
+    }
+   ],
+   "hero": {
+    "region": 2
+   }
+  },
+  {
+   "id": "usage",
+   "type": "rule",
+   "from": "L6",
+   "kicker": "Before you buy",
+   "kickerIcon": "gauge",
+   "statement": "Watch usage as well as price.",
+   "highlight": {
+    "text": "usage",
+    "at": "L6:usage"
+   },
+   "chips": [
+    {
+     "icon": "activity",
+     "text": "Background agents use your plan's limits",
+     "at": "L6:background"
+    },
+    {
+     "icon": "globe",
+     "text": "Check prices and regions on the vendor's page",
+     "at": "L6:check"
+    }
+   ],
+   "notes": [
+    {
+     "text": "Next: the tool families",
+     "icon": "arrow-right",
+     "at": "L7:first",
+     "screen": "low"
+    }
+   ]
+  }
+ ]
+}

@@ -7,6 +7,16 @@ template: v2
 
 # Lesson 1: A 30-Day Content Calendar
 
+:::video
+id: mkt-l1-overview
+kind: overview
+status: paused
+src: /learn/video/ai-marketing/mkt-l1-overview.mp4
+captions: /learn/video/ai-marketing/mkt-l1-overview.vtt
+poster: /learn/video/ai-marketing/mkt-l1-overview.jpg
+transcript: Three posts in a good week, then nothing for a month. Buyers notice the silence. A calendar fixes that. This is AI Marketing, lesson one: a thirty-day content calendar. In this lesson: pillars, a rhythm you can keep, the calendar sheet, and a one-sitting review. Start from what you already have: your brand kit, your offer and your customer. Put all three in one project, and ask Claude for four content pillars in your customer's own words. Then pick a rhythm you can approve every week. Three posts on one channel, plus one article, is plenty. Generate the calendar as a spreadsheet with ten fixed columns. The one that matters most is Status. Every row starts as draft, and your Marketing Bot only ever touches rows you've marked approved. Then review the whole month in one forty-five minute sitting: is it true, does it sound like you, is it safe, and does it earn attention? First, your three inputs.
+:::
+
 :::key-concept
 A content calendar is the job description for your marketing department. If you give your AI tools a clear audience, a few content pillars and a fixed weekly rhythm, they can fill 30 days of posts in an afternoon, and every later step in this course (the bot, the newsletter, the ads) runs off that one sheet.
 :::
@@ -29,6 +39,16 @@ You built a brand kit in Brand in a Day: voice rules, words you use and avoid, c
 If you don't have a business yet, use the sample business for this whole course: **Rolling Ledger**, a monthly bookkeeping service for independent food truck owners. The owner is one person. Customers are single-truck and small multi-truck owners who hate paperwork and dread tax season.
 
 Put all three inputs into a Claude Project (or a ChatGPT project, or a Gemini Gem) so every conversation starts with the same context. Then ask for pillars.
+
+:::infographic
+id: fig-1
+type: diagram
+title: Three inputs, four pillars
+shows: Three cards on the left (Brand kit: voice and words; Offer: what people buy; Customer: problems and where they spend time) feed one project in the middle, which produces four pillar cards on the right, using the Rolling Ledger examples: money mistakes, tax season without panic, behind the scenes, client stories.
+data: none
+image: /learn/figures/ai-marketing/lesson-01-fig-1.webp
+alt: Your brand kit, your offer and your customer notes go into one project, which turns them into four content pillars. For Rolling Ledger: money mistakes food truck owners make, tax season without panic, behind the scenes, and client stories.
+:::
 
 ```text
 You are my head of content. Use the brand kit, offer and customer notes in this project.
@@ -58,6 +78,16 @@ The right cadence is the one you can approve every week. AI can draft 100 posts.
 
 That is roughly 25 to 30 pieces a month, and about 45 minutes of review each week once the system runs. If that feels like a lot, start with one channel and the blog. Consistency beats volume.
 
+:::video
+id: mkt-l1-rhythm
+kind: inline
+status: paused
+src: /learn/video/ai-marketing/mkt-l1-rhythm.mp4
+captions: /learn/video/ai-marketing/mkt-l1-rhythm.vtt
+poster: /learn/video/ai-marketing/mkt-l1-rhythm.jpg
+transcript: AI can draft a hundred posts. You still have to read every one. So pick the rhythm you can approve. For one founder, a realistic week looks like this. Three posts on your main social channel. Two repurposed posts on a second channel, if you want one. One blog article, drafted by Claude from your notes. And one newsletter, which arrives in lesson five. That's roughly twenty-five to thirty pieces a month, and about forty-five minutes of review each week, once the system runs. If that feels like a lot, start smaller: one channel and the blog. Consistency beats volume, because a calendar you keep for thirty days does more than one you abandon in week two. Next, turn the rhythm into a sheet.
+:::
+
 ## Generate the calendar as a spreadsheet
 
 Ask for the calendar as a table you can paste into Google Sheets or Excel. The columns matter more than the content right now, because later lessons depend on them. The **Status** column is how your Marketing Bot will know what it may touch: it only schedules rows marked `approved`.
@@ -75,6 +105,16 @@ so nothing gets invented.
 ```
 
 Paste the result into a new sheet called `Content Calendar` and freeze the header row. Add a column called `Notes` for your edits. Share the sheet only with the accounts that need it. Later, your Marketing Bot gets its own login with access to this one sheet, not your whole Drive.
+
+:::infographic
+id: fig-2
+type: flow
+title: Only approved rows move
+shows: A left-to-right flow of a calendar row: Draft (every row starts here), You review (true, sounds like you, safe, earns attention), Approved, Bot schedules, Your final click, Published. A note under Draft: the bot never touches drafts.
+data: none
+image: /learn/figures/ai-marketing/lesson-01-fig-2.webp
+alt: A calendar row moves from draft, through your review, to approved. Only then does the Marketing Bot schedule it, and it still waits for your final click before anything publishes.
+:::
 
 :::try-it
 Open Claude or ChatGPT right now and paste: "Give me 10 post hooks for [your customer] about [their biggest problem], each under 15 words, written the way they'd say it to a friend." Mark the three you'd actually post. That gut check is the same one you'll use on the full calendar.
@@ -99,6 +139,16 @@ Return only the new rows.
 
 :::warning
 A calendar is a plan, not permission. Nothing on it gets published until you mark it approved, and even then your Marketing Bot schedules it for your final click (Lesson 3). Never paste client data, login details or bank information into the project you use for content.
+:::
+
+:::video
+id: mkt-l1-review
+kind: inline
+status: paused
+src: /learn/video/ai-marketing/mkt-l1-review.mp4
+captions: /learn/video/ai-marketing/mkt-l1-review.vtt
+poster: /learn/video/ai-marketing/mkt-l1-review.jpg
+transcript: Every row in your calendar starts as draft. Here's how it earns approval. Block forty-five minutes and go row by row. For each, do one of three things: approve it, edit it and then approve it, or delete it. Before you approve, check four things. Is it true? Every claim needs a source you can name. Does it sound like you? Read the hook out loud. Is it safe? No client names without permission, and nothing that reads as tax or legal advice. And does it earn attention, by teaching, showing or proving one thing? Then ask Claude to refill the rows you cut, and review those the same way. Remember, a calendar is a plan, not permission. Your Marketing Bot schedules approved rows only, and even then it waits for your final click. In the exercise, you'll build and approve your own.
 :::
 
 ## Repurpose instead of inventing

@@ -13,6 +13,16 @@ You'll separate business money, choose and set up an accounting app with a Sched
 
 **Time:** 40 minutes · **You'll need:** Your business bank account details (or a plan to open one), a QuickBooks Online or Wave account (free trial or free plan is fine), Claude or ChatGPT · **Builds on:** Lesson 1
 
+:::video
+id: acct-ex1-setup
+kind: exercise-setup
+status: paused
+src: /learn/video/ai-accounting/acct-ex1-setup.mp4
+captions: /learn/video/ai-accounting/acct-ex1-setup.vtt
+poster: /learn/video/ai-accounting/acct-ex1-setup.jpg
+transcript: One account, one app, and six rules every helper follows. Let's open your books. In this exercise you'll set up working books and write your back-office rules. First, the money: a business-only account and card, or time booked to open one. Choose QuickBooks Online or Wave, and write two sentences on why. Have Claude draft a category list with no more than fifteen expense categories, each mapped to Schedule C. Set up the app, and connect the bank feed if you can. Copy the six rules into a doc called Back office rules, and name each helper you plan to use. Check the app's user roles, so a helper can't pay bills or change bank details. Then turn on two-factor for your bank and your app. So: is there any path an agent could use to move money? Pause here and set up your books.
+:::
+
 ## Warm-up
 
 :::checkpoint
@@ -24,6 +34,16 @@ Why: Personal spending from the business account is an owner draw, not an expens
 :::
 
 ## Steps
+
+:::infographic
+id: fig-1
+type: flow
+title: Seven steps to open the books
+shows: Seven numbered steps down the frame: 1 Separate the money, 2 Choose the app, 3 Categories (15 or fewer, mapped to Schedule C), 4 Bank feed (read-only), 5 Back office rules (agents never move money, highlighted), 6 Least access, 7 Two-factor.
+data: none
+image: /learn/figures/ai-accounting/exercise-01-fig-1.webp
+alt: Seven steps: separate the money; choose QuickBooks Online or Wave; set up 15 or fewer expense categories mapped to Schedule C; connect a read-only bank feed; write back office rules starting with agents never move money; give helpers the least access; and turn on two-factor.
+:::
 
 1. **Make the money decision.** If you don't have a separate business checking account and card, list two banks you'll compare this week and book the time to open one. If you do, write down its name and the last four digits only. Using the sample business (a bookkeeping service for food truck owners)? Pretend it's a single-member LLC with a new business account.
 
@@ -55,6 +75,62 @@ Review the list. Merge anything you won't use. Save it as "Chart of accounts" in
 - [ ] The bank feed is connected, or you've noted why not yet
 - [ ] "Back office rules" exists, starting with "Agents never move money"
 - [ ] Two-factor authentication is on for your bank and accounting app
+
+:::example
+title: See an example result
+Here is the finished setup for the sample business, Rolling Ledger, run as a single-member LLC. Line numbers are from the current Schedule C; confirm the mapping with your accountant.
+
+:::video
+id: acct-ex1-reveal
+kind: exercise-reveal
+status: paused
+src: /learn/video/ai-accounting/acct-ex1-reveal.mp4
+captions: /learn/video/ai-accounting/acct-ex1-reveal.vtt
+poster: /learn/video/ai-accounting/acct-ex1-reveal.jpg
+transcript: For Rolling Ledger, the books are open, and no helper can touch a dollar. Here's the example. The business is a single-member LLC, with a new business checking account and one debit card. The app is QuickBooks Online Essentials, because later lessons use its receipt and invoicing agents. The chart of accounts has one income category, eleven expense categories mapped to Schedule C, and two owner accounts. Two categories are flagged for the accountant: meals, which are usually only half deductible, and car costs, where mileage and actual expenses are two different methods. The bank feed is connected, read only. The back office rules name two helpers: Claude Cowork, with the Finance folder only, and an expense bot that may read and download from vendor portals. Their user role can't pay bills or change bank details. And two-factor is on for both the bank and the app.
+:::
+
+:::infographic
+id: fig-2
+type: comparison
+title: Rolling Ledger books, set up
+shows: Under "Rolling Ledger setup" tagged example: a paper card for QuickBooks Online Essentials with three counts (1 income, 11 expense categories, 2 owner accounts), and beside it two flag cards for the accountant: Meals (usually 50% deductible) and Car (mileage or actual costs). Footer pills: Bank feed read-only, 2FA on.
+data: example numbers: 1 income, 11 expense and 2 owner accounts; 2 flags
+image: /learn/figures/ai-accounting/exercise-01-fig-2.webp
+alt: Example Rolling Ledger setup in QuickBooks Online Essentials: 1 income category, 11 expense categories mapped to Schedule C and 2 owner accounts. Two categories are flagged for the accountant: meals, usually 50% deductible, and car costs, where mileage and actual costs are different methods. The bank feed is read-only and two-factor is on.
+:::
+
+**Money:** a new business checking account and one debit card in the LLC's name. Notes record the bank name and last four digits only.
+
+**App:** QuickBooks Online Essentials. Why: later lessons use its receipt and invoicing agents, and the business expects about 35 transactions a month.
+
+| Account | Schedule C line | Flag for the accountant |
+|---|---|---|
+| Service revenue (income) | Line 1 | |
+| Advertising | Line 8 | |
+| Car and truck expenses | Line 9 | Yes: mileage or actual costs, pick one method |
+| Commissions and fees (payment processing) | Line 10 | |
+| Contract labor | Line 11 | |
+| Insurance | Line 15 | |
+| Legal and professional services | Line 17 | |
+| Office expense | Line 18 | |
+| Supplies | Line 22 | |
+| Travel | Line 24a | |
+| Meals (business) | Line 24b | Yes: usually only 50% deductible |
+| Other expenses: software, bank fees, education | Line 27a | |
+| Owner contribution, Owner draw (equity) | Not on Schedule C | |
+
+```text
+BACK OFFICE RULES (example, Rolling Ledger)
+1-6: copied from Lesson 1, starting with "Agents never move money."
+Helpers:
+- Claude Cowork: the Finance folder only
+- Expense Bot: vendor portals, read and download only
+User role for helpers: limited user, checked: cannot pay bills or change bank details
+Two-factor: on for the bank and QuickBooks, tied to the founder's phone
+Bank feed: connected, read-only
+```
+:::
 
 :::coached
 **For 1-on-1 coaching clients.** Clean up your real starting point.

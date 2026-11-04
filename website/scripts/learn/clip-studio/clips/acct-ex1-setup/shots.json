@@ -1,0 +1,200 @@
+{
+ "track": "accounting",
+ "inputs": {
+  "six": 6,
+  "two": 2,
+  "cats": 15
+ },
+ "shots": [
+  {
+   "id": "hook",
+   "type": "desk",
+   "items": [
+    {
+     "id": "acc",
+     "kind": "card",
+     "x": 170,
+     "y": 220,
+     "w": 760,
+     "icon": "landmark",
+     "title": "One account",
+     "sub": "Business money only"
+    },
+    {
+     "id": "app",
+     "kind": "card",
+     "x": 170,
+     "y": 480,
+     "w": 760,
+     "icon": "book-open",
+     "title": "One app",
+     "sub": "Where the books live",
+     "at": "L0:app"
+    },
+    {
+     "id": "rules",
+     "kind": "paper",
+     "x": 1010,
+     "y": 330,
+     "w": 780,
+     "icon": "shield-check",
+     "text": "{six|0} rules every helper follows",
+     "at": "L0:six"
+    }
+   ],
+   "hero": {
+    "move": "light",
+    "target": "rules",
+    "at": "L0:follows"
+   },
+   "camera": "push-in"
+  },
+  {
+   "id": "title",
+   "type": "chapter-card",
+   "from": "L1",
+   "over": "hook",
+   "kicker": "Exercise · Set up the books",
+   "title": "Open your books",
+   "sub": "Working books and back-office rules",
+   "subAt": "L2:working"
+  },
+  {
+   "id": "steps",
+   "type": "figure",
+   "from": "L3",
+   "src": "public/learn/figures/ai-accounting/exercise-01-fig-1.webp",
+   "title": "Step by step",
+   "regions": [
+    {
+     "rect": [
+      0.058,
+      0.058,
+      0.885,
+      0.112
+     ],
+     "at": "L3:money",
+     "label": "A business-only account and card"
+    },
+    {
+     "rect": [
+      0.058,
+      0.058,
+      0.885,
+      0.112
+     ],
+     "at": "L3:booked",
+     "label": "Or time booked to open one"
+    },
+    {
+     "rect": [
+      0.058,
+      0.187,
+      0.885,
+      0.112
+     ],
+     "at": "L4:choose",
+     "label": "QuickBooks Online or Wave"
+    },
+    {
+     "rect": [
+      0.058,
+      0.187,
+      0.885,
+      0.112
+     ],
+     "at": "L4:two",
+     "label": "{two|0} sentences on why"
+    },
+    {
+     "rect": [
+      0.058,
+      0.316,
+      0.885,
+      0.112
+     ],
+     "at": "L5:category",
+     "label": "No more than {cats|0} expense categories"
+    },
+    {
+     "rect": [
+      0.058,
+      0.316,
+      0.885,
+      0.112
+     ],
+     "at": "L5:schedule",
+     "label": "Each mapped to Schedule C"
+    },
+    {
+     "rect": [
+      0.058,
+      0.445,
+      0.885,
+      0.112
+     ],
+     "at": "L6:connect",
+     "label": "Connect the bank feed if you can"
+    },
+    {
+     "rect": [
+      0.058,
+      0.573,
+      0.885,
+      0.112
+     ],
+     "at": "L7:copy",
+     "label": "Copy the {six|0} rules into Back office rules"
+    },
+    {
+     "rect": [
+      0.058,
+      0.573,
+      0.885,
+      0.112
+     ],
+     "at": "L7:name",
+     "label": "Name each helper you plan to use"
+    },
+    {
+     "rect": [
+      0.058,
+      0.702,
+      0.885,
+      0.112
+     ],
+     "at": "L8:roles",
+     "label": "A helper can't pay bills or change bank details"
+    },
+    {
+     "rect": [
+      0.058,
+      0.83,
+      0.885,
+      0.112
+     ],
+     "at": "L9:twofactor",
+     "label": "Two-factor on your bank and your app"
+    }
+   ],
+   "hero": {
+    "region": 7
+   }
+  },
+  {
+   "id": "ask",
+   "type": "question",
+   "from": "L10",
+   "over": "steps",
+   "kicker": "Your turn",
+   "question": "Is there any path an agent could use to move money?",
+   "lines": [
+    {
+     "text": "A path to move money",
+     "at": "L10:path"
+    }
+   ],
+   "pulse": "L11:pause"
+  }
+ ]
+}

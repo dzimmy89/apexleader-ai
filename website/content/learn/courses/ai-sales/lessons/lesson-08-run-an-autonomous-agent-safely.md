@@ -7,6 +7,16 @@ template: v2
 
 # Lesson 8: Run an Autonomous Agent Safely
 
+:::video
+id: sales-l8-overview
+kind: overview
+status: paused
+src: /learn/video/ai-sales/sales-l8-overview.mp4
+captions: /learn/video/ai-sales/sales-l8-overview.vtt
+poster: /learn/video/ai-sales/sales-l8-overview.jpg
+transcript: Some outbound agents are built to run without you. Give them a website and a budget, and they pick audiences, write, send and follow up. This is AI Sales, lesson eight: run an autonomous agent safely. In this lesson: four settings before the first send, pruning audiences, reviewing drafts, a one-day test you log yourself, and a clear decision. Explee sends from its own pre-warmed mailboxes, at about four cents an email, with a daily budget and no subscription. Testers liked the emails. They also found Autopilot on by default, emails signed with a made-up name, and many stale contacts. None of that means don't use it. It means set it up on purpose. Turn Autopilot off, cap the budget, use your real name, and switch on one audience. Then run one day, and work out your cost per reply by hand. First, the four settings.
+:::
+
 :::key-concept
 Explee (launched as AutoGTM) is a cold email agent built to run without you: give it a website and a budget, and it picks audiences, finds contacts, writes, sends, follows up and handles replies. That makes it the fastest way to test a new audience, and the easiest way to send something you'd never approve. Change four settings before the first send, keep the budget small, and log what comes back yourself.
 :::
@@ -62,6 +72,16 @@ If you can't find a way to turn Autopilot off or set your real name, stop and co
 Explee's mailboxes send on your behalf, but the emails promote your business, so you're responsible for them under CAN-SPAM. Check that every draft includes a working opt-out and your postal address. If it doesn't, add them to the template before you send anything.
 :::
 
+:::infographic
+id: fig-1
+type: comparison
+title: Four settings before the first send
+shows: Four numbered cards: 1 Autopilot off (highlighted), 2 daily budget $10 to $30, 3 your real name, business and address, 4 one audience. Footer: can't change 1 or 3? Stop before you pay.
+data: none
+image: /learn/figures/ai-sales/lesson-08-fig-1.webp
+alt: Before the first send: turn Autopilot off, set a daily budget of $10 to $30, use your real name, business and postal address, and switch on one audience. If you cannot turn Autopilot off or set your real name, stop before you pay.
+:::
+
 ## Step 2: Prune the audiences
 
 Explee suggests segments from your website. For Rolling Ledger it might suggest "independent food trucks," "taco truck owners," "restaurant groups" and "event caterers." Fit scores are the tool's guess, not evidence.
@@ -70,6 +90,16 @@ Explee suggests segments from your website. For Rolling Ledger it might suggest 
 2. Keep the single segment closest to your best Lesson 6 leads.
 3. Read 10 sample prospects from it. If more than two are wrong (wrong industry, wrong size, a chain), edit the segment description and look again.
 4. Stick to your own country for the first test. Outside the US, consent rules for cold email are often stricter, and testers saw weaker data.
+
+:::video
+id: sales-l8-settings
+kind: inline
+status: paused
+src: /learn/video/ai-sales/sales-l8-settings.mp4
+captions: /learn/video/ai-sales/sales-l8-settings.vtt
+poster: /learn/video/ai-sales/sales-l8-settings.jpg
+transcript: Change four settings before a single email goes out, and screenshot each one. One: Autopilot off, so you review drafts before anything sends. Two: a daily budget of ten to thirty dollars, which caps the damage if the audience or the message is wrong. Three: your real name, your business and your postal address as the sender and signature. The law bans misleading From information, and requires an address. Four: one audience switched on, because you can only judge results you can attribute. If you can't turn Autopilot off, or can't set your real name, stop, and contact support before you top up any money. Then prune the audiences it suggests. Delete anything your profile disqualifies, like restaurant groups. Keep the one segment closest to your best leads, read ten sample prospects, and if more than two are wrong, edit the description. Start in your own country. Next: the drafts and the test.
+:::
 
 ## Step 3: Review the first 10 drafts
 
@@ -93,6 +123,26 @@ Date | Audience | Emails sent | Spend | Replies | Positive replies | Opt-outs | 
 "Bounced or stale" counts replies like "she left the company" or "we closed," plus any bounce notices you can see. Testers found this was most of the replies on some campaigns, and it tells you how fresh the data is.
 
 Work out **cost per positive reply** by hand: spend divided by positive replies. If there are none yet, write "none yet" rather than guessing.
+
+:::infographic
+id: fig-2
+type: diagram
+title: Cost per positive reply
+shows: An equation: spend divided by positive replies equals cost per positive reply (highlighted). Below, the log columns: sent, replies, positive, opt-outs, bounced or stale. Footer: none yet means write none yet.
+data: none
+image: /learn/figures/ai-sales/lesson-08-fig-2.webp
+alt: Cost per positive reply is spend divided by positive replies, worked out by hand from your own test log of sent, replies, positive replies, opt-outs and bounced or stale contacts. If there are none yet, write none yet.
+:::
+
+:::video
+id: sales-l8-test
+kind: inline
+status: paused
+src: /learn/video/ai-sales/sales-l8-test.mp4
+captions: /learn/video/ai-sales/sales-l8-test.vtt
+poster: /learn/video/ai-sales/sales-l8-test.jpg
+transcript: With Autopilot off, read the first ten drafts the way you read your Sales Bot's work. Is every detail about the prospect true? Spot-check three against their websites. Is your offer described correctly? Testers saw agents misdescribe offers. Is the sender your real name, with your address and opt-out line? And does it claim any results? Remove them. Approve only what you'd sign yourself. Then run one day at your cap, and keep your own test log, because the dashboard won't show everything. Log the date, the audience, emails sent, spend, replies, positive replies, opt-outs, and bounced or stale contacts, like she left the company, or we closed. Work out cost per positive reply by hand: spend divided by positive replies. If there are none yet, write none yet. Then decide. Keep testing, fix and retest, or stop. And check your card statement after the first week. In the exercise, you'll run the ten dollar test.
+:::
 
 ## Step 5: Decide what happens next
 

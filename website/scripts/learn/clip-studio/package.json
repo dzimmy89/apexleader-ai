@@ -1,0 +1,14 @@
+{
+  "name": "fromai-clip-studio",
+  "private": true,
+  "type": "module",
+  "description": "Code-drawn lesson and exercise clips for FromAItoBusiness Learn. See CLAUDE.md.",
+  "scripts": {
+    "serve": "cd ../../.. && python3 -m http.server 8768 --bind 127.0.0.1",
+    "icons": "node clips/desk/icons.mjs"
+  },
+  "dependencies": {
+    "lucide-react": "1.17.0",
+    "playwright-core": "1.48.0"
+  }
+}

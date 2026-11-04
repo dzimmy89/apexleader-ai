@@ -1,0 +1,10 @@
+node_modules
+clips/*/frames/
+clips/*/stills/
+clips/*/*.wav
+clips/*/*.flac
+clips/*/checks/
+clips/*/mix.json
+clips/out/
+clips/out-*.txt
+clips/*/sheet.jpg

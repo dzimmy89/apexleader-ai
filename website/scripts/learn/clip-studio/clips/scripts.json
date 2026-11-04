@@ -1,0 +1,1810 @@
+{
+ "opc-l1-overview": {
+  "shape": "overview",
+  "chapter": "The One-Person Company · Lesson 1 · Agents as staff",
+  "lead": 0.5,
+  "tail": 2.2,
+  "lines": [
+   [
+    "A founder closes the laptop at six. By morning, three agents have sorted the inbox, drafted two client emails and left a short report, and nothing went out without a yes.",
+    0.35
+   ],
+   [
+    "This is The One-Person Company, lesson one: agents as staff.",
+    0.35
+   ],
+   [
+    "In this lesson: the three kinds of AI help, what changed in 2026, and the four things every agent you hire needs.",
+    0.35
+   ],
+   [
+    "Chat assistants answer when you ask. Desktop agents work on your files while you watch or step away.",
+    0.35
+   ],
+   [
+    "The new group is always-on agents. They run on their own cloud computer, check your apps on a schedule, and message you first.",
+    0.35
+   ],
+   [
+    "Three of them launched in a few months: Grok Bot in August, OpenAI dots in September, and Claude Duet in October 2026.",
+    0.35
+   ],
+   [
+    "Tools that capable change the founder's job. You stop opening apps and start managing staff.",
+    0.35
+   ],
+   [
+    "Every agent gets a brief, its own access, an approval rule and a regular review.",
+    0.35
+   ],
+   [
+    "And one rule sits over all of it: if a task leaves the business or touches money, a human clicks the final button.",
+    0.35
+   ],
+   [
+    "First, let's meet the three kinds of AI help.",
+    0.0
+   ]
+  ]
+ },
+ "opc-l1-three-kinds": {
+  "shape": "inline",
+  "chapter": "Lesson 1 · Three kinds of AI help",
+  "lead": 0.5,
+  "tail": 2.5,
+  "lines": [
+   [
+    "Some AI tools stop when you stop typing. Others keep working while you sleep.",
+    0.35
+   ],
+   [
+    "Here's how to tell them apart.",
+    0.35
+   ],
+   [
+    "A chat assistant, like Claude, ChatGPT or Gemini, answers when you ask, and then it stops. It's best for thinking, drafting and research.",
+    0.35
+   ],
+   [
+    "A desktop agent, like Claude Cowork, Codex or Cursor, works on your computer or your files. It builds spreadsheets, sites and code while you watch, or while you step away for a while.",
+    0.35
+   ],
+   [
+    "An always-on agent runs on its own cloud computer. It checks your apps on a schedule and comes to you first.",
+    0.35
+   ],
+   [
+    "Grok Bot can log in to your web apps with its own browser. A dot in ChatGPT follows custom rules about what it may do alone. Claude Duet sends a morning brief and asks before it sends, pays, signs or deletes anything.",
+    0.35
+   ],
+   [
+    "Parts of all three are still preview or beta, so build on the pattern, not on any one menu.",
+    0.35
+   ],
+   [
+    "Next: how to manage them.",
+    0.0
+   ]
+  ]
+ },
+ "opc-l1-sort-the-work": {
+  "shape": "inline",
+  "chapter": "Lesson 1 · Sort the work",
+  "lead": 0.5,
+  "tail": 2.5,
+  "lines": [
+   [
+    "Before you hire a single agent, there's one question to ask about every task in your week: who clicks the final button?",
+    0.35
+   ],
+   [
+    "Sort your work into three piles.",
+    0.35
+   ],
+   [
+    "Agent alone: research, summaries, sorting, and drafts saved as drafts.",
+    0.35
+   ],
+   [
+    "Agent drafts, you approve: customer emails, social posts, proposals and invoices, anything with your name on it.",
+    0.35
+   ],
+   [
+    "Only you: moving money, signing contracts, tax and legal calls.",
+    0.35
+   ],
+   [
+    "The test is simple. If a mistake would leave your business or touch money, a human clicks the final button. That holds even when a product allows more.",
+    0.35
+   ],
+   [
+    "Claude Duet, for example, can check out with a one-time virtual card after your approval. In this course, the house rule is stricter: agents never move money.",
+    0.35
+   ],
+   [
+    "Look at the middle pile. That's where your first hire comes from, and in the exercise you'll build that map from your own week.",
+    0.0
+   ]
+  ]
+ },
+ "opc-ex1-setup": {
+  "shape": "exercise-setup",
+  "chapter": "Exercise 1 · Your delegation map",
+  "lead": 0.5,
+  "tail": 4.0,
+  "lines": [
+   [
+    "Twenty-five tasks, one week, and one founder doing all of them. Time to find out which ones you can hand off.",
+    0.35
+   ],
+   [
+    "In this exercise you'll build a delegation map.",
+    0.35
+   ],
+   [
+    "Dump last week's work, one task per line with rough minutes, at least twenty lines.",
+    0.35
+   ],
+   [
+    "If you don't have a business yet, use Rolling Ledger, a bookkeeping and invoicing service for independent food truck owners.",
+    0.35
+   ],
+   [
+    "Then sort every task into three piles: agent alone, agent drafts and you approve, or only you.",
+    0.35
+   ],
+   [
+    "Be strict. If it leaves the business or touches money, it can't be agent alone.",
+    0.35
+   ],
+   [
+    "Total the minutes in each pile. Then pick the recurring task with the most minutes from the middle pile, and write it as a brief.",
+    0.35
+   ],
+   [
+    "So: which pile holds the most of your week, and what's your first hire?",
+    0.35
+   ],
+   [
+    "Pause here and build your map.",
+    0.0
+   ]
+  ]
+ },
+ "opc-ex1-reveal": {
+  "shape": "exercise-reveal",
+  "chapter": "Exercise 1 · An example result",
+  "lead": 0.5,
+  "tail": 2.5,
+  "lines": [
+   [
+    "For Rolling Ledger, the biggest pile is the middle one: three hundred and ten minutes a week of work an agent can draft and the founder approves.",
+    0.35
+   ],
+   [
+    "Here's how the example week came out, with example numbers. Twenty-five tasks, seven hundred and sixty minutes.",
+    0.35
+   ],
+   [
+    "Agent alone: seven tasks, one hundred and ninety minutes, like researching competitors and sorting receipts.",
+    0.35
+   ],
+   [
+    "Agent drafts, you approve: nine tasks, three hundred and ten minutes, including client emails, social posts and invoice reminders.",
+    0.35
+   ],
+   [
+    "Only you: nine tasks, two hundred and sixty minutes, like reconciling the bank feed, paying bills and signing a new client.",
+    0.35
+   ],
+   [
+    "Notice where money went. Reconciling the bank feed and paying bills sit in only you.",
+    0.35
+   ],
+   [
+    "The first hire is the biggest recurring job in the middle pile: overdue-invoice reminders, seventy-five minutes a week.",
+    0.35
+   ],
+   [
+    "The brief gives the agent read access to the invoicing app, lets it draft reminders, and makes it ask before anything sends. That's your first agent job.",
+    0.0
+   ]
+  ]
+ },
+ "opc-l2-overview": {
+  "shape": "overview",
+  "chapter": "The One-Person Company · Lesson 2 · Pick your stack",
+  "lead": 0.5,
+  "tail": 2.5,
+  "lines": [
+   [
+    "Four chatbots, four bills, and not one of them knows your business. There's a cheaper way to build your AI team.",
+    0.35
+   ],
+   [
+    "This is The One-Person Company, lesson two: pick your stack at twenty, one hundred and three hundred dollars a month.",
+    0.35
+   ],
+   [
+    "In this lesson: the tool families, three starter stacks, and the rules that stop subscriptions creeping.",
+    0.35
+   ],
+   [
+    "Start with one main office. That's the tool where your files, instructions and connectors live, because that memory doesn't move between vendors.",
+    0.35
+   ],
+   [
+    "Then add a specialist only for a job you named, like Cursor for the website.",
+    0.35
+   ],
+   [
+    "At twenty dollars, you get one main office and free tools. At around one hundred, a stronger office plus one specialist. At around three hundred, two offices and a department of agents, but only when they replace real hours.",
+    0.35
+   ],
+   [
+    "Watch usage as well as price, because background agents use your plan's limits. And check prices and regions on the vendor's own page before you buy.",
+    0.35
+   ],
+   [
+    "First, let's meet the tool families.",
+    0.0
+   ]
+  ]
+ },
+ "opc-l2-main-office": {
+  "shape": "inline",
+  "chapter": "Lesson 2 · One main office",
+  "lead": 0.5,
+  "tail": 2.5,
+  "lines": [
+   [
+    "Most founders don't need more AI tools. They need fewer, used well.",
+    0.35
+   ],
+   [
+    "Here's the shape that works.",
+    0.35
+   ],
+   [
+    "Pick one main office: Claude, ChatGPT or Gemini, whichever already fits how you work.",
+    0.35
+   ],
+   [
+    "Put your files, instructions and connectors there first, because that context is what makes an agent useful, and it doesn't transfer between vendors.",
+    0.35
+   ],
+   [
+    "Then add one or two specialists, each for a job your main tool does badly.",
+    0.35
+   ],
+   [
+    "Cursor builds and fixes your website. Codex handles code and computer use on a Mac. Grok is fast at real-time research.",
+    0.35
+   ],
+   [
+    "Always-on agents come with certain plans.",
+    0.35
+   ],
+   [
+    "Claude Duet is included with Claude Pro and Max, for US accounts admitted from the waitlist. The first dot comes with ChatGPT Pro and Business Premium. Grok Bot is included with SuperGrok plans, and with Cursor plans from Premium up.",
+    0.35
+   ],
+   [
+    "Next: three starter stacks, by budget.",
+    0.0
+   ]
+  ]
+ },
+ "opc-l2-three-stacks": {
+  "shape": "inline",
+  "chapter": "Lesson 2 · Three starter stacks",
+  "lead": 0.5,
+  "tail": 2.5,
+  "lines": [
+   [
+    "Twenty, one hundred, or three hundred dollars a month.",
+    0.35
+   ],
+   [
+    "Each budget buys a different shape of team.",
+    0.35
+   ],
+   [
+    "Under twenty dollars: one main office on an entry plan, plus free tools like GitHub for your website code.",
+    0.35
+   ],
+   [
+    "If you're in the US, Claude Pro gets you on the Duet waitlist. Or an entry SuperGrok plan includes Grok Bot. Pick one, not both.",
+    0.35
+   ],
+   [
+    "Around one hundred: a stronger main office, like Claude's entry Max tier, plus one specialist. Cursor Premium covers the website and brings Grok Bot with it.",
+    0.35
+   ],
+   [
+    "Around three hundred: two offices and a department of agents, led by Claude, OpenAI or Grok. Only spend this when agents replace real hours, like inbox triage, bookkeeping prep and weekly reports.",
+    0.35
+   ],
+   [
+    "Whatever the tier, review every ninety days, and cancel any plan you didn't open last month.",
+    0.35
+   ],
+   [
+    "In the exercise, you'll price your own stack.",
+    0.0
+   ]
+  ]
+ },
+ "opc-l3-overview": {
+  "shape": "overview",
+  "chapter": "The One-Person Company · Lesson 3 · Logins, access and approval rules",
+  "lead": 0.5,
+  "tail": 2.5,
+  "lines": [
+   [
+    "An agent with your main email password misreads one thread, and every client gets the wrong message before you wake up. Ten minutes of setup prevents that.",
+    0.35
+   ],
+   [
+    "This is The One-Person Company, lesson three: logins, access and approval rules.",
+    0.35
+   ],
+   [
+    "In this lesson: four rules that keep an always-on agent safe.",
+    0.35
+   ],
+   [
+    "One: separate logins. Use an official connector or a separate limited user, and never share your main password.",
+    0.35
+   ],
+   [
+    "Two: least access. Start read only, then drafts, then narrow actions, and widen only when the agent has earned it.",
+    0.35
+   ],
+   [
+    "Three: a written approval rule. What it does alone, what it asks about, what it hands to you, and what it never does.",
+    0.35
+   ],
+   [
+    "Four: know your off switch before you turn it on.",
+    0.35
+   ],
+   [
+    "And remember: stopping an agent doesn't undo what it did. That's why the approval rule matters most.",
+    0.35
+   ],
+   [
+    "First, logins.",
+    0.0
+   ]
+  ]
+ },
+ "opc-l3-logins": {
+  "shape": "inline",
+  "chapter": "Lesson 3 · Three safe ways in",
+  "lead": 0.5,
+  "tail": 4.5,
+  "lines": [
+   [
+    "Your agent needs to get into your apps.",
+    0.75
+   ],
+   [
+    "Your password never needs to go with it.",
+    0.75
+   ],
+   [
+    "There are three safe ways in, in this order.",
+    0.75
+   ],
+   [
+    "First, an official connector or plugin.",
+    0.75
+   ],
+   [
+    "You approve access on the app's own sign-in screen, and the agent gets a token, not your password.",
+    0.75
+   ],
+   [
+    "Second, a separate account for the agent, like ops at your business dot com, with a viewer or editor role.",
+    0.75
+   ],
+   [
+    "Third, when an agent hits a login page, you type the password yourself, in a secure screen.",
+    0.75
+   ],
+   [
+    "Claude Duet gives you a separate form.",
+    0.75
+   ],
+   [
+    "Grok Bot lets you take over, sign in, then press I'm done.",
+    0.75
+   ],
+   [
+    "And one rule applies everywhere: never type a password, a one-time code or an API key into ordinary chat.",
+    0.75
+   ],
+   [
+    "Next: how much access to give.",
+    0.0
+   ]
+  ]
+ },
+ "opc-l3-approval-rule": {
+  "shape": "inline",
+  "chapter": "Lesson 3 · Your approval rule",
+  "lead": 0.5,
+  "tail": 3.0,
+  "lines": [
+   [
+    "Drafting an email doesn't mean permission to send it.",
+    0.6
+   ],
+   [
+    "Your approval rule makes the difference explicit.",
+    0.6
+   ],
+   [
+    "Write it in four parts.",
+    0.6
+   ],
+   [
+    "Do alone: read, summarize, research and create drafts.",
+    0.6
+   ],
+   [
+    "Ask me first: anything sent to a customer, a vendor or the public, and any post, proposal, quote or invoice.",
+    0.6
+   ],
+   [
+    "Hand to me: logins, two-factor codes, payments, contracts and signatures.",
+    0.6
+   ],
+   [
+    "Never: move money, delete records, or share client data outside your apps.",
+    0.6
+   ],
+   [
+    "Then copy the rule into each product's controls.",
+    0.6
+   ],
+   [
+    "Claude Duet asks before it sends, pays, signs or deletes.",
+    0.6
+   ],
+   [
+    "Dots have custom rules.",
+    0.6
+   ],
+   [
+    "Grok Bot has auto-review, where ask first always wins.",
+    0.6
+   ],
+   [
+    "For anything sensitive, choose allow once, not always allow.",
+    0.6
+   ],
+   [
+    "In the exercise, you'll write your own rule.",
+    0.0
+   ]
+  ]
+ },
+ "opc-l4-overview": {
+  "shape": "overview",
+  "chapter": "The One-Person Company · Lesson 4 · Your AI org chart",
+  "lead": 0.5,
+  "tail": 2.5,
+  "lines": [
+   [
+    "A dot, a Grok Bot and Claude Duet, all reading the same inbox, and three different replies to one client. An org chart stops that.",
+    0.35
+   ],
+   [
+    "This is The One-Person Company, lesson four: your AI org chart.",
+    0.35
+   ],
+   [
+    "In this lesson: the five boxes every solo business needs, the role card, and the weekly review.",
+    0.35
+   ],
+   [
+    "You sit at the top, and you approve anything external or about money. Under you: chief of staff, sales and customers, marketing and content, finance assistant, and product and website.",
+    0.35
+   ],
+   [
+    "You don't fill all five on day one. Fill the box that costs you the most hours first.",
+    0.35
+   ],
+   [
+    "Each filled box gets one tool and one owner, written on a six-line role card.",
+    0.35
+   ],
+   [
+    "Then, every Friday, take fifteen minutes: read the logs, count misses, change one thing, and prune.",
+    0.35
+   ],
+   [
+    "Trust is earned. After four clean weeks, an agent can take on a narrow action, but sends and money stay with you.",
+    0.35
+   ],
+   [
+    "First, the shape of a one-person company.",
+    0.0
+   ]
+  ]
+ },
+ "opc-l4-five-boxes": {
+  "shape": "inline",
+  "chapter": "Lesson 4 · Five boxes",
+  "lead": 0.5,
+  "tail": 2.5,
+  "lines": [
+   [
+    "Five boxes, one founder, and one tool in each box.",
+    0.35
+   ],
+   [
+    "Here's how to match each role to the right kind of help.",
+    0.35
+   ],
+   [
+    "Your chief of staff watches email and calendar and messages you first, so it's an always-on agent, like Claude Duet or a dot.",
+    0.35
+   ],
+   [
+    "Sales and customers runs on a schedule: an always-on agent with drafts, or a Grok Bot working in your CRM, with sending behind approval.",
+    0.35
+   ],
+   [
+    "Marketing and content benefits from you in the loop, so use a chat or desktop agent.",
+    0.35
+   ],
+   [
+    "The finance assistant organizes and drafts, like Claude Cowork on a receipts folder. Paying stays yours.",
+    0.35
+   ],
+   [
+    "Product and website goes to Cursor or Codex, with the code on GitHub.",
+    0.35
+   ],
+   [
+    "The rule across all five: one agent, one owner. Two agents on one inbox means conflicting drafts and wasted usage.",
+    0.35
+   ],
+   [
+    "Next: the role card.",
+    0.0
+   ]
+  ]
+ },
+ "opc-l4-weekly-review": {
+  "shape": "inline",
+  "chapter": "Lesson 4 · The weekly review",
+  "lead": 0.5,
+  "tail": 2.5,
+  "lines": [
+   [
+    "Managers review their staff. For a solo founder, fifteen minutes on Friday is enough.",
+    0.35
+   ],
+   [
+    "Here's the routine.",
+    0.35
+   ],
+   [
+    "First, read the log. Duet keeps its updates in one thread. Dots show their work in Activity. Grok Bots show proposals and approvals in the conversation.",
+    0.35
+   ],
+   [
+    "Second, count misses: wrong drafts, missed urgent items and false alarms.",
+    0.35
+   ],
+   [
+    "Third, change one thing: tighten a rule, add an example to the brief, or remove an app it doesn't need.",
+    0.35
+   ],
+   [
+    "Fourth, prune: pause stale routines, and cancel any plan nobody used.",
+    0.35
+   ],
+   [
+    "Then decide on trust. After four clean weeks, an agent can move from drafts to a narrow action, like filing receipts.",
+    0.35
+   ],
+   [
+    "If it repeats a mistake, change the brief once. If it still fails, remove the role. Customer sends and money stay behind your click.",
+    0.35
+   ],
+   [
+    "In the exercise, you'll draw your own chart.",
+    0.0
+   ]
+  ]
+ },
+ "opc-ex2-setup": {
+  "shape": "exercise-setup",
+  "chapter": "Exercise 2 · Your stack decision",
+  "lead": 0.5,
+  "tail": 4.5,
+  "lines": [
+   [
+    "One budget line, three jobs, and a stack that has to fit under it.",
+    0.7
+   ],
+   [
+    "Here's how to choose yours.",
+    0.7
+   ],
+   [
+    "In this exercise you'll pick a real AI stack and price it.",
+    0.7
+   ],
+   [
+    "Choose your tier: twenty, one hundred or three hundred dollars a month.",
+    0.7
+   ],
+   [
+    "If you're unsure, start at twenty.",
+    0.7
+   ],
+   [
+    "Copy your top three jobs from your delegation map.",
+    0.7
+   ],
+   [
+    "Draft a stack using the shapes from lesson two.",
+    0.7
+   ],
+   [
+    "Then check every plan on the vendor's own pages: price, region, waitlist and usage limits.",
+    0.7
+   ],
+   [
+    "Add up the verified prices.",
+    0.7
+   ],
+   [
+    "If you're over your line, drop the specialist with the fewest job minutes.",
+    0.7
+   ],
+   [
+    "Then write your stack decision, with a ninety-day review date.",
+    0.7
+   ],
+   [
+    "So: what's your main office, and does your verified total fit your budget?",
+    0.7
+   ],
+   [
+    "Pause here and build your stack.",
+    0.0
+   ]
+  ]
+ },
+ "opc-ex2-reveal": {
+  "shape": "exercise-reveal",
+  "chapter": "Exercise 2 · An example result",
+  "lead": 0.5,
+  "tail": 2.5,
+  "lines": [
+   [
+    "For Rolling Ledger, one twenty-dollar plan covers all three top jobs.",
+    0.35
+   ],
+   [
+    "Here's the example.",
+    0.35
+   ],
+   [
+    "The tier is twenty dollars a month.",
+    0.35
+   ],
+   [
+    "The top jobs from the delegation map are overdue-invoice reminders at seventy-five minutes a week, Instagram posts at forty-five, and sorting receipts at forty.",
+    0.35
+   ],
+   [
+    "All three are writing and sorting jobs, so one main office handles them: Claude Pro. It drafts the reminders and the posts, and sorts receipts in a project.",
+    0.35
+   ],
+   [
+    "The gap is posting itself, which stays manual, because nothing publishes without the founder.",
+    0.35
+   ],
+   [
+    "No two plans overlap, because there's only one.",
+    0.35
+   ],
+   [
+    "The always-on agent is the Claude Duet waitlist, after checking the account is in the US.",
+    0.35
+   ],
+   [
+    "Specialists wait until the main office has had a week of real use. And the decision has a review date, ninety days out.",
+    0.35
+   ],
+   [
+    "That's a stack decision you can act on today.",
+    0.0
+   ]
+  ]
+ },
+ "opc-ex3-setup": {
+  "shape": "exercise-setup",
+  "chapter": "Exercise 3 · Your access and approval policy",
+  "lead": 0.5,
+  "tail": 4.5,
+  "lines": [
+   [
+    "One agent, a handful of apps, and not one of them using your main password.",
+    0.6
+   ],
+   [
+    "Let's write the policy that keeps it that way.",
+    0.6
+   ],
+   [
+    "In this exercise you'll write an access and approval policy.",
+    0.6
+   ],
+   [
+    "List every app your first agent job needs.",
+    0.6
+   ],
+   [
+    "For each, choose the access method: an official connector, a separate limited user, or you log in yourself through the secure handoff.",
+    0.6
+   ],
+   [
+    "Then set the level: read, draft or act.",
+    0.6
+   ],
+   [
+    "Clean one thing now: remove an unused app from your email, and confirm two-factor is on.",
+    0.6
+   ],
+   [
+    "Write your approval rule in four parts, with money under never, and map it to your product's real controls.",
+    0.6
+   ],
+   [
+    "Finally, write down your off switch.",
+    0.6
+   ],
+   [
+    "So: which apps does your agent get, at what level, and what does it never do?",
+    0.6
+   ],
+   [
+    "Pause here and write your policy.",
+    0.0
+   ]
+  ]
+ },
+ "opc-ex3-reveal": {
+  "shape": "exercise-reveal",
+  "chapter": "Exercise 3 · An example result",
+  "lead": 0.5,
+  "tail": 2.5,
+  "lines": [
+   [
+    "For Rolling Ledger, the billing assistant gets two apps and never sees a password.",
+    0.35
+   ],
+   [
+    "Here's the example policy.",
+    0.35
+   ],
+   [
+    "The invoicing app gets a separate viewer user, so the agent can read overdue invoices and nothing more.",
+    0.35
+   ],
+   [
+    "Gmail connects through Claude's official connector at the draft level, so reminders land as drafts.",
+    0.35
+   ],
+   [
+    "The bank isn't connected at all.",
+    0.35
+   ],
+   [
+    "The rule has four parts. Do alone: read invoices and draft reminders. Ask me first: sending any email, or changing an invoice. Hand to me: logins, codes, refunds and payment questions. Never: move money, delete records, or share client data.",
+    0.35
+   ],
+   [
+    "For the cleanup, the founder removed an old scheduling app and confirmed two-factor on the main email.",
+    0.35
+   ],
+   [
+    "And the off switch is written down: disconnect Gmail in Claude, and remove the agent's user from the invoicing app.",
+    0.35
+   ],
+   [
+    "That's a policy you can set up today.",
+    0.0
+   ]
+  ]
+ },
+ "opc-ex4-setup": {
+  "shape": "exercise-setup",
+  "chapter": "Exercise 4 · Your AI org chart",
+  "lead": 0.5,
+  "tail": 4.5,
+  "lines": [
+   [
+    "Three documents, five boxes, and you at the top.",
+    0.6
+   ],
+   [
+    "Time to turn your work so far into one chart.",
+    0.6
+   ],
+   [
+    "In this exercise you'll draw your AI org chart.",
+    0.6
+   ],
+   [
+    "Put yourself at the top: you approve anything external or about money.",
+    0.6
+   ],
+   [
+    "Under you go five boxes: chief of staff, sales and customers, marketing and content, finance assistant, and product and website.",
+    0.6
+   ],
+   [
+    "Fill each box you can from your stack decision, and mark the rest as me for now, or open.",
+    0.6
+   ],
+   [
+    "Write a six-line role card for each filled box.",
+    0.6
+   ],
+   [
+    "Run the audit prompt, apply the fixes you agree with, and ignore anything that gives an agent money access.",
+    0.6
+   ],
+   [
+    "Then add the Friday review, and put it on your calendar.",
+    0.6
+   ],
+   [
+    "So: which box do you fill first, and does every job have exactly one owner?",
+    0.6
+   ],
+   [
+    "Pause here and draw your chart.",
+    0.0
+   ]
+  ]
+ },
+ "opc-ex4-reveal": {
+  "shape": "exercise-reveal",
+  "chapter": "Exercise 4 · An example result",
+  "lead": 0.5,
+  "tail": 2.5,
+  "lines": [
+   [
+    "For Rolling Ledger, two boxes are filled, three wait, and every job has one owner.",
+    0.35
+   ],
+   [
+    "Here's the example chart.",
+    0.35
+   ],
+   [
+    "The founder sits at the top and approves anything external or about money.",
+    0.35
+   ],
+   [
+    "The finance assistant is Claude Pro with a Rolling Ledger project. It sorts receipts and drafts overdue-invoice reminders each Monday. It reads the invoicing app as a viewer, and drafts in Gmail, never sending without a yes.",
+    0.35
+   ],
+   [
+    "Product and website is free GitHub plus Claude Pro.",
+    0.35
+   ],
+   [
+    "The chief of staff will be Claude Duet once the waitlist lets the account in. Until then, that box says open.",
+    0.35
+   ],
+   [
+    "Sales and customers, and marketing and content, say me for now.",
+    0.35
+   ],
+   [
+    "The audit found two fixes: remove calendar access the finance assistant didn't need, and add delete to the chief of staff's rule.",
+    0.35
+   ],
+   [
+    "The next hire is marketing and content, for the Instagram posts, forty-five minutes a week.",
+    0.35
+   ],
+   [
+    "And the Friday review is on the calendar.",
+    0.0
+   ]
+  ]
+ },
+ "mkt-l1-overview": {
+  "shape": "overview",
+  "chapter": "AI Marketing · Lesson 1 · A content calendar",
+  "lead": 0.5,
+  "tail": 2.5,
+  "lines": [
+   [
+    "Three posts in a good week, then nothing for a month.",
+    0.35
+   ],
+   [
+    "Buyers notice the silence.",
+    0.35
+   ],
+   [
+    "A calendar fixes that.",
+    0.35
+   ],
+   [
+    "This is AI Marketing, lesson one: a thirty-day content calendar.",
+    0.35
+   ],
+   [
+    "In this lesson: pillars, a rhythm you can keep, the calendar sheet, and a one-sitting review.",
+    0.35
+   ],
+   [
+    "Start from what you already have: your brand kit, your offer and your customer.",
+    0.35
+   ],
+   [
+    "Put all three in one project, and ask Claude for four content pillars in your customer's own words.",
+    0.35
+   ],
+   [
+    "Then pick a rhythm you can approve every week.",
+    0.35
+   ],
+   [
+    "Three posts on one channel, plus one article, is plenty.",
+    0.35
+   ],
+   [
+    "Generate the calendar as a spreadsheet with ten fixed columns.",
+    0.35
+   ],
+   [
+    "The one that matters most is Status.",
+    0.35
+   ],
+   [
+    "Every row starts as draft, and your Marketing Bot only ever touches rows you've marked approved.",
+    0.35
+   ],
+   [
+    "Then review the whole month in one forty-five minute sitting: is it true, does it sound like you, is it safe, and does it earn attention?",
+    0.35
+   ],
+   [
+    "First, your three inputs.",
+    0.0
+   ]
+  ]
+ },
+ "mkt-l1-rhythm": {
+  "shape": "inline",
+  "chapter": "Lesson 1 · A rhythm you can keep",
+  "lead": 0.5,
+  "tail": 3.5,
+  "lines": [
+   [
+    "AI can draft a hundred posts.",
+    0.9
+   ],
+   [
+    "You still have to read every one.",
+    0.9
+   ],
+   [
+    "So pick the rhythm you can approve.",
+    0.9
+   ],
+   [
+    "For one founder, a realistic week looks like this.",
+    0.9
+   ],
+   [
+    "Three posts on your main social channel.",
+    0.9
+   ],
+   [
+    "Two repurposed posts on a second channel, if you want one.",
+    0.9
+   ],
+   [
+    "One blog article, drafted by Claude from your notes.",
+    0.9
+   ],
+   [
+    "And one newsletter, which arrives in lesson five.",
+    0.9
+   ],
+   [
+    "That's roughly twenty-five to thirty pieces a month, and about forty-five minutes of review each week, once the system runs.",
+    0.9
+   ],
+   [
+    "If that feels like a lot, start smaller: one channel and the blog.",
+    0.9
+   ],
+   [
+    "Consistency beats volume, because a calendar you keep for thirty days does more than one you abandon in week two.",
+    0.9
+   ],
+   [
+    "Next, turn the rhythm into a sheet.",
+    0.0
+   ]
+  ]
+ },
+ "mkt-l1-review": {
+  "shape": "inline",
+  "chapter": "Lesson 1 · Review in one sitting",
+  "lead": 0.5,
+  "tail": 3.0,
+  "lines": [
+   [
+    "Every row in your calendar starts as draft.",
+    0.55
+   ],
+   [
+    "Here's how it earns approval.",
+    0.55
+   ],
+   [
+    "Block forty-five minutes and go row by row.",
+    0.55
+   ],
+   [
+    "For each, do one of three things: approve it, edit it and then approve it, or delete it.",
+    0.55
+   ],
+   [
+    "Before you approve, check four things.",
+    0.55
+   ],
+   [
+    "Is it true?",
+    0.55
+   ],
+   [
+    "Every claim needs a source you can name.",
+    0.55
+   ],
+   [
+    "Does it sound like you?",
+    0.55
+   ],
+   [
+    "Read the hook out loud.",
+    0.55
+   ],
+   [
+    "Is it safe?",
+    0.55
+   ],
+   [
+    "No client names without permission, and nothing that reads as tax or legal advice.",
+    0.55
+   ],
+   [
+    "And does it earn attention, by teaching, showing or proving one thing?",
+    0.55
+   ],
+   [
+    "Then ask Claude to refill the rows you cut, and review those the same way.",
+    0.55
+   ],
+   [
+    "Remember, a calendar is a plan, not permission.",
+    0.55
+   ],
+   [
+    "Your Marketing Bot schedules approved rows only, and even then it waits for your final click.",
+    0.55
+   ],
+   [
+    "In the exercise, you'll build and approve your own.",
+    0.0
+   ]
+  ]
+ },
+ "mkt-ex1-setup": {
+  "shape": "exercise-setup",
+  "chapter": "Exercise 1 · Your first calendar",
+  "lead": 0.5,
+  "tail": 4.5,
+  "lines": [
+   [
+    "Thirty days of posts, one sheet, and a Status column that you control.",
+    0.7
+   ],
+   [
+    "Let's build it.",
+    0.7
+   ],
+   [
+    "In this exercise you'll build and approve your first content calendar.",
+    0.7
+   ],
+   [
+    "Set up a Marketing project with your brand kit, your offer and a short customer profile.",
+    0.7
+   ],
+   [
+    "Ask Claude for four pillars, and keep the three or four that sound like your customers.",
+    0.7
+   ],
+   [
+    "Write your rhythm in one line, like LinkedIn on Monday, Wednesday and Friday, plus a blog article on Thursday.",
+    0.7
+   ],
+   [
+    "Generate the calendar with ten columns, every row as draft.",
+    0.7
+   ],
+   [
+    "Move it into a sheet, then review it in one pass: approve, edit, or delete.",
+    0.7
+   ],
+   [
+    "Refill the gaps, and repurpose week one's article into three posts and a newsletter paragraph.",
+    0.7
+   ],
+   [
+    "So: how many rows can you honestly approve, and does every claim have a source?",
+    0.7
+   ],
+   [
+    "Pause here and build your calendar.",
+    0.0
+   ]
+  ]
+ },
+ "mkt-ex1-reveal": {
+  "shape": "exercise-reveal",
+  "chapter": "Exercise 1 · An example result",
+  "lead": 0.5,
+  "tail": 2.5,
+  "lines": [
+   [
+    "For Rolling Ledger, thirty days became twenty-one rows, and fifteen of them earned approval.",
+    0.35
+   ],
+   [
+    "Here's the example.",
+    0.35
+   ],
+   [
+    "The rhythm is LinkedIn on Monday, Wednesday and Friday, plus a blog article every Thursday.",
+    0.35
+   ],
+   [
+    "Over thirty days, that's thirteen posts and four articles: seventeen rows.",
+    0.35
+   ],
+   [
+    "The four pillars are money mistakes food truck owners make, tax season without panic, behind the scenes, and client stories.",
+    0.35
+   ],
+   [
+    "The review took forty minutes.",
+    0.35
+   ],
+   [
+    "Ten rows were approved as written, and three more after edits.",
+    0.35
+   ],
+   [
+    "Four were deleted: one quoted a four-thousand-dollar figure with no source, and one named a real client.",
+    0.35
+   ],
+   [
+    "Claude refilled those four rows, and two of the new ones were approved.",
+    0.35
+   ],
+   [
+    "Then week one's article became three LinkedIn posts and a newsletter paragraph, all still draft.",
+    0.35
+   ],
+   [
+    "That's fifteen approved rows, and six drafts waiting for next week's review.",
+    0.0
+   ]
+  ]
+ },
+ "sales-l1-overview": {
+  "shape": "overview",
+  "chapter": "AI Sales · Lesson 1 · Build a lead list",
+  "lead": 0.5,
+  "tail": 2.5,
+  "lines": [
+   [
+    "Five thousand scraped names nobody wanted to hear from, or thirty businesses you picked for a reason.",
+    0.5
+   ],
+   [
+    "The short list wins.",
+    0.5
+   ],
+   [
+    "This is AI Sales, lesson one: build a lead list.",
+    0.5
+   ],
+   [
+    "In this lesson: write the profile, research matches, score the list, and know where the lines are.",
+    0.5
+   ],
+   [
+    "First, write a five-part customer profile: who, where, size, pain and disqualifier, plus a why-now signal.",
+    0.5
+   ],
+   [
+    "Then have an AI research assistant find thirty matches, with fixed columns and a source link for every fact.",
+    0.5
+   ],
+   [
+    "Unknown is an allowed answer.",
+    0.5
+   ],
+   [
+    "A guessed email is not.",
+    0.5
+   ],
+   [
+    "Spot-check five rows yourself.",
+    0.5
+   ],
+   [
+    "Score each row on fit and signal, and keep the top twenty to thirty.",
+    0.5
+   ],
+   [
+    "Use public business information only: no LinkedIn scraping, and no bought lists.",
+    0.5
+   ],
+   [
+    "Then refresh the list every month.",
+    0.5
+   ],
+   [
+    "First, the profile.",
+    0.0
+   ]
+  ]
+ },
+ "sales-l1-profile": {
+  "shape": "inline",
+  "chapter": "Lesson 1 · Write the profile",
+  "lead": 0.5,
+  "tail": 3.0,
+  "lines": [
+   [
+    "AI researchers are fast and literal.",
+    0.65
+   ],
+   [
+    "Ask for small businesses that need bookkeeping, and you'll get a vague pile.",
+    0.65
+   ],
+   [
+    "Give it a profile instead, in five parts.",
+    0.65
+   ],
+   [
+    "Who: independent food truck owners, from single trucks to small fleets.",
+    0.65
+   ],
+   [
+    "Where: start with two metro areas you know.",
+    0.65
+   ],
+   [
+    "Size signal: one to three trucks, and up to ten staff.",
+    0.65
+   ],
+   [
+    "Pain signal: cash-heavy sales, catering requests handled by DM, and an owner doing the admin.",
+    0.65
+   ],
+   [
+    "Disqualifier: franchise trucks, restaurant groups and commissary kitchens.",
+    0.65
+   ],
+   [
+    "Then add one more line: why now.",
+    0.65
+   ],
+   [
+    "That's the recent event that makes a yes more likely this month, like a second truck, a hiring post, or a new catering menu.",
+    0.65
+   ],
+   [
+    "A profile like this turns a list of names into a list of reasons to reach out.",
+    0.65
+   ],
+   [
+    "Next: let the researcher find matches.",
+    0.0
+   ]
+  ]
+ },
+ "sales-l1-lines": {
+  "shape": "inline",
+  "chapter": "Lesson 1 · Know where the lines are",
+  "lead": 0.5,
+  "tail": 2.5,
+  "lines": [
+   [
+    "A fast list is no use if it gets your domain blocked or your account banned.",
+    0.5
+   ],
+   [
+    "Here are the lines.",
+    0.5
+   ],
+   [
+    "Public business information only.",
+    0.5
+   ],
+   [
+    "A truck's published contact email is fine.",
+    0.5
+   ],
+   [
+    "A personal cell number from a data broker is not.",
+    0.5
+   ],
+   [
+    "Don't scrape LinkedIn.",
+    0.5
+   ],
+   [
+    "Its terms ban bots and scrapers, so read profiles yourself and take notes by hand.",
+    0.5
+   ],
+   [
+    "Don't buy email lists, because they hurt your sender reputation.",
+    0.5
+   ],
+   [
+    "Record the source of every contact, so you can always say where you got an address.",
+    0.5
+   ],
+   [
+    "Keep personal data minimal, and check with a lawyer before you scale into the EU or UK.",
+    0.5
+   ],
+   [
+    "And watch for invented emails.",
+    0.5
+   ],
+   [
+    "If an address isn't on the business's own site, mark it unknown.",
+    0.5
+   ],
+   [
+    "One guessed address that bounces hurts every email you send after it.",
+    0.5
+   ],
+   [
+    "In the exercise, you'll build your first list.",
+    0.0
+   ]
+  ]
+ },
+ "sales-ex1-setup": {
+  "shape": "exercise-setup",
+  "chapter": "Exercise 1 · Your first lead list",
+  "lead": 0.5,
+  "tail": 4.5,
+  "lines": [
+   [
+    "One profile, one sheet, and twenty-five prospects you can defend.",
+    0.7
+   ],
+   [
+    "Let's build your first lead list.",
+    0.7
+   ],
+   [
+    "In this exercise you'll write your customer profile and turn it into a scored list.",
+    0.7
+   ],
+   [
+    "Write one sentence: I help who, with what problem, so they can reach what outcome.",
+    0.7
+   ],
+   [
+    "Fill in the five-part profile and a why-now line.",
+    0.7
+   ],
+   [
+    "Create a sheet with twelve columns, from business name to date added.",
+    0.7
+   ],
+   [
+    "Run the research prompt for thirty matches.",
+    0.7
+   ],
+   [
+    "Paste the table in, then open the sources for five random rows.",
+    0.7
+   ],
+   [
+    "If two or more are wrong, tighten the prompt and rerun.",
+    0.7
+   ],
+   [
+    "Score each row as fit plus signal.",
+    0.7
+   ],
+   [
+    "Delete the excluded rows, sort by score, and keep the top twenty-five.",
+    0.7
+   ],
+   [
+    "Finally, add an empty do-not-contact tab.",
+    0.7
+   ],
+   [
+    "So: does every row trace back to a source the business published?",
+    0.7
+   ],
+   [
+    "Pause here and build your list.",
+    0.0
+   ]
+  ]
+ },
+ "sales-ex1-reveal": {
+  "shape": "exercise-reveal",
+  "chapter": "Exercise 1 · An example result",
+  "lead": 0.5,
+  "tail": 3.0,
+  "lines": [
+   [
+    "For Rolling Ledger, thirty matches became twenty-five prospects, and not one guessed email.",
+    0.55
+   ],
+   [
+    "Here's the example.",
+    0.55
+   ],
+   [
+    "The profile targets independent food truck owners in Austin and Denver, with one to three trucks.",
+    0.55
+   ],
+   [
+    "The researcher returned thirty rows.",
+    0.55
+   ],
+   [
+    "Three were franchise trucks, marked exclude.",
+    0.55
+   ],
+   [
+    "The spot-check opened five rows.",
+    0.55
+   ],
+   [
+    "One listed an owner email that didn't appear on the truck's own pages, so it became unknown.",
+    0.55
+   ],
+   [
+    "One wrong out of five passes the check.",
+    0.55
+   ],
+   [
+    "That left twenty-seven rows to score.",
+    0.55
+   ],
+   [
+    "Six scored five, eleven scored four, eight scored three, and two scored two.",
+    0.55
+   ],
+   [
+    "The two lowest were cut, leaving twenty-five.",
+    0.55
+   ],
+   [
+    "Four of them have no public email, so the sheet uses their contact form instead.",
+    0.55
+   ],
+   [
+    "Every row is marked new, and the do-not-contact tab is ready for exercise two.",
+    0.0
+   ]
+  ]
+ },
+ "acct-l1-overview": {
+  "shape": "overview",
+  "chapter": "AI Accounting · Lesson 1 · Set up the books",
+  "lead": 0.5,
+  "tail": 3.0,
+  "lines": [
+   [
+    "Every receipt bot, forecast and tax summary starts with the same question: was this business or personal?",
+    0.55
+   ],
+   [
+    "Answer it once, today.",
+    0.55
+   ],
+   [
+    "This is AI Accounting, lesson one: set up the books.",
+    0.55
+   ],
+   [
+    "In this lesson: separate the money, pick one app, connect a read-only feed, and write your back-office rules.",
+    0.55
+   ],
+   [
+    "Open one business account and one card, and put every business dollar through them.",
+    0.55
+   ],
+   [
+    "Pick one accounting app: QuickBooks Online if you want built-in agents and room to grow, or Wave if you want free and simple.",
+    0.55
+   ],
+   [
+    "Connect your bank inside the app, as a read-only feed.",
+    0.55
+   ],
+   [
+    "Set up a short category list that maps to Schedule C, so tax season becomes a report, not a project.",
+    0.55
+   ],
+   [
+    "Then write your rules before you hire a single agent.",
+    0.55
+   ],
+   [
+    "Rule one: agents never move money.",
+    0.55
+   ],
+   [
+    "First, separate the money.",
+    0.0
+   ]
+  ]
+ },
+ "acct-l1-feed": {
+  "shape": "inline",
+  "chapter": "Lesson 1 · A read-only feed",
+  "lead": 0.5,
+  "tail": 2.5,
+  "lines": [
+   [
+    "Your AI helpers need to see your transactions.",
+    0.5
+   ],
+   [
+    "They never need your bank password.",
+    0.5
+   ],
+   [
+    "Here's how the money data flows.",
+    0.5
+   ],
+   [
+    "Your business account and card hold every business dollar.",
+    0.5
+   ],
+   [
+    "Inside your accounting app, connect them as a read-only feed.",
+    0.5
+   ],
+   [
+    "The app imports transactions.",
+    0.5
+   ],
+   [
+    "It can't send money.",
+    0.5
+   ],
+   [
+    "Your categories live in the app too.",
+    0.5
+   ],
+   [
+    "Keep them short, fifteen expense categories at most, each mapped to a line on Schedule C, like advertising, contract labor, and legal and professional fees.",
+    0.5
+   ],
+   [
+    "Then your AI helpers read from the app, through their own limited logins, and never through your bank.",
+    0.5
+   ],
+   [
+    "Ask Claude to draft the category list, and have your accountant review it once.",
+    0.5
+   ],
+   [
+    "Fifteen minutes now prevents a year of miscategorized expenses.",
+    0.5
+   ],
+   [
+    "Next: the rules every helper follows.",
+    0.0
+   ]
+  ]
+ },
+ "acct-l1-rules": {
+  "shape": "inline",
+  "chapter": "Lesson 1 · Back-office rules",
+  "lead": 0.5,
+  "tail": 2.5,
+  "lines": [
+   [
+    "You're about to hire several AI helpers.",
+    0.35
+   ],
+   [
+    "Decide what each one may touch before you hire it.",
+    0.35
+   ],
+   [
+    "Write six back-office rules.",
+    0.35
+   ],
+   [
+    "One: agents never move money.",
+    0.35
+   ],
+   [
+    "No bank logins, no transfers, no paying bills.",
+    0.35
+   ],
+   [
+    "Two: each agent gets its own login, with the lowest role that works.",
+    0.35
+   ],
+   [
+    "Three: agents may read transactions, attach receipts, suggest categories, and draft invoices and reports.",
+    0.35
+   ],
+   [
+    "Four: anything that leaves the business waits for your click.",
+    0.35
+   ],
+   [
+    "Five: no passwords, card numbers or account numbers in any AI chat.",
+    0.35
+   ],
+   [
+    "Six: review the work weekly, and if an agent gets something wrong twice, reduce its access.",
+    0.35
+   ],
+   [
+    "Some agents can sign in to websites like a person.",
+    0.35
+   ],
+   [
+    "That's why rule one matters most.",
+    0.35
+   ],
+   [
+    "Keep two-factor on your bank and your accounting app, tied to your own phone.",
+    0.35
+   ],
+   [
+    "In the exercise, you'll write your own rules.",
+    0.0
+   ]
+  ]
+ },
+ "acct-ex1-setup": {
+  "shape": "exercise-setup",
+  "chapter": "Exercise 1 · Open your books",
+  "lead": 0.5,
+  "tail": 4.5,
+  "lines": [
+   [
+    "One account, one app, and six rules every helper follows.",
+    0.7
+   ],
+   [
+    "Let's open your books.",
+    0.7
+   ],
+   [
+    "In this exercise you'll set up working books and write your back-office rules.",
+    0.7
+   ],
+   [
+    "First, the money: a business-only account and card, or time booked to open one.",
+    0.7
+   ],
+   [
+    "Choose QuickBooks Online or Wave, and write two sentences on why.",
+    0.7
+   ],
+   [
+    "Have Claude draft a category list with no more than fifteen expense categories, each mapped to Schedule C.",
+    0.7
+   ],
+   [
+    "Set up the app, and connect the bank feed if you can.",
+    0.7
+   ],
+   [
+    "Copy the six rules into a doc called Back office rules, and name each helper you plan to use.",
+    0.7
+   ],
+   [
+    "Check the app's user roles, so a helper can't pay bills or change bank details.",
+    0.7
+   ],
+   [
+    "Then turn on two-factor for your bank and your app.",
+    0.7
+   ],
+   [
+    "So: is there any path an agent could use to move money?",
+    0.7
+   ],
+   [
+    "Pause here and set up your books.",
+    0.0
+   ]
+  ]
+ },
+ "acct-ex1-reveal": {
+  "shape": "exercise-reveal",
+  "chapter": "Exercise 1 · An example result",
+  "lead": 0.5,
+  "tail": 2.5,
+  "lines": [
+   [
+    "For Rolling Ledger, the books are open, and no helper can touch a dollar.",
+    0.35
+   ],
+   [
+    "Here's the example.",
+    0.35
+   ],
+   [
+    "The business is a single-member LLC, with a new business checking account and one debit card.",
+    0.35
+   ],
+   [
+    "The app is QuickBooks Online Essentials, because later lessons use its receipt and invoicing agents.",
+    0.35
+   ],
+   [
+    "The chart of accounts has one income category, eleven expense categories mapped to Schedule C, and two owner accounts.",
+    0.35
+   ],
+   [
+    "Two categories are flagged for the accountant: meals, which are usually only half deductible, and car costs, where mileage and actual expenses are two different methods.",
+    0.35
+   ],
+   [
+    "The bank feed is connected, read only.",
+    0.35
+   ],
+   [
+    "The back office rules name two helpers: Claude Cowork, with the Finance folder only, and an expense bot that may read and download from vendor portals.",
+    0.35
+   ],
+   [
+    "Their user role can't pay bills or change bank details.",
+    0.35
+   ],
+   [
+    "And two-factor is on for both the bank and the app.",
+    0.0
+   ]
+  ]
+ }
+}

@@ -1,0 +1,244 @@
+{
+ "track": "marketing",
+ "inputs": {
+  "days": 30,
+  "rows": 21,
+  "approved": 15,
+  "posts": 13,
+  "articles": 4,
+  "planned": 17,
+  "pillars": 4,
+  "mins": 40,
+  "asis": 10,
+  "edited": 3,
+  "deleted": 4,
+  "claim": 4000,
+  "refillok": 2,
+  "rp": 3,
+  "drafts": 6
+ },
+ "shots": [
+  {
+   "id": "answer",
+   "type": "reveal",
+   "question": {
+    "clip": "mkt-ex1-setup",
+    "shot": "ask"
+   },
+   "answers": [
+    {
+     "text": "{approved|0} of {rows|0}",
+     "at": "L0:fifteen"
+    },
+    {
+     "text": "Yes, every one",
+     "at": "L0:approval"
+    }
+   ]
+  },
+  {
+   "id": "rhythm",
+   "type": "story-cards",
+   "from": "L2",
+   "kicker": "Rolling Ledger · example",
+   "title": "The rhythm",
+   "titleAt": "L2:rhythm",
+   "cardW": 500,
+   "gap": 40,
+   "cards": [
+    {
+     "icon": "message-square",
+     "label": "LinkedIn",
+     "sub": "Monday, Wednesday and Friday",
+     "at": "L2:linkedin",
+     "rows": [
+      {
+       "text": "{posts|0} posts in {days|0} days",
+       "at": "L3:thirteen"
+      }
+     ]
+    },
+    {
+     "icon": "file-text",
+     "label": "Blog",
+     "sub": "An article every Thursday",
+     "at": "L2:blog",
+     "rows": [
+      {
+       "text": "{articles|0} articles",
+       "at": "L3:four"
+      }
+     ]
+    },
+    {
+     "icon": "rows-3",
+     "label": "{planned|0} rows",
+     "sub": "Planned for the month",
+     "at": "L3:seventeen"
+    }
+   ],
+   "hero": {
+    "card": 2
+   }
+  },
+  {
+   "id": "pillars",
+   "type": "story-cards",
+   "from": "L4",
+   "kicker": "The {pillars|0} pillars",
+   "titleAt": "L4:four",
+   "cardW": 390,
+   "gap": 32,
+   "cards": [
+    {
+     "icon": "coins",
+     "label": "Money mistakes",
+     "sub": "Food truck owners make",
+     "at": "L4:money"
+    },
+    {
+     "icon": "calendar-clock",
+     "label": "Tax season",
+     "sub": "Without panic",
+     "at": "L4:tax"
+    },
+    {
+     "icon": "eye",
+     "label": "Behind the scenes",
+     "at": "L4:behind"
+    },
+    {
+     "icon": "quote",
+     "label": "Client stories",
+     "at": "L4:client"
+    }
+   ],
+   "hero": {
+    "card": 0
+   }
+  },
+  {
+   "id": "review",
+   "type": "figure",
+   "from": "L5",
+   "src": "public/learn/figures/ai-marketing/exercise-01-fig-2.webp",
+   "title": "After one review",
+   "zoom": false,
+   "regions": [
+    {
+     "rect": [
+      0.508,
+      0.72,
+      0.447,
+      0.21
+     ],
+     "at": "L5:forty",
+     "label": "The review took {mins|0} minutes"
+    },
+    {
+     "rect": [
+      0.045,
+      0.385,
+      0.635,
+      0.105
+     ],
+     "at": "L6:ten",
+     "label": "{asis|0} approved as written, {edited|0} after edits"
+    },
+    {
+     "rect": [
+      0.045,
+      0.72,
+      0.447,
+      0.21
+     ],
+     "at": "L7:four",
+     "label": "{deleted|0} deleted"
+    },
+    {
+     "rect": [
+      0.045,
+      0.72,
+      0.447,
+      0.21
+     ],
+     "at": "L7:fourthousanddollar",
+     "label": "A {claim|$0,0} figure with no source"
+    },
+    {
+     "rect": [
+      0.045,
+      0.72,
+      0.447,
+      0.21
+     ],
+     "at": "L7:named",
+     "label": "And one named a real client"
+    },
+    {
+     "rect": [
+      0.045,
+      0.72,
+      0.447,
+      0.21
+     ],
+     "at": "L8:refilled",
+     "label": "Claude refilled them, and {refillok|0} were approved"
+    },
+    {
+     "rect": [
+      0.68,
+      0.385,
+      0.275,
+      0.29
+     ],
+     "at": "L9:article",
+     "label": "Week one's article, repurposed"
+    },
+    {
+     "rect": [
+      0.68,
+      0.385,
+      0.275,
+      0.29
+     ],
+     "at": "L9:three",
+     "label": "{rp|0} LinkedIn posts and a newsletter paragraph"
+    },
+    {
+     "rect": [
+      0.68,
+      0.385,
+      0.275,
+      0.29
+     ],
+     "at": "L9:draft",
+     "label": "All still draft"
+    },
+    {
+     "rect": [
+      0.045,
+      0.385,
+      0.635,
+      0.105
+     ],
+     "at": "L10:fifteen",
+     "label": "{approved|0} approved rows"
+    },
+    {
+     "rect": [
+      0.68,
+      0.385,
+      0.275,
+      0.29
+     ],
+     "at": "L10:six",
+     "label": "{drafts|0} drafts for next week's review"
+    }
+   ],
+   "hero": {
+    "region": 9
+   }
+  }
+ ]
+}

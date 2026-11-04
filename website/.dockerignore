@@ -6,3 +6,6 @@ node_modules
 DESIGN-QA.md
 .env*
 npm-debug.log*
+
+# lesson clip studio: offline tooling, not part of the site image
+scripts/learn/clip-studio

@@ -1,0 +1,231 @@
+{
+ "inputs": {
+  "boxes": 5
+ },
+ "shots": [
+  {
+   "id": "hook",
+   "type": "desk",
+   "items": [
+    {
+     "id": "f",
+     "kind": "paper",
+     "x": 660,
+     "y": 140,
+     "w": 600,
+     "icon": "crown",
+     "text": "One founder"
+    },
+    {
+     "id": "n",
+     "kind": "text",
+     "cls": "kicker",
+     "x": 240,
+     "y": 310,
+     "text": "{boxes|0} boxes",
+     "at": "L0:five"
+    },
+    {
+     "id": "b1",
+     "kind": "card",
+     "x": 240,
+     "y": 360,
+     "w": 420,
+     "icon": "calendar-clock",
+     "title": "Chief of staff",
+     "at": "L0:boxes"
+    },
+    {
+     "id": "b2",
+     "kind": "card",
+     "x": 750,
+     "y": 360,
+     "w": 420,
+     "icon": "handshake",
+     "title": "Sales and customers",
+     "at": "L0:boxes"
+    },
+    {
+     "id": "b3",
+     "kind": "card",
+     "x": 1260,
+     "y": 360,
+     "w": 420,
+     "icon": "megaphone",
+     "title": "Marketing and content",
+     "at": "L0:boxes"
+    },
+    {
+     "id": "b4",
+     "kind": "card",
+     "x": 495,
+     "y": 520,
+     "w": 420,
+     "icon": "receipt",
+     "title": "Finance assistant",
+     "at": "L0:boxes"
+    },
+    {
+     "id": "b5",
+     "kind": "card",
+     "x": 1005,
+     "y": 520,
+     "w": 420,
+     "icon": "code",
+     "title": "Product and website",
+     "at": "L0:boxes"
+    },
+    {
+     "id": "tool",
+     "kind": "chip",
+     "x": 780,
+     "y": 720,
+     "icon": "wrench",
+     "text": "One tool in each box"
+    }
+   ],
+   "hero": {
+    "move": "pop",
+    "target": "tool",
+    "at": "L0:tool"
+   },
+   "camera": "push-in"
+  },
+  {
+   "id": "title",
+   "type": "chapter-card",
+   "from": "L1",
+   "over": "hook",
+   "kicker": "Your AI org chart",
+   "title": "Five boxes",
+   "sub": "Match each role to the right kind of help",
+   "subAt": "L1:match"
+  },
+  {
+   "id": "roles",
+   "type": "ledger",
+   "from": "L2",
+   "kicker": "One tool in each box",
+   "title": "The right kind of help",
+   "grid": {
+    "columns": [
+     {
+      "text": "Role",
+      "w": "1.25fr"
+     },
+     {
+      "text": "Kind of help",
+      "w": "1.3fr"
+     },
+     {
+      "text": "Like",
+      "w": "1.9fr",
+      "sub": true
+     }
+    ],
+    "rows": [
+     {
+      "cells": [
+       "Chief of staff",
+       {
+        "text": "Always-on agent",
+        "at": "L2:alwayson"
+       },
+       {
+        "text": "Claude Duet or a dot",
+        "at": "L2:duet"
+       }
+      ],
+      "at": "L2:chief"
+     },
+     {
+      "cells": [
+       "Sales and customers",
+       {
+        "text": "Always-on, with drafts",
+        "at": "L3:alwayson"
+       },
+       {
+        "text": "Or Grok Bot in your CRM, sending behind approval",
+        "at": "L3:grok"
+       }
+      ],
+      "at": "L3:sales"
+     },
+     {
+      "cells": [
+       "Marketing and content",
+       {
+        "text": "Chat or desktop agent",
+        "at": "L4:chat"
+       },
+       {
+        "text": "You in the loop",
+        "at": "L4:loop"
+       }
+      ],
+      "at": "L4:marketing"
+     },
+     {
+      "cells": [
+       "Finance assistant",
+       {
+        "text": "Organizes and drafts",
+        "at": "L5:organizes"
+       },
+       {
+        "text": "Claude Cowork on a receipts folder. Paying stays yours.",
+        "at": "L5:cowork"
+       }
+      ],
+      "at": "L5:finance"
+     },
+     {
+      "cells": [
+       "Product and website",
+       {
+        "text": "Cursor or Codex",
+        "at": "L6:cursor"
+       },
+       {
+        "text": "The code on GitHub",
+        "at": "L6:github"
+       }
+      ],
+      "at": "L6:product"
+     }
+    ]
+   },
+   "hero": {
+    "row": 3
+   }
+  },
+  {
+   "id": "owner",
+   "type": "rule",
+   "from": "L7",
+   "kicker": "The rule across all five",
+   "kickerIcon": "user-round",
+   "statement": "One agent, one owner.",
+   "highlight": {
+    "text": "one owner.",
+    "at": "L7:owner"
+   },
+   "chips": [
+    {
+     "icon": "triangle-alert",
+     "text": "Two agents on one inbox: conflicting drafts, wasted usage",
+     "at": "L7:two"
+    }
+   ],
+   "notes": [
+    {
+     "text": "Next: the role card",
+     "icon": "arrow-right",
+     "at": "L8:next",
+     "screen": "low"
+    }
+   ]
+  }
+ ]
+}
