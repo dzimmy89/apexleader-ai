@@ -25,9 +25,9 @@ export function coachReadCalendarIds(): string[] {
 
 /**
  * Calendars a new booking must not clash with. That is every calendar in
- * coachReadCalendarIds() plus COACH_BUSY_CALENDAR_IDS (comma separated):
- * David's calendars on other domains (hello@defiuniversity.xyz,
- * david@thenode.pro). Those are only checked through free/busy, never listed,
+ * coachReadCalendarIds() plus COACH_BUSY_CALENDAR_IDS (comma separated,
+ * set in the deploy workflow): David's calendars on other domains. Those are
+ * only checked through free/busy, never listed,
  * so they need nothing more than "See only free/busy" shared with hello@.
  */
 export function coachBusyCalendarIds(): string[] {
