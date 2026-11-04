@@ -73,6 +73,10 @@ export interface Intake {
   status: "empty" | "draft" | "confirmed";
   filledByAiAt: string | null;
   confirmedAt: string | null;
+  /** When David last emailed the client the self-serve intake form. */
+  formSentAt: string | null;
+  /** When the client sent their answers through that form. */
+  clientSubmittedAt: string | null;
   updatedAt: string;
 }
 
@@ -95,7 +99,7 @@ export const INTAKE_FIELDS: IntakeField[] = [
 ];
 
 /** Weeks of coaching each package runs, used as the default timeline. */
-export const PACKAGE_WEEKS: Record<string, number> = { foundations: 4, mastery: 12, institutional: 26 };
+export const PACKAGE_WEEKS: Record<string, number> = { foundations: 4, mastery: 12, institutional: 26, build_launch: 16 };
 
 export function emptyForm(packageId?: string): IntakeForm {
   return {
@@ -179,6 +183,8 @@ function readIntake(email: string, data: Record<string, unknown> | undefined): I
     status: d.status === "draft" || d.status === "confirmed" ? d.status : "empty",
     filledByAiAt: typeof d.filledByAiAt === "string" ? d.filledByAiAt : null,
     confirmedAt: typeof d.confirmedAt === "string" ? d.confirmedAt : null,
+    formSentAt: typeof d.formSentAt === "string" ? d.formSentAt : null,
+    clientSubmittedAt: typeof d.clientSubmittedAt === "string" ? d.clientSubmittedAt : null,
     updatedAt: String(d.updatedAt || ""),
   };
 }

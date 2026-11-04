@@ -41,11 +41,11 @@ Team rules also exist on Teams and Enterprise plans. When rules conflict, team r
 Keep it short and concrete. Cursor recommends staying under 500 lines and adding a rule when an agent repeats a mistake, not for every possible edge case. A good starting point:
 
 ```text
-# Groomer Books: rules for agents
+# Rolling Ledger: rules for agents
 
 ## About the business
-Monthly bookkeeping service for independent dog groomers in the US.
-Audience reads on phones between appointments. Tone: warm, plain, no jargon.
+Monthly bookkeeping service for independent food truck owners in the US.
+Audience reads on phones between services. Tone: warm, plain, no jargon.
 
 ## How we build
 - Plain HTML and CSS. No frameworks, no build step.
@@ -88,7 +88,7 @@ description: Style rules for customer-facing copy
 globs: content/**/*.md
 alwaysApply: false
 ---
-- Short sentences. Talk to one groomer as "you".
+- Short sentences. Talk to one food truck owner as "you".
 - Use "books" or "bookkeeping", never "accounting solutions".
 - No prices in copy. Prices live only in content/pricing.md.
 - Any claim about taxes ends with: "General information, not tax advice."

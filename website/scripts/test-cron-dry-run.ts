@@ -68,10 +68,10 @@ function throwingEffects(): ProcessFlowsEffects {
 describe("cron dry-run query flag", () => {
   it("treats dryRun=1 as read-only mode", () => {
     const on = new NextRequest(
-      "https://apexleader.ai/api/cron/process-flows?dryRun=1"
+      "https://fromaitobusiness.com/api/cron/process-flows?dryRun=1"
     );
     const off = new NextRequest(
-      "https://apexleader.ai/api/cron/process-flows"
+      "https://fromaitobusiness.com/api/cron/process-flows"
     );
     assert.equal(isCronDryRun(on), true);
     assert.equal(isCronDryRun(off), false);
@@ -221,7 +221,7 @@ describe("process-flows live exclusion, suppression, and claim durability", () =
         evaluateSendGates({
           purpose: "marketing",
           suppressed: true,
-          unsubscribeUrl: "https://apexleader.ai/api/unsubscribe?token=t",
+          unsubscribeUrl: "https://fromaitobusiness.com/api/unsubscribe?token=t",
         }),
         { skip: true, error: "postal_address_placeholder" }
       );
@@ -275,7 +275,7 @@ describe("process-flows live exclusion, suppression, and claim durability", () =
           return { ok: true };
         },
         unsubscribeUrlFor: async () =>
-          "https://apexleader.ai/api/unsubscribe?token=t",
+          "https://fromaitobusiness.com/api/unsubscribe?token=t",
         getTemplate: () => ({
           subject: "x",
           html: "<p>x</p>",
@@ -373,7 +373,7 @@ describe("process-flows live exclusion, suppression, and claim durability", () =
         return { ok: true, messageId: "gmail-1" };
       },
       unsubscribeUrlFor: async () =>
-        "https://apexleader.ai/api/unsubscribe?token=t",
+        "https://fromaitobusiness.com/api/unsubscribe?token=t",
       getTemplate: () => ({
         subject: "x",
         html: "<p>x</p>",
@@ -511,7 +511,7 @@ describe("process-flows live exclusion, suppression, and claim durability", () =
         return { ok: true, messageId: "gmail-ttl" };
       },
       unsubscribeUrlFor: async () =>
-        "https://apexleader.ai/api/unsubscribe?token=t",
+        "https://fromaitobusiness.com/api/unsubscribe?token=t",
       getTemplate: () => ({
         subject: "x",
         html: "<p>x</p>",

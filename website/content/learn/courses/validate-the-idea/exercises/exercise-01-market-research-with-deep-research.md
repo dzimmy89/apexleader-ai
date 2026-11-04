@@ -11,7 +11,7 @@ template: v2
 You'll run a Deep Research pass that tries to kill your idea, verify the key numbers, and build a bottom-up market estimate. At the end you'll have Part 1 of your Validated Offer Doc: a competitor table, a market estimate and a ranked list of risky assumptions to test in interviews.
 :::
 
-**Time:** 40 minutes · **You'll need:** A deep research tool (Gemini Deep Research works on any Google plan), Google Docs, your business idea or the Groomer Books sample · **Builds on:** Lesson 1
+**Time:** 40 minutes · **You'll need:** A deep research tool (Gemini Deep Research works on any Google plan), Google Docs, your business idea or the Rolling Ledger sample · **Builds on:** Lesson 1
 
 ## Warm-up
 
@@ -26,7 +26,7 @@ Why: Asking for competitors, complaints and failure reasons pushes the research 
 ## Steps
 
 1. **Create the doc.** New Google Doc called "Validated Offer Doc: [idea name]." Add four headings: Part 1 Market, Part 2 Customer Evidence, Part 3 Offer and Price, Part 4 Name and Checks. You'll fill one per exercise.
-2. **Write your idea in one line** under the title: "[Offer] for [customer] in [place]." No idea yet? Use "Monthly bookkeeping for independent dog groomers in the US."
+2. **Write your idea in one line** under the title: "[Offer] for [customer] in [place]." No idea yet? Use "Monthly bookkeeping for independent food truck owners in the US."
 3. **Run Deep Research.** In the Gemini app: in the text box click **Add Files**, then **Deep Research**. Paste the "honest case for and against" brief from Lesson 1 with your idea. Click **Submit**.
 4. **Edit the plan.** Click **Edit plan**. Cut one step that doesn't serve the decision and add one that does. Click **Start research**.
 5. **Verify.** When the report is ready, open the source for each competitor price and each market number. Correct anything that's changed and note the date you checked.

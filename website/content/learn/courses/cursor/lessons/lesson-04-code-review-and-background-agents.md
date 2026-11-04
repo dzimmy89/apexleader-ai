@@ -42,7 +42,7 @@ Before your first one, check:
 A task brief that works well from a phone:
 
 ```text
-In groomer-books-site: add a "Testimonials" section after "How it works"
+In rolling-ledger-site: add a "Testimonials" section after "How it works"
 using the three quotes in content/testimonials.md, word for word.
 Follow AGENTS.md. Plain HTML and CSS. Screenshot it at 375px and 1280px.
 Open a pull request with a short summary and the screenshots. Don't merge.
@@ -69,7 +69,7 @@ You can change personal settings so it only runs when mentioned, or only once pe
 Bugbot doesn't read your Cursor project rules. It has its own file: `.cursor/BUGBOT.md`. The one at the root always applies; files in subfolders apply to changes in those folders.
 
 ```text
-# Review rules for Groomer Books
+# Review rules for Rolling Ledger
 - Flag any new third-party script, tracker, font or external request.
 - Flag any file that looks like it contains a key, password, token or email list.
 - Flag changes to pricing text outside content/pricing.md.

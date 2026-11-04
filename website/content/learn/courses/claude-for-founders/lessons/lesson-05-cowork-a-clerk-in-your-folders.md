@@ -63,10 +63,10 @@ Steps:
 Each connected folder can have **folder instructions**: standing context for tasks in that folder, like Project instructions for files. Claude can update them as it learns. Example:
 
 ```text
-This folder holds working files for Groomer Books.
+This folder holds working files for Rolling Ledger.
 - File names: YYYY-MM-DD_source_topic, lowercase, hyphens not spaces.
 - Never delete files. Move anything you're unsure about to /Unsure.
-- Client files go in /Clients/<salon-name>/.
+- Client files go in /Clients/<truck-name>/.
 - Summaries and reports go in /Reports/ as .docx.
 ```
 

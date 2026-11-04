@@ -58,16 +58,47 @@ jobs:
       # The framework came from a crypto education site; keep its words out.
       # Course lessons may name HubSpot as a CRM a founder can pick, so the
       # course files are checked for every other word.
+      # The crypto checkout on /coaching/pay is the one exception: its files
+      # (listed in CRYPTO_FILES) may use crypto words like Bitcoin, and only
+      # content/crypto-payments.ts may name the sister site that shares the
+      # wallets, and content/portfolio.ts may name it as one of the founder's
+      # businesses on /portfolio. DeFi brand words stay banned everywhere else.
       - name: No leftover DeFi wording
         run: |
-          if grep -rnIiE "defi ?u(niversity)?\b|\bdefi\b|skool|paperbell|stablecoin|bitcoin|blockchain|self-custody|financial advice" content/learn/courses; then
+          BRAND='defi ?u(niversity)?\b|\bdefi\b|skool|paperbell'
+          CRYPTO='stablecoin|bitcoin|blockchain|self-custody|financial advice'
+          CRYPTO_FILES='^(content/crypto-payments\.ts|components/coaching/CryptoPayPanel\.tsx|lib/coaching/crypto-notices\.ts|app/api/coaching/crypto-notice/route\.ts|app/api/admin/coaching/crypto-notices/|app/admin/\(crm\)/coaching/crypto-notices/page\.tsx)'
+          if grep -rnIiE "$BRAND|$CRYPTO" content/learn/courses; then
             echo "Found DeFi University wording (above). Replace it with FromAItoBusiness copy."
             exit 1
           fi
-          if grep -rnIiE --exclude-dir=courses "defi ?u(niversity)?\b|\bdefi\b|skool|paperbell|hubspot|stablecoin|bitcoin|blockchain|self-custody|financial advice" \
+          if grep -rnIiE --exclude-dir=courses "$BRAND|hubspot" \
               app components content lib middleware.ts \
-              | grep -viE "hubspot(OptedOut|Bounced|Id|LifecycleStage|LeadStatus|_import)|CRM_(CONTACT_SOURCE|SALES_LIST)_HUBSPOT|HubSpot import|HubSpot-scale|pre-enrichment HubSpot|skoolMatch|skoolTier|non-HubSpot"; then
-            echo "Found DeFi University wording (above). Replace it with ApexLeader.ai copy."
+              | grep -viE "hubspot(OptedOut|Bounced|Id|LifecycleStage|LeadStatus|_import)|CRM_(CONTACT_SOURCE|SALES_LIST)_HUBSPOT|HubSpot import|HubSpot-scale|pre-enrichment HubSpot|skoolMatch|skoolTier|non-HubSpot" \
+              | grep -vE '^content/crypto-payments\.ts:[0-9]+:\s*(name: "DeFi University",|noticesUrl: "https://defiuniversity\.xyz/admin/coaching/crypto-notices",|"https://defiuniversity\.xyz/coaching/pay",)$' \
+              | grep -vE '^content/portfolio\.ts:'; then
+            echo "Found DeFi University wording (above). Replace it with FromAItoBusiness copy."
+            exit 1
+          fi
+          if grep -rnIiE --exclude-dir=courses "$CRYPTO" app components content lib middleware.ts \
+              | grep -vE "$CRYPTO_FILES"; then
+            echo "Found crypto wording outside the crypto checkout files (above). Replace it with FromAItoBusiness copy."
+            exit 1
+          fi
+
+      - name: Crypto receive addresses match the pinned copies
+        run: |
+          python3 -m pip install --quiet pycryptodome
+          python3 scripts/test-crypto-addresses.py
+
+      # Coaching clients see these pages and emails; the old ApexLeader.ai
+      # name and mailbox must come from BRAND, never a hardcoded string.
+      - name: No ApexLeader.ai wording in the client dashboard
+        run: |
+          if grep -rnIE "ApexLeader|apexleader\.(ai|com)" \
+              "app/(site)/account" "app/(site)/login" "app/(site)/success" app/api/account app/portal app/coaching \
+              components/account lib/account lib/coaching/contract-email.ts lib/coaching/contract-pdf.ts; then
+            echo "Found ApexLeader.ai wording (above). Read the name and email from BRAND in lib/brand.ts."
             exit 1
           fi
 
@@ -75,8 +106,11 @@ jobs:
         run: |
           command -v rg >/dev/null || (sudo apt-get update -qq && sudo apt-get install -y -qq ripgrep)
           npx tsx scripts/test-learn-courses.ts
+          npx tsx scripts/test-portfolio.ts
           npx tsx scripts/test-stripe-webhook.ts
           npx tsx scripts/test-client-payments.ts
+          npx tsx scripts/test-private-packages.ts
+          npx tsx scripts/test-crypto-notices.ts
           npx tsx scripts/test-contact-page.ts
           npx tsx scripts/test-syllabus.ts
           npx tsx scripts/test-syllabus-pipeline.ts

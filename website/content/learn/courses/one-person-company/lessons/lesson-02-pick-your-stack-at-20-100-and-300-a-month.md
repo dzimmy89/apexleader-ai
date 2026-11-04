@@ -122,7 +122,8 @@ Write down your three most time-consuming recurring jobs from Lesson 1. Next to 
 2. **Add a specialist only for a job you named.** "Cursor for the website" is a reason. "Everyone is talking about it" is not.
 3. **Watch usage, not just price.** Duet's morning brief and check-ins count against Claude limits. Grok Bot has weekly usage with optional pay-as-you-go top-ups. Dots had extended limits for the first month after launch. Heavy agent use can hit limits before the month ends.
 4. **Review every 90 days.** Cancel any plan you did not open in the last month.
-5. **Regions and accounts matter.** Duet is US-only in the preview. Dots on ChatGPT Pro is not available in the EEA, Switzerland or the UK at launch. Check before you pay.
+5. **Run your coding agents from one desk.** If you pay for two coding agents (say Claude Code and Codex), T3 Code is a free app that runs both from one window on the plans you already have, so you can send each job to the plan that covers it. The Tool Mastery course T3 Code: One Desk for All Your Agents shows how.
+6. **Regions and accounts matter.** Duet is US-only in the preview. Dots on ChatGPT Pro is not available in the EEA, Switzerland or the UK at launch. Check before you pay.
 
 :::infographic
 id: fig-2
@@ -167,6 +168,7 @@ Why: Cursor covers the website and includes Grok Bot for the routine, leaving ro
 ## Go deeper
 
 - [Grok Bot is now included with more plans](https://x.ai/news/grok-bot-more-plans) - the August 26, 2026 plan expansion
+- [T3 Code](https://t3.codes/) - a free app that runs Claude Code, Codex and Cursor from one window on your own plans
 - [Get started with Claude Duet](https://support.claude.com/en/articles/17631495-get-started-with-claude-duet) - plans, region, waitlist and usage limits
 - [Getting started with your dot](https://help.openai.com/en/articles/20001530-getting-started-with-your-dot) - eligibility by plan and region
 - [Grok Bot FAQ](https://docs.x.ai/grok-bot/faq) - weekly usage, on-demand usage and linking SuperGrok

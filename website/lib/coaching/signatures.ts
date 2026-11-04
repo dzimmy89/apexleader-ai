@@ -139,6 +139,18 @@ export async function createSignatureRequest(
       updatedAt: now,
     });
 
+    // Mark the client record so Mission Control's onboarding checklist shows
+    // "Contract sent". Only an existing record: a request never creates one.
+    // Never fails the request: the link above is already valid.
+    try {
+      const clientRef = db.collection("client_records").doc(clientId);
+      if ((await clientRef.get()).exists) {
+        await clientRef.set({ contractSentAt: now, pendingSignatureId: ref.id, updatedAt: now }, { merge: true });
+      }
+    } catch (e) {
+      console.error("[createSignatureRequest] could not mark contract sent", e instanceof Error ? e.message : e);
+    }
+
     return {
       ok: true,
       signatureId: ref.id,
@@ -259,6 +271,7 @@ export async function captureSignature(
         status: "onboarded",
         contractSignedAt: signedAt,
         signatureId: lookup.signatureId,
+        pendingSignatureId: null,
         signedContractPdfUrl: signedPdfUrl,
         updatedAt: signedAt,
       },

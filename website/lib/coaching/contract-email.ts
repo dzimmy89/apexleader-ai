@@ -1,5 +1,6 @@
 import { getDb } from "@/lib/firebase-admin";
 import { sendEmail } from "@/lib/gmail";
+import { getSiteOrigin } from "@/lib/env";
 import { createSignatureRequest } from "@/lib/coaching/signatures";
 import type { PaymentPlan } from "@/lib/coaching/packages";
 
@@ -68,12 +69,13 @@ export async function ensureCoachingAgreementEmail(
     packageName = created.packageName || packageName;
   }
 
+  const dashboardUrl = `${getSiteOrigin()}/login?next=/account`;
   const sent = await sendEmail({
     to: email,
     purpose: "transactional",
     subject: `Sign your ${packageName} coaching agreement`,
-    text: `Your ${packageName} coaching payment is recorded. Sign the agreement to start: ${signUrl}`,
-    html: `<p>Your ${escapeHtml(packageName)} coaching payment is recorded. Sign the agreement to start.</p><p><a href="${escapeHtml(signUrl)}">${escapeHtml(signUrl)}</a></p>`,
+    text: `Your ${packageName} coaching payment is recorded. Sign the agreement to start: ${signUrl}\n\nYour coaching dashboard is where you book sessions and see your syllabus, recordings and documents. Sign in with Google or an email link, using ${email}: ${dashboardUrl}`,
+    html: `<p>Your ${escapeHtml(packageName)} coaching payment is recorded. Sign the agreement to start.</p><p><a href="${escapeHtml(signUrl)}">${escapeHtml(signUrl)}</a></p><p>Your coaching dashboard is where you book sessions and see your syllabus, recordings and documents. Sign in with Google or an email link, using ${escapeHtml(email)}.</p><p><a href="${escapeHtml(dashboardUrl)}">Open your coaching dashboard</a></p>`,
     log: { source: "coaching_contract", flowType: "coaching_contract" },
   });
 

@@ -1,0 +1,61 @@
+name: Remove a test client
+
+on:
+  workflow_dispatch:
+    inputs:
+      email:
+        description: "Test client's email (must contain +test before the @)"
+        required: true
+      mode:
+        description: "dry-run lists what would be deleted; apply deletes it"
+        type: choice
+        options:
+          - dry-run
+          - apply
+        default: dry-run
+
+concurrency:
+  group: remove-test-client
+  cancel-in-progress: false
+
+jobs:
+  remove:
+    runs-on: ubuntu-latest
+    environment: production
+    permissions:
+      contents: read
+      id-token: write
+    defaults:
+      run:
+        working-directory: website
+    env:
+      GCP_PROJECT_ID: apexleader-prod
+      CRM_STORAGE: firestore
+      REMOVE_EMAIL: ${{ inputs.email }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: website/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - uses: google-github-actions/auth@v2
+        with:
+          # Same keyless sign-in as deploy-production.yml.
+          workload_identity_provider: projects/38118386790/locations/global/workloadIdentityPools/github/providers/github
+          service_account: github-deploy@apexleader-prod.iam.gserviceaccount.com
+
+      - name: Remove (dry run)
+        if: inputs.mode == 'dry-run'
+        run: npx tsx scripts/remove-test-client.ts
+
+      - name: Remove
+        if: inputs.mode == 'apply'
+        env:
+          NODE_ENV: production
+        run: npx tsx scripts/remove-test-client.ts --apply

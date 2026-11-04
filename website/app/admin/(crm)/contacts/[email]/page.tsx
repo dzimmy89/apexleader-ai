@@ -140,7 +140,7 @@ export default function ContactPage() {
       setTab(tabParam as ContactTab);
     }
     const planParam = search.get("plan") || "";
-    if (planParam === "full" || planParam === "3pay" || planParam === "6pay") {
+    if (planParam === "full" || planParam === "2pay" || planParam === "3pay" || planParam === "6pay") {
       setPlanHint(planParam);
     }
   }, []);

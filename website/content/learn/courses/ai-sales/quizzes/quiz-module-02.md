@@ -18,7 +18,7 @@ You open Explee for the first time. Which setting do you change before anything 
 ---
 
 ## Question 2
-An Origami row shows a business email, but you can't find it on the salon's website or listing. What should you do?
+An Origami row shows a business email, but you can't find it on the truck's website or listing. What should you do?
 
 - A) Send to it, since Origami verified it
 - B) Mark the source "unknown," look for a published contact, and leave the row out of the sequence until you find one
@@ -74,12 +74,12 @@ Why send cold email from a separate sending domain instead of your main business
 ---
 
 ## Question 6
-You want to find out quickly whether pet boarding businesses respond to your offer, without building a new list by hand. Which tool fits best?
+You want to find out quickly whether event caterers respond to your offer, without building a new list by hand. Which tool fits best?
 
 - A) Your Sales Bot, drafting five emails a day
 - B) Explee, with Autopilot off, one audience and a small daily cap
 - C) Origami LinkedIn steps at 40 requests a day
-- D) A purchased email list of pet businesses
+- D) A purchased email list of caterers
 
 **Answer:** B
 
@@ -102,7 +102,7 @@ You decide to use Origami's automated LinkedIn steps. Which setup follows the co
 ---
 
 ## Question 8
-The same 15 salons show up in both your Origami sequence and your Explee audience this week. What do you do?
+The same 15 food trucks show up in both your Origami sequence and your Explee audience this week. What do you do?
 
 - A) Let both tools contact them
 - B) Keep them in one cold channel only and remove them from the other

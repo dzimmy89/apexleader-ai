@@ -25,7 +25,7 @@ Why: Google's average daily budget is a monthly average, not a daily ceiling. Th
 
 ## Steps
 
-1. **Pick one platform.** Choose where your customers spend time. Groomer Books would likely test Meta (Instagram, where groomers show their work) or Google Search ("bookkeeping for groomers").
+1. **Pick one platform.** Choose where your customers spend time. Rolling Ledger would likely test Meta (Instagram, where food trucks post menus and specials) or Google Search ("bookkeeping for food truck owners").
 
 2. **Set the ceiling first.** Decide the amount you'd accept losing while you learn. Set it as a hard limit: on Meta, the account spending limit (Billing and payments) or a campaign spending limit; on X, a campaign total budget; on Google, a daily budget that keeps the monthly maximum (about 30.4 times daily) inside your number. Write the number at the top of a new doc called `Ads Plan`.
 

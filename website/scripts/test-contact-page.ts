@@ -39,7 +39,7 @@ beforeEach(() => {
   });
   process.env.JWT_SECRET = "test-contact-page";
   process.env.NEXT_PUBLIC_SITE_URL = ORIGIN;
-  process.env.SENDER_EMAIL = "hello@apexleader.ai";
+  process.env.SENDER_EMAIL = "hello@fromaitobusiness.com";
 });
 
 afterEach(() => {
@@ -265,7 +265,9 @@ describe("contact detail", () => {
     assert.equal(detail.emailable, true);
     assert.equal(detail.payments.length, 1);
     assert.ok(detail.timeline.some((e) => e.type === "payment"));
-    assert.equal(detail.packages.length, 3);
+    // Three public packages plus the private Build and Launch package.
+    assert.equal(detail.packages.length, 4);
+    assert.ok(detail.packages.some((p) => p.id === "build_launch"));
   });
 
   it("GET returns 404 for an unknown address and the notes route writes a timeline note", async () => {
@@ -353,7 +355,7 @@ describe("contact page UI contract", () => {
 
 describe("1:1 sender domain", () => {
   afterEach(() => {
-    process.env.SENDER_EMAIL = "hello@apexleader.ai";
+    process.env.SENDER_EMAIL = "hello@fromaitobusiness.com";
     delete process.env.SENDER_DOMAINS;
   });
 

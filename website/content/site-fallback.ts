@@ -84,3 +84,41 @@ export const fallbackPackages: CoachingPackage[] = [
     paymentPlans: [],
   },
 ];
+
+// Private packages sold by proposal, never listed on the site (active: false).
+// They exist only in code, so getPackages adds them whatever Firestore holds.
+// Each one needs a contract at content/coaching-contracts/<id>.md.
+export const privatePackages: CoachingPackage[] = [
+  {
+    id: "build_launch",
+    name: "Build and Launch",
+    tagline: "16 weeks to build, market and run an AI consulting business, through your first paying client.",
+    price: 2500,
+    priceDisplay: "$2,500",
+    durationWeeks: 16,
+    sessionCount: 16,
+    sessionLengthMins: 60,
+    requiresDiscoveryCall: false,
+    applicationOnly: true,
+    cadence: "Weekly",
+    features: [
+      "16 × 60-minute private 1-on-1 sessions, one a week",
+      "All four phases: foundation, build, market and sell, run",
+      "Three demo-ready AI workflows",
+      "AI marketing, sales and accounting set up",
+      "Coach review on your first client pilot",
+      "Messages between sessions",
+      "The full course library during the program",
+    ],
+    deliverables: [
+      "Niche, offer and price sheet",
+      "A reusable build library in GitHub",
+      "Live site, content calendar and prospect pipeline",
+      "First client delivered, with books and SOPs running",
+    ],
+    bestFor: "Founders launching an AI consulting business",
+    sortIndex: 10,
+    active: false,
+    paymentPlans: [],
+  },
+];

@@ -34,6 +34,11 @@ export function SiteFooter() {
                 </Link>
               </li>
               <li>
+                <Link href="/portfolio" className={linkClass}>
+                  Portfolio
+                </Link>
+              </li>
+              <li>
                 <Link href="/coaching" className={linkClass}>
                   1-on-1 coaching
                 </Link>

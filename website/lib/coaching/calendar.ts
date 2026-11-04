@@ -1,6 +1,6 @@
 import { google } from "googleapis";
 import { SENDER_EMAIL, getSiteOrigin } from "@/lib/env";
-import { coachReadCalendarIds, coachWriteCalendarId } from "@/lib/coaching/coach-calendars";
+import { coachBusyCalendarIds, coachWriteCalendarId } from "@/lib/coaching/coach-calendars";
 import {
   BUFFER_MS,
   COACH_TIMEZONE,
@@ -155,7 +155,7 @@ type CalendarClient = NonNullable<ReturnType<typeof getCalendarClient>>;
 const busyCache = new Map<string, { at: number; busy: BusyInterval[] }>();
 
 /**
- * Busy blocks across every calendar in coachReadCalendarIds(). Google's
+ * Busy blocks across every calendar in coachBusyCalendarIds(). Google's
  * free/busy already leaves out events marked Free and invites hello@ declined.
  * A calendar Google can't read fails the whole check: skipping it would offer
  * times that may be taken.
@@ -165,7 +165,7 @@ export async function fetchBusyIntervals(
   timeMin: Date,
   timeMax: Date
 ): Promise<BusyInterval[]> {
-  const ids = coachReadCalendarIds();
+  const ids = coachBusyCalendarIds();
   let data;
   try {
     const res = await calendar.freebusy.query({
@@ -238,7 +238,7 @@ export async function getAvailability(
 
   const timeMin = new Date(rangeStart.getTime() - BUFFER_MS);
   const timeMax = new Date(rangeEnd.getTime() + BUFFER_MS);
-  const key = `${timeMin.toISOString()}|${timeMax.toISOString()}|${coachReadCalendarIds().join(",")}`;
+  const key = `${timeMin.toISOString()}|${timeMax.toISOString()}|${coachBusyCalendarIds().join(",")}`;
   const cached = busyCache.get(key);
   let busy: BusyInterval[];
   if (cached && Date.now() - cached.at < BUSY_CACHE_TTL_MS) {
@@ -804,4 +804,82 @@ export async function createCoachingSessionBooking(
     console.error("[createCoachingSessionBooking] confirmation email failed", e);
   }
   return { ok: true, eventId, meetUrl, htmlLink, sessionId };
+}
+
+/** The agreement asks for 24 hours' notice to reschedule. */
+export const RESCHEDULE_NOTICE_MS = 24 * 60 * 60 * 1000;
+
+/**
+ * A client moves one of their own booked sessions from /account: the
+ * calendar event moves (same Meet link, the invite updates), the session row
+ * follows, and the client gets a confirmation email.
+ */
+export async function rescheduleCoachingSession(input: {
+  clientEmails: string[];
+  sessionId: string;
+  startTime: string;
+  timezone?: string;
+}): Promise<CreateBookingResult> {
+  const db = getDb();
+  const ref = db.collection("coaching_sessions").doc(input.sessionId);
+  const snap = await ref.get();
+  const data = (snap.data() || {}) as Record<string, unknown>;
+  const owner = String(data.clientId || "").toLowerCase();
+  if (!snap.exists || !input.clientEmails.map((e) => e.toLowerCase()).includes(owner)) {
+    return { ok: false, code: "invalid", error: "That session isn't in your account." };
+  }
+  if (data.status !== "scheduled" || data.cancelledAt) {
+    return { ok: false, code: "invalid", error: "Only booked sessions can be moved." };
+  }
+  const eventId = String(data.calendarEventId || "");
+  const current = Date.parse(String(data.scheduledAt || ""));
+  if (!eventId || !Number.isFinite(current)) return { ok: false, code: "invalid", error: "This session can't be moved online." };
+  if (current - Date.now() < RESCHEDULE_NOTICE_MS) {
+    return {
+      ok: false,
+      code: "invalid",
+      error: `This session is less than 24 hours away, so it can't be moved online. Email ${BRAND.email}.`,
+    };
+  }
+  const durationMins = Number(data.durationMins) || 60;
+  const moved = await rescheduleBooking(eventId, input.startTime, durationMins);
+  if (!moved.ok) return moved;
+
+  const start = new Date(input.startTime);
+  await ref.set(
+    {
+      scheduledAt: start.toISOString(),
+      meetUrl: moved.meetUrl ?? data.meetUrl ?? null,
+      rescheduledFrom: new Date(current).toISOString(),
+      rescheduledAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+    },
+    { merge: true }
+  );
+
+  const when = start.toLocaleString("en-US", {
+    timeZone: input.timezone || COACH_TIMEZONE,
+    weekday: "long",
+    month: "long",
+    day: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+    timeZoneName: "short",
+  });
+  const meetUrl = moved.meetUrl || (typeof data.meetUrl === "string" ? data.meetUrl : "");
+  try {
+    await sendEmail({
+      to: owner,
+      purpose: "transactional",
+      subject: `Coaching session moved to ${when}`,
+      text: `Your coaching session with ${BRAND.coachFirstName} is now ${when}. Your calendar invite has been updated.${meetUrl ? `\n\nJoin on Google Meet: ${meetUrl}` : ""}\n\n${getSiteOrigin()}/account`,
+      html: `<p>Your coaching session with ${BRAND.coachFirstName} is now <strong>${when}</strong>. Your calendar invite has been updated.</p>${
+        meetUrl ? `<p><a href="${meetUrl}">Join on Google Meet</a></p>` : ""
+      }<p><a href="${getSiteOrigin()}/account">Your account</a></p>`,
+      log: { source: "coaching_session_rescheduled" },
+    });
+  } catch (e) {
+    console.error("[rescheduleCoachingSession] confirmation email failed", e);
+  }
+  return { ok: true, eventId, meetUrl: meetUrl || undefined };
 }

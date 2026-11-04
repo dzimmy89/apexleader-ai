@@ -29,8 +29,8 @@ Per Cursor's docs, Agent can search your files and the web, read files including
 That's a lot of reach, so a clear brief matters. Use this structure:
 
 ```text
-Goal: Add a "How it works" section to index.html for Groomer Books.
-Context: Audience is independent dog groomers reading on their phones.
+Goal: Add a "How it works" section to index.html for Rolling Ledger.
+Context: Audience is independent food truck owners reading on their phones.
 Use the three steps in content/how-it-works.md, word for word.
 Constraints: Plain HTML and CSS only. Don't touch the header or footer.
 No new fonts, scripts or images.
@@ -79,11 +79,13 @@ Agent 3: Check every link on the site and list broken ones. Don't edit files.
 
 Notice each one has its own files. Two agents editing the same file is the main way parallel work goes wrong.
 
+One cost to know before you pick a model: Cursor's own and Grok models come from your plan's usage pool, but on Premium, models from other companies such as Claude and GPT are billed at their API list price. If you also pay for Claude or ChatGPT, run those models in Claude Code or Codex instead. The T3 Code course shows how to run all three from one window.
+
 **Race the same job.** When the result is a matter of taste, like a hero section or a pricing table, use `/best-of-n` so several models try the same brief in separate worktrees:
 
 ```text
 /best-of-n Redesign the hero section of index.html to feel warm and
-trustworthy for dog groomers. Keep the exact headline and button text.
+trustworthy for food truck owners. Keep the exact headline and button text.
 Plain HTML and CSS only.
 ```
 
@@ -125,3 +127,5 @@ Why: Separate worktrees keep the agents from overwriting each other's edits to t
 - [Cursor 3.0 changelog](https://cursor.com/changelog/3-0) - Agents Window, Agent Tabs and best-of-n
 - [Cursor 3 ditches the classic IDE layout](https://the-decoder.com/new-cursor-3-ditches-the-classic-ide-layout-for-an-agent-first-interface-built-around-parallel-ai-fleets/) - an independent look at local-to-cloud handoff and the agent sidebar
 - [Cursor changelog](https://cursor.com/changelog) - recent additions including Projects
+- [T3 Code](https://t3.codes/) - run Cursor, Claude Code and Codex agents from one window
+- [The Agent Build Line, Lesson 4](/university/agent-build-line) - three agents in three worktrees, and how to merge them one at a time

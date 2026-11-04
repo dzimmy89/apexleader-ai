@@ -18,7 +18,7 @@ You want an honest picture of your idea from a Deep Research run. Which brief is
 ---
 
 ## Question 2
-Your research report says the global pet care market is worth tens of billions. How should you size your opportunity?
+Your research report says the global food truck market is worth tens of billions. How should you size your opportunity?
 
 - A) Build a bottom-up estimate from reachable customers, the share you can win in year one and a realistic price
 - B) Claim 1 percent of the global market as your target

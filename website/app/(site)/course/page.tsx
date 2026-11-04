@@ -3,6 +3,7 @@ import Link from "next/link";
 import { CTAButton } from "@/components/CTAButton";
 import { FinalCta } from "@/components/editorial/FinalCta";
 import { MODULES, TOOLS, TRACKS } from "@/content/course";
+import { portfolioForModule } from "@/content/portfolio";
 import { URLS } from "@/content/site";
 import { allLessons, getCourse, getCoursesInOrder, getStage } from "@/lib/learn/catalog";
 
@@ -14,7 +15,7 @@ const TOOL_COURSES = (getStage("tool-mastery")?.courseIds ?? []).map((id) => get
 export const metadata: Metadata = {
   title: "The course",
   description:
-    "Fifteen courses on building and running a one-person business with AI: Claude, Claude Duet, OpenAI Dots, Grok Bot, Gemini, Cursor, Codex and GitHub, with full tracks on AI marketing, sales and accounting.",
+    "Nineteen courses on building and running a one-person business with AI: Claude, Claude Duet, OpenAI Dots, Grok Bot, Gemini, Cursor, Codex, T3 Code, agent skills, GitHub and an agent build line, with full tracks on SEO, AI marketing, sales and accounting.",
   alternates: { canonical: "/course" },
 };
 
@@ -111,6 +112,20 @@ export default function CoursePage() {
                         {module.deliverable}
                       </p>
                     </div>
+                    {portfolioForModule(module.number).length > 0 ? (
+                      <div>
+                        <p className="ui-label">Seen in</p>
+                        <ul className="mt-2 flex flex-wrap gap-x-4 gap-y-1 font-[family-name:var(--font-ui)] text-[length:var(--text-small)]">
+                          {portfolioForModule(module.number).map((b) => (
+                            <li key={b.slug}>
+                              <Link href={`/portfolio/${b.slug}`} className="text-[var(--color-accent)] hover:underline">
+                                {b.name}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ) : null}
                   </div>
                 </div>
               </li>

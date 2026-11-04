@@ -26,7 +26,7 @@ Why: Origami stops the sequence for a lead as soon as they reply. You still add 
 ## Steps
 
 :::warning
-Only send real messages for a real business you run. If you're working with the Groomer Books sample business, build and review everything through step 7, but leave the sequence paused and don't send.
+Only send real messages for a real business you run. If you're working with the Rolling Ledger sample business, build and review everything through step 7, but leave the sequence paused and don't send.
 :::
 
 1. **Turn on approval.** Find Origami's approval setting and turn it on so every message waits for you. Screenshot it and save the image in your sales folder.
@@ -35,7 +35,7 @@ Only send real messages for a real business you run. If you're working with the 
 
 3. **Set the cap.** Set the daily limit to 10 new emails per inbox with warmup on.
 
-4. **Write the three steps.** Create a sequence named "Groomer Books: hiring signal." Add:
+4. **Write the three steps.** Create a sequence named "Rolling Ledger: hiring signal." Add:
    - Step 1, day 0: under 120 words, one specific detail, one line on what you do, one small question
    - Step 2, day 3: under 80 words, one useful tip related to their signal
    - Step 3, day 7: under 50 words, a polite close

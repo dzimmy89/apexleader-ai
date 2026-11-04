@@ -30,7 +30,7 @@ export function ContractSigner({ token }: { token: string }) {
     async function load() {
       try {
         const res = await fetch(`/api/coaching/contract/${token}`);
-        const json = (await res.json()) as ContractData;
+        const json = (await res.json().catch(() => ({ ok: false, error: "We could not load your agreement. Refresh to try again." }))) as ContractData;
         if (cancelled) return;
         setData(json);
         if (json.ok) {
@@ -62,9 +62,9 @@ export function ContractSigner({ token }: { token: string }) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ typedName, signatureDataUri }),
       });
-      const json = (await res.json()) as { ok: boolean; error?: string };
+      const json = (await res.json().catch(() => ({ ok: false }))) as { ok: boolean; error?: string };
       if (!res.ok || !json.ok) {
-        throw new Error(json.error || "Signing failed");
+        throw new Error(json.error || "We could not save your signature. Try again in a minute, or email us and we will sort it out.");
       }
       setStatus("signed");
     } catch (e) {

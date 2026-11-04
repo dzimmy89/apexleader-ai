@@ -40,13 +40,13 @@ Here is a skill for a monthly client update, written for the sample business:
 ```text
 ---
 name: monthly-client-update
-description: Write the monthly bookkeeping update email for a Groomer Books client from their profit report numbers.
+description: Write the monthly bookkeeping update email for a Rolling Ledger client from their profit report numbers.
 ---
 
 # Monthly client update
 
 ## Inputs to ask for if missing
-- Client salon name and owner first name
+- Client truck name and owner first name
 - Month, revenue, expenses, net profit, and last month's net profit
 
 ## Steps
@@ -62,7 +62,7 @@ description: Write the monthly bookkeeping update email for a Groomer Books clie
 - Label the email DRAFT FOR FOUNDER APPROVAL. Never send it.
 
 ## Example opening
-"Hi Maria, good news: Paws & Suds kept $4,120 in profit in September, up $610 from August."
+"Hi Maria, good news: Taco Libre kept $4,120 in profit in September, up $610 from August."
 ```
 
 The required header fields are `name` (up to 64 characters) and `description` (up to 200 characters). Keep each skill to one workflow, include an example, and start with plain instructions before adding any scripts.
@@ -77,7 +77,7 @@ To install it:
 Test it with a prompt that should trigger it, and one that should not:
 
 ```text
-Write this month's update for Maria at Paws & Suds. September revenue $18,400,
+Write this month's update for Maria at Taco Libre. September revenue $18,400,
 expenses $14,280, net profit $4,120. August net profit was $3,510.
 ```
 
@@ -103,13 +103,13 @@ You can start an artifact by asking in chat, by choosing **Output** in the messa
 Prompts that work well:
 
 ```text
-Create a Slides deck: a 6-slide sales deck for Groomer Books aimed at salon owners.
+Create a Slides deck: a 6-slide sales deck for Rolling Ledger aimed at truck owners.
 Use project knowledge for the offer and price. One idea per slide, big type,
 speaker notes on each slide. Final slide: the free 15-minute books check.
 ```
 
 ```text
-Create a Design one-pager for a salon owner who asked "what do I actually get?"
+Create a Design one-pager for a food truck owner who asked "what do I actually get?"
 Use our brand voice. Include what's included, what's not, the price, and a
 3-step getting-started section.
 ```
@@ -158,5 +158,6 @@ Why: Claude decides when to load a skill from its name and description, so a vag
 
 - [Use skills in Claude](https://support.claude.com/en/articles/12512180-use-skills-in-claude) - enabling, uploading and safety
 - [How to create custom skills](https://support.claude.com/en/articles/12512198-how-to-create-custom-skills) - SKILL.md structure and best practices
+- [Anthropic's skills repository](https://github.com/anthropics/skills) - example skills, including skill-creator; the Agent Skills and Plugins course shows how to share one set of skills across Claude Code, Codex and Cursor
 - [What are artifacts and how do I use them?](https://support.claude.com/en/articles/17153992-what-are-artifacts-and-how-do-i-use-them) - templates, sharing, storage and export
 - [Claude release notes](https://support.claude.com/en/articles/12138966-release-notes) - the September 2026 Docs, Slides and Design launch

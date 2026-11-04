@@ -42,7 +42,7 @@ Before you polish the page from Lesson 2, generate a few directions. Give Codex 
 ```text
 Read SPEC.md and /content/hero.md.
 Generate three mockups of the landing page hero section, phone width (9:16),
-for independent dog groomers who read on their phone between appointments.
+for independent food truck owners who read on their phone between services.
 Direction A: warm and friendly, cream background, one illustration.
 Direction B: clean and professional, white background, a real-looking photo.
 Direction C: bold, one strong accent color, big type, no image.
@@ -76,9 +76,9 @@ A landing page needs a small, specific set of images. Generate each one at the s
 A prompt that works:
 
 ```text
-Create a hero image for Groomer Books, a bookkeeping service for independent dog groomers.
-Scene: a tidy grooming salon after closing, a groomer at the front desk smiling at a tablet,
-a sleepy dog on a bed nearby. Warm natural light, realistic photo style.
+Create a hero image for Rolling Ledger, a bookkeeping service for independent food truck owners.
+Scene: a tidy food truck after closing, a food truck owner at the counter smiling at a tablet,
+string lights glowing over the service window. Warm natural light, realistic photo style.
 No text, no logos, no brand names on any object. 16:9, leave calm space on the left
 for a headline. Save to /images/hero.png.
 Then create a compressed web version as /images/hero.webp under 250 KB.

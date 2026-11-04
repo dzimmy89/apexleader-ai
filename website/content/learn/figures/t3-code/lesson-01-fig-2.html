@@ -1,0 +1,32 @@
+<!doctype html><meta charset="utf-8">
+<!-- Figure source for the T3 Code course. -->
+<meta name="out" content="public/learn/figures/t3-code/lesson-01-fig-2.webp">
+<link rel="stylesheet" href="../../../../scripts/learn/infographics/brand.css">
+<style>
+  .paper .label { color: var(--paper-text); }
+
+  .flow { flex: 1; display: grid; grid-template-columns: 1fr auto 1fr; gap: 16px; align-items: center; }
+  .col { display: flex; flex-direction: column; gap: 12px; }
+  .host { flex-direction: column; height: 100%; justify-content: center; }
+  .dash { border: 1.5px dashed var(--line-strong); border-radius: 12px; padding: 12px 16px; display: flex; flex-direction: column; gap: 4px; }
+
+</style>
+<div class="fig wide">
+  <span class="sys">Where your work goes</span>
+  <div class="flow">
+    <div class="paper card host" style="border:0">
+      <svg class="icon " style="stroke:var(--signal-ink)" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 5a2 2 0 0 1 2 2v8.526a2 2 0 0 0 .212.897l1.068 2.127a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45l1.068-2.127A2 2 0 0 0 4 15.526V7a2 2 0 0 1 2-2z"/><path d="M20.054 15.987H3.946"/></svg>
+      <span class="label">Your computer</span>
+      <span class="small">T3 Code and the agents run here</span>
+    </div>
+    <span class="arrow">→</span>
+    <div class="col">
+      <div class="card agent"><span class="label">Providers</span></div>
+      <span class="small">Code and prompts go straight to Anthropic, OpenAI, Cursor</span>
+      <div class="dash">
+        <span class="small">Ping Labs gets usage counts only</span>
+        <span class="small signal">Off: T3CODE_TELEMETRY_ENABLED=false</span>
+      </div>
+    </div>
+  </div>
+</div>

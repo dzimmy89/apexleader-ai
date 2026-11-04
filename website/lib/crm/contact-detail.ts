@@ -26,6 +26,7 @@ export const PACKAGE_DISPLAY_NAMES: Record<string, string> = {
   foundations: "Kickstart",
   mastery: "Operator",
   institutional: "Inner Circle",
+  build_launch: "Build and Launch",
 };
 
 export interface ContactPackageOption {

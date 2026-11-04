@@ -1,0 +1,25 @@
+<!doctype html><meta charset="utf-8">
+<!-- Figure source for the Agent Build Line course. -->
+<meta name="out" content="public/learn/figures/agent-build-line/lesson-01-fig-2.webp">
+<link rel="stylesheet" href="../../../../scripts/learn/infographics/brand.css">
+<style>
+  .paper { display: flex; gap: 10px; }
+  .paper .label, .paper .icon { color: var(--paper-text); }
+  .arrow { font-size: 30px; color: var(--muted); }
+  .row { flex: 1; display: flex; gap: 8px; align-items: stretch; }
+  .row > .st { flex: 1; }
+  .row > .arrow { align-self: center; }
+  .st { flex-direction: column; gap: 8px; padding: 14px; justify-content: center; }
+  .st .icon { width: 36px; height: 36px; color: var(--signal); }
+  .st .label { font-size: 27px; }
+  .grid { flex: 1; display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: 1fr 1fr; gap: 14px; }
+  .grid .st { gap: 6px; padding: 12px 14px; justify-content: flex-start; }
+  .grid .st .label { font-size: 26px; }
+  .n { font: 800 28px/1 var(--display); color: var(--signal); }
+  .paper .n { color: var(--signal-ink); }
+
+</style>
+<div class="fig wide">
+  <span class="sys">Four fences on the database</span>
+  <div class="row"><div class="card st"><!-- folder-lock --><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect width="8" height="5" x="14" y="17" rx="1"/><path d="M10 20H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H20a2 2 0 0 1 2 2v2.5"/><path d="M20 17v-2a2 2 0 1 0-4 0v2"/></svg><span class="label">Dev project</span><span class="small">Separate from live</span></div><span class="arrow">→</span><div class="card st"><!-- scan-eye --><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/><circle cx="12" cy="12" r="1"/><path d="M18.944 12.33a1 1 0 0 0 0-.66 7.5 7.5 0 0 0-13.888 0 1 1 0 0 0 0 .66 7.5 7.5 0 0 0 13.888 0"/></svg><span class="label">project_ref</span><span class="small">One project in view</span></div><span class="arrow">→</span><div class="card st"><!-- eye-off --><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49"/><path d="M14.084 14.158a3 3 0 0 1-4.242-4.242"/><path d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143"/><path d="m2 2 20 20"/></svg><span class="label">Read-only</span><span class="small">Until it must write</span></div><span class="arrow">→</span><div class="paper st"><!-- shield-check --><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg><span class="label">Row-level security</span><span class="small">On every table</span></div></div>
+</div>

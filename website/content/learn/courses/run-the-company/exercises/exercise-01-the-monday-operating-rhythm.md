@@ -11,7 +11,7 @@ template: v2
 You'll set up the reports place, get every department agent to file a weekly report, build your scorecard and run the 90-minute session. At the end you'll have a scorecard, a decision log and one written assignment per agent for the week ahead.
 :::
 
-**Time:** 40 minutes · **You'll need:** your department agents from the Run the Business courses (or the sample Groomer Books setup), Google Drive, email or Slack for the reports place, Claude Duet if you have access (any Claude, ChatGPT or Gemini chat otherwise) · **Builds on:** Lesson 1
+**Time:** 40 minutes · **You'll need:** your department agents from the Run the Business courses (or the sample Rolling Ledger setup), Google Drive, email or Slack for the reports place, Claude Duet if you have access (any Claude, ChatGPT or Gemini chat otherwise) · **Builds on:** Lesson 1
 
 ## Warm-up
 
@@ -27,11 +27,11 @@ Why: A fixed format is what keeps Monday to 90 minutes. Fix the template once an
 
 1. **Pick your reports place.** Create a `Reports` folder in Google Drive, a reports email label, or a `#reports` Slack channel. Share it only with you and your agents' scoped logins. If you use Duet, make sure that app is connected to your Claude account.
 
-2. **Send the report format.** Paste the weekly report template from Lesson 1 to each agent, with the numbers that department owns. Ask each to save it as a skill or routine that runs Mondays at 8:00 AM. Don't have all five agents yet? Create the missing reports yourself this week, or ask Claude to draft sample reports for Groomer Books:
+2. **Send the report format.** Paste the weekly report template from Lesson 1 to each agent, with the numbers that department owns. Ask each to save it as a skill or routine that runs Mondays at 8:00 AM. Don't have all five agents yet? Create the missing reports yourself this week, or ask Claude to draft sample reports for Rolling Ledger:
 
    ```text
    Draft five sample weekly reports (marketing, sales, accounting, builder,
-   research) for Groomer Books, a $149/month bookkeeping service for dog groomers
+   research) for Rolling Ledger, a $149/month bookkeeping service for food truck owners
    with 18 customers. Use the report template below. Make the numbers realistic
    and include 2 decision items per report, each with a recommendation. Mark the
    whole thing SAMPLE DATA.

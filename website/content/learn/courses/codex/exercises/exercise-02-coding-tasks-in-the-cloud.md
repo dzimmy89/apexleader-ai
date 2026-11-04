@@ -29,15 +29,15 @@ Why: The calculator needs nothing from the internet. Narrow access reduces what 
 
 ```text
 Publish this project to a new private GitHub repository called
-groomer-books-tools. Before pushing, check every file for passwords,
+rolling-ledger-tools. Before pushing, check every file for passwords,
 keys or client data and show me the file list. Wait for my OK.
 ```
 
 Log in to GitHub yourself when asked.
 
-2. **Limit GitHub access.** When ChatGPT asks to connect GitHub, grant access to `groomer-books-tools` only (and your site repo if you did the GitHub course).
+2. **Limit GitHub access.** When ChatGPT asks to connect GitHub, grant access to `rolling-ledger-tools` only (and your site repo if you did the GitHub course).
 
-3. **Create the environment.** In ChatGPT on the web or desktop, choose **Work in**, then **Cloud**, then **Select environment**, and create one for `groomer-books-tools`. Review what Codex found and tested.
+3. **Create the environment.** In ChatGPT on the web or desktop, choose **Work in**, then **Cloud**, then **Select environment**, and create one for `rolling-ledger-tools`. Review what Codex found and tested.
 
 4. **Set network access.** Under Networks, keep internet access off, or choose the narrowest preset if setup needs to install anything. Add no secrets. Set access to "Only me". Publish and wait for "Environment published."
 

@@ -32,6 +32,8 @@
         "claude-code",
         "cursor",
         "codex",
+        "t3-code",
+        "agent-skills",
         "github-for-founders",
         "google-gemini",
         "always-on-agents"
@@ -51,6 +53,7 @@
       "courseIds": [
         "validate-the-idea",
         "build-product-and-site",
+        "agent-build-line",
         "brand-in-a-day"
       ]
     },
@@ -68,6 +71,7 @@
       ],
       "courseIds": [
         "ai-marketing",
+        "get-found",
         "ai-sales",
         "ai-accounting"
       ]
@@ -382,6 +386,108 @@
         }
       ]
     },
+    "t3-code": {
+      "id": "t3-code",
+      "title": "T3 Code: One Desk for All Your Agents",
+      "description": "Run Claude Code, Codex and Cursor from one free app on the plans you already pay for: send each job to the right plan, keep threads lean, work from your phone and read your usage every week.",
+      "icon": "🗂️",
+      "estimatedHours": 3.5,
+      "lessonCount": 4,
+      "stageId": "tool-mastery",
+      "stageNumber": 2,
+      "modules": [
+        {
+          "number": 1,
+          "title": "Stretch your agent plans",
+          "quiz": "quiz-module-01",
+          "lessons": [
+            {
+              "number": 1,
+              "title": "One Desk for Claude Code, Codex and Cursor",
+              "slug": "lesson-01-one-desk-for-claude-code-codex-and-cursor",
+              "minutes": 13,
+              "exercise": "exercise-01-one-desk-for-claude-code-codex-and-cursor",
+              "exerciseMinutes": 40
+            },
+            {
+              "number": 2,
+              "title": "Send Each Job to the Right Plan",
+              "slug": "lesson-02-send-each-job-to-the-right-plan",
+              "minutes": 14,
+              "exercise": "exercise-02-send-each-job-to-the-right-plan",
+              "exerciseMinutes": 45
+            },
+            {
+              "number": 3,
+              "title": "Habits That Stretch Your Limits",
+              "slug": "lesson-03-habits-that-stretch-your-limits",
+              "minutes": 13,
+              "exercise": "exercise-03-habits-that-stretch-your-limits",
+              "exerciseMinutes": 40
+            },
+            {
+              "number": 4,
+              "title": "Run Agents From Your Phone and Read the Meter",
+              "slug": "lesson-04-run-agents-from-your-phone-and-read-the-meter",
+              "minutes": 12,
+              "exercise": "exercise-04-run-agents-from-your-phone-and-read-the-meter",
+              "exerciseMinutes": 35
+            }
+          ]
+        }
+      ]
+    },
+    "agent-skills": {
+      "id": "agent-skills",
+      "title": "Agent Skills and Plugins: Teach Your Agents Once",
+      "description": "Install shared skills that work across Claude Code, Codex and Cursor, interview your ideas with /grill-me, write house skills for your voice, brand and specs, and give your agent a language server, security reviews and current docs.",
+      "icon": "🧰",
+      "estimatedHours": 4.5,
+      "lessonCount": 4,
+      "stageId": "tool-mastery",
+      "stageNumber": 2,
+      "modules": [
+        {
+          "number": 1,
+          "title": "Teach your agents once",
+          "quiz": "quiz-module-01",
+          "lessons": [
+            {
+              "number": 1,
+              "title": "Skills That Travel Between Agents",
+              "slug": "lesson-01-skills-that-travel-between-agents",
+              "minutes": 14,
+              "exercise": "exercise-01-skills-that-travel-between-agents",
+              "exerciseMinutes": 40
+            },
+            {
+              "number": 2,
+              "title": "Starter Skills Worth Installing",
+              "slug": "lesson-02-starter-skills-worth-installing",
+              "minutes": 14,
+              "exercise": "exercise-02-starter-skills-worth-installing",
+              "exerciseMinutes": 50
+            },
+            {
+              "number": 3,
+              "title": "Your Four House Skills",
+              "slug": "lesson-03-your-four-house-skills",
+              "minutes": 15,
+              "exercise": "exercise-03-your-four-house-skills",
+              "exerciseMinutes": 60
+            },
+            {
+              "number": 4,
+              "title": "Give Your Agent Eyes and Brakes",
+              "slug": "lesson-04-give-your-agent-eyes-and-brakes",
+              "minutes": 15,
+              "exercise": "exercise-04-give-your-agent-eyes-and-brakes",
+              "exerciseMinutes": 45
+            }
+          ]
+        }
+      ]
+    },
     "github-for-founders": {
       "id": "github-for-founders",
       "title": "GitHub for Non-Developers",
@@ -605,10 +711,10 @@
     "build-product-and-site": {
       "id": "build-product-and-site",
       "title": "Build the Product and the Site",
-      "description": "Write a plain-English spec, have a coding agent build it, keep it in GitHub and put it live on your own domain.",
+      "description": "Write a plain-English spec, have a coding agent build it, keep it in GitHub and put it live on your own domain. Then design with agents: four versions of every screen in Paper, annotated references, and a design review before any code.",
       "icon": "🚀",
-      "estimatedHours": 4.2,
-      "lessonCount": 5,
+      "estimatedHours": 8.1,
+      "lessonCount": 8,
       "stageId": "build-the-business",
       "stageNumber": 3,
       "modules": [
@@ -656,6 +762,104 @@
               "minutes": 14,
               "exercise": "exercise-05-deploy-it-and-connect-your-domain",
               "exerciseMinutes": 40
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "title": "Design with agents",
+          "quiz": "quiz-module-02",
+          "lessons": [
+            {
+              "number": 6,
+              "title": "Four Versions of Every Screen",
+              "slug": "lesson-06-four-versions-of-every-screen",
+              "minutes": 14,
+              "exercise": "exercise-06-four-versions-of-every-screen",
+              "exerciseMinutes": 50
+            },
+            {
+              "number": 7,
+              "title": "\"Make It Feel Like This\"",
+              "slug": "lesson-07-make-it-feel-like-this",
+              "minutes": 13,
+              "exercise": "exercise-07-make-it-feel-like-this",
+              "exerciseMinutes": 45
+            },
+            {
+              "number": 8,
+              "title": "Design Review Before Code",
+              "slug": "lesson-08-design-review-before-code",
+              "minutes": 13,
+              "exercise": "exercise-08-design-review-before-code",
+              "exerciseMinutes": 60
+            }
+          ]
+        }
+      ]
+    },
+    "agent-build-line": {
+      "id": "agent-build-line",
+      "title": "The Agent Build Line: Agents That Build, Bill and Ship",
+      "description": "Give agents a database and billing on safe copies, ship every change as a pull request with a preview link, run three agents at once in worktrees, cut your token use and let agents work overnight while you keep the merge button.",
+      "icon": "🏭",
+      "estimatedHours": 7.8,
+      "lessonCount": 6,
+      "stageId": "build-the-business",
+      "stageNumber": 3,
+      "modules": [
+        {
+          "number": 1,
+          "title": "Build with a crew of agents",
+          "quiz": "quiz-module-01",
+          "lessons": [
+            {
+              "number": 1,
+              "title": "Give Your Agent a Database",
+              "slug": "lesson-01-give-your-agent-a-database",
+              "minutes": 14,
+              "exercise": "exercise-01-give-your-agent-a-database",
+              "exerciseMinutes": 50
+            },
+            {
+              "number": 2,
+              "title": "Billing With Stripe and a Read-Only Key",
+              "slug": "lesson-02-billing-with-stripe-and-a-read-only-key",
+              "minutes": 14,
+              "exercise": "exercise-02-billing-with-stripe-and-a-read-only-key",
+              "exerciseMinutes": 50
+            },
+            {
+              "number": 3,
+              "title": "From Pull Request to Preview",
+              "slug": "lesson-03-from-pull-request-to-preview",
+              "minutes": 15,
+              "exercise": "exercise-03-from-pull-request-to-preview",
+              "exerciseMinutes": 60
+            },
+            {
+              "number": 4,
+              "title": "Three Agents, Three Worktrees",
+              "slug": "lesson-04-three-agents-three-worktrees",
+              "minutes": 14,
+              "exercise": "exercise-04-three-agents-three-worktrees",
+              "exerciseMinutes": 60
+            },
+            {
+              "number": 5,
+              "title": "Spend Fewer Tokens",
+              "slug": "lesson-05-spend-fewer-tokens",
+              "minutes": 14,
+              "exercise": "exercise-05-spend-fewer-tokens",
+              "exerciseMinutes": 60
+            },
+            {
+              "number": 6,
+              "title": "Overnight Loops and the Morning Review",
+              "slug": "lesson-06-overnight-loops-and-the-morning-review",
+              "minutes": 14,
+              "exercise": "exercise-06-overnight-loops-and-the-morning-review",
+              "exerciseMinutes": 50
             }
           ]
         }
@@ -766,6 +970,135 @@
               "minutes": 13,
               "exercise": "exercise-06-ads-with-approval-gates",
               "exerciseMinutes": 35
+            }
+          ]
+        }
+      ]
+    },
+    "get-found": {
+      "id": "get-found",
+      "title": "Get Found: SEO, GEO and AI SEO",
+      "description": "Get found on Google and cited by ChatGPT, Gemini, Perplexity, Claude and Copilot: a free search stack, pages built from real questions, an SEO agent that reports every Monday, and a dashboard that shows what's working.",
+      "icon": "🔎",
+      "estimatedHours": 11.4,
+      "lessonCount": 12,
+      "stageId": "run-the-business",
+      "stageNumber": 4,
+      "modules": [
+        {
+          "number": 1,
+          "title": "SEO foundations",
+          "quiz": "quiz-module-01",
+          "lessons": [
+            {
+              "number": 1,
+              "title": "How Search Works Now, and Your Free Stack",
+              "slug": "lesson-01-how-search-works-now-and-your-free-stack",
+              "minutes": 13,
+              "exercise": "exercise-01-how-search-works-now-and-your-free-stack",
+              "exerciseMinutes": 35
+            },
+            {
+              "number": 2,
+              "title": "Find the Questions Buyers Ask",
+              "slug": "lesson-02-find-the-questions-buyers-ask",
+              "minutes": 13,
+              "exercise": "exercise-02-find-the-questions-buyers-ask",
+              "exerciseMinutes": 45
+            },
+            {
+              "number": 3,
+              "title": "Technical SEO by Agent",
+              "slug": "lesson-03-technical-seo-by-agent",
+              "minutes": 15,
+              "exercise": "exercise-03-technical-seo-by-agent",
+              "exerciseMinutes": 40
+            },
+            {
+              "number": 4,
+              "title": "Local and Trust Signals",
+              "slug": "lesson-04-local-and-trust-signals",
+              "minutes": 13,
+              "exercise": "exercise-04-local-and-trust-signals",
+              "exerciseMinutes": 40
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "title": "AI-powered SEO",
+          "quiz": "quiz-module-02",
+          "lessons": [
+            {
+              "number": 5,
+              "title": "Briefs From Real Search Data",
+              "slug": "lesson-05-briefs-from-real-search-data",
+              "minutes": 14,
+              "exercise": "exercise-05-briefs-from-real-search-data",
+              "exerciseMinutes": 40
+            },
+            {
+              "number": 6,
+              "title": "Write With AI, Edit Like an Expert",
+              "slug": "lesson-06-write-with-ai-edit-like-an-expert",
+              "minutes": 14,
+              "exercise": "exercise-06-write-with-ai-edit-like-an-expert",
+              "exerciseMinutes": 45
+            },
+            {
+              "number": 7,
+              "title": "Internal Links and Content Refresh",
+              "slug": "lesson-07-internal-links-and-content-refresh",
+              "minutes": 13,
+              "exercise": "exercise-07-internal-links-and-content-refresh",
+              "exerciseMinutes": 40
+            },
+            {
+              "number": 8,
+              "title": "A Weekly SEO Agent",
+              "slug": "lesson-08-a-weekly-seo-agent",
+              "minutes": 12,
+              "exercise": "exercise-08-a-weekly-seo-agent",
+              "exerciseMinutes": 35
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "title": "GEO: get cited by AI assistants",
+          "quiz": "quiz-module-03",
+          "lessons": [
+            {
+              "number": 9,
+              "title": "How AI Answers Pick Sources",
+              "slug": "lesson-09-how-ai-answers-pick-sources",
+              "minutes": 15,
+              "exercise": "exercise-09-how-ai-answers-pick-sources",
+              "exerciseMinutes": 35
+            },
+            {
+              "number": 10,
+              "title": "Pages That Get Cited",
+              "slug": "lesson-10-pages-that-get-cited",
+              "minutes": 14,
+              "exercise": "exercise-10-pages-that-get-cited",
+              "exerciseMinutes": 45
+            },
+            {
+              "number": 11,
+              "title": "Earn Real Mentions",
+              "slug": "lesson-11-earn-real-mentions",
+              "minutes": 14,
+              "exercise": "exercise-11-earn-real-mentions",
+              "exerciseMinutes": 45
+            },
+            {
+              "number": 12,
+              "title": "Measure AI Visibility",
+              "slug": "lesson-12-measure-ai-visibility",
+              "minutes": 14,
+              "exercise": "exercise-12-measure-ai-visibility",
+              "exerciseMinutes": 45
             }
           ]
         }
