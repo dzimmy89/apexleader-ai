@@ -27,7 +27,7 @@ Why: One owner per job avoids duplicate drafts and wasted usage, and approval ru
 
 1. **Draw the frame.** Put "Founder (you): approves anything external or about money" at the top. Under it, five boxes: Chief of Staff, Sales and Customers, Marketing and Content, Finance Assistant, Product and Website.
 
-2. **Fill boxes from your stack.** Using your Stack Decision, put a tool in each box you can fill today. Leave the rest as "Me for now" or "Open". If you use the sample Groomer Books business, a $20 stack might look like: Chief of Staff = Claude Duet (if admitted) or "Open"; Finance Assistant = Claude chat with a receipts project; Product and Website = free GitHub plus your main chat tool; the rest "Me for now".
+2. **Fill boxes from your stack.** Using your Stack Decision, put a tool in each box you can fill today. Leave the rest as "Me for now" or "Open". If you use the sample Rolling Ledger business, a $20 stack might look like: Chief of Staff = Claude Duet (if admitted) or "Open"; Finance Assistant = Claude chat with a receipts project; Product and Website = free GitHub plus your main chat tool; the rest "Me for now".
 
 3. **Write role cards** for each filled box, six lines each:
 

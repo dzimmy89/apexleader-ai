@@ -28,13 +28,13 @@ AI research tools are fast and literal. If you ask for "small businesses that ne
 
 Your ICP needs five parts:
 
-| Part | Example (sample business: bookkeeping for dog groomers) |
+| Part | Example (sample business: bookkeeping for food truck owners) |
 |---|---|
-| Who | Independent dog grooming salons and mobile groomers |
+| Who | Independent food truck owners: single trucks and small multi-truck operators |
 | Where | Within the US, start with two metro areas you know |
 | Size signal | 1 to 10 staff, one or two locations |
 | Pain signal | Booking-only website, no posted prices for packages, owner does admin, recent expansion or new location |
-| Disqualifier | Franchise locations (they have corporate accounting), vet clinics, pet stores |
+| Disqualifier | Franchise trucks and trucks run by restaurant groups (they have corporate accounting), commissary kitchens |
 
 If you don't have a business idea locked in yet, use this sample business for the whole course. Every exercise works with it.
 
@@ -48,10 +48,10 @@ Use an assistant that can browse the web and cite sources, such as Claude with w
 You are my sales research assistant. Find 30 businesses that match this profile.
 
 Profile:
-- Who: independent dog grooming salons and mobile groomers
+- Who: independent food truck owners, single trucks and small multi-truck operators
 - Where: Austin, TX and Denver, CO metro areas
 - Size: 1 to 10 staff, one or two locations
-- Exclude: franchises, vet clinics, pet supply stores
+- Exclude: franchise trucks, trucks run by restaurant groups, commissary kitchens
 
 For each business return one row with these columns, as a table:
 Business name | City | Website | Public business email or contact form URL | Owner or manager name if publicly listed | Why-now signal | Source URL for each fact
@@ -70,7 +70,7 @@ Paste the result into a Google Sheet called "Lead list." Then spot-check five ro
 Add three columns: Fit (1 to 3), Signal (0 to 2), and Score (Fit plus Signal). You can fill Fit and Signal by hand in ten minutes for 30 rows. Or, if your Google account includes Gemini in Sheets, use the AI function to suggest a first pass:
 
 ```text
-=AI("Based on this description, rate fit for a bookkeeping service for independent dog groomers from 1 (poor) to 3 (strong). Reply with the number only.", B2:F2)
+=AI("Based on this description, rate fit for a bookkeeping service for independent food truck owners from 1 (poor) to 3 (strong). Reply with the number only.", B2:F2)
 ```
 
 Google's help page notes the AI function can only see the cells you point it at, generates a limited number of cells per run, and can be wrong. Treat its numbers as a suggestion and override anything that looks off. Then sort by Score and keep the top 20 to 30.
@@ -79,7 +79,7 @@ Google's help page notes the AI function can only see the cells you point it at,
 
 This step keeps you out of trouble.
 
-- **Public business information only.** A salon's published contact email is fine to note. A personal cell number from a data broker is not something you need.
+- **Public business information only.** A truck's published contact email is fine to note. A personal cell number from a data broker is not something you need.
 - **Don't scrape LinkedIn.** LinkedIn's User Agreement and its help page on prohibited software ban bots, scrapers and automation tools that collect data or act on the site for you. Read profiles yourself if you want, and add notes by hand. Don't point your own agents or browser extensions at LinkedIn to harvest names. Lesson 7 covers the one LinkedIn automation this course teaches, Origami's Sequencer, along with the account risk and the limits to use if you choose it.
 - **Don't buy email lists.** Purchased lists hurt your sender reputation (more in Lesson 2) and often include people who never agreed to anything.
 - **Record the source.** If someone asks "where did you get my email?", you want a one-line answer: "From the contact page on your website."
@@ -94,11 +94,11 @@ Research agents will sometimes invent an email address that "looks right," like 
 A lead list rots. Businesses close, owners change, emails stop working. Set a monthly reminder to rerun your research prompt for new matches and to mark rows older than 90 days for a quick recheck. In Lesson 2, your Sales Bot will take over the routine part of this refresh. You stay the one who approves who gets added.
 
 :::try-it
-Open a chat with any AI assistant that can search the web and paste: "Find 5 independent dog grooming salons in [your city] with their website and a source link for each. Write 'unknown' for anything you cannot confirm." Click two of the links. Did the facts hold up?
+Open a chat with any AI assistant that can search the web and paste: "Find 5 independent food trucks in [your city] with their website and a source link for each. Write 'unknown' for anything you cannot confirm." Click two of the links. Did the facts hold up?
 :::
 
 :::checkpoint
-Q: Your research assistant returns a prospect with the email "owner@happypawsgrooming.com" but no source link. What should you do?
+Q: Your research assistant returns a prospect with the email "owner@smokeandsalttacos.com" but no source link. What should you do?
 - [ ] Send to it, since that format is common
 - [x] Mark it "unknown" and look for a published contact on the business's own site
 - [ ] Ask the AI to confirm the email is real and trust its answer
