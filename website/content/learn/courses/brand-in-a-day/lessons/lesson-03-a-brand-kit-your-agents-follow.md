@@ -174,6 +174,7 @@ Why: A skill loads automatically whenever the task matches its description, in a
 ## Go deeper
 
 - [Using skills in Claude](https://support.claude.com/en/articles/12512180) - plans, turning on code execution, and uploading a custom skill
+- [Agent Skills standard](https://agentskills.io) - the shared skill format; the Agent Skills and Plugins course splits this kit into voice and design system skills for every coding agent
 - [What are Projects?](https://support.claude.com/en/articles/9519177) - project knowledge, instructions and sharing
 - [How Claude remembers your project](https://code.claude.com/docs/en/memory) - CLAUDE.md, AGENTS.md and `@path` imports
 - [Cursor rules](https://cursor.com/docs/rules) - AGENTS.md and .cursor/rules for Cursor's agents

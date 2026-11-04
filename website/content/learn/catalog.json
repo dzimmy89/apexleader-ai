@@ -33,6 +33,7 @@
         "cursor",
         "codex",
         "t3-code",
+        "agent-skills",
         "github-for-founders",
         "google-gemini",
         "always-on-agents"
@@ -430,6 +431,57 @@
               "minutes": 12,
               "exercise": "exercise-04-run-agents-from-your-phone-and-read-the-meter",
               "exerciseMinutes": 35
+            }
+          ]
+        }
+      ]
+    },
+    "agent-skills": {
+      "id": "agent-skills",
+      "title": "Agent Skills and Plugins: Teach Your Agents Once",
+      "description": "Install shared skills that work across Claude Code, Codex and Cursor, interview your ideas with /grill-me, write house skills for your voice, brand and specs, and give your agent a language server, security reviews and current docs.",
+      "icon": "🧰",
+      "estimatedHours": 4.5,
+      "lessonCount": 4,
+      "stageId": "tool-mastery",
+      "stageNumber": 2,
+      "modules": [
+        {
+          "number": 1,
+          "title": "Teach your agents once",
+          "quiz": "quiz-module-01",
+          "lessons": [
+            {
+              "number": 1,
+              "title": "Skills That Travel Between Agents",
+              "slug": "lesson-01-skills-that-travel-between-agents",
+              "minutes": 14,
+              "exercise": "exercise-01-skills-that-travel-between-agents",
+              "exerciseMinutes": 40
+            },
+            {
+              "number": 2,
+              "title": "Starter Skills Worth Installing",
+              "slug": "lesson-02-starter-skills-worth-installing",
+              "minutes": 14,
+              "exercise": "exercise-02-starter-skills-worth-installing",
+              "exerciseMinutes": 50
+            },
+            {
+              "number": 3,
+              "title": "Your Four House Skills",
+              "slug": "lesson-03-your-four-house-skills",
+              "minutes": 15,
+              "exercise": "exercise-03-your-four-house-skills",
+              "exerciseMinutes": 60
+            },
+            {
+              "number": 4,
+              "title": "Give Your Agent Eyes and Brakes",
+              "slug": "lesson-04-give-your-agent-eyes-and-brakes",
+              "minutes": 15,
+              "exercise": "exercise-04-give-your-agent-eyes-and-brakes",
+              "exerciseMinutes": 45
             }
           ]
         }

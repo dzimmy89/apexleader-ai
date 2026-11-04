@@ -29,7 +29,7 @@ describe("buildCourseList", () => {
 
   it("skips what the level already knows", () => {
     const { courseIds } = buildCourseList(clampInputs({ level: "advanced", focusStageIds: ["tool-mastery"], timelineWeeks: 104, hoursPerWeek: 40 }));
-    assert.deepEqual(courseIds, ["claude-code", "cursor", "codex", "t3-code", "google-gemini", "always-on-agents"]);
+    assert.deepEqual(courseIds, ["claude-code", "cursor", "codex", "t3-code", "agent-skills", "google-gemini", "always-on-agents"]);
   });
 
   it("fits the timeline and moves the rest to later", () => {

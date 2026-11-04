@@ -1,0 +1,29 @@
+<!doctype html><meta charset="utf-8">
+<!-- Figure source for the Agent Skills and Plugins course. -->
+<meta name="out" content="public/learn/figures/agent-skills/lesson-01-fig-1.webp">
+<link rel="stylesheet" href="../../../../scripts/learn/infographics/brand.css">
+<style>
+  .paper { display: flex; gap: 10px; }
+  .paper .label { color: var(--paper-text); }
+  .grid { flex: 1; display: grid; grid-template-columns: 1fr 1.25fr 1fr; grid-template-rows: 1fr 1fr; gap: 14px 18px; align-items: center; }
+  .core { grid-column: 2; grid-row: 1 / span 2; flex-direction: column; gap: 8px; align-self: stretch; justify-content: center; }
+  .core .it { display: flex; gap: 10px; align-items: center; }
+  .core .icon { width: 32px; height: 32px; stroke: var(--signal-ink); }
+  .agent { align-items: center; }
+</style>
+<div class="fig wide">
+  <span class="sys">One skill, every agent</span>
+  <div class="grid">
+    <div class="card agent"><span class="label">Claude Code</span></div>
+    <div class="paper core">
+      <div class="it"><!-- file-text --><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg><span class="label">SKILL.md</span></div>
+      <span class="small">name</span>
+      <span class="small">when to use it</span>
+      <span class="small">the steps</span>
+    </div>
+    <div class="card agent"><span class="label">Codex</span></div>
+    <div class="card agent"><span class="label">Cursor</span></div>
+    <div class="card agent"><span class="label">OpenCode</span></div>
+  </div>
+  <span class="note">Each agent reads only the description until a job matches.</span>
+</div>
