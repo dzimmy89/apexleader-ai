@@ -58,19 +58,19 @@ Every skill starts with a short header. The `description` is the most important 
 
 ```markdown
 ---
-name: groomer-books-voice
-description: Use when writing anything a customer will read for Groomer Books: site copy, emails, posts, proposals.
+name: rolling-ledger-voice
+description: Use when writing anything a customer will read for Rolling Ledger: site copy, emails, posts, proposals.
 ---
 
-# Groomer Books voice
+# Rolling Ledger voice
 
-- Plain words a busy groomer understands on a phone. Say "your books", not "reconciliation".
+- Plain words a busy truck owner understands on a phone between services. Say "your books", not "reconciliation".
 - Sentences under 20 words. One idea per paragraph.
 - Warm and direct. No hype words: "revolutionary", "seamless", "unlock".
 - Prices in dollars with the period: "$149 a month".
 
 ## Example
-Before: "Unlock seamless financial clarity for your grooming business."
+Before: "Unlock seamless financial clarity for your food truck business."
 After: "We keep your books every month, so tax time takes an hour, not a weekend."
 ```
 
@@ -80,7 +80,7 @@ If you made a brand skill in Brand in a Day Lesson 3, you already have a start: 
 
 ### Design system
 
-Open your Brand in a Day kit. The design system skill lists the exact values: colour codes, font names and sizes, the spacing step, the button style, and a short "never" list ("no gradients", "no stock photos of laptops"). Tell the skill to use these values over anything the `frontend-design` skill suggests. That matters for Groomer Books: its kit is Ink #1F2A37, Coral #E8664A and Cream #FFF8F0, close to the cream-and-terracotta look `frontend-design` calls a cliché. It's a deliberate brand choice, so the design system skill says so ("cream and coral are our brand colours; keep them"), and the agent stops second-guessing it. Add one screenshot of a page you like as an example, if you have one.
+Open your Brand in a Day kit. The design system skill lists the exact values: colour codes, font names and sizes, the spacing step, the button style, and a short "never" list ("no gradients", "no stock photos of laptops"). Tell the skill to use these values over anything the `frontend-design` skill suggests. That matters for Rolling Ledger: its kit is Ink #1F2A37, Coral #E8664A and Cream #FFF8F0, close to the cream-and-terracotta look `frontend-design` calls a cliché. It's a deliberate brand choice, so the design system skill says so ("cream and coral are our brand colours; keep them"), and the agent stops second-guessing it. Add one screenshot of a page you like as an example, if you have one.
 
 ### Specs
 
@@ -93,7 +93,7 @@ status: paused
 src: /learn/video/agent-skills/sk-l3-write-house-skills.mp4
 captions: /learn/video/agent-skills/sk-l3-write-house-skills.vtt
 poster: /learn/video/agent-skills/sk-l3-write-house-skills.jpg
-transcript: Here the Groomer Books founder pastes five past emails into Claude Code and asks skill creator for a voice skill. It drafts one, runs three test rewrites, and shows them side by side. The founder flags one phrase that sounds too formal, and the skill is updated. Next, the brand kit's colours and fonts go into a design system skill. Two skills done in about twenty minutes.
+transcript: Here the Rolling Ledger founder pastes five past emails into Claude Code and asks skill creator for a voice skill. It drafts one, runs three test rewrites, and shows them side by side. The founder flags one phrase that sounds too formal, and the skill is updated. Next, the brand kit's colours and fonts go into a design system skill. Two skills done in about twenty minutes.
 :::
 
 ## Mistakes become skills
@@ -131,10 +131,10 @@ Put your house skills in one private GitHub repo, for example `house-skills`, wi
 ```text
 house-skills/
   skills/
-    groomer-books-voice/SKILL.md
-    groomer-books-design-system/SKILL.md
-    groomer-books-specs/SKILL.md
-    groomer-books-mistakes/SKILL.md
+    rolling-ledger-voice/SKILL.md
+    rolling-ledger-design-system/SKILL.md
+    rolling-ledger-specs/SKILL.md
+    rolling-ledger-mistakes/SKILL.md
 ```
 
 - **Claude Code:** personal skills live in `~/.claude/skills/`, and project skills in `.claude/skills/` inside the project. Copy the folders there, or ask Claude Code to do it.

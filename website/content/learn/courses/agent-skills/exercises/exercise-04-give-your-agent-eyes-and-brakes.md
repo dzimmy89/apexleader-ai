@@ -11,7 +11,7 @@ template: v2
 You'll install a language server, the security guidance plugin and Context7 on your site, then test each one on purpose: break something and watch the agent see it, ask for something risky and watch it get flagged, and ask about a tool that changed and watch the agent check its docs. At the end you'll know each plugin works, and what it costs.
 :::
 
-**Time:** 45 minutes · **You'll need:** Claude Code 2.1.144 or later, Node 22.13 or later, Python 3.8 or later, your site's folder (or the Groomer Books site) · **Builds on:** Lesson 4
+**Time:** 45 minutes · **You'll need:** Claude Code 2.1.144 or later, Node 22.13 or later, Python 3.8 or later, your site's folder (or the Rolling Ledger site) · **Builds on:** Lesson 4
 
 :::video
 id: sk-ex4-setup
@@ -39,7 +39,7 @@ Why: Context7 fetches current, version-specific docs before the agent writes cod
 
 2. **Language server.** Run `npm install -g typescript-language-server typescript`, then in Claude Code `/plugin install typescript-lsp@claude-plugins-official`. Restart the session.
 
-3. **Security guidance.** Run `/plugin install security-guidance@claude-plugins-official`. Create `.claude/claude-security-guidance.md` with three rules for your business, like the Groomer Books example in Lesson 4.
+3. **Security guidance.** Run `/plugin install security-guidance@claude-plugins-official`. Create `.claude/claude-security-guidance.md` with three rules for your business, like the Rolling Ledger example in Lesson 4.
 
 4. **Context7.** Run `npx ctx7 setup --claude` and follow the sign-in. If you'd rather not create an account, use `/plugin install context7@claude-plugins-official`.
 
@@ -65,7 +65,7 @@ Why: Context7 fetches current, version-specific docs before the agent writes cod
 :::example
 title: See an example result
 
-For Groomer Books, the language server reported the broken call by file and line the moment the agent finished the edit, before it said it was done. Security guidance flagged the contact form as a cross-site scripting risk, and the agent switched to inserting the message as plain text. Context7 fetched the form service's current docs and the agent used the option's new name. Usage went up by a little under a tenth of the founder's daily allowance across the three tests, mostly from the security reviews.
+For Rolling Ledger, the language server reported the broken call by file and line the moment the agent finished the edit, before it said it was done. Security guidance flagged the contact form as a cross-site scripting risk, and the agent switched to inserting the message as plain text. Context7 fetched the form service's current docs and the agent used the option's new name. Usage went up by a little under a tenth of the founder's daily allowance across the three tests, mostly from the security reviews.
 
 :::video
 id: sk-ex4-reveal
@@ -74,7 +74,7 @@ status: paused
 src: /learn/video/agent-skills/sk-ex4-reveal.mp4
 captions: /learn/video/agent-skills/sk-ex4-reveal.vtt
 poster: /learn/video/agent-skills/sk-ex4-reveal.jpg
-transcript: Here's a finished test run for Groomer Books. The language server caught the broken call before the agent said it was done. Security guidance flagged the unsafe contact form, and the agent fixed it on its own. Context7 found the form service's renamed option. And the founder now knows the cost: the security reviews used most of the extra usage, which is worth it on anything that goes live.
+transcript: Here's a finished test run for Rolling Ledger. The language server caught the broken call before the agent said it was done. Security guidance flagged the unsafe contact form, and the agent fixed it on its own. Context7 found the form service's renamed option. And the founder now knows the cost: the security reviews used most of the extra usage, which is worth it on anything that goes live.
 :::
 :::
 

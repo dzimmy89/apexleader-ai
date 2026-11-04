@@ -14,7 +14,7 @@ status: paused
 src: /learn/video/agent-skills/sk-l2-overview.mp4
 captions: /learn/video/agent-skills/sk-l2-overview.vtt
 poster: /learn/video/agent-skills/sk-l2-overview.jpg
-transcript: Most bad agent work starts before the agent writes a single line. You asked for something vague, it guessed, and you only found out when you saw the result. Three free skills fix the most common failures. Grill me makes the agent interview you until the idea is clear. Frontend design stops the agent from building the same generic page everyone else gets. And skill creator lets the agent write and test new skills for you. In this lesson you'll install all three and use each one on the Groomer Books site.
+transcript: Most bad agent work starts before the agent writes a single line. You asked for something vague, it guessed, and you only found out when you saw the result. Three free skills fix the most common failures. Grill me makes the agent interview you until the idea is clear. Frontend design stops the agent from building the same generic page everyone else gets. And skill creator lets the agent write and test new skills for you. In this lesson you'll install all three and use each one on the Rolling Ledger site.
 :::
 
 :::key-concept
@@ -71,7 +71,7 @@ status: paused
 src: /learn/video/agent-skills/sk-l2-grill-me.mp4
 captions: /learn/video/agent-skills/sk-l2-grill-me.vtt
 poster: /learn/video/agent-skills/sk-l2-grill-me.jpg
-transcript: Here's grill me on a real idea: an online booking page for Groomer Books. The founder types grill me and one sentence. The agent comes back with four numbered questions, each with a recommended answer. Who books, the groomer or their client? Recommended: the groomer. Does it take payment? Recommended: no, not yet. The founder says yes to three and changes one. The next round goes deeper. After three rounds, the idea that started as one sentence is a clear one-page plan.
+transcript: Here's grill me on a real idea: an online booking page for Rolling Ledger. The founder types grill me and one sentence. The agent comes back with four numbered questions, each with a recommended answer. Who books, the truck owner or a customer? Recommended: the truck owner. Does it take payment? Recommended: no, not yet. The founder says yes to three and changes one. The next round goes deeper. After three rounds, the idea that started as one sentence is a clear one-page plan.
 :::
 
 ## 2. `frontend-design`: stop the generic AI look
@@ -83,7 +83,7 @@ Ask any agent for a landing page with no direction and you'll get a familiar res
 - All-caps labels above every section, and numbered markers (01, 02, 03) on things that aren't steps
 - A fade-and-slide-up entrance on every section
 
-What it asks for instead: start from the subject's own world (for Groomer Books, that's grooming tables, appointment books and receipts, not a generic SaaS hero), use one or two typefaces chosen on purpose, keep lines under 80 characters, and use motion once, deliberately.
+What it asks for instead: start from the subject's own world (for Rolling Ledger, that's service windows, chalkboard menus and fuel receipts, not a generic SaaS hero), use one or two typefaces chosen on purpose, keep lines under 80 characters, and use motion once, deliberately.
 
 Install it in Claude Code:
 
@@ -97,7 +97,7 @@ It's also in the anthropics/skills repository, so `npx skills add anthropics/ski
 id: fig-1
 type: comparison
 title: Generic page vs designed page
-shows: Two simple wireframes side by side. Left, labeled "default": a centred hero with one highlighted word, an all-caps eyebrow label, three numbered feature cards. Right, labeled "with frontend-design": a hero built around an appointment book image and a plain headline, one typeface pair noted, features as a short list. The right one is on the paper card.
+shows: Two simple wireframes side by side. Left, labeled "default": a centred hero with one highlighted word, an all-caps eyebrow label, three numbered feature cards. Right, labeled "with frontend-design": a hero built around a chalkboard-menu image and a plain headline, one typeface pair noted, features as a short list. The right one is on the paper card.
 data: none
 image: /learn/figures/agent-skills/lesson-02-fig-1.webp
 alt: A default AI page has a highlighted headline word, an all-caps label and numbered cards. The frontend-design version opens with the subject's own world, a plain headline and a deliberate type pair.

@@ -66,7 +66,7 @@ Why: Every mistake that could happen again becomes one dated rule, in the skill 
 :::example
 title: See an example result
 
-For Groomer Books, the voice skill came out at 18 lines with two before-and-after examples. Its test turned "Unlock seamless financial clarity" into "We keep your books every month, so tax time takes an hour." The design system skill lists Ink #1F2A37, Coral #E8664A and Cream #FFF8F0 and notes that cream and coral are deliberate brand colours. The mistakes skill starts with "2026-11-02: Never change prices without asking." Both Claude Code and Codex loaded the voice skill when asked for a reminder email.
+For Rolling Ledger, the voice skill came out at 18 lines with two before-and-after examples. Its test turned "Unlock seamless financial clarity" into "We keep your books every month, so tax time takes an hour." The design system skill lists Ink #1F2A37, Coral #E8664A and Cream #FFF8F0 and notes that cream and coral are deliberate brand colours. The mistakes skill starts with "2026-11-02: Never change prices without asking." Both Claude Code and Codex loaded the voice skill when asked for a reminder email.
 
 :::video
 id: sk-ex3-reveal
@@ -75,7 +75,7 @@ status: paused
 src: /learn/video/agent-skills/sk-ex3-reveal.mp4
 captions: /learn/video/agent-skills/sk-ex3-reveal.vtt
 poster: /learn/video/agent-skills/sk-ex3-reveal.jpg
-transcript: Here's a finished house skills repo for Groomer Books. Four folders: voice, design system, specs and mistakes. The voice test turned a hype line into a plain one a groomer would trust. The design skill keeps the brand's cream and coral on purpose. The mistakes skill has its first rule: never change prices without asking. And when the founder asked two different agents for a reminder email, both used the same voice.
+transcript: Here's a finished house skills repo for Rolling Ledger. Four folders: voice, design system, specs and mistakes. The voice test turned a hype line into a plain one a truck owner would trust. The design skill keeps the brand's cream and coral on purpose. The mistakes skill has its first rule: never change prices without asking. And when the founder asked two different agents for a reminder email, both used the same voice.
 :::
 :::
 

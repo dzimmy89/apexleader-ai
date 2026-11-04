@@ -14,7 +14,7 @@ status: paused
 src: /learn/video/agent-skills/sk-l4-overview.mp4
 captions: /learn/video/agent-skills/sk-l4-overview.vtt
 poster: /learn/video/agent-skills/sk-l4-overview.jpg
-transcript: Skills tell your agent how to work. Plugins can also change what it can see and what it's allowed to get away with. Three free ones matter most for a solo founder. A language server plugin lets the agent see errors the moment it makes them, the way a code editor does. The security guidance plugin reviews every change for risky code before you ever see it. And Context7 makes the agent read the current documentation for a tool before it writes code against it, so it stops using last year's instructions. In this lesson you'll install all three on the Groomer Books site.
+transcript: Skills tell your agent how to work. Plugins can also change what it can see and what it's allowed to get away with. Three free ones matter most for a solo founder. A language server plugin lets the agent see errors the moment it makes them, the way a code editor does. The security guidance plugin reviews every change for risky code before you ever see it. And Context7 makes the agent read the current documentation for a tool before it writes code against it, so it stops using last year's instructions. In this lesson you'll install all three on the Rolling Ledger site.
 :::
 
 :::key-concept
@@ -81,10 +81,10 @@ It needs Claude Code 2.1.144 or later and Python 3.8 or later on your computer.
 
 ### Add your own rules
 
-Write rules specific to your business in `.claude/claude-security-guidance.md` in your project, and commit it. For Groomer Books:
+Write rules specific to your business in `.claude/claude-security-guidance.md` in your project, and commit it. For Rolling Ledger:
 
 ```markdown
-# Groomer Books security rules
+# Rolling Ledger security rules
 - The contact form must never store card numbers or bank details.
 - Client names and emails never appear in page source, logs or error messages.
 - No new third-party scripts on any page without asking first.
@@ -117,7 +117,7 @@ status: paused
 src: /learn/video/agent-skills/sk-l4-security-guidance.mp4
 captions: /learn/video/agent-skills/sk-l4-security-guidance.vtt
 poster: /learn/video/agent-skills/sk-l4-security-guidance.jpg
-transcript: Here we ask the agent to add a contact form to the Groomer Books site, and it writes the visitor's message straight into the page. The security guidance plugin flags it as a cross-site scripting risk before the agent replies, and the agent fixes it on its own. Then we add our own rule, never store card numbers, and commit it. Every review from now on checks that rule too.
+transcript: Here we ask the agent to add a contact form to the Rolling Ledger site, and it writes the visitor's message straight into the page. The security guidance plugin flags it as a cross-site scripting risk before the agent replies, and the agent fixes it on its own. Then we add our own rule, never store card numbers, and commit it. Every review from now on checks that rule too.
 :::
 
 ## 3. The manual: Context7
@@ -145,7 +145,7 @@ It works without a key, but a free key from the Context7 dashboard gives you hig
 If you used the setup command, the skill fetches docs on its own when a job involves a library. Otherwise, add "use context7" to your request:
 
 ```text
-Add a booking form to the Groomer Books site that sends to our form service.
+Add a booking form to the Rolling Ledger site that sends to our form service.
 Check the form service's current docs before writing any code. use context7
 ```
 

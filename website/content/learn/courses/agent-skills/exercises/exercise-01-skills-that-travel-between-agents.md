@@ -11,7 +11,7 @@ template: v2
 You'll check one shared skill before installing it, install it in two agents, and give both the same job. At the end you'll have a trust check you can reuse for every skill, and proof that one skill makes two different agents work the same way.
 :::
 
-**Time:** 40 minutes · **You'll need:** Claude Code, plus Codex or Cursor, installed and signed in; your site's folder (or the Groomer Books site from Build the Product and Site) · **Builds on:** Lesson 1
+**Time:** 40 minutes · **You'll need:** Claude Code, plus Codex or Cursor, installed and signed in; your site's folder (or the Rolling Ledger site from Build the Product and Site) · **Builds on:** Lesson 1
 
 :::video
 id: sk-ex1-setup
@@ -20,7 +20,7 @@ status: paused
 src: /learn/video/agent-skills/sk-ex1-setup.mp4
 captions: /learn/video/agent-skills/sk-ex1-setup.vtt
 poster: /learn/video/agent-skills/sk-ex1-setup.jpg
-transcript: In this exercise you'll put one skill into two agents. First list what each agent already has. Then pick one code review skill from the wshobson agents collection, read it, and run the five trust checks. Install it in Claude Code and in your second agent, and ask both to review the same page of the Groomer Books site. You'll finish with a short note comparing the two reviews.
+transcript: In this exercise you'll put one skill into two agents. First list what each agent already has. Then pick one code review skill from the wshobson agents collection, read it, and run the five trust checks. Install it in Claude Code and in your second agent, and ask both to review the same page of the Rolling Ledger site. You'll finish with a short note comparing the two reviews.
 :::
 
 ## Warm-up
@@ -78,7 +78,7 @@ problems, most serious first, one line each. Don't change any files.
 :::example
 title: See an example result
 
-For Groomer Books, the founder checked a code review skill from `developer-essentials`: one page of steps, no scripts, read-only. Both agents found the same top problem, a phone menu that couldn't be opened from the keyboard, and listed their findings in the same severity order the skill asks for. Codex also caught a missing page title; Claude Code caught an image with no alt text. The founder noted that the skill made both reviews follow one format, which made them easy to compare.
+For Rolling Ledger, the founder checked a code review skill from `developer-essentials`: one page of steps, no scripts, read-only. Both agents found the same top problem, a phone menu that couldn't be opened from the keyboard, and listed their findings in the same severity order the skill asks for. Codex also caught a missing page title; Claude Code caught an image with no alt text. The founder noted that the skill made both reviews follow one format, which made them easy to compare.
 
 :::video
 id: sk-ex1-reveal
@@ -87,7 +87,7 @@ status: paused
 src: /learn/video/agent-skills/sk-ex1-reveal.mp4
 captions: /learn/video/agent-skills/sk-ex1-reveal.vtt
 poster: /learn/video/agent-skills/sk-ex1-reveal.jpg
-transcript: Here's a finished result for Groomer Books. The trust check took four minutes: one page of steps, no scripts, read-only. Both agents put the same problem first, a phone menu that doesn't work from the keyboard. Each caught one thing the other missed. Because both followed the same skill, the reviews came out in the same format, which is exactly what a shared skill is for.
+transcript: Here's a finished result for Rolling Ledger. The trust check took four minutes: one page of steps, no scripts, read-only. Both agents put the same problem first, a phone menu that doesn't work from the keyboard. Each caught one thing the other missed. Because both followed the same skill, the reviews came out in the same format, which is exactly what a shared skill is for.
 :::
 :::
 

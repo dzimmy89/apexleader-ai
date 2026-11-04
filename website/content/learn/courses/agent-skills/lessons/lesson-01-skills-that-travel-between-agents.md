@@ -57,7 +57,7 @@ alt: One SKILL.md file, with a name, a when-to-use line and steps, connects to C
 
 The most widely shared collection is **wshobson/agents** on GitHub. As of November 2026 it lists 94 plugins holding 202 helper agents, 185 skills and 105 commands, under the MIT license. The plugins cover code review, testing, JavaScript and TypeScript, Python, security scanning, infrastructure and more. The same source is adapted for Claude Code, Codex, Cursor, OpenCode, GitHub Copilot, Antigravity and Pi.
 
-You don't want all 94. Pick the one or two that match how you build. For a founder whose site is HTML, CSS and JavaScript, like the Groomer Books site, start with:
+You don't want all 94. Pick the one or two that match how you build. For a founder whose site is HTML, CSS and JavaScript, like the Rolling Ledger site, start with:
 
 | Plugin | Use it for |
 |---|---|
