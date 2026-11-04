@@ -12,7 +12,8 @@ import { BRAND } from "@/lib/brand";
  * app_state/stripe_portal, so nothing has to be set in the Stripe dashboard.
  */
 export const STRIPE_PORTAL_STATE = { collection: "app_state", doc: "stripe_portal" } as const;
-const CONFIG_VERSION = 1;
+// Bumped when the portal settings change, so the saved settings are rebuilt.
+const CONFIG_VERSION = 2;
 
 async function portalConfigurationId(stripe: Stripe): Promise<string | null> {
   const ref = getDb().collection(STRIPE_PORTAL_STATE.collection).doc(STRIPE_PORTAL_STATE.doc);
@@ -22,7 +23,7 @@ async function portalConfigurationId(stripe: Stripe): Promise<string | null> {
   try {
     const config = await stripe.billingPortal.configurations.create({
       business_profile: {
-        headline: "ApexLeader.ai: update your card and download invoices.",
+        headline: `${BRAND.name}: update your card and download invoices.`,
         privacy_policy_url: `${origin}/privacy`,
         terms_of_service_url: `${origin}/terms`,
       },

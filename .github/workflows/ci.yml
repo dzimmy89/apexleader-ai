@@ -91,6 +91,17 @@ jobs:
           python3 -m pip install --quiet pycryptodome
           python3 scripts/test-crypto-addresses.py
 
+      # Coaching clients see these pages and emails; the old ApexLeader.ai
+      # name and mailbox must come from BRAND, never a hardcoded string.
+      - name: No ApexLeader.ai wording in the client dashboard
+        run: |
+          if grep -rnIE "ApexLeader|apexleader\.(ai|com)" \
+              "app/(site)/account" "app/(site)/login" "app/(site)/success" app/api/account app/portal app/coaching \
+              components/account lib/account lib/coaching/contract-email.ts lib/coaching/contract-pdf.ts; then
+            echo "Found ApexLeader.ai wording (above). Read the name and email from BRAND in lib/brand.ts."
+            exit 1
+          fi
+
       - name: Courses and coaching tests
         run: |
           command -v rg >/dev/null || (sudo apt-get update -qq && sudo apt-get install -y -qq ripgrep)
