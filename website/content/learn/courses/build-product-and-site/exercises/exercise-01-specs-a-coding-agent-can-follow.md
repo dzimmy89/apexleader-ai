@@ -25,9 +25,9 @@ Why: "Done when" items must be checks an agent can run and report pass or fail o
 
 ## Steps
 
-1. **Pick your business.** Use your own, or the sample: Groomer Books, monthly bookkeeping for independent dog groomers, $149 a month, goal is a booked 15-minute call. Write one sentence: who it's for, what they get, the one action you want.
+1. **Pick your business.** Use your own, or the sample: Rolling Ledger, monthly bookkeeping for independent food truck owners, $149 a month, goal is a booked 15-minute call. Write one sentence: who it's for, what they get, the one action you want.
 
-2. **Make the folder.** Create a folder named after your business plus `-site` (for example `groomer-books-site`) with a subfolder `content`. Keep it out of folders that hold personal or financial files.
+2. **Make the folder.** Create a folder named after your business plus `-site` (for example `rolling-ledger-site`) with a subfolder `content`. Keep it out of folders that hold personal or financial files.
 
 3. **Run the interview.** Open Claude (a Project for your business is ideal) and paste:
 

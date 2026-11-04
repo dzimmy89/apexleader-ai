@@ -24,7 +24,7 @@ Claude Code can write a lot of code fast. The risk for a non-developer is not th
 
 ## The feature: a pricing page with a savings calculator
 
-You'll build what you planned in Lesson 2: a Pricing page with three plans and an FAQ, plus a small interactive calculator. For the sample business, the calculator answers a salon owner's real question: "Is it worth paying someone to do my books?" The owner enters hours per month spent on bookkeeping and what an hour of their time is worth; the page shows the monthly cost of doing it themselves next to the flat fee.
+You'll build what you planned in Lesson 2: a Pricing page with three plans and an FAQ, plus a small interactive calculator. For the sample business, the calculator answers a truck owner's real question: "Is it worth paying someone to do my books?" The owner enters hours per month spent on bookkeeping and what an hour of their time is worth; the page shows the monthly cost of doing it themselves next to the flat fee.
 
 This is a good first feature because it has words (copy), layout (design) and logic (math). Each needs a different kind of check.
 

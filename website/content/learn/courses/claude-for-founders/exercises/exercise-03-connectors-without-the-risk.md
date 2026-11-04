@@ -25,7 +25,7 @@ Why: Anything that leaves the business needs a human click. Needs approval keeps
 
 ## Steps
 
-1. Decide which Google account to connect. Use your business account. If you're using the Groomer Books sample, create a new free Google account just for practice and send it a few test emails.
+1. Decide which Google account to connect. Use your business account. If you're using the Rolling Ledger sample, create a new free Google account just for practice and send it a few test emails.
 2. In a chat inside your Company HQ Project, click **+**, hover over **Connectors**, and connect Gmail, Google Calendar and Google Drive. Sign in through Google's own screen.
 3. Open **Customize > Connectors** and set tool permissions: reads and drafts to always allow; send, create event, update event and upload to needs approval; delete, trash and external share to blocked.
 4. Ask Claude to write your policy:

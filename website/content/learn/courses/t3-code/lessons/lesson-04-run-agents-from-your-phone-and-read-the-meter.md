@@ -18,7 +18,7 @@ transcript: Two last pieces make the desk pay off. First, your phone becomes a r
 :::
 
 :::key-concept
-With T3 Code, your computer does the work and your phone is only a remote. You can start a job on the Groomer Books site from a café and approve the diff from the queue at the bank, while the agents run at home. The Usage page then shows, across all your plans, how much each one did. A short weekly review turns those numbers into a decision: keep, upgrade or drop each plan.
+With T3 Code, your computer does the work and your phone is only a remote. You can start a job on the Rolling Ledger site from a café and approve the diff from the queue at the bank, while the agents run at home. The Usage page then shows, across all your plans, how much each one did. A short weekly review turns those numbers into a decision: keep, upgrade or drop each plan.
 :::
 
 ## What you'll be able to do
@@ -50,7 +50,7 @@ To pair, the host creates a link and a QR code (`npx t3@latest pair`, or from **
 id: fig-1
 type: diagram
 title: Your phone is the remote
-shows: On the left, the host computer at home with Claude Code, Codex and Cursor running and the Groomer Books project. On the right, a phone and a laptop browser as clients. Between them, a private connection labelled Tailscale or home Wi-Fi, with T3 Connect shown as an optional route. A paper tag on the pairing link says "Treat like a password".
+shows: On the left, the host computer at home with Claude Code, Codex and Cursor running and the Rolling Ledger project. On the right, a phone and a laptop browser as clients. Between them, a private connection labelled Tailscale or home Wi-Fi, with T3 Connect shown as an optional route. A paper tag on the pairing link says "Treat like a password".
 data: none
 image: /learn/figures/t3-code/lesson-04-fig-1.webp
 alt: The host computer at home runs the agents and the project. A phone and a browser connect to it over Tailscale or home Wi-Fi, with T3 Connect as an option. The pairing link should be treated like a password.
@@ -70,7 +70,7 @@ status: paused
 src: /learn/video/t3-code/t3-l4-pairing.mp4
 captions: /learn/video/t3-code/t3-l4-pairing.vtt
 poster: /learn/video/t3-code/t3-l4-pairing.jpg
-transcript: Here's pairing over Tailscale. On the host Mac, we run npx t3 pair with the tailscale option, and a QR code appears. We scan it with the T3 Code app on the phone. Now the phone shows the same Groomer Books threads. We queue a job, and when the diff is ready we read it and approve it from the phone. The Mac at home did all the work. Last, we check Settings, then Connections, to see the phone listed.
+transcript: Here's pairing over Tailscale. On the host Mac, we run npx t3 pair with the tailscale option, and a QR code appears. We scan it with the T3 Code app on the phone. Now the phone shows the same Rolling Ledger threads. We queue a job, and when the diff is ready we read it and approve it from the phone. The Mac at home did all the work. Last, we check Settings, then Connections, to see the phone listed.
 :::
 
 ## Reading the meter
@@ -94,7 +94,7 @@ status: paused
 src: /learn/video/t3-code/t3-l4-usage-page.mp4
 captions: /learn/video/t3-code/t3-l4-usage-page.vtt
 poster: /learn/video/t3-code/t3-l4-usage-page.jpg
-transcript: This is the Usage page after a week on the Groomer Books site. We set the range to seven days and group by provider. Claude and Codex both show tokens, and switching to cost shows the API-equivalent value. Remember, that's not your bill. It's what the same work would cost on the API. Grouping by day shows Thursday was the heavy day, which matches the pricing feature we routed in Lesson 2.
+transcript: This is the Usage page after a week on the Rolling Ledger site. We set the range to seven days and group by provider. Claude and Codex both show tokens, and switching to cost shows the API-equivalent value. Remember, that's not your bill. It's what the same work would cost on the API. Grouping by day shows Thursday was the heavy day, which matches the pricing feature we routed in Lesson 2.
 :::
 
 ## The Friday usage report

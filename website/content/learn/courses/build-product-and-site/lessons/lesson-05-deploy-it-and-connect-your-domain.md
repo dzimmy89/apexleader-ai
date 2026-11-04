@@ -51,12 +51,12 @@ Your registrar (where you bought the domain, such as Cloudflare, Namecheap, Pork
 
 | Record | What it does | Typical use here |
 |---|---|---|
-| A / AAAA | Points a name at a server's IP address (A for IPv4, AAAA for IPv6) | The bare domain, `groomerbooks.com` |
-| CNAME | Points a name at another name | `www.groomerbooks.com` points to your host's address |
+| A / AAAA | Points a name at a server's IP address (A for IPv4, AAAA for IPv6) | The bare domain, `rollingledger.com` |
+| CNAME | Points a name at another name | `www.rollingledger.com` points to your host's address |
 | TXT | Holds a text value that proves you own the domain | Domain verification for GitHub, email services |
 | NS (nameservers) | Says which company runs the phone book at all | Only if a host asks you to move DNS to them |
 
-Two more terms: the **apex** (or root) is the bare domain, `groomerbooks.com`, and the `@` symbol in DNS forms means the apex. **TTL** is how long the internet caches a record; changes can take from minutes to 24 hours or more to spread.
+Two more terms: the **apex** (or root) is the bare domain, `rollingledger.com`, and the `@` symbol in DNS forms means the apex. **TTL** is how long the internet caches a record; changes can take from minutes to 24 hours or more to spread.
 
 ## Connect your domain
 
@@ -65,14 +65,14 @@ The safe order is: **add the domain at the host first, then change DNS.** GitHub
 **GitHub Pages, step by step:**
 
 1. Verify the domain on your GitHub account first: profile picture, **Settings**, **Pages**, **Add a domain**. GitHub shows a TXT record to add at your registrar. Keep that TXT record in place afterward.
-2. In the repo, **Settings**, **Pages**, enter `groomerbooks.com` under Custom domain and save.
+2. In the repo, **Settings**, **Pages**, enter `rollingledger.com` under Custom domain and save.
 3. At your registrar, add four A records for the apex (`@`): `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`. Remove any default "parked" records for `@`.
 4. Add a CNAME record: name `www`, value `<your-username>.github.io` (no repo name). GitHub redirects between `www` and the apex automatically.
 5. Wait, then tick **Enforce HTTPS** in Settings, Pages. It can take a while (up to 24 hours) to become available.
 
 **Netlify, Vercel or Cloudflare Pages:** open your project's domain settings, add the domain, and copy the exact records the dashboard shows you. Don't copy values from a blog post, because hosts change them and some give each project its own. Two specifics worth knowing: Cloudflare Pages needs your domain's nameservers on Cloudflare to use the apex (a `www` or other subdomain only needs a CNAME to `<project>.pages.dev`), and every host will offer to redirect `www` to the apex or the other way. Pick one and stick with it.
 
-Do not use wildcard records like `*.groomerbooks.com`. GitHub strongly recommends against them.
+Do not use wildcard records like `*.rollingledger.com`. GitHub strongly recommends against them.
 
 ## HTTPS and the "is it live" check
 
@@ -81,7 +81,7 @@ All four hosts issue a free certificate (GitHub Pages uses Let's Encrypt) once D
 When it's live, run this check:
 
 ```text
-Check https://groomerbooks.com and https://www.groomerbooks.com.
+Check https://rollingledger.com and https://www.rollingledger.com.
 For each: does it load over HTTPS with a valid certificate, does http:// redirect
 to https://, and does one version redirect to the other?
 Load every link on the page and report any that fail.
@@ -89,6 +89,8 @@ Check for mixed content (any image, CSS or script loaded over http://).
 ```
 
 You can paste this into your coding agent, or do it by hand in a private browser window and on your phone with Wi-Fi off.
+
+Once the site is live on your domain, make it findable: check that your sitemap and canonical links use the real domain, not the host's preview address, and verify the site in Google Search Console and Bing Webmaster Tools. The Get Found course walks through both in its first three lessons.
 
 :::warning
 Your registrar account controls your domain, and with it your website and any email on that domain. Turn on two-factor authentication, use a unique password, turn on auto-renew and registrar lock, and don't hand that login to any agent. Agents can prepare DNS changes as a list; you make them, one record at a time, and keep a note of the old values.

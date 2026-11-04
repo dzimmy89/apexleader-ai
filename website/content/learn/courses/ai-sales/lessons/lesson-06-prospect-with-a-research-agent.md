@@ -26,7 +26,7 @@ In Lesson 1 you asked a chat assistant to find 30 businesses. It worked, but it 
 
 Origami (origami.chat) is a Y Combinator startup founded in 2024. You describe who you sell to, and its research agents search live sources (Google Maps, Yelp, state license boards, LinkedIn, job boards and company websites), remove duplicates, and return a structured table: business name, owner or decision-maker, email, phone, and the signal that made each lead relevant. Origami says contacts are "researched across 50+ sources, verified with 10+ providers."
 
-Independent reviewers note that Origami is strongest on local and offline businesses (salons, clinics, trades, home services) because it crawls maps, review sites and license boards rather than relying on one database. That makes it a good fit for the sample business in this course: bookkeeping for independent dog groomers.
+Independent reviewers note that Origami is strongest on local and offline businesses (food trucks, salons, trades, home services) because it crawls maps, review sites and license boards rather than relying on one database. That makes it a good fit for the sample business in this course: bookkeeping for independent food truck owners.
 
 **Pricing, as of November 2026.** Origami's homepage lists a Starter plan at $99 a month ("over 1,000 leads a month," unlimited teammates and plays, verified contact details) and a custom Teams plan, with no per-seat fees. Older pages and third-party reviews list different tiers and credit amounts, so check the [current pricing](https://origami.chat/) before you buy. A free plan has existed with tight limits (no export, no contact details), which is enough to see how searches work but not to build a real list.
 
@@ -34,13 +34,13 @@ Independent reviewers note that Origami is strongest on local and offline busine
 
 Origami organizes prospecting into **plays**. Its own definition: a play is "one way of getting customers." When you enter your website, it suggests plays for you, and you can describe your own. The play types it lists include:
 
-| Play type | What it finds | Groomer Books example |
+| Play type | What it finds | Rolling Ledger example |
 |---|---|---|
-| Buying signals | Businesses with a recent event: hiring, a new location, funding, new reviews, a job change | Grooming salons posting a job for a second groomer |
-| New market | Businesses matching a plain-English description | Mobile groomers in Austin and Denver with 1 to 10 staff |
-| Website visitors | Companies that visited your site | Salons that read your pricing page last week |
-| Conversations | People publicly asking for what you sell | Groomers asking in forums how to handle bookkeeping |
-| Your network | People you're already connected to | Past clients and contacts who own salons |
+| Buying signals | Businesses with a recent event: hiring, a new location, funding, new reviews, a job change | Food trucks posting a job for a second line cook |
+| New market | Businesses matching a plain-English description | Food truck owners in Austin and Denver with 1 to 10 staff |
+| Website visitors | Companies that visited your site | Truck owners who read your pricing page last week |
+| Conversations | People publicly asking for what you sell | Food truck owners asking in forums how to handle bookkeeping |
+| Your network | People you're already connected to | Past clients and contacts who own food trucks |
 
 Start with one signal play. A list built around a "why now" event gives you a reason to write, which is the hardest part of a cold message.
 
@@ -49,20 +49,20 @@ Start with one signal play. A list built around a "why now" event gives you a re
 Origami takes plain English, but it is literal, and reviewers report that similar prompts can return different results. So write the prompt once, save it, and reuse it. Build it straight from your Lesson 1 profile:
 
 ```text
-Find independent dog grooming salons and mobile groomers in the Austin, TX
+Find independent single-truck and multi-truck owners in the Austin, TX
 and Denver, CO metro areas.
 
 Include: 1 to 10 staff, one or two locations, owner-operated.
-Signal: posted a job for a groomer or bather in the last 60 days, OR opened
+Signal: posted a job for a line cook or cashier in the last 60 days, OR opened
 a new location in the last 6 months.
-Exclude: franchise locations, vet clinics, pet supply stores, chains with
+Exclude: franchise locations, restaurant groups, catering companies, chains with
 more than 3 locations.
 
 For each business return: business name, city, website, owner or manager
 name, business email, the signal and its date, and a source link for each.
 ```
 
-Run it and read the first 10 rows before you let it fetch more. If three of the first ten are franchises or vet clinics, tighten the Exclude line and run it again. This costs less than cleaning a list of 200.
+Run it and read the first 10 rows before you let it fetch more. If three of the first ten are franchises or restaurant groups, tighten the Exclude line and run it again. This costs less than cleaning a list of 200.
 
 :::warning
 Origami pulls from sources that include LinkedIn. That's Origami's arrangement with its data sources, and it's covered by your agreement with Origami. It doesn't change the rule from Lesson 1: don't point your own bots or browser extensions at LinkedIn to scrape profiles.
@@ -106,7 +106,7 @@ Write the Include, Signal and Exclude lines for your own business in three sente
 :::
 
 :::checkpoint
-Q: Origami returns 30 grooming salons. Before paying for contact details, what should you do first?
+Q: Origami returns 30 food trucks. Before paying for contact details, what should you do first?
 - [ ] Enrich all 30 with emails and phones so nothing is missed
 - [x] Review the matches, delete poor fits, then enrich only the rows you kept
 - [ ] Export all 30 to your CRM and clean them up later

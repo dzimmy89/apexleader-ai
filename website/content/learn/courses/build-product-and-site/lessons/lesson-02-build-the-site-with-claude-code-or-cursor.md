@@ -41,10 +41,10 @@ If you already pay for more than one coding agent, you don't have to choose. T3 
 
 ## Set up the project folder
 
-Make one folder for your site, for example `groomer-books-site`. Put three things in it before you start the agent:
+Make one folder for your site, for example `rolling-ledger-site`. Put three things in it before you start the agent:
 
 ```text
-groomer-books-site/
+rolling-ledger-site/
   SPEC.md          (from Lesson 1)
   content/         (your real copy: hero.md, faq.md, about.md)
   images/          (empty for now; Lesson 3 fills it)

@@ -11,7 +11,7 @@ template: v2
 You'll install Claude Code, run your first session, and build a one-page website for your business in a folder on your computer. At the end you have a working install and a real `index.html` page you can open in your browser and keep improving through this course.
 :::
 
-**Time:** 30 minutes · **You'll need:** A Pro or Max Claude plan, a Mac or Windows computer, your founder brief or the Groomer Books sample · **Builds on:** Lesson 1
+**Time:** 30 minutes · **You'll need:** A Pro or Max Claude plan, a Mac or Windows computer, your founder brief or the Rolling Ledger sample · **Builds on:** Lesson 1
 
 ## Warm-up
 
@@ -29,7 +29,7 @@ Why: Claude works on the folder you start it in, so a dedicated project folder k
 2. Install:
    - Desktop: download and install the Claude desktop app, sign in, click **Code**.
    - Terminal: run the install command for your system from Lesson 1, open a new terminal, and run `claude --version`. If it fails, run `claude doctor` and follow the fix it suggests.
-3. Create a folder called `my-business-site` (or `groomer-books-site`). In the desktop app, choose **Local** and **Open folder…**. In the terminal, run `cd my-business-site` and then `claude`, and sign in when the browser opens.
+3. Create a folder called `my-business-site` (or `rolling-ledger-site`). In the desktop app, choose **Local** and **Open folder…**. In the terminal, run `cd my-business-site` and then `claude`, and sign in when the browser opens.
 4. Paste this prompt, filling in your details or using the sample business:
 
 ```text

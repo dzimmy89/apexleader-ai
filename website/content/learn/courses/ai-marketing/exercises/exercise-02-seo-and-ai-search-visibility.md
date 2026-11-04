@@ -25,7 +25,7 @@ Why: OAI-SearchBot controls inclusion in ChatGPT search answers and GPTBot contr
 
 ## Steps
 
-1. **Write your five buyer questions.** Pull them from your inbox, sales calls or customer interviews. No business yet? Use Groomer Books questions such as "What bookkeeping software do dog groomers use?" and "Can a mobile groomer deduct their van?"
+1. **Write your five buyer questions.** Pull them from your inbox, sales calls or customer interviews. No business yet? Use Rolling Ledger questions such as "What bookkeeping software do food truck owners use?" and "Can a food truck owner deduct their truck?"
 
 2. **Ask the assistants.** For each question, ask ChatGPT, Gemini, Claude and Perplexity:
 

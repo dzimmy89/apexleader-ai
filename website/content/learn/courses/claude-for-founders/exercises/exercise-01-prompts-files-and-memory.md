@@ -25,7 +25,7 @@ Why: A brief with role, context, task and output gives Claude what it needs with
 
 ## Steps
 
-1. Pick your business. If you don't have one finalized, use the sample: Groomer Books, monthly bookkeeping for independent dog grooming salons.
+1. Pick your business. If you don't have one finalized, use the sample: Rolling Ledger, monthly bookkeeping for independent food trucks.
 2. Open a new chat in Claude (memory on) and paste this prompt:
 
 ```text

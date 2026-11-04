@@ -47,8 +47,8 @@ Commit when done with a clear message. Ask before anything outside this.
 5. **Run two agents in parallel.** In the Agents Window, start two agents, each in its own worktree:
 
 ```text
-Agent A: Write content/faq.md with six short questions and answers a dog
-groomer would ask about outsourcing bookkeeping. Mark any statement about
+Agent A: Write content/faq.md with six short questions and answers a
+food truck owner would ask about outsourcing bookkeeping. Mark any statement about
 taxes "General information, not tax advice." Only create content/faq.md.
 ```
 
@@ -64,7 +64,7 @@ index.html and styles.css only. Don't change any wording.
 
 ```text
 /best-of-n Redesign the hero section of index.html to feel warm and
-trustworthy for independent dog groomers. Keep the exact headline and
+trustworthy for independent food truck owners. Keep the exact headline and
 button text. Follow SPEC.md. Plain HTML and CSS only.
 ```
 

@@ -27,14 +27,14 @@ Why: `main` is the live version. Branches keep drafts separate until you approve
 
 1. **Secure the account.** Sign in to github.com. Go to Settings, then Password and authentication, and turn on two-factor authentication. Save the recovery codes in your password manager. If you don't have an account yet, create one with your business email first.
 
-2. **Pick your business.** Use your own. If you don't have one settled yet, use the sample business for this course: **Groomer Books**, a monthly bookkeeping service for independent dog groomers.
+2. **Pick your business.** Use your own. If you don't have one settled yet, use the sample business for this course: **Rolling Ledger**, a monthly bookkeeping service for independent food truck owners.
 
-3. **Create the playbook repo.** Click **+**, then **New repository**. Name it `<yourbusiness>-playbook` (for example `groomer-books-playbook`). Choose **Private**. Tick **Add a README file**. Create it.
+3. **Create the playbook repo.** Click **+**, then **New repository**. Name it `<yourbusiness>-playbook` (for example `rolling-ledger-playbook`). Choose **Private**. Tick **Add a README file**. Create it.
 
 4. **Write the house rules on `main`.** Edit the README (pencil icon) and replace its contents with this, adjusted to your business:
 
 ```text
-# Groomer Books playbook
+# Rolling Ledger playbook
 
 What this repo is: the home for our website and internal tools.
 Owner and approver: [your name]. Agents prepare, the founder approves.

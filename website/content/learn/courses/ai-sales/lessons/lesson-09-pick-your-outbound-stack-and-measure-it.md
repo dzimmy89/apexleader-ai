@@ -34,7 +34,7 @@ Adding tools is easy. Knowing which one is working is not. Without a plan, a sol
 | Best for | Few, high-value leads in your own voice | Local or niche buyers; a list you own | Quickly testing whether a new audience responds |
 | Main risk | Slow | LinkedIn account restriction; credit spend | Sending before you've checked anything |
 
-A sensible starting stack for Groomer Books: Origami builds the list and runs the email sequence; the Sales Bot drafts personal notes for the top 10 leads each week; Explee is used only to test one new audience at a time; X is run the same way as email, with bots finding and drafting and you sending.
+A sensible starting stack for Rolling Ledger: Origami builds the list and runs the email sequence; the Sales Bot drafts personal notes for the top 10 leads each week; Explee is used only to test one new audience at a time; X is run the same way as email, with bots finding and drafting and you sending.
 
 ## Step 2: One channel, one owner, one cap
 
@@ -44,7 +44,7 @@ Write a one-page outbound plan. For each channel, fill one row:
 Channel | Tool | Who sends (me or tool with approval) | Daily cap | Lead source | Stop rule
 ```
 
-Example for Groomer Books:
+Example for Rolling Ledger:
 
 | Channel | Tool | Who sends | Daily cap | Lead source | Stop rule |
 |---|---|---|---|---|---|
@@ -70,7 +70,7 @@ Your CRM from Lesson 3 needs to know where each lead came from. Add one field:
 For links in your messages, add UTM tags so your site analytics shows the channel too:
 
 ```text
-https://groomerbooks.example/pricing?utm_source=origami&utm_medium=email&utm_campaign=new-location
+https://rollingledger.example/pricing?utm_source=origami&utm_medium=email&utm_campaign=new-location
 ```
 
 Use a different `utm_source` for each tool and a short `utm_campaign` name for each play or audience.
@@ -111,9 +111,9 @@ Fill in just the first row of your outbound plan: your main channel, its tool, w
 :::
 
 :::checkpoint
-Q: Origami and Explee both found the same 15 salons this week. What should you do?
+Q: Origami and Explee both found the same 15 food trucks this week. What should you do?
 - [ ] Let both tools contact them, since more touches mean more replies
-- [x] Keep those salons in one channel only and remove them from the other tool's list
+- [x] Keep those trucks in one channel only and remove them from the other tool's list
 - [ ] Delete them from both tools to be safe
 Why: Getting the same cold pitch from two tools in one week reads as spam and invites complaints. One lead belongs to one cold channel at a time.
 :::

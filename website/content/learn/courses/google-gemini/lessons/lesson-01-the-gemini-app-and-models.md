@@ -58,8 +58,8 @@ A generic assistant gives generic answers. Fix that in three places.
 **1. Customize.** In October 2026 Google added a Customize option in the left menu of the Gemini app. This is where you set how Gemini responds, add skills (reusable instructions, covered in Lesson 5), and connect apps. Write a short business profile there so every chat starts with it:
 
 ```text
-I run a one-person business: bookkeeping for independent dog groomers in the US.
-My customers are salon owners with 1 to 5 staff who hate paperwork.
+I run a one-person business: bookkeeping for independent food truck owners in the US.
+My customers are truck owners with 1 to 5 staff who hate paperwork.
 I sell a monthly bookkeeping package and a one-time cleanup.
 Write in plain American English, short sentences, no hype.
 When you're not sure about a fact, say so and tell me what to check.
@@ -83,7 +83,7 @@ Strong:
 
 ```text
 You're my client-success assistant.
-Goal: get a groomer who missed two months of receipts to send them this week, without sounding annoyed.
+Goal: get a food truck owner who missed two months of receipts to send them this week, without sounding annoyed.
 Context: she's a good client, busy season, pays on time.
 Output: a subject line and an email under 120 words, with one clear ask and a deadline of Friday.
 Give me two versions: one warm, one more direct.

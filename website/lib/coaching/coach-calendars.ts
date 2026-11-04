@@ -22,3 +22,18 @@ export function coachReadCalendarIds(): string[] {
   const ids = configured.length ? configured : [SENDER_EMAIL, coachWriteCalendarId()];
   return [...new Set(ids.map((id) => id.trim()).filter(Boolean))];
 }
+
+/**
+ * Calendars a new booking must not clash with. That is every calendar in
+ * coachReadCalendarIds() plus COACH_BUSY_CALENDAR_IDS (comma separated,
+ * set in the deploy workflow): David's calendars on other domains. Those are
+ * only checked through free/busy, never listed,
+ * so they need nothing more than "See only free/busy" shared with hello@.
+ */
+export function coachBusyCalendarIds(): string[] {
+  const extra = (process.env.COACH_BUSY_CALENDAR_IDS || "")
+    .split(",")
+    .map((id) => id.trim())
+    .filter(Boolean);
+  return [...new Set([...coachReadCalendarIds(), ...extra])];
+}

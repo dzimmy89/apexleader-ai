@@ -36,7 +36,7 @@ Make a Google Sheet called "Offer facts." It's the single source of truth that e
 Then write a proposal template with placeholders. Ask Claude to help:
 
 ```text
-I sell monthly bookkeeping to independent dog grooming salons.
+I sell monthly bookkeeping to independent food trucks.
 Write a one-page proposal template with these sections:
 1. What we heard (their situation in their words)
 2. What you'll get (the package)
@@ -54,9 +54,9 @@ The rule for proof: only use results and quotes you can document and have permis
 After a call (Lesson 4), give Claude the notes, the template and the Offer facts row:
 
 ```text
-Here are my call notes with Dana at Happy Paws Grooming, my proposal template, and their row from my Offer facts sheet.
+Here are my call notes with Dana at Smoke and Salt Tacos, my proposal template, and their row from my Offer facts sheet.
 Fill in the template. Use Dana's own words in "What we heard".
-Then, as a skeptical salon owner, list the three biggest reasons Dana might not sign and suggest one sentence I could add to address each. Don't add any claims that aren't in my facts sheet.
+Then, as a skeptical truck owner, list the three biggest reasons Dana might not sign and suggest one sentence I could add to address each. Don't add any claims that aren't in my facts sheet.
 ```
 
 You get a draft and a short critique. Make the edits you agree with. This is judgment work, and Claude is good at it.
@@ -92,7 +92,7 @@ Space Pages have their own sharing. OpenAI notes that anything copied onto a Pag
 A proposal that changes after the client reads it is a problem: they see one price, sign another. So when a draft is ready:
 
 1. Read the whole Page yourself. Check every number against the facts sheet.
-2. Export or print it to PDF named `Proposal_HappyPaws_2026-10-23_v1.pdf`.
+2. Export or print it to PDF named `Proposal_SmokeAndSalt_2026-10-23_v1.pdf`.
 3. Change the Page tag to "Proposal - Sent" so the Dot stops updating it.
 4. Send the PDF (or an e-signature request) from your own email. You click send.
 5. Update the Clients tab: status Sent, date sent. Your CRM Keeper (Lesson 3) will pick it up.

@@ -25,7 +25,7 @@ Why: OpenAI says approving one message does not grant ongoing permission to cont
 
 ## Steps
 
-1. **Make the folder.** Create `Launch Kit` in Google Drive or a ChatGPT Space. Add every asset that describes your offer: one-pager, sales email templates, FAQ, partner blurb, and links to your homepage and pricing page. Using Groomer Books? Ask Claude to draft a one-pager, two sales emails and an FAQ first, then add them.
+1. **Make the folder.** Create `Launch Kit` in Google Drive or a ChatGPT Space. Add every asset that describes your offer: one-pager, sales email templates, FAQ, partner blurb, and links to your homepage and pricing page. Using Rolling Ledger? Ask Claude to draft a one-pager, two sales emails and an FAQ first, then add them.
 
 2. **Write Offer Facts.** Create a page called `Offer Facts`, dated today, with: name, who it's for, plans and prices, what's included, what's not, guarantee, three main features, launch date, key links. Keep it under one page.
 

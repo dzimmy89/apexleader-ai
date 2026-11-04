@@ -64,9 +64,9 @@ Explee's mailboxes send on your behalf, but the emails promote your business, so
 
 ## Step 2: Prune the audiences
 
-Explee suggests segments from your website. For Groomer Books it might suggest "independent pet grooming salons," "mobile pet groomers," "veterinary clinics" and "pet boarding facilities." Fit scores are the tool's guess, not evidence.
+Explee suggests segments from your website. For Rolling Ledger it might suggest "independent food trucks," "taco truck owners," "restaurant groups" and "event caterers." Fit scores are the tool's guess, not evidence.
 
-1. Delete anything your Lesson 1 profile disqualifies (vet clinics, franchises).
+1. Delete anything your Lesson 1 profile disqualifies (restaurant groups, franchises).
 2. Keep the single segment closest to your best Lesson 6 leads.
 3. Read 10 sample prospects from it. If more than two are wrong (wrong industry, wrong size, a chain), edit the segment description and look again.
 4. Stick to your own country for the first test. Outside the US, consent rules for cold email are often stricter, and testers saw weaker data.
