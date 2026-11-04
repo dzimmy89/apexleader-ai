@@ -12,7 +12,7 @@
 import difflib, hashlib, json, os, re, sys, numpy as np, soundfile as sf
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
-VOICE = os.environ.get('KOKORO_VOICE', 'af_heart')
+VOICE = os.environ.get('KOKORO_VOICE', 'am_michael')
 SPEED = float(os.environ.get('KOKORO_SPEED', '0.95'))
 CACHE = os.path.expanduser('~/.cache/fromai-voice'); os.makedirs(CACHE, exist_ok=True)
 SR = 24000

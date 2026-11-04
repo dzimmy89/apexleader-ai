@@ -14,7 +14,7 @@
 # A failed step stops that clip only, logs why, and the run moves on to the next clip. The summary lists both.
 # Env: VOICE (kokoro, the default; eleven, which needs VOICE_ID; or draft, placeholder timings and noise voice for testing
 # the pipeline that never copies into a lesson), KOKORO_PYTHON (an interpreter with the kokoro package: on the Mac
-# ~/.cache/thenode-voice/venv-kt/bin/python when it exists, else python3, as in the cloud image), KOKORO_VOICE (default af_heart), BLUR (default 3), SIZE ("1920 1080"), CHECK_EVERY (contrast, every Nth
+# ~/.cache/thenode-voice/venv-kt/bin/python when it exists, else python3, as in the cloud image), KOKORO_VOICE (default am_michael), BLUR (default 3), SIZE ("1920 1080"), CHECK_EVERY (contrast, every Nth
 # frame, default 12), CHROME_PATH (defaults to the Mac's Chrome when it exists).
 # Logs: clips/out/run-lesson/<clip>.log and clips/out/run-lesson/summary.txt
 cd "$(dirname "$0")/.." || exit 1          # clips/

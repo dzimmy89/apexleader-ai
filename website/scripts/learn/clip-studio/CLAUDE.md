@@ -52,7 +52,7 @@ the voice; the transcript is never edited to hit a length.
 ## Gates (in order)
 
 1. **Script.** `clips/scripts.json` from the slot's transcript, split into lines (cues use `L<n>:word`).
-2. **Voice.** `voice_kokoro.py` (Kokoro-82M, voice `af_heart`, local, cached). Word times come from the model's
+2. **Voice.** `voice_kokoro.py` (Kokoro-82M, voice `am_michael`, local, cached). Word times come from the model's
    duration predictor. This is a synthetic voice; nothing labels it as human.
 3. **Shots + lint.** `clips/<clip>/shots.json`, then `node clips/kit/kit.mjs retime <clip>`: no errors, every
    number "said".

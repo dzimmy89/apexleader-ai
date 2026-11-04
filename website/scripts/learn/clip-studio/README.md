@@ -29,4 +29,4 @@ Not in git: `node_modules`, the narration audio, frames, stills, checks and the 
 where local dev plays them. Open `/scripts/learn/clip-studio/clips/<clip>/index.html` on the dev server and call
 `renderAt(12.5)` in the console to freeze a moment.
 
-Defaults: `KOKORO_VOICE=af_heart`, `KOKORO_SPEED=0.95`, `CHROME_PATH` = the Mac's Chrome. About 0.3–0.5 s per frame.
+Defaults: `KOKORO_VOICE=am_michael`, `KOKORO_SPEED=0.95`, `CHROME_PATH` = the Mac's Chrome. About 0.3–0.5 s per frame.
