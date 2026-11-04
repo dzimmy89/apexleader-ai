@@ -32,6 +32,7 @@ import { exitFlowsForUser } from "@/lib/flows";
 import { automatedSendBlockedByManualOnly } from "@/lib/crm/contacts";
 import { stampLeadPublicFormSignup } from "@/lib/crm/leads";
 import { BRAND } from "@/lib/brand";
+import { escapeHtml } from "@/lib/html";
 
 export class CalendarUnavailableError extends Error {
   constructor(message = "Calendar unavailable") {
@@ -882,4 +883,82 @@ export async function rescheduleCoachingSession(input: {
     console.error("[rescheduleCoachingSession] confirmation email failed", e);
   }
   return { ok: true, eventId, meetUrl: meetUrl || undefined };
+}
+
+/**
+ * A client cancels one of their own booked sessions from /account, at least
+ * 24 hours ahead (the agreement's notice period), so it does not use up a
+ * session. The calendar event is deleted (the invite is withdrawn), the row
+ * is marked cancelled, sessions are recounted and both sides get an email.
+ */
+export async function cancelCoachingSession(input: {
+  clientEmails: string[];
+  sessionId: string;
+}): Promise<{ ok: true } | { ok: false; code: BookingErrorCode; error: string }> {
+  const db = getDb();
+  const ref = db.collection("coaching_sessions").doc(input.sessionId);
+  const snap = await ref.get();
+  const data = (snap.data() || {}) as Record<string, unknown>;
+  const owner = String(data.clientId || "").toLowerCase();
+  if (!snap.exists || !input.clientEmails.map((e) => e.toLowerCase()).includes(owner)) {
+    return { ok: false, code: "invalid", error: "That session isn't in your account." };
+  }
+  if (data.status !== "scheduled" || data.cancelledAt) {
+    return { ok: false, code: "invalid", error: "Only booked sessions can be cancelled." };
+  }
+  const eventId = String(data.calendarEventId || "");
+  const current = Date.parse(String(data.scheduledAt || ""));
+  if (!eventId || !Number.isFinite(current)) return { ok: false, code: "invalid", error: "This session can't be cancelled online." };
+  if (current - Date.now() < RESCHEDULE_NOTICE_MS) {
+    return {
+      ok: false,
+      code: "invalid",
+      error: `This session is less than 24 hours away, so it can't be cancelled online. Email ${BRAND.email}.`,
+    };
+  }
+
+  const removed = await cancelBooking(eventId);
+  if (!removed.ok && !/not found|deleted|410|404/i.test(removed.error || "")) {
+    return { ok: false, code: "calendar_unavailable", error: "We couldn't cancel it on the calendar. Try again in a minute." };
+  }
+
+  const nowIso = new Date().toISOString();
+  await ref.set({ status: "cancelled", cancelledAt: nowIso, lateCancel: false, cancelledBy: "client", updatedAt: nowIso }, { merge: true });
+  await recountClientSessions(db, owner);
+
+  const when = new Date(current).toLocaleString("en-US", {
+    timeZone: COACH_TIMEZONE,
+    weekday: "long",
+    month: "long",
+    day: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+    timeZoneName: "short",
+  });
+  const accountUrl = `${getSiteOrigin()}/account`;
+  try {
+    await sendEmail({
+      to: owner,
+      purpose: "transactional",
+      subject: `Coaching session cancelled: ${when}`,
+      text: `Your coaching session with ${BRAND.coachFirstName} on ${when} is cancelled. It doesn't count against your package, so you can book another time whenever you're ready.\n\n${accountUrl}`,
+      html: `<p>Your coaching session with ${BRAND.coachFirstName} on <strong>${when}</strong> is cancelled. It doesn't count against your package, so you can book another time whenever you're ready.</p><p><a href="${accountUrl}">Book from your account</a></p>`,
+      log: { source: "coaching_session_cancelled" },
+    });
+  } catch (e) {
+    console.error("[cancelCoachingSession] client email failed", e);
+  }
+  try {
+    await sendEmail({
+      to: SENDER_EMAIL,
+      purpose: "transactional",
+      subject: `${owner} cancelled their session on ${when}`,
+      text: `${owner} cancelled their coaching session on ${when} from their account. The calendar event has been removed.`,
+      html: `<p>${escapeHtml(owner)} cancelled their coaching session on <strong>${when}</strong> from their account. The calendar event has been removed.</p>`,
+      log: { source: "coaching_session_cancelled" },
+    });
+  } catch (e) {
+    console.error("[cancelCoachingSession] coach notice failed", e);
+  }
+  return { ok: true };
 }

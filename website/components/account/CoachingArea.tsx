@@ -169,10 +169,12 @@ function SessionsPanel({
             ) : null}
           </div>
           {upcoming.length > 1 ? (
-            <ul className="mt-5 space-y-1 text-[15px] text-[var(--color-text-muted)]">
-              {upcoming.slice(1).map((s) => (
-                <li key={s.id}>
-                  Also booked: {dateTimeET(s.scheduledAt)}
+            <div className="mt-6">
+              <p className="ui-label mb-2">Also booked</p>
+              <ul className="space-y-2 text-[15px]">
+                {upcoming.slice(1).map((s) => (
+                  <li key={s.id}>
+                    <strong>{dateTimeET(s.scheduledAt)}</strong>
                   {s.meetUrl ? (
                     <>
                       {" · "}
@@ -195,8 +197,9 @@ function SessionsPanel({
                     </>
                   ) : null}
                 </li>
-              ))}
-            </ul>
+                ))}
+              </ul>
+            </div>
           ) : null}
         </div>
       ) : null}
