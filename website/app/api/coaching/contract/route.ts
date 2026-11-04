@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { requireAdmin } from "@/lib/admin-auth";
 import { createSignatureRequest } from "@/lib/coaching/signatures";
+import { ensureCoachingAgreementEmail } from "@/lib/coaching/contract-email";
 import type { PaymentPlan } from "@/lib/coaching/packages";
 
 // POST /api/coaching/contract
@@ -43,6 +44,21 @@ export async function POST(request: NextRequest) {
     request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
     request.headers.get("x-real-ip") ||
     "";
+
+  // Mission Control's "Send contract": a fresh signing link, emailed now.
+  if (body.sendEmail === true) {
+    const sent = await ensureCoachingAgreementEmail({
+      email: signerEmail || clientId,
+      name: signerName,
+      packageId,
+      planId,
+      grantKey: `admin_send_${clientId}_${Date.now()}`,
+    });
+    if (!sent.ok) {
+      return NextResponse.json({ error: sent.error || "Could not send the agreement" }, { status: 502 });
+    }
+    return NextResponse.json({ ok: true, emailed: true });
+  }
 
   const result = await createSignatureRequest({
     clientId,
