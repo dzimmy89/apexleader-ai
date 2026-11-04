@@ -109,6 +109,7 @@ jobs:
           npx tsx scripts/test-portfolio.ts
           npx tsx scripts/test-stripe-webhook.ts
           npx tsx scripts/test-client-payments.ts
+          npx tsx scripts/test-private-packages.ts
           npx tsx scripts/test-crypto-notices.ts
           npx tsx scripts/test-contact-page.ts
           npx tsx scripts/test-syllabus.ts

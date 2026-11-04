@@ -1,7 +1,12 @@
 import { getDb } from "@/lib/firebase-admin";
-import { fallbackPackages } from "@/content/site-fallback";
+import { fallbackPackages, privatePackages } from "@/content/site-fallback";
 
-export type PackageId = "foundations" | "mastery" | "institutional";
+/**
+ * foundations / mastery / institutional are the public packages.
+ * build_launch is a private package sold by proposal (never listed on the
+ * site); it lives in code (content/site-fallback.ts privatePackages).
+ */
+export type PackageId = "foundations" | "mastery" | "institutional" | "build_launch";
 
 export interface CoachingPackage {
   id: PackageId;
@@ -25,7 +30,7 @@ export interface CoachingPackage {
 }
 
 export interface PaymentPlan {
-  id: "full" | "3pay" | "6pay";
+  id: "full" | "2pay" | "3pay" | "6pay";
   label: string;
   installments: number;
   perPayment: number;
@@ -41,6 +46,7 @@ function asPackageId(id: string): PackageId {
     case "foundations":
     case "mastery":
     case "institutional":
+    case "build_launch":
       return id;
     default:
       throw new Error(`Unknown coaching package: ${id}`);
@@ -51,6 +57,8 @@ function planEnvSuffix(planId: PaymentPlan["id"]): string {
   switch (planId) {
     case "full":
       return "FULL";
+    case "2pay":
+      return "2PAY";
     case "3pay":
       return "3PAY";
     case "6pay":
@@ -66,6 +74,8 @@ function planLabel(planId: PaymentPlan["id"]): string {
   switch (planId) {
     case "full":
       return "Pay in full";
+    case "2pay":
+      return "2 payments";
     case "3pay":
       return "3 payments";
     case "6pay":
@@ -111,6 +121,9 @@ function computePaymentPlans(
         buildPlan(packageId, price, "3pay", 3),
         buildPlan(packageId, price, "6pay", 6),
       ];
+    case "build_launch":
+      // Sold by proposal: no Stripe prices, paid by hand or in crypto.
+      return [buildPlan(packageId, price, "full", 1), buildPlan(packageId, price, "2pay", 2)];
     default: {
       const _exhaustive: never = packageId;
       return _exhaustive;
@@ -186,6 +199,14 @@ export async function getPackages(
     );
   }
 
+  // Private packages are defined in code only; add any Firestore lacks.
+  // They are inactive, so public pages (activeOnly) never list them.
+  for (const raw of privatePackages) {
+    if (!packages.some((p) => p.id === raw.id)) {
+      packages.push(normalizePackage({ ...raw } as unknown as Record<string, unknown>));
+    }
+  }
+
   cache = { at: now, packages };
   return packages.filter((p) => !activeOnly || p.active);
 }
@@ -216,4 +237,11 @@ export async function deletePackage(id: PackageId): Promise<void> {
   const db = getDb();
   await db.collection("coaching_packages").doc(id).delete();
   cache = null;
+}
+
+/** Plans the public checkout and package cards offer (2pay is private only). */
+export type PublicPlanId = "full" | "3pay" | "6pay";
+
+export function isPublicPlan(plan: PaymentPlan): plan is PaymentPlan & { id: PublicPlanId } {
+  return plan.id === "full" || plan.id === "3pay" || plan.id === "6pay";
 }

@@ -16,7 +16,7 @@ import { StickyCta } from "@/components/editorial/StickyCta";
 import { featuredPortfolio } from "@/content/portfolio";
 import { URLS } from "@/content/site";
 import { BRAND } from "@/lib/brand";
-import { getPackages } from "@/lib/coaching/packages";
+import { getPackages, isPublicPlan } from "@/lib/coaching/packages";
 import { JsonLd, faqNode } from "@/lib/seo/json-ld";
 
 // Reads Firestore at render time; must not be statically pre-rendered at build
@@ -53,7 +53,7 @@ async function fetchPackagesForGrid(): Promise<PackageCardData[]> {
     deliverables: p.deliverables,
     bestFor: p.bestFor,
     badge: p.badge,
-    paymentPlans: p.paymentPlans.map((plan) => ({
+    paymentPlans: p.paymentPlans.filter(isPublicPlan).map((plan) => ({
       id: plan.id,
       label: plan.label,
       installments: plan.installments,

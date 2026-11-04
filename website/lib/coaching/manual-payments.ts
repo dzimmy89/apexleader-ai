@@ -19,7 +19,7 @@ import {
  * outside invoice). The coach logs each one on the contact page; installment
  * plans get a schedule so Payments due and the morning email can track them.
  */
-const PACKAGE_IDS: PackageId[] = ["foundations", "mastery", "institutional"];
+const PACKAGE_IDS: PackageId[] = ["foundations", "mastery", "institutional", "build_launch"];
 
 function isPackageId(id: string): id is PackageId {
   return PACKAGE_IDS.some((known) => known === id);
@@ -91,7 +91,7 @@ export async function logManualPayment(
     return { ok: false, status: 400, error: "Unknown package" };
   }
   const planRaw = str(input.planId);
-  if (planRaw !== "full" && planRaw !== "3pay" && planRaw !== "6pay") {
+  if (planRaw !== "full" && planRaw !== "2pay" && planRaw !== "3pay" && planRaw !== "6pay") {
     return { ok: false, status: 400, error: "Unknown payment plan" };
   }
   const plan = pkg.paymentPlans.find((p) => p.id === planRaw);

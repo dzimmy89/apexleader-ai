@@ -192,6 +192,7 @@ export const COACHING_ACCESS: Record<string, { days?: number; months?: number }>
   foundations: { days: 30 },
   mastery: { months: 3 },
   institutional: { months: 6 },
+  build_launch: { months: 4 },
 };
 
 export function addMonths(from: Date, months: number): string {

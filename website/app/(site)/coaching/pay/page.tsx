@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { PayChooser } from "@/components/coaching/PayChooser";
 import type { PackageCardData } from "@/components/coaching/PackageCard";
 import { PageHeader } from "@/components/system";
-import { getPackages, type PackageId } from "@/lib/coaching/packages";
+import { getPackages, isPublicPlan, type PackageId } from "@/lib/coaching/packages";
 import { absoluteUrl } from "@/lib/seo/site-url";
 
 export const dynamic = "force-dynamic";
@@ -41,7 +41,7 @@ async function loadPackages(): Promise<PackageCardData[]> {
     deliverables: pkg.deliverables,
     bestFor: pkg.bestFor,
     badge: pkg.badge,
-    paymentPlans: pkg.paymentPlans.map((plan) => ({
+    paymentPlans: pkg.paymentPlans.filter(isPublicPlan).map((plan) => ({
       id: plan.id,
       label: plan.label,
       installments: plan.installments,
