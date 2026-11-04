@@ -6,6 +6,12 @@ import {
   paymentPlanAddsUp,
   type PaymentPlan,
 } from "@/lib/coaching/packages";
+import {
+  BOT_CARE,
+  BOT_CARE_PRICE_ENV_VAR,
+  BOT_CARE_PRODUCT,
+  isBotCareMetadata,
+} from "@/lib/coaching/bot-care";
 import { ensureCoachingAgreementEmail } from "@/lib/coaching/contract-email";
 import { getSiteOrigin } from "@/lib/env";
 import { BRAND } from "@/lib/brand";
@@ -166,6 +172,60 @@ export async function generatePaymentLinkForClient(args: {
   return { ok: true, url: result.url };
 }
 
+export async function createBotCareCheckoutSession(input: {
+  email: string;
+  name?: string;
+}): Promise<CreateCheckoutResult & { status?: number }> {
+  const stripe = getStripe();
+  if (!stripe) {
+    return { ok: false, status: 503, error: "Stripe not configured" };
+  }
+  const priceId = process.env[BOT_CARE_PRICE_ENV_VAR];
+  if (!priceId) {
+    return { ok: false, status: 503, error: `${BOT_CARE.name} checkout is not open yet.` };
+  }
+
+  const email = input.email.trim().toLowerCase();
+  // Bot Care is for coaching clients: someone with a package on record.
+  const client = await getDb().collection("client_records").doc(email).get();
+  const clientData = (client.data() || {}) as Record<string, unknown>;
+  if (!client.exists || !clientData.packageId) {
+    return {
+      ok: false,
+      status: 403,
+      error: `${BOT_CARE.name} is for coaching clients. Use the email you coach with, or book a free call first.`,
+    };
+  }
+
+  const origin = getSiteOrigin();
+  const sessionMetadata = {
+    site: BRAND.domain,
+    product: BOT_CARE_PRODUCT,
+    clientName: input.name || String(clientData.name || ""),
+  };
+  // Reuse the client's Stripe customer so Bot Care shows on the same billing page.
+  const customerId =
+    typeof clientData.stripeCustomerId === "string" ? clientData.stripeCustomerId : "";
+
+  try {
+    const session = await stripe.checkout.sessions.create({
+      mode: "subscription",
+      ...(customerId ? { customer: customerId } : { customer_email: email }),
+      client_reference_id: `${BOT_CARE_PRODUCT}:${email}`,
+      line_items: [{ price: priceId, quantity: 1 }],
+      metadata: sessionMetadata,
+      subscription_data: { metadata: sessionMetadata },
+      success_url: `${origin}/coaching?bot_care=started#bot-care`,
+      cancel_url: `${origin}/coaching#bot-care`,
+    });
+    return { ok: true, url: session.url || undefined, sessionId: session.id };
+  } catch (e) {
+    const msg = e instanceof Error ? e.message : String(e);
+    console.error("[createBotCareCheckoutSession] failed", msg);
+    return { ok: false, status: 400, error: msg };
+  }
+}
+
 interface EnrichedStripeEvent {
   type: string;
   eventId: string;
@@ -296,6 +356,16 @@ export async function processStripeEvent(
       const session = event.data.object as Stripe.Checkout.Session;
       const metadata = (session.metadata || {}) as Record<string, string>;
       if (isOtherSitesStripeMetadata(metadata)) return { handled: false };
+      if (isBotCareMetadata(metadata)) {
+        await onBotCareEvent(db, event, {
+          kind: "started",
+          email: buyerEmailFromSession(session),
+          customerId: typeof session.customer === "string" ? session.customer : undefined,
+          subscriptionId:
+            typeof session.subscription === "string" ? session.subscription : undefined,
+        });
+        return { handled: true };
+      }
       const email = buyerEmailFromSession(session);
       if (!email.includes("@")) {
         throw new Error(`Checkout session ${session.id} has no buyer email`);
@@ -346,6 +416,16 @@ export async function processStripeEvent(
       )?.metadata as Record<string, string> | undefined;
       const subscriptionMetadata = parentMeta || {};
       if (isOtherSitesStripeMetadata(subscriptionMetadata)) return { handled: false };
+      if (isBotCareMetadata(subscriptionMetadata)) {
+        await onBotCareEvent(db, event, {
+          kind: "paid",
+          email,
+          customerId: typeof invoice.customer === "string" ? invoice.customer : undefined,
+          subscriptionId: invoiceSubscriptionId(invoice),
+          amountCents: invoice.amount_paid,
+        });
+        return { handled: true };
+      }
 
       enriched = {
         type: "invoice.paid",
@@ -377,6 +457,17 @@ export async function processStripeEvent(
       )?.metadata as Record<string, string> | undefined;
       const subscriptionMetadata = parentMeta || {};
       if (isOtherSitesStripeMetadata(subscriptionMetadata)) return { handled: false };
+      if (isBotCareMetadata(subscriptionMetadata)) {
+        await onBotCareEvent(db, event, {
+          kind: "failed",
+          email:
+            typeof invoiceAny.customer_email === "string" ? invoiceAny.customer_email : "",
+          customerId: typeof invoice.customer === "string" ? invoice.customer : undefined,
+          subscriptionId: invoiceSubscriptionId(invoice),
+          amountCents: invoice.amount_due,
+        });
+        return { handled: true };
+      }
       enriched = {
         type: "invoice.payment_failed",
         eventId: event.id,
@@ -399,6 +490,15 @@ export async function processStripeEvent(
       const sub = event.data.object as Stripe.Subscription;
       const metadata = (sub.metadata || {}) as Record<string, string>;
       if (isOtherSitesStripeMetadata(metadata)) return { handled: false };
+      if (isBotCareMetadata(metadata)) {
+        await onBotCareEvent(db, event, {
+          kind: "cancelled",
+          email: "",
+          customerId: typeof sub.customer === "string" ? sub.customer : undefined,
+          subscriptionId: sub.id,
+        });
+        return { handled: true };
+      }
       enriched = {
         type: "customer.subscription.deleted",
         eventId: event.id,
@@ -981,6 +1081,102 @@ function invoiceSubscriptionId(invoice: Stripe.Invoice): string | undefined {
     | undefined;
   const nested = subDetails?.subscription;
   return typeof nested === "string" ? nested : undefined;
+}
+
+type BotCareEventKind = "started" | "paid" | "failed" | "cancelled";
+
+/**
+ * Bot Care events only touch the botCare* fields and the timeline. They never
+ * write stripeSubscriptionId, status or packageId, so the package webhook paths
+ * (installments, subscription.deleted) can't mistake Bot Care for a package.
+ */
+async function onBotCareEvent(
+  db: ReturnType<typeof getDb>,
+  event: Stripe.Event,
+  e: {
+    kind: BotCareEventKind;
+    email: string;
+    customerId?: string;
+    subscriptionId?: string;
+    amountCents?: number;
+  }
+): Promise<void> {
+  let email = e.email.trim().toLowerCase();
+  if (!email.includes("@") && e.subscriptionId) {
+    const snap = await db
+      .collection("client_records")
+      .where("botCareSubscriptionId", "==", e.subscriptionId)
+      .limit(1)
+      .get();
+    const doc = snap.docs[0];
+    if (doc) email = String((doc.data() || {}).email || doc.id).trim().toLowerCase();
+  }
+
+  const now = new Date().toISOString();
+  const at = eventCreatedIso(event) || now;
+  const patch: Record<string, unknown> = { updatedAt: now };
+  if (e.subscriptionId) patch.botCareSubscriptionId = e.subscriptionId;
+  if (e.customerId) patch.botCareCustomerId = e.customerId;
+  switch (e.kind) {
+    case "started":
+      patch.botCareStatus = "active";
+      patch.botCareStartedAt = at;
+      break;
+    case "paid":
+      patch.botCareStatus = "active";
+      patch.botCareLastPaidAt = at;
+      patch.botCareLastPaidAmount = e.amountCents ?? null;
+      break;
+    case "failed":
+      patch.botCareStatus = "past_due";
+      patch.botCarePaymentFailedAt = at;
+      break;
+    case "cancelled":
+      patch.botCareStatus = "cancelled";
+      patch.botCareCancelledAt = at;
+      break;
+    default: {
+      const _exhaustive: never = e.kind;
+      return _exhaustive;
+    }
+  }
+
+  if (email.includes("@")) {
+    await mergeIfExists(db, "client_records", email, patch);
+    const amount =
+      typeof e.amountCents === "number" && e.amountCents > 0
+        ? ` ${formatUsdCents(e.amountCents)}`
+        : "";
+    const titles: Record<BotCareEventKind, string> = {
+      started: `${BOT_CARE.name} started`,
+      paid: `${BOT_CARE.name} paid${amount}`,
+      failed: `${BOT_CARE.name} payment failed${amount}`,
+      cancelled: `${BOT_CARE.name} cancelled`,
+    };
+    await logActivity({
+      email,
+      type: e.kind === "paid" ? "payment" : "note",
+      title: titles[e.kind],
+      meta: { eventId: event.id, subscriptionId: e.subscriptionId || null },
+    });
+  } else {
+    console.warn("[stripe-webhook] Bot Care event with no client:", e.subscriptionId || event.id);
+  }
+
+  await logStripeEvent(
+    db,
+    {
+      type: event.type,
+      eventId: event.id,
+      email,
+      packageId: BOT_CARE_PRODUCT,
+      customerId: e.customerId,
+      subscriptionId: e.subscriptionId,
+      amountPaid: e.amountCents,
+      rawEventType: event.type,
+    },
+    `bot_care_${e.kind}`
+  );
 }
 
 async function mergeIfExists(

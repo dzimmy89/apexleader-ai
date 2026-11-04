@@ -6,6 +6,7 @@ import type Stripe from "stripe";
 import { POST } from "../app/api/webhooks/stripe/route";
 import { setDbForTests } from "../lib/firebase-admin";
 import {
+  createBotCareCheckoutSession,
   handleStripeWebhookEvent,
   processStripeEvent,
   setStripeForTests,
@@ -1313,5 +1314,130 @@ describe("shared Stripe account", () => {
     const object = event.data.object as unknown as Record<string, unknown>;
     object.parent = { subscription_details: { subscription: "sub_x", metadata: { packageId: "foundations" } } };
     assert.deepEqual(await processStripeEvent(event), { handled: false });
+  });
+});
+
+describe("Bot Care monthly plan", () => {
+  const botCareMeta = { site: "fromaitobusiness.com", product: "bot_care", clientName: "Ada Client" };
+
+  async function seedClient(mem: ReturnType<typeof createMemoryFirestore>, email: string) {
+    await mem.collection("client_records").doc(email).set({
+      email,
+      status: "onboarded",
+      packageId: "mastery",
+      stripeCustomerId: "cus_coach",
+      stripeSubscriptionId: "sub_coach",
+    });
+    await mem.collection("members").doc(email).set({
+      email,
+      status: "active",
+      stripeSubscriptionId: "sub_coach",
+    });
+  }
+
+  afterEach(() => {
+    setDbForTests(undefined);
+    setStripeForTests(undefined);
+    delete process.env.STRIPE_PRICE_BOT_CARE_MONTHLY;
+  });
+
+  it("checkout starts Bot Care without touching the package, sessions or access", async () => {
+    const mem = createMemoryFirestore();
+    setDbForTests(mem as unknown as Firestore);
+    const email = "care@example.com";
+    await seedClient(mem, email);
+    const event = checkoutEvent("evt_bc_start", { email, subscriptionId: "sub_care", customerId: "cus_coach" });
+    const object = event.data.object as unknown as Record<string, unknown>;
+    object.client_reference_id = `bot_care:${email}`;
+    object.metadata = botCareMeta;
+
+    assert.deepEqual(await processStripeEvent(event), { handled: true });
+
+    const client = (await mem.collection("client_records").doc(email).get()).data();
+    assert.equal(client?.botCareStatus, "active");
+    assert.equal(client?.botCareSubscriptionId, "sub_care");
+    assert.equal(client?.status, "onboarded");
+    assert.equal(client?.packageId, "mastery");
+    assert.equal(client?.stripeSubscriptionId, "sub_coach");
+    assert.equal(storeRows(mem.store, "client_payments").length, 0);
+    assert.equal(mem.store.get("webhook_logs/evt_bc_start")?.label, "bot_care_started");
+  });
+
+  it("a paid Bot Care invoice records the month, not a package payment", async () => {
+    const mem = createMemoryFirestore();
+    setDbForTests(mem as unknown as Firestore);
+    const email = "care@example.com";
+    await seedClient(mem, email);
+    const event = invoiceEvent("invoice.paid", "evt_bc_paid", {
+      email,
+      customerId: "cus_coach",
+      subscriptionId: "sub_care",
+      amount: 100000,
+    });
+    const object = event.data.object as unknown as Record<string, unknown>;
+    object.parent = { subscription_details: { subscription: "sub_care", metadata: botCareMeta } };
+
+    assert.deepEqual(await processStripeEvent(event), { handled: true });
+
+    const client = (await mem.collection("client_records").doc(email).get()).data();
+    assert.equal(client?.botCareLastPaidAmount, 100000);
+    assert.equal(client?.stripeSubscriptionId, "sub_coach");
+    assert.equal(client?.lastInvoicePaidAt, undefined);
+    assert.equal(storeRows(mem.store, "client_payments").length, 0);
+  });
+
+  it("cancelling Bot Care leaves the coaching client and member active", async () => {
+    const mem = createMemoryFirestore();
+    setDbForTests(mem as unknown as Firestore);
+    const email = "care@example.com";
+    await seedClient(mem, email);
+    await mem.collection("client_records").doc(email).set(
+      { botCareSubscriptionId: "sub_care", botCareStatus: "active" },
+      { merge: true }
+    );
+    const event = subscriptionDeletedEvent("evt_bc_cancel", {
+      subscriptionId: "sub_care",
+      customerId: "cus_coach",
+    });
+    (event.data.object as unknown as Record<string, unknown>).metadata = botCareMeta;
+
+    assert.deepEqual(await processStripeEvent(event), { handled: true });
+
+    const client = (await mem.collection("client_records").doc(email).get()).data();
+    const member = (await mem.collection("members").doc(email).get()).data();
+    assert.equal(client?.botCareStatus, "cancelled");
+    assert.equal(client?.status, "onboarded");
+    assert.equal(member?.status, "active");
+  });
+
+  it("checkout is only for coaching clients and reuses their Stripe customer", async () => {
+    const mem = createMemoryFirestore();
+    setDbForTests(mem as unknown as Firestore);
+    process.env.STRIPE_PRICE_BOT_CARE_MONTHLY = "price_bot_care";
+    const calls: Array<Record<string, unknown>> = [];
+    setStripeForTests({
+      checkout: {
+        sessions: {
+          create: async (params: Record<string, unknown>) => {
+            calls.push(params);
+            return { id: "cs_bc", url: "https://checkout.stripe.test/cs_bc" };
+          },
+        },
+      },
+    } as unknown as Stripe);
+
+    const stranger = await createBotCareCheckoutSession({ email: "stranger@example.com" });
+    assert.equal(stranger.ok, false);
+    assert.equal(stranger.status, 403);
+    assert.equal(calls.length, 0);
+
+    await seedClient(mem, "care@example.com");
+    const result = await createBotCareCheckoutSession({ email: "Care@Example.com" });
+    assert.equal(result.ok, true);
+    const created = calls[0];
+    assert.equal(created?.mode, "subscription");
+    assert.equal(created?.customer, "cus_coach");
+    assert.equal(created?.client_reference_id, "bot_care:care@example.com");
+    assert.deepEqual((created?.metadata as Record<string, string>).product, "bot_care");
   });
 });

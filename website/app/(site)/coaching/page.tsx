@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Check, X } from "lucide-react";
 import { CTAButton } from "@/components/CTAButton";
 import { SectionReveal } from "@/components/SectionReveal";
+import { BotCareCard } from "@/components/coaching/BotCareCard";
 import { PackageGrid } from "@/components/coaching/PackageGrid";
 import { PayNowLink } from "@/components/coaching/PayNowLink";
 import { PortfolioCard } from "@/components/portfolio/PortfolioCard";
@@ -16,6 +17,7 @@ import { StickyCta } from "@/components/editorial/StickyCta";
 import { featuredPortfolio } from "@/content/portfolio";
 import { URLS } from "@/content/site";
 import { BRAND } from "@/lib/brand";
+import { BOT_CARE, isBotCareCheckoutOpen } from "@/lib/coaching/bot-care";
 import { getPackages } from "@/lib/coaching/packages";
 import { JsonLd, faqNode } from "@/lib/seo/json-ld";
 
@@ -165,6 +167,10 @@ const FAQS = [
       "Sessions can be rescheduled from your account with at least 24 hours notice. Sessions cancelled with less notice may be forfeited.",
   },
   {
+    question: `What is ${BOT_CARE.name}?`,
+    answer: `A monthly plan for coaching clients, ${BOT_CARE.priceDisplay} a month. Each month we review the bots you built, fix what broke, update them when the tools change, and add new templates. Cancel any time.`,
+  },
+  {
     question: "Do you offer payment plans?",
     answer: "Yes. Packages can be paid in full or in monthly installments by card.",
   },
@@ -177,8 +183,13 @@ function ownFeatures(pkg: PackageCardData): string[] {
   return pkg.features.filter((f) => !INHERITS_LINE.test(f));
 }
 
-export default async function CoachingPage() {
+export default async function CoachingPage({
+  searchParams,
+}: {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}) {
   const packages = await fetchPackagesForGrid();
+  const botCareStarted = (await searchParams).bot_care === "started";
   const institutional = packages.find((p) => p.id === "institutional");
   const mastery = packages.find((p) => p.id === "mastery");
 
@@ -321,6 +332,13 @@ export default async function CoachingPage() {
             </PayNowLink>
           </p>
           <PackageGrid packages={packages} />
+          <div id="bot-care" className="mt-16 scroll-mt-24">
+            <h3 className="text-[length:var(--text-h3)] text-[var(--color-text)]">After your package</h3>
+            <p className="mb-6 mt-2 max-w-2xl text-[15px] leading-relaxed text-[var(--color-text-muted)]">
+              The bots you build keep running after coaching ends. {BOT_CARE.name} keeps them working as your business and the tools change.
+            </p>
+            <BotCareCard plan={BOT_CARE} checkoutOpen={isBotCareCheckoutOpen()} started={botCareStarted} />
+          </div>
         </div>
       </section>
 
