@@ -13,6 +13,7 @@ import type { ClientFile } from "@/lib/coaching/client-files";
 import type { CoachingSessionDoc } from "@/lib/coaching/sessions";
 import { PACE_LABEL, type Syllabus, type SyllabusStatus } from "@/lib/coaching/syllabus";
 import type { ResolvedItem } from "@/lib/coaching/syllabus-plan";
+import { RescheduleSession } from "@/components/account/RescheduleSession";
 import { BRAND } from "@/lib/brand";
 
 const SESSION_MINUTES = 60;
@@ -157,9 +158,15 @@ function SessionsPanel({
                 <Video size={18} aria-hidden /> Join on Google Meet
               </a>
             ) : null}
-            <a href={`mailto:${BRAND.email}?subject=Reschedule%20my%20coaching%20session`} className="btn btn-ghost">
-              Need to reschedule? Email David
-            </a>
+            {next.id ? (
+              <RescheduleSession
+                sessionId={next.id}
+                scheduledAt={next.scheduledAt}
+                durationMins={next.durationMins || SESSION_MINUTES}
+                packageId={client.packageId || undefined}
+                coachEmail={BRAND.email}
+              />
+            ) : null}
           </div>
           {upcoming.length > 1 ? (
             <ul className="mt-5 space-y-1 text-[15px] text-[var(--color-text-muted)]">
@@ -172,6 +179,19 @@ function SessionsPanel({
                       <a href={s.meetUrl} target="_blank" rel="noopener noreferrer" className="text-[var(--color-accent)] underline underline-offset-4">
                         Meet link
                       </a>
+                    </>
+                  ) : null}
+                  {s.id ? (
+                    <>
+                      {" · "}
+                      <RescheduleSession
+                        sessionId={s.id}
+                        scheduledAt={s.scheduledAt}
+                        durationMins={s.durationMins || SESSION_MINUTES}
+                        packageId={client.packageId || undefined}
+                        coachEmail={BRAND.email}
+                        compact
+                      />
                     </>
                   ) : null}
                 </li>
