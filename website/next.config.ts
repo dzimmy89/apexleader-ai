@@ -6,6 +6,13 @@ const nextConfig: NextConfig = {
   outputFileTracingExcludes: {
     "*": ["./scripts/**"],
   },
+  // pdfkit reads its built-in fonts (Helvetica.afm and friends) from its own
+  // folder at runtime. Bundled, that path breaks and signing an agreement
+  // crashes, so load it from node_modules and ship its data files.
+  serverExternalPackages: ["pdfkit"],
+  outputFileTracingIncludes: {
+    "/api/**": ["./node_modules/pdfkit/js/data/**"],
+  },
   // Metadata is static, so blocking costs nothing; streamed metadata lands in <body> on dynamic pages.
   htmlLimitedBots: /.*/,
   images: {
