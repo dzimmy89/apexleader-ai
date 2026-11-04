@@ -2,6 +2,7 @@ import type Stripe from "stripe";
 import { getDb } from "@/lib/firebase-admin";
 import { getSiteOrigin } from "@/lib/env";
 import { getStripe } from "@/lib/coaching/stripe";
+import { BRAND } from "@/lib/brand";
 
 /**
  * Stripe customer portal for coaching clients who pay by card: update the
@@ -70,6 +71,6 @@ export async function createPortalSession(args: {
     return { ok: true, url: session.url };
   } catch (e) {
     console.error("[stripe-portal] session failed", e instanceof Error ? e.message : e);
-    return { ok: false, error: "Stripe could not open the billing page. Email hello@apexleader.ai and we will sort it out.", status: 502 };
+    return { ok: false, error: `Stripe could not open the billing page. Email ${BRAND.email} and we will sort it out.`, status: 502 };
   }
 }
