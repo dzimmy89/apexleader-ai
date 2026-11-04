@@ -1,0 +1,25 @@
+<!doctype html><meta charset="utf-8">
+<!-- Figure source for the Agent Build Line course. -->
+<meta name="out" content="public/learn/figures/agent-build-line/lesson-03-fig-1.webp">
+<link rel="stylesheet" href="../../../../scripts/learn/infographics/brand.css">
+<style>
+  .paper { display: flex; gap: 10px; }
+  .paper .label, .paper .icon { color: var(--paper-text); }
+  .arrow { font-size: 30px; color: var(--muted); }
+  .row { flex: 1; display: flex; gap: 8px; align-items: stretch; }
+  .row > .st { flex: 1; }
+  .row > .arrow { align-self: center; }
+  .st { flex-direction: column; gap: 8px; padding: 14px; justify-content: center; }
+  .st .icon { width: 36px; height: 36px; color: var(--signal); }
+  .st .label { font-size: 27px; }
+  .grid { flex: 1; display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: 1fr 1fr; gap: 14px; }
+  .grid .st { gap: 6px; padding: 12px 14px; justify-content: flex-start; }
+  .grid .st .label { font-size: 26px; }
+  .n { font: 800 28px/1 var(--display); color: var(--signal); }
+  .paper .n { color: var(--signal-ink); }
+
+</style>
+<div class="fig wide">
+  <span class="sys">The build line</span>
+  <div class="grid"><div class="card st"><span class="n">1</span><span class="label">Agent changes a branch</span></div><div class="card st"><span class="n">2</span><span class="label">GitHub MCP opens the pull request</span></div><div class="card st"><span class="n">3</span><span class="label">Vercel builds a preview</span><span class="small">Sandbox keys</span></div><div class="card st"><span class="n">4</span><span class="label">You click through it</span><span class="small">On your phone</span></div><div class="paper st"><span class="n">5</span><span class="label">You merge it</span><span class="small">It goes live</span></div></div>
+</div>

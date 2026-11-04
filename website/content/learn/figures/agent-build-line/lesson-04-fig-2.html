@@ -1,0 +1,22 @@
+<!doctype html><meta charset="utf-8">
+<!-- Figure source for the Agent Build Line course. -->
+<meta name="out" content="public/learn/figures/agent-build-line/lesson-04-fig-2.webp">
+<link rel="stylesheet" href="../../../../scripts/learn/infographics/brand.css">
+<style>
+  .paper { display: flex; gap: 10px; }
+  .paper .label, .paper .icon { color: var(--paper-text); }
+  .arrow { font-size: 30px; color: var(--muted); }
+  .row { flex: 1; display: grid; grid-template-columns: 1fr auto 1.25fr; gap: 16px; align-items: stretch; }
+  .grp { display: flex; flex-direction: column; gap: 10px; }
+  .grp .card, .grp .paper { padding: 10px 14px; align-items: center; }
+  .grp .label { font-size: 26px; }
+  .grp .icon { width: 32px; height: 32px; color: var(--signal); }
+  .paper .icon { color: var(--paper-text); }
+  .upd { font: 500 26px/1 var(--mono); color: var(--muted); padding-left: 14px; }
+  .arrow { align-self: center; }
+
+</style>
+<div class="fig wide">
+  <span class="sys">Parallel work, one-at-a-time merges</span>
+  <div class="row"><div class="grp"><span class="small">Work in parallel</span><div class="card agent"><!-- bot --><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg><span class="label">Codex</span></div><div class="card agent"><!-- bot --><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg><span class="label">Claude Code</span></div><div class="card agent"><!-- bot --><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg><span class="label">Claude Code</span></div></div><span class="arrow">→</span><div class="grp"><span class="small">Review and merge one at a time</span><div class="card"><!-- git-merge --><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/></svg><span class="label">Merge pull request 1</span></div><span class="upd">↓ update from main</span><div class="card"><!-- git-merge --><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/></svg><span class="label">Merge pull request 2</span></div><span class="upd">↓ update from main</span><div class="paper"><!-- git-merge --><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/></svg><span class="label">Merge pull request 3</span></div></div></div>
+</div>
