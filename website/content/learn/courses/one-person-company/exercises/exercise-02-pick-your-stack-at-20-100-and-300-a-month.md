@@ -52,7 +52,7 @@ alt: Six steps: pick your tier of $20, $100 or $300, list your top three jobs, d
 3. **Draft the stack.** Use the Lesson 2 shapes for your tier. Then run this prompt:
 
 ```text
-I run [business, or "Groomer Books", a bookkeeping service for dog groomers].
+I run [business, or "Rolling Ledger", a bookkeeping service for food truck owners].
 Budget: [$20 / $100 / $300] a month. I am based in [country].
 My top jobs to delegate: [job 1], [job 2], [job 3].
 Draft stack: [plans].
@@ -92,7 +92,7 @@ Review date (90 days): ______
 
 :::example
 title: See an example result
-Here is a Stack Decision for the sample business, Groomer Books, using the top jobs from its example Delegation Map. Prices are examples; check the vendor pages for yours.
+Here is a Stack Decision for the sample business, Rolling Ledger, using the top jobs from its example Delegation Map. Prices are examples; check the vendor pages for yours.
 
 :::video
 id: opc-ex2-reveal
@@ -101,17 +101,17 @@ status: paused
 src: /learn/video/one-person-company/opc-ex2-reveal.mp4
 captions: /learn/video/one-person-company/opc-ex2-reveal.vtt
 poster: /learn/video/one-person-company/opc-ex2-reveal.jpg
-transcript: For Groomer Books, one twenty-dollar plan covers all three top jobs. Here's the example. The tier is twenty dollars a month. The top jobs from the delegation map are overdue-invoice reminders at seventy-five minutes a week, Instagram posts at forty-five, and sorting receipts at forty. All three are writing and sorting jobs, so one main office handles them: Claude Pro. It drafts the reminders and the posts, and sorts receipts in a project. The gap is posting itself, which stays manual, because nothing publishes without the founder. No two plans overlap, because there's only one. The always-on agent is the Claude Duet waitlist, after checking the account is in the US. Specialists wait until the main office has had a week of real use. And the decision has a review date, ninety days out. That's a stack decision you can act on today.
+transcript: For Rolling Ledger, one twenty-dollar plan covers all three top jobs. Here's the example. The tier is twenty dollars a month. The top jobs from the delegation map are overdue-invoice reminders at seventy-five minutes a week, Instagram posts at forty-five, and sorting receipts at forty. All three are writing and sorting jobs, so one main office handles them: Claude Pro. It drafts the reminders and the posts, and sorts receipts in a project. The gap is posting itself, which stays manual, because nothing publishes without the founder. No two plans overlap, because there's only one. The always-on agent is the Claude Duet waitlist, after checking the account is in the US. Specialists wait until the main office has had a week of real use. And the decision has a review date, ninety days out. That's a stack decision you can act on today.
 :::
 
 :::infographic
 id: fig-2
 type: comparison
-title: Groomer Books at $20
-shows: Under "Groomer Books at $20" tagged example: three job cards (Invoice reminders 75 min, Instagram posts 45 min, Sort receipts 40 min) beside a paper card: Main office: Claude Pro. Covers all 3 jobs. Duet waitlist joined. Posting stays manual.
+title: Rolling Ledger at $20
+shows: Under "Rolling Ledger at $20" tagged example: three job cards (Invoice reminders 75 min, Instagram posts 45 min, Sort receipts 40 min) beside a paper card: Main office: Claude Pro. Covers all 3 jobs. Duet waitlist joined. Posting stays manual.
 data: example numbers: 75, 45 and 40 minutes a week; $20 tier
 image: /learn/figures/one-person-company/exercise-02-fig-2.webp
-alt: Example Groomer Books stack at $20 a month: invoice reminders at 75 minutes, Instagram posts at 45 and sorting receipts at 40 all go to one main office, Claude Pro, with the Duet waitlist joined and posting kept manual.
+alt: Example Rolling Ledger stack at $20 a month: invoice reminders at 75 minutes, Instagram posts at 45 and sorting receipts at 40 all go to one main office, Claude Pro, with the Duet waitlist joined and posting kept manual.
 :::
 
 | Job | Min a week | Tool in the stack | Kind | Gap |

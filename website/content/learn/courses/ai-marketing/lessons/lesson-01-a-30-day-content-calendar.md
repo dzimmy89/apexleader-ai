@@ -30,13 +30,13 @@ A content calendar is the job description for your marketing department. If you 
 
 ## Why this matters
 
-Most solo founders market in bursts: three posts in a good week, then nothing for a month. Buyers notice the silence, and search engines and AI assistants find less to cite. A calendar fixes the rhythm problem. It also gives your marketing agents something specific to work from. An agent told "post about our business" makes generic noise. An agent told "Tuesday, pillar 2, a 120-word LinkedIn post on the three receipts dog groomers lose most often, status: approved" does useful work.
+Most solo founders market in bursts: three posts in a good week, then nothing for a month. Buyers notice the silence, and search engines and AI assistants find less to cite. A calendar fixes the rhythm problem. It also gives your marketing agents something specific to work from. An agent told "post about our business" makes generic noise. An agent told "Tuesday, pillar 2, a 120-word LinkedIn post on the three receipts food truck owners lose most often, status: approved" does useful work.
 
 ## Start from what you already have
 
 You built a brand kit in Brand in a Day: voice rules, words you use and avoid, colors and a one-paragraph positioning statement. That kit is the first input. The second input is your offer, the thing people buy. The third is your customer: who they are, what keeps them up at night and where they spend time online.
 
-If you don't have a business yet, use the sample business for this whole course: **Groomer Books**, a monthly bookkeeping service for independent dog groomers. The owner is one person. Customers are mobile and salon groomers who hate paperwork and dread tax season.
+If you don't have a business yet, use the sample business for this whole course: **Rolling Ledger**, a monthly bookkeeping service for independent food truck owners. The owner is one person. Customers are single-truck and small multi-truck owners who hate paperwork and dread tax season.
 
 Put all three inputs into a Claude Project (or a ChatGPT project, or a Gemini Gem) so every conversation starts with the same context. Then ask for pillars.
 
@@ -44,10 +44,10 @@ Put all three inputs into a Claude Project (or a ChatGPT project, or a Gemini Ge
 id: fig-1
 type: diagram
 title: Three inputs, four pillars
-shows: Three cards on the left (Brand kit: voice and words; Offer: what people buy; Customer: problems and where they spend time) feed one project in the middle, which produces four pillar cards on the right, using the Groomer Books examples: money mistakes, tax season without panic, behind the scenes, client stories.
+shows: Three cards on the left (Brand kit: voice and words; Offer: what people buy; Customer: problems and where they spend time) feed one project in the middle, which produces four pillar cards on the right, using the Rolling Ledger examples: money mistakes, tax season without panic, behind the scenes, client stories.
 data: none
 image: /learn/figures/ai-marketing/lesson-01-fig-1.webp
-alt: Your brand kit, your offer and your customer notes go into one project, which turns them into four content pillars. For Groomer Books: money mistakes groomers make, tax season without panic, behind the scenes, and client stories.
+alt: Your brand kit, your offer and your customer notes go into one project, which turns them into four content pillars. For Rolling Ledger: money mistakes food truck owners make, tax season without panic, behind the scenes, and client stories.
 :::
 
 ```text
@@ -63,7 +63,7 @@ Rules: no hype words, no claims we can't back up, no tax or legal advice
 stated as fact. Flag anything that would need an accountant's review.
 ```
 
-Keep the pillars that sound like your real customers talking. Cut any that sound like a marketing textbook. For Groomer Books, good pillars might be "money mistakes groomers make," "tax season without panic," "behind the scenes of running a grooming business" and "client stories."
+Keep the pillars that sound like your real customers talking. Cut any that sound like a marketing textbook. For Rolling Ledger, good pillars might be "money mistakes food truck owners make," "tax season without panic," "behind the scenes of running a food truck" and "client stories."
 
 ## Choose a rhythm you can keep
 

@@ -47,7 +47,7 @@ alt: Your Delegation Map, Stack Decision and Access Policy combine into AI Org C
 
 1. **Draw the frame.** Put "Founder (you): approves anything external or about money" at the top. Under it, five boxes: Chief of Staff, Sales and Customers, Marketing and Content, Finance Assistant, Product and Website.
 
-2. **Fill boxes from your stack.** Using your Stack Decision, put a tool in each box you can fill today. Leave the rest as "Me for now" or "Open". If you use the sample Groomer Books business, a $20 stack might look like: Chief of Staff = Claude Duet (if admitted) or "Open"; Finance Assistant = Claude chat with a receipts project; Product and Website = free GitHub plus your main chat tool; the rest "Me for now".
+2. **Fill boxes from your stack.** Using your Stack Decision, put a tool in each box you can fill today. Leave the rest as "Me for now" or "Open". If you use the sample Rolling Ledger business, a $20 stack might look like: Chief of Staff = Claude Duet (if admitted) or "Open"; Finance Assistant = Claude chat with a receipts project; Product and Website = free GitHub plus your main chat tool; the rest "Me for now".
 
 3. **Write role cards** for each filled box, six lines each:
 
@@ -98,7 +98,7 @@ FRIDAY REVIEW (15 minutes)
 
 :::example
 title: See an example result
-Here is the org chart for the sample business, Groomer Books, on the example $20 stack from Exercise 2.
+Here is the org chart for the sample business, Rolling Ledger, on the example $20 stack from Exercise 2.
 
 :::video
 id: opc-ex4-reveal
@@ -107,17 +107,17 @@ status: paused
 src: /learn/video/one-person-company/opc-ex4-reveal.mp4
 captions: /learn/video/one-person-company/opc-ex4-reveal.vtt
 poster: /learn/video/one-person-company/opc-ex4-reveal.jpg
-transcript: For Groomer Books, two boxes are filled, three wait, and every job has one owner. Here's the example chart. The founder sits at the top and approves anything external or about money. The finance assistant is Claude Pro with a Groomer Books project. It sorts receipts and drafts overdue-invoice reminders each Monday. It reads the invoicing app as a viewer, and drafts in Gmail, never sending without a yes. Product and website is free GitHub plus Claude Pro. The chief of staff will be Claude Duet once the waitlist lets the account in. Until then, that box says open. Sales and customers, and marketing and content, say me for now. The audit found two fixes: remove calendar access the finance assistant didn't need, and add delete to the chief of staff's rule. The next hire is marketing and content, for the Instagram posts, forty-five minutes a week. And the Friday review is on the calendar.
+transcript: For Rolling Ledger, two boxes are filled, three wait, and every job has one owner. Here's the example chart. The founder sits at the top and approves anything external or about money. The finance assistant is Claude Pro with a Rolling Ledger project. It sorts receipts and drafts overdue-invoice reminders each Monday. It reads the invoicing app as a viewer, and drafts in Gmail, never sending without a yes. Product and website is free GitHub plus Claude Pro. The chief of staff will be Claude Duet once the waitlist lets the account in. Until then, that box says open. Sales and customers, and marketing and content, say me for now. The audit found two fixes: remove calendar access the finance assistant didn't need, and add delete to the chief of staff's rule. The next hire is marketing and content, for the Instagram posts, forty-five minutes a week. And the Friday review is on the calendar.
 :::
 
 :::infographic
 id: fig-2
 type: diagram
-title: Groomer Books org chart
-shows: Under "Groomer Books org chart" tagged example: a 3 by 2 grid. Chief of Staff, open, Duet waitlist; Sales, me for now; Marketing, me for now, next hire; Finance, highlighted, Claude Pro project; Product, GitHub plus Claude Pro; Friday review, 15 min, on the calendar.
+title: Rolling Ledger org chart
+shows: Under "Rolling Ledger org chart" tagged example: a 3 by 2 grid. Chief of Staff, open, Duet waitlist; Sales, me for now; Marketing, me for now, next hire; Finance, highlighted, Claude Pro project; Product, GitHub plus Claude Pro; Friday review, 15 min, on the calendar.
 data: none
 image: /learn/figures/one-person-company/exercise-04-fig-2.webp
-alt: Example Groomer Books org chart: the chief of staff is open until the Duet waitlist admits the account, sales and marketing are the founder for now with marketing as the next hire, finance is a Claude Pro project, product is GitHub plus Claude Pro, and a 15-minute Friday review is on the calendar.
+alt: Example Rolling Ledger org chart: the chief of staff is open until the Duet waitlist admits the account, sales and marketing are the founder for now with marketing as the next hire, finance is a Claude Pro project, product is GitHub plus Claude Pro, and a 15-minute Friday review is on the calendar.
 :::
 
 | Box | Tool | Status |
@@ -125,12 +125,12 @@ alt: Example Groomer Books org chart: the chief of staff is open until the Duet 
 | Chief of Staff | Claude Duet, once admitted from the waitlist | Open |
 | Sales and Customers | - | Me for now |
 | Marketing and Content | - | Me for now, next hire (Instagram posts, 45 min a week) |
-| Finance Assistant | Claude Pro, a Groomer Books project | Filled |
+| Finance Assistant | Claude Pro, a Rolling Ledger project | Filled |
 | Product and Website | Free GitHub plus Claude Pro | Filled |
 
 ```text
 ROLE: Finance Assistant
-TOOL: Claude Pro, a Groomer Books project
+TOOL: Claude Pro, a Rolling Ledger project
 JOB: Sort receipts weekly; each Monday, draft reminders for invoices
      more than 7 days overdue.
 ACCESS: Invoicing app as a viewer user; Gmail via connector, drafts only.

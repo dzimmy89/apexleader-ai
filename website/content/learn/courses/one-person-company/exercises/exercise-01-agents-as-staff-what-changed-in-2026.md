@@ -20,7 +20,7 @@ status: paused
 src: /learn/video/one-person-company/opc-ex1-setup.mp4
 captions: /learn/video/one-person-company/opc-ex1-setup.vtt
 poster: /learn/video/one-person-company/opc-ex1-setup.jpg
-transcript: Twenty-five tasks, one week, and one founder doing all of them. Time to find out which ones you can hand off. In this exercise you'll build a delegation map. Dump last week's work, one task per line with rough minutes, at least twenty lines. If you don't have a business yet, use Groomer Books, a bookkeeping and invoicing service for independent dog groomers. Then sort every task into three piles: agent alone, agent drafts and you approve, or only you. Be strict. If it leaves the business or touches money, it can't be agent alone. Total the minutes in each pile. Then pick the recurring task with the most minutes from the middle pile, and write it as a brief. So: which pile holds the most of your week, and what's your first hire? Pause here and build your map.
+transcript: Twenty-five tasks, one week, and one founder doing all of them. Time to find out which ones you can hand off. In this exercise you'll build a delegation map. Dump last week's work, one task per line with rough minutes, at least twenty lines. If you don't have a business yet, use Rolling Ledger, a bookkeeping and invoicing service for independent food truck owners. Then sort every task into three piles: agent alone, agent drafts and you approve, or only you. Be strict. If it leaves the business or touches money, it can't be agent alone. Total the minutes in each pile. Then pick the recurring task with the most minutes from the middle pile, and write it as a brief. So: which pile holds the most of your week, and what's your first hire? Pause here and build your map.
 :::
 
 ## Warm-up
@@ -39,19 +39,19 @@ Why: The email leaves the business, so you approve it. Research for yourself is 
 id: fig-1
 type: anatomy
 title: Your starting sheet
-shows: A Delegation Map table with columns Task, Min and Pile. Three sample Groomer Books rows (send client invoices 45, reconcile bank feed 60, post on Instagram 30) with an orange question mark in every Pile cell, and a last row reading "your other tasks".
+shows: A Delegation Map table with columns Task, Min and Pile. Three sample Rolling Ledger rows (send client invoices 45, reconcile bank feed 60, post on Instagram 30) with an orange question mark in every Pile cell, and a last row reading "your other tasks".
 data: three illustrative task rows with minutes
 image: /learn/figures/one-person-company/exercise-01-fig-1.webp
 alt: A Delegation Map table with Task, minutes and Pile columns. The sample rows send client invoices, reconcile bank feed and post on Instagram have question marks where the pile goes.
 :::
 
-1. **Pick your business.** Use your own. If you do not have one yet, use the sample: *Groomer Books*, a monthly bookkeeping and invoicing service for independent dog groomers, run by one founder.
+1. **Pick your business.** Use your own. If you do not have one yet, use the sample: *Rolling Ledger*, a monthly bookkeeping and invoicing service for independent food truck owners, run by one founder.
 
 2. **Dump last week.** Open your calendar, to-do list or sent mail and list every task you did, one per line, with rough minutes. Aim for 20 or more lines. If you use the sample business, ask the AI to generate a realistic week:
 
 ```text
-Generate a realistic list of 25 tasks a solo founder running "Groomer Books"
-(bookkeeping and invoicing for independent dog groomers) does in a week.
+Generate a realistic list of 25 tasks a solo founder running "Rolling Ledger"
+(bookkeeping and invoicing for independent food truck owners) does in a week.
 Include minutes for each. Mix client work, sales, admin, marketing and finance.
 ```
 
@@ -92,7 +92,7 @@ Each [day/week], report: what you did, what is waiting for me, what you were uns
 
 :::example
 title: See an example result
-Here is the map for the sample business, Groomer Books, with example numbers. Yours will look different, and that's the point.
+Here is the map for the sample business, Rolling Ledger, with example numbers. Yours will look different, and that's the point.
 
 :::video
 id: opc-ex1-reveal
@@ -101,17 +101,17 @@ status: paused
 src: /learn/video/one-person-company/opc-ex1-reveal.mp4
 captions: /learn/video/one-person-company/opc-ex1-reveal.vtt
 poster: /learn/video/one-person-company/opc-ex1-reveal.jpg
-transcript: For Groomer Books, the biggest pile is the middle one: three hundred and ten minutes a week of work an agent can draft and the founder approves. Here's how the example week came out, with example numbers. Twenty-five tasks, seven hundred and sixty minutes. Agent alone: seven tasks, one hundred and ninety minutes, like researching competitors and sorting receipts. Agent drafts, you approve: nine tasks, three hundred and ten minutes, including client emails, social posts and invoice reminders. Only you: nine tasks, two hundred and sixty minutes, like reconciling the bank feed, paying bills and signing a new client. Notice where money went. Reconciling the bank feed and paying bills sit in only you. The first hire is the biggest recurring job in the middle pile: overdue-invoice reminders, seventy-five minutes a week. The brief gives the agent read access to the invoicing app, lets it draft reminders, and makes it ask before anything sends. That's your first agent job.
+transcript: For Rolling Ledger, the biggest pile is the middle one: three hundred and ten minutes a week of work an agent can draft and the founder approves. Here's how the example week came out, with example numbers. Twenty-five tasks, seven hundred and sixty minutes. Agent alone: seven tasks, one hundred and ninety minutes, like researching competitors and sorting receipts. Agent drafts, you approve: nine tasks, three hundred and ten minutes, including client emails, social posts and invoice reminders. Only you: nine tasks, two hundred and sixty minutes, like reconciling the bank feed, paying bills and signing a new client. Notice where money went. Reconciling the bank feed and paying bills sit in only you. The first hire is the biggest recurring job in the middle pile: overdue-invoice reminders, seventy-five minutes a week. The brief gives the agent read access to the invoicing app, lets it draft reminders, and makes it ask before anything sends. That's your first agent job.
 :::
 
 :::infographic
 id: fig-2
 type: chart
-title: Where the Groomer Books week goes
-shows: Under "Groomer Books, one week" tagged example numbers, three horizontal bars drawn to scale: Agent alone 190 min, Agent drafts 310 min (highlighted in signal orange), Only you 260 min. A paper card: First hire: invoice reminders, 75 min a week.
+title: Where the Rolling Ledger week goes
+shows: Under "Rolling Ledger, one week" tagged example numbers, three horizontal bars drawn to scale: Agent alone 190 min, Agent drafts 310 min (highlighted in signal orange), Only you 260 min. A paper card: First hire: invoice reminders, 75 min a week.
 data: example numbers: 190, 310 and 260 minutes; first hire 75 minutes
 image: /learn/figures/one-person-company/exercise-01-fig-2.webp
-alt: Bar chart of one example Groomer Books week: agent alone 190 minutes, agent drafts with founder approval 310 minutes, only the founder 260 minutes. The first hire is invoice reminders at 75 minutes a week.
+alt: Bar chart of one example Rolling Ledger week: agent alone 190 minutes, agent drafts with founder approval 310 minutes, only the founder 260 minutes. The first hire is invoice reminders at 75 minutes a week.
 :::
 
 | Task | Min | Pile | Reason |
@@ -128,7 +128,7 @@ alt: Bar chart of one example Groomer Books week: agent alone 190 minutes, agent
 **First brief:**
 
 ```text
-You are my billing assistant for Groomer Books.
+You are my billing assistant for Rolling Ledger.
 Your job: each Monday, find invoices more than 7 days overdue and draft a polite reminder for each.
 You may: read the invoicing app, draft reminder emails, save drafts in the outbox.
 You must ask me before: sending any email, changing an invoice, or deleting anything.

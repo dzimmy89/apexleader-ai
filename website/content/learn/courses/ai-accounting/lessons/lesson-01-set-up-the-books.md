@@ -92,7 +92,7 @@ Equity: Owner contribution, Owner draw
 You can ask Claude or ChatGPT to tailor this to your business:
 
 ```text
-I run a one-person bookkeeping service for dog grooming salons, as a single-member LLC in the US.
+I run a one-person bookkeeping service for food truck owners, as a single-member LLC in the US.
 Suggest a chart of accounts of no more than 15 expense categories, each mapped to the matching Schedule C line.
 Flag any category where the tax treatment has special rules (for example meals) so I can ask my accountant.
 Do not give tax advice, just the mapping and the flags.

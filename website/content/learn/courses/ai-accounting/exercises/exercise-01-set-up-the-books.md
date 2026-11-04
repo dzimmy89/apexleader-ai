@@ -45,14 +45,14 @@ image: /learn/figures/ai-accounting/exercise-01-fig-1.webp
 alt: Seven steps: separate the money; choose QuickBooks Online or Wave; set up 15 or fewer expense categories mapped to Schedule C; connect a read-only bank feed; write back office rules starting with agents never move money; give helpers the least access; and turn on two-factor.
 :::
 
-1. **Make the money decision.** If you don't have a separate business checking account and card, list two banks you'll compare this week and book the time to open one. If you do, write down its name and the last four digits only. Using the sample business (a bookkeeping service for dog groomers)? Pretend it's a single-member LLC with a new business account.
+1. **Make the money decision.** If you don't have a separate business checking account and card, list two banks you'll compare this week and book the time to open one. If you do, write down its name and the last four digits only. Using the sample business (a bookkeeping service for food truck owners)? Pretend it's a single-member LLC with a new business account.
 
 2. **Choose your app.** Using the comparison table in Lesson 1, pick QuickBooks Online or Wave. Write two sentences on why. If you have an accountant, ask which one they prefer.
 
 3. **Create your category list.** Run this in Claude or ChatGPT:
 
 ```text
-I run [your business, or: a one-person bookkeeping service for dog grooming salons] as a [sole proprietor / single-member LLC] in the US.
+I run [your business, or: a one-person bookkeeping service for food truck owners] as a [sole proprietor / single-member LLC] in the US.
 Suggest a chart of accounts with no more than 15 expense categories, each mapped to the matching Schedule C line.
 Add income categories and owner equity accounts (owner contribution, owner draw).
 Flag any category with special tax rules so I can ask my accountant. No tax advice, only the mapping and flags.
@@ -78,7 +78,7 @@ Review the list. Merge anything you won't use. Save it as "Chart of accounts" in
 
 :::example
 title: See an example result
-Here is the finished setup for the sample business, Groomer Books, run as a single-member LLC. Line numbers are from the current Schedule C; confirm the mapping with your accountant.
+Here is the finished setup for the sample business, Rolling Ledger, run as a single-member LLC. Line numbers are from the current Schedule C; confirm the mapping with your accountant.
 
 :::video
 id: acct-ex1-reveal
@@ -87,17 +87,17 @@ status: paused
 src: /learn/video/ai-accounting/acct-ex1-reveal.mp4
 captions: /learn/video/ai-accounting/acct-ex1-reveal.vtt
 poster: /learn/video/ai-accounting/acct-ex1-reveal.jpg
-transcript: For Groomer Books, the books are open, and no helper can touch a dollar. Here's the example. The business is a single-member LLC, with a new business checking account and one debit card. The app is QuickBooks Online Essentials, because later lessons use its receipt and invoicing agents. The chart of accounts has one income category, eleven expense categories mapped to Schedule C, and two owner accounts. Two categories are flagged for the accountant: meals, which are usually only half deductible, and car costs, where mileage and actual expenses are two different methods. The bank feed is connected, read only. The back office rules name two helpers: Claude Cowork, with the Finance folder only, and an expense bot that may read and download from vendor portals. Their user role can't pay bills or change bank details. And two-factor is on for both the bank and the app.
+transcript: For Rolling Ledger, the books are open, and no helper can touch a dollar. Here's the example. The business is a single-member LLC, with a new business checking account and one debit card. The app is QuickBooks Online Essentials, because later lessons use its receipt and invoicing agents. The chart of accounts has one income category, eleven expense categories mapped to Schedule C, and two owner accounts. Two categories are flagged for the accountant: meals, which are usually only half deductible, and car costs, where mileage and actual expenses are two different methods. The bank feed is connected, read only. The back office rules name two helpers: Claude Cowork, with the Finance folder only, and an expense bot that may read and download from vendor portals. Their user role can't pay bills or change bank details. And two-factor is on for both the bank and the app.
 :::
 
 :::infographic
 id: fig-2
 type: comparison
-title: Groomer Books books, set up
-shows: Under "Groomer Books setup" tagged example: a paper card for QuickBooks Online Essentials with three counts (1 income, 11 expense categories, 2 owner accounts), and beside it two flag cards for the accountant: Meals (usually 50% deductible) and Car (mileage or actual costs). Footer pills: Bank feed read-only, 2FA on.
+title: Rolling Ledger books, set up
+shows: Under "Rolling Ledger setup" tagged example: a paper card for QuickBooks Online Essentials with three counts (1 income, 11 expense categories, 2 owner accounts), and beside it two flag cards for the accountant: Meals (usually 50% deductible) and Car (mileage or actual costs). Footer pills: Bank feed read-only, 2FA on.
 data: example numbers: 1 income, 11 expense and 2 owner accounts; 2 flags
 image: /learn/figures/ai-accounting/exercise-01-fig-2.webp
-alt: Example Groomer Books setup in QuickBooks Online Essentials: 1 income category, 11 expense categories mapped to Schedule C and 2 owner accounts. Two categories are flagged for the accountant: meals, usually 50% deductible, and car costs, where mileage and actual costs are different methods. The bank feed is read-only and two-factor is on.
+alt: Example Rolling Ledger setup in QuickBooks Online Essentials: 1 income category, 11 expense categories mapped to Schedule C and 2 owner accounts. Two categories are flagged for the accountant: meals, usually 50% deductible, and car costs, where mileage and actual costs are different methods. The bank feed is read-only and two-factor is on.
 :::
 
 **Money:** a new business checking account and one debit card in the LLC's name. Notes record the bank name and last four digits only.
@@ -121,7 +121,7 @@ alt: Example Groomer Books setup in QuickBooks Online Essentials: 1 income categ
 | Owner contribution, Owner draw (equity) | Not on Schedule C | |
 
 ```text
-BACK OFFICE RULES (example, Groomer Books)
+BACK OFFICE RULES (example, Rolling Ledger)
 1-6: copied from Lesson 1, starting with "Agents never move money."
 Helpers:
 - Claude Cowork: the Finance folder only

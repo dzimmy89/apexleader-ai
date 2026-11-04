@@ -26,11 +26,11 @@ transcript: One profile, one sheet, and twenty-five prospects you can defend. Le
 ## Warm-up
 
 :::checkpoint
-Q: Which of these is the best "why now" signal for a dog grooming salon prospect?
+Q: Which of these is the best "why now" signal for a food truck prospect?
 - [ ] They have a website
-- [x] They announced a second location last month
+- [x] They announced a second truck last month
 - [ ] They have more than 100 Google reviews
-Why: A "why now" signal is a recent change that creates a need. A new location means more transactions, more staff and messier books.
+Why: A "why now" signal is a recent change that creates a need. A second truck means more transactions, more staff and messier books.
 :::
 
 ## Steps
@@ -45,7 +45,7 @@ image: /learn/figures/ai-sales/exercise-01-fig-1.webp
 alt: Six steps: write the five-part profile with a why-now line; create a 12-column sheet; research 30 sourced matches; spot-check 5 rows and rerun if 2 or more are wrong; score and keep the top 25; and add a do-not-contact tab.
 :::
 
-1. **Pick your business.** Use your own, or the sample business for this course: a monthly bookkeeping service for independent dog groomers, run by one founder. Write one sentence at the top of a new Google Doc called "ICP": "I help [who] with [problem] so they can [outcome]."
+1. **Pick your business.** Use your own, or the sample business for this course: a monthly bookkeeping service for independent food truck owners, run by one founder. Write one sentence at the top of a new Google Doc called "ICP": "I help [who] with [problem] so they can [outcome]."
 
 2. **Fill in the five-part profile** under that sentence: Who, Where, Size signal, Pain signal, Disqualifier. Add a "Why now" line with two or three recent events that make a prospect more likely to buy.
 
@@ -95,7 +95,7 @@ Set Score to `=H2+I2` and fill down. Override any AI score you disagree with.
 
 :::example
 title: See an example result
-Here is the first lead list for the sample business, Groomer Books. The businesses below are made up for this example; your list will hold real, sourced businesses.
+Here is the first lead list for the sample business, Rolling Ledger. The businesses below are made up for this example; your list will hold real, sourced businesses.
 
 :::video
 id: sales-ex1-reveal
@@ -104,36 +104,36 @@ status: paused
 src: /learn/video/ai-sales/sales-ex1-reveal.mp4
 captions: /learn/video/ai-sales/sales-ex1-reveal.vtt
 poster: /learn/video/ai-sales/sales-ex1-reveal.jpg
-transcript: For Groomer Books, thirty matches became twenty-five prospects, and not one guessed email. Here's the example. The profile targets independent groomers in Austin and Denver, with one to ten staff. The researcher returned thirty rows. Three were franchises, marked exclude. The spot-check opened five rows. One listed an owner email that didn't appear on the salon's own site, so it became unknown. One wrong out of five passes the check. That left twenty-seven rows to score. Six scored five, eleven scored four, eight scored three, and two scored two. The two lowest were cut, leaving twenty-five. Four of them have no public email, so the sheet uses their contact form instead. Every row is marked new, and the do-not-contact tab is ready for exercise two.
+transcript: For Rolling Ledger, thirty matches became twenty-five prospects, and not one guessed email. Here's the example. The profile targets independent food truck owners in Austin and Denver, with one to three trucks. The researcher returned thirty rows. Three were franchise trucks, marked exclude. The spot-check opened five rows. One listed an owner email that didn't appear on the truck's own pages, so it became unknown. One wrong out of five passes the check. That left twenty-seven rows to score. Six scored five, eleven scored four, eight scored three, and two scored two. The two lowest were cut, leaving twenty-five. Four of them have no public email, so the sheet uses their contact form instead. Every row is marked new, and the do-not-contact tab is ready for exercise two.
 :::
 
 :::infographic
 id: fig-2
 type: comparison
-title: Groomer Books: 30 found, 25 kept
-shows: Under "Groomer Books lead list" tagged example: a column of counts. 30 found, minus 3 franchises marked EXCLUDE, gives 27 scored. A score bar: 6 at 5, 11 at 4, 8 at 3, 2 at 2 (cut). Result: 25 kept, all Status New, 4 using a contact form.
+title: Rolling Ledger: 30 found, 25 kept
+shows: Under "Rolling Ledger lead list" tagged example: a column of counts. 30 found, minus 3 franchise trucks marked EXCLUDE, gives 27 scored. A score bar: 6 at 5, 11 at 4, 8 at 3, 2 at 2 (cut). Result: 25 kept, all Status New, 4 using a contact form.
 data: example numbers: 30 found, 3 excluded, 27 scored (6, 11, 8, 2), 25 kept, 4 contact forms
 image: /learn/figures/ai-sales/exercise-01-fig-2.webp
-alt: Example Groomer Books lead list: the researcher found 30 businesses, 3 were franchises and excluded, and 27 were scored: 6 scored 5, 11 scored 4, 8 scored 3 and 2 scored 2. The 2 lowest were cut, leaving 25, all marked New, with 4 using a contact form because they publish no email.
+alt: Example Rolling Ledger lead list: the researcher found 30 businesses, 3 were franchise trucks and excluded, and 27 were scored: 6 scored 5, 11 scored 4, 8 scored 3 and 2 scored 2. The 2 lowest were cut, leaving 25, all marked New, with 4 using a contact form because they publish no email.
 :::
 
-**Offer sentence:** I help independent dog groomers with monthly bookkeeping so they can stop dreading tax season.
+**Offer sentence:** I help independent food truck owners with monthly bookkeeping so they can stop dreading tax season.
 
-**Profile:** independent salons and mobile groomers in Austin, TX and Denver, CO, 1 to 10 staff, one or two locations, booking-only websites, owner does admin. Exclude franchises, vet clinics and pet stores. **Why now:** a new location, a hiring post, or a price change on their site.
+**Profile:** independent food truck owners in Austin, TX and Denver, CO, 1 to 3 trucks, up to 10 staff, cash-heavy sales, owner does admin. Exclude franchise trucks, restaurant groups and commissary kitchens. **Why now:** a second truck, a hiring post, or a new catering menu.
 
 | Business name (example) | City | Contact | Why-now signal | Fit | Signal | Score | Status |
 |---|---|---|---|---|---|---|---|
-| Sample Salon A | Austin | Published contact email | Second location opening next month | 3 | 2 | 5 | New |
-| Sample Mobile Groomer B | Denver | Contact form only | Hiring a second groomer | 3 | 1 | 4 | New |
-| Sample Salon C | Austin | unknown (owner email not on its site) | New package prices posted | 2 | 1 | 3 | New |
-| Sample Franchise D | Denver | - | EXCLUDE: franchise | - | - | - | Removed |
+| Sample Taco Truck A | Austin | Published contact email | Second truck launching next month | 3 | 2 | 5 | New |
+| Sample Coffee Truck B | Denver | Contact form only | Hiring a second cook | 3 | 1 | 4 | New |
+| Sample BBQ Truck C | Austin | unknown (owner email not on its pages) | New catering menu posted | 2 | 1 | 3 | New |
+| Sample Franchise Truck D | Denver | - | EXCLUDE: franchise | - | - | - | Removed |
 
 **How the list got to 25:**
 
 | Step | Rows |
 |---|---|
 | Researcher returned | 30 |
-| Marked EXCLUDE (franchises) and removed | 3 |
+| Marked EXCLUDE (franchise trucks) and removed | 3 |
 | Spot-check of 5 rows | 1 wrong email, changed to unknown (passes: fewer than 2 wrong) |
 | Scored | 27: six 5s, eleven 4s, eight 3s, two 2s |
 | Cut the two lowest | 2 |

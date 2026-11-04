@@ -26,7 +26,7 @@ transcript: Thirty days of posts, one sheet, and a Status column that you contro
 ## Warm-up
 
 :::checkpoint
-Q: Claude drafts a post saying "Groomers lose an average of $4,000 a year to missed deductions." You have no source for that number. What do you do?
+Q: Claude drafts a post saying "Food truck owners lose an average of $4,000 a year to missed deductions." You have no source for that number. What do you do?
 - [ ] Post it, since AI tools are usually right about numbers
 - [x] Cut the number or replace it with a fact you can source, and note the source in the calendar
 - [ ] Soften it to "about $4,000" and post it
@@ -45,7 +45,7 @@ image: /learn/figures/ai-marketing/exercise-01-fig-1.webp
 alt: Six steps: set up the project with your brand kit, offer and customer; get 3 or 4 pillars; write your rhythm in one line; generate a 10-column calendar with every row as draft; review each row; and finish with at least 12 approved rows, each with a source.
 :::
 
-1. **Set up your project.** Create a Claude Project (or a ChatGPT project or Gemini Gem) called `Marketing`. Upload your brand kit, a one-paragraph description of your offer and a short customer profile. No business yet? Use **Groomer Books**: monthly bookkeeping for independent dog groomers, $149 a month, run by one founder, customers who hate paperwork and fear tax season.
+1. **Set up your project.** Create a Claude Project (or a ChatGPT project or Gemini Gem) called `Marketing`. Upload your brand kit, a one-paragraph description of your offer and a short customer profile. No business yet? Use **Rolling Ledger**: monthly bookkeeping for independent food truck owners, $149 a month, run by one founder, customers who hate paperwork and fear tax season.
 
 2. **Get your pillars.** Paste this prompt:
 
@@ -88,7 +88,7 @@ alt: Six steps: set up the project with your brand kit, offer and customer; get 
 
 :::example
 title: See an example result
-Here is the first calendar for the sample business, Groomer Books, after one review pass. The rows are examples; yours will follow your own rhythm and pillars.
+Here is the first calendar for the sample business, Rolling Ledger, after one review pass. The rows are examples; yours will follow your own rhythm and pillars.
 
 :::video
 id: mkt-ex1-reveal
@@ -97,31 +97,31 @@ status: paused
 src: /learn/video/ai-marketing/mkt-ex1-reveal.mp4
 captions: /learn/video/ai-marketing/mkt-ex1-reveal.vtt
 poster: /learn/video/ai-marketing/mkt-ex1-reveal.jpg
-transcript: For Groomer Books, thirty days became twenty-one rows, and fifteen of them earned approval. Here's the example. The rhythm is LinkedIn on Monday, Wednesday and Friday, plus a blog article every Thursday. Over thirty days, that's thirteen posts and four articles: seventeen rows. The four pillars are money mistakes groomers make, tax season without panic, behind the scenes, and client stories. The review took forty minutes. Ten rows were approved as written, and three more after edits. Four were deleted: one quoted a four-thousand-dollar figure with no source, and one named a real client. Claude refilled those four rows, and two of the new ones were approved. Then week one's article became three LinkedIn posts and a newsletter paragraph, all still draft. That's fifteen approved rows, and six drafts waiting for next week's review.
+transcript: For Rolling Ledger, thirty days became twenty-one rows, and fifteen of them earned approval. Here's the example. The rhythm is LinkedIn on Monday, Wednesday and Friday, plus a blog article every Thursday. Over thirty days, that's thirteen posts and four articles: seventeen rows. The four pillars are money mistakes food truck owners make, tax season without panic, behind the scenes, and client stories. The review took forty minutes. Ten rows were approved as written, and three more after edits. Four were deleted: one quoted a four-thousand-dollar figure with no source, and one named a real client. Claude refilled those four rows, and two of the new ones were approved. Then week one's article became three LinkedIn posts and a newsletter paragraph, all still draft. That's fifteen approved rows, and six drafts waiting for next week's review.
 :::
 
 :::infographic
 id: fig-2
 type: comparison
-title: Groomer Books calendar after review
-shows: Under "Groomer Books calendar" tagged example: a large 21 rows, split into a bar of 15 approved (10 as written, 3 after edits, 2 refills) and 6 draft (2 refills, 4 repurposed). A note: 4 rows deleted and refilled, review took 40 minutes.
+title: Rolling Ledger calendar after review
+shows: Under "Rolling Ledger calendar" tagged example: a large 21 rows, split into a bar of 15 approved (10 as written, 3 after edits, 2 refills) and 6 draft (2 refills, 4 repurposed). A note: 4 rows deleted and refilled, review took 40 minutes.
 data: example numbers: 17 planned rows, 21 total, 15 approved, 6 draft, 4 deleted, 40 minutes
 image: /learn/figures/ai-marketing/exercise-01-fig-2.webp
-alt: Example Groomer Books calendar after one review: 21 rows, 15 approved (10 as written, 3 after edits and 2 refills) and 6 still draft (2 refills and 4 repurposed pieces). Four rows were deleted and refilled, and the review took 40 minutes.
+alt: Example Rolling Ledger calendar after one review: 21 rows, 15 approved (10 as written, 3 after edits and 2 refills) and 6 still draft (2 refills and 4 repurposed pieces). Four rows were deleted and refilled, and the review took 40 minutes.
 :::
 
 **Rhythm:** LinkedIn Monday, Wednesday and Friday, blog article Thursday. Over 30 days that is 13 posts and 4 articles, so 17 rows.
 
-**Pillars:** money mistakes groomers make, tax season without panic, behind the scenes of running a grooming business, client stories.
+**Pillars:** money mistakes food truck owners make, tax season without panic, behind the scenes of running a food truck, client stories.
 
 | Day | Channel | Pillar | Working title | Source or proof needed | Status |
 |---|---|---|---|---|---|
-| Mon | LinkedIn | Money mistakes | The three receipts groomers lose most often | Founder's own client notes, no names | approved |
+| Mon | LinkedIn | Money mistakes | The fuel and commissary receipts trucks lose most often | Founder's own client notes, no names | approved |
 | Wed | LinkedIn | Tax season | What to gather in January so April is boring | IRS Schedule C instructions | approved (edited) |
-| Thu | Blog | Tax season | A groomer's year-end checklist | IRS Schedule C instructions | approved |
+| Thu | Blog | Tax season | A food truck owner's year-end checklist | IRS Schedule C instructions | approved |
 | Fri | LinkedIn | Behind the scenes | How I close a client's month in 40 minutes | Founder's own process | approved |
-| Mon | LinkedIn | Money mistakes | Groomers lose $4,000 a year to missed deductions | None found | deleted |
-| Wed | LinkedIn | Client stories | (named a real salon) | No permission | deleted |
+| Mon | LinkedIn | Money mistakes | Food truck owners lose $4,000 a year to missed deductions | None found | deleted |
+| Wed | LinkedIn | Client stories | (named a real truck) | No permission | deleted |
 
 **After the review:**
 

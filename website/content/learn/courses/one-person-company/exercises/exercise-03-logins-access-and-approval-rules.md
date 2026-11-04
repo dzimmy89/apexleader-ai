@@ -92,7 +92,7 @@ status: paused
 src: /learn/video/one-person-company/opc-ex3-reveal.mp4
 captions: /learn/video/one-person-company/opc-ex3-reveal.vtt
 poster: /learn/video/one-person-company/opc-ex3-reveal.jpg
-transcript: For Groomer Books, the billing assistant gets two apps and never sees a password. Here's the example policy. The invoicing app gets a separate viewer user, so the agent can read overdue invoices and nothing more. Gmail connects through Claude's official connector at the draft level, so reminders land as drafts. The bank isn't connected at all. The rule has four parts. Do alone: read invoices and draft reminders. Ask me first: sending any email, or changing an invoice. Hand to me: logins, codes, refunds and payment questions. Never: move money, delete records, or share client data. For the cleanup, the founder removed an old scheduling app and confirmed two-factor on the main email. And the off switch is written down: disconnect Gmail in Claude, and remove the agent's user from the invoicing app. That's a policy you can set up today.
+transcript: For Rolling Ledger, the billing assistant gets two apps and never sees a password. Here's the example policy. The invoicing app gets a separate viewer user, so the agent can read overdue invoices and nothing more. Gmail connects through Claude's official connector at the draft level, so reminders land as drafts. The bank isn't connected at all. The rule has four parts. Do alone: read invoices and draft reminders. Ask me first: sending any email, or changing an invoice. Hand to me: logins, codes, refunds and payment questions. Never: move money, delete records, or share client data. For the cleanup, the founder removed an old scheduling app and confirmed two-factor on the main email. And the off switch is written down: disconnect Gmail in Claude, and remove the agent's user from the invoicing app. That's a policy you can set up today.
 :::
 
 :::infographic
@@ -102,12 +102,12 @@ title: Billing assistant access
 shows: Under "Billing assistant access" tagged example: three rows with Lucide icons and level pills: Invoicing app, separate viewer user, Read; Gmail, Claude connector, Draft; Bank, not connected, Never in red. A paper card: Asks before any email is sent.
 data: none
 image: /learn/figures/one-person-company/exercise-03-fig-2.webp
-alt: Example access for the Groomer Books billing assistant: the invoicing app through a separate viewer user at read level, Gmail through the Claude connector at draft level, and the bank not connected. It asks before any email is sent.
+alt: Example access for the Rolling Ledger billing assistant: the invoicing app through a separate viewer user at read level, Gmail through the Claude connector at draft level, and the bank not connected. It asks before any email is sent.
 :::
 
 | App | Access method | Level |
 |---|---|---|
-| Invoicing app | Separate user, billing-agent@groomerbooks.example, viewer role | Read |
+| Invoicing app | Separate user, billing-agent@rollingledger.example, viewer role | Read |
 | Gmail | Claude's official Gmail connector | Draft |
 | Bank | Not connected | Never |
 
