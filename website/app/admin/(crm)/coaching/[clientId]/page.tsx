@@ -10,6 +10,8 @@ import { Button } from "@/components/ui/button";
 import type { TimelineEvent } from "@/lib/crm/timeline";
 import { cn } from "@/lib/utils";
 
+const ENDED_CLIENT_STATUSES = new Set(["cancelled", "subscription_cancelled", "refunded", "completed"]);
+
 interface ClientDetail {
   id: string;
   email?: string;
@@ -24,6 +26,7 @@ interface ClientDetail {
   contractSignedAt?: string | null;
   signedContractPdfUrl?: string | null;
   signatureId?: string;
+  contractSentAt?: string | null;
   stripeCustomerId?: string;
 }
 
@@ -70,7 +73,7 @@ export default function ClientDetailPage({
 
   async function triggerContract() {
     if (!data?.client?.packageId) return;
-    await fetch("/api/coaching/contract", {
+    const res = await fetch("/api/coaching/contract", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -79,9 +82,18 @@ export default function ClientDetailPage({
         planId: data.client.planId || "full",
         signerName: data.client.name || data.client.email || data.client.id,
         signerEmail: data.client.email || data.client.id,
+        sendEmail: true,
       }),
     });
-    toast.success("Contract signing link created and emailed.");
+    const body = (await res.json().catch(() => ({}))) as { error?: string };
+    if (!res.ok) {
+      toast.error(body.error || "Could not send the agreement");
+      return;
+    }
+    toast.success("Agreement emailed to the client.");
+    setData((d) =>
+      d && d.client ? { ...d, client: { ...d.client, contractSentAt: new Date().toISOString() } } : d
+    );
   }
 
   async function issueMagicLink() {
@@ -124,7 +136,7 @@ export default function ClientDetailPage({
   const onboardingSteps = [
     {
       label: "Contract sent",
-      done: Boolean(client?.signatureId || client?.contractSignedAt),
+      done: Boolean(client?.contractSentAt || client?.signatureId || client?.contractSignedAt),
     },
     {
       label: "Contract signed",
@@ -200,7 +212,7 @@ export default function ClientDetailPage({
         ) : undefined
       }
       banner={
-        client && (app?.status === "won" || client.status === "active") ? (
+        client && !ENDED_CLIENT_STATUSES.has(client.status || "") ? (
           <div className="rounded-lg border border-[var(--color-border-muted)] bg-[var(--color-bg-panel)] p-4">
             <p className="font-mono text-xs uppercase tracking-wider text-[var(--color-text-muted)]">
               Onboarding checklist
