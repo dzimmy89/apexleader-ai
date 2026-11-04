@@ -7,6 +7,16 @@ template: v2
 
 # Lesson 6: Prospect With a Research Agent
 
+:::video
+id: sales-l6-overview
+kind: overview
+status: paused
+src: /learn/video/ai-sales/sales-l6-overview.mp4
+captions: /learn/video/ai-sales/sales-l6-overview.vtt
+poster: /learn/video/ai-sales/sales-l6-overview.jpg
+transcript: In lesson one, a chat assistant found thirty businesses, slowly, with lots of unknowns. A dedicated research agent does it faster, with contact details and a reason for each row. This is AI Sales, lesson six: prospect with a research agent. In this lesson: plays, the prompt, spending credits, checking sources, and moving the keepers into your lead list. Origami turns a plain-English description of your buyer into a table of real businesses, from live sources like maps, review sites and licenses. It's strongest on local businesses, like food trucks. Start with one signal play, built around a why-now event, like a job post or a new location. Write the prompt from your customer profile, and save it. Search first, then pay for contacts only on the rows you keep. Spot-check five rows. Then import the keepers with their source. First, plays.
+:::
+
 :::key-concept
 A research agent such as Origami turns a plain-English description of your buyer into a table of real businesses, each with contact details and the reason it showed up. It does in minutes what Lesson 1 had you do by hand. Your job doesn't change: write a sharp profile, check the sources, and decide who makes the list.
 :::
@@ -44,6 +54,16 @@ Origami organizes prospecting into **plays**. Its own definition: a play is "one
 
 Start with one signal play. A list built around a "why now" event gives you a reason to write, which is the hardest part of a cold message.
 
+:::infographic
+id: fig-1
+type: comparison
+title: Five kinds of play
+shows: Five play cards with a Rolling Ledger example each: Buying signals (hiring a line cook, highlighted), New market, Website visitors, Conversations, Your network. Footer: start with one signal play.
+data: none
+image: /learn/figures/ai-sales/lesson-06-fig-1.webp
+alt: Five kinds of Origami play: buying signals such as a food truck hiring a line cook, a new market described in plain English, website visitors, public conversations asking for help, and your own network. Start with one signal play.
+:::
+
 ## Step 2: Write the prompt from your ICP
 
 Origami takes plain English, but it is literal, and reviewers report that similar prompts can return different results. So write the prompt once, save it, and reuse it. Build it straight from your Lesson 1 profile:
@@ -68,6 +88,16 @@ Run it and read the first 10 rows before you let it fetch more. If three of the 
 Origami pulls from sources that include LinkedIn. That's Origami's arrangement with its data sources, and it's covered by your agreement with Origami. It doesn't change the rule from Lesson 1: don't point your own bots or browser extensions at LinkedIn to scrape profiles.
 :::
 
+:::video
+id: sales-l6-prompt
+kind: inline
+status: paused
+src: /learn/video/ai-sales/sales-l6-prompt.mp4
+captions: /learn/video/ai-sales/sales-l6-prompt.vtt
+poster: /learn/video/ai-sales/sales-l6-prompt.jpg
+transcript: Origami takes plain English, but it's literal, and similar prompts can return different results. So write the prompt once, save it, and reuse it. Build it from your customer profile in four parts. Find: who and where, like independent food truck owners in Austin and Denver. Include: the size, one to ten staff, owner-operated. Signal: the why-now event, like a job post for a line cook in the last sixty days, or a new location in the last six months. And exclude: franchises, restaurant groups, catering companies and chains. Ask for each business's name, city, website, owner, business email, the signal and its date, with a source link for each. Then read the first ten rows before you fetch more. If three are wrong fits, tighten the exclude line and run it again. A saved prompt is how you get the same quality next month. Next: spending credits on purpose.
+:::
+
 ## Step 3: Spend credits deliberately
 
 Prospecting tools charge for contact lookups. Reviewers report that Origami charges for found emails and phones (phones cost several times more than emails) and nothing when no match is found. That makes three habits worth keeping:
@@ -77,6 +107,16 @@ Prospecting tools charge for contact lookups. Reviewers report that Origami char
 3. **Cap the first run.** Ask for 30 rows, not 300. You're testing the prompt, not filling a quarter's pipeline.
 
 Write down what you spent on each run. In Lesson 9 you'll compare cost per reply across every channel, and you can't do that without the numbers.
+
+:::infographic
+id: fig-2
+type: flow
+title: Search first, enrich second
+shows: Four steps: search 30 rows; prune poor fits; enrich emails only for the keepers (highlighted); skip phones. Footer: write down what each run cost.
+data: none
+image: /learn/figures/ai-sales/lesson-06-fig-2.webp
+alt: Spend credits in order: search for about 30 rows, prune the poor fits, request emails only for the rows you keep, and skip phone numbers. Write down what each run cost.
+:::
 
 ## Step 4: Check the sources
 
@@ -88,6 +128,16 @@ A verified email is more likely to be real. It isn't necessarily one the busines
 - If you sell into the EU or UK, collect only business contact details and check the privacy rules before you email anyone.
 
 If two of the five spot-checks fail, the list isn't ready. Fix the prompt and rerun.
+
+:::video
+id: sales-l6-credits
+kind: inline
+status: paused
+src: /learn/video/ai-sales/sales-l6-credits.mp4
+captions: /learn/video/ai-sales/sales-l6-credits.vtt
+poster: /learn/video/ai-sales/sales-l6-credits.jpg
+transcript: Prospecting tools charge for contact lookups, and phones cost several times more than emails. So spend in three moves. Search first, enrich second: review the matched businesses, delete the poor fits, and only then ask for contact details on the rows you kept. Skip phones by default. You won't cold call in this course, so add a phone only for a lead who has replied. And cap the first run at thirty rows, not three hundred. You're testing the prompt, not filling a quarter's pipeline. Write down what each run cost, because in lesson nine you'll compare cost per reply across every channel. Then check the sources. Open five rows at random. Is the signal real, and recent? Did the business publish that email itself? Remove personal details you don't need, like home addresses and personal cell numbers. If two of the five fail, fix the prompt and rerun. In the exercise, you'll run your first play.
+:::
 
 ## Step 5: Move the keepers into your Lead list
 

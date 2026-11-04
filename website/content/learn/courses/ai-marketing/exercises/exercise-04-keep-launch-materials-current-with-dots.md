@@ -104,7 +104,7 @@ Name: Rolling Ledger
 For: independent food truck owners, 1 to 3 trucks
 Plans: Monthly $149 a month. Annual $1,490 a year (two months free)   <- planted change
 Included: monthly bookkeeping, invoicing, a monthly report, a 45-minute onboarding call
-Not included: tax filing (we prepare the packet for your accountant), payroll
+Not included: tax filing (we prepare the packet for your accountant)
 Guarantee: cancel any month, no fee
 Features: receipts by photo, cash sales log, fuel and commissary tracking
 Links: rollingledger.com/pricing, rollingledger.com/start

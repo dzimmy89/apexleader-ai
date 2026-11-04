@@ -7,6 +7,16 @@ template: v2
 
 # Lesson 2: Hire a Sales Bot
 
+:::video
+id: sales-l2-overview
+kind: overview
+status: paused
+src: /learn/video/ai-sales/sales-l2-overview.mp4
+captions: /learn/video/ai-sales/sales-l2-overview.vtt
+poster: /learn/video/ai-sales/sales-l2-overview.jpg
+transcript: Twenty thoughtful first emails take a whole afternoon. A Sales Bot does the research and the first draft, and you spend fifteen minutes reviewing. This is AI Sales, lesson two: hire a Sales Bot. In this lesson: one written job, locked-down access, email that lands, the law and the platforms, and reviewing like an editor. The Bot's job is narrow. Each weekday, it takes the next five top-scored leads, confirms each contact email is published on the business's own site, and drafts a short, personal first email into a sheet. Then it stops. It never sends, and it never touches LinkedIn. You review each draft, and you click send, from a domain set up so your email lands in the inbox. Every message carries your real name, a postal address and an easy way to opt out. First, the job description.
+:::
+
 :::key-concept
 A Sales Bot is a persistent agent with one job: research the next prospects on your list, draft a personal first message for each, and put the drafts in front of you. It never sends on its own. You click send, from a domain that is set up to land in inboxes, inside the rules of CAN-SPAM and each platform's terms.
 :::
@@ -47,6 +57,16 @@ Remember these rules for every future task. Ask me if anything is unclear.
 
 Keep your voice notes in that first message too: "short sentences, no exclamation marks, never claim results we haven't delivered."
 
+:::infographic
+id: fig-1
+type: flow
+title: The Sales Bot's daily loop
+shows: Five steps left to right: take 5 New leads scored 4 or 5; confirm the email on their own site; draft under 120 words with footer; set Drafted and stop (highlighted); you review and send.
+data: none
+image: /learn/figures/ai-sales/lesson-02-fig-1.webp
+alt: Each weekday the Sales Bot takes five new leads scored 4 or 5, confirms each email on the business's own site, drafts a first email under 120 words with your footer, sets the row to Drafted and stops. You review and send.
+:::
+
 ## Step 2: Lock down access and approvals
 
 This is where a Sales Bot is safe or not.
@@ -59,6 +79,16 @@ This is where a Sales Bot is safe or not.
 
 :::warning
 The safest setup is that the Bot cannot send at all. It drafts into a sheet, and you copy approved drafts into your own email. If you later let it send from a dedicated mailbox, keep the Ask first rule on every send. Approval controls the action before it runs. It cannot unsend an email.
+:::
+
+:::video
+id: sales-l2-access
+kind: inline
+status: paused
+src: /learn/video/ai-sales/sales-l2-access.mp4
+captions: /learn/video/ai-sales/sales-l2-access.vtt
+poster: /learn/video/ai-sales/sales-l2-access.jpg
+transcript: This is where a Sales Bot is safe, or not. Start with its own login: a separate Google account, with only the two sheets it needs shared to it. When it reaches a sign-in page, take over and type the password yourself. Then add an approval rule. In Auto-review, set Ask first for sending any external email or message. Ask first beats allow rules, so nothing slips through. And know the limit: all your Bots share one cloud computer, including signed-in browser sessions. Separate Bots are not a security boundary, so never sign that computer in to your bank. The safest setup of all is a Bot that can't send. It drafts into a sheet, and you copy approved drafts into your own email. If you ever let it send, keep Ask first on every message. And if an approval card asks to send twelve at once, deny it. Approve only what you've read. Next: making sure your email lands.
 :::
 
 ## Step 3: Make sure your email lands
@@ -76,6 +106,16 @@ Even perfect drafts fail if your domain looks like a spammer. Check these with w
 
 Google and Yahoo's strictest rules (including one-click unsubscribe headers) apply to senders of 5,000 or more messages a day to personal accounts. A solo founder sending 10 personal emails a day is far below that, but the same habits keep you out of the spam folder.
 
+:::infographic
+id: fig-2
+type: comparison
+title: Six email basics
+shows: Six cards in a grid: SPF (who may send), DKIM (signs each message), DMARC (start at p=none), Volume (5 to 10 a day, grow slowly), Bounces (sourced addresses only), Complaints (stay near zero, under 0.3%).
+data: none
+image: /learn/figures/ai-sales/lesson-02-fig-2.webp
+alt: Six basics decide whether your email lands: SPF lists who may send for your domain, DKIM signs each message, DMARC starts at p=none, volume starts at 5 to 10 new emails a day, bounces stay low by using sourced addresses, and spam complaints stay near zero, well under 0.3%.
+:::
+
 ## Step 4: Follow the law and the platforms
 
 **CAN-SPAM (US).** The FTC's guide is clear that the law covers business-to-business email too. For every commercial email:
@@ -89,6 +129,16 @@ Google and Yahoo's strictest rules (including one-click unsubscribe headers) app
 Each violating email can cost up to $53,088, per the FTC guide. Keep a "Do not contact" tab in your lead sheet, and tell the Bot to check it before drafting. If you email people in Canada, the EU or the UK, rules are stricter (often requiring consent first), so check with a lawyer before you do.
 
 **LinkedIn.** LinkedIn's terms prohibit bots and automation that act on the site for you, including scraping and automated messages or connection requests. Accounts get restricted for it. Keep your Sales Bot off LinkedIn. If you later decide the time saved is worth that risk, Lesson 7 shows how to run LinkedIn steps in Origami's Sequencer with one real profile, a low daily cap and approval on.
+
+:::video
+id: sales-l2-law
+kind: inline
+status: paused
+src: /learn/video/ai-sales/sales-l2-law.mp4
+captions: /learn/video/ai-sales/sales-l2-law.vtt
+poster: /learn/video/ai-sales/sales-l2-law.jpg
+transcript: Every message your Bot drafts has to follow the law, and the platforms. In the US, the CAN-SPAM Act covers business-to-business email too. Every commercial email needs an honest From line and subject, a plain, honest pitch, a valid postal address, and a clear way to opt out, honored within ten business days. You stay responsible even when an agent writes or sends for you, and each violating email can cost up to fifty-three thousand dollars. So keep a do-not-contact tab, and tell the Bot to check it before every draft. Outside the US, rules are stricter, so check before you email people in Canada, the EU or the UK. Then LinkedIn. Its terms ban bots and automation that act on the site for you, including automated messages and connection requests. Accounts get restricted for it. So your Sales Bot stays off LinkedIn entirely. In the exercise, you'll approve your first five drafts.
+:::
 
 ## Step 5: Review drafts like an editor
 

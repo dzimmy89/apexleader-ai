@@ -7,6 +7,16 @@ template: v2
 
 # Lesson 7: A Sequence That Waits for You
 
+:::video
+id: sales-l7-overview
+kind: overview
+status: paused
+src: /learn/video/ai-sales/sales-l7-overview.mp4
+captions: /learn/video/ai-sales/sales-l7-overview.vtt
+poster: /learn/video/ai-sales/sales-l7-overview.jpg
+transcript: Following up on day three and day seven for twenty leads means sixty manual sends a week. A sequencer handles the timing. You still approve the words. This is AI Sales, lesson seven: a sequence that waits for you. In this lesson: approval first, protecting your main domain, three touches, LinkedIn with eyes open, and reading results honestly. Origami's Sequencer sends a short series of emails, and optionally LinkedIn steps, on a schedule. Any reply, even not interested, removes the lead. Turn on approval before you build anything, so every message waits for you. Send cold email from a separate domain, with a cap of ten new emails a day per inbox. Write three short touches, each with your real name, postal address and an opt-out line. Then read sent, replies, opt-outs and bounces every two weeks. First, approval.
+:::
+
 :::key-concept
 A sequence is a short series of touches (emails, LinkedIn steps, or both) that a tool sends on a schedule and stops when someone replies. Origami's Sequencer can run one for you. You set it up so every message waits for your approval, it sends from a domain that can't hurt your main inbox, and it moves slowly enough to protect your reputation and your LinkedIn account.
 :::
@@ -59,6 +69,16 @@ For cold outreach, use a separate sending domain. Origami can set up sending inb
 
 **Daily caps.** Start at 10 new emails a day per inbox and keep warmup on. Raise the cap only after two weeks with bounces under 2% and no spam complaints.
 
+:::infographic
+id: fig-1
+type: comparison
+title: Protect your main domain
+shows: Two columns. Main business inbox: clients and invoices, keep it clean. Separate sending domain (highlighted): cold outreach, own SPF, DKIM, DMARC and warmup, replies forwarded to you. Footer: 10 new emails a day per inbox.
+data: none
+image: /learn/figures/ai-sales/lesson-07-fig-1.webp
+alt: Keep your main business inbox for clients and invoices. Send cold outreach from a separate sending domain with its own SPF, DKIM, DMARC and warmup, with replies forwarded to you. Start at 10 new emails a day per inbox.
+:::
+
 ## Step 3: Write three touches
 
 Short sequences work better for a one-person business: fewer messages to approve and less chance of annoying anyone. Use three email steps:
@@ -79,6 +99,26 @@ Never claim results, percentages or revenue figures.
 Mention only facts from the lead's own website or listing.
 Never say we've worked together or that someone referred us.
 ```
+
+:::infographic
+id: fig-2
+type: timeline
+title: Three touches
+shows: A timeline of three emails: day 0, one detail, one line, one small question (under 120 words); day 3, a useful tip (under 80); day 7, a polite close (under 50). Footer: any reply stops the sequence.
+data: none
+image: /learn/figures/ai-sales/lesson-07-fig-2.webp
+alt: Three touches: on day 0 one specific detail, one line on what you do and one small question in under 120 words; on day 3 a useful tip in under 80 words; on day 7 a polite close in under 50 words. Any reply stops the sequence.
+:::
+
+:::video
+id: sales-l7-domain
+kind: inline
+status: paused
+src: /learn/video/ai-sales/sales-l7-domain.mp4
+captions: /learn/video/ai-sales/sales-l7-domain.vtt
+poster: /learn/video/ai-sales/sales-l7-domain.jpg
+transcript: A spam complaint on your main domain can follow your invoices into the junk folder. So for cold outreach, send from a separate domain, like getrollingledger dot com. It needs its own SPF, DKIM and DMARC, warmup, and a real reply path that reaches you. Origami can set up sending inboxes for you. Then set the cap: ten new emails a day per inbox, with warmup on. Raise it only after two weeks with bounces under two percent and no spam complaints. Now the three touches. Day zero: one specific detail from their business, one line on what you do, and one small question, under a hundred and twenty words. Day three: a useful tip related to their signal, under eighty words. Day seven: a polite close. Should I stop emailing? Under fifty words. Every email carries your footer. Next: LinkedIn, with your eyes open.
+:::
 
 ## Step 4: LinkedIn steps, with eyes open
 
@@ -104,6 +144,16 @@ A sample mixed sequence for Rolling Ledger:
 | 3 after accept | LinkedIn | Two-line message: thanks for connecting, one question about their new location |
 | 4 | Email | Step 2 email (skipped if they've replied anywhere) |
 | 8 | Email | Step 3 close |
+
+:::video
+id: sales-l7-linkedin
+kind: inline
+status: paused
+src: /learn/video/ai-sales/sales-l7-linkedin.mp4
+captions: /learn/video/ai-sales/sales-l7-linkedin.vtt
+poster: /learn/video/ai-sales/sales-l7-linkedin.jpg
+transcript: Origami can send LinkedIn connection requests and messages from your real profile. Know exactly what that risks. LinkedIn's user agreement bans bots and automated tools that send messages or connection requests. No volume is safe under those terms. If you decide the risk is worth it, use these limits. One real profile: your own. No extra profiles. Start at ten connection requests a weekday, with no note, or a one-line note with no pitch. Pitch only after someone accepts. Keep approval on for every LinkedIn message. If LinkedIn shows a warning, asks you to verify your identity, or acceptance drops sharply, pause LinkedIn steps for two weeks. And keep your other bots off LinkedIn entirely. Then after two weeks, read four numbers for each step: sent, replied, opted out, and bounced. Rising opt-outs mean stop and fix. Compare against your own last two weeks, not vendor marketing. In the exercise, you'll build your sequence.
+:::
 
 ## Step 5: Read results honestly
 

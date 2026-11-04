@@ -7,6 +7,16 @@ template: v2
 
 # Lesson 5: Proposals That Update Themselves
 
+:::video
+id: sales-l5-overview
+kind: overview
+status: paused
+src: /learn/video/ai-sales/sales-l5-overview.mp4
+captions: /learn/video/ai-sales/sales-l5-overview.vtt
+poster: /learn/video/ai-sales/sales-l5-overview.jpg
+transcript: Founders rewrite every proposal from scratch, then forget to update the old ones when prices change. This is AI Sales, lesson five: proposals that update themselves. In this lesson: separate the template from the facts, draft and pressure-test with Claude, let a Dot keep drafts current, freeze before you send, and learn from your proposals. A proposal is a template plus a few facts: the client's situation, your offer and your price. Keep the facts in one sheet called Offer facts, with tabs for packages, terms, proof and clients. Claude fills the template from your call notes, then critiques it as a skeptical buyer would. An OpenAI Dot checks every draft each morning against the sheet. And when a proposal is ready, you freeze it as a dated PDF, and send it yourself. The client keeps the version they saw. First, the facts sheet.
+:::
+
 :::key-concept
 A proposal is a template plus a few facts: the client's situation, your offer, your price. Keep those facts in one source of truth, let Claude write and pressure-test the words, and let an OpenAI Dot keep a live proposal Page in ChatGPT Space current as the facts change. The moment you send, you freeze a dated copy. Nothing goes to a client without your click.
 :::
@@ -49,6 +59,16 @@ Plain language, under 450 words, no hype.
 
 The rule for proof: only use results and quotes you can document and have permission to share. Claude will happily write "clients save 10 hours a month." Don't let it, unless that's true and you can show it.
 
+:::infographic
+id: fig-1
+type: diagram
+title: Template plus facts
+shows: On the left a template card with five sections; on the right a paper card, the Offer facts sheet with four tabs (Packages, Terms, Proof, Clients). Arrow: the facts fill the placeholders. Footer: proof only with permission.
+data: none
+image: /learn/figures/ai-sales/lesson-05-fig-1.webp
+alt: A proposal is a template with five sections plus one Offer facts sheet with four tabs: packages, terms, proof and clients. The facts fill the template's placeholders, and proof is only used with the client's permission.
+:::
+
 ## Step 2: Draft and pressure-test with Claude
 
 After a call (Lesson 4), give Claude the notes, the template and the Offer facts row:
@@ -60,6 +80,16 @@ Then, as a skeptical truck owner, list the three biggest reasons Dana might not 
 ```
 
 You get a draft and a short critique. Make the edits you agree with. This is judgment work, and Claude is good at it.
+
+:::video
+id: sales-l5-draft
+kind: inline
+status: paused
+src: /learn/video/ai-sales/sales-l5-draft.mp4
+captions: /learn/video/ai-sales/sales-l5-draft.vtt
+poster: /learn/video/ai-sales/sales-l5-draft.jpg
+transcript: After the call, hand Claude three things: your notes, your template, and the client's row from Offer facts. Ask it to fill the template, using the client's own words in the what we heard section. Then ask for the hard part. As a skeptical buyer, list the three biggest reasons this client might not sign, and suggest one sentence to address each. Don't add any claims that aren't in the sheet. You get a draft and a short critique. Make the edits you agree with. This is judgment work, and Claude is good at it. One rule for proof: only use results and quotes you can document, and have permission to share. Claude will happily write clients save ten hours a month. Don't let it, unless you can show where that number came from. Highlight every number in the draft, and trace each one back to your facts sheet. Next: keeping drafts current on their own.
+:::
 
 ## Step 3: Let a Dot keep drafts current
 
@@ -100,6 +130,26 @@ A proposal that changes after the client reads it is a problem: they see one pri
 If prices change later, the client keeps the price in the version you sent until you decide otherwise. If you want to send an updated version, make a v2 and say what changed in your email.
 
 Signing contracts is yours too. Even agents that can operate e-signature tools are built to ask first: Claude Duet, for example, asks for approval before signing a document. Keep it that way.
+
+:::infographic
+id: fig-2
+type: flow
+title: Freeze before you send
+shows: Five steps: read and check every number; export a dated v1 PDF; tag the page Sent so the Dot stops (highlighted); send it from your own email; update the Clients tab.
+data: none
+image: /learn/figures/ai-sales/lesson-05-fig-2.webp
+alt: Before sending, read the draft and check every number, export a dated version 1 PDF, tag the page as Sent so the Dot stops updating it, send it from your own email, and update the Clients tab.
+:::
+
+:::video
+id: sales-l5-freeze
+kind: inline
+status: paused
+src: /learn/video/ai-sales/sales-l5-freeze.mp4
+captions: /learn/video/ai-sales/sales-l5-freeze.vtt
+poster: /learn/video/ai-sales/sales-l5-freeze.jpg
+transcript: A proposal that changes after the client reads it is a problem. They see one price, and sign another. So freeze it before you send. First, read the whole draft yourself, and check every number against the facts sheet. Second, export it to a PDF with the client's name, the date, and version one. Third, retag the draft as sent, so the Dot stops updating it. The Dot's rules already say: never touch a page tagged sent. Fourth, send the PDF, or an e-signature request, from your own email. You click send. And fifth, update the clients tab: status sent, and the date. Your CRM Keeper picks it up from there. If prices change later, the client keeps the price in the version you sent, until you decide otherwise. If you send a new version, make it version two, and say what changed. And signing is yours too. In the exercise, you'll send version one.
+:::
 
 ## Step 5: Use proposals to improve your offer
 
