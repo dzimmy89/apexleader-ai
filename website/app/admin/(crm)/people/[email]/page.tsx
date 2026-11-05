@@ -8,6 +8,7 @@ import { StageBadge } from "@/components/admin/crm/StageBadge";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import type { TimelineEvent } from "@/lib/crm/timeline";
+import { formatPhone } from "@/lib/phone";
 
 interface PersonData {
   email: string;
@@ -71,6 +72,29 @@ export default function PersonDetailPage() {
       ),
     },
     { label: "Source", value: source },
+    {
+      label: "Mobile",
+      value: lead?.phone
+        ? `${formatPhone(String(lead.phone))} · ${
+            (lead.smsConsent as { given?: boolean } | undefined)?.given ? "texts OK" : "no texts"
+          }`
+        : "—",
+    },
+    {
+      label: "First lesson",
+      value: (lead?.firstLesson as { title?: string } | undefined)?.title || "—",
+    },
+    {
+      label: "Campaign",
+      value: (() => {
+        const utm = (lead?.lastUtm || lead?.utm) as { source?: string; campaign?: string } | undefined;
+        return utm?.source || utm?.campaign ? [utm.source, utm.campaign].filter(Boolean).join(" · ") : "—";
+      })(),
+    },
+    {
+      label: "Landing path",
+      value: (lead?.landingPath as string) || "—",
+    },
     {
       label: "Email status",
       value: (lead?.status as string) || "legacy",

@@ -5,6 +5,7 @@ import { sendLoginLink, safeNextPath } from "@/lib/account/login";
 import { getAccess } from "@/lib/account/access";
 import { captureLead } from "@/lib/crm/leads";
 import { CONSENT_TEXT_VERSION } from "@/lib/consent";
+import { ATTRIBUTION_COOKIE, parseAttribution } from "@/lib/attribution-cookie";
 
 export async function POST(request: NextRequest) {
   const ip = clientIpFromHeaders(request.headers);
@@ -31,10 +32,13 @@ export async function POST(request: NextRequest) {
     // members and coaching clients are already known.
     const access = await getAccess(email);
     if (!access.hasCourseAccess) {
+      const attribution = parseAttribution(request.cookies.get(ATTRIBUTION_COOKIE)?.value);
       await captureLead({
         email,
         source: "university_signin",
-        landingPath: safeNextPath(body.next),
+        utm: attribution.utm,
+        referrer: attribution.referrer,
+        landingPath: attribution.landingPath || safeNextPath(body.next),
         ip,
         userAgent: request.headers.get("user-agent") || undefined,
         consentTextVersion: CONSENT_TEXT_VERSION,

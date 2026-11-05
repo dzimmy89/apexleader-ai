@@ -14,7 +14,9 @@ import {
   mergeCaptureFields,
   nextCaptureAction,
   shouldClearSuppressionOnConfirm,
+  type LeadLesson,
   type LeadRecord,
+  type LeadSmsConsent,
   type LeadUtm,
   type UnsubscribeMethod,
 } from "@/lib/crm/lead-lifecycle";
@@ -35,6 +37,11 @@ export interface CaptureLeadInput {
   ip?: string;
   userAgent?: string;
   consentTextVersion?: string;
+  /** E.164 mobile, already normalized. */
+  phone?: string;
+  smsConsent?: LeadSmsConsent;
+  /** The lesson whose exercise gate the lead came through. */
+  lesson?: LeadLesson;
 }
 
 export interface CaptureLeadResult {
@@ -86,6 +93,9 @@ export async function captureLead(
       referrer: input.referrer,
       landingPath: input.landingPath,
       unsubscribeToken: token,
+      phone: input.phone,
+      smsConsent: input.smsConsent,
+      lesson: input.lesson,
       consent: {
         given: true,
         textVersion: input.consentTextVersion || CONSENT_TEXT_VERSION,

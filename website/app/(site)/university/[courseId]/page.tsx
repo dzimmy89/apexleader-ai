@@ -86,7 +86,7 @@ export default async function CoursePage({ params }: PageProps) {
               ) : (
                 <Chip>
                   <Lock size={12} aria-hidden="true" />
-                  {lock === "sign-in" ? "Free with sign-in" : "Members"}
+                  {lock === "sign-in" ? "Lessons open · sign in for quizzes" : "Lessons open · quizzes with coaching"}
                 </Chip>
               )}
             </div>
