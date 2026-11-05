@@ -8,6 +8,7 @@ import { getAccess } from "@/lib/account/access";
 import { applyAccountCookie, createAccountSession } from "@/lib/account/session";
 import { captureLead } from "@/lib/crm/leads";
 import { CONSENT_TEXT_VERSION } from "@/lib/consent";
+import { ATTRIBUTION_COOKIE, parseAttribution } from "@/lib/attribution-cookie";
 
 /** POST { idToken, next }: sign in or create an account with Google. */
 export async function POST(request: NextRequest) {
@@ -34,11 +35,14 @@ export async function POST(request: NextRequest) {
     // Free learners join the email list, the same as the email sign-in form.
     const access = await getAccess(email);
     if (!access.hasCourseAccess && !access.isCoachingClient) {
+      const attribution = parseAttribution(request.cookies.get(ATTRIBUTION_COOKIE)?.value);
       await captureLead({
         email,
         firstName: verified.identity.name?.split(" ")[0],
         source: "university_signin",
-        landingPath: next,
+        utm: attribution.utm,
+        referrer: attribution.referrer,
+        landingPath: attribution.landingPath || next,
         ip,
         userAgent: request.headers.get("user-agent") || undefined,
         consentTextVersion: CONSENT_TEXT_VERSION,

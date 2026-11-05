@@ -6,7 +6,7 @@ import { QuizRunner } from "@/components/learn/QuizRunner";
 import { findModuleByQuiz, getCourse, quizKey, PASSING_QUIZ_SCORE } from "@/lib/learn/catalog";
 import { parseQuiz } from "@/lib/learn/blocks";
 import { readPiece } from "@/lib/learn/content";
-import { courseLock, getViewer } from "@/lib/learn/gate";
+import { courseLock, exerciseLock, getViewer } from "@/lib/learn/gate";
 import { getProgress } from "@/lib/learn/progress";
 
 interface PageProps {
@@ -45,6 +45,7 @@ export default async function QuizPage({ params }: PageProps) {
       current={{ kind: "quiz", slug: quizId }}
       progress={progress}
       lock={lock}
+      exercisesOpen={exerciseLock(course, viewer) === "open"}
       eyebrow={`Module ${mod.number} quiz · ${quiz.questions.length} questions`}
       title={mod.title}
     >

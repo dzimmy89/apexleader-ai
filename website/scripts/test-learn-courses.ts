@@ -28,7 +28,8 @@ import {
 import { LessonBody } from "../components/learn/LessonBody";
 import { readPiece } from "../lib/learn/content";
 import { signLearnVideoSlots, withoutLearnVideoSlots } from "../lib/learn/video-urls";
-import { courseLock } from "../lib/learn/gate";
+import { canPlayClips, courseLock, exerciseLock } from "../lib/learn/gate";
+import { formatPhone, normalizePhone } from "../lib/phone";
 import { safeNextPath } from "../lib/account/login";
 import { grantIsLive, readAccount } from "../lib/account/access";
 
@@ -383,6 +384,30 @@ describe("Access", () => {
     assert.equal(courseLock(free, { email: "a@b.co", access: access(false) }), "open");
     assert.equal(courseLock(paid, { email: "a@b.co", access: access(false) }), "members");
     assert.equal(courseLock(paid, { email: "a@b.co", access: access(true) }), "open");
+  });
+
+  it("opens exercises to accounts with access and to readers who passed the email gate", () => {
+    const reader = { email: "r@b.co" };
+    assert.equal(exerciseLock(free, { email: null, access: null }), "gate");
+    assert.equal(exerciseLock(paid, { email: null, access: null }), "gate");
+    assert.equal(exerciseLock(free, { email: null, access: null, reader }), "open");
+    assert.equal(exerciseLock(paid, { email: null, access: null, reader }), "open");
+    assert.equal(exerciseLock(free, { email: "a@b.co", access: access(false) }), "open");
+    assert.equal(exerciseLock(paid, { email: "a@b.co", access: access(false) }), "gate");
+    assert.equal(exerciseLock(paid, { email: "a@b.co", access: access(true) }), "open");
+    // The reader cookie never opens quizzes: the course lock ignores it.
+    assert.equal(courseLock(paid, { email: null, access: null, reader }), "members");
+    assert.equal(canPlayClips(paid, { email: null, access: null }), false);
+    assert.equal(canPlayClips(paid, { email: null, access: null, reader }), true);
+  });
+
+  it("normalizes the mobile numbers the exercise gate collects", () => {
+    assert.equal(normalizePhone("(415) 295-5777"), "+14152955777");
+    assert.equal(normalizePhone("1 415 295 5777"), "+14152955777");
+    assert.equal(normalizePhone("+44 20 7946 0958"), "+442079460958");
+    assert.equal(normalizePhone("12345"), null);
+    assert.equal(normalizePhone(""), null);
+    assert.equal(formatPhone("+14152955777"), "(415) 295-5777");
   });
 
   it("treats grants without an end date as live and past ones as ended", () => {
