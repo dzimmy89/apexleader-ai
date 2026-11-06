@@ -1,7 +1,7 @@
 import { getDb, leadDocId } from "@/lib/firebase-admin";
 import { stripUndefined } from "@/lib/firestore-sanitize";
 import type { DocumentData } from "firebase-admin/firestore";
-import { enrollForLeadMagnet, exitAllLeadMarketingFlows } from "@/lib/lead-flows";
+import { enrollForLeadMagnet, enrollLessonSeries, exitAllLeadMarketingFlows } from "@/lib/lead-flows";
 import { isAlreadyCustomer } from "@/lib/flows";
 import { sendEmail } from "@/lib/gmail";
 import { recordAttributionTouch } from "@/lib/crm/attribution";
@@ -147,6 +147,7 @@ export async function captureLead(
           email,
           firstName: merged.firstName,
           confirmUrl,
+          lessonTitle: input.lesson?.title,
         });
         const result = await sendEmail({
           to: email,
@@ -209,6 +210,18 @@ export async function captureLead(
             "emailLog write failed"
           );
         }
+      }
+    }
+
+    // An already-confirmed lead who comes back through another lesson (a new
+    // link on X) gets that topic's series now; no second confirm email.
+    if (action === "already_confirmed" && input.lesson && !alreadyCustomer) {
+      try {
+        const enrolled = await enrollLessonSeries(email, input.lesson);
+        flowType = enrolled.flowType;
+        flowDocId = enrolled.flowDocId;
+      } catch (e) {
+        console.error("[captureLead] lesson series enroll failed", docId, e);
       }
     }
 
@@ -301,8 +314,11 @@ export async function confirmLeadByEmail(
   let flowDocId: string | null | undefined;
   if (!alreadyConfirmed) {
     const alreadyCustomer = await isAlreadyCustomer(normalized);
+    // A lead from a lesson gets that lesson's series (the newest lesson they
+    // came through); other magnets keep their coaching flow.
+    const lesson = existing.leadMagnet?.startsWith("lesson:") ? existing.lastLesson : null;
     if (!alreadyCustomer && existing.leadMagnet) {
-      const enrolled = await enrollForLeadMagnet(normalized, existing.leadMagnet);
+      const enrolled = await enrollForLeadMagnet(normalized, existing.leadMagnet, lesson);
       flowType = enrolled.flowType;
       flowDocId = enrolled.flowDocId;
     }

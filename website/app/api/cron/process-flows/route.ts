@@ -18,6 +18,7 @@ import { marketingSendBlockReason } from "@/lib/marketing-sends";
 import { unsubscribeUrlFor } from "@/lib/email-tokens";
 import { executeProcessFlows } from "@/lib/crm/process-flows-runner";
 import { isSuppressed } from "@/lib/suppression";
+import { isInsideTextingHours, isSmsSuppressed, sendSms, smsSendBlockReason } from "@/lib/sms";
 import { automatedSendBlockedByManualOnly } from "@/lib/crm/contacts";
 import { maybeSendPaymentDigest } from "@/lib/coaching/payment-digest";
 import { syncCoachingCalendar } from "@/lib/coaching/session-sync";
@@ -64,6 +65,10 @@ export async function GET(request: NextRequest) {
       markStepSkipped,
       markStepAttemptFailed,
       exitFlow: exitFlowDoc,
+      sendSms: (opts) => sendSms(opts),
+      smsBlockReason: () => smsSendBlockReason(),
+      smsSuppressed: isSmsSuppressed,
+      insideTextingHours: isInsideTextingHours,
     },
   });
 
@@ -101,6 +106,7 @@ export async function GET(request: NextRequest) {
     failed: result.failed,
     deferred: result.deferred,
     exited: result.exited,
+    textsSent: result.textsSent,
     paymentDigest,
   });
 }
