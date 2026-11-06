@@ -1,6 +1,9 @@
 export type FlowStatus = "active" | "completed" | "exited";
 
-export type FlowType = "coaching_nurture" | "coaching_post_call";
+import type { LessonFlowType, SeriesLesson } from "@/lib/lesson-series/messages";
+
+/** Coaching flows, plus one lesson follow-up series per topic (lib/lesson-series). */
+export type FlowType = "coaching_nurture" | "coaching_post_call" | LessonFlowType;
 
 export interface FlowStep {
   stepId: string;
@@ -27,6 +30,8 @@ export interface FlowDoc {
   triggeredAt: string;
   lastFlowEmailSentAt?: string | null;
   exitReason?: string | null;
+  /** Lesson series only: the lesson the lead came in through. */
+  lesson?: SeriesLesson | null;
   steps: FlowStep[];
 }
 

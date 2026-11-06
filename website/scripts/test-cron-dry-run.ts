@@ -206,8 +206,11 @@ describe("pending selection is one due step per flow", () => {
 });
 
 describe("process-flows live exclusion, suppression, and claim durability", () => {
-  it("treats both coaching flows as lead marketing flows", () => {
-    assert.deepEqual([...LEAD_MARKETING_FLOWS].sort(), ["coaching_nurture", "coaching_post_call"]);
+  it("treats both coaching flows and every lesson series as lead marketing flows", () => {
+    assert.ok(LEAD_MARKETING_FLOWS.includes("coaching_nurture"));
+    assert.ok(LEAD_MARKETING_FLOWS.includes("coaching_post_call"));
+    assert.ok(LEAD_MARKETING_FLOWS.includes("lesson_marketing"));
+    assert.ok(LEAD_MARKETING_FLOWS.includes("lesson_default"));
   });
 
   it("sendEmail marketing gates skip suppressed members", () => {
