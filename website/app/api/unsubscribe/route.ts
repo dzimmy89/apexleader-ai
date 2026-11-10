@@ -34,11 +34,11 @@ function unsubscribePageHtml(token: string, email: string | null): string {
   return `<!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" /><title>Unsubscribe — FromAItoBusiness</title></head>
-<body style="font-family:Georgia,serif;background:#0f0f0f;color:#e8e4dc;padding:40px;max-width:560px;margin:0 auto;">
+<body style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;background:#0b0f18;color:#f6f3ed;padding:40px;max-width:560px;margin:0 auto;">
   <h1>Unsubscribe</h1>
   <p>Unsubscribe from all FromAItoBusiness marketing email.</p>
   <form method="POST" action="${action}">
-    <button type="submit" style="margin-top:16px;padding:12px 20px;background:#c9a227;color:#0f0f0f;border:0;font-weight:bold;cursor:pointer;">
+    <button type="submit" style="margin-top:16px;padding:12px 20px;background:#fe7222;color:#0b0f18;border:0;font-weight:bold;cursor:pointer;">
       Unsubscribe from all FromAItoBusiness marketing email
     </button>
   </form>
@@ -50,7 +50,7 @@ function doneHtml(): string {
   return `<!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" /><title>Unsubscribed — FromAItoBusiness</title></head>
-<body style="font-family:Georgia,serif;background:#0f0f0f;color:#e8e4dc;padding:40px;">
+<body style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;background:#0b0f18;color:#f6f3ed;padding:40px;">
   <h1>Unsubscribed</h1>
   <p>You will no longer receive marketing emails from FromAItoBusiness.</p>
 </body>

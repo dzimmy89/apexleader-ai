@@ -18,10 +18,13 @@ export async function renderOgImage({
   eyebrow,
   title,
   footer,
+  titleSize = 80,
 }: {
   eyebrow: string;
   title: string;
   footer: string;
+  /** Long titles (a lesson's) need a smaller size to fit three lines. */
+  titleSize?: number;
 }): Promise<ImageResponse> {
   const [display, body] = await Promise.all([
     asset("assets", "fonts", "bricolage-grotesque-latin-700-normal.woff"),
@@ -74,7 +77,7 @@ export async function renderOgImage({
             display: "flex",
             marginTop: 18,
             fontFamily: "Bricolage",
-            fontSize: 80,
+            fontSize: titleSize,
             lineHeight: 1.02,
             letterSpacing: -2,
             color: PAPER,

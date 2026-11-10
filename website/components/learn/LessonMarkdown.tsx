@@ -1,3 +1,4 @@
+import type * as React from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
@@ -72,9 +73,14 @@ const components: Components = {
   code: ({ children }) => <code>{children}</code>,
 };
 
+// Prices like "$10 to $30" are money, not math: only $$...$$ is a formula.
+const REMARK_PLUGINS = [remarkGfm, [remarkMath, { singleDollarTextMath: false }]] as NonNullable<
+  React.ComponentProps<typeof ReactMarkdown>["remarkPlugins"]
+>;
+
 export function LessonMarkdown({ text }: { text: string }) {
   return (
-    <ReactMarkdown remarkPlugins={[remarkGfm, remarkMath]} rehypePlugins={[rehypeKatex]} components={components}>
+    <ReactMarkdown remarkPlugins={REMARK_PLUGINS} rehypePlugins={[rehypeKatex]} components={components}>
       {text}
     </ReactMarkdown>
   );

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound, permanentRedirect } from "next/navigation";
-import { ExerciseGate } from "@/components/learn/ExerciseGate";
+import { ExerciseGate, FunnelBeacon, GateBar } from "@/components/learn/ExerciseGate";
 import { LessonBody } from "@/components/learn/LessonBody";
 import { LessonStrip } from "@/components/learn/LessonStrip";
 import { MarkComplete } from "@/components/learn/MarkComplete";
@@ -10,6 +10,8 @@ import { RelatedLessons, relatedLessons } from "@/components/learn/RelatedLesson
 import { findLesson, getCourse, lessonByLegacySlug, lessonKey } from "@/lib/learn/catalog";
 import { lessonBody, lessonSections } from "@/lib/learn/blocks";
 import { readPiece } from "@/lib/learn/content";
+import { exerciseOffer, lessonDescription, lessonPromise, splitAfterFirstSection } from "@/lib/learn/landing";
+import { BRAND } from "@/lib/brand";
 import { canPlayClips, courseLock, exerciseLock, getViewer } from "@/lib/learn/gate";
 import { getProgress, recordVisit } from "@/lib/learn/progress";
 import { withSignedLearnVideos, withoutLearnVideoSlots } from "@/lib/learn/video-urls";
@@ -25,10 +27,17 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const course = getCourse(courseId);
   const found = course ? findLesson(course, lessonSlug) : null;
   if (!course || !found) return { title: "Lesson" };
+  const raw = readPiece(course.id, "lessons", found.lesson.slug);
+  const description = lessonDescription(raw ? lessonBody(raw).body : "", `Lesson ${found.lesson.number} of ${course.title}.`);
+  const title = `${found.lesson.title} | ${course.title}`;
+  const path = `/university/${course.id}/lessons/${found.lesson.slug}`;
+  // The link card X shows when David sends this lesson: title, the key idea, and the image beside this file.
   return {
-    title: `${found.lesson.title} | ${course.title}`,
-    description: `Lesson ${found.lesson.number} of ${course.title}.`,
-    alternates: { canonical: `/university/${course.id}/lessons/${lessonSlug}` },
+    title,
+    description,
+    alternates: { canonical: path },
+    openGraph: { type: "article", title: found.lesson.title, description, url: path, siteName: BRAND.name },
+    twitter: { card: "summary_large_image", title: found.lesson.title, description },
   };
 }
 
@@ -61,6 +70,27 @@ export default async function LessonPage({ params }: PageProps) {
 
   // Clips play once the exercises are open; the text is there for everyone.
   const shown = canPlayClips(course, viewer) ? await withSignedLearnVideos(body) : withoutLearnVideoSlots(body);
+  // Visitors from outside (no course access) get the page as a landing page:
+  // a promise under the title, an early ask after the first section, and a
+  // pinned bar on phones. Everyone with access sees the lesson as before.
+  const outsider = lock !== "open";
+  const gated = exLock === "gate" && !!lesson.exercise;
+  const { head, rest } = gated ? splitAfterFirstSection(shown) : { head: shown, rest: "" };
+  const exerciseRaw = lesson.exercise ? readPiece(course.id, "exercises", lesson.exercise) : null;
+  const offer = exerciseRaw
+    ? exerciseOffer(exerciseRaw, `Exercise ${lesson.number}`)
+    : { title: `Exercise ${lesson.number}`, result: null };
+  const exerciseHref = lesson.exercise ? `/university/${course.id}/exercises/${lesson.exercise}` : href;
+  const gateProps = {
+    courseId: course.id,
+    lessonSlug: lesson.slug,
+    exerciseHref,
+    exerciseMinutes: lesson.exerciseMinutes,
+    lessonNumber: lesson.number,
+    offerTitle: offer.title,
+    offerResult: offer.result,
+    signInHref: `/login?next=${encodeURIComponent(href)}`,
+  };
 
   const moduleOf = course.modules.find((m) => m.lessons.some((l) => l.slug === lesson.slug))!;
   const lastInModule = moduleOf.lessons.at(-1)?.slug === lesson.slug;
@@ -87,30 +117,35 @@ export default async function LessonPage({ params }: PageProps) {
       next={nextLink}
       // Once the lesson is complete, moving on is the main thing to do.
       nextIsPrimary={done}
-      above={lock === "open" ? null : <LessonStrip course={course} lessonNumber={lesson.number} />}
+      above={outsider ? <LessonStrip course={course} lessonNumber={lesson.number} /> : null}
+      promise={outsider ? lessonPromise(body, lesson.minutes) : null}
+      hideBreadcrumbOnPhone={outsider}
     >
-      <LessonBody body={shown} />
+      <FunnelBeacon step="lesson_view" courseId={course.id} lessonSlug={lesson.slug} />
+      <LessonBody body={head} />
+      {gated && rest ? (
+        <>
+          <ExerciseGate variant="early" {...gateProps} />
+          <LessonBody body={rest} />
+        </>
+      ) : null}
       {lock === "open" && viewer.email ? (
         <div className="mt-12">
           <MarkComplete courseId={course.id} slug={lesson.slug} kind="lesson" initiallyDone={done} />
         </div>
       ) : null}
-      {exLock === "gate" && lesson.exercise ? (
+      {gated ? (
         <ExerciseGate
-          courseId={course.id}
-          lessonSlug={lesson.slug}
-          exerciseHref={`/university/${course.id}/exercises/${lesson.exercise}`}
-          exerciseMinutes={lesson.exerciseMinutes}
-          lessonNumber={lesson.number}
-          headline="Now do it in your business."
+          variant="full"
+          {...gateProps}
           perks={[
             `Every exercise in ${course.title}, open as you go`,
-            "New lessons by email as they land, unsubscribe anytime",
-            "A text when your exercise is ready, only if you tick the box",
+            "New lessons on this topic by email, unsubscribe anytime",
+            "Texts only if you tick the box",
           ]}
-          signInHref={`/login?next=${encodeURIComponent(href)}`}
         />
       ) : null}
+      {gated ? <GateBar label={`Exercise ${lesson.number} · ${lesson.exerciseMinutes ? `${lesson.exerciseMinutes} min · ` : ""}free`} /> : null}
       {isClient ? null : (
         <>
           <PaidStep courseTitle={course.title} />

@@ -6,6 +6,7 @@ import {
   type FlowStepDef,
 } from "@/lib/flow-definitions";
 import { getDb } from "@/lib/firebase-admin";
+import { lessonStepChannel, type SeriesLesson } from "@/lib/lesson-series/messages";
 import { triggerFlowBlockReason } from "@/lib/crm/excluded-accounts";
 import { manualOnlyBlockReason } from "@/lib/crm/contacts";
 import type { FlowDoc, FlowStatus, FlowStep, FlowType } from "@/lib/crm/types";
@@ -94,7 +95,8 @@ async function exitConflictingFlows(
 export async function enrollFlow(
   flowType: FlowType,
   userId: string,
-  email: string
+  email: string,
+  extra?: { lesson?: SeriesLesson }
 ): Promise<{
   id: string;
   created: boolean;
@@ -135,6 +137,7 @@ export async function enrollFlow(
     status: "active",
     triggeredAt: triggeredAt.toISOString(),
     lastFlowEmailSentAt: null,
+    ...(extra?.lesson ? { lesson: extra.lesson } : {}),
     steps: buildSteps(triggeredAt, defs),
   };
 
@@ -171,6 +174,8 @@ export interface PendingEmail {
   email: string;
   stepIndex: number;
   step: FlowStep;
+  /** Lesson series only: the lesson the lead came in through. */
+  lesson?: SeriesLesson | null;
 }
 
 export async function getPendingEmails(): Promise<PendingEmail[]> {
@@ -204,10 +209,12 @@ export function collectPendingEmails(
     const lastSent = data.lastFlowEmailSentAt
       ? new Date(data.lastFlowEmailSentAt).getTime()
       : 0;
-    if (lastSent && nowMs - lastSent < SMART_SENDING_MS) continue;
-
     const idx = data.steps.findIndex((s) => isStepDueForSend(s, nowMs));
     if (idx < 0) continue;
+    // Smart sending spaces emails; a lesson-series text (like "your exercise
+    // is here" right after the first email) is not held by it.
+    const isText = lessonStepChannel(data.steps[idx]!.stepId) === "sms";
+    if (!isText && lastSent && nowMs - lastSent < SMART_SENDING_MS) continue;
 
     pending.push({
       flowDocId: doc.id,
@@ -216,6 +223,7 @@ export function collectPendingEmails(
       email: data.email,
       stepIndex: idx,
       step: data.steps[idx]!,
+      ...(data.lesson ? { lesson: data.lesson } : {}),
     });
   }
 

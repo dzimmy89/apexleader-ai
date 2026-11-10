@@ -16,8 +16,11 @@ import { getDb } from "@/lib/firebase-admin";
 import type { LeadRecord } from "@/lib/crm/lead-lifecycle";
 import { marketingSendBlockReason } from "@/lib/marketing-sends";
 import { unsubscribeUrlFor } from "@/lib/email-tokens";
+import { readerLinkTokenFor } from "@/lib/learn/reader-links";
+import { sendConfirmReminders } from "@/lib/crm/confirm-reminder";
 import { executeProcessFlows } from "@/lib/crm/process-flows-runner";
 import { isSuppressed } from "@/lib/suppression";
+import { isInsideTextingHours, isSmsSuppressed, sendSms, smsSendBlockReason } from "@/lib/sms";
 import { automatedSendBlockedByManualOnly } from "@/lib/crm/contacts";
 import { maybeSendPaymentDigest } from "@/lib/coaching/payment-digest";
 import { syncCoachingCalendar } from "@/lib/coaching/session-sync";
@@ -58,6 +61,7 @@ export async function GET(request: NextRequest) {
       sendEmail,
       unsubscribeUrlFor,
       getTemplate,
+      readerLinkTokenFor,
       claimStepForSend,
       recordSendReceipt,
       releaseStepClaim,
@@ -65,6 +69,10 @@ export async function GET(request: NextRequest) {
       markStepSkipped,
       markStepAttemptFailed,
       exitFlow: exitFlowDoc,
+      sendSms: (opts) => sendSms(opts),
+      smsBlockReason: () => smsSendBlockReason(),
+      smsSuppressed: isSmsSuppressed,
+      insideTextingHours: isInsideTextingHours,
     },
   });
 
@@ -78,6 +86,15 @@ export async function GET(request: NextRequest) {
     paymentDigest = (await maybeSendPaymentDigest()).status;
   } catch (e) {
     console.error("[process-flows] payment digest", e);
+  }
+
+  // One "confirm your email" reminder for lesson leads a day after signup.
+  let confirmReminders: string = "error";
+  try {
+    const r = await sendConfirmReminders();
+    confirmReminders = `sent ${r.sent} of ${r.checked} checked`;
+  } catch (e) {
+    console.error("[process-flows] confirm reminders", e);
   }
 
   // Coaching sessions and Meet recordings from the coach calendar.
@@ -105,6 +122,7 @@ export async function GET(request: NextRequest) {
     ok: true,
     calendarSync,
     callPlans,
+    confirmReminders,
     marketingBlocked: result.marketingBlocked,
     pending: result.pending,
     sent: result.sent,
@@ -112,6 +130,7 @@ export async function GET(request: NextRequest) {
     failed: result.failed,
     deferred: result.deferred,
     exited: result.exited,
+    textsSent: result.textsSent,
     paymentDigest,
   });
 }

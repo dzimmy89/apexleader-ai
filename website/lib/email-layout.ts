@@ -73,22 +73,22 @@ export function emailShell(opts: EmailShellOpts): string {
   return `<!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" /></head>
-<body style="margin:0;padding:0;background:#0f0f0f;font-family:Georgia,serif;">
+<body style="margin:0;padding:0;background:#0b0f18;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;">
 ${preview}
-<table width="100%" cellpadding="0" cellspacing="0" style="background:#0f0f0f;padding:24px 0;">
+<table width="100%" cellpadding="0" cellspacing="0" style="background:#0b0f18;padding:24px 0;">
 <tr><td align="center">
-<table width="600" cellpadding="0" cellspacing="0" style="background:#1a1a1a;border:1px solid #333;">
+<table width="600" cellpadding="0" cellspacing="0" style="background:#131a25;border:1px solid #2d333d;">
 <tr><td style="padding:24px 32px;">
 ${emailLogoImg()}
 </td></tr>
-<tr><td style="padding:0 32px 32px;color:#e8e4dc;font-size:16px;line-height:1.6;">
+<tr><td style="padding:0 32px 32px;color:#f6f3ed;font-size:16px;line-height:1.6;">
 ${opts.bodyHtml}
 </td></tr>
-<tr><td style="padding:0 32px 24px;border-top:1px solid #333;font-size:12px;color:#888;">
+<tr><td style="padding:0 32px 24px;border-top:1px solid #2d333d;font-size:12px;color:#888;">
 ${why}
 ${legalEntityLine}
 ${postalFooterLine()}
-<p><a href="${origin}" style="color:#c9a227;">${BRAND.domain}</a></p>
+<p><a href="${origin}" style="color:#fe7222;">${BRAND.domain}</a></p>
 ${unsub}
 </td></tr>
 </table>

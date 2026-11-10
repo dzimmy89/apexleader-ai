@@ -5,12 +5,22 @@ import { getSiteOrigin } from "@/lib/env";
 import { FLOW_TEMPLATE_IDS } from "@/lib/flow-definitions";
 import { LEAD_CONFIRM_SUBJECT } from "@/lib/consent";
 import { escapeHtml } from "@/lib/html";
+import {
+  lessonEmailStepIds,
+  parseLessonStepId,
+  renderLessonEmail,
+  type SeriesLesson,
+} from "@/lib/lesson-series/messages";
 
 export interface EmailContext {
   email: string;
   firstName?: string;
   unsubscribeUrl?: string;
   receivingReason?: string;
+  /** Lesson series only: the lesson the lead came in through. */
+  lesson?: SeriesLesson | null;
+  /** Lesson series only: the lead's reader link token, so links open exercises in any browser. */
+  readerToken?: string | null;
 }
 
 export interface RenderedEmail {
@@ -20,7 +30,7 @@ export interface RenderedEmail {
 }
 
 function cta(href: string, label: string): string {
-  return `<p style="margin:24px 0;"><a href="${href}" style="display:inline-block;padding:12px 24px;background:#c9a227;color:#0f0f0f;text-decoration:none;font-weight:bold;border-radius:4px;">${label}</a></p>`;
+  return `<p style="margin:24px 0;"><a href="${href}" style="display:inline-block;padding:12px 24px;background:#fe7222;color:#0b0f18;text-decoration:none;font-weight:bold;border-radius:999px;">${label}</a></p>`;
 }
 
 function wrap(subject: string, body: string, ctx: EmailContext, preview?: string): RenderedEmail {
@@ -123,6 +133,16 @@ ${coachingCta()}
 };
 
 export function getTemplate(stepId: string, ctx: EmailContext): RenderedEmail {
+  if (parseLessonStepId(stepId)) {
+    if (!ctx.unsubscribeUrl) throw new Error("lesson series emails need an unsubscribeUrl");
+    // renderLessonEmail escapes the first name itself.
+    return renderLessonEmail(stepId, {
+      firstName: ctx.firstName,
+      unsubscribeUrl: ctx.unsubscribeUrl,
+      lesson: ctx.lesson,
+      readerToken: ctx.readerToken,
+    });
+  }
   const fn = (templates as Record<string, (ctx: EmailContext) => RenderedEmail>)[stepId];
   if (!fn) throw new Error(`Unknown email template: ${stepId}`);
   return fn({
@@ -136,14 +156,30 @@ export function buildLeadConfirmEmail(ctx: {
   email: string;
   firstName?: string;
   confirmUrl: string;
+  /** The lesson whose exercise gate they came through, if any. */
+  lessonTitle?: string;
+  /** The one reminder, a day after the first confirm email went unclicked. */
+  reminder?: boolean;
 }): RenderedEmail {
   const name = ctx.firstName ? escapeHtml(ctx.firstName) : "there";
+  const lessonLine = ctx.lessonTitle
+    ? `<p>Once you confirm, I'll send you the exercise from “${escapeHtml(ctx.lessonTitle)}” and a few short notes on the same topic.</p>\n`
+    : "";
+  const lessonText = ctx.lessonTitle
+    ? `Once you confirm, I'll send you the exercise from "${ctx.lessonTitle}" and a few short notes on the same topic.\n\n`
+    : "";
   const entity = `${BRAND.legalName}${isPostalAddressPlaceholder() ? "" : ` · ${POSTAL_ADDRESS}`} · ${BRAND.email}`;
+  const opener = ctx.reminder
+    ? `<p>Yesterday you asked for ${ctx.lessonTitle ? `the exercise from “${escapeHtml(ctx.lessonTitle)}”` : `notes from ${escapeHtml(BRAND.name)}`}, but the email isn't confirmed yet. This is the only reminder I'll send.</p>`
+    : `<p>Someone asked to hear from ${escapeHtml(BRAND.name)} at ${BRAND.domain} using this email address. We hope it was you.</p>`;
+  const openerText = ctx.reminder
+    ? `Yesterday you asked for ${ctx.lessonTitle ? `the exercise from "${ctx.lessonTitle}"` : `notes from ${BRAND.name}`}, but the email isn't confirmed yet. This is the only reminder I'll send.`
+    : `Someone asked to hear from ${BRAND.name} at ${BRAND.domain} using this email address. We hope it was you.`;
   const body = `<p>Hi ${name},</p>
-<p>Someone asked to hear from ${escapeHtml(BRAND.name)} at ${BRAND.domain} using this email address. We hope it was you.</p>
+${opener}
 <p>Please confirm your email:</p>
 ${cta(ctx.confirmUrl, "Confirm my email")}
-<p>This link expires in 7 days.</p>
+${lessonLine}<p>This link expires ${ctx.reminder ? "within a week of your first request" : "in 7 days"}.</p>
 <p>Didn't ask for this? Just ignore this email. You won't be subscribed unless you click the link.</p>
 <p>— ${escapeHtml(BRAND.coachFirstName)}, ${escapeHtml(BRAND.name)}</p>
 <p>${escapeHtml(entity)}</p>`;
@@ -154,25 +190,30 @@ ${cta(ctx.confirmUrl, "Confirm my email")}
   });
   const text = `Hi ${ctx.firstName || "there"},
 
-Someone asked to hear from ${BRAND.name} at ${BRAND.domain} using this email address. We hope it was you.
+${openerText}
 
 Please confirm your email: ${ctx.confirmUrl}
 
-This link expires in 7 days.
+${lessonText}This link expires ${ctx.reminder ? "within a week of your first request" : "in 7 days"}.
 
 Didn't ask for this? Just ignore this email. You won't be subscribed unless you click the link.
 
 — ${BRAND.coachFirstName}, ${BRAND.name}
 ${entity}`;
   return {
-    subject: LEAD_CONFIRM_SUBJECT,
+    subject: ctx.reminder
+      ? ctx.lessonTitle
+        ? `Your exercise is waiting: confirm your email`
+        : `Reminder: ${LEAD_CONFIRM_SUBJECT.charAt(0).toLowerCase()}${LEAD_CONFIRM_SUBJECT.slice(1)}`
+      : LEAD_CONFIRM_SUBJECT,
     html,
     text,
   };
 }
 
+/** Every email step: the coaching flows, then each lesson series (sample lesson). */
 export function listTemplateIds(): string[] {
-  return [...FLOW_TEMPLATE_IDS];
+  return [...FLOW_TEMPLATE_IDS, ...lessonEmailStepIds()];
 }
 
 export { FLOW_TEMPLATE_IDS };

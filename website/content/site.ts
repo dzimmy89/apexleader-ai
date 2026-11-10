@@ -11,11 +11,10 @@ export const URLS = {
 } as const;
 
 /**
- * CAN-SPAM physical postal address for marketing email footers. Left as a
- * TODO until the business has its own address; while it starts with "TODO:"
- * the footers leave it out.
+ * CAN-SPAM physical postal address for marketing email footers (the Wyoming
+ * office). A value starting with "TODO:" holds all marketing email.
  */
-export const POSTAL_ADDRESS = "TODO: business postal address";
+export const POSTAL_ADDRESS = "30 N Gould Street, Suite R, Sheridan, WY 82801";
 
 export function isPostalAddressPlaceholder(
   address: string = POSTAL_ADDRESS

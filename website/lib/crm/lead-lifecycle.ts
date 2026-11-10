@@ -49,6 +49,8 @@ export interface LeadRecord {
   /** E.164, from the exercise gate or the call request. */
   phone?: string;
   smsConsent?: LeadSmsConsent;
+  /** Set when the number texted STOP (or Twilio reported it unsubscribed). */
+  smsOptOutAt?: string;
   firstLesson?: LeadLesson;
   lastLesson?: LeadLesson;
   name?: string;
