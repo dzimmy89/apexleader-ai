@@ -30,7 +30,18 @@ export async function GET(request: NextRequest) {
   if (!verifyCronAuth(request)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
+  try {
+    return await processFlows(request);
+  } catch (e) {
+    // Only the cron caller (who holds CRON_SECRET) sees this, so the reason
+    // is returned to make a failed run readable from the workflow log.
+    console.error("[process-flows] failed", e);
+    const error = e instanceof Error ? `${e.name}: ${e.message}` : String(e);
+    return NextResponse.json({ ok: false, error: error.slice(0, 500) }, { status: 500 });
+  }
+}
 
+async function processFlows(request: NextRequest) {
   const dryRun = isCronDryRun(request);
   const blocked = marketingSendBlockReason();
 
