@@ -185,3 +185,58 @@ describe("confirm link", () => {
     assert.ok(fs.existsSync(route), `missing ${route}`);
   });
 });
+
+describe("reader links and confirm reminder", () => {
+  it("makes short tokens and keeps redirects on site", async () => {
+    const { newReaderLinkToken, isReaderLinkToken, safeReaderPath, withReaderToken } = await import("../lib/learn/reader-links");
+    const t = newReaderLinkToken();
+    assert.ok(isReaderLinkToken(t), t);
+    assert.ok(!isReaderLinkToken("../../etc"));
+    assert.equal(safeReaderPath(["university", "ai-sales", "exercises", "ex-1"]), "/university/ai-sales/exercises/ex-1");
+    assert.equal(safeReaderPath(["admin", "people"]), "/university");
+    assert.equal(safeReaderPath(["university", "..", "admin"]), "/university");
+    assert.equal(
+      withReaderToken("https://fromaitobusiness.com/university/a/lessons/b?x=1", t, "https://fromaitobusiness.com"),
+      `https://fromaitobusiness.com/r/${t}/university/a/lessons/b?x=1`
+    );
+    assert.equal(withReaderToken("https://evil.example/university/a", t, "https://fromaitobusiness.com"), "https://evil.example/university/a");
+  });
+
+  it("puts the reader token in series emails and texts", async () => {
+    const { renderLessonEmail, renderLessonSms, lessonStepId } = await import("../lib/lesson-series/messages");
+    const { trackForCourse } = await import("../lib/lesson-series/tracks");
+    const course = getCoursesInOrder()[0]!;
+    const lesson = allLessons(course).find((l) => l.exercise)!;
+    const track = trackForCourse(course.id);
+    const ctx = { lesson: { courseId: course.id, lessonSlug: lesson.slug }, readerToken: "abcdefghijkm" };
+    const email = renderLessonEmail(lessonStepId(track, "e1"), { ...ctx, unsubscribeUrl: "https://x.test/u" });
+    assert.match(email.html, /\/r\/abcdefghijkm\/university\//);
+    assert.doesNotMatch(email.html, /c9a227/);
+    const sms = renderLessonSms(lessonStepId(track, "s1"), ctx);
+    assert.match(sms, /\/r\/abcdefghijkm\/university\//);
+    const plain = renderLessonSms(lessonStepId(track, "s1"), { lesson: ctx.lesson });
+    assert.doesNotMatch(plain, /\/r\//);
+  });
+
+  it("sends a confirm reminder once, a day to six days after the first", async () => {
+    const { confirmReminderDue } = await import("../lib/crm/confirm-reminder");
+    const now = Date.parse("2026-11-10T12:00:00Z");
+    const base = { status: "pending", leadMagnet: "lesson:ai-sales/x", lastConfirmEmailSentAt: "2026-11-09T10:00:00Z" };
+    assert.ok(confirmReminderDue(base, now));
+    assert.ok(!confirmReminderDue({ ...base, lastConfirmEmailSentAt: "2026-11-10T01:00:00Z" }, now));
+    assert.ok(!confirmReminderDue({ ...base, lastConfirmEmailSentAt: "2026-11-03T10:00:00Z" }, now));
+    assert.ok(!confirmReminderDue({ ...base, confirmReminderSentAt: "2026-11-10T00:00:00Z" }, now));
+    assert.ok(!confirmReminderDue({ ...base, status: "confirmed" }, now));
+    assert.ok(!confirmReminderDue({ ...base, leadMagnet: "coaching_qualifier" }, now));
+  });
+
+  it("sends email-only leads to the lesson form, not the exercise", async () => {
+    const { confirmLandingPath } = await import("../lib/crm/confirm-redirect");
+    const course = getCoursesInOrder()[0]!;
+    const lesson = allLessons(course).find((l) => l.exercise)!;
+    assert.equal(
+      confirmLandingPath({ courseId: course.id, lessonSlug: lesson.slug }, "confirmed", false),
+      `/university/${course.id}/lessons/${lesson.slug}?confirmed=1#exercise-ask`
+    );
+  });
+});

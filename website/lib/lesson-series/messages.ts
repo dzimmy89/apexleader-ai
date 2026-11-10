@@ -113,8 +113,12 @@ function relatedCourse(track: LessonTrack, own: string): LearnCourse | null {
   return null;
 }
 
-function link(path: string, track: LessonTrackId, key: LessonStepKey): string {
-  const u = new URL(path, getSiteOrigin());
+/**
+ * A tracked site link. With the lead's reader token, lesson and exercise
+ * links go through /r/<token>/ so they open in the mail or SMS app's browser.
+ */
+function link(path: string, track: LessonTrackId, key: LessonStepKey, readerToken?: string | null): string {
+  const u = new URL(readerToken && path.startsWith("/university/") ? `/r/${readerToken}${path}` : path, getSiteOrigin());
   u.searchParams.set("utm_source", "email");
   u.searchParams.set("utm_medium", "lesson_series");
   u.searchParams.set("utm_campaign", track);
@@ -133,7 +137,7 @@ function exercisePath(courseId: string, lesson: LearnLesson): string {
 }
 
 function button(href: string, label: string): string {
-  return `<p style="margin:24px 0;"><a href="${escapeHtml(href)}" style="display:inline-block;padding:12px 24px;background:#c9a227;color:#0f0f0f;text-decoration:none;font-weight:bold;border-radius:4px;">${escapeHtml(label)}</a></p>`;
+  return `<p style="margin:24px 0;"><a href="${escapeHtml(href)}" style="display:inline-block;padding:12px 24px;background:#fe7222;color:#0b0f18;text-decoration:none;font-weight:bold;border-radius:999px;">${escapeHtml(label)}</a></p>`;
 }
 
 function paras(lines: string[]): string {
@@ -146,6 +150,8 @@ function signoff(): string {
 
 export interface SeriesEmailContext {
   firstName?: string;
+  /** The lead's reader link token (lib/learn/reader-links). */
+  readerToken?: string | null;
   unsubscribeUrl: string;
   lesson?: SeriesLesson | null;
 }
@@ -181,7 +187,7 @@ export function renderLessonEmail(stepId: string, ctx: SeriesEmailContext): Seri
       const minutes = lesson.exercise && lesson.exerciseMinutes ? ` It takes about ${lesson.exerciseMinutes} minutes.` : "";
       body = `${hi}
 <p>Here's the ${lesson.exercise ? "exercise" : "lesson"} from “${escapeHtml(lesson.title)}”, saved so you can come back to it.${minutes}</p>
-${button(link(exercisePath(course.id, lesson), trackId, key), lesson.exercise ? "Open the exercise" : "Open the lesson")}
+${button(link(exercisePath(course.id, lesson), trackId, key, ctx.readerToken), lesson.exercise ? "Open the exercise" : "Open the lesson")}
 ${paras([track.exerciseHint, `Over the next two weeks I'll send you a few short notes about ${track.label}: one idea per email, all things one person can run with Claude and a couple of other tools.`])}
 ${signoff()}`;
       break;
@@ -191,8 +197,8 @@ ${signoff()}`;
       preview = `One play from ${course.title} you can run this week.`;
       const nextBlock = nextLesson
         ? `<p>The next lesson builds on it: “${escapeHtml(nextLesson.title)}”.</p>
-${button(link(lessonPath(course.id, nextLesson), trackId, key), "Read the next lesson")}`
-        : `${button(link(`/university/${course.id}`, trackId, key), `See all of ${course.title}`)}`;
+${button(link(lessonPath(course.id, nextLesson), trackId, key, ctx.readerToken), "Read the next lesson")}`
+        : `${button(link(`/university/${course.id}`, trackId, key, ctx.readerToken), `See all of ${course.title}`)}`;
       body = `${hi}
 ${paras(track.play.paragraphs)}
 ${nextBlock}
@@ -205,7 +211,7 @@ ${signoff()}`;
       const rel = relatedCourse(track, course.id);
       const relBlock = rel
         ? `<p>If you want to go deeper, ${escapeHtml(rel.title)} is free to read.</p>
-${button(link(`/university/${rel.id}`, trackId, key), `Open ${rel.title}`)}`
+${button(link(`/university/${rel.id}`, trackId, key, ctx.readerToken), `Open ${rel.title}`)}`
         : "";
       body = `${hi}
 ${paras(track.mistake.paragraphs)}
@@ -224,7 +230,7 @@ ${paras([
   "The first step is a free 30-minute call. We look at your business and I tell you honestly whether coaching is worth it for you.",
 ])}
 ${button(discovery, "Book a free call")}
-<p>Or <a href="${escapeHtml(link("/coaching", trackId, key))}" style="color:#c9a227;">see the packages first</a>.</p>
+<p>Or <a href="${escapeHtml(link("/coaching", trackId, key, ctx.readerToken))}" style="color:#fe7222;">see the packages first</a>.</p>
 ${signoff()}
 <p style="font-size:13px;color:#999;">Individual results vary.</p>`;
       break;
@@ -234,15 +240,15 @@ ${signoff()}
       preview = "Reply with the one thing you're stuck on.";
       const keepGoing = nextLesson
         ? `<p>Pick up where you left off: “${escapeHtml(nextLesson.title)}”.</p>
-${button(link(lessonPath(course.id, nextLesson), trackId, key), "Read the next lesson")}`
-        : button(link(`/university/${course.id}`, trackId, key), `Back to ${course.title}`);
+${button(link(lessonPath(course.id, nextLesson), trackId, key, ctx.readerToken), "Read the next lesson")}`
+        : button(link(`/university/${course.id}`, trackId, key, ctx.readerToken), `Back to ${course.title}`);
       body = `${hi}
 ${paras([
   "This is the last email in this short series.",
   `If one thing about ${track.label} has you stuck, reply to this email and tell me what it is. I read every reply and answer them myself.`,
 ])}
 ${keepGoing}
-<p>And if you'd like it built with you, the free call is <a href="${escapeHtml(discovery)}" style="color:#c9a227;">here</a>.</p>
+<p>And if you'd like it built with you, the free call is <a href="${escapeHtml(discovery)}" style="color:#fe7222;">here</a>.</p>
 ${signoff()}`;
       break;
     }
@@ -268,7 +274,10 @@ function shortTitle(title: string, max = 48): string {
 }
 
 /** Render one text of a lesson series. Every text names the sender and ends with the STOP line. */
-export function renderLessonSms(stepId: string, ctx: { firstName?: string; lesson?: SeriesLesson | null }): string {
+export function renderLessonSms(
+  stepId: string,
+  ctx: { firstName?: string; lesson?: SeriesLesson | null; readerToken?: string | null }
+): string {
   const parsed = parseLessonStepId(stepId);
   if (!parsed || parsed.channel !== "sms") throw new Error(`Unknown lesson text: ${stepId}`);
   const track = LESSON_TRACKS[parsed.track];
@@ -278,7 +287,7 @@ export function renderLessonSms(stepId: string, ctx: { firstName?: string; lesso
   const hi = `Hi ${ctx.firstName?.trim() || "there"}`;
   switch (parsed.key) {
     case "s1":
-      return `${hi}, it's ${BRAND.coachFirstName} from ${BRAND.name}. Your exercise for "${shortTitle(resolved.lesson.title)}" is here: ${origin}${exercisePath(resolved.course.id, resolved.lesson)} ${SMS_STOP_LINE}`;
+      return `${hi}, it's ${BRAND.coachFirstName} from ${BRAND.name}. Your exercise for "${shortTitle(resolved.lesson.title)}" is here: ${origin}${ctx.readerToken ? `/r/${ctx.readerToken}` : ""}${exercisePath(resolved.course.id, resolved.lesson)} ${SMS_STOP_LINE}`;
     case "s2":
       return `${hi}, ${BRAND.coachFirstName} from ${BRAND.name} here: ${track.checkInText} ${SMS_STOP_LINE}`;
     case "s3":
