@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { verifyDashboardToken } from "@/lib/dashboard-auth";
+import { verifyDashboardCaller } from "@/lib/dashboard-auth";
 import { getDashboardSummary } from "@/lib/crm/dashboard-summary";
 import { getPackages } from "@/lib/coaching/packages";
 import { DEFAULT_PACKAGE_PRICES } from "@/lib/crm/pipeline-utils";
@@ -10,11 +10,13 @@ const BUSINESS = "fromaitobusiness";
 
 /**
  * GET /api/internal/dashboard-summary?days=7
- * Authorization: Bearer $DASHBOARD_SUMMARY_TOKEN
- * Totals only (no names, emails or ids) for the all-business dashboard.
+ * Authorization: Bearer <GitHub Actions identity token>
+ * Answers only the "Dashboard collect" workflow of the GTM repository
+ * (lib/dashboard-auth.ts). Totals only (no names, emails or ids) for the
+ * all-business dashboard.
  */
 export async function GET(request: NextRequest) {
-  if (!verifyDashboardToken(request)) {
+  if (!(await verifyDashboardCaller(request))) {
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });
   }
   const raw = Number(request.nextUrl.searchParams.get("days") ?? "7");
