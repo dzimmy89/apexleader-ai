@@ -11,7 +11,7 @@ import { createRemoteJWKSet, jwtVerify } from "jose";
  */
 export const GITHUB_ACTIONS_ISSUER = "https://token.actions.githubusercontent.com";
 export const DASHBOARD_AUDIENCE = "agency-dashboard-summary";
-/** dzimmy89/defi-university-gtm. The id is checked, not the name: a name can be re-registered. */
+/** The private go-to-market repository that runs the collector. The id is checked, not the name: a name can be re-registered. */
 export const DASHBOARD_CALLER_REPOSITORY_ID = "1423403779";
 export const DASHBOARD_CALLER_REF = "refs/heads/main";
 
