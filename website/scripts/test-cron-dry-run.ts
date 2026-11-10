@@ -206,8 +206,11 @@ describe("pending selection is one due step per flow", () => {
 });
 
 describe("process-flows live exclusion, suppression, and claim durability", () => {
-  it("treats both coaching flows as lead marketing flows", () => {
-    assert.deepEqual([...LEAD_MARKETING_FLOWS].sort(), ["coaching_nurture", "coaching_post_call"]);
+  it("treats both coaching flows and every lesson series as lead marketing flows", () => {
+    assert.ok(LEAD_MARKETING_FLOWS.includes("coaching_nurture"));
+    assert.ok(LEAD_MARKETING_FLOWS.includes("coaching_post_call"));
+    assert.ok(LEAD_MARKETING_FLOWS.includes("lesson_marketing"));
+    assert.ok(LEAD_MARKETING_FLOWS.includes("lesson_default"));
   });
 
   it("sendEmail marketing gates skip suppressed members", () => {
@@ -216,14 +219,14 @@ describe("process-flows live exclusion, suppression, and claim durability", () =
     process.env.MARKETING_SENDS_ENABLED = "true";
     process.env.JWT_SECRET = prevJwt || "ci-build-only";
     try {
-      // Until content/site.ts has a real postal address, marketing mail is held.
+      // With sends on and a real postal address, a suppressed address is still skipped.
       assert.deepEqual(
         evaluateSendGates({
           purpose: "marketing",
           suppressed: true,
           unsubscribeUrl: "https://fromaitobusiness.com/api/unsubscribe?token=t",
         }),
-        { skip: true, error: "postal_address_placeholder" }
+        { skip: true, error: "suppressed" }
       );
       assert.deepEqual(evaluateSendGates({ purpose: "transactional", suppressed: true }), { skip: true, error: "suppressed" });
       assert.equal(isOptOutSendSkip("suppressed"), true);
