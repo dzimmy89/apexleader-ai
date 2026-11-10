@@ -240,3 +240,42 @@ describe("reader links and confirm reminder", () => {
     );
   });
 });
+
+describe("Mission Control funnel and timeline", () => {
+  it("adds up counters per lesson and campaign", async () => {
+    const { aggregateFunnel, rate } = await import("../lib/funnel/report");
+    const docs = [
+      { day: "2026-11-10", courseId: "a", lessonSlug: "l1", campaign: "x/dm/a", counts: { lesson_view: 10, email_given: 3, mobile_given: 2 } },
+      { day: "2026-11-11", courseId: "a", lessonSlug: "l1", campaign: "direct", counts: { lesson_view: 5, email_given: 1 } },
+      { day: "2026-11-11", courseId: "b", lessonSlug: "l2", campaign: "x/dm/a", counts: { lesson_view: 4 } },
+    ];
+    const out = aggregateFunnel(docs, (c, l) => `${c}:${l}`);
+    assert.equal(out.total.lesson_view, 19);
+    assert.equal(out.total.email_given, 4);
+    assert.equal(out.byLesson[0]!.label, "a:l1");
+    assert.equal(out.byLesson[0]!.counts.lesson_view, 15);
+    assert.equal(out.byCampaign.find((r) => r.key === "x/dm/a")!.counts.lesson_view, 14);
+    assert.equal(rate(3, 10), "30%");
+    assert.equal(rate(1, 0), "–");
+    assert.equal(rate(1, 30), "3.3%");
+  });
+
+  it("shows the lesson funnel steps on the person timeline", async () => {
+    const { buildPersonTimeline } = await import("../lib/crm/timeline");
+    const events = buildPersonTimeline({
+      lead: {
+        utm: { source: "x", medium: "dm", campaign: "ai-sales", content: "jo_b" },
+        firstLesson: { title: "Outbound agents", at: "2026-11-10T10:00:00Z" },
+        phone: "+14155550123",
+        smsConsent: { given: true, requestedAt: "2026-11-10T10:01:00Z" },
+        consent: { confirmedAt: "2026-11-10T10:05:00Z" },
+      },
+      texts: [{ id: "t1", direction: "outbound", status: "sent", body: "Hi", sentAt: "2026-11-10T10:10:00Z" }],
+    });
+    assert.deepEqual(
+      events.map((e) => e.title),
+      ["Text sent", "Confirmed email", "Added mobile, texts OK", "Gave email at “Outbound agents”"]
+    );
+    assert.equal(events.at(-1)!.description, "From X dm · @jo_b · ai-sales");
+  });
+});

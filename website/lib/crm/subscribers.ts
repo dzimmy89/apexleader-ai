@@ -1,3 +1,4 @@
+import { SMS_LOG } from "@/lib/sms";
 import { getDb } from "@/lib/firebase-admin";
 import { buildPersonTimeline } from "@/lib/crm/timeline";
 import { getActivityLog } from "@/lib/crm/activity-log";
@@ -42,8 +43,26 @@ export async function getPerson(email: string) {
 
   const emailLog = logs.docs.map((d) => ({ id: d.id, ...d.data() }));
   const flowsList = flows.docs.map((d) => ({ id: d.id, ...d.data() }));
+  const leadData = lead.exists ? lead.data() : undefined;
+
+  // Texts to and from the lead's mobile (lesson follow-ups and replies).
+  let texts: Record<string, unknown>[] = [];
+  const phone = typeof leadData?.phone === "string" ? leadData.phone : "";
+  if (phone) {
+    try {
+      const [out, inbound] = await Promise.all([
+        db.collection(SMS_LOG).where("to", "==", phone).limit(20).get(),
+        db.collection(SMS_LOG).where("from", "==", phone).limit(20).get(),
+      ]);
+      texts = [...out.docs, ...inbound.docs].map((d) => ({ id: d.id, ...d.data() }));
+    } catch (e) {
+      console.error("[getPerson] sms log", e);
+    }
+  }
 
   const timeline = buildPersonTimeline({
+    lead: leadData as Parameters<typeof buildPersonTimeline>[0]["lead"],
+    texts: texts as Parameters<typeof buildPersonTimeline>[0]["texts"],
     emailLog: emailLog as Parameters<typeof buildPersonTimeline>[0]["emailLog"],
     flows: flowsList as Parameters<typeof buildPersonTimeline>[0]["flows"],
     applications: applications as Parameters<typeof buildPersonTimeline>[0]["applications"],

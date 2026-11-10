@@ -341,3 +341,14 @@ jobs:
           done
           echo "error: ${SITE_URL}/api/version did not report ${EXPECTED_SHA}" >&2
           exit 1
+
+      # Read-only: shows whether a Cloud Scheduler job calls the flows cron
+      # (follow-up emails and texts, confirm reminders, call plans). Never fails the deploy.
+      - name: Report the flows cron schedule
+        continue-on-error: true
+        run: |
+          for LOC in "${GCP_REGION}" us-east1 us-east4 us-west1; do
+            echo "== ${LOC}"
+            gcloud scheduler jobs list --project="${GCP_PROJECT}" --location="${LOC}" \
+              --format="table(name.basename(),schedule,timeZone,state,httpTarget.uri)" 2>&1 || true
+          done
