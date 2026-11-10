@@ -71,7 +71,6 @@ export default async function CoursePage({ params }: PageProps) {
               Stage {stage.number} · {LEVEL[stage.level]}
             </p>
             <h1 className="page-title">
-              <span aria-hidden="true">{course.icon} </span>
               {course.title}
             </h1>
             <p className="page-intro">{course.description}</p>

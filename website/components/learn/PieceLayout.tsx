@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { ButtonLink } from "@/components/system";
+import { cn } from "@/lib/utils";
 import type { LearnCourse } from "@/lib/learn/catalog";
 import type { LessonSection } from "@/lib/learn/blocks";
 import type { CourseLock } from "@/lib/learn/gate";
@@ -27,6 +28,8 @@ export function PieceLayout({
   title,
   minutes,
   above,
+  promise,
+  hideBreadcrumbOnPhone = false,
   children,
   prev,
   next,
@@ -46,6 +49,10 @@ export function PieceLayout({
   minutes?: number;
   /** Sits above the breadcrumb: the strip that tells a cold visitor where they are. */
   above?: React.ReactNode;
+  /** One line under the title saying what the reader gets: shown to visitors from outside. */
+  promise?: string | null;
+  /** Phones: drop the breadcrumb so the lesson starts on the first screen. */
+  hideBreadcrumbOnPhone?: boolean;
   children: React.ReactNode;
   prev?: { href: string; label: string } | null;
   next?: { href: string; label: string } | null;
@@ -56,7 +63,7 @@ export function PieceLayout({
   const hasSections = sections.length > 0;
 
   return (
-    <section className="px-6 pb-[var(--space-section)] pt-6 lg:pt-10">
+    <section className="px-6 pb-[calc(var(--space-section)+4rem)] pt-6 lg:pb-[var(--space-section)] lg:pt-10">
       <a
         href="#lesson-content"
         className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:bg-[var(--color-bg)] focus:p-3 focus:text-[var(--color-accent)]"
@@ -80,7 +87,10 @@ export function PieceLayout({
             {above}
             <nav
               aria-label="Breadcrumb"
-              className="mb-6 font-[family-name:var(--font-ui)] text-[length:var(--text-small)] text-[var(--color-text-muted)]"
+              className={cn(
+                "mb-6 font-[family-name:var(--font-ui)] text-[length:var(--text-small)] text-[var(--color-text-muted)]",
+                hideBreadcrumbOnPhone && "hidden sm:block"
+              )}
             >
               <ol className="flex flex-wrap items-center gap-2">
                 <li>
@@ -102,13 +112,15 @@ export function PieceLayout({
             <header>
               <p className="section-eyebrow">{eyebrow}</p>
               <h1 className="mt-3 text-[2.125rem] leading-[1.08] md:text-[3rem]">{title}</h1>
-              {minutes ? (
+              {promise ? (
+                <p className="mt-4 max-w-2xl text-[1.0625rem] leading-relaxed text-[var(--color-text)] md:text-[1.1875rem]">{promise}</p>
+              ) : minutes ? (
                 <p className="mt-4 font-[family-name:var(--font-ui)] text-[length:var(--text-small)] text-[var(--color-text-muted)]">
                   About {minutes} min
                 </p>
               ) : null}
             </header>
-            <div className="mt-10">
+            <div className={promise ? "mt-6 md:mt-10" : "mt-10"}>
               {hasSections ? (
                 <div className="hidden lg:block xl:hidden">
                   <OnThisPage sections={sections} lockedFrom={lockedFrom} variant="inline" />

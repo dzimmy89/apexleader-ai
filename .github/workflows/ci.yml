@@ -106,6 +106,7 @@ jobs:
         run: |
           command -v rg >/dev/null || (sudo apt-get update -qq && sudo apt-get install -y -qq ripgrep)
           npx tsx scripts/test-learn-courses.ts
+          npx tsx scripts/test-lesson-funnel.ts
           npx tsx scripts/test-portfolio.ts
           npx tsx scripts/test-stripe-webhook.ts
           npx tsx scripts/test-client-payments.ts
