@@ -12,6 +12,8 @@ const nextConfig: NextConfig = {
   serverExternalPackages: ["pdfkit"],
   outputFileTracingIncludes: {
     "/api/**": ["./node_modules/pdfkit/js/data/**"],
+    // Link-card images read the brand fonts from disk when rendered on demand.
+    "/university/**": ["./assets/fonts/**"],
   },
   // Metadata is static, so blocking costs nothing; streamed metadata lands in <body> on dynamic pages.
   htmlLimitedBots: /.*/,

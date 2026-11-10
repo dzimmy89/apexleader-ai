@@ -44,11 +44,6 @@ export function SiteFooter() {
                 </Link>
               </li>
               <li>
-                <Link href="/brand" className={linkClass}>
-                  Brand kit
-                </Link>
-              </li>
-              <li>
                 <Link href="/about" className={linkClass}>
                   About
                 </Link>

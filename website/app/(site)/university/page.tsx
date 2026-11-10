@@ -77,7 +77,6 @@ export default function UniversityPage() {
                             className="panel group flex w-full flex-col p-6 transition-colors hover:border-[var(--color-border-strong)]"
                           >
                             <h3 className="text-[1.375rem] leading-[1.2] text-[var(--color-text)] transition-colors group-hover:text-[var(--color-accent)]">
-                              <span aria-hidden="true">{course.icon} </span>
                               {course.title}
                             </h3>
                             <p className="mt-2 line-clamp-2 text-[length:var(--text-small)] leading-relaxed text-[var(--color-text-muted)]">

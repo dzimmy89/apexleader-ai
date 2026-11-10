@@ -7,6 +7,8 @@ export const metadata: Metadata = {
   title: "Brand kit",
   description: "The FromAItoBusiness brand kit: logo, colours, type, voice and components.",
   alternates: { canonical: "/brand" },
+  // Kept for reference, not linked from the site and not for search.
+  robots: { index: false, follow: false },
 };
 
 const COLORS = [

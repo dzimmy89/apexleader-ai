@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { LessonBody } from "@/components/learn/LessonBody";
 import { withSignedLearnVideos, withoutLearnVideoSlots } from "@/lib/learn/video-urls";
-import { ExerciseGate } from "@/components/learn/ExerciseGate";
+import { ExerciseGate, FunnelBeacon, GateBar } from "@/components/learn/ExerciseGate";
 import { LessonMarkdown } from "@/components/learn/LessonMarkdown";
 import { MarkComplete } from "@/components/learn/MarkComplete";
 import { PaidStep } from "@/components/learn/PaidStep";
@@ -132,22 +132,28 @@ export default async function ExercisePage({ params }: PageProps) {
           ) : null}
         </Panel>
       ) : null}
+      {open ? <FunnelBeacon step="exercise_view" courseId={course.id} lessonSlug={lesson.slug} /> : null}
       <LessonBody body={shown} showCoached={lock === "open" && !!viewer.access?.isCoachingClient} />
       {exLock === "gate" ? (
-        <ExerciseGate
-          courseId={course.id}
-          lessonSlug={lesson.slug}
-          exerciseHref={href}
-          exerciseMinutes={lesson.exerciseMinutes}
-          lessonNumber={lesson.number}
-          headline="The rest of this exercise opens with your email."
-          perks={[
-            `Every exercise in ${course.title}, open as you go`,
-            "New lessons by email as they land, unsubscribe anytime",
-            "A text when your exercise is ready, only if you tick the box",
-          ]}
-          signInHref={`/login?next=${encodeURIComponent(href)}`}
-        />
+        <>
+          <ExerciseGate
+            variant="full"
+            courseId={course.id}
+            lessonSlug={lesson.slug}
+            exerciseHref={href}
+            exerciseMinutes={lesson.exerciseMinutes}
+            lessonNumber={lesson.number}
+            offerTitle="The rest of this exercise opens with your email."
+            offerResult={brief.summary ? null : undefined}
+            perks={[
+              `Every exercise in ${course.title}, open as you go`,
+              "New lessons on this topic by email, unsubscribe anytime",
+              "Texts only if you tick the box",
+            ]}
+            signInHref={`/login?next=${encodeURIComponent(href)}`}
+          />
+          <GateBar label={`Exercise ${lesson.number} · free with your email`} />
+        </>
       ) : lock === "open" && viewer.email ? (
         <div className="mt-12">
           <MarkComplete courseId={course.id} slug={exerciseSlug} kind="exercise" initiallyDone={done} />

@@ -92,6 +92,20 @@ export default function PersonDetailPage() {
       })(),
     },
     {
+      label: "X handle",
+      value: (() => {
+        const utm = (lead?.lastUtm || lead?.utm) as { source?: string; content?: string } | undefined;
+        const handle = utm?.content && /^(x|twitter)$/i.test(utm.source || "") ? utm.content.replace(/^@/, "") : "";
+        return /^[A-Za-z0-9_]{1,15}$/.test(handle) ? (
+          <a href={`https://x.com/${handle}`} target="_blank" rel="noreferrer" className="text-[var(--color-accent)] hover:underline">
+            @{handle}
+          </a>
+        ) : (
+          "—"
+        );
+      })(),
+    },
+    {
       label: "Landing path",
       value: (lead?.landingPath as string) || "—",
     },
