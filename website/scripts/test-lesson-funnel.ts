@@ -161,3 +161,27 @@ describe("lesson markdown", () => {
     assert.match(html, /\$10 to \$30/);
   });
 });
+
+describe("confirm link", () => {
+  it("lands on the promised exercise, or the library when the lesson is unknown", async () => {
+    const { confirmLandingPath } = await import("../lib/crm/confirm-redirect");
+    const course = getCoursesInOrder()[0]!;
+    const lesson = allLessons(course).find((l) => l.exercise)!;
+    assert.equal(
+      confirmLandingPath({ courseId: course.id, lessonSlug: lesson.slug }, "confirmed"),
+      `/university/${course.id}/exercises/${lesson.exercise}?confirmed=1`
+    );
+    assert.equal(confirmLandingPath(null, "expired"), "/university?confirm=expired");
+    assert.equal(confirmLandingPath({ courseId: "nope", lessonSlug: "x" }, "confirmed"), "/university?confirmed=1");
+  });
+
+  it("has a route behind every confirm email", async () => {
+    const fs = await import("node:fs");
+    const path = await import("node:path");
+    const { confirmUrlFor } = await import("../lib/email-tokens");
+    process.env.JWT_SECRET ||= "test-secret-test-secret-test-secret";
+    const url = new URL(await confirmUrlFor("jo@example.com"));
+    const route = path.join(__dirname, "..", "app", ...url.pathname.split("/").filter(Boolean), "route.ts");
+    assert.ok(fs.existsSync(route), `missing ${route}`);
+  });
+});
