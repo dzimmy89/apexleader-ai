@@ -126,6 +126,7 @@ jobs:
           npx tsx scripts/test-admin-login.ts
           npx tsx scripts/test-operator-project-guard.ts
           npx tsx scripts/test-build-sha.ts
+          npx tsx scripts/test-dashboard-auth.ts
 
       # Tests that need the Firestore emulator.
       - name: Firestore emulator tests
