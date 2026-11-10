@@ -114,6 +114,7 @@ jobs:
           npx tsx scripts/test-contact-page.ts
           npx tsx scripts/test-syllabus.ts
           npx tsx scripts/test-syllabus-pipeline.ts
+          npx tsx scripts/test-call-plans.ts
           npx tsx scripts/test-coaching-delivery.ts
           npx tsx scripts/test-account-billing.ts
           npx tsx scripts/test-coaching-availability.ts

@@ -20,6 +20,7 @@ interface BookPageProps {
     packageId?: string;
     discovery?: string;
     source?: string;
+    slot?: string;
   }>;
 }
 
@@ -163,6 +164,7 @@ export default async function BookDiscoveryCallPage({
           packageContext={packageContext}
           source={source}
           defaultDurationMins={30}
+          initialSlot={params.slot}
         />
 
         <p className="mt-6 font-[family-name:var(--font-ui)] text-[length:var(--text-small)] text-[var(--color-text-muted)]">

@@ -52,3 +52,31 @@ CI also runs the Firestore rules tests in the emulator (`firebase-tools@15.31.0`
 - `<SITE_URL>/api/health`
 - `curl -sf <SITE_URL>/api/version` returns the commit SHA
 - `<SITE_URL>/coaching` and `<SITE_URL>/coaching/book`
+
+## Recorded discovery calls and the written one-page plan
+
+Every discovery call booked on the site gets a Google Meet room that records and
+transcribes itself, and after the call the cron (`/api/cron/process-flows`)
+turns the transcript into a one-page plan and emails it to the prospect, with a
+copy to the coach. Code: `lib/coaching/meet-space.ts`, `lib/coaching/call-plans.ts`.
+
+One-time setup in Google Admin → Security → API controls → Domain-wide
+delegation, on the site's service account, add these scopes next to the ones
+already there:
+
+- `https://www.googleapis.com/auth/meetings.space.created`
+- `https://www.googleapis.com/auth/meetings.space.settings`
+- `https://www.googleapis.com/auth/drive.readonly` and
+  `https://www.googleapis.com/auth/documents.readonly` (already needed for the
+  syllabus intake)
+
+Also turn on the Google Meet REST API in the Google Cloud project. Until the
+Meet scopes are in place bookings still work with an ordinary Meet link, and
+the call is only transcribed if recording or transcription is started by hand
+(or switched on by default in Google Admin → Apps → Google Workspace → Google
+Meet → Meet video settings).
+
+Switches: `CALL_PLAN_MODE=review` sends each plan to the coach only, to forward
+by hand. `MEET_AUTO_RECORD=off` goes back to ordinary Meet links. The plan step
+only runs when something calls the cron route on a schedule (Cloud Scheduler
+with the `CRON_SECRET` header); every 15 to 30 minutes is enough.

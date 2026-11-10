@@ -57,6 +57,10 @@ export async function resolvePackageContext(
   return pkg ? toContext(pkg) : GENERAL_CONTEXT;
 }
 
+/** Told to every prospect before the call: it is recorded, why, and how to opt out. */
+export const RECORDING_NOTICE =
+  "The call is recorded so I can send you a written one-page AI plan afterwards, built from what you tell me. If you'd rather it wasn't recorded, reply and say so.";
+
 export function getDiscoveryEventTitle(args: {
   name: string;
   packageContext: DiscoveryPackageContext;
@@ -91,6 +95,8 @@ export function getDiscoveryEventDescription(args: {
     packageLine,
     fitLine,
     "No pressure, no obligation.",
+    "",
+    RECORDING_NOTICE,
     "",
     "Before your call, review this short prep guide:",
     args.prepUrl,
@@ -142,6 +148,7 @@ export function getDiscoveryEmailContent(args: {
       : "",
     `<p><strong>Before your call</strong>, review what to prepare:</p>`,
     `<p><a href="${args.prepUrl}">${args.prepUrl}</a></p>`,
+    `<p>${RECORDING_NOTICE}</p>`,
     timeNote,
     "<p>A separate calendar invite should also arrive from Google Calendar.</p>",
   ]
@@ -162,6 +169,8 @@ export function getDiscoveryEmailContent(args: {
     "",
     "Before your call, review what to prepare:",
     args.prepUrl,
+    "",
+    RECORDING_NOTICE,
     "",
     tz !== COACH_TIMEZONE
       ? `Coach availability is Mon–Fri, 9am–6pm Eastern (${coachWhen}).`
