@@ -14,6 +14,7 @@ export const adminNav = [
   { href: "/admin", label: "Overview" },
   { href: "/admin/people", label: "People" },
   { href: "/admin/links", label: "X links" },
+  { href: "/admin/funnel", label: "Funnel" },
   { href: "/admin/coaching", label: "Pipeline" },
   { href: "/admin/coaching/payments-due", label: "Payments due" },
   { href: "/admin/coaching/clients", label: "Clients" },
@@ -39,6 +40,7 @@ export const adminNavGroups: AdminNavGroup[] = [
     items: [
       { href: "/admin/people", label: "People" },
       { href: "/admin/links", label: "X links" },
+      { href: "/admin/funnel", label: "Funnel" },
     ],
   },
   {

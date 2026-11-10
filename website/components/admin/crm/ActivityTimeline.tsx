@@ -6,6 +6,8 @@ import {
   GitBranch,
   Mail,
   MessageSquare,
+  Smartphone,
+  UserPlus,
   StickyNote,
   User,
 } from "lucide-react";
@@ -28,6 +30,8 @@ const ICONS: Record<TimelineEventType, typeof Mail> = {
   note: StickyNote,
   stage_change: MessageSquare,
   payment: CreditCard,
+  lead: UserPlus,
+  text: Smartphone,
 };
 
 interface ActivityTimelineProps {
@@ -104,6 +108,7 @@ export function ActivityTimeline({ events, className }: ActivityTimelineProps) {
   const [openEmail, setOpenEmail] = useState<string | null>(null);
   const filterTypes: { id: string; label: string; types?: TimelineEventType[] }[] = [
     { id: "all", label: "All" },
+    { id: "funnel", label: "Funnel", types: ["lead", "text"] },
     { id: "email", label: "Email", types: ["email"] },
     { id: "flows", label: "Flows", types: ["flow"] },
     { id: "notes", label: "Notes", types: ["note", "stage_change"] },

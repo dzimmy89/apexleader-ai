@@ -5,7 +5,9 @@ export type TimelineEventType =
   | "session"
   | "note"
   | "stage_change"
-  | "payment";
+  | "payment"
+  | "lead"
+  | "text";
 
 export interface TimelineEvent {
   id: string;
@@ -57,6 +59,105 @@ interface ActivityLogEntry {
   at?: string;
 }
 
+/** The lead record fields that mark the steps of the lesson funnel. */
+export interface LeadTimelineInput {
+  createdAt?: string;
+  landingPath?: string;
+  utm?: { source?: string; medium?: string; campaign?: string; content?: string };
+  referrer?: string;
+  firstLesson?: { courseId?: string; lessonSlug?: string; title?: string; at?: string };
+  lastLesson?: { courseId?: string; lessonSlug?: string; title?: string; at?: string };
+  phone?: string;
+  smsConsent?: { given?: boolean; requestedAt?: string };
+  smsOptOutAt?: string;
+  consent?: { confirmedAt?: string };
+  lastConfirmEmailSentAt?: string;
+  confirmReminderSentAt?: string;
+  unsubscribedAt?: string;
+}
+
+export interface SmsLogEntry {
+  id?: string;
+  direction?: "outbound" | "inbound";
+  body?: string;
+  status?: string;
+  kind?: string;
+  sentAt?: string;
+  receivedAt?: string;
+}
+
+function cameFrom(lead: LeadTimelineInput): string | undefined {
+  const u = lead.utm;
+  if (u?.source && /^(x|twitter)$/i.test(u.source)) {
+    return [`From X${u.medium ? ` ${u.medium}` : ""}`, u.content ? `@${u.content.replace(/^@/, "")}` : "", u.campaign || ""]
+      .filter(Boolean)
+      .join(" · ");
+  }
+  if (u?.source || u?.campaign) return [u.source, u.medium, u.campaign].filter(Boolean).join(" · ");
+  if (lead.referrer) {
+    try {
+      return `From ${new URL(lead.referrer).hostname}`;
+    } catch {
+      return undefined;
+    }
+  }
+  return lead.landingPath ? `First page ${lead.landingPath}` : undefined;
+}
+
+/** The lesson funnel steps on a lead record, as timeline events. */
+export function leadFunnelEvents(lead: LeadTimelineInput | null | undefined): TimelineEvent[] {
+  if (!lead) return [];
+  const out: TimelineEvent[] = [];
+  const first = lead.firstLesson;
+  const signedUpAt = first?.at || lead.createdAt;
+  if (signedUpAt) {
+    out.push({
+      id: "lead-signup",
+      type: "lead",
+      title: first?.title ? `Gave email at “${first.title}”` : "Became a lead",
+      description: cameFrom(lead),
+      at: signedUpAt,
+    });
+  }
+  const last = lead.lastLesson;
+  if (last?.at && last.at !== first?.at && last.title) {
+    out.push({ id: "lead-last-lesson", type: "lead", title: `Came back through “${last.title}”`, at: last.at });
+  }
+  if (lead.phone && lead.smsConsent?.requestedAt) {
+    out.push({
+      id: "lead-mobile",
+      type: "lead",
+      title: lead.smsConsent.given ? "Added mobile, texts OK" : "Added mobile, no texts",
+      at: lead.smsConsent.requestedAt,
+    });
+  }
+  if (lead.confirmReminderSentAt) {
+    out.push({ id: "lead-confirm-reminder", type: "lead", title: "Confirm reminder sent", at: lead.confirmReminderSentAt });
+  }
+  if (lead.consent?.confirmedAt) {
+    out.push({ id: "lead-confirmed", type: "lead", title: "Confirmed email", at: lead.consent.confirmedAt });
+  }
+  if (lead.smsOptOutAt) out.push({ id: "lead-sms-stop", type: "text", title: "Texted STOP", at: lead.smsOptOutAt });
+  if (lead.unsubscribedAt) out.push({ id: "lead-unsub", type: "lead", title: "Unsubscribed from email", at: lead.unsubscribedAt });
+  return out;
+}
+
+export function smsTimelineEvents(texts: SmsLogEntry[] | undefined): TimelineEvent[] {
+  const out: TimelineEvent[] = [];
+  for (const t of texts || []) {
+    const at = t.direction === "inbound" ? t.receivedAt : t.sentAt;
+    if (!at) continue;
+    out.push({
+      id: `text-${t.id || at}`,
+      type: "text",
+      title: t.direction === "inbound" ? `Texted back${t.kind && t.kind !== "message" ? ` (${t.kind})` : ""}` : `Text ${t.status || "sent"}`,
+      description: t.body ? (t.body.length > 160 ? `${t.body.slice(0, 159)}…` : t.body) : undefined,
+      at,
+    });
+  }
+  return out;
+}
+
 export function buildPersonTimeline(input: {
   emailLog?: EmailLogEntry[];
   flows?: FlowEntry[];
@@ -64,8 +165,10 @@ export function buildPersonTimeline(input: {
   sessions?: SessionEntry[];
   activityLog?: ActivityLogEntry[];
   notes?: { id: string; text: string; at: string }[];
+  lead?: LeadTimelineInput | null;
+  texts?: SmsLogEntry[];
 }): TimelineEvent[] {
-  const events: TimelineEvent[] = [];
+  const events: TimelineEvent[] = [...leadFunnelEvents(input.lead), ...smsTimelineEvents(input.texts)];
 
   for (const log of input.emailLog || []) {
     if (!log.sentAt) continue;
