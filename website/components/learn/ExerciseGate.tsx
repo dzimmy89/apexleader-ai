@@ -19,9 +19,26 @@ import { cn } from "@/lib/utils";
 const STORE_KEY = "fatb_gate_email";
 const STORE_EVENT = "fatb-gate";
 
+/**
+ * The email saved earlier in this visit, or the one a confirm or email link
+ * handed over in the short-lived fatb_gate_email cookie (a lead who gave an
+ * email but no mobile lands back here at step two).
+ */
 function readStoredEmail(): string {
   try {
-    return window.sessionStorage.getItem(STORE_KEY) || "";
+    const stored = window.sessionStorage.getItem(STORE_KEY);
+    if (stored) return stored;
+  } catch {
+    /* private mode */
+  }
+  const cookie = document.cookie.split("; ").find((c) => c.startsWith(`${STORE_KEY}=`));
+  if (!cookie) return "";
+  document.cookie = `${STORE_KEY}=; Max-Age=0; Path=/`;
+  try {
+    const email = decodeURIComponent(cookie.slice(STORE_KEY.length + 1));
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return "";
+    window.sessionStorage.setItem(STORE_KEY, email);
+    return email;
   } catch {
     return "";
   }

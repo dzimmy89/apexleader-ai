@@ -14,13 +14,32 @@ import {
 
 const MARK_SENT_ATTEMPTS = 3;
 
+/** A reader link token, or null if there is none or it can't be made: a plain link still works. */
+async function readerTokenOrNull(fx: ProcessFlowsEffects, email: string): Promise<string | null> {
+  if (!fx.readerLinkTokenFor) return null;
+  try {
+    return await fx.readerLinkTokenFor(email);
+  } catch (e) {
+    console.error("[process-flows] reader link token failed", e);
+    return null;
+  }
+}
+
 export interface ProcessFlowsEffects {
   sendEmail: (opts: SendEmailOptions) => Promise<SendEmailResult>;
   unsubscribeUrlFor: (email: string) => Promise<string>;
   getTemplate: (
     stepId: string,
-    ctx: { email: string; firstName: string; unsubscribeUrl: string; lesson?: PendingEmail["lesson"] }
+    ctx: {
+      email: string;
+      firstName: string;
+      unsubscribeUrl: string;
+      lesson?: PendingEmail["lesson"];
+      readerToken?: string | null;
+    }
   ) => { subject: string; html: string; text?: string };
+  /** Lesson series: the lead's reader link token (lib/learn/reader-links). Optional; links fall back to plain URLs. */
+  readerLinkTokenFor?: (email: string) => Promise<string | null>;
   /** Lesson-series texts. Optional so older callers and tests stay email-only. */
   sendSms?: (opts: SendSmsOptions) => Promise<SendSmsResult>;
   /** Environment-wide reason texts can't go out (sms_sends_disabled, sms_not_configured). */
@@ -227,11 +246,13 @@ export async function executeProcessFlows(args: {
     let gmailMessageId: string | undefined;
     try {
       const unsubscribeUrl = await fx.unsubscribeUrlFor(item.email);
+      const readerToken = lessonStepChannel(item.step.stepId) ? await readerTokenOrNull(fx, item.email) : null;
       const rendered = fx.getTemplate(item.step.stepId, {
         email: item.email,
         firstName,
         unsubscribeUrl,
         lesson: item.lesson,
+        readerToken,
       });
       const result = await fx.sendEmail({
         to: item.email,
@@ -341,7 +362,8 @@ async function sendSeriesText(
   let sentOk = false;
   let messageId: string | undefined;
   try {
-    const body = renderLessonSms(item.step.stepId, { firstName, lesson: item.lesson });
+    const readerToken = await readerTokenOrNull(fx, item.email);
+    const body = renderLessonSms(item.step.stepId, { firstName, lesson: item.lesson, readerToken });
     const result = await fx.sendSms!({
       to: phone,
       body,

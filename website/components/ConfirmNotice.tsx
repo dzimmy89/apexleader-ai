@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 type Notice = "confirmed" | "expired" | "unknown";
 
 const COPY: Record<Notice, string> = {
-  confirmed: "Email confirmed. Your exercise is open on this device too.",
+  confirmed: "Email confirmed.",
   expired: "That confirm link has expired. Open any lesson's exercise with your email and a fresh one is sent.",
   unknown: "We couldn't confirm that email. Open any lesson's exercise with your email and a fresh link is sent.",
 };

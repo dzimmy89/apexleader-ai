@@ -89,7 +89,7 @@ export async function POST(request: NextRequest) {
       to: BRAND.email,
       subject: `Text from ${formatPhone(from)}: ${body.slice(0, 60)}`,
       html: `<p><strong>${escapeHtml(formatPhone(from))}</strong> (${who}) texted:</p>
-<blockquote style="border-left:3px solid #c9a227;padding-left:12px;">${escapeHtml(body).replace(/\n/g, "<br />")}</blockquote>
+<blockquote style="border-left:3px solid #fe7222;padding-left:12px;">${escapeHtml(body).replace(/\n/g, "<br />")}</blockquote>
 <p>Their automated lesson texts and emails have stopped so you can answer by hand: email them back, or text them from the Twilio console.</p>`,
       text: `${formatPhone(from)} (${emails.join(", ") || "no lead with this number"}) texted:\n\n${body}\n\nTheir automated lesson series has stopped so you can answer by hand.`,
       purpose: "transactional",
