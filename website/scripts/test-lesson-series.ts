@@ -310,3 +310,13 @@ describe("cron sends lesson texts", () => {
     assert.deepEqual(log, ["skipped"]);
   });
 });
+
+describe("email footer address", () => {
+  it("prints the Wyoming postal address in every series email", async () => {
+    const { POSTAL_ADDRESS, isPostalAddressPlaceholder } = await import("../content/site");
+    assert.equal(isPostalAddressPlaceholder(), false);
+    const e = renderLessonEmail("lesson_marketing_e1", { unsubscribeUrl: UNSUB });
+    assert.ok(e.html.includes("30 N Gould Street, Suite R, Sheridan, WY 82801"));
+    assert.ok(e.text.includes(POSTAL_ADDRESS));
+  });
+});

@@ -219,14 +219,14 @@ describe("process-flows live exclusion, suppression, and claim durability", () =
     process.env.MARKETING_SENDS_ENABLED = "true";
     process.env.JWT_SECRET = prevJwt || "ci-build-only";
     try {
-      // Until content/site.ts has a real postal address, marketing mail is held.
+      // With sends on and a real postal address, a suppressed address is still skipped.
       assert.deepEqual(
         evaluateSendGates({
           purpose: "marketing",
           suppressed: true,
           unsubscribeUrl: "https://fromaitobusiness.com/api/unsubscribe?token=t",
         }),
-        { skip: true, error: "postal_address_placeholder" }
+        { skip: true, error: "suppressed" }
       );
       assert.deepEqual(evaluateSendGates({ purpose: "transactional", suppressed: true }), { skip: true, error: "suppressed" });
       assert.equal(isOptOutSendSkip("suppressed"), true);
