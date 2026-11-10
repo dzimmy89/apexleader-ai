@@ -33,7 +33,7 @@ Why: Changed-payment-detail messages are a common fraud pattern. Confirm by phon
 
 4. **Load the reminders.** In QuickBooks, set up reminders (and Invoicing on Autopilot if it's on your plan) so invoices are drafted for your review. In Wave Pro, turn on automatic reminders. On Wave Starter, put the three emails in your calendar as tasks for each open invoice instead.
 
-5. **Create a sample receivables file.** Export your AR aging report as `AR aging.csv` into Finance. No invoices yet? Ask Claude to create a sample with 8 invoices for a dog-grooming bookkeeping service: two current, two 5 to 14 days late, two 15 to 30 days late, one 45 days late, and one 75 days late, with a "Reminders sent" column.
+5. **Create a sample receivables file.** Export your AR aging report as `AR aging.csv` into Finance. No invoices yet? Ask Claude to create a sample with 8 invoices for a food truck bookkeeping service: two current, two 5 to 14 days late, two 15 to 30 days late, one 45 days late, and one 75 days late, with a "Reminders sent" column.
 
 6. **Run the review.** In Cowork (Finance folder only), run the weekly receivables prompt from Lesson 3. Check that it put each invoice in the right bucket and drafted only the follow-ups the rules call for.
 

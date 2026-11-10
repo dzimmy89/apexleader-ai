@@ -123,3 +123,4 @@ Why: Workflow files control automation that runs with access to your repo. A typ
 - [About pull requests](https://docs.github.com/en/pull-requests/get-started/about-pull-requests) - what a PR contains and how merging works
 - [About rulesets](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/about-rulesets) - enforcing rules on branches, and which plans include them
 - [Reverting a pull request](https://docs.github.com/en/pull-requests/how-tos/merge-and-close-pull-requests/reverting-a-pull-request) - the one-click undo
+- [The Agent Build Line, Lesson 3](/university/agent-build-line) - let an agent open pull requests through the GitHub MCP server, without the merge button

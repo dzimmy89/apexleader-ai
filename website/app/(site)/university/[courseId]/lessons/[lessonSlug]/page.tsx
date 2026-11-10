@@ -9,6 +9,7 @@ import { lessonBody, lessonSections, previewBody } from "@/lib/learn/blocks";
 import { readPiece } from "@/lib/learn/content";
 import { courseLock, getViewer } from "@/lib/learn/gate";
 import { getProgress, recordVisit } from "@/lib/learn/progress";
+import { withSignedLearnVideos, withoutLearnVideoSlots } from "@/lib/learn/video-urls";
 
 interface PageProps {
   params: Promise<{ courseId: string; lessonSlug: string }>;
@@ -51,6 +52,9 @@ export default async function LessonPage({ params }: PageProps) {
     await recordVisit(viewer.email, href, `${course.title}: ${lesson.title}`).catch(() => undefined);
   }
 
+  // Clips play only for readers who can open the lesson; a locked preview never carries them.
+  const shown = lock === "open" ? await withSignedLearnVideos(body) : withoutLearnVideoSlots(previewBody(body));
+
   const moduleOf = course.modules.find((m) => m.lessons.some((l) => l.slug === lesson.slug))!;
   const lastInModule = moduleOf.lessons.at(-1)?.slug === lesson.slug;
   const nextLink = lesson.exercise
@@ -77,7 +81,7 @@ export default async function LessonPage({ params }: PageProps) {
       // Once the lesson is complete, moving on is the main thing to do.
       nextIsPrimary={done}
     >
-      <LessonBody body={lock === "open" ? body : previewBody(body)} />
+      <LessonBody body={shown} />
       {lock === "open" ? (
         viewer.email ? (
           <div className="mt-12">

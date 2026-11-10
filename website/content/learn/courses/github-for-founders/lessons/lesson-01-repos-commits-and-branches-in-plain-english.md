@@ -44,7 +44,7 @@ Your GitHub account will control your website and, later, your product. Treat it
 1. Sign up at github.com with your business email. The Free plan is enough for this course. Check GitHub's pricing page for what paid plans add.
 2. Turn on two-factor authentication (Settings, then Password and authentication). Use an authenticator app or a passkey, not SMS if you can avoid it.
 3. Save your recovery codes somewhere offline, such as your password manager.
-4. Decide your naming. Repos are easier to find with plain names like `groomer-books-site` or `groomer-books-intake-form`.
+4. Decide your naming. Repos are easier to find with plain names like `rolling-ledger-site` or `rolling-ledger-intake-form`.
 
 :::warning
 Agents never get your GitHub password. When a tool like Cursor, Codex or Copilot needs access, it asks you to install a GitHub App or approve an OAuth screen, and you choose which repositories it can see. Pick "Only select repositories" whenever the screen offers it. You can review and revoke these later under Settings, then Applications.
@@ -55,7 +55,7 @@ Agents never get your GitHub password. When a tool like Cursor, Codex or Copilot
 You don't need any software for this.
 
 1. Click the **+** at the top right of github.com and choose **New repository**.
-2. Name it, for example `groomer-books-playbook`.
+2. Name it, for example `rolling-ledger-playbook`.
 3. Choose **Private**. Anything you aren't sure should be public starts private.
 4. Tick **Add a README file**. A README is the front page of the repo: a plain text file that explains what the project is.
 5. Click **Create repository**.
@@ -67,7 +67,7 @@ You now have a repo with one commit in it. Click the clock icon or the "commits"
 Open the README, click the pencil icon to edit, and add a few lines:
 
 ```text
-# Groomer Books playbook
+# Rolling Ledger playbook
 
 What this repo is: the source files for our website and internal tools.
 Who works here: the founder (approves everything) and AI coding agents.

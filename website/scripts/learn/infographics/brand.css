@@ -1,0 +1,83 @@
+/*
+ * FromAItoBusiness lesson infographics (content/learn/MEDIA.md).
+ * Same frame, size and number rules as The Node's Learn figures, in the
+ * FromAItoBusiness brand: ink ground, one paper block at most, signal orange
+ * for the one thing that moves the business forward, track colours only on
+ * marketing, sales and accounting figures. Fonts are the site's own files.
+ */
+@font-face { font-family: "Bricolage Grotesque"; font-weight: 700; src: url("../../../fonts/bricolage-grotesque-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Bricolage Grotesque"; font-weight: 800; src: url("../../../fonts/bricolage-grotesque-latin-800-normal.woff2") format("woff2"); }
+@font-face { font-family: "Instrument Sans"; font-weight: 400; src: url("../../../fonts/instrument-sans-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Instrument Sans"; font-weight: 500; src: url("../../../fonts/instrument-sans-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Instrument Sans"; font-weight: 600; src: url("../../../fonts/instrument-sans-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "JetBrains Mono"; font-weight: 400; src: url("../../../fonts/jetbrains-mono-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "JetBrains Mono"; font-weight: 500; src: url("../../../fonts/jetbrains-mono-latin-500-normal.woff2") format("woff2"); }
+:root {
+  --ink: oklch(17% 0.02 262);
+  --panel: oklch(21.5% 0.024 262);
+  --panel-raised: oklch(25.5% 0.028 262);
+  --paper: oklch(97% 0.012 85);
+  --paper-text: oklch(20% 0.02 262);
+  --line: oklch(92% 0.01 262 / 0.14);
+  --line-strong: oklch(92% 0.01 262 / 0.3);
+  --grid: oklch(92% 0.01 262 / 0.06);
+  --text: oklch(96.5% 0.008 85);
+  --muted: oklch(76% 0.02 262);
+  --signal: oklch(71% 0.19 45);
+  --signal-soft: oklch(71% 0.19 45 / 0.16);
+  --signal-ink: oklch(53% 0.18 40);
+  --marketing: oklch(76% 0.12 190);
+  --sales: oklch(72% 0.14 295);
+  --accounting: oklch(84% 0.16 125);
+  --ok: oklch(78% 0.15 150);
+  --bad: oklch(68% 0.17 25);
+  --display: "Bricolage Grotesque", system-ui, sans-serif;
+  --body: "Instrument Sans", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, monospace;
+  /* A figure's track colour: set class="fig wide sales" (or marketing, accounting). */
+  --track: var(--signal);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--ink); }
+body { color: var(--text); font-family: var(--body); -webkit-font-smoothing: antialiased; }
+/* The figure: a fixed small frame on ink with the brand's blueprint grid. */
+.fig {
+  position: relative; overflow: hidden;
+  background:
+    linear-gradient(var(--grid) 1px, transparent 1px) 0 0 / 48px 48px,
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px) 0 0 / 48px 48px,
+    var(--ink);
+  padding: 30px 36px;
+  display: flex; flex-direction: column; gap: 20px;
+}
+.fig.marketing { --track: var(--marketing); }
+.fig.sales { --track: var(--sales); }
+.fig.accounting { --track: var(--accounting); }
+/* The lesson column is about 370 px wide on a phone, so 26 px here shows
+   as about 12-14 px there. Nothing below 26 px. */
+.fig.wide { width: 800px; height: 450px; }
+.fig.tall { width: 640px; height: 800px; }
+.label { font: 600 30px/1.15 var(--body); color: var(--text); }
+.title { font: 700 38px/1.1 var(--display); letter-spacing: -0.02em; color: var(--text); text-wrap: balance; }
+.small { font: 500 26px/1.25 var(--body); color: var(--muted); }
+.body { font: 400 28px/1.3 var(--body); color: var(--text); }
+.num { font: 800 1em/1 var(--display); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+/* Agent names, statuses and module numbers: the system voice. Never sentences. */
+.sys { font: 500 26px/1 var(--mono); letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+.card { background: var(--panel); border: 1.5px solid var(--line); border-radius: 16px; padding: 14px 18px; display: flex; gap: 14px; }
+.card.agent { border-radius: 20px; border-left: 6px solid var(--track); }
+.card.key { border-color: var(--track); background: color-mix(in oklch, var(--track) 16%, transparent); }
+/* The one highlighted block per figure. */
+.paper { background: var(--paper); color: var(--paper-text); border-radius: 12px; padding: 14px 18px; }
+.paper .small { color: oklch(44% 0.022 262); }
+.signal { color: var(--signal); } .track { color: var(--track); } .muted { color: var(--muted); }
+.ok { color: var(--ok); } .bad { color: var(--bad); }
+/* Status always comes with a word, never colour alone. */
+.pill { display: inline-flex; align-items: center; gap: 8px; font: 600 26px/1 var(--body); padding: 8px 14px; border-radius: 999px; border: 1.5px solid currentColor; }
+/* Lucide line icons, pasted as inline SVG, take the colour of the text beside them. */
+.icon { width: 44px; height: 44px; flex: none; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+/* A real screenshot of a tool, with the month it was captured beside it. */
+.shot { border: 1.5px solid var(--line-strong); border-radius: 10px; overflow: hidden; display: block; width: 100%; height: auto; }
+.note { font: 500 26px/1.25 var(--body); color: var(--muted); margin-top: auto; }
+.arrow { color: var(--signal); font: 700 34px/1 var(--display); }
+svg text { font-family: var(--body); }

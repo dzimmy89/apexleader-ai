@@ -40,13 +40,13 @@ Adding your own Gmail and Drive is useful when the answer depends on your data: 
 A short question gets a broad, generic report. A brief gets a report you can act on. Use this template:
 
 ```text
-Research goal: Decide whether to offer monthly bookkeeping to independent dog groomers in the US.
+Research goal: Decide whether to offer monthly bookkeeping to independent food truck owners in the US.
 Decision I'm making: whether to launch, and at what price range.
 What I need:
-1. The main competitors serving groomers or small salons with bookkeeping (name, price, what's included).
-2. Software groomers already use for booking and payments, and whether it exports to accounting tools.
-3. Common complaints groomers post about money admin (forums, reviews, Reddit, Facebook groups).
-4. Any industry data on the number of grooming businesses in the US, with the source and year.
+1. The main competitors serving food truck owners or small mobile food businesses with bookkeeping (name, price, what's included).
+2. Software food truck owners already use for booking and payments, and whether it exports to accounting tools.
+3. Common complaints food truck owners post about money admin (forums, reviews, Reddit, Facebook groups).
+4. Any industry data on the number of food truck businesses in the US, with the source and year.
 Constraints: prefer sources from 2025-2026. Flag anything older than 2024.
 Output: start with a one-paragraph answer, then a competitor table, then risks, then open questions I should answer by talking to customers.
 ```
@@ -58,8 +58,8 @@ Notice what the brief does: it names the decision, splits it into parts, sets a 
 When the plan appears, read it like a manager reviewing a junior's to-do list. Typical edits:
 
 ```text
-Drop the section on the history of the grooming industry.
-Add a step: find three groomer-focused business coaches or consultants and what they recommend for bookkeeping.
+Drop the section on the history of the food truck industry.
+Add a step: find three food-truck-focused business coaches or consultants and what they recommend for bookkeeping.
 For competitor pricing, only use the competitors' own pricing pages, not review sites.
 ```
 

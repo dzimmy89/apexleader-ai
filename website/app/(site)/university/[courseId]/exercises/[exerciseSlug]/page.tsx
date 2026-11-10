@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { LessonBody } from "@/components/learn/LessonBody";
+import { withSignedLearnVideos, withoutLearnVideoSlots } from "@/lib/learn/video-urls";
 import { LessonMarkdown } from "@/components/learn/LessonMarkdown";
 import { LockedNotice } from "@/components/learn/LockedNotice";
 import { MarkComplete } from "@/components/learn/MarkComplete";
@@ -82,6 +83,9 @@ export default async function ExercisePage({ params }: PageProps) {
       : nav.next
         ? { href: `/university/${course.id}/lessons/${nav.next.slug}`, label: nav.next.title }
         : null;
+  // Clips play only for readers who can open the exercise; a locked preview never carries them.
+  const shown =
+    lock === "open" ? await withSignedLearnVideos(brief.rest) : withoutLearnVideoSlots(previewBody(brief.rest));
   const hasBrief = brief.summary !== null || brief.facts.length > 0;
   const facts = brief.facts.length
     ? brief.facts
@@ -124,7 +128,7 @@ export default async function ExercisePage({ params }: PageProps) {
         </Panel>
       ) : null}
       <LessonBody
-        body={lock === "open" ? brief.rest : previewBody(brief.rest)}
+        body={shown}
         showCoached={lock === "open" && !!viewer.access?.isCoachingClient}
       />
       {lock === "open" ? (

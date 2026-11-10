@@ -4,8 +4,8 @@ import { getSiteOrigin } from "@/lib/env";
 const FORBIDDEN = { error: "Forbidden" } as const;
 
 /** Apex and www are both live hosts for /admin/login (no redirect in this PR). */
-export const ADMIN_LOGIN_APEX_ORIGIN = "https://apexleader.ai";
-export const ADMIN_LOGIN_WWW_ORIGIN = "https://www.apexleader.ai";
+export const ADMIN_LOGIN_APEX_ORIGIN = "https://fromaitobusiness.com";
+export const ADMIN_LOGIN_WWW_ORIGIN = "https://www.fromaitobusiness.com";
 
 export function isJsonContentType(header: string | null): boolean {
   if (!header) return false;

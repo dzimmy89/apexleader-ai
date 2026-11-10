@@ -160,3 +160,5 @@ Why: CLAUDE.md is guidance, while a hook runs every time at a fixed point and ca
 - [Use Claude Code in the cloud](https://code.claude.com/docs/en/claude-code-on-the-web) - cloud sessions, --cloud and --teleport
 - [Get started with cloud sessions](https://code.claude.com/docs/en/web-quickstart) - connect GitHub, start a task, review and create a PR
 - [Automate work with scheduled tasks](https://code.claude.com/docs/en/routines) - triggers, scope and who the task acts as
+- [T3 Code](https://t3.codes/) - run Claude Code beside Codex and Cursor from one window, covered in the T3 Code course
+- [security-guidance plugin](https://github.com/anthropics/claude-plugins-official/tree/main/plugins/security-guidance) - Anthropic's ready-made hooks that flag risky edits, covered with language server plugins in the Agent Skills and Plugins course

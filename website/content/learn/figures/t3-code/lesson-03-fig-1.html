@@ -1,0 +1,24 @@
+<!doctype html><meta charset="utf-8">
+<!-- Figure source for the T3 Code course. -->
+<meta name="out" content="public/learn/figures/t3-code/lesson-03-fig-1.webp">
+<link rel="stylesheet" href="../../../../scripts/learn/infographics/brand.css">
+<style>
+  .paper .label { color: var(--paper-text); }
+
+  .rows { flex: 1; display: flex; flex-direction: column; gap: 14px; }
+  .r { display: grid; grid-template-columns: 210px 1fr; gap: 16px; align-items: end; flex: 1; }
+  .bars { display: flex; align-items: flex-end; gap: 8px; height: 120px; border-bottom: 1.5px solid var(--line-strong); }
+  .bar { flex: 1; height: 100%; display: flex; align-items: flex-end; }
+  .bar i { display: block; width: 100%; background: var(--muted); border-radius: 4px 4px 0 0; opacity: .6; }
+  .good .bar i { background: var(--signal); opacity: 1; }
+
+</style>
+<div class="fig wide">
+  <span class="sys">Context per turn · example</span>
+  <div class="rows">
+    <div class="r"><div><span class="label">One long thread</span><br><span class="small">grows every turn</span></div>
+      <div class="bars"><div class="bar"><i style="height:10%"></i></div><div class="bar"><i style="height:20%"></i></div><div class="bar"><i style="height:30%"></i></div><div class="bar"><i style="height:40%"></i></div><div class="bar"><i style="height:50%"></i></div><div class="bar"><i style="height:60%"></i></div><div class="bar"><i style="height:70%"></i></div><div class="bar"><i style="height:80%"></i></div><div class="bar"><i style="height:90%"></i></div><div class="bar"><i style="height:100%"></i></div></div></div>
+    <div class="r good"><div><span class="label">Three short threads</span><br><span class="small">start small again</span></div>
+      <div class="bars"><div class="bar"><i style="height:10%"></i></div><div class="bar"><i style="height:20%"></i></div><div class="bar"><i style="height:30%"></i></div><div class="bar" style="margin-left:22px"><i style="height:10%"></i></div><div class="bar"><i style="height:20%"></i></div><div class="bar"><i style="height:30%"></i></div><div class="bar" style="margin-left:22px"><i style="height:10%"></i></div><div class="bar"><i style="height:20%"></i></div><div class="bar"><i style="height:30%"></i></div><div class="bar"><i style="height:40%"></i></div></div></div>
+  </div>
+</div>

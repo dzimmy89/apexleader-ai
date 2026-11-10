@@ -54,7 +54,7 @@ Open the new `.mdc` file in `.cursor/rules/` and confirm it's set to always appl
 4. **Add a file-scoped rule.** Type `/create-rule` again:
 
 ```text
-For files in content/: short sentences, talk to one groomer as "you",
+For files in content/: short sentences, talk to one food truck owner as "you",
 never say "accounting solutions", no prices outside content/pricing.md,
 and any tax statement ends with "General information, not tax advice."
 Apply only to content/**/*.md.

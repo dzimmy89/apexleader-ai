@@ -53,6 +53,11 @@ export function vertexSetupError(e: unknown): AiUnavailableError | null {
   if (status !== 403 && status !== 404) return null;
   // Google's own reason tells a missing role apart from a model this project can't use.
   const reason = e instanceof Error ? e.message.replace(/\s+/g, " ").slice(0, 300) : "";
+  if (/billing|outstanding balance/i.test(reason)) {
+    return new AiUnavailableError(
+      `Gemini (${AI_MODEL}) is turned off because Google Cloud project ${project()} has a billing problem (an unpaid balance or no valid payment method). Fix it in the Google Cloud console under Billing, then try again. Google said: ${reason}`
+    );
+  }
   return new AiUnavailableError(
     `Gemini (${AI_MODEL}) is not reachable in Google Cloud project ${project()} yet. In the Google Cloud console, turn on the Vertex AI API and give the site's Cloud Run service account the Vertex AI User role.${reason ? ` Google said: ${reason}` : ""}`
   );

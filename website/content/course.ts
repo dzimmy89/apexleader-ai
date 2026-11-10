@@ -74,8 +74,10 @@ export const MODULES: readonly Module[] = [
       "Mockups and images with Codex",
       "GitHub for non-developers",
       "Deploy it and connect your domain",
+      "Design with agents: four versions, references and a review",
+      "The agent build line: database, billing, previews and overnight loops",
     ],
-    tools: ["Claude Code", "Cursor", "Codex", "GitHub"],
+    tools: ["Claude Code", "Cursor", "Codex", "T3 Code", "Agent skills", "GitHub", "Paper", "Supabase", "Stripe", "Vercel", "Orca"],
     deliverable: "A live landing page on your own domain, stored in GitHub",
   },
   {
@@ -101,13 +103,14 @@ export const MODULES: readonly Module[] = [
     lessons: [
       "A 30-day content calendar",
       "SEO and AI-search visibility",
+      "Get Found: SEO, GEO and AI SEO in depth",
       "A Marketing Bot that posts and reports",
       "Keep launch materials current with Dots",
       "Email newsletter on autopilot",
       "Ads with approval gates",
     ],
-    tools: ["Grok Bot", "OpenAI Dots", "Claude Duet", "Claude", "Gemini"],
-    deliverable: "A 30-day content calendar with the first week published by an agent",
+    tools: ["Grok Bot", "OpenAI Dots", "Claude Duet", "Claude", "Gemini", "Search Console", "Bing Webmaster Tools"],
+    deliverable: "A 30-day content calendar with the first week published by an agent, and an AI-visibility dashboard",
   },
   {
     number: 6,
@@ -121,8 +124,9 @@ export const MODULES: readonly Module[] = [
       "Keep the CRM clean without touching it",
       "Call prep and follow-up with Duet",
       "Proposals that update themselves",
+      "Outbound agents with Origami and Explee",
     ],
-    tools: ["Grok Bot", "OpenAI Dots", "Claude Duet", "Claude"],
+    tools: ["Grok Bot", "OpenAI Dots", "Claude Duet", "Claude", "Origami", "Explee"],
     deliverable: "A 50-lead pipeline with an agent drafting follow-ups for approval",
   },
   {
@@ -176,7 +180,7 @@ export const AGENT_TEAM: readonly Agent[] = [
   },
   {
     role: "Sales",
-    tool: "Grok Bot · Duet",
+    tool: "Grok Bot · Duet · Origami",
     track: "sales",
     task: "Researches leads, drafts outreach and keeps the CRM current.",
     rule: "Sends only what you approve",

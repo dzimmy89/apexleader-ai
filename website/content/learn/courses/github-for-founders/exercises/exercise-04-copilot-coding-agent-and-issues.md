@@ -37,8 +37,8 @@ Why: GitHub holds workflow runs on Copilot's pushes until a human approves them,
 - In the pull request, list files changed and anything you were unsure about.
 ```
 
-2. **Write three issues.** Click **Issues**, then **New issue**, and write three work orders using What / Done when / Files / Out of scope. For Groomer Books, use these or your own:
-   - Add a "Who it's for" section with three bullets (mobile groomers, salon owners, new groomers)
+2. **Write three issues.** Click **Issues**, then **New issue**, and write three work orders using What / Done when / Files / Out of scope. For Rolling Ledger, use these or your own:
+   - Add a "Who it's for" section with three bullets (single-truck owners, multi-truck owners, new food truck owners)
    - Add a simple FAQ with four questions and answers you supply in the issue
    - Add a footer with business hours and a contact email
 
@@ -48,7 +48,7 @@ Here's the first, filled in:
 Title: Add a "Who it's for" section
 
 What: Add a section after "How it works" titled "Who it's for" with three
-short bullets: mobile groomers, salon owners, and groomers in their first year.
+short bullets: single-truck owners, multi-truck owners, and owners in their first year.
 One sentence each on why bookkeeping is a headache for them.
 
 Done when:
@@ -69,7 +69,7 @@ Out of scope: pricing, contact details, any new styling files.
 6. **Review and steer.** When the pull request arrives, click **Approve and run workflows** so your link check runs. Do your two-minute review. Then leave one steering comment, even if it's minor:
 
 ```text
-@copilot Make the bullet for first-year groomers mention that we set up
+@copilot Make the bullet for first-year food truck owners mention that we set up
 their books from day one. Keep everything else the same.
 ```
 

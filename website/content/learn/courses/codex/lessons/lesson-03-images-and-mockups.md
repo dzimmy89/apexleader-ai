@@ -33,11 +33,11 @@ Image work uses your Codex credits like any other task, and image-heavy sessions
 
 ## Step 1: Mock up before you build
 
-Say you want a simple client intake form for Groomer Books: new clients fill it in before their first call. Ask for whole-screen mockups, not art:
+Say you want a simple client intake form for Rolling Ledger: new clients fill it in before their first call. Ask for whole-screen mockups, not art:
 
 ```text
 Read AGENTS.md. Generate three mockups of a one-page client intake form for
-Groomer Books, phone size (9:16). Fields: name, business name, email, number
+Rolling Ledger, phone size (9:16). Fields: name, business name, email, number
 of bank accounts, monthly transactions (dropdown), "What's your biggest
 bookkeeping headache?" (text box), Submit button.
 Direction A: warm, cream background, rounded fields.

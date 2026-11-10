@@ -24,11 +24,11 @@ Friends and strangers are polite. Ask "Would you use this?" and most will say ye
 
 ## Find the right people to talk to
 
-You want people who have the problem now, not people who might be interested. For Groomer Books, that's owners of small grooming shops who do their own books.
+You want people who have the problem now, not people who might be interested. For Rolling Ledger, that's owners of small food trucks who do their own books.
 
 Where to look:
 
-- **Your own network.** Ask friends: "Do you know anyone who owns a grooming shop?" Warm intros get the most yeses.
+- **Your own network.** Ask friends: "Do you know anyone who owns a food truck?" Warm intros get the most yeses.
 - **Communities.** Industry Facebook groups, subreddits, trade associations, local business groups. Read the rules first; many ban promotion. Ask to learn, not to sell.
 - **Walk in.** For local businesses, a short visit at a quiet time works surprisingly well.
 - **LinkedIn and email.** Short, specific, no pitch.
@@ -36,9 +36,9 @@ Where to look:
 Let AI draft the outreach, then you edit and send it yourself:
 
 ```text
-Write a 70-word message to a dog grooming shop owner asking for a 20-minute call.
-I'm researching how small groomers handle bookkeeping. I'm not selling anything on this call.
-Offer a $25 gift card or a summary of what I learn from other groomers.
+Write a 70-word message to a food truck owner asking for a 20-minute call.
+I'm researching how small food truck owners handle bookkeeping. I'm not selling anything on this call.
+Offer a $25 gift card or a summary of what I learn from other food truck owners.
 Plain, friendly, no hype, no exclamation marks.
 ```
 
@@ -55,10 +55,10 @@ The core rules from The Mom Test:
 Ask the AI to draft the script, and to police it:
 
 ```text
-Write a 20-minute customer interview script for owners of small dog grooming shops.
+Write a 20-minute customer interview script for owners of small food trucks.
 Goal: learn how they handle bookkeeping today, what it costs them in time and money, and what they've tried.
 Follow The Mom Test: ask about past behavior and specifics, never ask if they'd buy or like my idea, don't mention my product.
-Include: a 1-sentence opener, 8 to 10 questions, follow-up probes, and a closing ask for intros to other groomers.
+Include: a 1-sentence opener, 8 to 10 questions, follow-up probes, and a closing ask for intros to other food truck owners.
 Then list any question you wrote that a strict Mom Test reviewer would reject, and fix it.
 ```
 
@@ -71,7 +71,7 @@ Good questions look like this:
 
 Bad questions sound like: "Would you pay $200 a month for this?" or "Do you think this is a good idea?"
 
-At the end of a good call, ask for a small **commitment**: an intro to another groomer, a follow-up call, or permission to send them your offer when it's ready. Compliments are not data. Commitments are.
+At the end of a good call, ask for a small **commitment**: an intro to another food truck owner, a follow-up call, or permission to send them your offer when it's ready. Compliments are not data. Commitments are.
 
 ## Record, transcribe and take notes
 
@@ -88,7 +88,7 @@ Right after each call, spend five minutes writing the three things that surprise
 Put all transcripts in one notebook (Gemini Notebook, formerly NotebookLM, works well because it cites the passage) or one long chat. Remove last names and anything sensitive first.
 
 ```text
-These are transcripts of interviews with small dog grooming shop owners about bookkeeping.
+These are transcripts of interviews with small food truck owners about bookkeeping.
 1. For each interview: how they do bookkeeping now, time spent, money spent, tools used, biggest pain in their own words.
 2. Across all interviews: the top 3 pains, how many people mentioned each, with a short quote for each.
 3. Evidence for and against each of these assumptions: [paste your top 3 risky assumptions].

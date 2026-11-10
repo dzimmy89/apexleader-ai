@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { PORTFOLIO } from "@/content/portfolio";
 import { allLessons, getCoursesInOrder } from "@/lib/learn/catalog";
 import { absoluteUrl } from "@/lib/seo/site-url";
 
@@ -8,6 +9,7 @@ const CORE_PATHS = [
   "/university",
   "/coaching",
   "/coaching/pay",
+  "/portfolio",
   "/privacy",
   "/terms",
 ] as const;
@@ -20,7 +22,7 @@ function universityPaths(): string[] {
 }
 
 export function sitemapPaths(): string[] {
-  return [...CORE_PATHS, ...universityPaths()];
+  return [...CORE_PATHS, ...PORTFOLIO.map((b) => `/portfolio/${b.slug}`), ...universityPaths()];
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {

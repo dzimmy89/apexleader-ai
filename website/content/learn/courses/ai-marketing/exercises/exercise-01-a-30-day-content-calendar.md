@@ -16,7 +16,7 @@ You'll turn your brand kit and offer into four content pillars and a 30-day cale
 ## Warm-up
 
 :::checkpoint
-Q: Claude drafts a post saying "Groomers lose an average of $4,000 a year to missed deductions." You have no source for that number. What do you do?
+Q: Claude drafts a post saying "Food truck owners lose an average of $4,000 a year to missed deductions." You have no source for that number. What do you do?
 - [ ] Post it, since AI tools are usually right about numbers
 - [x] Cut the number or replace it with a fact you can source, and note the source in the calendar
 - [ ] Soften it to "about $4,000" and post it
@@ -25,7 +25,7 @@ Why: AI tools can invent plausible numbers. Anything you publish is your claim, 
 
 ## Steps
 
-1. **Set up your project.** Create a Claude Project (or a ChatGPT project or Gemini Gem) called `Marketing`. Upload your brand kit, a one-paragraph description of your offer and a short customer profile. No business yet? Use **Groomer Books**: monthly bookkeeping for independent dog groomers, $149 a month, run by one founder, customers who hate paperwork and fear tax season.
+1. **Set up your project.** Create a Claude Project (or a ChatGPT project or Gemini Gem) called `Marketing`. Upload your brand kit, a one-paragraph description of your offer and a short customer profile. No business yet? Use **Rolling Ledger**: monthly bookkeeping for independent food truck owners, $149 a month, run by one founder, customers who hate paperwork and fear tax season.
 
 2. **Get your pillars.** Paste this prompt:
 

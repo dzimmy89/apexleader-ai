@@ -47,6 +47,8 @@ Agents keep a CRM clean only if "clean" is written down. Use these six fields:
 | Value | Number | Your best estimate of first-year revenue |
 | Notes | Short text | One line, newest first, with date |
 
+When you add outbound tools in Module 2, you'll add a seventh field, Source, that records which tool or channel each lead came from.
+
 Paste this table into a "CRM rules" document. It becomes the agent's instructions.
 
 ## Step 3: Hire the CRM keeper

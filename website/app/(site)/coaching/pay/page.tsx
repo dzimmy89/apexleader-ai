@@ -2,18 +2,18 @@ import type { Metadata } from "next";
 import { PayChooser } from "@/components/coaching/PayChooser";
 import type { PackageCardData } from "@/components/coaching/PackageCard";
 import { PageHeader } from "@/components/system";
-import { getPackages, type PackageId } from "@/lib/coaching/packages";
+import { getPackages, isPublicPlan, type PackageId } from "@/lib/coaching/packages";
 import { absoluteUrl } from "@/lib/seo/site-url";
 
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Pay for private coaching",
-  description: "Pay for private AI coaching by card, in full or in monthly installments.",
+  description: "Pay for private AI coaching by card or crypto, in full or in monthly installments.",
   alternates: { canonical: "/coaching/pay" },
   openGraph: {
     title: "Pay for private coaching",
-    description: "Pay for private AI coaching by card, in full or in monthly installments.",
+    description: "Pay for private AI coaching by card or crypto, in full or in monthly installments.",
     url: absoluteUrl("/coaching/pay"),
     type: "website",
   },
@@ -41,7 +41,7 @@ async function loadPackages(): Promise<PackageCardData[]> {
     deliverables: pkg.deliverables,
     bestFor: pkg.bestFor,
     badge: pkg.badge,
-    paymentPlans: pkg.paymentPlans.map((plan) => ({
+    paymentPlans: pkg.paymentPlans.filter(isPublicPlan).map((plan) => ({
       id: plan.id,
       label: plan.label,
       installments: plan.installments,
@@ -66,11 +66,12 @@ export default async function CoachingPayPage({
         <PageHeader
           eyebrow="Private coaching"
           title="Pay for private coaching"
-          intro="Pay by card on Stripe, in full or in 3 or 6 monthly payments."
+          intro="Pay by card on Stripe, or send crypto to the addresses below. Pay in full or in 3 or 6 monthly payments; the schedule you pick applies to both."
         />
         <PayChooser packages={packages} initialPackageId={initialPackageId} />
         <div className="mt-12 max-w-2xl space-y-4 font-[family-name:var(--font-ui)] text-[length:var(--text-small)] leading-relaxed text-[var(--color-text-muted)]">
           <p>Refund terms for each package are in the coaching agreement you sign before sessions begin.</p>
+          <p>A crypto refund, when the agreement allows one, is sent by hand in the same asset you paid with.</p>
         </div>
       </div>
     </section>

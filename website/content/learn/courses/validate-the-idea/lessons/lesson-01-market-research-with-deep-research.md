@@ -24,36 +24,36 @@ Most new businesses don't fail because the founder couldn't build the thing. The
 
 ## Pick your idea and your tool
 
-If you don't have an idea locked in, use the course sample: **Groomer Books**, monthly bookkeeping for independent dog groomers in the US. You'll carry one idea through all four exercises and finish with a single **Validated Offer Doc**.
+If you don't have an idea locked in, use the course sample: **Rolling Ledger**, monthly bookkeeping for independent food truck owners in the US. You'll carry one idea through all four exercises and finish with a single **Validated Offer Doc**.
 
 Any of the big assistants has a deep research mode. This lesson uses Gemini Deep Research because it's available on every Google plan, including Free, and exports straight to Google Docs. In the Gemini app on the web: in the text box click **Add Files**, then **Deep Research**, type your brief, click **Submit**, review the plan, then **Start research**. Reports usually take 5 to 10 minutes. If you use ChatGPT or Claude instead, the brief below works the same way.
 
 ## Write a brief that tries to kill the idea
 
-The most common mistake is asking a question that invites a yes. "Is there a market for bookkeeping for dog groomers?" will get you an enthusiastic report. Ask the AI to look for reasons it won't work:
+The most common mistake is asking a question that invites a yes. "Is there a market for bookkeeping for food truck owners?" will get you an enthusiastic report. Ask the AI to look for reasons it won't work:
 
 ```text
 I'm testing a business idea and I want the honest case for and against.
-Idea: monthly bookkeeping for independent dog groomers in the US (1 to 5 staff).
+Idea: monthly bookkeeping for independent food truck owners in the US (1 to 5 staff).
 Research:
 1. Who already serves this customer? Include niche competitors, general small-business bookkeepers, software (QuickBooks, Xero, booking apps with reports), and "do it yourself."
    For each: name, URL, price, what's included, who it's aimed at.
-2. What do groomers say about money admin? Look at forums, Reddit, Facebook group posts, app reviews. Quote short phrases and link them.
-3. How many potential customers exist? Find counts of grooming businesses or establishments, with source and year.
+2. What do food truck owners say about money admin? Look at forums, Reddit, Facebook group posts, app reviews. Quote short phrases and link them.
+3. How many potential customers exist? Find counts of food truck businesses or establishments, with source and year.
 4. What would make this idea fail? Name the strongest reasons.
 Constraints: prefer 2025-2026 sources; flag anything older than 2024.
-Output: one-paragraph verdict, competitor table, customer quotes, market count with sources, top 5 risks, and 8 questions I should ask real groomers.
+Output: one-paragraph verdict, competitor table, customer quotes, market count with sources, top 5 risks, and 8 questions I should ask real food truck owners.
 ```
 
-When the plan appears, click **Edit plan** and tighten it. Cut anything that doesn't serve the decision ("history of pet grooming"). Add anything missing ("find two groomer business coaches and what tools they recommend").
+When the plan appears, click **Edit plan** and tighten it. Cut anything that doesn't serve the decision ("history of food truck"). Add anything missing ("find two food truck owner business coaches and what tools they recommend").
 
 ## Size the market from the bottom up
 
-AI reports love big top-down numbers: "the pet grooming market is worth billions." That number won't help you. What helps is a bottom-up estimate you can explain in one line:
+AI reports love big top-down numbers: "the food truck market is worth billions." That number won't help you. What helps is a bottom-up estimate you can explain in one line:
 
 | Step | Example (check every number yourself) |
 |---|---|
-| How many potential customers exist? | Count of grooming businesses in your target area, from a cited source |
+| How many potential customers exist? | Count of food truck businesses in your target area, from a cited source |
 | What share fit your offer? | e.g. independent shops with 1 to 5 staff, not chains |
 | What share could you realistically reach in year one? | Be honest: 1 to 3 percent is normal for a solo founder |
 | What would each pay per year? | From competitor prices, later tested in interviews |
@@ -87,12 +87,12 @@ Competitor prices change, so open each pricing page yourself and record the date
 
 ## From research to assumptions
 
-The real output of research isn't the report. It's a list of **riskiest assumptions**: the beliefs that, if wrong, kill the business. For Groomer Books they might be:
+The real output of research isn't the report. It's a list of **riskiest assumptions**: the beliefs that, if wrong, kill the business. For Rolling Ledger they might be:
 
-- Groomers find bookkeeping painful enough to pay someone.
+- Food truck owners find bookkeeping painful enough to pay someone.
 - They don't already have a relative or cheap bookkeeper doing it.
 - They'll pay at least what general bookkeepers charge.
-- You can reach them through groomer communities.
+- You can reach them through food truck owner communities.
 
 Rank them by "how deadly if wrong" and "how little evidence we have." The top three become the focus of your customer interviews in Lesson 2.
 
@@ -101,7 +101,7 @@ Open your assistant's deep research mode and type only the first line of the bri
 :::
 
 :::checkpoint
-Q: Your research says "the global pet care market is worth tens of billions." What do you do with that number?
+Q: Your research says "the global food truck market is worth tens of billions." What do you do with that number?
 - [ ] Put it on slide one; it proves demand
 - [x] Set it aside and build a bottom-up estimate from local business counts, realistic reach and real prices
 - [ ] Divide it by 1,000 and call that your revenue target

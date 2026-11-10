@@ -171,7 +171,7 @@ describe("manual-only sales list guard", () => {
       subject: "broadcast",
       html: "<p>hi</p>",
       text: "hi",
-      unsubscribeUrl: "https://apexleader.ai/api/unsubscribe?token=t",
+      unsubscribeUrl: "https://fromaitobusiness.com/api/unsubscribe?token=t",
       purpose: "marketing",
       log: { source: "broadcast:test" },
     });
@@ -301,7 +301,7 @@ describe("manual-only sales list guard", () => {
           return { ok: true };
         },
         unsubscribeUrlFor: async () =>
-          "https://apexleader.ai/api/unsubscribe?token=t",
+          "https://fromaitobusiness.com/api/unsubscribe?token=t",
         getTemplate: () => ({ subject: "x", html: "<p>x</p>", text: "x" }),
         claimStepForSend: async () => ({ ok: true, claimId: "c1" }),
         recordSendReceipt: async () => undefined,
@@ -333,7 +333,7 @@ describe("manual-only sales list guard", () => {
           loadFirstName: async () => "",
           effects: {
             sendEmail: async () => ({ ok: true }),
-            unsubscribeUrlFor: async () => "https://apexleader.ai/u",
+            unsubscribeUrlFor: async () => "https://fromaitobusiness.com/u",
             getTemplate: () => ({ subject: "x", html: "<p>x</p>" }),
             claimStepForSend: async () => ({ ok: true, claimId: "c" }),
             recordSendReceipt: async () => undefined,

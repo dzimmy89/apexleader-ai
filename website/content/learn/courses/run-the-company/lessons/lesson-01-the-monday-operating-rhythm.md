@@ -57,7 +57,7 @@ Keep it under 300 words. Link every number to its source.
 | Department | Agent (from earlier courses) | Owns these numbers |
 |---|---|---|
 | Marketing | Marketing Bot (Grok Bot) | posts published, site visits, newsletter signups |
-| Sales | Sales Bot plus Duet call prep | new leads, calls booked, pipeline value |
+| Sales | Sales Bot, Origami or Explee, plus Duet call prep | new leads, positive replies per channel, calls booked, pipeline value |
 | Accounting | Cowork and Expense Bot | cash in bank, invoices overdue, receipts unfiled |
 | Builder | Claude Code, Cursor or Codex | pull requests merged, open bugs, site uptime |
 | Research | Deep Research, NotebookLM or a Dot | questions answered, competitor changes spotted |
@@ -77,7 +77,7 @@ watch, off track). Use only numbers that appear in the reports, with links.
 If a number is missing, mark it "missing" rather than estimating.
 ```
 
-For Groomer Books, a first scorecard might be: newsletter signups, discovery calls booked, new customers, monthly recurring revenue, cash in bank, invoices overdue more than 14 days, and hours you spent on approvals. That last one matters. If approvals take more than four hours a week, an agent's job is too loose.
+For Rolling Ledger, a first scorecard might be: newsletter signups, discovery calls booked, new customers, monthly recurring revenue, cash in bank, invoices overdue more than 14 days, and hours you spent on approvals. That last one matters. If approvals take more than four hours a week, an agent's job is too loose. If you built the Scorecard tab in AI Sales Exercise 9, add it to the reports: positive replies per channel is often the best early sales number. If you took Get Found, add two marketing numbers from your weekly SEO brief and AI-visibility dashboard: organic search clicks, and mentions in your monthly prompt panel.
 
 ## Step 3: The 90-minute session
 

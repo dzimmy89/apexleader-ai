@@ -1,0 +1,148 @@
+# Logs one hand-taken coaching payment (crypto, bank transfer, cash) and, if
+# asked, gives that email permanent full access afterwards. Run by hand from
+# the Actions tab. Same result as Admin > Contacts > Log payment plus the
+# "Grant full access" workflow (scripts/log-manual-payment.ts,
+# scripts/grant-full-access.ts). Full access runs after the payment so the
+# client record is a real paid client, not an internal one.
+
+name: Log a manual coaching payment
+
+on:
+  workflow_dispatch:
+    inputs:
+      email:
+        description: "Client's email (they sign in with this address)"
+        required: true
+      name:
+        description: "Client's full name"
+        required: true
+      package:
+        description: "Package id"
+        type: choice
+        options:
+          - build_launch
+          - foundations
+          - mastery
+          - institutional
+        default: build_launch
+      plan:
+        description: "Payment plan id (full, 2pay for Build and Launch, 3pay, 6pay)"
+        required: true
+        default: full
+      amount:
+        description: "Amount paid in US dollars, e.g. 1250"
+        required: true
+      paid_at:
+        description: "Date paid, YYYY-MM-DD"
+        required: true
+      installment:
+        description: "Installment number (1 for the first payment)"
+        required: true
+        default: "1"
+      reference:
+        description: "Reference, e.g. USDC on Base tx 0x..."
+        required: false
+      full_access:
+        description: "Also give permanent full access afterwards"
+        type: boolean
+        default: true
+      mode:
+        description: "dry-run changes nothing; apply writes Firestore and sends the agreement email"
+        type: choice
+        options:
+          - dry-run
+          - apply
+        default: dry-run
+
+concurrency:
+  group: log-manual-payment
+  cancel-in-progress: false
+
+jobs:
+  log:
+    runs-on: ubuntu-latest
+    environment: production
+    permissions:
+      contents: read
+      id-token: write
+    defaults:
+      run:
+        working-directory: website
+    env:
+      GCP_PROJECT_ID: apexleader-prod
+      GCP_REGION: us-central1
+      SERVICE: apexleader-ai
+      NEXT_PUBLIC_SITE_URL: https://fromaitobusiness.com
+      CRM_STORAGE: firestore
+      PAY_EMAIL: ${{ inputs.email }}
+      PAY_NAME: ${{ inputs.name }}
+      PAY_PACKAGE: ${{ inputs.package }}
+      PAY_PLAN: ${{ inputs.plan }}
+      PAY_AMOUNT: ${{ inputs.amount }}
+      PAY_PAID_AT: ${{ inputs.paid_at }}
+      PAY_INSTALLMENT: ${{ inputs.installment }}
+      PAY_REFERENCE: ${{ inputs.reference }}
+      GRANT_EMAIL: ${{ inputs.email }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: website/package-lock.json
+
+      # NODE_ENV=production is set per step, not for the job: on npm ci it
+      # would skip the dev dependencies (tsx, sharp's platform binary).
+      - name: Install dependencies
+        run: npm ci
+
+      - uses: google-github-actions/auth@v2
+        with:
+          # Same keyless sign-in as deploy-production.yml.
+          workload_identity_provider: projects/38118386790/locations/global/workloadIdentityPools/github/providers/github
+          service_account: github-deploy@apexleader-prod.iam.gserviceaccount.com
+
+      - uses: google-github-actions/setup-gcloud@v2
+
+      # The agreement email and contract need what the live site runs with:
+      # its sender settings (copied from the Cloud Run service) and the
+      # secrets that exist in Secret Manager.
+      - name: Load site settings and secrets
+        if: inputs.mode == 'apply'
+        run: |
+          set -euo pipefail
+          for var in SENDER_EMAIL SENDER_DOMAINS SENDER_NAME; do
+            value="$(gcloud run services describe "${SERVICE}" --region="${GCP_REGION}" --project="${GCP_PROJECT_ID}" \
+              --format=json | jq -r --arg n "${var}" '.spec.template.spec.containers[0].env[]? | select(.name == $n) | .value // empty')"
+            if [ -n "${value}" ]; then echo "${var}=${value}" >> "$GITHUB_ENV"; echo "Copied ${var} from Cloud Run"; fi
+          done
+          for name in GOOGLE_SERVICE_ACCOUNT_KEY JWT_SECRET MAILING_ADDRESS CONTRACTS_GCS_BUCKET CONTRACT_SIGN_TOKEN_TTL_DAYS; do
+            if value="$(gcloud secrets versions access latest --secret="${name}" --project="${GCP_PROJECT_ID}" 2>/dev/null)"; then
+              while IFS= read -r line; do [ -n "$line" ] && echo "::add-mask::${line}"; done <<< "${value}"
+              { echo "${name}<<__SECRET_EOF__"; echo "${value}"; echo "__SECRET_EOF__"; } >> "$GITHUB_ENV"
+              echo "Loaded ${name}"
+            else
+              echo "${name} is not in Secret Manager, skipping"
+            fi
+          done
+
+      - name: Payment (dry run)
+        if: inputs.mode == 'dry-run'
+        run: npx tsx scripts/log-manual-payment.ts
+
+      - name: Payment
+        if: inputs.mode == 'apply'
+        env:
+          NODE_ENV: production
+        run: npx tsx scripts/log-manual-payment.ts --apply
+
+      - name: Full access (dry run)
+        if: inputs.mode == 'dry-run' && inputs.full_access
+        run: npx tsx scripts/grant-full-access.ts
+
+      - name: Full access
+        if: inputs.mode == 'apply' && inputs.full_access
+        env:
+          NODE_ENV: production
+        run: npx tsx scripts/grant-full-access.ts --apply

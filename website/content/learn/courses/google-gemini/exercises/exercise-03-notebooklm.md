@@ -26,7 +26,7 @@ Why: A notebook answers only from your sources. A missing answer is a gap in you
 ## Steps
 
 1. **Create a notebook** at [notebooklm.google](https://notebooklm.google/) called "Business Brain."
-2. **Add sources.** Add your Business Profile and Competitor Brief from Drive. Add 2 to 5 more: your website or service page, a price list, a policy, a competitor's FAQ page. Using the Groomer Books sample? Add three competitor pages from your brief.
+2. **Add sources.** Add your Business Profile and Competitor Brief from Drive. Add 2 to 5 more: your website or service page, a price list, a policy, a competitor's FAQ page. Using the Rolling Ledger sample? Add three competitor pages from your brief.
 3. **Remove anything sensitive** before you upload: account numbers, client IDs, passwords.
 4. **Ask a source check question:**
 

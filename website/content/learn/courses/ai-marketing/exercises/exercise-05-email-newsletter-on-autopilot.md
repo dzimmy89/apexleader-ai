@@ -27,7 +27,7 @@ Why: The FTC guide says opt-outs must be honored within 10 business days and you
 
 1. **Set up the tool.** Create your publication. Turn on double opt-in. Add your physical mailing address to the footer (a PO box or registered private mailbox works under CAN-SPAM). Confirm the unsubscribe link appears on every email.
 
-2. **Write the signup promise.** One line for your signup form: what readers get and how often. Example for Groomer Books: "One short email every Friday: a money tip for groomers and nothing salesy."
+2. **Write the signup promise.** One line for your signup form: what readers get and how often. Example for Rolling Ledger: "One short email every Friday: a money tip for food truck owners and nothing salesy."
 
 3. **Write the welcome sequence.** Ask Claude:
 

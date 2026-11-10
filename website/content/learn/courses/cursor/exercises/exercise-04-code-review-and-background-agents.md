@@ -25,9 +25,9 @@ Why: Cloud agents run commands freely inside their machine, so keep live sending
 
 ## Steps
 
-1. **Push your project to GitHub** if it isn't there yet. Ask Agent: "Publish this project to a new public GitHub repository called groomer-books-site using the gh tool. Show me the file list before the first push." Log in to `gh` yourself in the browser when asked.
+1. **Push your project to GitHub** if it isn't there yet. Ask Agent: "Publish this project to a new public GitHub repository called rolling-ledger-site using the gh tool. Show me the file list before the first push." Log in to `gh` yourself in the browser when asked.
 
-2. **Connect GitHub to Cursor with minimum access.** In the Cursor dashboard, connect GitHub and choose only `groomer-books-site`.
+2. **Connect GitHub to Cursor with minimum access.** In the Cursor dashboard, connect GitHub and choose only `rolling-ledger-site`.
 
 3. **Turn on Bugbot.** In the dashboard, open **Bugbot** under Automations and enable it for this repository.
 
@@ -50,9 +50,9 @@ Merge that pull request yourself after a quick review.
 ```text
 Add a "Testimonials" section after "How it works" with these three
 placeholder quotes, clearly marked as placeholders:
-"PLACEHOLDER: Saved me five hours a month." - Groomer, Austin
-"PLACEHOLDER: Finally ready for tax time." - Salon owner, Denver
-"PLACEHOLDER: Worth every penny." - Mobile groomer, Tampa
+"PLACEHOLDER: Saved me five hours a month." - Food truck owner, Austin
+"PLACEHOLDER: Finally ready for tax time." - Truck owner, Denver
+"PLACEHOLDER: Worth every penny." - Taco truck owner, Tampa
 Follow AGENTS.md. Screenshot at 375px and 1280px. Open a pull request with
 a summary and screenshots. Don't merge.
 ```

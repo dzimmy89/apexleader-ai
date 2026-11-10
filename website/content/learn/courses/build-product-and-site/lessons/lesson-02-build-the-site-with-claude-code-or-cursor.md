@@ -37,12 +37,14 @@ Both are coding agents. Both work. Pick the one that fits how you like to work a
 
 If you have never opened a terminal, start with the Claude desktop app's Code tab or with Cursor. Both give you buttons and panes instead of a blank black window. Plans and limits change often, so check the current pricing pages before you upgrade.
 
+If you already pay for more than one coding agent, you don't have to choose. T3 Code (covered in Tool Mastery) runs Claude Code, Codex and Cursor from one window, so you can plan the site with one and build it with another.
+
 ## Set up the project folder
 
-Make one folder for your site, for example `groomer-books-site`. Put three things in it before you start the agent:
+Make one folder for your site, for example `rolling-ledger-site`. Put three things in it before you start the agent:
 
 ```text
-groomer-books-site/
+rolling-ledger-site/
   SPEC.md          (from Lesson 1)
   content/         (your real copy: hero.md, faq.md, about.md)
   images/          (empty for now; Lesson 3 fills it)

@@ -13,6 +13,8 @@ import type { ClientFile } from "@/lib/coaching/client-files";
 import type { CoachingSessionDoc } from "@/lib/coaching/sessions";
 import { PACE_LABEL, type Syllabus, type SyllabusStatus } from "@/lib/coaching/syllabus";
 import type { ResolvedItem } from "@/lib/coaching/syllabus-plan";
+import { RescheduleSession } from "@/components/account/RescheduleSession";
+import { BRAND } from "@/lib/brand";
 
 const SESSION_MINUTES = 60;
 
@@ -156,15 +158,23 @@ function SessionsPanel({
                 <Video size={18} aria-hidden /> Join on Google Meet
               </a>
             ) : null}
-            <a href="mailto:hello@apexleader.ai?subject=Reschedule%20my%20coaching%20session" className="btn btn-ghost">
-              Need to reschedule? Email David
-            </a>
+            {next.id ? (
+              <RescheduleSession
+                sessionId={next.id}
+                scheduledAt={next.scheduledAt}
+                durationMins={next.durationMins || SESSION_MINUTES}
+                packageId={client.packageId || undefined}
+                coachEmail={BRAND.email}
+              />
+            ) : null}
           </div>
           {upcoming.length > 1 ? (
-            <ul className="mt-5 space-y-1 text-[15px] text-[var(--color-text-muted)]">
-              {upcoming.slice(1).map((s) => (
-                <li key={s.id}>
-                  Also booked: {dateTimeET(s.scheduledAt)}
+            <div className="mt-6">
+              <p className="ui-label mb-2">Also booked</p>
+              <ul className="space-y-2 text-[15px]">
+                {upcoming.slice(1).map((s) => (
+                  <li key={s.id}>
+                    <strong>{dateTimeET(s.scheduledAt)}</strong>
                   {s.meetUrl ? (
                     <>
                       {" · "}
@@ -173,9 +183,23 @@ function SessionsPanel({
                       </a>
                     </>
                   ) : null}
+                  {s.id ? (
+                    <>
+                      {" · "}
+                      <RescheduleSession
+                        sessionId={s.id}
+                        scheduledAt={s.scheduledAt}
+                        durationMins={s.durationMins || SESSION_MINUTES}
+                        packageId={client.packageId || undefined}
+                        coachEmail={BRAND.email}
+                        compact
+                      />
+                    </>
+                  ) : null}
                 </li>
-              ))}
-            </ul>
+                ))}
+              </ul>
+            </div>
           ) : null}
         </div>
       ) : null}
@@ -193,7 +217,7 @@ function SessionsPanel({
             ) : (
               <span>
                 {ended ? "Your notes, recordings and agreement stay here. " : "Want to keep going? "}
-                <a href="mailto:hello@apexleader.ai?subject=More%20coaching%20sessions" className="underline underline-offset-4">
+                <a href={`mailto:${BRAND.email}?subject=More%20coaching%20sessions`} className="underline underline-offset-4">
                   {ended ? "Email David to start again" : "Email David about more sessions"}
                 </a>
                 .
@@ -265,7 +289,7 @@ function AgreementRow({ client, unsigned }: { client: CoachingOverview["client"]
           {signed
             ? client.signedContractPdfUrl
               ? `Signed ${dayShort(client.contractSignedAt!)}.`
-              : `Signed ${dayShort(client.contractSignedAt!)} before this site existed. For a copy, email hello@apexleader.ai.`
+              : `Signed ${dayShort(client.contractSignedAt!)} before this site existed. For a copy, email ${BRAND.email}.`
             : client.fullAccess
               ? "Not needed for your access."
               : "Not signed yet. Booking opens once it is."}

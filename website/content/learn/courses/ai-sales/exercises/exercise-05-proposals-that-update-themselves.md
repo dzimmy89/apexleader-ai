@@ -29,7 +29,7 @@ Why: Anything on a shared Page is visible to everyone who can open it. Internal 
 
 2. **Generate the template.** Run the template prompt from Lesson 5 in Claude. Save it as "Proposal template" with placeholders that match your sheet's columns exactly.
 
-3. **Draft the first proposal.** Give Claude your call notes, the template and the client's row. Use the "skeptical salon owner" prompt from Lesson 5. Apply the edits you agree with.
+3. **Draft the first proposal.** Give Claude your call notes, the template and the client's row. Use the "skeptical truck owner" prompt from Lesson 5. Apply the edits you agree with.
 
 4. **Check every claim.** Highlight every number and every result statement. Confirm each one is in your Offer facts sheet. Delete anything that isn't.
 

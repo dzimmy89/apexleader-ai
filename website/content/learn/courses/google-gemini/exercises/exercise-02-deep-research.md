@@ -26,7 +26,7 @@ Why: A brief with a decision and a defined output shape keeps the research focus
 ## Steps
 
 1. **Open your Business Profile Doc** so you can copy from it.
-2. **Start Deep Research** in the Gemini app (in the text box, click **Add Files**, then **Deep Research**) and paste this brief, filling the brackets (or keep the Groomer Books example):
+2. **Start Deep Research** in the Gemini app (in the text box, click **Add Files**, then **Deep Research**) and paste this brief, filling the brackets (or keep the Rolling Ledger example):
 
 ```text
 Research goal: Decide how to position [my offer] for [my customer] in [country].

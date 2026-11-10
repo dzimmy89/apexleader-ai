@@ -77,8 +77,8 @@ On Windows, installing [Git for Windows](https://git-scm.com/downloads/win) is o
 Now make a project folder, move into it and start Claude:
 
 ```text
-mkdir groomer-books-site
-cd groomer-books-site
+mkdir rolling-ledger-site
+cd rolling-ledger-site
 claude
 ```
 
@@ -90,12 +90,12 @@ Go to [claude.ai/code](https://claude.ai/code), connect your GitHub account, pic
 
 ## Your first session
 
-Use the sample business if you don't have one: Groomer Books, monthly bookkeeping for independent dog grooming salons. Type:
+Use the sample business if you don't have one: Rolling Ledger, monthly bookkeeping for independent food trucks. Type:
 
 ```text
 I'm not a developer. Build a simple one-page website for my business in this
-folder using plain HTML and CSS, no frameworks. Business: Groomer Books, monthly
-bookkeeping for independent dog grooming salons. Sections: headline, three
+folder using plain HTML and CSS, no frameworks. Business: Rolling Ledger, monthly
+bookkeeping for independent food trucks. Sections: headline, three
 benefits, how it works in 3 steps, pricing "from $X per month" as a placeholder,
 and a contact email link. Mobile friendly. When you're done, tell me exactly
 how to open it in my browser.

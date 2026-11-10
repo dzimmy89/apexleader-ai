@@ -57,7 +57,7 @@ Assistants cite pages that answer one question clearly, early and in text. Googl
 
 An answer page has a shape:
 
-1. **The question as the title**, in the customer's words: "Do mobile dog groomers need to track mileage?"
+1. **The question as the title**, in the customer's words: "Do food truck owners need to track mileage?"
 2. **A two or three sentence direct answer** at the top.
 3. **The detail**: steps, a short table, an example with real numbers you can stand behind.
 4. **Who wrote it and why they know**: your name, your experience, the date it was last checked.
@@ -79,14 +79,14 @@ Add one answer page a week to your content calendar from Lesson 1. Repurpose eac
 Assistants lean on sources they already trust: review sites, industry directories, partner pages, podcasts, community threads and news coverage. A mention there often matters as much as your own page. Practical moves for a one-person company:
 
 - Claim and complete your Google Business Profile and Bing Places listing, if you serve customers locally or by region.
-- Get listed in the two or three directories your customers actually use (for Groomer Books, grooming associations and their vendor lists).
+- Get listed in the two or three directories your customers actually use (for Rolling Ledger, food truck associations and their vendor lists).
 - Ask happy customers for reviews on the platform your buyers check.
 - Offer to answer questions on a niche podcast or newsletter. Bring one specific, quotable idea.
 - Keep your name, description and offer consistent everywhere, so assistants connect the mentions to you.
 
 ## Step 4: Measure monthly
 
-Two free tools show part of the picture. Google says AI Overviews and AI Mode clicks are included in the Search Console Performance report under the "Web" search type. Bing Webmaster Tools added an AI Performance report that shows how often your pages are cited in Copilot answers. Verify your site in both.
+Two free tools show part of the picture. Google says AI Overviews and AI Mode clicks are included in the Search Console Performance report under the "Web" search type, and its Generative AI performance report, added in June 2026, shows impressions in AI Overviews, AI Mode and Discover. Bing Webmaster Tools added an AI Performance report that shows how often your pages are cited in Copilot answers. Verify your site in both.
 
 Then run your own "AI visibility check" once a month. Ask each assistant the same five questions your buyers ask, and log the results.
 
@@ -118,6 +118,7 @@ Why: OpenAI says sites that opt out of OAI-SearchBot won't appear in ChatGPT sea
 
 ## Go deeper
 
+- [Get Found: SEO, GEO and AI SEO](/university/get-found) - the full course on everything in this lesson: the free search stack, technical SEO by agent, AI-assisted writing, citable pages, real mentions and an AI-visibility dashboard
 - [Google: AI features and your website](https://developers.google.com/search/docs/appearance/ai-features) - Google's own requirements, controls and measurement for AI Overviews and AI Mode
 - [OpenAI: Overview of OpenAI crawlers](https://developers.openai.com/api/docs/bots) - OAI-SearchBot, GPTBot and ChatGPT-User, and how each affects ChatGPT search
 - [Perplexity crawlers](https://docs.perplexity.ai/docs/resources/perplexity-crawlers.md) - PerplexityBot, Perplexity-User and firewall guidance

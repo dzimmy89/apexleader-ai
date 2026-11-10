@@ -86,7 +86,8 @@ Weekly marketing brief, week of [date]
 1. Published last week: post, channel, reach, clicks, comments (table)
 2. Best and worst performer, and one sentence on why
 3. Calendar health: approved rows for the next 14 days, rows needing info
-4. AI visibility: any change in this month's ask-the-assistants log
+4. AI visibility: any change in this month's ask-the-assistants log (Get Found
+   Lesson 8 adds a full SEO section to this brief)
 5. Three recommendations for next week, each marked "needs your decision"
 Sources: link every number to where you read it.
 ```

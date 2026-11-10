@@ -56,7 +56,7 @@ Then test the top three with real people. Send them to two or three of your inte
 
 Search the exact name as a .com at any domain registrar. If it's taken:
 
-- Try a short, natural variant: add "hq," "co," or your niche ("groomerbooks.co" or "getgroomerbooks.com").
+- Try a short, natural variant: add "hq," "co," or your niche ("rollingledger.co" or "getrollingledger.com").
 - Avoid hyphens and numbers. People forget them.
 - Look at the site on the taken domain. If it's an active business in your field, drop the name entirely.
 
@@ -64,7 +64,7 @@ You can see who registered a domain and when with ICANN's lookup tool, though ma
 
 ## Check 2: Social handles
 
-Check the platforms your customers actually use (for groomers, often Instagram and Facebook). You want the same handle everywhere, or a close variant. A name with a free domain but a well-known competitor on the matching handle is a warning sign.
+Check the platforms your customers actually use (for food truck owners, often Instagram and Facebook). You want the same handle everywhere, or a close variant. A name with a free domain but a well-known competitor on the matching handle is a warning sign.
 
 ## Check 3: Business-name registries
 
@@ -77,7 +77,7 @@ Note: registering a company name with your state does **not** give you trademark
 In the US, search the USPTO's free Trademark Search system at [tmsearch.uspto.gov](https://tmsearch.uspto.gov/). Search for:
 
 - The exact name.
-- Sound-alikes and spelling variants ("Groomer Books," "Groomr Books," "Groomer Bookkeeping").
+- Sound-alikes and spelling variants ("Rolling Ledger," "Roling Ledger," "Food Truck Bookkeeping").
 - The most distinctive word on its own.
 
 Focus on live marks. The USPTO's question is "likelihood of confusion": does a mark look or sound similar, mean something similar, and cover related goods or services? Related doesn't mean identical. Services sold to the same buyers or advertised together can conflict. The USPTO also warns that narrowing your search by class is risky because you can miss related marks filed in another class. If you sell outside the US, the WIPO Global Brand Database searches many countries' trademark records.

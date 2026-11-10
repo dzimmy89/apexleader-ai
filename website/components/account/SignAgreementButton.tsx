@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { BRAND } from "@/lib/brand";
 
 /** Takes the signed-in client straight to their signing page; no email hunt. */
 export function SignAgreementButton({
@@ -34,7 +35,7 @@ export function SignAgreementButton({
       window.location.reload();
       return;
     }
-    setError(body.error || "We could not open the agreement. Try again or email hello@apexleader.ai.");
+    setError(body.error || `We could not open the agreement. Try again or email ${BRAND.email}.`);
     setState("error");
   }
 
