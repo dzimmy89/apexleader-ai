@@ -27,9 +27,30 @@ export interface LeadConsent {
   confirmedAt?: string;
 }
 
+/** Permission to text the mobile number on the record. */
+export interface LeadSmsConsent {
+  given: boolean;
+  textVersion: string;
+  formSource: string;
+  requestedAt: string;
+}
+
+/** The first lesson a lead opened an exercise from. */
+export interface LeadLesson {
+  courseId: string;
+  lessonSlug: string;
+  title: string;
+  at: string;
+}
+
 export interface LeadRecord {
   email: string;
   firstName?: string;
+  /** E.164, from the exercise gate or the call request. */
+  phone?: string;
+  smsConsent?: LeadSmsConsent;
+  firstLesson?: LeadLesson;
+  lastLesson?: LeadLesson;
   name?: string;
   /** Lowercased firstName/name for People prefix search. Older docs may omit it. */
   nameLower?: string;
@@ -153,6 +174,9 @@ export function mergeCaptureFields(args: {
   landingPath?: string;
   consent: LeadConsent;
   unsubscribeToken: string;
+  phone?: string;
+  smsConsent?: LeadSmsConsent;
+  lesson?: LeadLesson;
 }): LeadRecord {
   const { existing, email, source } = args;
   const sources = Array.from(
@@ -176,6 +200,12 @@ export function mergeCaptureFields(args: {
     firstName,
     name: firstName || existing?.name || "",
     nameLower: personNameLower(firstName, existing?.name) || undefined,
+    // A newer number replaces an older one; a withdrawn text consent is never
+    // overwritten by a form that did not ask about texts.
+    phone: args.phone || existing?.phone,
+    smsConsent: args.smsConsent || existing?.smsConsent,
+    firstLesson: existing?.firstLesson || args.lesson,
+    lastLesson: args.lesson || existing?.lastLesson,
     status,
     consent: keepConfirmed || blocked ? existing?.consent : args.consent,
     source: existing?.source || source,

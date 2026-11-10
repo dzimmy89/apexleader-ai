@@ -2,15 +2,16 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { LessonBody } from "@/components/learn/LessonBody";
 import { withSignedLearnVideos, withoutLearnVideoSlots } from "@/lib/learn/video-urls";
+import { ExerciseGate } from "@/components/learn/ExerciseGate";
 import { LessonMarkdown } from "@/components/learn/LessonMarkdown";
-import { LockedNotice } from "@/components/learn/LockedNotice";
 import { MarkComplete } from "@/components/learn/MarkComplete";
+import { PaidStep } from "@/components/learn/PaidStep";
 import { PieceLayout } from "@/components/learn/PieceLayout";
 import { Panel } from "@/components/system";
 import { exerciseKey, findLesson, findLessonByExercise, getCourse } from "@/lib/learn/catalog";
 import { lessonBody, lessonSections, previewBody } from "@/lib/learn/blocks";
 import { readPiece } from "@/lib/learn/content";
-import { courseLock, getViewer } from "@/lib/learn/gate";
+import { courseLock, exerciseLock, getViewer } from "@/lib/learn/gate";
 import { getProgress } from "@/lib/learn/progress";
 
 interface PageProps {
@@ -72,6 +73,10 @@ export default async function ExercisePage({ params }: PageProps) {
   const brief = exerciseBrief(body);
   const viewer = await getViewer();
   const lock = courseLock(course, viewer);
+  // The exercise opens with an email and mobile; an account is not needed.
+  const exLock = exerciseLock(course, viewer);
+  const open = exLock === "open";
+  const href = `/university/${course.id}/exercises/${exerciseSlug}`;
   const progress = viewer.email ? await getProgress(viewer.email).catch(() => null) : null;
   const done = lock === "open" && !!progress?.exercises[exerciseKey(course.id, exerciseSlug)];
   const nav = findLesson(course, lesson.slug)!;
@@ -84,8 +89,7 @@ export default async function ExercisePage({ params }: PageProps) {
         ? { href: `/university/${course.id}/lessons/${nav.next.slug}`, label: nav.next.title }
         : null;
   // Clips play only for readers who can open the exercise; a locked preview never carries them.
-  const shown =
-    lock === "open" ? await withSignedLearnVideos(brief.rest) : withoutLearnVideoSlots(previewBody(brief.rest));
+  const shown = open ? await withSignedLearnVideos(brief.rest) : withoutLearnVideoSlots(previewBody(brief.rest));
   const hasBrief = brief.summary !== null || brief.facts.length > 0;
   const facts = brief.facts.length
     ? brief.facts
@@ -99,13 +103,14 @@ export default async function ExercisePage({ params }: PageProps) {
       current={{ kind: "exercise", slug: exerciseSlug }}
       progress={progress}
       lock={lock}
+      exercisesOpen={open}
       sections={lessonSections(body)}
-      lockedFrom={lock === "open" ? undefined : 1}
+      lockedFrom={open ? undefined : 1}
       eyebrow={`Exercise ${lesson.number}`}
       title={title.replace(/^Exercise \d+:\s*/, "") || lesson.title}
       minutes={lesson.exerciseMinutes}
       prev={{ href: `/university/${course.id}/lessons/${lesson.slug}`, label: `Lesson ${lesson.number}` }}
-      next={lock === "open" ? next : null}
+      next={open ? next : null}
       nextIsPrimary={done}
     >
       {hasBrief ? (
@@ -127,19 +132,28 @@ export default async function ExercisePage({ params }: PageProps) {
           ) : null}
         </Panel>
       ) : null}
-      <LessonBody
-        body={shown}
-        showCoached={lock === "open" && !!viewer.access?.isCoachingClient}
-      />
-      {lock === "open" ? (
-        viewer.email ? (
-          <div className="mt-12">
-            <MarkComplete courseId={course.id} slug={exerciseSlug} kind="exercise" initiallyDone={done} />
-          </div>
-        ) : null
-      ) : (
-        <LockedNotice lock={lock} next={`/university/${course.id}/exercises/${exerciseSlug}`} />
-      )}
+      <LessonBody body={shown} showCoached={lock === "open" && !!viewer.access?.isCoachingClient} />
+      {exLock === "gate" ? (
+        <ExerciseGate
+          courseId={course.id}
+          lessonSlug={lesson.slug}
+          exerciseHref={href}
+          exerciseMinutes={lesson.exerciseMinutes}
+          lessonNumber={lesson.number}
+          headline="The rest of this exercise opens with your email."
+          perks={[
+            `Every exercise in ${course.title}, open as you go`,
+            "New lessons by email as they land, unsubscribe anytime",
+            "A text when your exercise is ready, only if you tick the box",
+          ]}
+          signInHref={`/login?next=${encodeURIComponent(href)}`}
+        />
+      ) : lock === "open" && viewer.email ? (
+        <div className="mt-12">
+          <MarkComplete courseId={course.id} slug={exerciseSlug} kind="exercise" initiallyDone={done} />
+        </div>
+      ) : null}
+      {open && !viewer.access?.isCoachingClient ? <PaidStep courseTitle={course.title} /> : null}
     </PieceLayout>
   );
 }

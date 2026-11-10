@@ -40,12 +40,17 @@ export function CourseOutline({
   current,
   progress,
   lock,
+  exercisesOpen,
 }: {
   course: LearnCourse;
   current: OutlineCurrent;
   progress: LearnProgress | null;
   lock: CourseLock;
+  exercisesOpen: boolean;
 }) {
+  // Lessons are open to everyone; exercises open with the email gate; quizzes
+  // (and progress) need the course itself.
+  const locked = (kind: OutlineKind) => (kind === "lesson" ? false : kind === "exercise" ? !exercisesOpen : lock !== "open");
   const modules = courseOutline(course);
   const all = modules.flatMap((m) => m.items);
   const doneCount = all.filter((item) => itemDone(course.id, item, progress)).length;
@@ -109,7 +114,7 @@ export function CourseOutline({
                         )}
                       >
                         <span className="mt-px flex w-5 shrink-0 justify-center text-[length:var(--text-caption)] tabular-nums">
-                          {lock !== "open" ? (
+                          {locked(item.kind) ? (
                             <>
                               <Lock size={13} aria-hidden="true" className="mt-0.5" />
                               <span className="sr-only">Locked: </span>

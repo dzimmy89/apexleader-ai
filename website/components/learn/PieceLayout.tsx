@@ -20,11 +20,13 @@ export function PieceLayout({
   current,
   progress,
   lock,
+  exercisesOpen,
   sections = [],
   lockedFrom,
   eyebrow,
   title,
   minutes,
+  above,
   children,
   prev,
   next,
@@ -34,19 +36,23 @@ export function PieceLayout({
   current: OutlineCurrent;
   progress: LearnProgress | null;
   lock: CourseLock;
+  /** Exercises open to this reader (an account with access, or the email gate passed). */
+  exercisesOpen: boolean;
   sections?: LessonSection[];
   /** Sections from this index on are not in the locked preview. */
   lockedFrom?: number;
   eyebrow: string;
   title: string;
   minutes?: number;
+  /** Sits above the breadcrumb: the strip that tells a cold visitor where they are. */
+  above?: React.ReactNode;
   children: React.ReactNode;
   prev?: { href: string; label: string } | null;
   next?: { href: string; label: string } | null;
   /** The piece is already complete, so "next" is the main action instead of "Mark complete". */
   nextIsPrimary?: boolean;
 }) {
-  const outline = <CourseOutline course={course} current={current} progress={progress} lock={lock} />;
+  const outline = <CourseOutline course={course} current={current} progress={progress} lock={lock} exercisesOpen={exercisesOpen} />;
   const hasSections = sections.length > 0;
 
   return (
@@ -71,6 +77,7 @@ export function PieceLayout({
         <div className="min-w-0">
           <LessonMobileBar outline={outline} sections={sections} lockedFrom={lockedFrom} />
           <div id="lesson-content" className="mx-auto max-w-3xl scroll-mt-[calc(var(--site-header-h)+4rem)]">
+            {above}
             <nav
               aria-label="Breadcrumb"
               className="mb-6 font-[family-name:var(--font-ui)] text-[length:var(--text-small)] text-[var(--color-text-muted)]"

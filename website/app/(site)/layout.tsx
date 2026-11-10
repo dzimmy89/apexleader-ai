@@ -1,3 +1,4 @@
+import { AttributionCapture } from "@/components/AttributionCapture";
 import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
 
@@ -8,6 +9,7 @@ export default function SiteLayout({
 }>) {
   return (
     <>
+      <AttributionCapture />
       <SiteNav />
       <main>{children}</main>
       <SiteFooter />
