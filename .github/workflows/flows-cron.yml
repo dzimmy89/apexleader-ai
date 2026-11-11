@@ -5,10 +5,15 @@ name: Run the flows cron
 # calendar sync and call plans. Nothing else calls it (Cloud Scheduler is not
 # enabled on apexleader-prod), so without this none of those go out.
 #
-# dry-run asks the site what it would send and sends nothing.
-# A schedule is added only once the owner says to start the sends.
+# Runs every 15 minutes (owner approved 2026-11-11). Scheduled runs always
+# use run mode. Marketing emails and texts still wait for their own switches
+# (MARKETING_SENDS_ENABLED, SMS_SENDS_ENABLED in deploy-production.yml).
+# By hand, dry-run asks the site what it would send and sends nothing.
 
 on:
+  schedule:
+    # GitHub may start a scheduled run a few minutes late.
+    - cron: "*/15 * * * *"
   workflow_dispatch:
     inputs:
       mode:
