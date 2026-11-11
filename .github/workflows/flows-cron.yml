@@ -12,8 +12,10 @@ name: Run the flows cron
 
 on:
   schedule:
-    # GitHub may start a scheduled run a few minutes late.
-    - cron: "*/15 * * * *"
+    # Off the quarter hours on purpose: GitHub delays or drops scheduled runs
+    # that start at busy minutes (:00, :15, :30, :45). On 2026-11-11 the
+    # "*/15" schedule fired once in twelve hours.
+    - cron: "7,22,37,52 * * * *"
   workflow_dispatch:
     inputs:
       mode:

@@ -371,7 +371,7 @@ export function CalendarPicker({
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 readOnly={Boolean(defaultName)}
-                placeholder="Jane Trader"
+                placeholder="Jane Smith"
                 autoComplete="name"
                 className="input"
               />

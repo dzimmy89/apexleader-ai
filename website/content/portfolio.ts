@@ -284,10 +284,11 @@ export const PORTFOLIO: readonly PortfolioBusiness[] = [
     slug: "laminar",
     name: "Laminar Finance",
     status: "building",
+    url: "https://laminar.gg",
     oneLine: "A white-label platform for licensed managers to launch on-chain funds on Euler vaults.",
     about: [
       "Laminar lets a licensed fund manager launch a fund from two sides: a credit vault that pays depositors a disclosed rate the manager sets, and a collateral vault that holds fixed-yield tokens and other assets the manager allows. The fund share is priced on net asset value.",
-      "It is built as an add-on to unmodified Euler vaults, with a keeper that reduces risk when needed. The work so far is the smart contracts and their tests; there is no public site yet.",
+      "It is built as an add-on to unmodified Euler vaults, with a keeper that reduces risk when needed. The work so far is the smart contracts and their tests. The site is at laminar.gg.",
     ],
     tools: ["Claude Code", "GitHub"],
     modules: [
@@ -300,13 +301,20 @@ export const PORTFOLIO: readonly PortfolioBusiness[] = [
     screenshot: {
       src: "/portfolio/laminar.png",
       alt: "The Laminar Finance project overview",
-      caption: "No public site yet. This shows the project README.",
+      caption: "This shows the project README.",
     },
     stack: ["Solidity", "Foundry", "Euler EVK", "Pendle"],
     next: "One fund running end to end on a mainnet fork, then an audit.",
     results: [],
   },
 ];
+
+/**
+ * The three sites the founder named as his results (2026-11-11), in his
+ * order. /about leads with them. Kept here because this is the one file that
+ * may name the sister school.
+ */
+export const FOUNDER_NAMED_RESULTS: readonly string[] = ["defi-university", "the-node", "laminar"];
 
 export function getPortfolioBusiness(slug: string): PortfolioBusiness | undefined {
   return PORTFOLIO.find((b) => b.slug === slug);
