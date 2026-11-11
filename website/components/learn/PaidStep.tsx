@@ -118,7 +118,7 @@ export async function PaidStep({
           ) : (
             <div className="mt-5 flex flex-wrap gap-3">
               <Link href={URLS.coachingDiscovery} className="btn btn-primary">
-                Request a call
+                Book a free call
               </Link>
               <Link href="/coaching" className="btn btn-secondary">
                 How coaching works

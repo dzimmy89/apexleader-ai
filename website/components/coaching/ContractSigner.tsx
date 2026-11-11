@@ -161,7 +161,7 @@ export function ContractSigner({ token }: { token: string }) {
             required
             value={typedName}
             onChange={(e) => setTypedName(e.target.value)}
-            placeholder="Jane Trader"
+            placeholder="Jane Smith"
             autoComplete="name"
             className="input"
           />

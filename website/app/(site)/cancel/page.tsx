@@ -32,7 +32,7 @@ export default function CancelPage() {
 
           <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
             <CTAButton variant="coaching" size="lg" href={URLS.coachingDiscovery} location="cancel_coaching">
-              Book a discovery call
+              Book a free call
             </CTAButton>
             <CTAButton variant="ghost" href="/coaching" location="cancel_coaching_back">
               Back to coaching
