@@ -1,0 +1,93 @@
+name: Set up the Cloud Scheduler timer for the flows cron
+
+# One-off, run by hand. GitHub's own schedule proved unreliable for
+# flows-cron.yml (one run in thirteen hours on 2026-11-11), so this creates a
+# Cloud Scheduler job in apexleader-prod that calls /api/cron/process-flows
+# every 15 minutes. Safe to run again: it updates the job if it exists.
+#
+# "check" only reports whether the API is on and the job exists.
+# "apply" turns the API on and creates or updates the job.
+# "pause" stops the timer without deleting it.
+
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: "check (report only), apply (create or update the timer), pause"
+        type: choice
+        options: [check, apply, pause]
+        default: check
+
+concurrency:
+  group: flows-scheduler-setup
+  cancel-in-progress: false
+
+jobs:
+  scheduler:
+    runs-on: ubuntu-latest
+    environment: production
+    permissions:
+      contents: read
+      id-token: write
+    env:
+      GCP_PROJECT_ID: apexleader-prod
+      GCP_REGION: us-central1
+      JOB: flows-cron
+      SITE_URL: https://fromaitobusiness.com
+      ACTION: ${{ inputs.action }}
+    steps:
+      - uses: google-github-actions/auth@v2
+        with:
+          # Same keyless sign-in as deploy-production.yml.
+          workload_identity_provider: projects/38118386790/locations/global/workloadIdentityPools/github/providers/github
+          service_account: github-deploy@apexleader-prod.iam.gserviceaccount.com
+
+      - uses: google-github-actions/setup-gcloud@v2
+
+      - name: Report the current state
+        run: |
+          set -uo pipefail
+          if gcloud services list --enabled --project="${GCP_PROJECT_ID}" --filter="config.name=cloudscheduler.googleapis.com" --format="value(config.name)" | grep -q cloudscheduler; then
+            echo "api=enabled"
+            gcloud scheduler jobs describe "${JOB}" --location="${GCP_REGION}" --project="${GCP_PROJECT_ID}" \
+              --format="value(state,schedule,timeZone,lastAttemptTime,status.code)" 2>/dev/null \
+              | sed 's/^/job=/' || echo "job=missing"
+          else
+            echo "api=disabled"
+          fi
+
+      - name: Create or update the timer
+        if: env.ACTION == 'apply'
+        run: |
+          set -euo pipefail
+          gcloud services enable cloudscheduler.googleapis.com --project="${GCP_PROJECT_ID}"
+          SECRET="$(gcloud secrets versions access latest --secret=CRON_SECRET --project="${GCP_PROJECT_ID}")"
+          echo "::add-mask::${SECRET}"
+          if gcloud scheduler jobs describe "${JOB}" --location="${GCP_REGION}" --project="${GCP_PROJECT_ID}" >/dev/null 2>&1; then
+            VERB=update
+            HEADERS_FLAG="--update-headers"
+          else
+            VERB=create
+            HEADERS_FLAG="--headers"
+          fi
+          # The site takes up to a few minutes on a busy run, so allow five
+          # and do not retry: the next tick is fifteen minutes away.
+          gcloud scheduler jobs "${VERB}" http "${JOB}" \
+            --location="${GCP_REGION}" --project="${GCP_PROJECT_ID}" \
+            --schedule="*/15 * * * *" --time-zone="Etc/UTC" \
+            --uri="${SITE_URL}/api/cron/process-flows" --http-method=GET \
+            "${HEADERS_FLAG}=Authorization=Bearer ${SECRET}" \
+            --attempt-deadline=300s --max-retry-attempts=0 \
+            --description="Lesson follow-ups, reminders, coaching flows, calendar sync and call plans" \
+            --quiet >/dev/null
+          gcloud scheduler jobs resume "${JOB}" --location="${GCP_REGION}" --project="${GCP_PROJECT_ID}" --quiet >/dev/null 2>&1 || true
+          echo "timer=${VERB}d"
+          gcloud scheduler jobs describe "${JOB}" --location="${GCP_REGION}" --project="${GCP_PROJECT_ID}" \
+            --format="value(state,schedule,timeZone)"
+
+      - name: Pause the timer
+        if: env.ACTION == 'pause'
+        run: |
+          set -euo pipefail
+          gcloud scheduler jobs pause "${JOB}" --location="${GCP_REGION}" --project="${GCP_PROJECT_ID}" --quiet
+          echo "timer=paused"
