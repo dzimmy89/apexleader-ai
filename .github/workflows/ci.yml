@@ -106,7 +106,6 @@ jobs:
         run: |
           npx tsx scripts/test-learn-courses.ts
           npx tsx scripts/test-lesson-funnel.ts
-          npx tsx scripts/test-firebase-admin.ts
           npx tsx scripts/test-portfolio.ts
           npx tsx scripts/test-stripe-webhook.ts
           npx tsx scripts/test-client-payments.ts
@@ -123,6 +122,7 @@ jobs:
           npx tsx scripts/test-cron-dry-run.ts
           npx tsx scripts/test-discovery-links.ts
           npx tsx scripts/test-lesson-series.ts
+          npx tsx scripts/test-firebase-admin-settings.ts
           npx tsx scripts/test-manual-only-contact.ts
           npx tsx scripts/test-esign-engine.ts
           npx tsx scripts/test-admin-login.ts
