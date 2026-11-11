@@ -52,7 +52,16 @@ export function getDb(): Firestore {
 
 function applyIgnoreUndefinedProperties(instance: Firestore): void {
   if (ignoreUndefinedApplied) return;
-  instance.settings({ ignoreUndefinedProperties: true });
+  try {
+    instance.settings({ ignoreUndefinedProperties: true });
+  } catch (e) {
+    // Next can bundle this module into more than one server chunk. Each copy
+    // has its own `db`, but getFirestore() hands every copy the same client,
+    // and settings() may only run once, before first use. The copy that got
+    // there first already applied this same setting, so a second attempt on a
+    // warm instance is safe to ignore. Anything else is a real error.
+    if (!(e instanceof Error) || !e.message.includes("already been initialized")) throw e;
+  }
   ignoreUndefinedApplied = true;
 }
 
