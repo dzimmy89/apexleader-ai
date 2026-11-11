@@ -2,9 +2,9 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 export const FOUNDER_PORTRAIT = {
-  src: "/images/david-zimmerman-portrait.jpg",
-  width: 636,
-  height: 794,
+  src: "/images/david-zimmerman-studio.jpg",
+  width: 1056,
+  height: 1320,
   alt: "David Zimmerman, founder of FromAItoBusiness",
 } as const;
 

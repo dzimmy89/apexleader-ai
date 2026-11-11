@@ -1,4 +1,4 @@
-import { google } from "googleapis";
+import { google, type calendar_v3 } from "googleapis";
 import { SENDER_EMAIL, getSiteOrigin } from "@/lib/env";
 import { coachBusyCalendarIds, coachWriteCalendarId } from "@/lib/coaching/coach-calendars";
 import {
@@ -13,6 +13,7 @@ import {
   type AvailabilitySlot,
   type BusyInterval,
 } from "@/lib/coaching/availability";
+import { conferenceDataForSpace, createRecordedMeetSpace } from "@/lib/coaching/meet-space";
 import { recountClientSessions, sessionDocId } from "@/lib/coaching/session-sync";
 import { getDb } from "@/lib/firebase-admin";
 import { sendEmail } from "@/lib/gmail";
@@ -409,26 +410,44 @@ export async function createBooking(
     );
 
     try {
-      const event = await calendar.events.insert({
-        calendarId: coachWriteCalendarId(),
-        conferenceDataVersion: 1,
-        sendUpdates: notify.sendUpdates,
-        requestBody: {
-          summary: title,
-          description,
-          start: { dateTime: start.toISOString(), timeZone: COACH_TIMEZONE },
-          end: { dateTime: end.toISOString(), timeZone: COACH_TIMEZONE },
-          ...(notify.includeAttendee
-            ? { attendees: [{ email: input.email, displayName: input.name }] }
-            : {}),
-          conferenceData: {
-            createRequest: {
-              requestId: `apex-${Date.now()}`,
-              conferenceSolutionKey: { type: "hangoutsMeet" },
-            },
+      const insert = (conferenceData: calendar_v3.Schema$ConferenceData) =>
+        calendar.events.insert({
+          calendarId: coachWriteCalendarId(),
+          conferenceDataVersion: 1,
+          sendUpdates: notify.sendUpdates,
+          requestBody: {
+            summary: title,
+            description,
+            start: { dateTime: start.toISOString(), timeZone: COACH_TIMEZONE },
+            end: { dateTime: end.toISOString(), timeZone: COACH_TIMEZONE },
+            ...(notify.includeAttendee
+              ? { attendees: [{ email: input.email, displayName: input.name }] }
+              : {}),
+            conferenceData,
           },
+        });
+      const plainMeet: calendar_v3.Schema$ConferenceData = {
+        createRequest: {
+          requestId: `apex-${Date.now()}`,
+          conferenceSolutionKey: { type: "hangoutsMeet" },
         },
-      });
+      };
+      // Discovery calls get a room that records itself, so the written plan
+      // can be built from the transcript. Any failure falls back to a plain link.
+      const space = await createRecordedMeetSpace().catch(() => null);
+      let autoRecord = Boolean(space);
+      let event;
+      if (space) {
+        try {
+          event = await insert(conferenceDataForSpace(space));
+        } catch (e) {
+          console.error("[createBooking] recorded room rejected by Calendar; using a plain Meet link", e);
+          autoRecord = false;
+          event = await insert(plainMeet);
+        }
+      } else {
+        event = await insert(plainMeet);
+      }
 
       const eventId = event.data.id || "";
       const meetUrl =
@@ -457,7 +476,7 @@ export async function createBooking(
         }
       }
 
-      await writeBookingToCrm({ eventId, input, meetUrl, htmlLink });
+      await writeBookingToCrm({ eventId, input, meetUrl, htmlLink, autoRecord });
       try {
         await sendBookingConfirmationEmail({
           input,
@@ -512,8 +531,12 @@ async function writeBookingToCrm(args: {
   input: CreateBookingInput;
   meetUrl?: string;
   htmlLink?: string;
+  /** The Meet room was created with recording and transcript switched on. */
+  autoRecord?: boolean;
 }): Promise<void> {
   const db = getDb();
+  // Marks the call for the written one-page plan (lib/coaching/call-plans.ts).
+  const callPlan = { callPlanState: "pending", autoRecord: Boolean(args.autoRecord) };
   const email = args.input.email.trim().toLowerCase();
   const now = new Date().toISOString();
 
@@ -528,6 +551,7 @@ async function writeBookingToCrm(args: {
           discoveryCallAt: args.input.startTime,
           meetUrl: args.meetUrl ?? null,
           htmlLink: args.htmlLink ?? null,
+          ...callPlan,
           updatedAt: now,
         });
 
@@ -564,6 +588,7 @@ async function writeBookingToCrm(args: {
       discoveryCallAt: args.input.startTime,
       meetUrl: args.meetUrl ?? null,
       htmlLink: args.htmlLink ?? null,
+      ...callPlan,
       ...(typeof closeValue === "number" ? { closeValue } : {}),
       createdAt: now,
       updatedAt: now,

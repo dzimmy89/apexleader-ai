@@ -44,7 +44,7 @@ export function founderNode(): JsonLdNode {
     "@id": FOUNDER_ID,
     name: BRAND.coachName,
     jobTitle: "Founder",
-    image: absoluteUrl("/images/david-zimmerman.jpg"),
+    image: absoluteUrl("/images/david-zimmerman-studio.jpg"),
     url: absoluteUrl("/about"),
     worksFor: { "@id": ORGANIZATION_ID },
   };

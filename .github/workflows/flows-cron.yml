@@ -53,7 +53,7 @@ jobs:
           STATUS="$(curl -sS -o response.json -w '%{http_code}' --max-time 280 -H "Authorization: Bearer ${SECRET}" "${URL}")"
           echo "http=${STATUS}"
           # Counts and step ids only: dry runs also list lead emails, which stay out of the log.
-          jq 'if .error then {error} elif .dryRun then {marketingBlock, counts, due: ([.recipients[] | "\(.flow) \(.step) \(.action)"] | group_by(.) | map({(.[0]): length}) | add)} else {marketingBlocked, pending, sent, skipped, failed, deferred, exited, textsSent, confirmReminders, calendarSync, paymentDigest} end' response.json 2>/dev/null | sed -E 's/[^[:space:]"]+@[^[:space:]"]+/[email]/g' || head -c 300 response.json
+          jq 'if .error then {error} elif .dryRun then {marketingBlock, counts, due: ([.recipients[] | "\(.flow) \(.step) \(.action)"] | group_by(.) | map({(.[0]): length}) | add)} else {marketingBlocked, pending, sent, skipped, failed, deferred, exited, textsSent, confirmReminders, calendarSync, callPlans, paymentDigest} end' response.json 2>/dev/null | sed -E 's/[^[:space:]"]+@[^[:space:]"]+/[email]/g' || head -c 300 response.json
           test "${STATUS}" = "200"
 
       # If the site answered with an error, show the matching lines from the

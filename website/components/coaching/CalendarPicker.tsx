@@ -53,6 +53,11 @@ interface CalendarPickerProps {
   onBooked?: (booking: BookedSession) => void;
   /** Parchment (the default, for /coaching/book) or the charcoal panel on /account. */
   surface?: "parchment" | "dark";
+  /**
+   * ISO start of a time the visitor already tapped (the homepage's open-times
+   * list). The picker opens on that day with the time selected if it is still free.
+   */
+  initialSlot?: string;
 }
 
 type Status = "idle" | "loading-slots" | "submitting" | "booked" | "error";
@@ -116,6 +121,7 @@ export function CalendarPicker({
   rescheduleSessionId,
   onBooked,
   surface = "parchment",
+  initialSlot,
 }: CalendarPickerProps) {
   const [name, setName] = useState(defaultName ?? "");
   const [email, setEmail] = useState(defaultEmail ?? "");
@@ -183,6 +189,23 @@ export function CalendarPicker({
       void loadSlots(selectedDate);
     }
   }, [selectedDate, loadSlots]);
+
+  // A time carried over from the homepage: open its day, then select it once
+  // that day's times have loaded (and only if it is still open).
+  const [pendingSlot, setPendingSlot] = useState<string | null>(null);
+  useEffect(() => {
+    if (!initialSlot) return;
+    const at = new Date(initialSlot);
+    if (Number.isNaN(at.getTime()) || at.getTime() < Date.now()) return;
+    setPendingSlot(at.toISOString());
+    setSelectedDate(startOfDay(at));
+  }, [initialSlot]);
+  useEffect(() => {
+    if (!pendingSlot || slots.length === 0) return;
+    const match = slots.find((s) => new Date(s.start).toISOString() === pendingSlot);
+    if (match) setSelectedSlot(match);
+    setPendingSlot(null);
+  }, [pendingSlot, slots]);
 
   const canBook = Boolean(selectedSlot) && (accountBooking || Boolean(email));
 

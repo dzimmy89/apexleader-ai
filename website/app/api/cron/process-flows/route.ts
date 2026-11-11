@@ -25,6 +25,7 @@ import { automatedSendBlockedByManualOnly } from "@/lib/crm/contacts";
 import { maybeSendPaymentDigest } from "@/lib/coaching/payment-digest";
 import { syncCoachingCalendar } from "@/lib/coaching/session-sync";
 import { findMeetRecording, publishMeetRecording } from "@/lib/coaching/meet-recordings";
+import { processCallPlans } from "@/lib/coaching/call-plans";
 
 export async function GET(request: NextRequest) {
   if (!verifyCronAuth(request)) {
@@ -119,9 +120,19 @@ async function processFlows(request: NextRequest) {
     console.error("[process-flows] calendar sync", e);
   }
 
+  // Written one-page plans for discovery calls whose transcript is ready.
+  let callPlans: string = "error";
+  try {
+    const plans = await processCallPlans();
+    callPlans = `sent ${plans.sent}, for review ${plans.review}, waiting ${plans.waiting}, alerts ${plans.alerted}, errors ${plans.errors}`;
+  } catch (e) {
+    console.error("[process-flows] call plans", e);
+  }
+
   return NextResponse.json({
     ok: true,
     calendarSync,
+    callPlans,
     confirmReminders,
     marketingBlocked: result.marketingBlocked,
     pending: result.pending,
