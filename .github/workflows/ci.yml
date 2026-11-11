@@ -104,7 +104,6 @@ jobs:
 
       - name: Courses and coaching tests
         run: |
-          command -v rg >/dev/null || (sudo apt-get update -qq && sudo apt-get install -y -qq ripgrep)
           npx tsx scripts/test-learn-courses.ts
           npx tsx scripts/test-lesson-funnel.ts
           npx tsx scripts/test-portfolio.ts
@@ -123,6 +122,7 @@ jobs:
           npx tsx scripts/test-cron-dry-run.ts
           npx tsx scripts/test-discovery-links.ts
           npx tsx scripts/test-lesson-series.ts
+          npx tsx scripts/test-firebase-admin-settings.ts
           npx tsx scripts/test-manual-only-contact.ts
           npx tsx scripts/test-esign-engine.ts
           npx tsx scripts/test-admin-login.ts
