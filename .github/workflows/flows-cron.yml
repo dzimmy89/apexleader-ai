@@ -6,7 +6,7 @@ name: Run the flows cron
 # enabled on apexleader-prod), so without this none of those go out.
 #
 # Runs every 15 minutes (owner approved 2026-11-11). Scheduled runs always
-# use run mode. Marketing emails and texts still wait for their own switches
+# use run mode. Marketing emails and texts each have their own switch
 # (MARKETING_SENDS_ENABLED, SMS_SENDS_ENABLED in deploy-production.yml).
 # By hand, dry-run asks the site what it would send and sends nothing.
 
