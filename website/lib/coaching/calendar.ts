@@ -30,6 +30,7 @@ import {
   leadFlowUserId,
 } from "@/lib/lead-flows";
 import { exitFlowsForUser } from "@/lib/flows";
+import { LESSON_FLOW_TYPES } from "@/lib/lesson-series/messages";
 import { automatedSendBlockedByManualOnly } from "@/lib/crm/contacts";
 import { stampLeadPublicFormSignup } from "@/lib/crm/leads";
 import { BRAND } from "@/lib/brand";
@@ -63,6 +64,10 @@ export interface CreateBookingInput {
   title?: string;
   timezone?: string;
   applicationId?: string;
+  /** Mobile from the booking form, E.164. Saved on the booking, never used for marketing texts. */
+  phone?: string;
+  /** Their answer to the one booking question. */
+  note?: string;
 }
 
 export type BookingErrorCode = "slot_taken" | "calendar_unavailable" | "invalid";
@@ -399,6 +404,7 @@ export async function createBooking(
       name: input.name || "",
       packageContext,
       prepUrl,
+      note: input.note,
     });
     await stampLeadPublicFormSignup({
       email: input.email,
@@ -468,6 +474,7 @@ export async function createBooking(
                 packageContext,
                 prepUrl,
                 meetUrl,
+                note: input.note,
               }),
             },
           });
@@ -539,6 +546,10 @@ async function writeBookingToCrm(args: {
   const callPlan = { callPlanState: "pending", autoRecord: Boolean(args.autoRecord) };
   const email = args.input.email.trim().toLowerCase();
   const now = new Date().toISOString();
+  const answers = {
+    ...(args.input.phone ? { phone: args.input.phone } : {}),
+    ...(args.input.note ? { bookingNote: args.input.note } : {}),
+  };
 
   try {
     if (args.input.applicationId) {
@@ -552,6 +563,7 @@ async function writeBookingToCrm(args: {
           meetUrl: args.meetUrl ?? null,
           htmlLink: args.htmlLink ?? null,
           ...callPlan,
+          ...answers,
           updatedAt: now,
         });
 
@@ -589,12 +601,29 @@ async function writeBookingToCrm(args: {
       meetUrl: args.meetUrl ?? null,
       htmlLink: args.htmlLink ?? null,
       ...callPlan,
+      ...answers,
       ...(typeof closeValue === "number" ? { closeValue } : {}),
       createdAt: now,
       updatedAt: now,
     });
   } catch (e) {
     console.error("[writeBookingToCrm] failed", e);
+  }
+
+  // They are talking to David now: stop the lesson series and the nurture
+  // emails, which both end with "book a free call".
+  await stopPreCallFlows(email);
+}
+
+/** Exit the flows that ask for a call. Never throws: the booking already stands. */
+export async function stopPreCallFlows(email: string): Promise<void> {
+  const userId = leadFlowUserId(email);
+  for (const flowType of ["coaching_nurture", ...LESSON_FLOW_TYPES] as const) {
+    try {
+      await exitFlowsForUser(userId, flowType, "booked_discovery_call");
+    } catch (e) {
+      console.error("[stopPreCallFlows]", flowType, e);
+    }
   }
 }
 

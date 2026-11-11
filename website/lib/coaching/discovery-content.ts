@@ -77,6 +77,8 @@ export function getDiscoveryEventDescription(args: {
   packageContext: DiscoveryPackageContext;
   prepUrl: string;
   meetUrl?: string;
+  /** Their answer to "What do you want AI to take off your plate first?" */
+  note?: string;
 }): string {
   const greeting = args.name.trim() ? `Hi ${args.name.trim()},` : "Hi there,";
   const packageLine = args.packageContext.id
@@ -95,6 +97,7 @@ export function getDiscoveryEventDescription(args: {
     packageLine,
     fitLine,
     "No pressure, no obligation.",
+    ...(args.note?.trim() ? ["", `What you want AI to take off your plate first: ${args.note.trim()}`] : []),
     "",
     RECORDING_NOTICE,
     "",

@@ -5,6 +5,28 @@ import { CalendarPicker } from "@/components/coaching/CalendarPicker";
 import { SectionReveal } from "@/components/SectionReveal";
 import { PageHeader, Panel } from "@/components/system";
 import { getPackage, getPackages } from "@/lib/coaching/packages";
+import { getReader } from "@/lib/learn/reader";
+import { getDb, leadDocId } from "@/lib/firebase-admin";
+import { formatPhone } from "@/lib/phone";
+
+/**
+ * Someone who already left their email and mobile on a lesson should not
+ * type them again: fill the form from their lead record (still editable).
+ */
+async function readerPrefill(): Promise<{ name?: string; email?: string; phone?: string }> {
+  try {
+    const reader = await getReader();
+    if (!reader) return {};
+    const snap = await getDb().collection("leads").doc(leadDocId(reader.email)).get();
+    const lead = snap.exists ? snap.data() : undefined;
+    const phone = typeof lead?.phone === "string" ? formatPhone(lead.phone) : undefined;
+    const name = typeof lead?.name === "string" && lead.name ? lead.name : undefined;
+    return { email: reader.email, name, phone };
+  } catch (e) {
+    console.error("[coaching/book] prefill failed", e);
+    return {};
+  }
+}
 
 export const dynamic = "force-dynamic";
 
@@ -64,6 +86,7 @@ export default async function BookDiscoveryCallPage({
   const packageId = params.packageId;
   const isDiscovery = params.discovery !== "false";
   const source = params.source || "coaching_book_page";
+  const prefill = await readerPrefill();
 
   let packageContext: PackageContext | null = null;
 
@@ -165,6 +188,10 @@ export default async function BookDiscoveryCallPage({
           source={source}
           defaultDurationMins={30}
           initialSlot={params.slot}
+          prefillName={prefill.name}
+          prefillEmail={prefill.email}
+          prefillPhone={prefill.phone}
+          askQuestion={isDiscovery}
         />
 
         <p className="mt-6 font-[family-name:var(--font-ui)] text-[length:var(--text-small)] text-[var(--color-text-muted)]">

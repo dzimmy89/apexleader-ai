@@ -7,6 +7,8 @@ import {
   createBooking,
 } from "@/lib/coaching/calendar";
 import { normalizeDurationMins } from "@/lib/coaching/availability";
+import { parseBookingAnswers, recordBookedCall } from "@/lib/coaching/booking-answers";
+import { ATTRIBUTION_COOKIE, parseAttribution } from "@/lib/attribution-cookie";
 
 // GET /api/coaching/calendar?start=ISO&end=ISO&duration=30
 // Returns bookable availability slots in the given range, each clear of busy
@@ -68,7 +70,7 @@ export async function GET(request: NextRequest) {
 }
 
 // POST /api/coaching/calendar
-// Body: { startTime, email, name, packageId?, source?, durationMins?, title? }
+// Body: { startTime, email, name, packageId?, source?, durationMins?, title?, phone?, note? }
 export async function POST(request: NextRequest) {
   let body: Record<string, unknown>;
   try {
@@ -92,6 +94,11 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Invalid email" }, { status: 400 });
   }
 
+  const answers = parseBookingAnswers(body);
+  if (!answers.ok) {
+    return NextResponse.json({ error: answers.error }, { status: 400 });
+  }
+
   const result = await createBooking({
     startTime,
     email,
@@ -103,6 +110,8 @@ export async function POST(request: NextRequest) {
     timezone: typeof body.timezone === "string" ? body.timezone : undefined,
     applicationId:
       typeof body.applicationId === "string" ? body.applicationId : undefined,
+    phone: answers.phone,
+    note: answers.note,
   });
 
   if (!result.ok) {
@@ -111,6 +120,13 @@ export async function POST(request: NextRequest) {
       { status: bookingErrorStatus(result.code) }
     );
   }
+
+  await recordBookedCall({
+    email,
+    phone: answers.phone,
+    note: answers.note,
+    attribution: parseAttribution(request.cookies.get(ATTRIBUTION_COOKIE)?.value),
+  });
 
   return NextResponse.json(result);
 }

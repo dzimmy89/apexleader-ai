@@ -2,6 +2,7 @@ import Link from "next/link";
 import { CrmPageHeader } from "@/components/admin/crm/CrmPageHeader";
 import { findLesson, getCourse } from "@/lib/learn/catalog";
 import { aggregateFunnel, loadFunnelDocs, rate, type FunnelRow, type StepCounts } from "@/lib/funnel/report";
+import { NO_LESSON } from "@/lib/coaching/booking-answers";
 
 export const dynamic = "force-dynamic";
 export const metadata = { title: "Funnel — Mission Control" };
@@ -9,6 +10,7 @@ export const metadata = { title: "Funnel — Mission Control" };
 const RANGES = [7, 30, 90] as const;
 
 function lessonLabel(courseId: string, lessonSlug: string): string {
+  if (courseId === NO_LESSON.courseId && lessonSlug === NO_LESSON.lessonSlug) return "Booked without a lesson";
   const course = getCourse(courseId);
   const found = course ? findLesson(course, lessonSlug) : null;
   return found ? `${found.lesson.title} · ${course!.title}` : `${courseId}/${lessonSlug}`;
@@ -88,7 +90,7 @@ export default async function FunnelPage({ searchParams }: { searchParams: Promi
     <div className="space-y-6">
       <CrmPageHeader
         title="Funnel"
-        description="People, not page loads: lesson views and the steps after them, counted on this site (bots filtered, no personal data). Percentages compare each step with the one it depends on. Calls booked start counting with the booking update."
+        description="People, not page loads: lesson views and the steps after them, counted on this site (bots filtered, no personal data). Percentages compare each step with the one it depends on."
         actions={
           <div className="flex gap-1">
             {RANGES.map((r) => (
