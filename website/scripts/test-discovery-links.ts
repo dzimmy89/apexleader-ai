@@ -30,9 +30,11 @@ function isDiscoveryBookingHref(href: string): boolean {
   }
 }
 
-function rg(args: string[], cwd: string): string {
+// git grep searches tracked files only and is on every machine that has the
+// repo, so CI does not have to install a search tool first.
+function gitGrep(args: string[], cwd: string): string {
   try {
-    return execFileSync("rg", args, { cwd, encoding: "utf8" });
+    return execFileSync("git", ["grep", ...args], { cwd, encoding: "utf8" });
   } catch (err) {
     const error = err as { status?: number; stdout?: string };
     if (error.status === 1) return "";
@@ -75,12 +77,15 @@ describe("clean Discovery booking links", () => {
   });
 
   it("does not leave discovery=true or ?discovery in source producers", () => {
-    const hits = rg(
+    const hits = gitGrep(
       [
         "-n",
+        "-I",
+        "-E",
         "discovery=true|\\?discovery",
-        "-g",
-        "!scripts/test-discovery-links.ts",
+        "--",
+        ".",
+        ":!website/scripts/test-discovery-links.ts",
       ],
       repoRoot
     );
