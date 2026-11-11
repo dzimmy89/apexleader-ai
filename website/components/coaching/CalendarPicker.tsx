@@ -58,7 +58,15 @@ interface CalendarPickerProps {
    * list). The picker opens on that day with the time selected if it is still free.
    */
   initialSlot?: string;
+  /** Editable starting values (a lesson reader's own details), unlike the read-only defaults. */
+  prefillName?: string;
+  prefillEmail?: string;
+  prefillPhone?: string;
+  /** Public discovery booking: also offer an optional mobile and one question. */
+  askQuestion?: boolean;
 }
+
+const BOOKING_QUESTION = "What do you want AI to take off your plate first?";
 
 type Status = "idle" | "loading-slots" | "submitting" | "booked" | "error";
 type ViewStatus = "form" | "success";
@@ -122,9 +130,15 @@ export function CalendarPicker({
   onBooked,
   surface = "parchment",
   initialSlot,
+  prefillName,
+  prefillEmail,
+  prefillPhone,
+  askQuestion = false,
 }: CalendarPickerProps) {
-  const [name, setName] = useState(defaultName ?? "");
-  const [email, setEmail] = useState(defaultEmail ?? "");
+  const [name, setName] = useState(defaultName ?? prefillName ?? "");
+  const [email, setEmail] = useState(defaultEmail ?? prefillEmail ?? "");
+  const [phone, setPhone] = useState(prefillPhone ?? "");
+  const [note, setNote] = useState("");
   const [viewerTimezone, setViewerTimezone] = useState(COACH_TIMEZONE);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [slots, setSlots] = useState<Slot[]>([]);
@@ -243,6 +257,7 @@ export function CalendarPicker({
               timezone: viewerTimezone,
               title: eventTitle,
               applicationId,
+              ...(askQuestion ? { phone, note } : {}),
             }),
           });
       if (!res.ok) {
@@ -376,6 +391,41 @@ export function CalendarPicker({
               />
               <p className="field-hint">The calendar invite and Google Meet link go here.</p>
             </div>
+            {askQuestion ? (
+              <>
+                <div className="field">
+                  <label htmlFor="booking-phone">
+                    Mobile <span className={cn("font-normal", muted)}>(optional)</span>
+                  </label>
+                  <input
+                    id="booking-phone"
+                    type="tel"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    placeholder="(555) 123-4567"
+                    autoComplete="tel"
+                    inputMode="tel"
+                    className="input"
+                  />
+                  <p className="field-hint">Only so David can reach you if the Meet link fails. No marketing texts.</p>
+                </div>
+                <div className="field">
+                  <label htmlFor="booking-note">
+                    {BOOKING_QUESTION} <span className={cn("font-normal", muted)}>(optional)</span>
+                  </label>
+                  <textarea
+                    id="booking-note"
+                    value={note}
+                    onChange={(e) => setNote(e.target.value)}
+                    maxLength={500}
+                    rows={3}
+                    placeholder="Answering email, chasing invoices, writing posts…"
+                    className="input min-h-[96px] py-2"
+                  />
+                  <p className="field-hint">One line is plenty. David reads it before the call.</p>
+                </div>
+              </>
+            ) : null}
           </div>
         )}
 

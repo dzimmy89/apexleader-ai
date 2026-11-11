@@ -4,6 +4,7 @@ import { FOUNDER_PORTRAIT } from "@/components/editorial/PortraitFrame";
 import { BRAND } from "@/lib/brand";
 import { URLS } from "@/content/site";
 import { getPackages, isPublicPlan } from "@/lib/coaching/packages";
+import { NextOpenings } from "@/components/home/NextOpenings";
 
 /** Matches section 4 of every coaching agreement (content/coaching-contracts). */
 export const GUARANTEE_LINE = "Change your mind within 14 days of signing, before your first session, and you get a full refund.";
@@ -42,7 +43,14 @@ async function loadPackages(): Promise<PackageRow[]> {
  * David's line, the three prices in a row, the refund line from the
  * agreement, and the way to a call. It never sits above the lesson text.
  */
-export async function PaidStep({ courseTitle }: { courseTitle: string }) {
+export async function PaidStep({
+  courseTitle,
+  showTimes = false,
+}: {
+  courseTitle: string;
+  /** After the exercise opens: show David's next open call times instead of one button. */
+  showTimes?: boolean;
+}) {
   const packages = await loadPackages();
   return (
     <section aria-labelledby="paid-step-heading" className="mt-16 border-t border-[var(--color-border-strong)] pt-10">
@@ -96,14 +104,27 @@ export async function PaidStep({ courseTitle }: { courseTitle: string }) {
             <span className="font-semibold text-[var(--color-text)]">{GUARANTEE_LINE}</span> It is written into the agreement. Coaching
             opens every lesson in {courseTitle} and the rest of the library.
           </p>
-          <div className="mt-5 flex flex-wrap gap-3">
-            <Link href={URLS.coachingDiscovery} className="btn btn-primary">
-              Request a call
-            </Link>
-            <Link href="/coaching" className="btn btn-secondary">
-              How coaching works
-            </Link>
-          </div>
+          {showTimes ? (
+            <div className="mt-6">
+              <p className="ui-label">Free 30-minute call. Next open times</p>
+              <NextOpenings location="exercise_paid_step" className="mt-3" />
+              <Link
+                href="/coaching"
+                className="mt-3 inline-block font-[family-name:var(--font-ui)] text-[length:var(--text-small)] text-[var(--color-text-muted)] underline"
+              >
+                How coaching works
+              </Link>
+            </div>
+          ) : (
+            <div className="mt-5 flex flex-wrap gap-3">
+              <Link href={URLS.coachingDiscovery} className="btn btn-primary">
+                Request a call
+              </Link>
+              <Link href="/coaching" className="btn btn-secondary">
+                How coaching works
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </section>

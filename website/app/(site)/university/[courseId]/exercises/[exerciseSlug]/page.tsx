@@ -159,7 +159,7 @@ export default async function ExercisePage({ params }: PageProps) {
           <MarkComplete courseId={course.id} slug={exerciseSlug} kind="exercise" initiallyDone={done} />
         </div>
       ) : null}
-      {open && !viewer.access?.isCoachingClient ? <PaidStep courseTitle={course.title} /> : null}
+      {open && !viewer.access?.isCoachingClient ? <PaidStep courseTitle={course.title} showTimes /> : null}
     </PieceLayout>
   );
 }

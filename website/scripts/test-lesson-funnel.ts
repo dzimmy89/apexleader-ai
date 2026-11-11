@@ -17,6 +17,8 @@ import {
 import { campaignLabel, funnelDocId, isBotUserAgent, isFunnelStep, CLIENT_STEPS } from "../lib/funnel/events";
 import { xHandleFrom, leadAlertContent } from "../lib/crm/lead-alert";
 import { buildXLessonLink, cleanHandle } from "../lib/learn/x-links";
+import { bookingFunnelContext, parseBookingAnswers, NO_LESSON } from "../lib/coaching/booking-answers";
+import { getDiscoveryEventDescription } from "../lib/coaching/discovery-content";
 
 describe("lesson landing helpers", () => {
   const body = [
@@ -277,5 +279,41 @@ describe("Mission Control funnel and timeline", () => {
       ["Text sent", "Confirmed email", "Added mobile, texts OK", "Gave email at “Outbound agents”"]
     );
     assert.equal(events.at(-1)!.description, "From X dm · @jo_b · ai-sales");
+  });
+});
+
+describe("booking form answers", () => {
+  it("accepts a blank mobile and question", () => {
+    assert.deepEqual(parseBookingAnswers({}), { ok: true });
+    assert.deepEqual(parseBookingAnswers({ phone: "  ", note: " " }), { ok: true });
+  });
+  it("normalizes a typed mobile and rejects a bad one", () => {
+    assert.deepEqual(parseBookingAnswers({ phone: "(415) 555-0123" }), { ok: true, phone: "+14155550123" });
+    const bad = parseBookingAnswers({ phone: "12" });
+    assert.equal(bad.ok, false);
+  });
+  it("keeps the answer on one line and caps it", () => {
+    const r = parseBookingAnswers({ note: "Chasing\n\n invoices   " + "x".repeat(600) });
+    assert.ok(r.ok && r.note);
+    if (r.ok) {
+      assert.match(r.note!, /^Chasing invoices x/);
+      assert.equal(r.note!.length, 500);
+    }
+  });
+  it("credits the booking to the last lesson read, or to no lesson", () => {
+    const withLesson = bookingFunnelContext({ lastLesson: { courseId: "ai-sales", lessonSlug: "outbound", title: "T", at: "x" } });
+    assert.equal(withLesson.courseId, "ai-sales");
+    assert.equal(withLesson.lessonSlug, "outbound");
+    const none = bookingFunnelContext(undefined);
+    assert.equal(none.courseId, NO_LESSON.courseId);
+    assert.equal(none.lessonSlug, NO_LESSON.lessonSlug);
+  });
+  it("puts the answer in the calendar invite only when given", () => {
+    const base = { name: "Jo", packageContext: { id: "", name: "", summaryLine: "" } as never, prepUrl: "https://x/prep" };
+    assert.doesNotMatch(getDiscoveryEventDescription(base), /take off your plate/);
+    assert.match(
+      getDiscoveryEventDescription({ ...base, note: "Invoices" }),
+      /What you want AI to take off your plate first: Invoices/
+    );
   });
 });
